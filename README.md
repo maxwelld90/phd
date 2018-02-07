@@ -1,2 +1,10 @@
 # Modelling Search and Stopping in IIR
-Repository for my PhD thesis (XeTeX) and associated code/data. The thesis is entitled Modelling Search and Stopping in Interactive Information Retrieval (University of Glasgow, 2018).
+PhD thesis by **David Martin Maxwell**, sometime in 2018.
+Currently a work in process.
+
+Source data, code and the thesis source itself are all contained within this repository, using the aptly named `data`, `code` and `thesis` directories. Go nuts.
+
+**Contact:** David Maxwell (maxwelld90@acm.org)
+
+## Abstract
+Work in progress.
