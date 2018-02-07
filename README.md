@@ -1,4 +1,6 @@
 # Modelling Search and Stopping in IIR
+*Or, to use the full name, **Modelling Search and Stopping in Interactive Information Retrieval**.*
+
 Repository containing the PhD thesis written **David Martin Maxwell**. This work was undertaken at the **University of Glasgow, Scotland**, from October 2013-2018. David was supervised by **Dr. Leif Azzopardi** and **Professor Roderick Murray-Smith**.
 
 The thesis is being written up; currently a work in progress.
