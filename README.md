@@ -25,8 +25,5 @@ I kindly ask that when citing this work, please use the following BibTeX entry:
 
 That is all. Go nuts. But when doing so, please respect the terms of the *Simple Non Code Licence (SNCL)*.
 
-## Compiling the Thesis
-You can compile the thesis using XeTeX.
-
 ## Abstract
 Work in progress.
