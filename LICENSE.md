@@ -34,7 +34,7 @@ The data, source code or text under this license is therefore called the object.
 	1. All of the clauses stated in section 1 are void if the licensee fails to accomplish his obligations established in section 1.
 	2. If the 3(i) clause becomes true the licensee must pay for any costs the licensor may have with juridical actions against him.
 	
-4. **Other terms and conditions**
+**4. Other terms and conditions**
 
 	1. The licensor shall not be bound by any additional or different terms or conditions communicated by the licensee unless expressly agreed.
 	2. The licensor has the right to edit at any time the content of this license, however, its effects will not be retroactive.
