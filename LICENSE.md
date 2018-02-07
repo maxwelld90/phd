@@ -1,4 +1,4 @@
-#Simple Non Code License (SNCL)
+# Simple Non Code License (SNCL)
 
 **Version 2.1.0**
 
