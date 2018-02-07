@@ -1,0 +1,386 @@
+%!TEX TS-program = xelatex
+%!TEX root = ../../maxwell2018thesis.tex
+
+\chapter[The Effects of Snippet Lengths on Stopping Behaviour]{The Effect of Snippet Lengths on\\Stopping Behaviour}\label{chap:snippets}
+\section{Introduction}
+
+\emph{Interactive Information Retrieval (IIR)} is a complex, non-trivial process where a searcher undertakes a variety of different actions during a search session~\cite{ingwersen2005theturn}. Core to their experience and success is the \emph{Search Engine Results Page (SERP)}, with its presentation and design over the years having been subject to much research. With more complex components now becoming commonplace in modern day Web search engines (such as the \emph{information card}~\cite{bota2016playing_your_cards, navalpakkam2013entity_cards} or \emph{social annotations}~\cite{muralidharan2012social_annotations}), much work however still remains on examining how more traditional SERP components (such as \emph{result summaries}) are designed and presented to end users.
+
+Result summaries have traditionally been viewed as the \emph{`ten blue links'} with the corresponding URL of the associated document, and one or more textual \emph{snippets} of \emph{keywords-in-context} from the document itself, approximately 130-150 characters (or two lines) in length~\cite{hearst2009_search}. Numerous researchers have explored result summaries in a variety of different ways, such as: examining their length~\cite{paek2004wavelens,cutrell2007result_page,kaisser2008improving}; the use of thumbnails~\cite{teevan2009visual_snippets,woodruff2002summaries}; their attractiveness~\cite{clarke2007caption_features,he2012bridging}; and the generation of \emph{query-biased snippets}~\cite{tombros1998query_biased,rose2007snippet_attributes}. The performance of users has broadly been evaluated in a limited fashion (e.g. by examining task completion times). In this work, we are interested in how the length and information content of result summaries affects SERP interactions and a user's ability to select relevant over non-relevant items. Prior research has demonstrated that longer result summaries tend to lower completion times for informational tasks (where users need to find one relevant document)~\cite{cutrell2007result_page}, but does this hold in other contexts, specifically for ad-hoc retrieval, where users need to find \emph{several} relevant items? Furthermore, how does the length and information associated with longer result summaries affect the user's ability to discern the relevant from the non-relevant?
+
+% --  in this work, we consider the effectiveness and usefulness of snippets. By this, we mean, given the information content in a standard length snippet, can we reduce the length of the snippet, yet retain most of its information content? This would therefore allow us to reduce the amount of text that needs to be scanned, fitting more results above the document fold, and reduce the amount of time and effort required to process the SERP. Reducing and removing context may however also decrease the accuracy of relevance estimations by the user, offsetting any gain in processing speed.
+
+This work therefore serves as an investigation into the effects of search behaviour and search performance when we vary \emph{(i)} result summary snippet lengths, and by doing so \emph{(ii)} the information content within the summaries. To this end, a within-subjects crowdsourced experiment ($n=53$) was designed and conducted. Under ad-hoc topic retrieval, participants used four different search interfaces, each with a different size of result summary. Findings allow us to address the two main research questions of this study. \textbf{\emph{RQ1}} How does the value of information gain represented as snippet length affect behaviour, performance and user experience? \textbf{\emph{RQ2}} Does information gain -- again represented as snippet length -- affect the decision making ability and accuracy (identifying relevant documents) of users? We hypothesise that longer and more informative snippets will enable users to make better quality decisions (i.e. higher degrees of accurately identifying relevant content).
+
+\section{The User Study}
+
+As previously mentioned, the design and presentation of SERPs has been examined in depth. Researchers have examined various aspects of SERPs, and how the designs of such aspects influence the behaviour of users. Here, we provide a summary of the various aspects that have been investigated. Specifically, we focus upon: the layout of SERPs; the size of SERPs; how snippet text is generated; and how much text should be presented within each result summary -- the latter being the main focus of this work.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{SERP Layouts and Presentation}
+%Result summaries have been presented to users in a variety of different ways.
+Early works regarding the presentation of result summaries~\cite{chen2000order_to_web, dumais2001results_in_context} examined approaches to automatically categorise result summaries for users, similar to the categorisation approach employed by early search engines. Chen and Dumais~\cite{chen2000order_to_web} developed an experimental system that automatically categorised result summaries on-the-fly as they were generated. For a query, associated categories were then listed as verticals, with associated document titles provided underneath each category header. Traditional result summaries were then made available when hovering over a document title. Subjects of a user study found the interface easier to use than the traditional `ten blue links' approach - they were 50\% faster at finding information displayed in categories. This work was then extended by Dumais et al.~\cite{dumais2001results_in_context}, where they explored the use of hover text to present additional details about search results based upon user interaction. Searching was found to be slower with hover text, perhaps due to the fact that explicit decisions about when to seek additional information (or not to) were required.
+
+Alternatives to the traditional, linear list of result summaries have also been trialled (like grid-based layouts~\cite{chierichetti2011two_dimensional_presentation, kammerer2010interface, resnick2001modeling}). For example, Krammerer and Beinhaur~\cite{kammerer2010interface} examined differences in user behaviour when interacting with a standard list interface, compared against a tabular interface (title, snippet and URL stacked horizontally in three columns for each result), and a grid-based layout (result summaries placed in three columns). Users of the grid layout spent more time examining result summaries. The approach demonstrated promise in overcoming issues such as \emph{position bias}~\cite{craswell2008position_bias}, as observed by Joachims et al.~\cite{joachims2005clickdata}.
+
+Marcos et al.~\cite{marcos2015snippets_web_search} performed an eye-tracking user study examining the effect of user behaviour while interacting with SERPs -- and whether the \emph{richness} of result summaries provided on a SERP (i.e. result summaries enriched with metadata from corresponding pages) impacted upon the user's search experience. Enriched summaries were found to help capture a user's attention. Including both textual and visual representations of a document when presenting results could have a positive effect on relevance assessment and query reformulation~\cite{joho2006presentation}. Enriched summaries were also examined by Ali et al.~\cite{ali2009interaction_interfaces} in the context of navigational tasks. Striking a good balance between textual and visual cues were shown to better support user tasks, and search completion time.
+
+% - graphical craziness: ~\cite{ostergren2010visual_elements}
+% - `scent' - ~\cite{loumakis2011image_scent, wu2014scent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Generating Snippet Text}
+Users can be provided with an insight by result summaries as to whether a document is likely to be relevant or not~\cite{he2012bridging}. Consequently, research has gone into examining different kinds of snippets, and how long a snippet should be. Work initially focused upon how these summaries should be generated~\cite{landauer1993enhancing,leal2015query,pedersen1991snippet,tombros1998query_biased,white2003task}. These early works proposed the idea of summarising documents with respect to the query (query-biased summaries) or keywords-in-context -- as opposed to simply extracting the representative or lead sentences from the document~\cite{kupiec1995tds}. Tombros and Sanderson~\cite{tombros1998query_biased} showed that subjects of their study were likely to identify relevant documents more accurately when using query-biased summaries, compared to summaries simply generated from the first few sentences of a given document. Query-biased summaries have also been recently shown to be preferred on mobile devices~\cite{spirin2016snippets}.
+
+When constructing snippets using query-biased summaries, Rose et al.~\cite{rose2007snippet_attributes} found that a user's perceptions of the result's quality were influenced by the snippets. If snippets contained truncated sentences or many fragmented sentences \emph{(text choppiness)}, users perceived the quality of the results more negatively, regardless of length. Kanungo and Orr~\cite{kanungo2009snippet_readability} found that poor readability also impacts upon how the resultant snippets are perceived. They maintain that readability is a crucial presentation attribute that needs to be considered when generating a query-biased summary. Clarke et al.~\cite{clarke2007caption_features} analysed thousands of pairs of snippets where result \emph{A} appeared before result \emph{B}, but result \emph{B} received more clicks than result \emph{A}. As an example, they found results with snippets which were very short (or missing entirely) had fewer query terms, were not as readable, and attracted fewer clicks. This led to the formulation of several heuristics relating to document surrogate features, designed to emphasise the relationship between the associated page and generated snippet. Heuristics included: \emph{(i)} ensuring that all query terms in the generated snippet (where possible); \emph{(ii)} withholding the repeating of query terms in the snippet if they were present in the page's title; and \emph{(iii)} displaying (shortened) readable URLs.
+
+Recent work has examined the generation of snippets from more complex angles -- from manipulating underlying indexes~\cite{turpin2007fast_snippets, bast2014snippet_generation} to language modelling~\cite{li2010snippet_extraction, he2012bridging}, as well as using user search data to improve the generation process~\cite{ageev2013summaries, savenkov2011search}. Previous generation approaches also may not consider what parts of a document searchers actually find useful. Ageev et al.~\cite{ageev2013summaries} incorporated into a new model post-click searcher behaviour data, such as mouse cursor movements and scrolling over documents, producing \emph{behaviour-biased snippets}. Results showed a marked improvement over a strong text-based snippet generation baseline. Temporal aspects have also been considered -- Svore et al.~\cite{svore2012temporal_snippets} conducted a user study, showing that users preferred snippet text with \emph{trending} content in snippets when searching for trending queries, but not so for general queries.
+
+
+% He et al.~\cite{he2012bridging} argue that a snippet may be deemed informative not only because it reflects part of the content of the document related to the query topic, but also because it provides a useful indication about the document's relevance. A snippet generated that is perceived relevant for a non-relevant document is therefore misleading. In their study, the authors cast the snippet generation problem as a sentence learning ranking function. The training data used were pairwise sentence preference pairs, which were created according to the consistency between their perceived relevance and the real relevance of the documents. In this paper, we follow up on this work -- examining whether people can make better relevance decisions when presented with more informative/longer snippets, or whether they are misled.
+
+% what do people prefer? - ~\cite{rose2007snippet_attributes} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{-1.5mm}
+\subsection{Results per Page}
+Today, a multitude of devices are capable of accessing the \emph{World Wide Web (WWW)} -- along with a multitude of different screen resolutions and aspect ratios. The question of how many result summaries should be displayed per page -- \emph{or results per page (RPP)} -- therefore becomes hugely important, yet increasingly difficult to answer. Examining behavioural effects on mobile devices when interacting with SERPs has attracted much research as of late (e.g.~\cite{kim2012small_vs_large, kim2014eye_tracking, kim2016pagination_versus_scrolling}), and with each device capable of displaying a different number of results \emph{above-the-fold}, recent research has shown that the RPP value can influence the behaviour of searchers~\cite{joachims2005clickdata, kim2014eye_tracking}. Understanding this behaviour can help guide and inform those charged with designing contemporary user interfaces.
+
+In a Google industry report, Linden~\cite{linden2006} however stated that users desired more than 10RPP, despite the fact that increasing the RPP yielded a 20\% drop in traffic; it was hypothesised that this was due to the extra time required to dispatch the longer SERPs. This drop however be attributed to other reasons. Oulasvirta et al.~\cite{oulasvirta2009serp_size} discusses the \emph{paradox of choice}~\cite{schwartz2005paradox_of_choice} in the context of search, where more options (results) -- particularly if highly relevant -- will lead to poorer choice and degrade user satisfaction. In terms of user satisfaction, modern search engines can therefore be a victim of their own success, presenting users with \emph{choice overload}. Oulasvirta et al.~\cite{oulasvirta2009serp_size} found that presenting users with a six-item search result list was associated with higher degrees of satisfaction, confidence with choices and perceived carefulness than an a list of 24 items.
+
+Kelly and Azzopardi~\cite{kelly2015results_per_page} broadly agreed with the findings by Oulasvirta et al.~\cite{oulasvirta2009serp_size}. Here, the authors conducted a between-subjects study with three conditions, where subjects were assigned to one of three interfaces - the baseline interface, showing 10RPP (the `ten blue links'), and two interfaces displaying 3RPP and 6RPP respectively. Their findings showed that individuals using the 3RPP and 6RPP interfaces spent significantly longer examining top-ranking results and were more likely to click on higher ranked documents than those on the 10RPP interface.  Findings also suggested that subjects using the interfaces showing fewer RPP found it comparatively easier to find relevant content than those using the 10RPP interface. However, no significant difference was found between the number of relevant items found across the interfaces. Currently, 10RPP is still considered the \emph{de-facto} standard~\cite{hearst2009_search}.
+
+%\todo{With this report now more than a decade old, it is unclear whether the user preference exhibited then still applies to today's more complex search interfaces.}
+%\todo{~\cite{matsuda2009eye_movements} - position matters! more likely to look at results of next page (if viewed) than results at bottom of first page. can this be integrated somewhere in this subsection?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Snippet Lengths: Longer or Shorter?}
+Snippet lengths have been examined in a variety of ways. A user study by Paek et al.~\cite{paek2004wavelens} compared a user's preference and usability against three different interfaces for displaying result summaries. With question answering tasks, the interfaces: displayed a \emph{normal} SERP (i.e. a two line snippet for each summary, with a clickable link); an \emph{instant} interface, where an expanded snippet was displayed upon clicking it; and a \emph{dynamic} interface, where hovering the cursor would trigger the expanded snippet. The instant view was shown to allow users to complete the given tasks in less time than the normal baseline, with half of participants preferring this approach.
+
+Seminal work by Cutrell and Guan~\cite{cutrell2007result_page} explored the effect of different snippet lengths (\emph{short}: 1 line, \emph{medium}: 2-3 lines; and \emph{long}: 6-7 lines). They found that longer snippets significantly improved performance for \textit{informational tasks} (e.g. \texttt{`Find the address for Newark Airport.'}). Users performed better for informational queries as snippet length increased. This work was followed up by Kaisser et al.~\cite{kaisser2008improving}. They conducted two experiments that estimated the preferred snippet length according to answer type (e.g. finding a person, time, or place), and comparing the results of the preferred snippet lengths to users' preferences to see if this could be predicted. The preferred snippet length was shown to depend upon the type of answer expected, with greater user satisfaction shown for the snippet length predicted by their technique.% Findings indicated that longer snippets could be more useful if the snippet is considered relevant to the query issued.
+
+More contemporary work has begun to examine what snippet sizes are appropriate for mobile devices. Given smaller screen sizes, this is important -- snippet text considered acceptable on a computer screen may involve considerable scrolling/swiping on a smaller screen. Kim et al.~\cite{kim2017mobile_search_snippets} found that subjects using longer snippets on mobile devices exhibited longer search times and similar search accuracy under informational tasks\footnote{The tasks considered by Kim et al.~\cite{kim2017mobile_search_snippets} were similar to those defined by Cutrell and Guan~\cite{cutrell2007result_page}, where a single relevant document was sought.}. Longer reading times and frequent scrolling/swiping (with more viewport movements) were exhibited. Longer snippets did not therefore appear to be very useful on a small screen -- an \emph{instant} or \emph{dynamic} snippet approach (as per Paek et al.~\cite{paek2004wavelens}) may be useful for mobile search, too.
+
+The presentation of result summaries has a strong effect on the ability of a user to judge relevancy~\cite{he2012bridging}. Relevant documents may be overlooked due to uninformative summaries -- but conversely, non-relevant documents may be examined due to a misleading summary. However, longer summaries also increase the examination cost, so there is likely a trade-off between informativeness/accuracy and length/cost. The current, widely accepted standard for result summaries are two query-based snippets/lines~\cite{hearst2009_search}. This work examines whether increasing and decreasing the length (and consequently the informativeness) of result summary snippets affects user accuracy and costs of relevance decisions in the context of ad-hoc topic search, where multiple relevant documents are sought.
+
+To address our two key research questions outlined in Section~\ref{sec:intro}, we conducted a within-subjects experiment. This allowed us to explore the influence of snippet length and snippet informativeness on search behaviours, performance and user experience. Subjects used four different search interfaces, each of which varied the way in which result summaries were presented to them.
+
+To decide the length and informativeness of the result summaries, we performed a preliminary analysis to determine the average length (in words) and informativeness (as calculated by the \emph{Kullback-Leibler distance}~\cite{kullback1951information} to measure \emph{information gain}, or \emph{relative entropy}) of result summaries with the title and varying numbers of snippet fragments (0--10). The closer the entropy value is to zero, the more information gained. Figure~\ref{fig_info_gain} plots the number of words, the information gain, and the information gain per word\footnote{To obtain these values, we submitted over 300 queries from a previous study (refer to Azzopardi et al.~\cite{azzopardi2013query_cost}) conducted on similar topics and on the same collection to the search system that we used.}. It is clear from the plot that a higher level of information gain was present in longer snippets. However, as the length increases with each additional snippet fragment added, the informativeness per word decreased. Consequently, for this study, we selected the four different interface conditions in the region where informativeness had the highest change, i.e. from zero to four. The conditions we selected for the study were therefore:
+
+\begin{itemize}
+    \item[\textbf{\emph{T0}}]{where only the title for each result summary were presented;}
+    \item[\textbf{\emph{T1}}]{where for each result summary, a title and one query-biased snippet fragment were presented;}
+    \item[\textbf{\emph{T2}}]{where a title and two query-biased snippet fragments were presented; and}
+    \item[\textbf{\emph{T4}}]{where a title and four query-biased snippet fragments were presented,}
+\end{itemize}
+\noindent where our independent variable is snippet informativeness, controlled by the length. Figure~\ref{fig_snippets} provides an example of the different result summaries in each condition.
+The remainder of this section details our methodology for this experiment, including a discussion of: the corpus, topics and system used (Subsection~\ref{sec:method:corpus}); how we generated snippets (Subsection~\ref{sec:method:snippetgen}); the behaviours we logged (Subsection~\ref{sec:method:behaviours}); how we obtained the opinions of subjects regarding their experience (Subsection~\ref{sec:method:experiences}); and further details on our study, including measures taken for quality control (Subsection~\ref{sec:method:details}).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Corpus, Search Topics and System}\label{sec:method:corpus}
+For this experiment, we used the TREC AQUAINT test collection. Using a traditional test collection provided us with the ability to easily evaluate the performance of subjects. The collection contains over one million newspaper articles from the period 1996-2000. Articles were gathered from three newswires: the \emph{Associated Press (AP)}; the \emph{New York Times (NYT)}; and \emph{Xinhua}.
+
+We then selected a total of five topics from the \emph{TREC 2005 Robust Track}, as detailed by Voorhees~\cite{voorhees2006trec_robust}. The topics selected were: \textnumero~341 \emph{(Airport Security)}; \textnumero~347 \emph{(Wildlife Extinction)}; \textnumero~367 \emph{(Piracy)}; \textnumero~408 \emph{(Tropical Storms)}; and \textnumero~435 \emph{(Curbing Population Growth)}. We selected topic \textnumero~367 as a practice topic so that subjects could familiarise themselves with the system. These topics were chosen based upon evidence from a previous user study with a similar setup, where it was shown that the topics were of similar difficulty~\cite{kelly2009query_suggestion}. For each subject, the remaining four topics were assigned to an interface (one of \textbf{\emph{T0}}, \textbf{\emph{T1}}, \textbf{\emph{T2}} or \textbf{\emph{T4}}) using a Latin-square rotation.
+
+% The topics selected were as follows, along with a count of how many relevant documents each topic had associated with it as identified by TREC assessors. \todo{We can probably compress this. Not happy that 341 only has 37 rels..}
+%
+% \begin{itemize}
+%     \item{\textnumero~341: \emph{Airport Security} (37 relevant documents)}
+%     \item{\textnumero~347: \emph{Wildlife Extinction} (165 relevant documents)}
+%     \item{\textnumero~367: \emph{Piracy} (95 relevant documents)}
+%     \item{\textnumero~408: \emph{Tropical Storms} (183 relevant documents)}
+%     \item{\textnumero~435: \emph{Curbing Population Growth} (152 relevant documents)}
+% \end{itemize}
+
+To ground the search tasks, subjects of the experiment were instructed to imagine that they were newspaper reporters, and were required to gather documents to write stories about the provided topics. Subjects were told to find as many relevant documents as they could during the allotted time, which was 10 minutes per topic -- hereafter referred to as a \emph{search session}. With the traditional components of a SERP, such as the query box and result summaries present (refer to Figure~\ref{fig_interface}), subjects were instructed to mark documents they considered relevant by clicking on the \texttt{`Mark as Relevant'} button within the document view -- accessed by clicking on a result summary he or she thought was relevant. Coupled with a two minute period to familiarise themselves with the system (using topic \textnumero~367), subjects spent approximately 45-50 minutes undertaking the complete experiment when pre- and post-task surveys were accounted for. 
+%While a majority of Web searches lead to a user identifying a relatively small number of documents, recall-orientated searches as used in this experiment are still used by a number of people -- such as journalists~\cite{kelly2015results_per_page}.
+
+For the underlying search engine, we used the \emph{Whoosh} \emph{Information Retrieval (IR)} toolkit~\footnote{Whoosh can be accessed at \texttt{\url{https://pypi.python.org/pypi/Whoosh/}}.}. We used BM25 as the retrieval algorithm ($b=0.75$), but with an implicit \texttt{AND}ing of query terms to restrict the set of retrieved documents to only those that contained all the query terms provided. This was chosen as most search systems implicitly \texttt{AND} terms together. 
+% Explicitly defining operators between query terms such as \texttt{AND}, \texttt{OR} and \texttt{NOT} had no effect.
+
+% \begin{center}
+% \begin{figure}[t]
+% \includegraphics[width=1.0\columnwidth]{pics/info_gain_len_replot.pdf}
+% \vspace{-18pt}
+%     \caption{Plots showing the length (in words), informativeness (in information gain, \emph{IG}) and the information gain \emph{(IG)} per word for title, plus 0 to 10 snippets. The closer the value is to zero, the more information that is gained.} \label{fig_info_gain}
+%     \vspace{-14pt}
+% \end{figure}
+% \end{center}
+%
+% \begin{figure}[t]
+% \includegraphics[width=1.0\columnwidth]{pics/result_summary_all.pdf}
+% \vspace{-4mm}
+% \caption{Examples of the result summaries generated by each of the four interfaces used in this study. The same document above is used -- with the circle denoting what interface is being shown (of \textbf{\emph{T0}}, \textbf{\emph{T1}}, \textbf{\emph{T2}} or \textbf{\emph{T4}}). Each of the result summaries consists of a title (in blue, underlined), none, one or more snippet fragments (in black, with fragments separated by ellipses), and a newswire source (in green).\vspace{-3mm}} \label{fig_snippets}
+% \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Snippet Generation}\label{sec:method:snippetgen}
+For interfaces \textbf{\emph{T2}} and \textbf{\emph{T4}}, each result summary presented to the subjects required one or more textual snippets from the corresponding document. These snippet fragments were query-biased~\cite{tombros1998query_biased}, and were generated by scoring sentences according to BM25 and selecting fragments from those sentences. Fragments were then extracted from the ordered series of sentences, by identifying query terms within those sentences with a window of 40 characters from either side of the term. Figure~\ref{fig_snippets} provides a complete, rendered example of the result summaries generated by each of the four interfaces. Each result summary contains a document title, a newswire source (acting as a replacement for a document URL), and, if required, one or more textual snippets.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Behaviours Logged}\label{sec:method:behaviours}
+In order for us to address our research questions, our experimental system was required to log a variety of behavioural attributes for each subject as they performed the variety of actions that take place during a search session. Search behaviours were operationalised over three types of measures: \emph{(i)} interaction, \emph{(ii)} performance, and \emph{(iii)} the time spent undertaking various search activities. All behavioural data was extracted from the log data produced by our system, and from the TREC 2005 Robust Track QRELs~\cite{voorhees2006trec_robust}. All data was recorded with the interface and topic combination used by the subject at the given time.
+
+\vspace{2mm}
+\noindent\textbf{Interaction measures} included the number of queries issued, the number of documents viewed, the number of SERPs viewed, and the greatest depths in the SERPs to which subjects clicked on -- and hovered over -- result summaries.
+
+\vspace{2mm}
+\noindent\textbf{Performance measures} included a count of the documents marked as relevant by the subject, the number of documents marked that were also TREC relevant -- as well as TREC non-relevant, and $P@k$ measurements for the performance of the subject's issued queries for a range of rankings.
+
+\vspace{2mm}
+\noindent\textbf{Time-Based measures} included the time spent issuing queries, examining SERPs -- as well as examining result summaries\footnote{Result summary times were approximated by dividing the total recorded SERP time by the number of snippets hovered over with the mouse cursor. We believe this is a reasonable assumption to make -- the timings of hover events proved to be unreliable due to occasional network latency issues beyond our control.} -- and the time spent examining documents. All of these times added together yielded the total search session time, which elapsed once 10 minutes had been reached.
+
+% \begin{figure}[t!]
+% \includegraphics[width=1.0\columnwidth]{pics/interface-sample.png}
+% \vspace{-6mm}
+% \caption{Screenshot of the experimental search interface, showing the SERP view, complete with query box (with query \texttt{`wildlife extinction'}) and the associated result summaries. In this example screenshot, interface \textbf{\emph{T2}} -- presenting two snippets per result summary -- is shown.}\vspace{-4mm} \label{fig_interface}
+% \end{figure}
+
+\vspace{2mm}
+\noindent
+From this raw data, we could then produce summaries of a search session, producing summarising measures such as the number of documents examined by searchers per query that they issued. We could also calculate from the log data probabilities of interaction, including a given subject's probability of clicking a result summary link, given that it was TREC relevant ($P(C|R)$) or TREC non-relevant ($P(C|N)$) -- or the probability of marking a document that was clicked, given it was either TREC relevant ($P(M|R)$) or TREC non-relevant ($P(M|N)$). Actions such as hover depth over result summaries were inferred from the movement of the mouse cursor, which in prior studies has been shown to correlate strongly with the user's gaze on the screen~\cite{chen2001mouse_cursor, smucker2014judging_relevance_movements}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Capturing User Experiences}\label{sec:method:experiences}
+To capture user experiences, we asked subjects to complete both pre- and post-task surveys for each of the four interface conditions. Pre-task surveys consisted of five questions, each of which was on a seven-point Likert scale (7 -- \emph{strongly agree} to 1 -- \emph{strongly disagree}). Subjects were sought for their opinions on their: \emph{(i)} prior knowledge of the topic; \emph{(ii)} the relevancy of the topic to their lives; \emph{(iii)} their desire to learn about the topic; \emph{(iv)} whether they had searched on this topic before; and \emph{(v)} the perceived difficulty to search for information on the topic.
+
+The same Likert scale was used for post-task surveys, where subjects were asked to judge the following statements: \emph{(\textbf{clarity})} -- the result summaries were clear and concise; \emph{(\textbf{confidence})} -- the result summaries increased my confidence in my decisions; \emph{(\textbf{informativeness})} -- the result summaries were informative; \emph{(\textbf{relevance})} -- the results summaries help me judge the relevance of the document; \emph{(\textbf{readable})} -- the result summaries were readable; and \emph{(\textbf{size})} -- the result summaries were an appropriate size and length.
+
+% POST-TASK (likert -- 1-strongly disagree, 2, 3, 4, 5, 6, 7-strongly agree)
+%     - clarity (The result snippets (title, link and description) were clear and concise.)
+%     - confidence (The result snippets increased my confidence in my decisions.)
+%     - informativeness (The result snippets were not informative.)
+%     - relevance (The results snippets help me judge the relevance of the document.)
+%     - readable (The result snippets  were not readable.)
+%     - size (The result snippets were an appropriate size and length.)
+
+At the end of the experiment, subjects completed an exit survey. From five questions, they were asked to pick which of the four interfaces was the closest fit to their experience. We sought opinions on what interface: \emph{(\textbf{most informative})} -- yielded the most informative result summaries; \emph{(\textbf{least helpful})} -- provided the most unhelpful summaries; \emph{(\textbf{easiest})} -- provided the easiest to understand summaries; \emph{(\textbf{least useful})} -- provided the least useful result summaries; and \emph{(\textbf{most preferred})} -- the subject's preferred choice for the tasks that they undertook.
+
+% Pre-task surveys consisted of five items, each of which was on a five-point Likert scale. The questions asked consisted of the following. \emph{(i)} How much do you know about this topic? (1=nothing; 5=I know details) \emph{(ii)} How relevant is this topic to your life? (1=not at all; 5=very much) \emph{(iii)} How interested are you to learn more about this topic? (1=not at all; 5=very much) \emph{(iv)} Have you ever searched for information related to this topic? (1=never; 5=very often) \emph{(v)} How difficult do you think it will be to search for information about this topic? (1=very easy; 5=very difficult).
+
+% Evaluation of the interface used was then performed post-task. Here, a seven-point Likert scale was used, where 1=strongly disagree, to 7=strongly agree. Opinions were sought on six fronts. \emph{(i)} The result snippets (title, link and description) were clear and concise. \emph{(ii)} The result snippets increased my confidence in my decisions. \emph{(iii)} The result snippets were not informative. \emph{(iv)} The result snippets help me judge the relevance of the document. \emph{(v)} The result snippets were not readable. \emph{(vi)} The result snippets were an appropriate size and length.
+
+%At the end of the experiment, participants were asked to complete a final survey, where from four questions, they were asked to pick one of the four interfaces that they felt best satisfied the question. The questions were as follows. \emph{(i)} The most informative result summaries were... \emph{(ii)} The unhelpful result summaries were... \emph{(iii)} The least useful result summaries were... \emph{(iv)} The most preferable type of result summaries for such tasks were...
+
+%\todo{@leifos: didn't something get switched around at times to keep people on their toes? @david: Yes, they were. We have transformed them all into the same direction.. that is for the post task ones. For the EXIT ones, they have not been switched around. AWESOME!}
+
+% PRE-TASK
+%     - knowledge (How much do you know about this topic?) 1nothing-5i know details
+%     - relevance (How relevant is this topic to your life?) 1not at all-5very much
+%     - interest (How interested are you to learn more about this topic?) 1not at all-5very much
+%     - searched (Have you ever searched for information related to this topic?) 1never-very often
+%     - difficulty (How difficult do you think it will be to search for information about this topic?) 1-very easy5-very difficult
+%
+%
+% POST-TASK (likert -- 1-strongly disagree, 2, 3, 4, 5, 6, 7-strongly agree)
+%     - clarity (The result snippets (title, link and description) were clear and concise.)
+%     - confidence (The result snippets increased my confidence in my decisions.)
+%     - informativeness (The result snippets were not informative.)
+%     - relevance (The results snippets help me judge the relevance of the document.)
+%     - readable (The result snippets  were not readable.)
+%     - size (The result snippets were an appropriate size and length.)
+%
+% POST-SYSTEM (4 interfaces -- 1t, 2t+1, 3t+2, 4t+4)
+%     - informativeness (The most informative result summaries were:)
+%     - unhelpful (The unhelpful result summaries were:)
+%     - useful (The least useful result summaries were:)
+%     - preferred (The most preferable type of result summaries for such tasks were:)
+%     -
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Crowdsourced Subjects \& Quality Control}\label{sec:method:details}
+As highlighted by Zuccon et al.~\cite{zuccon2013crowdsourcing}, crowdsourcing provides an alternative means for capturing user interactions and search behaviours from traditional lab-based user studies. Greater volumes of data can be obtained from more heterogeneous workers at a lower cost -- all within a shorter timeframe. Of course, pitfalls of a crowdsourced approach include the possibility of workers completing tasks as efficiently as possible, or submitting their tasks without performing the requested operations~\cite{feild2010turkers}. Despite these issues, it has been shown that there is little difference in the quality between crowdsourced and lab-based studies~\cite{zuccon2013crowdsourcing}. Nevertheless, quality control is a major component of a well-executed crowdsourced experiment~\cite{bota2016playing_your_cards}. Here, we detail our subjects and precautions taken.
+
+The study was run over the \emph{Amazon Mechanical Turk (MTurk)} platform. Workers from the platform performed a single \emph{Human Intelligence Task (HIT)}, which corresponded to the entire experiment. Due to the expected length of completion for the study (45-50 minutes), subjects who completed the study in full were reimbursed for their time with US\$9; a typically larger sum (and HIT duration) than most crowdsourced experiments. A total of 60 subjects took part in the experiment, which was run between July and August, 2016. However, seven subjects were omitted due to quality control constraints (see below). In all, of the 53 subjects who satisfied the expected conditions of the experiment, 28 were male, with 25 female. The average age of our subjects was 33.8 years ($min=22$; $max=48$; $stdev=7.0$), with 19 of the subjects possessing a bachelor's degree or higher, and all expressing a high degree of search literacy, with all subjects stating that they conducted at least five searches for information online per week. With 53 subjects, each searching over four topics, this meant a total of 212 search sessions were logged.
+
+We examined extra precautionary measures to ensure the integrity of the log data that was recorded. Precautions were taken from several angles. First, workers were only permitted to begin the experiment on the MTurk platform that: \emph{(i)} were from the United States, and were native English speakers; \emph{(ii)} had a HIT acceptance rate of at least 95\%; and \emph{(iii)} had at least 1000 HITs approved. Requiring \emph{(ii)} and \emph{(iii)} reduced the likelihood of recruiting individuals who would not complete the study in a satisfactory manner. Recruits were forewarned about the length of the HIT, which was considerably longer than other crowdsourced experiments.
+
+We also ensured that the computer the subject was attempting the experiment on had a sufficiently large screen resolution (1024x768 or greater) so as to display all of the experimental interface on screen. With the experiment being conducted in a Web browser popup window of a fixed size, we wanted to ensure that all subjects would be able to see the same number of results on a SERP within the popup window's viewport. As the experiment was conducted via a Web browser, we wanted to ensure that only the controls provided by the experimental apparatus were used, meaning that the popup window had all other browser controls disabled to the best of our ability (i.e. history navigation, etc.). The experimental system was tested on several major Web browsers, across different operating systems. This gave us confidence that a similar experience would be had across different system configurations.
+
+We also implemented a series of log post-processing scripts after completion of the study to further identify and capture individuals who did not perform the tasks as instructed. It was from here that we identified the seven subjects that did not complete the search tasks in a satisfactory way -- spending less than three of the ten minutes searching. These subjects were excluded from the study, reducing the number of subjects reported from 60 to 53. Finally, results are reported based upon the first 360 seconds as some of the remaining subjects didn't fully use all 600 seconds.
+
+\begin{table}[t]
+    \caption{Characters, words and \emph{Information Gain (IG)} across each of the four interface conditions. An ANOVA test reveals significant differences, with follow-up tests (refer to Section~\ref{sec:results}) showing that each condition is significantly different to others. There are clearly diminishing returns in information gain as snippet length increases. An IG value closer to zero denotes a higher level of IG. In the table, \emph{IG/W.} denotes \emph{IG per word}.\vspace{-3mm}}
+    \label{tbl_info_gain}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{0.758cm}||D{1.45cm}|D{1.45cm}|D{1.45cm}|D{1.45cm}}
+    \hline
+    & \textbf{\emph{T0}} & \textbf{\emph{T1}} & \textbf{\emph{T2}} & \textbf{\emph{T4}}  \\ \hline\hline
+    % OUTPUT FROM script
+	\hspace*{-0.1cm}\textbf{Words} & 6.58$\pm$0.01* & 25.21$\pm$0.06* & 44.29$\pm$0.10* & 77.06$\pm$0.13* \\ \hline
+	\hspace*{-0.1cm}\textbf{Chars.} & 37.37$\pm$0.05* & \hspace*{-0.05cm}103.29$\pm$0.17* & \hspace*{-0.05cm}168.36$\pm$0.23* & \hspace*{-0.05cm}284.78$\pm$0.31* \\ \hline\hline
+	\hspace*{-0.1cm}\textbf{IG} & -6.35$\pm$0.01* & \hspace*{-0.05cm}-3.59$\pm$0.00* & \hspace*{-0.05cm}-3.00$\pm$0.00* & \hspace*{-0.05cm}-2.67$\pm$0.00* \\ \hline
+	\hspace*{-0.1cm}\textbf{IG/W.} & -1.17$\pm$0.00* & \hspace*{-0.05cm}-0.18$\pm$0.00* & \hspace*{-0.05cm}-0.08$\pm$0.00* & \hspace*{-0.05cm}-0.04$\pm$0.00* \\ \hline
+\end{tabulary}
+\end{center}
+\end{table}
+
+% \begin{center}
+% \begin{figure}[t]
+% \includegraphics[width=1.0\columnwidth]{pics/times_replot_2.pdf}
+% %\includegraphics[width=1.0\columnwidth]{pics/times_replot.eps}
+% \vspace{-15pt}
+%     \caption{Plot showing the mean time spent examining result summaries across each of the four interfaces examined. Note the increasing mean examination time as the snippet length increases, from \textbf{\emph{T0}}\boldmath{$\rightarrow$}\textbf{\emph{T4}}.} \label{fig_times}
+%     \vspace{-10pt}
+% \end{figure}
+% \end{center}
+
+\begin{table*}[t]
+    \caption{Summary table of both interaction and performance measures over each of the four interfaces evaluated. For each measure examined, no significant differences are reported across the four interfaces.\vspace{-3mm}}
+    \label{tbl_actions}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{6.3cm}||D{2.4cm}|D{2.4cm}|D{2.4cm}|D{2.4cm}}
+    \hline
+    & \textbf{\emph{T0}} & \textbf{\emph{T1}} & \textbf{\emph{T2}} & \textbf{\emph{T4}}  \\ \hline\hline
+    % OUTPUT FROM script
+    \textbf{Number of Queries} & 3.72$\pm$ 0.34 & 3.19$\pm$ 0.35 & 3.30$\pm$ 0.35 & 3.28$\pm$ 0.31 \\ \hline
+    \textbf{Number of SERP Pages per Query} & 2.87$\pm$ 0.29 & 2.69$\pm$ 0.23 & 2.43$\pm$ 0.13 & 2.40$\pm$ 0.20 \\ \hline
+    \textbf{Number of Docs Clicked per Query} & 4.23$\pm$ 0.55 & 4.83$\pm$ 0.54 & 5.14$\pm$ 0.66 & 4.76$\pm$ 0.62 \\ \hline
+    \textbf{Depth per Query} & 24.47$\pm$ 2.96 & 22.87$\pm$ 2.47 & 20.02$\pm$ 1.46 & 19.40$\pm$ 2.04  \\ \hline\hline
+    \textbf{P@10} & 0.25$\pm$ 0.02 & 0.23$\pm$ 0.02 & 0.27$\pm$ 0.02 & 0.25$\pm$ 0.03\\ \hline
+    \textbf{Number of Documents Marked Relevant} & 6.68$\pm$ 0.66 & 7.00$\pm$ 0.63 & 6.49$\pm$ 0.58 & 7.60$\pm$ 0.79 \\ \hline
+    \textbf{Number of TREC Rels Found} & 2.58$\pm$ 0.34 & 2.28$\pm$ 0.25 & 2.47$\pm$ 0.28 & 2.66$\pm$ 0.32 \\ \hline
+	\textbf{Number of Unjudged Docs Marked Relevant} & 1.85$\pm$ 0.32 & 2.08$\pm$ 0.29 & 1.98$\pm$ 0.24 & 1.68$\pm$ 0.32 \\ \hline
+	
+
+    \end{tabulary}
+    \end{center}
+    \vspace{-2mm}
+\end{table*}
+
+\begin{table*}[t]
+    \caption{Summary table of times over each of the four interfaces evaluated. Significant differences exist between T0 and T4 (identified by the \emph{*}, where \boldmath{$\alpha=0.05$}) on a follow-up Bonferroni test.\vspace{-3mm}}
+    \label{tbl_times}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{6.3cm}||D{2.4cm}|D{2.4cm}|D{2.4cm}|D{2.4cm}}
+    \hline
+    & \textbf{\emph{T0}} & \textbf{\emph{T1}} & \textbf{\emph{T2}} & \textbf{\emph{T4}}  \\ \hline\hline
+    % OUTPUT FROM script
+
+ %   \textbf{Query Time}		& 30.50$\pm$ 3.65 	& 24.97$\pm$ 3.97 	& 25.50$\pm$ 2.61 	& 25.33$\pm$ 2.37 \\ \hline
+    \textbf{Time per Query} 	& 8.29$\pm$ 0.57 	& 7.99$\pm$ 0.57 	& 9.42$\pm$ 0.79 	& 8.12$\pm$ 0.48 \\ \hline
+    \textbf{Time per Document}		& 17.31$\pm$ 2.12 	& 22.82$\pm$ 6.03 	& 17.19$\pm$ 1.86 	& 18.99$\pm$ 2.13 \\ \hline
+    \textbf{Time per Result Summary}* 	& $1.63\pm0.13$* 	& 2.21$\pm$ 0.21 	& 2.35$\pm$ 0.23 	& $2.60\pm0.27$*  \\ \hline
+
+    \end{tabulary}
+    \end{center}
+    \vspace{-2mm}
+\end{table*}
+
+Both search behaviour and user experience measures were analysed by each interface. To evaluate these data, ANOVAs were conducted using the interfaces as factors; main effects were examined with $\alpha=0.05$. Bonferroni tests were used for post-hoc analysis. It should be noted that the error bars as shown in the plots for Figures~\ref{fig_times} and~\ref{fig_summary_plots} refer to the \emph{standard error}.
+
+To check whether the interfaces were different with respect to snippet length and information gain, we performed an analysis of the observed result summaries. Table~\ref{tbl_info_gain} summarises the number of words and characters that result summaries contained on average. As expected, the table shows an increasing trend in words and characters as snippet lengths increase. Information gain for each snippet was then calculated using the Kullback-Leibler distance~\cite{kullback1951information} to measure information gain (e.g. relative entropy). Statistical testing showed that the differences between snippet length ($F(3,208)=1.2x10^5, p<0.001$) and information gain ($F(3,208=2.6x10^5, p<0.001)$) were significant. Follow up tests revealed that this was the case over all four interfaces, indicating that our conditions were different on these dimensions. These findings provide some justification for our choices for the number of snippet fragments present for each interface -- a diminishing increase in information gain after four snippets suggested that there wouldn't be much point generating anything longer.
+
+%\todo{- for the rankings, we'll definitely want to cite Nick's 2008 click models paper~\cite{craswell2008position_bias}}
+
+% \begin{quote}
+% In this paper, we outperform everything you can think about it. Thus, it should be accepted by default, and all y'all guys should stop researching after this amazing discover. IR is done after this set of amazing, astonishing results.
+% \end{quote}
+
+\subsection{Search Behaviours}\label{sec:results:behaviours}
+\noindent\textbf{Interactions.} Table~\ref{tbl_actions} presents the mean (and standard deviations) of the number of queries issued, the number of SERPs viewed per query, documents clicked per query, and the click depth per query over each of the four interfaces examined. Across the four different interfaces, there were no significant differences reported between any of these measures. The number of queries issued follows a slight downward trend as the length of result summaries increases ($3.72\pm0.34$ for \textbf{\emph{T0}} to $3.28\pm0.31$ for \textbf{\emph{T4}}), as too does the number of SERPs examined, and the number of documents examined per query. The depth to which subjects went to per query however follows a downward trend -- as the length of snippets increases, subjects were likely to go to shallower depths when examining result summaries ($24.47\pm2.96$ for \textbf{\emph{T0}} to $19.4\pm2.04$ for \textbf{\emph{T4}}).
+
+Interaction probabilities all showed an increasing trend as snippet length increased over the four interfaces, as shown in Table~\ref{tbl_probs}. Although no significant differences were observed over the four interfaces and the different probabilities examined, trends across all probabilities show an increase as the snippet length increases. An increase of both the probability of clicking result summaries on the SERP ($P(C)$) and marking the associated documents ($P(M)$) as relevant were observed. When these probabilities are examined in more detail by separating the result summaries clicked and documents marked by their TREC relevancy (through use of TREC QRELs), we see increasing trends for clicking and marking -- both for TREC relevant ($P(C|R)$ and $P(M|R)$ for clicking and marking, respectively) and TREC non-relevant documents ($P(C|N)$ and $P(M|N)$). This interesting finding shows that an increase in snippet length does not necessarily improve the accuracy of subjects -- simply the likelihood that they would consider documents as relevant.
+
+\vspace{2mm}
+\noindent\textbf{Performance.} Table~\ref{tbl_actions} also reports a series of performance measures over the four conditions, averaged over the four topics examined. We report the mean performance of the queries issued with $P@10$, the number of documents marked relevant, and the number of documents marked relevant that were TREC relevant. Like the interaction measures above, no significant differences were observed over the four interfaces for each of the performance measures examined. The performance of queries issued by subjects was very similar across all four conditions ($P@10\approx0.25$), along with the number of documents identified by subjects as relevant ($6.49\pm0.58$ for \textbf{\emph{T2}} to $7.6\pm0.79$ for \textbf{\emph{T4}}), and the count of documents marked that were actually TREC relevant ($2.28\pm0.25$ for \textbf{\emph{T1}} to $2.66\pm0.32$ for \textbf{\emph{T4}}). We also examined the number of documents marked that were not assessed (unjudged) by the TREC assessors, in case one interface surfaced more novel documents. On average, subjects marked two such documents, but again there was no significant differences between interfaces.
+
+\vspace{2mm}
+\noindent\textbf{Time-Based Measures.} Table~\ref{tbl_times} reports a series of selected interaction times over each of the four evaluated interfaces. We include: the mean total query time per subject, per interface; the mean time per query; the mean time spent examining documents per query; and the mean time spent examining result summaries per query. No significant differences were found between the mean total query time, the time per query and the time per document. However, a significant difference did exist for the time spent per result summary. A clear upward trend in the time spent examining snippets can be seen in Figure~\ref{fig_times} as result summaries progressively got longer, from $1.63\pm0.13$ for \textbf{\emph{T0}} to $2.6\pm0.27$ for \textbf{\emph{T4}}, which was significantly different ($F(3,208)=3.6, p=0.014$). A follow-up Bonferroni test showed that the significant difference existed between \textbf{\emph{T0}} and \textbf{\emph{T4}}. This suggests that as result summary length increases, the amount of time spent examining result summaries also increases (an intuitive result). This also complies with trends observed regarding examination depths. When the length of result summaries increased, subjects were likely to examine result summaries to shallower depths.
+
+
+\begin{table}[t]
+    \caption{Table illustrating a summary of interaction probabilities over each of the four interfaces evaluated. Note the increasing trends for each probability from \textbf{\emph{T0}} $\rightarrow$ \textbf{\emph{T4}} (short to long snippets). Refer to Section~\ref{sec:results:behaviours} for an explanation of what each probability represents.\vspace{-3mm}}
+    \label{tbl_probs}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{1cm}||D{1.4cm}|D{1.4cm}|D{1.4cm}|D{1.4cm}}
+    \hline
+    & \textbf{\emph{T0}} & \textbf{\emph{T1}} & \textbf{\emph{T2}} & \textbf{\emph{T4}}  \\ \hline\hline
+    % OUTPUT FROM script
+    
+    \textbf{\boldmath{$P(C)$}} & 0.20$\pm$ 0.02 & 0.25$\pm$ 0.02 & 0.26$\pm$ 0.03 & 0.28$\pm$ 0.03 \\ \hline
+    \textbf{\boldmath{$P(C|R)$}} & 0.28$\pm$ 0.03 & 0.34$\pm$ 0.03 & 0.35$\pm$ 0.03 & 0.40$\pm$ 0.04 \\ \hline
+    \textbf{\boldmath{$P(C|N)$}} & 0.18$\pm$ 0.02 & 0.23$\pm$ 0.02 & 0.25$\pm$ 0.03 & 0.24$\pm$ 0.03 \\ \hline\hline
+    %\textbf{Odds Ratio} & 2.27$\pm$ 0.38 & 1.98$\pm$ 0.23 & 1.91$\pm$ 0.20 & 2.57$\pm$ 0.35 \\ \hline
+    \textbf{\boldmath{$P(M)$}} & 0.61$\pm$ 0.04 & 0.68$\pm$ 0.04 & 0.65$\pm$ 0.03 & 0.71$\pm$ 0.03 \\ \hline
+    \textbf{\boldmath{$P(M|R)$}} & 0.66$\pm$ 0.06 & 0.69$\pm$ 0.05 & 0.67$\pm$ 0.05 & 0.66$\pm$ 0.05 \\ \hline
+    \textbf{\boldmath{$P(M|N)$}} & 0.55$\pm$ 0.04 & 0.65$\pm$ 0.04 & 0.58$\pm$ 0.04 & 0.67$\pm$ 0.04 \\ \hline
+    \end{tabulary}
+    \end{center}
+\vspace{-2mm}
+\end{table}
+
+\begin{table}[t]
+    \caption{Summary table of the recorded observations for the post-task survey, indicating the preferences of subjects over six criteria and the four interfaces, where $*$ indicates that \textbf{T0}  was significantly different from the other conditions. In the table, \emph{Conf.} represents \emph{Confidence}, \emph{Read.} represents \emph{Readability}, \emph{Inform.} represents \emph{Informativeness}, and \emph{Rel.} represents \emph{Relevancy}.\vspace{-3mm}}
+    \label{tbl_task}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{1cm}||D{1.4cm}|D{1.4cm}|D{1.4cm}|D{1.4cm}}
+    \hline
+    & \textbf{T0} & \textbf{T1} & \textbf{T2} & \textbf{T4}  \\ \hline\hline
+    % OUTPUT FROM script
+
+\textbf{Clarity} & 4.16$\pm$ 0.27* & 5.00$\pm$ 0.21 & 5.06$\pm$ 0.24 & 5.40$\pm$ 0.20 \\ \hline
+\textbf{Conf.} & 3.71$\pm$ 0.26* & 4.66$\pm$ 0.26 & 4.75$\pm$ 0.24 & 5.06$\pm$ 0.25 \\ \hline
+\textbf{Read.} & 5.18$\pm$ 0.31* & 6.32$\pm$ 0.17 & 6.46$\pm$ 0.14 & 6.36$\pm$ 0.14 \\ \hline
+\textbf{Inform.} & 4.20$\pm$ 0.30* & 5.38$\pm$ 0.24 & 5.27$\pm$ 0.24 & 5.62$\pm$ 0.20 \\ \hline
+\textbf{Rel.} & 3.84$\pm$ 0.28* & 4.89$\pm$ 0.25 & 5.08$\pm$ 0.24 & 5.36$\pm$ 0.20 \\ \hline
+\textbf{Size} & 4.00$\pm$ 0.31* & 4.94$\pm$ 0.25 & 5.21$\pm$ 0.22 & 5.36$\pm$ 0.19 \\ \hline
+\end{tabulary}
+\end{center}
+\vspace{-2mm}
+\end{table}
+
+\begin{table}[t]
+    \caption{Table presenting responses from the exit survey completed by subjects. The survey is discussed in Section~\ref{sec:method:experiences}.\vspace{-3mm}}
+    \label{tbl_exit}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{3.8cm}||D{0.7cm}|D{0.7cm}|D{0.7cm}|D{0.7cm}}
+    \hline
+	    & \textbf{T0} & \textbf{T1} & \textbf{T2} & \textbf{T4}  \\ \hline\hline
+    % OUTPUT FROM script
+    \textbf{Most Informative} & 1 & 4 & \textbf{20} & \textbf{29} \\ \hline
+    \textbf{Least helpful} & \textbf{46} & 5 & 1 & 2 \\ \hline
+    \textbf{Easiest} & 4 & 4 & \textbf{24} & \textbf{22} \\ \hline
+    \textbf{Least Useful} & \textbf{49} & 4 & 0 & 1 \\ \hline
+    \textbf{Most Preferred} & 3 & 5 & \textbf{20} & \textbf{26} \\ \hline
+
+    \end{tabulary}
+    \end{center}
+\end{table}
+
+\subsection{User Experience}
+
+\noindent\textbf{Task Evaluations.}
+Table~\ref{tbl_task} presents the mean set of results from subjects across the four interfaces, which were answered upon completion of each search task. The survey questions are detailed in Section~\ref{sec:method:experiences}. Using the seven-point Likert scale for their responses (with 7 indicating \emph{strongly agree}, and 1 indicating \emph{strongly disagree}), significant differences were found in all question responses (\textbf{clarity} $F(3,208)=5.22, p=0.001$, \textbf{confidence} $F(3,208)=5.3, p=0.001$, \textbf{readable} $F(3,208)=9.25, p<0.001$, \textbf{informative} $F(3,208)=5.22, p=0.001$, \textbf{relevance} $F(3,208)=6.44, p<0.001$, and \textbf{size} $F(3,208)=7.28, p<0.001$). Follow-up Bonferroni tests however showed that the significant difference existed only between \textbf{\emph{T0}} and the remaining three interfaces, \textbf{\emph{T1}}, \textbf{\emph{T2}} and \textbf{\emph{T4}}. A series of discernible trends can be observed throughout the responses, with subjects regarding longer snippets as more concise, and a higher degree of clarity ($4.16\pm0.27$ for \textbf{\emph{T0}} to $5.4\pm0.2$ for \textbf{\emph{T4}}). This perceived clarity also made subjects feel more confident that the longer result summaries helped them make better decisions as to whether they were relevant to the given topic -- interaction results presented above however differ from this, where the overall probability of marking documents increased, regardless of the document/topic TREC relevancy judgement. Other notable trends observed from the results included an increase in how informative subjects perceived the result summaries to be -- again, with longer summaries proving more informative. Subjects also reported a general increase in satisfaction of the length of the presented result summaries/snippets -- although, as mentioned, no significant difference existed between the three interfaces that generated snippets (\textbf{\emph{T1}}, \textbf{\emph{T2}} and \textbf{\emph{T4}}). 
+
+\vspace{2mm}
+\noindent\textbf{System Evaluations.}
+Upon completion of the study, subjects completed the exit survey as detailed in Section~\ref{sec:method:experiences}. Responses from the subjects are presented in Table~\ref{tbl_exit}. From the results, subjects found result summaries of longer lengths (i.e. those generated by interfaces \textbf{\emph{T2}} and \textbf{\emph{T4}}) to be the most informative, and those generated by \textbf{\emph{T0}} -- without snippets -- to be the least helpful and useful. The longer result summaries were also consistently favoured by subjects, who preferred them over the result summaries generated by interfaces \textbf{\emph{T0}} and \textbf{\emph{T1}}. Subjects also found the result summaries of longer length easier to use to satisfy the given information need.
+
+From the results, it is therefore clear that a majority of subjects preferred longer result summaries to be presented on SERPs, generated by interfaces \textbf{\emph{T2}} and \textbf{\emph{T4}}. Figure~\ref{fig_summary_plots} provides summary plots, showing general trends across the four interfaces, examining observed interactions and reported experiences.
+
+In this paper, we investigated the influence of result summary length on search behaviour and performance. Using the Kullback-Leibler distance~\cite{kullback1951information} as a measure of information gain, we examined result summaries of different lengths, selected a series of snippet lengths where there was a significant difference in information gain between them, which yielded the configurations for our four experimental conditions, \textbf{\emph{T0}}, \textbf{\emph{T1}}, \textbf{\emph{T2}} and \textbf{\emph{T4}}. We conducted a crowdsourced user study comprising of 53 subjects, each of whom undertook four search tasks, using each of the four interfaces.
+
+Our work was focused around addressing our two research questions, which explored \textbf{RQ1} how the value of information gain (represented by snippet length) affected search behaviour and user experience; and \textbf{RQ2} whether information gain affected the decision making ability and accuracy of users. Addressing \textbf{RQ1} first in terms of search behaviour, there was little difference -- but we did observe the following trends: as summary length increases, participants: issued fewer queries; examined fewer pages; but clicked more documents, i.e. they spent more of their time assessing documents at higher ranks. Second, our results show that in terms of experience, subjects broadly preferred longer summaries. The participants felt that longer summaries were more clear, informative, readable -- and interestingly -- gave them more confidence in their relevance decisions. With respect to \textbf{RQ2}, we again observed little difference in subjects' decision making abilities and accuracy between the four interfaces. While subjects perceived longer snippets to help them infer relevance more accurately, our empirical evidence shows otherwise. In fact, it would appear that longer result summaries were more attractive, increasing the information scent of the SERP~\cite{wu2014scent}. This may account for the increase in clicks on the early results, without the benefits, however: accuracy of our subjects did not improve with longer snippets; nor did they find more relevant documents. Increased confidence in the result summaries (from \textbf{\emph{T0}} $\rightarrow$ \textbf{\emph{T4}}) may have led to a more relaxed approach at marking content as relevant -- as can be seen by increasing click and mark probabilities for both relevant and non-relevant content. It is also possible that the \emph{paradox of choice}~\cite{oulasvirta2009serp_size} could play a role in shaping a user's preferences. For example, in the condition with longer result summaries (\textbf{\emph{T4}}), users viewed fewer results/choices than on other conditions. This may have contributed to their feelings of greater satisfaction and  increased confidence in their decisions.
+
+These novel findings provide new insights into how users interact with result summaries in terms of their experiences and search behaviours. Previous work had only focused upon task completion times and accuracy of the first result while not considering their experiences (e.g.~\cite{cutrell2007result_page, kaisser2008improving}). Furthermore, these past works were performed in the context of Web search where the goal was to find one document. However, we acknowledge that our work also has limitations. Here, we examined out research questions -- with respect to topic search within a news collection -- to explore how behaviour and performance changes when searching for multiple relevant documents. It would be interesting to examine this in other search contexts, such as product search, for example. News article titles also can be crafted differently from documents in other domains. Summaries in this domain may perhaps be more important than in other domains, and so the effects and influences are likely to be larger. Furthermore, we only considered how behaviours changed on the desktop, rather than on other devices where users are more likely to be sensitive to such changes (e.g.~\cite{kim2014eye_tracking,kim2017mobile_search_snippets}). For example, during casual leisure search, multiple relevant documents on tablet devices are often found, and so it would be interesting to perform a follow up study in this area.
+
+
+\subsection{Study Motivation and Design}
+\subsection{Results}
+\subsection{Conclusions}
+
+\section{Simulation Experiments}
+\subsection{Simulated Experimental Design}
+\subsection{Comparisons}
+\subsection{Conclusions}
+
+\section{Conclusions}
+\section{Chapter Summary}

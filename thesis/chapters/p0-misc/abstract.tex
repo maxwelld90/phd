@@ -1,0 +1,43 @@
+%!TEX TS-program = xelatex
+%!TEX root = ../../maxwell2018thesis.tex
+
+\begin{preamble}[Abstract]
+\phantomsection
+\addcontentsline{toc}{part}{Abstract}
+
+\emph{Interactive Information Retrieval (IIR)} is a complex, non-trivial process~\citep{ingwersen2005theturn}. During the course of a search session, a searcher may issue multiple queries, and for each query, examine a varying number of result summaries (textual snippets) and documents. That is to say, the interactions and behaviours exhibited by a searcher are \emph{complex}, and he or she will inherently adapt their behaviour based upon a number of factors -- perhaps most notably due to the perceived relevance of the list of results presented to them~\citep{moffat2013users_versus_models}. A searcher, for example, would be wise to abandon a list of results if they are perceived to be of low quality.
+
+Despite the findings of a large number of studies in the field of IIR, many of the models and measures still in use today within the \emph{Information Retrieval (IR)} community do not consider these complex factors regarding user behaviours. Central to these models and measures is the so-called \emph{Cranfield Paradigm}, the \emph{de facto} model used for IR evaluation, developed in the early 1960's. While this approach has been adapted over the years to suit ever more complex evaluation tasks~\citep{harman2010cranfield}, the model is still largely systems-focused, rather than user-focused. Such an evaluation approach considers a single query, and the consideration of a large number of documents returned from that query to be relevant -- a wholly unrealistic approach.
+
+As such, many researchers have proposed different models and frameworks for the purposes of IIR modelling and evaluation. In this thesis, we propose the \emph{Complex Searcher Model (CSM)}, a high-level model that attempts to capture the various complex interactions and decisions that take place during \emph{ad-hoc topic retrieval}. Central to the CSM is the inclusion of several key \emph{decision points}, which provide a means for modelling the \emph{stopping behaviour} of a searcher. Stopping behaviour is a fundamental aspect of human behaviour~\citep{nickles1995judgment}, and during search, this is no different. Research into the stopping behaviours has however until recently been sparse, with work suggesting that searchers stop when they feel that what they have found is simply ``good enough'' to stop~\citep{wu2014information_scent}.
+
+Considering the CSM, this thesis attempts to ascertain a more precise definition of what is ``good enough''. We operationalise a variety of different stopping \emph{heuristics} defined within the literature over a number of years, considering heuristics from both IR research and those based upon ecology, where researchers examined the stopping behaviour behaviour of animals when foraging for food. These operationalised heuristics are examined in varying search contexts. We compare the behaviour of real-world subjects who partook in a series of user studies against simulated behaviours utilising the CSM.
+
+From the work undertaken as part of this thesis, we are able to show that developing searcher models incorporating some form of stopping behaviour is able to offer more realistic, and credible simulations of the complex interactions that take place during a search session. 
+
+% \todo{=========}
+%
+% Without search, the value of information becomes less and less.
+% Search is inherent -- whether we're searching for our car keys, or trying to find information online, it's something that we do on a daily basis. Online is the most prominent. Link into search online.
+%
+% But, despite the billions of searches that are undertaken on commercial search engines on a daily basis, despite the huge sums of money that are poured into developing retrieval algorithms, scalable computer infrastructure to handle the ever increasing, insatiable demand for information \emph{instantly}, do we really understand the behaviours that we exhibit when searching? That is, can we create an accurate portrayal of a human searching for information, or \emph{model} them?
+%
+% At the moment, no.
+%
+% - model the interactions, and understand what is going on -- we can better understand the complex needs of humans.
+% -
+%
+%
+%
+% Simulation been used for many different things
+% Used in Information Retrieval in a variety of ways.
+%
+% One such way is user modelling - taking actions performed by users during a search session.
+% Models are still relatively simplistic in nature, and na\"{i}ve -- think of stochastic rolling of the die for relevancy judgement for a given document.
+%
+% So I can lead on to the development and advancement of underlying user models in simulation. Complex model considers a variety of decision points, one of which is the main focus of this thesis.
+%
+% Stopping is a fundamental aspect of human behaviour. When do you stop doing something? When do you stop examining a list of results? Na\"{i}ve models that have been used for many years in IR assume a fixed depth to which a simulated user would examine content, regardless of how much could be considered (non)relevant. But in real life, this has been demonstrated many times to not be the case for actual searcher behaviour. The contribution here then is to develop a series of more complex stopping strategies -- based upon stopping heuristics as defined in the literature -- and apply them to different search scenarios. So we can see what stopping approaches that users in the real world attune themselves to given a scenario -- and incorporating this information within the simulation models to yield richer, more credible user simulations.
+%
+% While simulations will never be a drop-in replacement to an actual thing, they can provide useful insights into what a real world phenomenon might do. Developing more realistic models for Interactive Information Retrieval undoubtedly moves us forward in this regard.
+\end{preamble}

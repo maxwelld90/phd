@@ -1,0 +1,373 @@
+%!TEX TS-program = xelatex
+%!TEX root = ../../maxwell2018thesis.tex
+
+\chapter{The Effect of Diversifying Results on Stopping Behaviour}
+Perhaps for this final study, examine things on an individual level. Are individuals more likely to follow a particular stopping strategy than others?
+\section{Introduction}
+
+\section{The User Study}
+\emph{Interactive Information Retrieval (IIR)} is a complex (and often exploratory) process~\cite{ingwersen2005theturn} in which a searcher issues a variety of queries as a means to explore the topic space~\cite{kelly2015search_tasks}. Often, such tasks are \emph{aspectual} in nature, where an underlying goal is to find out about the different facets, dimensions or aspects of the topic. This is often referred to as \emph{(aspectual retrieval)}. While aspectual retrieval has been heavily studied in the past (during the TREC Interactive Tracks~\cite{over2001trec}), there has been renewed interest in the search task as it represents a novel context to explore the idea of \emph{``search as learning''}~\cite{collins2017sal}. In this context, the goal of the system is to help the searcher learn about a topic~\cite{collins2017sal} -- and in doing so, the number of aspects the searcher finds provides an indication of how much they learned during the process~\cite{syed2017sal}. If the goal is to help people learn about a topic, then by returning results that are more diverse in nature and presenting a broader view on the topic, \emph{should} help searchers learn more about said topic. This reasoning suggests that employing diversification will lead to an improved search and learning experience~\cite{syed2017sal}. 
+
+However, while there have been numerous diversification algorithms developed and proposed over the years~\cite{carbonell1998mmr,chen2006lessismore,santos2010query_reformulations_diversification,santos2011intent,zhai2015subtopics}, the focus here has been on addressing the problem of intents, rather than how diversification affects complex search tasks, such as \emph{ad-hoc} or aspectual retrieval. Thus, in this paper, we perform one of the first investigations into the influence and impact of how diversifying the results (or not) affects the search behaviour and search performance of users when performing different search task (ad-hoc or aspectual). Our focus is on understanding how behaviours -- in particular, how searching and stopping behaviours -- change under the different conditions. We ground our study by drawing upon \emph{Information Foraging Theory (IFT)}~\cite{pirolli1999ift}. However, somewhat counter to intuition, IFT leads to the following hypotheses: \emph{(i)} that when searching for aspects, diversification will lead to searchers examining fewer documents per query; and, either, \emph{(ii)} issuing more queries or \emph{(iii)} lower task completion times.
+%\begin{itemize}\item (H1) an increase in the number of queries issue, and \item(H2) and \ym{a decrease in the task completion time.} 
+%fewer documents being examined per query. 
+%\end{itemize} 
+
+Yet intuitively we reason that if a system provides a more diversified set of results, searchers then \emph{should} be able to exploit the diversification, and find more varied aspects by examining more documents per query -- and thus issue fewer queries. To explore these hypotheses and test our intuitions, we designed a $2x2$ within-subjects user study, where participants were tasked to learn about four different topics under the following conditions, using: \emph{(i)} a non-diversified system (\emph{BM25}); versus \emph{(ii)} a diversified system (BM25+\emph{xQuAD}~\cite{santos2010query_reformulations_diversification}), and when the search task is either: \emph{(a)} ad-hoc retrieval, where they need to only find relevant documents; or \emph{(b)} aspectual retrieval, where they need to find documents that are both relevant, and different -- i.e. covering new aspects of the topic. We perform our experiments in the context of learning about a topic in order to write a report where participants use a standard search interface to search the \emph{TREC AQUAINT} news collection. 
+
+\subsection{Study Motivation and Design}
+When searching for information, searchers pose a varying number of queries, examine \emph{Search Engine Result Pages (SERPs)}, and examine a number of documents (if any) before issuing a new query, or stopping their search altogether. This may be because they have found enough information, have run out of time, were dissatisfied, or simply gave up their search~\cite{diriye2012abandonment, hassan2013beyond_clicks, kiseleva2015serp_fails, dostert2009stopping_behaviours, prabha2007enough, zach2005stopping_behaviours}. Prior work has shown that there are a variety of different factors that can influence people's search behaviours. Of particular relevance to this paper, it has been shown that different search tasks influence the search behaviour of users~\cite{kelly2015search_tasks}.
+
+An interesting task that has not received much attention as of late is aspectual retrieval. Aspectual retrieval is a type of search task that concerns the identification of different \emph{aspects} of a given topic. This task type differs from traditional ad-hoc retrieval in the sense that ad-hoc retrieval is concerned only with what constitutes a \emph{relevant} document to a given topic, rather than identifying relevant documents, and whether they are \emph{different} to what has been seen previously. A relevant and different document will contain unseen \emph{aspects} associated with the topic in question. As an example, take the topic \emph{wildlife extinction}, one of the topics in the \emph{TREC 2005 Robust Track}~\cite{voorhees2006trec_robust}. In an ad-hoc search task, if the searcher finds several documents concerning \texttt{`Pandas in China'}, then these would all be considered relevant. However, for the aspectual retrieval task, where \emph{different} examples must be found, then the first document concerning \texttt{`Pandas in China'} is considered relevant/useful, and other aspects (in this case, species of endangered animals) would need to be found, such as \texttt{`Sumatran Rhinos in Malaysia'}, \texttt{`Crested Ibis in Japan'}, etc.
+
+Aspectual retrieval found significant traction in the \textit{TREC Interactive Tracks} from $1997$--$2002$. The overarching, high-level goal of the TREC Interactive Tracks was to investigate searching, as an interactive task, by examining the process of searching, as well as the outcome~\cite{over2001trec}. Historically, interaction was considered from the inaugural \emph{TREC-1} in 1993~\cite{harman1993trec1}, where one group investigated interactive searching under \emph{``interactive query mode''} within the ad-hoc task. From TREC-6 to TREC 2002, a substantial volume of research was directed towards the development of systems and search interfaces that: \emph{(i)} assisted users in exploring and retrieving various aspects of a topic, such as cluster-based and faceted interfaces that explicitly showed different aspects~\cite{villa2009aspect_interface, mcdonald1998interactive}; \emph{(ii)} tiles and stacks to organise documents~\cite{hearst1995tilebars, hearst1997texttiling, harper2006piling, iwata2012tilediversified}; and \emph{(iii)} mechanisms to provide query suggestions that lead to different search paths~\cite{umemoto2016scentbar, kato2012query_suggestion}. However, a disappointing conclusion from this initiative was that little difference was observed between such systems, and the standard control systems \emph{(ten blue links)}, both in terms of behaviour and performance~\cite{voorhees05trec}.
+
+As work on aspectual retrieval subsided, work related to determining the intent of a searcher's query began to take hold, where the goal of this problem is to diversify the results retrieved with respect to the original query~\cite{rose2004understanding_user_goals}. Thus, this addresses the problem of \emph{ambiguity} for short, impoverished queries. This led to a series of diversification algorithms (and intent-aware evaluation measures) being proposed, changing focus from the interface to the underlying algorithms and their evaluation measures (e.g.~\cite{santos2010query_reformulations_diversification, santos2011intent, carbonell1998mmr, zuccon2009qprp, agrawal2009diversification, radlinski2006diversification, he2011diversification_clustering, carterette2009probabalistic, chen2006lessismore, zhai2015subtopics}). However, while there have been numerous studies investigating the effectiveness of diversification algorithms for the problem of \emph{intents} (e.g. one query, several interpretations), little work has looked at studying how such algorithms apply in the context of aspectual retrieval (e.g. one topic, many aspects). This is mainly due to the fact that most of these algorithms were developed after the TREC Interactive Track finished in 2002.
+
+Recently however, a growing interest in new, more complex and exploratory search tasks has taken hold -- especially in the aforementioned context of \emph{``search as learning''}~\cite{collins2017sal}. Syed and Collins-Thompson~\cite{syed2017sal} hypothesised that diversifying the results presented to users would improve their learning efficiency, and that this would be observed by the change in vocabulary expressed in user queries. This study motivates our interest examining the effects of diversification (or not)  when considering the task of aspectual retrieval (where a user needs to learn about different aspects)  This in this paper, our aim is to better understand how search performance and search behaviour changes when people undertake different types of search task, using search systems that diversify the ranked results, and those that don't. To ground this study, we first consider how search behaviour is likely to change by generating hypotheses from Information Foraging Theory.
+
+To address our research questions and examine the hypotheses as outlined in Section~\ref{sec:questions}, we conducted a within-subjects experiment with two factors: system and task. For the system factor, our baseline control system was based on BM25 (no diversification) and a diversified system based on BM25+xQuAD~\cite{santos2010query_reformulations_diversification}. For the task factor, we used the standard ad-hoc retrieval task, and compared against the aspectual retrieval task. This resulted in a $2x2$ factorial design. Each participant, therefore, completed four different search tasks, one in each of the four conditions (see below). Conditions were assigned using a Latin square rotation to minimise any ordering effects.
+
+%The corpus, topics and system used closely mirror a prior study undertaken by Maxwell et al.~\cite{maxwell2017snippet_length} in which they examined how the length of result summaries affects search behaviour, performance and experience. Summaries of two snippet fragments (roughly equivalent to two lines) resulted in a good tradeoff in terms of examination time and performance. Labelled interface \textbf{\emph{T2}} in their study, we use two snippet fragments in all experimental conditions, as well as the prior nomenclature in the present study. As such, the four experimental conditions we used in this study are listed below.
+
+\begin{description}
+\item[D.As: $ $ ] $ $ A \emph{diversified system}, with an \emph{aspectual retrieval} task.
+\item[ND.As:] A \emph{non-diversified system}, with an \emph{aspectual retrieval} task.
+\item[D.Ad: $ $ ] A \emph{diversified system}, with an \emph{ad-hoc retrieval} task. 
+\item[ND.Ad:] A \emph{non-diversified system}, with an \emph{ad-hoc retrieval} task.
+\end{description}
+
+%Further details of the search systems and tasks are provided in Section~\ref{sec:method:systems}. In this section, we also discuss the corpus and topics that were used (Section~\ref{sec:method:corpus}), how we obtained data for aspectual retrieval (Section~\ref{sec:method:entities}), and the diversification algorithm used (Section~\ref{sec:method:diversification}).
+
+
+%%%%%%%%
+\subsection{Corpus and Search Topics}\label{sec:method:corpus}
+%%%%%%%%
+For this experiment, we used the \emph{TREC AQUAINT} test collection that contains over one million articles from three newswires, collected over the period $1996$-$2000$. The three newswires were: the \emph{Associated Press (AP)}; the \emph{New York Times (NYT)}; and \emph{Xinhua}.  From the \emph{TREC 2005 Robust Track}~\cite{voorhees2006trec_robust}, we selected five contemporary topics that have been used in prior works~\cite{kelly2009query_suggestion, azzopardi2013query_cost, maxwell2017snippet_length}. These were: \textnumero~341 \emph{(Airport Security)}; \textnumero~347 \emph{(Wildlife Extinction)}; \textnumero~367 \emph{(Piracy)}; \textnumero~408 \emph{(Tropical Storms)}; and \textnumero~435 \emph{(Curbing Population Growth)}. These topics were chosen based upon evidence from a previous user study with a similar setup, where it was shown that the topics were of similar difficulty and interest~\cite{kelly2009query_suggestion}. Topic, \textnumero~367 was used as a practice topic, while the others topics were used as part of the experimental study.
+
+\subsection{Tasks: Aspectual and Ad-Hoc Retrieval}
+Subjects were asked to imagine that they need to learn about a number of topics on which they need write a report on. Then, given the topic, they were further instructed on whether to focus on finding \emph{relevant} articles in the case of ad-hoc retrieval or \emph{relevant} articles that discussed \emph{different} aspects of the topic in the case of aspectual retrieval.  For example, for Airport Security, in the ad-hoc retrieval conditions, subjects were required to learn about the efforts taken by international airports to better screen passengers and their carry-on luggage. While in the aspectual retrieval condition, they were also asked to find relevant documents that are different and mention \emph{new} airports. Thus, there were explicitly instructed to find a number of examples from different airports, as opposed to a similar or the same example based in the same airport multiple times. Subjects were instructed to find and save at least four useful documents (useful being relevant, or relevant and different, depending on the task). 
+%From a previous study, we found it took subjects between 5-10 minutes to save 4-8 relevant documents~\anoncite{maxwell2017snippet_length}.
+
+%%%%%%%%
+\subsection{Relevance Judgments and Aspects}\label{sec:method:entities}
+%%%%%%%%
+For each topic, we used the corresponding TREC QRELs from the Robust Track, to provide the relevance judgements for the study. However, to assess how many aspects were retrieved, we needed to commission additional labels as existing labels were not available for all the selected topics. First, for each topic, we examined the topic descriptions to identify what dimensions could be considered aspects of the topic. We noted that for each topic there was at least two ways this could be achieved: entity or narrative based. For example, in the topic on population growth, for a document to be relevant it could state the country (entity based) or the measure taken to reduce  population growth (narrative based). 
+%Thus the country or the measure could be considered different aspects that could be varied i.e. different countries or different measures or both. 
+
+For the purposes of this study, it was decided that we should focus on entity based aspects. This was because ``different narratives'' were subject to greater interpretation than ``different entities''. For each relevant document, two assessors extracted out the different aspects, and we found that there was substantially higher agreement (95\% vs 67\%) between assessors across the entity based aspects: (341) airports, (347) species, (367) vessels, (408) storms, and  (435) countries, as opposed to the more narrative based aspects: (341) the security measures taken, (347) the protection and conservation efforts, (367) the acts of piracy, (408) the death and destruction, and (435) the population control methods.  Entity based aspects which we considered for each topic are listed below.
+
+\begin{itemize}
+    \item[\textnumero~341]{\textbf{\emph{(Airport Security)}} Different \emph{airports} in which additional security measures were taken, e.g. \emph{John F Kennedy International Airport}, \emph{Boston Logan International Airport}, or \emph{Leonardo Da Vinci International Airport}.}
+    \item[\textnumero~347]{\textbf{\emph{(Wildlife Extinction)}} Different \emph{species of endangered animals} under protection by states, e.g. \emph{golden monkey}, \emph{Javan rhino}, or \emph{Manchurian tiger}.}
+    \item[\textnumero~367]{\textbf{\emph{(Piracy)}} Different \emph{vessels} that were boarded or hijacked, e.g. \emph{Petro Ranger}, \emph{Achille Lauro}, or \emph{Global Mars}.}
+    \item[\textnumero~408]{\textbf{\emph{(Tropical Storms)}} Different \emph{tropical storms} where people were killed or there was major damage, e.g. \emph{Hurricane Mitch}, \emph{Typhoon Linda} or \emph{Tropical Storm Frances}.}
+    \item[\textnumero~435]{\textbf{\emph{(Curbing Population Growth)}} Different \emph{countries} where population control methods were employed, e.g. \emph{China}, \emph{India} or \emph{Zimbabwe}.}
+\end{itemize}
+
+The total number of aspects identified for each topic were: $14$ for \textnumero~341, $168$ for \textnumero~347, $18$ for \textnumero~367, $43$ for \textnumero~408, and $26$ for \textnumero~435. Judgements were put into the TREC Diversity format, as used by the \texttt{ndeval} application.\footnote{In the interests of promoting reproducibility and repeatability, the aspectual judgements will be made available for download at} %This in turn is used as part of the \emph{TREC Novelty and Diversity Tracks} and  the \emph{TREC 2013 Web Track}~\cite{collinsthompson2013trec}.
+
+%%%%%%%%
+\subsection{Systems: Non-Diversified and Diversified}\label{sec:method:systems}
+%%%%%%%%
+%To house the two different retrieval algorithms used 
+Two experimental search systems were developed. These were identical except in terms of branding/logo and retrieval algorithm. First, in terms of branding, we created two fictional search engine names,
+\textbf{\emph{YoYo Search}} and \textbf{\emph{Hula Search}}, for which different colour schemes were used. The names were chosen as they were not associated with any major search engine (that we were aware of), nor did they imply that one of the systems performed better than the other. The colour schemes were chosen to provide the greatest difference in visual appearance to those with colourblindness (two variants of colourblindness, \emph{protanopia} and \emph{deuteranopia}, were both considered). This was to ensure that subjects could later on indicate which system that they preferred, etc. Screenshots of the two systems in action are provided in Figure~\ref{fig_systems}. 
+Note, a generic \textbf{\emph{NewsSearch}} system, which had a blue header, was used for the practice task, so that subjects could familiarise themselves with how to mark and save documents, and how the search functionality worked.
+
+% \begin{table}[t]
+%     \caption{Table illustrating the effects of varying \boldmath{$\lambda$} and diversifying rank cutoff $k$ using \emph{xQuAD}. Values in the table represent the number of new aspects found (aspectual recall) in the top $10$ documents after re-ranking on average, over $715$ queries issued from a prior user study~\anoncite{}. When \boldmath{$\lambda=0.0$}, diversification is not applied -- this configuration therefore enjoys the same performance as our non-diversified system, \textbf{\emph{ND}}, which utilises BM25 (\boldmath{$b=0.75$}).\vspace*{-3mm}}
+%     \label{tbl:previous_queries}
+%     \renewcommand{\arraystretch}{1.4}
+%     \begin{center}
+%     \begin{tabulary}{\textwidth}{L{1.2cm}||D{1.0cm}|D{1.0cm}|D{1.0cm}|D{1.0cm}|D{1.0cm}}
+%     \hline
+    
+%     % HEADERS
+%     & \multicolumn{5}{c}{\boldmath{$k=$}} \\
+    
+%     \boldmath{$\lambda=$} & \boldmath{$10$} & \boldmath{$20$} & \boldmath{$30$} \textbf{\emph{(D)}} & \boldmath{$40$} & \boldmath{$50$} \\ \hline\hline
+    
+%     % VALUES
+%     % These results came from sigir-2017-combined.csv -- using an Excel PivotTable. No MATLAB script.
+%     \boldmath{$0.0$} \emph{\textbf{(ND)}} & \multicolumn{5}{c}{$3.64$} \\ \hline
+%     \boldmath{$0.1$} & $3.64$ & $4.94$ & $5.51$ & $5.95$ & $6.37$ \\ \hline
+%     \boldmath{$0.3$} & $6.58$ & $6.58$ & $6.64$ & $6.59$ & $6.59$ \\ \hline
+%     \boldmath{$0.5$} & $6.58$ & $6.58$ & $6.58$ & $5.58$ & $6.58$ \\ \hline
+%     \boldmath{$0.7$} \emph{\textbf{(D)}} & $6.56$ & $6.56$ & \boldmath{$6.61$} & $6.51$ & $6.60$ \\ \hline
+%     \boldmath{$0.9$} & $6.52$ & $6.52$ & $6.61$ & $6.57$ & $6.63$ \\ \hline
+%     \boldmath{$1.0$} & $6.63$ & $6.63$ & $6.59$ & $6.61$ & $6.56$ \\ \hline
+%     % END
+% \end{tabulary}
+% \end{center}
+% \vspace*{-5mm}
+% \end{table}
+
+For the underlying search engine, we used the \emph{Whoosh Information Retrieval (IR)} toolkit.~\footnote{Whoosh can be accessed at \texttt{\url{https://pypi.python.org/pypi/Whoosh/}}.} We used BM25 as the retrieval algorithm ($b=0.75$), but with an implicit \texttt{AND}ing of query terms to restrict the set of retrieved documents to only those that contained all query terms provided. This was chosen as most search systems implicitly \texttt{AND} terms together. BM25 thus served as the baseline, control for the non-diversified system condition. For the diversified system condition, we used BM25 to provide the initial ranking and then used xQuAD~\cite{santos2010query_reformulations_diversification} to diversified the ranking. xQuAD has been shown to provide excellent, if not, state of the art performance, for web intent based diversification. To select the parameters for xQuAD, i.e. $k$, how many documents to re-rank, and $\lambda$ how much focus on diversification, we performed a parameter sweep using a set of training queries from a prior user study. We explored a range of $k$ and $\lambda$ values, with $10$--$50$ trialled for $k$, and $0.1$--$1.0$ for $\lambda$. We selected $k=30, \lambda=0.7$ as is provided the best results ($P@10=0.36$, $\alpha DCG@10=0.075$, aspectual recall$@10=6.61$) in terms of performance and efficiency -- i.e. a higher $k$ only slightly increased performance, but took longer to compute.
+
+%% Removed table and revised paragraph below to accommodate missing table.
+%Table~\ref{tbl:previous_queries} provides an illustration of the parameter sweep, when considering the number of new entities found (aspectual recall) within the top $10$ results, re-ranked after applying xQuAD. Similar conclusions could be reached when examining both $\alpha DCG@10$ (where $\alpha=0.5$) and $P@10$. We found that $k=30$ and $\lambda=0.7$ provided the best results in terms of performance and efficiency -- i.e. a higher $k$ only slightly increased performance, but took longer. 
+
+\subsection{Experimental Procedure}
+Subjects were provided a link to an online experimental system, that first presented the information sheet regarding the experiment followed by the consent form which they needed to agree to, in order to proceed. Note that ethics approval was sought before the experiment from Dept. of Computer and Information Sciences, The University of Strathclyde institution (ethics approval no. 622).
+Subjects were then asked to fill in a brief demographics survey, before undertaking a practice task to familiarise themselves with the interface. Once comfortable with the system, subjects could then proceed to undertake the four search tasks. Depending upon the Latin square rotation, subjects would then be provided with one of the four conditions on one of the four topics. For each task, first completed a pre task questionnaire, and after they had completed their search task, they were asked to fill in a post task questionnaire. At the end, of the experiment they were asked to fill in an exit questionnaire regarding which system they preferred.
+
+%subjects were provided with a traditional search interface -- complete with query box at the top of the interface. Subjects could pose as few or as many queries as they wished, examine result summaries (as can be seen in Figure~\ref{fig_systems}), and \emph{save} documents they thought were relevant and/or contained new aspects. 10 result summaries were presented per \emph{Search Engine Results Page (SERP)}, \`{a} la the \emph{10 blue links}.
+
+
+%%%%%%%%
+\subsection{Recruitment and Controls}\label{sec:method:subjects}
+%%%%%%%%
+Subjects for the experiment were recruited via the crowd sourcing platform \emph{Amazon Mechanical Turk (MTurk)} . Previous work has shown that crowd sourced studies provide similar results as traditional lab-based user studies~\cite{kelly2011remote,zuccon2013crowdsourcing}. That is, if sufficient controls are in place, otherwise workers may take try to take advantage and complete the task poorly~\cite{feild2010turkers,bota2016playing_your_cards}. Therefore, it is important to ensure that quality control mechanisms are in place. 
+
+First we ensured that the browser/device and screen resolution used was desktop based (i.e. \emph{Chrome}, \emph{Firefox}, \emph{Safari}, etc.) and $1024x768$ or greater in size. As the experiment was conducted via a web browser, we wanted to ensure that only the controls provided by the experimental apparatus were used. So the experimental system launched a pop up size $1024x768$, which had all other browser controls disabled (to the best of our abilities), i.e. no history, back buttons, etc. The experimental system was tested on several major Web browsers, across different operating systems. This gave us confidence that a similar experience would be had across different system configurations.
+
+Based on the suggestions from prior work~\cite{feild2010turkers,zuccon2013crowdsourcing,bota2016playing_your_cards}, workers were only permitted to begin the experiment on the MTurk platform that: \emph{(i)} were from the United States, and were native English speakers; \emph{(ii)} had a HIT acceptance rate of at least 95\%; and \emph{(iii)} had at least 100 HITs approved. Requiring \emph{(ii)} and \emph{(iii)} increased the likelihood of recruiting individuals who wanted to maintain their reputation and would be more likely to complete the study in a satisfactory manner. 
+
+%Subjects were informed that from prior studies~\anoncite{}, that it would take approximately 7-10 minutes to find at least 4 relevant documents per task - and the duration of the entire experiment would be approximately 40-50 minutes. 
+Subjects were informed that from our pilot study, it would take approximately 7-10 minutes to find at least four relevant documents per task - and the duration of the entire experiment would be approximately 40-50 minutes. Since we did not impose any time constraints on how long they searched for, we imposed an accuracy based control. We informed participants that their accuracy in identifying relevant material would be examined, and that they should aim to find four useful documents with at least 50\% accuracy (based on TREC relevance judgments as the gold standard). Note that from a previous lab based study for this set of topics, the accuracy of participants was between 25\% and 40\% on average, depending on the topic, and so while we stipulated a higher accuracy, this was to motivate subjects to work diligently. Since we expected the experiment to take just under an hour, participants were compensated seven dollars (USD). In all, 64 subjects performed the experiment. However, 13 subjects were omitted either because they failed to complete all search tasks (five subjects were removed), failed to mark at least four documents (two subjects were removed), or spent less than two minutes per task and failed to retrieve any relevant documents (six subjects were removed). 
+
+Of the 51 subjects who successfully completed the experiment, $26$ females and $25$ females participated. The average age of the subjects was $38.66$ years ($min=20$; $max=71$; $stdev=11.43$). $22$ of the subjects reported having a bachelor's degree or higher, with the remaining $29$ possessing an associate degree or lower. All subjects bar one expressed \emph{Google} as their everyday search engine of choice. All subjects indicated that they conducted many searches for information via a search engine per week. Nearly three quarters of the subjects (i.e. 38 subjects) reported using a mouse for the experiment, with the remaining $13$ using some form of trackpad.
+
+%Considering the \todo{$32$} subjects, and the four sessions each subject undertook, this meant a total of \todo{$128$} search sessions were logged.
+
+%We also implemented a series of log post-processing scripts after completion of the study to further identify and capture individuals who did not perform the tasks as instructed. It was from here that we identified the \todo{$20$} subjects that did not complete the search tasks in a satisfactory way -- attaining an accuracy of less than \todo{$50$\%}. These subjects were excluded from the study, reducing the number of subjects reported from \todo{$40$} to \todo{$32$}.
+
+
+
+\subsection{Logging and Measures}\label{sec:method:behaviours}
+Below we note the interactions logs and the measures taken while participants used the systems.
+%our experimental system was designed to log a variety of different attributes for each of the different actions that took place during the subjects' search sessions. The behaviours were operationalised over three types of measures: \emph{(i)} interaction, \emph{(ii)} performance, and \emph{(iii)} the time spent undertaking the various search activities. All behavioural data was extracted from the log data that was produced by our system, incorporating the TREC 2005 Robust Track QRELs, and the diversity data that we collated (as explained in Section~\ref{sec:method:entities}). Below, we provide a list for each of the different types of measure recorded.
+
+\vspace*{2mm}
+\noindent\textbf{Interaction Measures} included the number of queries issued by subjects, the number of documents that were examined, the number of different SERPs viewed, and the depths to which subjects clicked on -- and hovered over -- result summaries. It should be noted that components recorded such as hover depths over result summaries were inferred from the movement of the mouse cursor -- eye-tracking equipment was not used in this study. In prior studies, the position of the mouse cursor on the screen has correlated strongly with the user's gaze on the screen~\cite{chen2001mouse_cursor, smucker2014judging_relevance_movements}.
+\vspace*{2mm}
+
+\noindent\textbf{Performance Measures} included the number of documents that were saved by subjects, denoting that they were either relevant (for ad-hoc retrieval), or relevant and contain new information (for aspectual retrieval). From this, we could also break this number down into the number of documents that were saved and TREC relevant -- as well as TREC non-relevant -- and $P@k$ measures at varying depths for the performance of the queries issued by the subjects. In addition, using the diversity QRELs (generated as per the description in Section~\ref{sec:method:entities}), we were able to determine how well the query performed in terms of how many new entities were in the top $k$ results, and the $\alpha$DCG scores for each query. In addition, using the list of saved documents, we could identify how many entities that subjects had found, and how many documents contained one or more unseen entities -- both in the context of the query results, and the overall search session.
+
+\vspace*{2mm}
+From the log data, we could also compute additional performance measures, such as the accuracy that searchers reached during each session, as well as the probabilities of interaction. In the context of this study, accuracy referred to the ratio of documents that were TREC relevant, versus the total numbers of documents saved. For example, if a searcher saved four documents during a search session, with three of them being TREC relevant, the searcher's accuracy was $0.75$. The interaction probabilities that we considered included: the probabilities of clicking on a result summary link ($P(C)$) -- given that it was either TREC relevant ($P(C|R)$) or TREC non-relevant ($P(C|N)$), and the probabilities of marking a document that was clicked ($P(M)$) -- given that it was either TREC relevant ($P(M|R)$) or TREC non-relevant ($P(M|N)$).
+
+\vspace*{2mm}
+\noindent\textbf{Time-Based measures} included the time spent issuing queries (from query focus to query issue), the time spent on a SERP --- as well as examining result summaries\footnote{Result summary times were approximated by dividing the total recorded SERP time by the number of snippets hovered over with the mouse cursor. We believe this is a reasonable assumption to make -- network latency issues beyond our control ensured that the mouse hover events occasionally were delivered at the wrong times, and in the wrong order.} -- and the time spent examining documents. These times allowed us to then compute the total amount of time spent during the search session.
+
+%%%%%%%%
+\subsection{User Experience}\label{sec:method:experience}
+%%%%%%%%
+To capture their perceived experiences, we asked subjects to complete both pre- and post- task surveys for each of the four experimental conditions they undertook.
+
+Pre-task surveys consisted of five questions, each of which was on a seven-point Likert scale ($7$ -- strongly agree to $1$ -- strongly disagree). Subjects were sought for their opinions on their: \emph{(i)} prior knowledge of the topic; \emph{(ii)} the relevancy of the topic to their lives; \emph{(iii)} their desire to learn about the topic; \emph{(iv)} whether they had searched on this topic before; and \emph{(v)} the perceived difficulty to search for information on the topic.
+
+Following the completion of each search task, subjects were provided with a post-task survey, again using a seven-point Likert scale. The survey considered aspects on \emph{(i)} their behaviour, and \emph{(ii)} how they felt the system performed. Considering their behaviours, subjects were asked for their opinions on: how successful they thought they were at completing the task \emph{\textbf{(success)}}; how quickly they felt they completed the task \emph{\textbf{(subject speed)}}; whether they issued different queries to explore the topic \emph{\textbf{(queries)}}; if they only examined a few documents per query \emph{\textbf{(documents)}}; whether they checked each document carefully before saving \emph{\textbf{(checks)}}; and whether they saved more documents than was required, with a minimum of four being required \emph{\textbf{(more)}}. Subjects were also asked for their opinions on: whether they thought the system helped them complete the task quickly \emph{\textbf{(system speed)}}; whether they felt the system made it difficult to find useful information \emph{\textbf{(difficulty)}}; if the system made it easy to complete the task \emph{\textbf{(ease)}}; if they were happy with how the system performed \emph{\textbf{(happiness)}}; whether the system was cumbersome or not \emph{\textbf{(cumbersome)}}; and whether they were confident in the decisions they made \emph{\textbf{(confident)}}. Upon completion of the experiment, subjects were provided with an exit survey consisting of several questions. Here, we wanted to ascertain which of the two search system offered the better experience and which one they preferred. 
+
+%We provided a scale from $1$-$6$, from $1$ (definitely \emph{Diversified System Name}) to $3$ (slightly \emph{Diversified System Name}), from $4$ (slightly \emph{Non-Diversified System Name}) to $6$ (definitely \emph{Non-Diversified System Name}). We opted not to include a neutral option to force the subjects into deciding between one of the two systems. We asked subjects: which system was most informative \emph{\textbf{(informative)}}; which was the most unhelpful \emph{\textbf{(unhelpful)}}; which was easiest \emph{\textbf{(easiest)}}; which was the most useful \emph{\textbf{(useful)}}; which system returned the most \emph{relevant} information \emph{\textbf{(rel. preferred)}}; which system returned the most \emph{diverse} information \emph{\textbf{(div. preferred)}}; and which system was preferred overall \emph{\textbf{(preferred)}}.
+
+% From results; moved here to fit in the correct place in the paper.
+\begin{table}[t]
+    \caption{Query statistics and performance measures across both of the experimental systems trialled, \textbf{\textit{ND}} (Non-Diversified) and \textbf{\textit{D}} (Diversified). Note the significant differences between the diversity-centric measures, \boldmath{$\alpha DCG$} (where \boldmath{$\alpha=0.5$}) and Aspectual Recall (\boldmath{$Asp. R.$}), highlighting that the diversification algorithm did indeed provide a more diverse set of results to the subjects.\vspace*{-2mm}}
+    \label{tbl_queryperf_2018}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{0.2cm}L{2.65cm}|D{2.1cm}|D{2.1cm}}
+    \hline
+    
+    % OUTPUT FROM script
+    &  & \textbf{\emph{ND}} & \textbf{\emph{D}} \\ \hline\hline
+    & \textbf{\emph{Queries Issued}} & $718$ & $555$ \\ \hline
+    & \textbf{\emph{Terms per Query}} & $3.59$ & $3.80$ \\ \hline
+	& \textbf{\emph{Unique Terms}} & $345$ & $292$ \\ \hline\hline
+     
+    \multirow{2}{*}{\rotatebox{90}{\hspace*{-1mm}\small{\boldmath{$Prec.$}}}} & \boldmath{$P@5$} & $0.25\pm 0.01$* & $0.29\pm 0.01$*  \\ \cline{2-4}
+	& \boldmath{$P@10$} & $0.22\pm 0.01$ & $0.24\pm 0.01$  \\ \hline\hline
+      
+    \multirow{2}{*}{\rotatebox{90}{\hspace*{-1mm}\small{\boldmath{$\alpha DCG$}}}} & \boldmath{$\alpha DCG@5$} & $0.02\pm 0.00$* & $0.04\pm 0.00$* \\ \cline{2-4}
+    & \boldmath{$\alpha DCG@10$} & $0.03\pm 0.00$* & $0.04\pm 0.00$* \\ \hline\hline
+       
+    \multirow{2}{*}{\rotatebox{90}{\hspace*{-1mm}\small{\boldmath{$Asp.R.$}}}} & \boldmath{$Asp.R.@5$} & $1.40\pm 0.11$* & $3.39\pm 0.21$*  \\ \cline{2-4}
+    & \boldmath{$Asp.R.@10$} & $2.11\pm 0.14$* & $4.07\pm 0.24$*  \\ \hline
+	
+    \end{tabulary}
+    \vspace*{-4mm}
+    \end{center}
+\end{table}
+
+\begin{table*}[t]
+    \caption{Behavioural and performance measures across each condition, system and task.}\vspace{-3mm}
+    \label{tbl_actions}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{center}
+    \begin{small}
+    \begin{tabulary}{\textwidth}{L{1.90cm}||D{1.55cm}|D{1.55cm}|D{1.55cm}|D{1.55cm}||D{1.55cm}|D{1.55cm}||D{1.55cm}|D{1.55cm}}
+    \hline
+    
+    % OUTPUT FROM script
+    
+    & \multicolumn{4}{c||}{\textbf{Experimental Conditions}} & \multicolumn{2}{c||}{\textbf{Systems}} & \multicolumn{2}{c}{\textbf{Tasks}} \\
+    \textbf{Measure} & \textbf{\emph{D.As}} & \textbf{\emph{ND.As}} & \textbf{\emph{D.Ad}} & \textbf{\emph{ND.Ad}} & \textbf{\emph{ND}} & \textbf{\emph{D}} & \textbf{\emph{Ad.}} & \textbf{\emph{As.}} \\ \hline\hline
+    % START DATA
+    \textbf{\emph{\#Queries}} & 5.92$\pm$ 0.88 & 5.25$\pm$ 0.80 & 4.96$\pm$ 0.74 & 5.20$\pm$ 0.69 & 5.23$\pm$ 0.53 & 5.44$\pm$ 0.58 & 5.08$\pm$ 0.51 & 5.59$\pm$ 0.59 \\ \hline
+    \textbf{\emph{\#SERPs/Q.}} & 1.78$\pm$ 0.14 & 2.42$\pm$ 0.24 & 2.28$\pm$ 0.31 & 2.28$\pm$ 0.20 & 2.35$\pm$ 0.16 & 2.03$\pm$ 0.17 & 2.28$\pm$ 0.18 & 2.10$\pm$ 0.14 \\ \hline
+    \textbf{\emph{Doc./Q.}} & 3.02$\pm$ 0.39 & 3.65$\pm$ 0.46 & 3.48$\pm$ 0.51 & 3.23$\pm$ 0.37 & 3.44$\pm$ 0.29 & 3.25$\pm$ 0.32 & 3.36$\pm$ 0.31 & 3.34$\pm$ 0.30 \\ \hline
+    \textbf{\emph{Depth/Q.}} & 12.85$\pm$ 1.49 & 15.73$\pm$ 2.53 & 16.19$\pm$ 2.14 & 13.94$\pm$ 1.93 & 14.84$\pm$ 1.58 & 14.52$\pm$ 1.31 & 15.07$\pm$ 1.44 & 14.29$\pm$ 1.47 \\ \hline\hline
+    \textbf{\emph{\#Saved}} & 5.80$\pm$ 0.26 & 5.96$\pm$ 0.25 & 5.92$\pm$ 0.25 & 5.78$\pm$ 0.20 & 5.87$\pm$ 0.16 & 5.86$\pm$ 0.18 & 5.85$\pm$ 0.16 & 5.88$\pm$ 0.18 \\ \hline
+    \textbf{\emph{\#TREC Saved}} & 2.63$\pm$ 0.22 & 2.18$\pm$ 0.23 & 2.51$\pm$ 0.23 & 2.22$\pm$ 0.22 & 2.20$\pm$ 0.16 & 2.57$\pm$ 0.16 & 2.36$\pm$ 0.16 & 2.40$\pm$ 0.16 \\ \hline
+    \textbf{\emph{\#TREC Non.}} & 1.75$\pm$ 0.22 & 1.96$\pm$ 0.23 & 1.37$\pm$ 0.22 & 1.82$\pm$ 0.23 & 1.89$\pm$ 0.16 & 1.56$\pm$ 0.16 & 1.60$\pm$ 0.16 & 1.85$\pm$ 0.16 \\ \hline
+    \textbf{\emph{\#Ent. Found}} & 7.22$\pm$ 0.94* & 4.31$\pm$ 0.60* & 5.82$\pm$ 0.77 & 4.37$\pm$ 0.59* & 4.34$\pm$ 0.42* & 6.52$\pm$ 0.61* & 5.10$\pm$ 0.49 & 5.76$\pm$ 0.57 \\ \hline
+    \textbf{\emph{\#Docs. Ent.}} & 3.20$\pm$ 0.21* & 2.35$\pm$ 0.20* & 2.63$\pm$ 0.23 & 2.02$\pm$ 0.18* & 2.19$\pm$ 0.13* & 2.91$\pm$ 0.16* & 2.32$\pm$ 0.15* & 2.77$\pm$ 0.15* \\ \hline
+   	% END DATA
+    \end{tabulary}
+    \end{small}
+    \end{center}
+\end{table*}
+
+\begin{table*}[t]
+    \caption{Interaction times across each condition, system and task. Included is: the mean total session time; the per query time \emph{(Per Q.)}; the per document time \emph{(Per D.)}; and the per result summary (snippet) time \emph{(Per Snip.)}. Results presented in seconds.\vspace{-3mm}}
+    \label{tbl_times}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{1.90cm}||D{1.55cm}|D{1.55cm}|D{1.55cm}|D{1.55cm}||D{1.55cm}|D{1.55cm}||D{1.55cm}|D{1.55cm}}
+    \hline
+    
+    % OUTPUT FROM script
+    & \multicolumn{4}{c||}{\textbf{Experimental Conditions}} & \multicolumn{2}{c||}{\textbf{Systems}} & \multicolumn{2}{c}{\textbf{Tasks}} \\
+    \textbf{Time} & \textbf{\emph{D.As}} & \textbf{\emph{ND.As}} & \textbf{\emph{D.Ad}} & \textbf{\emph{ND.Ad}} & \textbf{\emph{ND}} & \textbf{\emph{D}} & \textbf{\emph{Ad.}} & \textbf{\emph{As.}} \\ \hline\hline
+    
+\textbf{\emph{Total Session}} & \small{443.65$\pm$ 45.05} & \small{430.50$\pm$ 38.39} & \small{432.18$\pm$ 49.87} & \small{447.55$\pm$ 47.82} & \small{439.02$\pm$ 30.52} & \small{437.91$\pm$ 33.44} & \small{439.86$\pm$ 34.38} & \small{437.08$\pm$ 29.45} \\ \hline
+%\textbf{TotalQ} & \small{45.26$\pm$ 6.48} & \small{47.76$\pm$ 8.41} & \small{46.40$\pm$ 8.01} & \small{43.22$\pm$ 6.55} & \small{45.49$\pm$ 5.31} & \small{45.83$\pm$ 5.13} & \small{44.81$\pm$ 5.15} & \small{46.51$\pm$ 5.28} \\ \hline
+\textbf{\emph{Per Q.}} & \small{8.80$\pm$ 0.89} & \small{9.99$\pm$ 1.21} & \small{9.69$\pm$ 0.79} & \small{8.69$\pm$ 0.57} & \small{9.34$\pm$ 0.67} & \small{9.25$\pm$ 0.59} & \small{9.19$\pm$ 0.49} & \small{9.39$\pm$ 0.75} \\ \hline
+%\textbf{TotalD} & \small{162.93$\pm$ 20.47} & \small{144.85$\pm$ 16.73} & \small{139.58$\pm$ 16.70} & \small{152.83$\pm$ 27.69} & \small{148.84$\pm$ 16.10} & \small{151.26$\pm$ 13.19} & \small{146.21$\pm$ 16.10} & \small{153.89$\pm$ 13.18} \\ \hline
+\textbf{\emph{Per D.}} & \small{15.97$\pm$ 1.96} & \small{13.03$\pm$ 1.01} & \small{13.66$\pm$ 1.02} & \small{15.09$\pm$ 2.20} & \small{14.06$\pm$ 1.21} & \small{14.81$\pm$ 1.10} & \small{14.37$\pm$ 1.21} & \small{14.50$\pm$ 1.11} \\ \hline
+\textbf{\emph{Per Snip.}} & \small{1.59$\pm$ 0.09} & \small{1.75$\pm$ 0.15} & \small{1.71$\pm$ 0.11} & \small{1.71$\pm$ 0.13} & \small{1.73$\pm$ 0.10} & \small{1.65$\pm$ 0.07} & \small{1.71$\pm$ 0.08} & \small{1.67$\pm$ 0.09} \\ \hline
+    % END OUTPUT
+    \end{tabulary}
+    \end{center}
+\end{table*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results} \label{sec:results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We now address our research questions and hypotheses as addressed in Section~\ref{sec:questions}. Both the behaviour and performance of each subject were analysed across each of the four experimental conditions, \textbf{\emph{D.As}}, \textbf{\emph{ND.As}}, \textbf{\emph{D.Ad}} and \textbf{\emph{ND.Ad}}. Task (\emph{\textbf{As}}. vs \emph{\textbf{Ad.}}) and System (\emph{\textbf{ND.}} vs \emph{\textbf{D.}}) effects were also examined. To evaluate these data, ANOVAs were conducted using the conditions, systems and tasks each as factors; main effects were examined with $\alpha=0.05$. Bonferroni tests were then used for post-hoc analysis. It should be noted, however, that where $\alpha DCG$ is reported, we compute the values using $\alpha=0.5$.
+
+To begin with our analysis, we first examined whether the performance experienced by participants on the two systems was in fact different (as indicated by our pilot study). We took the queries participants issued to each system, and measured the performance according to $\alpha DCG$, aspectual recall and precision (see Table~\ref{tbl_queryperf_2018}). Statistical testing confirms that the two systems were significantly different 
+ in terms of diversity (i.e. $\alpha DCG@10$: $F(1, 1272=28.74, p<0.001)$, and apectual recall$@10$: $F(1, 1272=55.43, p<0.001)$). However, $P@10$ was not significantly different - suggesting that the re-ranking promoted relevant and diverse documents, but only in the top 10 on average.
+ 
+ Aside from showing query performance, Table~\ref{tbl_queryperf_2018} also reports the number of terms issued per query over each systems \textbf{\emph{ND}} and \textbf{\emph{D}}; of the $1273$ queries issued, those issued to \textbf{\emph{ND}} were shorter on average, with $3.59$ terms compared to $3.80$ terms for \textbf{\emph{D}}. However, the vocabulary used by subjects issuing queries to \textbf{\emph{ND}} was greater than \textbf{\emph{D}} -- queries issued to \textbf{\emph{ND}} contained $345$ unique terms, compared to $292$ for \textbf{\emph{D}}.
+This provides our first finding of note. When using \textbf{\emph{ND}}, participants issued more queries -- but were slightly shorter and more varied -- in order to accomplish their tasks. 
+
+
+\begin{table}[t]
+    \caption{Interaction probabilities, as observed over the four experimental conditions. Refer to Section~\ref{sec:method:behaviours} for an explanation of each probability's meaning.\vspace*{-3mm}}
+    \label{tbl_probabilities}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{center}
+    \begin{small}
+    \begin{tabulary}{\textwidth}{L{1.2cm}||D{1.35cm}|D{1.35cm}|D{1.35cm}|D{1.35cm}}
+    \hline
+    
+    % OUTPUT FROM script
+    \textbf{Prob.} & \textbf{\emph{D.As}} & \textbf{\emph{ND.As}} & \textbf{\emph{D.Ad}} & \textbf{\emph{ND.Ad}} \\ \hline\hline
+    
+    \boldmath{$P(M)$} & 0.67$\pm$ 0.03 & 0.66$\pm$ 0.03 & 0.70$\pm$ 0.03 & 0.71$\pm$ 0.04 \\ \hline
+    \boldmath{$P(M|R)$} & 0.78$\pm$ 0.04 & 0.63$\pm$ 0.05 & 0.74$\pm$ 0.04 & 0.67$\pm$ 0.05 \\ \hline
+    \boldmath{$P(M|N)$} & 0.59$\pm$ 0.04 & 0.61$\pm$ 0.04 & 0.65$\pm$ 0.04 & 0.65$\pm$ 0.04 \\ \hline\hline
+    \boldmath{$P(C)$} & 0.16$\pm$ 0.01* & 0.21$\pm$ 0.02* & 0.16$\pm$ 0.01* & 0.20$\pm$ 0.01* \\ \hline
+    \boldmath{$P(C|R)$} & 0.27$\pm$ 0.03 & 0.30$\pm$ 0.04 & 0.25$\pm$ 0.03 & 0.31$\pm$ 0.04 \\ \hline
+    \boldmath{$P(C|N)$} & 0.13$\pm$ 0.02* & 0.18$\pm$ 0.02* & 0.13$\pm$ 0.01* & 0.17$\pm$ 0.02* \\ \hline
+    % END REDUCED OUTPUT
+    \end{tabulary}
+    \end{small}
+    \vspace*{-3mm}
+    \end{center}
+\end{table}
+
+%%%%%%%%%%%%%%%
+\subsection{Observed Behaviours}
+%%%%%%%%%%%%%%%
+\noindent\textbf{Interactions.} Table~\ref{tbl_actions} presents the mean (and standard deviations) of \textit{(i)} the number of queries issued, \textit{(ii)} the number of SERPs that were examined by subjects per query, \textit{(iii)} the number of documents examined (clicked) per query, and \textit{(iv)} the click depth (or search stopping depth) per query. %These mean values are compared in three ways: \emph{(i)} over each of the four experimental conditions trialled; \emph{(ii)} over the two experimental systems (non-diverse vs. diverse) and \emph{(iii)} over the two different search tasks (ad-hoc vs. aspectual). 
+Statistical tests reveal no effects across conditions, systems or tasks. However, there are several trends that are worth mentioning. Firstly, we notice that when participants used the diversified system to complete the aspectual retrieval task, they examined fewer documents per query than when completing the same task on the non-diversified system (12.85 vs. 15.73) -- which is in line with \emph{H1}. We also observed that participants issued slightly more queries on the diversified system compared to the non-diversified system with the aspectual retrieval task (5.92 vs. 5.25) -- which is in line with \emph{H2a} --- but these results were not significantly significant.
+
+%Considering a diversified system, an aspectual retrieval topic, as outlined by \emph{H1}, result in fewer documents examined per query. Evidence shown in Table~\ref{tbl_post_behavioural} suggests that this may hold, with $3.02\pm0.39$ documents per query examined under \textbf{\emph{D.As}}, compared to a slightly larger number of $3.65\pm0.46$ documents per query for the non-diversified equivalent, \textbf{\emph{ND.As}}.
+
+%IFT suggests that if a lower number of documents are examined per query, then the number of queries, over a similar task completion time, will increase, leading to hypotheses \emph{H2a} and \emph{H2b}. Looking again at Table~\ref{tbl_post_behavioural}, this holds -- \textbf{\emph{D.As}} sees $5.92\pm0.88$ queries issued, compared to the non-diversified equivalent, \textbf{\emph{ND.As}}, reaching a lower value of $5.25\pm0.80$.
+
+Turning our attention to the ad-hoc retrieval tasks, while our hypotheses suggested that there would be no differences in terms of the number of documents examined \emph{(H3)} or in the number of queries issued \emph{(H4)} -- which was the case -- however we note that participants on the diversity system inspected more results than when on the non-diversified system (16.19 vs. 13.94), and they issued slightly fewer queries (4.96 vs 5.20). We can see the trade-offs between queries and the number of results inspected per query, where more queries tend to lead to fewer results being examined, and vice versa. This trend suggests that participants, when searching on the diversified system, for relevance, may have had to dig deeper, to find more relevant material (due to system performance), or that the system encouraged participants to go deeper (which is what we intuitively inspected when they were searching for diversity). Either way, we find no conclusive evidence to support the studies main hypotheses -- only trends. 
+
+Table~\ref{tbl_probabilities} reports interaction probabilities associated with user interactions, i.e. the probability of marking a document saved $P(M)$, and the probability of clicking a document $P(C)$ along with the conditional probabilities for each based on whether the document saved or clicked was TREC (R)elevant or (N)on-Relevant. From the table, we can see that there was a significant difference between conditions (and systems, not shown) for the probability of a click, and the probability of clicking on non-relevant items. Comparing systems indicated that participants clicked more when using the non-diversified system, and clicked on more non-relevant documents. However, we did not observe any task effects. This suggests that the non-diversified system affected led to examining more documents, but often more non-relevant documents. This is reflected by the fact that across all the performance measures (see below), participants on the non-diversified system performed worse.
+
+%%%%%%%%%%%%%%%
+\vspace{2mm}
+\noindent\textbf{Time-Based Measures.} Table~\ref{tbl_times} reports the time taken for various interactions, across each condition, system and task. We report: the mean total session time (from the first query focus to ending the task); the mean time spent entering queries; the mean per document examination time; and the mean time spent examining a result summary (or snippet). All values are reported in seconds. Surprisingly, no significant differences were found between any of the comparisons over the total session times, the per query times, the per document times, and the per snippet times. Results however do show a relatively constant mean session time over each of the four experimental conditions, at $\approx438.5$ seconds, which is about $7$ minutes, on average -- this was in line with the time taken to find four documents in our previous studies with similar workers~\cite{maxwell2017snippet_length} and lab participants~\cite{maxwell2016agents}.
+Considering hypothesis \emph{H2b}, no evidence was found to support that under the diversity system \textbf{\emph{D}} with an aspectual task that completion times would be lower. Here, we can see that they were in fact slightly higher (443 seconds \textbf{\emph{D}} vs. 430 seconds on \textbf{\emph{ND}}, i.e. the difference of about examining one more document). 
+
+%%%%%%%%%%%%%%%
+\vspace{2mm}
+\noindent\textbf{Performance.} In Table~\ref{tbl_actions}, we also report a number of performance measures: the number of saved documents -- also broken down into the number of TREC saved and TREC non-relevant and saved, along with the number of new entities found (within saved documents, with new being in the context of a search session) -- and the number of documents containing at least one new entity. In terms of the documents saved, there were no significant differences between conditions, systems or tasks. On average, participants saved around 6 documents on average, which was two more than the goal set, $4$ -- suggesting that wanted to make sure that they found a few extra, just in case some were not relevant/useful.
+
+However, when we look at the entity-related measures, we note that participants found more documents that contained new entities and found more entities overall when using the diversity system. This was significantly different ($6.52\pm0.61$ compared to $4.34\pm0.42$ respectively, where $F(1, 203=8.70, p<0.05)$). When examining each condition, the Bonferroni follow-up test showed significant differences were observed between condition \textbf{\emph{D.As}} and conditions \textbf{\emph{D.Ad}} and \textbf{\emph{ND.Ad}}, where $F(3, 203=3.49, p<0.05)$. Also, we notice that participants also found more documents with entities, and more entities when using the ad-hoc retrieval task when using the diversity system than when they used the non-diversity system (docs with entities: 2.63 vs. 2.02, new entities: 5.82 vs 4.37). Though this was not significantly different, it does suggest that when participants used the diversity system, they did learn more about the different aspects of the topic (or at least encountered more aspects) than when using the non-diversity system. 
+
+\vspace{2mm}
+\noindent\textbf{Post Task and Post System Questionnaires.} There were no notable significant differences between conditions, tasks, or system for any of the post task questions. For the post system questionnaires, participants were roughly evenly split between their preference for the diversified or non-diversified system -- again with no significant differences. This finding suggests that despite the substantial (and significant) difference in aspectual recall and other system performance measures, between the systems, participants seemed largely ambivalent to the different system's influence. Though, of course, their observed behaviours do suggest that the system (and task) did affect their performance.
+
+%%%%%%%%%%%%%%%
+\subsection{Gain over Time}
+%%%%%%%%%%%%%%%
+We motivated this study using IFT, where we constructed a number of gain curves that reflected our beliefs about the search performance experienced by users would look like on each system and task. This was done in order to generate the aforementioned hypotheses. Here, we examine how participants performed over time for each of the systems and conditions to infer the gain curves. We then compare that to our expectations (which are shown in Figure~\ref{fig_ift_patches}).
+
+To create empirical gain curves, we plotted cumulative gain over time, where we defined gain to be the number of saved relevant documents (in the case of ad-hoc retrieval), and gain to be the number of saved relevant but different documents (in the case of aspectual retrieval). These definitions are what we said would constitute a useful document in these tasks. And as they are in the same units, we can plot the gain for both tasks on the same axes.
+
+Figure~\ref{fig_cg} shows the corresponding empirical gain curves for: \textit{(a)} the non-diversified system on both tasks, \textit{(b)} the diversified System on both tasks, \textit{(c)} the aspectual task for both systems, and \textit{(d)} the ad-hoc task for both systems. Compared to our expectations in Figure~\ref{fig_ift_patches}, on visual inspection, we see that our predictions were roughly in line with the gain experienced. For example, in \textit{(a)} we hypothesised that on the non-diversified system, participants would experience greater levels of gain, and the empirical gain curves show this. A critical difference though is for \textit{(b)} -- where we hypothesised that the gain curves would be similar on the diversified system, up until a point, before the aspectual gain would drop. From \textit{(b)}, it is clear that participants had a very different experience -- and experienced lower gains from the beginning -- motivating a revision of our expectations.
+
+To do so, we first fit a logarithmic function to each of the gain curves given time, such that: $gain = a \cdot b \log(time)$. Table~\ref{tbl_plot_fitting} shows the parameters and correlation co-efficients for fit ($r^2$) for each condition. We then could calculate how many documents a participant would examine by drawing the tangent line to the estimated gain functions from the origin. This resulted in the predicted number of documents examined -- which we see are in line with the actual documents examined. With respect to \textit{(b)}, we see that for the diversified system, the theory, given their performance, suggests that participants should examine more documents per query on the aspectual task than when undertaking the ad-hoc task (i.e. 4.98 to 3.36, respectively). We observed that they examined 3.48 and 3.02 documents per query -- which follows the same trend, but not the same magnitude. Thus, the revising our expectations regarding how people would search differently between these tasks. With respect to \textit{H1}, we see that the theory, given their performance, suggests that participants, when undertaking the aspectual task, would examine fewer documents per query when using the diversified system than on the non-diversified system (4.36 vs 4.92). Again, we see that they examined 3.02 and 3.65 documents per query respectively, again following the same trend -- but not the same magnitude. This post-hoc analysis has provided justification for some of our initial hypotheses regarding how search behaviour would change under the different conditions -- but it has also led to us revising our expectations based on the observed, empirical data.
+
+In this paper, we investigated the effects of diversifying search results when searchers undertook complex search tasks, requiring one to learn about different aspects of a topic. We inferred a number of hypotheses based upon Information Foraging Theory, in which diversification would lead to searchers examining fewer documents per query, and subsequently issuing more queries. We tested our hypotheses by conducting a within-subjects user study, using \emph{(i)} a non-diversified system; versus \emph{(ii)} a diversified system, when the search task was either: \emph{(a)} ad-hoc; or \emph{(b)} aspectual.
+
+Our findings lend evidence to broadly support our hypotheses; however, our results were not statistically significant. This was despite the fact that there were significant differences in the two systems performance, i.e. the diversified system returned a ranked list of results with a greater number of documents containing new, unseen entities. Clearly, bigger differences need to be present before participants can subjectively report whether they had a different experience, or which one they preferred -- as post task and system questions revealed no difference. However, in terms of performance, we found that participants on the diversified system did perform better -- more relevant documents were found, and more new entities were found -- suggesting they found out more about the topics on the diversified system. They also inspected few non-relevant documents. After conducting a post-hoc analysis, we showed that the hypotheses we posited given IFT were sound, but revised our expectations on how participants would behave when using the diversified system. That is, they would examine more documents per query, and thus issue fewer queries when undertaking the aspectual retrieval task, as opposed to there being no difference in performance. Again, we see a trend to support the hypothesis. Encouragingly, our application of Information Foraging Theory, before and after the study, led to new insights into how behaviours are affected under the different conditions -- and is a useful tool in developing, motivating and analysing search performance and behaviours. Counter to our intuition about how we \emph{believed} people would behave in these conditions, the theory provided more informed and accurate hypotheses.
+
+In past work, mainly interface based solutions were studied -- where few significant differences in behaviour were found compared to a standard interface. Disappointingly, we also find that an algorithmic solution has very little influence either, though there were trends which indicated that diversifying the results does lead to better performance, greater awareness of the topic (even when not specifically instructed, i.e. \textit{find relevant only}), and fewer examinations of non-relevant items. Thus, we suggest that diversification should be employed more widely -- in particular in the context of news search -- where bias is an issue and diversification algorithms can present a broader overview of the aspects within a topic. 
+
+%We now turn our attention to examining the levels of gain that subjects experienced as they undertook search tasks in different experimental conditions. The aim here is to ascertain whether the graphical illustrations shown earlier in Figure~\ref{fig_ift_patches} are supported by empirical data from this study.
+
+%As previously stated in Section~\ref{sec:questions}, the complexity of this study means that the notion of \emph{gain} -- that is, what each subject found during their search tasks -- changes depending upon the experimental condition that they partook in. Ad-hoc retrieval tasks rely only upon the notion of relevance, meaning that in the context of this study, correctly identifying and saving a TREC relevant document would lead to an increase in gain. Conversely, under the aspectual retrieval tasks, the notion here was to find relevant documents, containing at least one new aspect/entity related to the topic. As such, gain for these tasks was measured according to the number of new entities (in the context of a search session), encountered through each saved document. Using these measurements, we were then able to parse the interaction log to determine the levels of \emph{Cumulative Gain (CG)} that subjects attained, on average, over each of the different conditions trialled. The two plots in Figure~\ref{fig_cg} illustrate the levels of CG attained -- the plot on the left concerns ad-hoc retrieval tasks (conditions \textbf{\emph{D.Ad}} and \textbf{\emph{ND.Ad}}), while the plot on the right considers aspectual retrieval (conditions \textbf{\emph{D.As}} and \textbf{\emph{ND.As}}).
+
+%From the data attained, we could also then use IFT to begin to make a series of predictions regarding the number of documents that subjects would examine, and their corresponding stopping depths. Table~\ref{tbl_plot_fitting} shows the fitting parameters, with the plots in Figure~\ref{fig_cg} also including dash lines, representing the fitted curve to each data series.
+
+
+\begin{table}[t]
+    \caption{Table highlighting the fitting parameters for the gain curves illustrated in Figure~\ref{fig_cg} over each experimental condition. Also included are the estimations from the model for the time to examine a document, and the depth to which subjects should go -- as well as the observed number of documents examined, and stopping depth (on average).\vspace*{-3mm}}
+    \label{tbl_plot_fitting}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{center}
+    \begin{small}
+    \begin{tabulary}{\textwidth}{L{1.35cm}||D{1cm}|D{1cm}|D{1cm}|D{1cm}|D{1cm}}
+    \hline
+    
+    % OUTPUT FROM script
+
+& \multicolumn{3}{c|}{\textbf{Model Fitting}} & \textbf{Pred.} & \textbf{Actual} \\
+
+\textbf{Condition} & \boldmath{$a$} & \boldmath{$b$} & \boldmath{$r^2$} &  \hspace*{-0.5mm}\textbf{Docs.} & \hspace*{-0.5mm}\textbf{Docs.}\\ \hline\hline
+
+\textbf{\emph{ND.Ad}} & $-1.08$ & $0.48$ & $0.989$ & $3.68$ & $3.23$  \\ \hline
+\textbf{\emph{ND.As}} & $-0.57$ & $0.23$ & $0.987$ & $4.92$ & $3.65$  \\ \hline\hline
+\textbf{\emph{D.Ad}} & $-1.22$ & $0.52$ & $0.959$ & $4.98$ & $3.48$  \\ \hline
+\textbf{\emph{D.As}} & $-0.68$ & $0.29$ & $0.985$ & $4.36$ & $3.02$  \\ \hline
+    
+    % END OUTPUT
+    
+    \end{tabulary}
+    \end{small}
+    \vspace*{-5mm}
+    \end{center}
+\end{table}
+
+\subsection{Results}
+\subsection{Conclusions}
+
+\section{Simulation Experiments}
+\subsection{Simulated Experimental Design}
+\subsection{Comparisons}
+\subsection{Conclusions}
+
+\section{Conclusions}
+\section{Chapter Summary}

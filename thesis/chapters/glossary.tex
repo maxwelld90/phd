@@ -1,0 +1,66 @@
+%!TEX TS-program = xelatex
+%!TEX root = ../maxwell2018thesis.tex
+
+% To refer to a glossary entry, use the \gls{} command.
+
+% This file basically combines a glossary and acronyms list together; they're the same thing, the glossary is just acronyms, sans the abbreviation.
+
+% To add a glossary entry, use something like
+
+% \newglossaryentry{entry}
+% {
+%     name={some entry},
+%     description={A description for the entry, explaining what it does.},
+% }
+
+% To add an acronym, use something like (first is used for the first occurrence, name is used subsequently, and long can be used if you need to refer to the long name).
+
+% \newglossaryentry{api}
+% {
+%     name={API},
+%     description={Description of an API},
+%     first={\emph{Application Programming Interface (API)}}
+%     long={Application Programming Interface}
+% }
+
+\newglossaryentry{ir}
+{
+    name={IR},
+    description={The study of Information Retrieval},
+    long={Information Retrieval},
+    first={\emph{Information Retrieval}}
+}
+
+\newglossaryentry{iir}
+{
+    name={IIR},
+    description={The study of Interactive Information Retrieval},
+    long={Interactive Information Retrieval},
+    first={\emph{Interactive Information Retrieval}}
+}
+
+\newglossaryentry{patk}
+{
+    name={P@k},
+    description={Precision up to rank k.},
+    long={P@k},
+    first={\emph{P@k}}
+}
+
+\newglossaryentry{pat10}
+{
+    name={P@10},
+    description={Precision up to rank 10.},
+    long={P@10},
+    first={\emph{P@10}}
+}
+
+\newglossaryentry{www}{
+    name=World Wide Web,
+    text=World Wide Web,
+    description={\bluebox{(WWW)} An information space in which documents and other resources, linked together via hypertext links, can be accessed via the Internet.}
+}
+
+% Ensure that \makeglossaries is called at the end of this file.
+% This command needs to be placed at the end of and glossary-related input file.
+\makeglossaries

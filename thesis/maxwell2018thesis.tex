@@ -1,0 +1,84 @@
+%!TEX TS-program = xelatex
+\documentclass{phd}
+
+% Show or hide borders?
+%\usepackage{showframe}
+
+% Document Metadata
+\title{Modelling Search and Stopping in\\Interactive Information Retrieval}
+\author{David Martin Maxwell}
+\date{May 2018}
+
+\hypersetup{
+    pdftitle = Modelling Search and Stopping in Interactive Information Retrieval,
+    pdfauthor = David Martin Maxwell
+}
+
+\input{chapters/glossary}
+
+\begin{document}
+    
+    \maketitle
+    \pagenumbering{roman}
+
+    \input{chapters/p0-misc/declaration}
+    \input{chapters/p0-misc/abstract}
+    \input{chapters/p0-misc/acks}
+    %\input{chapters/p0-misc/original}
+    \input{chapters/p0-misc/quote}
+    \input{chapters/p0-misc/presentational}
+    
+    \tableofcontents
+    
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{part}{List of Figures}
+    \listoffigures
+    
+    \cleardoublepage
+    \phantomsection
+    
+    \addcontentsline{toc}{part}{List of Tables}
+    \listoftables
+    
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{part}{Glossary and Acronyms}
+    \onehalfspacing
+    \printglossary[nonumberlist,style=thesisglossary]
+    
+    \cleardoublepage
+    \pagenumbering{arabic}
+    \doublespacing
+    
+    \input{chapters/p1-intro/p1}
+    \input{chapters/p1-intro/introduction}
+    \input{chapters/p1-intro/ir}
+    \input{chapters/p1-intro/stopping}
+    
+    \input{chapters/p2-modelling/p2}
+    \input{chapters/p2-modelling/existing}
+    \input{chapters/p2-modelling/csm}
+    
+    \input{chapters/p3-stopping/p3}
+    \input{chapters/p3-stopping/delays}
+    \input{chapters/p3-stopping/snippets}
+    \input{chapters/p3-stopping/diversity}
+    
+    \input{chapters/p4-conclusions/p4}
+    \input{chapters/p4-conclusions/conclusions}
+
+    \appendix
+    \appendicestitle
+    
+    \input{chapters/pa-appendices/simiir}
+    \input{chapters/pa-appendices/publications}
+    
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{part}{Bibliography}
+    \bibliographystyle{apalike}
+    \large
+    \bibliography{maxwell2018thesis}
+    
+\end{document}
