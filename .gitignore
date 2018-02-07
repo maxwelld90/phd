@@ -1,4 +1,5 @@
 .DS_Store
+thesis/maxwell2018thesis.pdf
 *.bbl
 *.aux
 *.lof
@@ -24,4 +25,3 @@
 *.glo
 *.gls
 *.glsdefs
-
