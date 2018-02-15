@@ -175,12 +175,12 @@
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
 
 \titlecontents{figure}[0em]{\vskip 0pt\large\metafont\vspace*{-1mm}}
-{\thecontentslabel\enspace}
+{\blueboxbold{\thecontentslabel}\enspace}
 {\hspace{1.05em}}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
 
 \titlecontents{table}[0em]{\vskip 0pt\large\metafont\vspace*{-1mm}}
-{\thecontentslabel\enspace}
+{\blueboxbold{\thecontentslabel}\enspace}
 {\hspace{1.05em}}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
 
