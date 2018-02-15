@@ -433,7 +433,7 @@
         
         \node[fill=dmax_darkblue, anchor=north west, inner xsep=5mm, inner ysep=depth("y")+5mm]
         at ([yshift=-84mm,xshift=-109mm] current page.north) {
-        {\hspace*{2.55cm}\color{white}\begin{varwidth}{\linewidth}\linespread{1.1}\headerfont\fontsize{12mm}{12mm}\selectfont\raggedright\flushright#1\par\end{varwidth}}
+        {\hspace*{2.55cm}\color{white}\begin{varwidth}{\linewidth}\linespread{1.1}\headerfont\fontsize{12mm}{12mm}\selectfont\raggedright#3\par\end{varwidth}}
         };
         
         \node[anchor=north west]
