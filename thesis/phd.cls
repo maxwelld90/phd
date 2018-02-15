@@ -56,8 +56,7 @@
 \usepackage{amssymb}
 \usepackage{bibentry}
 \usepackage{emptypage} % Together with report openright, blanks the left page before a new chapter starts.
-\usepackage[nopostdot,acronym,style=superborder]{glossaries}
-%\usepackage{showframe}
+\usepackage[nopostdot,acronym,savewrites,style=superborder]{glossaries}
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
@@ -81,9 +80,11 @@
 \fi
 
 % Custom command to allow pages to start on the left.
+% Removes page styling for the blank page that is inserted.
+% This is now redundant; kept in case it is required eventually.
 \newcommand*\cleartoleftpage{%
   \clearpage
-  \ifodd\value{page}\hbox{}\newpage\fi
+  \ifodd\value{page}\hbox{}\thispagestyle{empty}\newpage\fi
 }
 
 % TOC depth settings -- as per submission guidelines.
@@ -95,8 +96,10 @@
 \definecolor{dmax_darkblue}{HTML}{00243D}
 
 % Blue boxes!
+\setlength\fboxsep{2mm} % Applies padding to the blue boxes.
 \newcommand{\bluebox}[1]{\colorbox{dmax_lightblue}{\color{white}\metafont#1}}
 \newcommand{\blueboxbold}[1]{\colorbox{dmax_lightblue}{\color{white}\headerfont#1}}
+\newcommand{\darkblueboxbold}[1]{\colorbox{dmax_darkblue}{\color{white}\headerfont#1}}
 
 % Set fonts -- main narrative font to Palatino (fancy serif) and FoundrySterling for the meta stuff.
 \setmainfont{Palatino}
@@ -146,37 +149,37 @@
 \renewcommand{\@pnumwidth}{3em}
 
 %\contentsmargin[-2cm]{0cm}
-\titlecontents{part}[0em]{\vskip 0pt\Large\normalfont\headerfont}
+\titlecontents{part}[0em]{\Large\normalfont\headerfont\vspace*{-1mm}}
 {\thecontentslabel\enspace}
 {\hspace{0pt}}
 {\hfill\contentspage}[\vskip 0pt]
 
-\titlecontents{chapter}[0em]{\vskip 0pt\large\normalfont\headerfont}
+\titlecontents{chapter}[0em]{\vskip 0pt\large\normalfont\headerfont\vspace*{-1mm}}
 {\thecontentslabel\enspace\color{white}\colorbox{dmax_lightblue}}
 {\hspace{0pt}}
 {\hfill\contentspage}[\vskip 0pt]
 
-\titlecontents{section}[1.35em]{\large\metafont}
+\titlecontents{section}[1.35em]{\large\metafont\vspace*{-1mm}}
 {\thecontentslabel\enspace}
 {}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
 
-\titlecontents{subsection}[2.7em]{\large\metafont}
+\titlecontents{subsection}[2.7em]{\large\metafont\vspace*{-1mm}}
 {\thecontentslabel\enspace}
 {}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
 
-\titlecontents{subsubsection}[4.05em]{\large\metafont}
+\titlecontents{subsubsection}[4.05em]{\large\metafont\vspace*{-1mm}}
 {\thecontentslabel\enspace}
 {}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
 
-\titlecontents{figure}[0em]{\vskip 0pt\large\metafont}
+\titlecontents{figure}[0em]{\vskip 0pt\large\metafont\vspace*{-1mm}}
 {\thecontentslabel\enspace}
 {\hspace{1.05em}}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
 
-\titlecontents{table}[0em]{\vskip 0pt\large\metafont}
+\titlecontents{table}[0em]{\vskip 0pt\large\metafont\vspace*{-1mm}}
 {\thecontentslabel\enspace}
 {\hspace{1.05em}}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
@@ -245,8 +248,6 @@
   }%
 }
 
-\setacronymstyle{italicise-long-short}
-
 %%%%%%%%%%
 %%% Header Restylying
 %%%%%%%%%%
@@ -259,21 +260,33 @@
 % Update "List of Figures" to reflect custom styling.
 \renewcommand{\listfigurename}{
     \protect\toctitle{List of Figures}
+    \vspace*{4mm}
 }
 
 % Update "List of Tables" to reflect custom styling.
 \renewcommand{\listtablename}{
     \protect\toctitle{List of Tables}
+    \vspace*{4mm}
 }
 
-% % Update "List of Abbreviations" to reflect custom styling.
-% \renewcommand*{\acronymname}{
-%     \protect\toctitle{List of Abbreviations}
-% }
+% Update "List of Abbreviations" to reflect custom styling.
+\renewcommand{\acronymname}{
+    Abbreviations Used
+}
 
-% Update the "Glossary" section header to use custom styling.
-\renewcommand*{\glossaryname}{
-    \protect\toctitle{Glossary and Acronyms}
+% % Update the "Glossary" section header to use custom styling.
+\renewcommand{\glossaryname}{
+    Glossary of Terms
+}
+
+% Renew the command that creates the relevant glossary section, and add a header.
+\renewcommand{\glossarysection}[2][]{
+    \cleardoublepage
+    \protect\toctitle{#1}
+    
+    \vspace*{52mm}
+    
+    \ifthenelse{\equal{#1}{\acronymname}}{\normalfont\selectfont\large For abbreviations complete with a \emph{see} reference, refer to the corresponding Glossary entry.\vspace*{7mm}}{\vspace*{8mm}}
 }
 
 % Update the bibliography title.
@@ -287,11 +300,11 @@
 %%% Title/Preamble/Part Page Definitions
 %%%%%%%%%%
 
-% Define a robust command that produces a title for TOC pages and the bibliography.
-\DeclareRobustCommand{\toctitle}[1]{%
-    \tikz[remember picture, overlay, anchor=west] { 
-        \draw[fill=dmax_lightblue,draw=none] (-2.7,-30.8) rectangle ++(0.2,100.3);  % Blue line
-        \node[fill=dmax_lightblue, anchor=north west, inner sep=3mm] at ([yshift=-67mm,xshift=-109.5mm] current page.north) { {\hspace*{2.9cm}\color{white}\begin{varwidth}{\linewidth}\singlespacing\normalfont\headerfont\fontsize{10mm}{10mm}\selectfont #1\end{varwidth}}}}}
+% Define a command that produces a title for TOC pages and the bibliography.
+\newcommand{\toctitle}[1]{
+    \tikz[remember picture, overlay, anchor=west] {
+        %\draw[fill=dmax_lightblue,draw=none] (-2.7,-30.8) rectangle ++(0.2,100.3);  % Blue line
+        \node[fill=dmax_lightblue, anchor=north west, inner xsep=3mm, inner ysep=depth("y")+3mm] at ([yshift=-67mm,xshift=-109.5mm] current page.north) { {\hspace*{2.8cm}\color{white}\begin{varwidth}{\linewidth}\singlespacing\normalfont\headerfont\fontsize{10mm}{10mm}\selectfont #1\end{varwidth}}}}}
 
 % Redefining the titlepage command
 \renewcommand\maketitle{\begin{titlepage}%
@@ -302,7 +315,7 @@
     \noindent\includegraphics[scale=1.1]{figures/ch0-glasgow_logo.pdf}
     \vskip 8em
     \begin{tikzpicture}[remember picture, overlay, anchor=west]
-        \draw[fill=dmax_lightblue,draw=none] (-2.7,-19.2) rectangle ++(0.2,30.3);
+        %\draw[fill=dmax_lightblue,draw=none] (-2.7,-19.2) rectangle ++(0.2,30.3); % Blue line
         
         \node[fill=dmax_lightblue, anchor=north west, inner sep=4mm]
         at ([yshift=-98mm, xshift=-110.45mm] current page.north) {
@@ -337,17 +350,19 @@
 
 % The preamble environment
 \newenvironment{preamble}[1][]
-    {\pagestyle{empty}
+    {\pagestyle{phdpagestyle}
     
     \ifx&#1&%
        \vspace*{0mm}
     \else
         \begin{tikzpicture}[remember picture, overlay, anchor=west]
-            \draw[fill=dmax_lightblue,draw=none] (-2.7,-30.8) rectangle ++(0.2,100.3);  % Blue line
+            %\draw[fill=dmax_lightblue,draw=none] (-2.7,-30.8) rectangle ++(0.2,100.3);  % Blue line
             
-            \node[fill=dmax_lightblue, anchor=north west, inner sep=3mm]
+            % \node[fill=dmax_lightblue, anchor=north west, inner sep=3mm] at ([yshift=-67mm,xshift=-109.5mm] current page.north) { {\hspace*{2.9cm}\color{white}\begin{varwidth}{\linewidth}\singlespacing\normalfont\headerfont\fontsize{10mm}{10mm}\selectfont #1\end{varwidth}}}}
+            
+            \node[fill=dmax_lightblue, anchor=north west, inner xsep=3mm, inner ysep=depth("y")+3mm]
             at ([yshift=-67mm,xshift=-109.5mm] current page.north) {
-                {\hspace*{2.9cm}\color{white}\begin{varwidth}{\linewidth}\singlespacing\headerfont\huge\noindent#1\par\end{varwidth}}
+                {\hspace*{2.8cm}\color{white}\begin{varwidth}{\linewidth}\singlespacing\headerfont\fontsize{10mm}{10mm}\selectfont\noindent#1\par\end{varwidth}}
             };
         \end{tikzpicture}
     \fi
@@ -360,10 +375,45 @@
     \pagestyle{plain}
 }
 
+% This command populates the page to the left before a part is introduced; although for now the tikz illustration is commented out.
+\newcommand{\cleardoublepagebeforepart}[1][]{
+    \clearpage
+    
+    \if@twoside
+        \ifodd
+            \c@page
+        \else
+            \hbox{}
+            \thispagestyle{empty}
+            
+            % {\begin{tikzpicture}[remember picture, overlay, anchor=east]%
+            %     \node[fill=dmax_darkblue, anchor=north west, inner xsep=1000mm, inner ysep=depth("y")+5mm]
+            %     at ([yshift=-84mm,xshift=-109mm] current page.north) {
+            %     {\hspace*{2.55cm}\color{dmax_darkblue}\begin{varwidth}{\linewidth}\linespread{1.1}\headerfont\fontsize{12mm}{12mm}\selectfont\raggedright\flushright#1\par\end{varwidth}}
+            %     };
+            % \end{tikzpicture}}
+            
+            \newpage
+        
+            \if@twocolumn
+                \hbox{}
+                \newpage
+            \fi
+        \fi
+    \fi}
+
 % Part introductory page
 \renewcommand{\part}[3][] {
-    \cleartoleftpage
+    \clearpage
+    \ifodd\value{page}\hbox{}\thispagestyle{empty}\newpage\fi
+    \cleardoublepagebeforepart[#1]
     \thispagestyle{empty}
+    
+    % This is because we've added some pages beforehand, which 
+    \ifnum \thepage = 3
+        \setcounter{page}{1}
+    \fi
+    
     \ifnum \c@secnumdepth >-2\relax
         \refstepcounter{part}%
         \addcontentsline{toc}{part}{\thepart\hspace{1em}#1}%
@@ -372,22 +422,22 @@
     \fi
     \markboth{}{}%
     
-    {\begin{tikzpicture}[remember picture, overlay, anchor=east]
+    {\begin{tikzpicture}[remember picture, overlay, anchor=east]%
         
-        \draw[fill=dmax_darkblue,draw=none] (19.3,-26.4) rectangle ++(0.2,30.3);  % Blue line
+        %\draw[fill=dmax_darkblue,draw=none] (-2.7,-26.4) rectangle ++(0.2,100.3);  % Blue line
         
-        \node[anchor=north east]
-        at ([yshift=-72mm,xshift=108mm] current page.north) {
+        \node[anchor=north west]
+        at ([yshift=-72mm,xshift=-80mm] current page.north) {
             {\begin{varwidth}{\linewidth}\singlespacing\headerfont\fontsize{8mm}{8mm}\selectfont Part~\thepart\par\end{varwidth}\hspace*{2.8cm}}
         };
-
-        \node[fill=dmax_darkblue, anchor=north east, inner sep=4mm]
-        at ([yshift=-84mm,xshift=105mm] current page.north) {
-            {\color{white}\begin{varwidth}{\linewidth}\linespread{1.1}\headerfont\fontsize{12mm}{12mm}\selectfont\raggedright\flushright#3\par\end{varwidth}\hspace*{2.3cm}}
+        
+        \node[fill=dmax_darkblue, anchor=north west, inner xsep=5mm, inner ysep=depth("y")+5mm]
+        at ([yshift=-84mm,xshift=-109mm] current page.north) {
+        {\hspace*{2.55cm}\color{white}\begin{varwidth}{\linewidth}\linespread{1.1}\headerfont\fontsize{12mm}{12mm}\selectfont\raggedright\flushright#1\par\end{varwidth}}
         };
-
+        
         \node[anchor=north west]
-        at ([yshift=-134mm,xshift=-92mm] current page.north) {
+        at ([yshift=-138mm,xshift=-80mm] current page.north) {
             {\begin{varwidth}{\linewidth}\linespread{1.25}\huge\metafont\raggedright\emph{#2}\par\end{varwidth}}
         };
     \end{tikzpicture}}
@@ -403,16 +453,16 @@
 
 \begin{tikzpicture}[remember picture, overlay, anchor=west]
     
-    \draw[fill=dmax_lightblue,draw=none] (-2.7,-22.8) rectangle ++(0.2,100.3);  % Blue line
+    %\draw[fill=dmax_lightblue,draw=none] (-2.7,-22.8) rectangle ++(0.2,100.3);  % Blue line
     
     \node[anchor=north west]
     at ([yshift=-72mm,xshift=-80mm] current page.north) {
         {\begin{varwidth}{\linewidth}\singlespacing\headerfont\fontsize{8mm}{8mm}\selectfont \@chapapp~\thechapter\par\end{varwidth}\hspace*{2.8cm}}
     };
     
-    \node[fill=dmax_lightblue, anchor=north west, inner sep=3mm]
+    \node[fill=dmax_lightblue, anchor=north west, inner xsep=3mm, inner ysep=depth("y")+3mm]
     at ([yshift=-84mm, xshift=-109mm] current page.north) {
-    {\hspace*{2.8cm}\color{white}\begin{varwidth}{\linewidth}\linespread{1.1}\headerfont\fontsize{10mm}{10mm}\selectfont#1\par\end{varwidth}}
+    {\hspace*{2.8cm}\color{white}\begin{varwidth}{\linewidth}\linespread{1.1}\headerfont\fontsize{11mm}{11mm}\selectfont#1\par\end{varwidth}}
     };
 \end{tikzpicture}
     \vskip 30mm
@@ -432,17 +482,32 @@
 % Add a page for separating out appendices
 \def\appendicestitle{
     \clearpage
+    \ifodd\value{page}\hbox{}\thispagestyle{empty}\newpage\fi
+    \cleardoublepagebeforepart[Appendices]
+    \thispagestyle{empty}
     \phantomsection
     \addcontentsline{toc}{part}{Appendices}
     \thispagestyle{empty}
     
-    {\begin{tikzpicture}[remember picture, overlay, anchor=east]
-        \draw[fill=dmax_darkblue,draw=none] (19.3,-26.4) rectangle ++(0.2,30.3);  % Blue line
+    {\begin{tikzpicture}[remember picture, overlay, anchor=east]%
         
-        \node[fill=dmax_darkblue, anchor=north east, inner sep=4mm]
-        at ([yshift=-84mm,xshift=105mm] current page.north) {
-            {\color{white}\begin{varwidth}{\linewidth}\linespread{1.1}\headerfont\fontsize{12mm}{12mm}\selectfont Appendices\par\end{varwidth}\hspace*{2.3cm}}
+        %\draw[fill=dmax_darkblue,draw=none] (-2.7,-26.4) rectangle ++(0.2,100.3);  % Blue line
+        
+        %\node[anchor=north west]
+        %at ([yshift=-72mm,xshift=-80mm] current page.north) {
+        %    {\begin{varwidth}{\linewidth}\singlespacing\headerfont\fontsize{8mm}{8mm}\selectfont Part~\thepart\par\end{varwidth}\hspace*{2.8cm}}
+        %};
+        
+        \node[fill=dmax_darkblue, anchor=north west, inner xsep=5mm, inner ysep=depth("y")+5mm]
+        at ([yshift=-84mm,xshift=-109mm] current page.north) {
+        {\hspace*{2.55cm}\color{white}\begin{varwidth}{\linewidth}\linespread{1.1}\headerfont\fontsize{12mm}{12mm}\selectfont\raggedright\flushright Appendices\par\end{varwidth}}
         };
+        
+        \node[anchor=north west]
+        at ([yshift=-138mm,xshift=-80mm] current page.north) {
+            {\begin{varwidth}{\linewidth}\linespread{1.25}\huge\metafont\raggedright\emph{Included in the appendices for this thesis is a discussion of the SimIIR framework, and work that was undertaken to incorporate state and agency into the Complex Searcher Model.}\par\end{varwidth}}
+        };
+        
     \end{tikzpicture}}
 
     \clearpage
@@ -450,20 +515,25 @@
 
 % Restyle the list of abbreviations and any glossary-related entry with my custom styling.
 % i.e. apply the blue box to the item, and change the font for the description (and item name).
-\renewcommand{\glsnamefont}[1]{\large\headerfont\color{white}\colorbox{dmax_lightblue}{#1}}
-\renewcommand{\glossentrydesc}[1]{\large\metafont\glsdesc{#1}}
+%\renewcommand{\glsnamefont}[1]{\large\headerfont\color{white}\colorbox{dmax_lightblue}{#1}}
+%\renewcommand{\glossentrydesc}[1]{\large\metafont\glsdesc{#1}}
+
+\renewcommand*{\glsclearpage}{\cleardoublepage}
+\newcommand{\glossarysee}[1]{, \emph{see}~\colorbox{dmax_lightblue}{\color{white}\headerfont#1}}
 
 % Creates a new glossary style for the thesis.
 % Note the longtable width should equal 160mm across (roughly). Adjust as required.
 \newglossarystyle{thesisglossary}{%
- \renewenvironment{theglossary}%
-     {\begin{longtable}{p{40mm}p{120mm}}}%
-     {\end{longtable}}%
-  \renewcommand*{\glossaryheader}{}%
-  \renewcommand*{\glsgroupheading}[1]{}%
-  \renewcommand*{\glossaryentryfield}[5]{%
-    \glstarget{##1}{##2} & \linespread{1.1}\large##3\glspostdescription\space ##5\\}%
-  \renewcommand*{\glossarysubentryfield}[6]{%
-     & \glstarget{##2}{\strut}\linespread{1.1}\large##4\glspostdescription\space ##6\\}%
-  %\renewcommand*{\glsgroupskip}{ & \\}%
+    \renewenvironment{theglossary}%
+         {\renewcommand{\arraystretch}{1.4}\begin{longtable}{p{40mm}p{120mm}}}%
+         {\end{longtable}}%
+         
+    \renewcommand*{\glossaryheader}{}%
+    
+    \renewcommand*{\glsgroupheading}[1]{\vspace{2.5mm}\darkblueboxbold{\Large{##1}}\\}%
+    
+    \renewcommand*{\glossaryentryfield}[5]{%
+        \glstarget{##1}{\blueboxbold{\large##2}} & \onehalfspacing\large\normalfont##3\glspostdescription\space ##5\\}%
+        
+    \renewcommand*{\glsgroupskip}{ & \\}%
 }

@@ -1,0 +1,48 @@
+%!TEX TS-program = xelatex
+%!TEX root = ../maxwell2018thesis.tex
+
+% Ensure that \makeglossaries is called before anything else is done regarding glossaries/abbreviations.
+\glsSetCompositor{-}
+\makeglossaries
+
+% Abbreviations, separate from glossary entries.
+%
+% If you want a new abbreviation referring to a glossary entry, use the following template.
+%
+% \newglossaryentry{acr:ACRONYM}{
+%     type=\acronymtype,
+%     name={ACRONYM},
+%     first={\emph{SPELL IT OUT}\glsadd{glos:ACRONYM}},
+%     description={SPELL IT OUT\glossarysee{\gls{glos:ACRONYM}}},
+% }
+%
+% If you want an abbreviation on its own, use the following template.
+%
+% \newglossaryentry{acr:ACRONYM}{
+%     type=\acronymtype,
+%     name={ACRONYM},
+%     first={\emph{SPELL IT OUT}},
+%     description={SPELL IT OUT WITH A SHORT DESCRIPTION},
+% }
+
+
+\newglossaryentry{acr:ir}{
+    type=\acronymtype,
+    name={IR},
+    first={\emph{Information Retrieval (IR)}\glsadd{glos:ir}},
+    description={Information Retrieval\glossarysee{\gls{glos:ir}}},
+}
+
+\newglossaryentry{acr:iir}{
+    type=\acronymtype,
+    name={IIR},
+    first={\emph{Interactive Information Retrieval (IIR)}\glsadd{glos:iir}},
+    description={Interactive Information Retrieval\glossarysee{\gls{glos:iir}}},
+}
+
+\newglossaryentry{acr:www}{
+    type=\acronymtype,
+    name={WWW},
+    first={\emph{World Wide Web (WWW)}\glsadd{glos:www}},
+    description={World Wide Web\glossarysee{\gls{glos:www}}},
+}
