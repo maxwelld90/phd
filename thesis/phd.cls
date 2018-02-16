@@ -304,7 +304,9 @@
 \newcommand{\toctitle}[1]{
     \tikz[remember picture, overlay, anchor=west] {
         %\draw[fill=dmax_lightblue,draw=none] (-2.7,-30.8) rectangle ++(0.2,100.3);  % Blue line
-        \node[fill=dmax_lightblue, anchor=north west, inner xsep=3mm, inner ysep=depth("y")+3mm] at ([yshift=-67mm,xshift=-109.5mm] current page.north) { {\hspace*{2.8cm}\color{white}\begin{varwidth}{\linewidth}\singlespacing\normalfont\headerfont\fontsize{10mm}{10mm}\selectfont #1\end{varwidth}}}}}
+        
+        %\node[fill=dmax_lightblue, anchor=north west, inner xsep=3mm, inner ysep=depth("y")+3mm] at
+        \node[fill=dmax_lightblue, anchor=north west, inner ysep=4mm, inner xsep=4mm, minimum height=18mm, minimum width=1mm] at  ([yshift=-67mm,xshift=-110.5mm] current page.north) { {\hspace*{2.8cm}\color{white}\begin{varwidth}{\linewidth}\singlespacing\normalfont\headerfont\fontsize{10mm}{10mm}\selectfont #1\end{varwidth}}}}}
 
 % Redefining the titlepage command
 \renewcommand\maketitle{\begin{titlepage}%
@@ -360,8 +362,7 @@
             
             % \node[fill=dmax_lightblue, anchor=north west, inner sep=3mm] at ([yshift=-67mm,xshift=-109.5mm] current page.north) { {\hspace*{2.9cm}\color{white}\begin{varwidth}{\linewidth}\singlespacing\normalfont\headerfont\fontsize{10mm}{10mm}\selectfont #1\end{varwidth}}}}
             
-            \node[fill=dmax_lightblue, anchor=north west, inner xsep=3mm, inner ysep=depth("y")+3mm]
-            at ([yshift=-67mm,xshift=-109.5mm] current page.north) {
+            \node[fill=dmax_lightblue, anchor=north west, inner ysep=4mm, inner xsep=4mm, minimum height=18mm, minimum width=1mm] at ([yshift=-67mm,xshift=-110.5mm] current page.north) {
                 {\hspace*{2.8cm}\color{white}\begin{varwidth}{\linewidth}\singlespacing\headerfont\fontsize{10mm}{10mm}\selectfont\noindent#1\par\end{varwidth}}
             };
         \end{tikzpicture}
@@ -427,7 +428,7 @@
         %\draw[fill=dmax_darkblue,draw=none] (-2.7,-26.4) rectangle ++(0.2,100.3);  % Blue line
         
         \node[anchor=north west]
-        at ([yshift=-72mm,xshift=-80mm] current page.north) {
+        at ([yshift=-72.2mm,xshift=-80mm] current page.north) {
             {\begin{varwidth}{\linewidth}\singlespacing\headerfont\fontsize{8mm}{8mm}\selectfont Part~\thepart\par\end{varwidth}\hspace*{2.8cm}}
         };
         
@@ -460,9 +461,10 @@
         {\begin{varwidth}{\linewidth}\singlespacing\headerfont\fontsize{8mm}{8mm}\selectfont \@chapapp~\thechapter\par\end{varwidth}\hspace*{2.8cm}}
     };
     
-    \node[fill=dmax_lightblue, anchor=north west, inner xsep=3mm, inner ysep=depth("y")+3mm]
-    at ([yshift=-84mm, xshift=-109mm] current page.north) {
-    {\hspace*{2.8cm}\color{white}\begin{varwidth}{\linewidth}\linespread{1.1}\headerfont\fontsize{11mm}{11mm}\selectfont#1\par\end{varwidth}}
+    %\node[fill=dmax_lightblue, anchor=north west, inner xsep=3mm, inner ysep=depth("y")+3mm]
+    \node[fill=dmax_lightblue, anchor=north west, inner ysep=4mm, inner xsep=4mm, minimum height=18mm, minimum width=1mm]
+    at ([yshift=-84mm, xshift=-110.5mm] current page.north) {
+    {\hspace*{2.8cm}\color{white}\begin{varwidth}{\linewidth}\linespread{1.2}\headerfont\fontsize{11mm}{11mm}\selectfont#1\par\end{varwidth}}
     };
 \end{tikzpicture}
     \vskip 30mm
