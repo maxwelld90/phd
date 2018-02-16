@@ -319,8 +319,8 @@
     \begin{tikzpicture}[remember picture, overlay, anchor=west]
         %\draw[fill=dmax_lightblue,draw=none] (-2.7,-19.2) rectangle ++(0.2,30.3); % Blue line
         
-        \node[fill=dmax_lightblue, anchor=north west, inner sep=4mm]
-        at ([yshift=-98mm, xshift=-110.45mm] current page.north) {
+        \node[fill=dmax_lightblue, anchor=north west, inner sep=5mm]
+        at ([yshift=-98mm, xshift=-110.75mm] current page.north) {
             {\hspace*{2.8cm}\color{white}\begin{varwidth}{\linewidth}\singlespacing\headerfont\fontsize{10.5mm}{12mm}\selectfont\noindent\@title\par\end{varwidth}}
         };
     \end{tikzpicture}
