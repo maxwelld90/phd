@@ -138,7 +138,11 @@
 % Captions -- use the metafont for caption descriptions, and set the line spacing as appropriate.
 %\captionsetup[figure]{font={\headerfont},name={Figure},labelsep=period}
 \DeclareCaptionFont{captionfont}{\metafont}
-\usepackage[font={captionfont,stretch=1.25},labelfont=bf]{caption}
+\usepackage[font={captionfont,stretch=1.5},labelfont=bf]{caption}
+
+% Left-align captions, and change the way in which caption text is displayed (e.g. Figure x in blue box).
+\DeclareCaptionFormat{cancaption}{\blueboxbold{#1}\hspace*{2mm}#3\par} % Normal format actually
+\captionsetup{format=cancaption}
 
 %%%%%%%%%%
 %%% Table of Contents Styling
