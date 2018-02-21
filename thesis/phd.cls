@@ -57,6 +57,7 @@
 \usepackage{bibentry}
 \usepackage{emptypage} % Together with report openright, blanks the left page before a new chapter starts.
 \usepackage[nopostdot,acronym,savewrites,style=superborder]{glossaries}
+\usepackage[most]{tcolorbox}
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
@@ -94,6 +95,8 @@
 % Define colour styles to fit "my" colours
 \definecolor{dmax_lightblue}{HTML}{0072C6}
 \definecolor{dmax_darkblue}{HTML}{00243D}
+\definecolor{dmax_red}{HTML}{89171F}
+\definecolor{dmax_green}{HTML}{377A31}
 
 % Blue boxes!
 \setlength\fboxsep{2mm} % Applies padding to the blue boxes.
@@ -542,4 +545,22 @@
         \glstarget{##1}{\blueboxbold{\large##2}} & \onehalfspacing\large\normalfont##3\glspostdescription\space ##5\\}%
         
     \renewcommand*{\glsgroupskip}{ & \\}%
+}
+
+% Colour box for listing publications.
+\newtcolorbox{publications_box}[2][]{%
+    colback=dmax_lightblue!0!white,
+    colframe=dmax_lightblue!100!black,
+    fonttitle=\headerfont\large,
+    fontupper=\noindent,
+    title=#2,
+    sharp corners,
+    enhanced,
+    toptitle=5pt,
+    bottomtitle=5pt,
+    left=5pt,
+    right=5pt,
+    frame hidden,
+    borderline north={10mm}{0pt}{dmax_lightblue},
+    borderline south={1mm}{0pt}{dmax_lightblue}
 }
