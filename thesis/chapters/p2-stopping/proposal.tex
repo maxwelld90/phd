@@ -2,10 +2,67 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[Models and Proposal]{Research Proposal and\\IIR Modelling}\label{chap:proposal}
-Having established the prior work that has been undertaken in the field of~\gls{acr:iir} concerning stopping behaviours, we in this chapter outline the approaches we follow in the remainder of the thesis, considering: \emph{(i)} the different stopping strategies that we will employ (Section~\ref{sec:proposal:strategies}); \emph{(ii)} introduce the \emph{Complex Searcher Model (CSM)}, our development of state of the art user models (Section~\ref{sec:proposal:csm}); and \emph{(iii)} provide a detailed explanation of the methodology that we will employ in the remainder of the thesis (Section~\ref{sec:proposal:method}).
+Having established the prior work that has been undertaken in the field of~\gls{acr:iir} concerning stopping behaviours, this chapter outlines the various components that will be used in the remainder of the thesis. In particular, we focus on: \emph{(i)} considering the \emph{Complex Searcher Model (CSM)}, our state of the art model designed to enumerate the search process from a searcher's point of view (Section~\ref{sec:proposal:csm}); \emph{(ii)} introducing a number of different \emph{stopping strategies} that we will employ within the CSM (Section~\ref{sec:proposal:strategies}); and \emph{(iii)} provide a detailed explanation of the methodology that we will employ in subsequent contributory chapters of the thesis (Chapters~\ref{chap:temporal},~\ref{chap:snippets}, and~\ref{chap:diversity}, as detailed in Section~\ref{sec:proposal:method}).
+
+\section{The Complex Searcher Model}\label{sec:proposal:csm}
+
+- we take the models from previous works, and bring them together to produce the complex searcher model.
+
+- we introduce the Complex Searcher Model, derived from previous works.
+- based upon probabilities of interaction.
+
+\subsection{CSM Mark I}
+This is Mark I of the model.
+
+\subsection{CSM Mark II}
+This is Mark II of the model, with the additional stopping decision point.
+
+\subsection{Components of the CSM}
+What are the key components of the CSM, and what literature has been examined, in order to justify each of the blocks being present? Appendix~\ref{appx:simiir} provides an in-depth overview of the different components of the simulator framework used, which are essentially analogous to the blocks and decision points of the CSM.
+
+\subsubsection{Query Formulation}
+
+\subsubsection{Decision Making}
+The searcher has to make a number of decision points throughout the search process.
+
+\subsubsection{Document Examination}
+
+\subsubsection{Search Context}
+
+\subsection{Considering State and Agency}
+- based upon probabilities of interaction
+- but this is not the only way in which a user model can be instantiated.
+- can develop autonomous agents in which the model is instantiated in such a way so that its decisions are deterministic, not stochastic.
+- autonomous stuff is commonplace nowadays, recent example is the rocket launch.
+- in search, autonomous agents were commonplace in the mid 2000's, with lots of research going into the exploration of search agency. (brief bit lifted from cikm 2016 paper).
+
+- state is incorporated. indeed, we can argue that even the CSM I/II models consider state too -- but to a lesser degree. for example, the csm is able to consider what documents have been previously clicked on, or saved as useful.
+
+- indeed, this was explored in detail, but is not provided in great depth here.
+- refer to Appendix~\ref{appx:agency} for an analysis of incorporating state and agency within the CSM.
+
+- however, this thesis focuses primarily on the notion of stochastic models of interaction, i.e. decision points are determined by the roll of a dice. this in itself introduces a number of additional issues that must be addressed (e.g. the law of averages) which are detailed in Section~\ref{sec:proposal:method:simulations}.
+
+\section{Stopping Decision Points}
+- as alluded to in the decision making section, a searcher is required to make a number of decisions as he or she undertakes the complex search tasks.
+- one set of decisions is the point at which they should \emph{stop}. Within Mark II of the CSM, we have encoded a total of three different \emph{stopping decision points}.
+- Now we have illustrated our CSM, we examine the different stopping decision points within the model.
+
+- Of central focus to this thesis are the three different stopping decision points that we consider in the Complex Searcher Model (both Mark I and II).
+
+- These are:
+    - snippet level stopping, referred to as query level stopping
+    - query level stopping
+    - session level stopping.
+
+How these are operationalised is dependent upon a variety of factors. For example, the task type is highly likely to influence the session level stopping strategy. The literature, as shown in Section~\ref{sec:stopping_background:heuristics} provides a number of heuristics to potentially operationalise stopping.
+
+These are primarily geared towards the concept of snippet level stopping.
 
 \section{Selected Stopping Strategies}\label{sec:proposal:strategies}
 As previously illustrated in Section~\ref{sec:stopping_background:heuristics}, a number of different~\glspl{glos:stopping_heuristic} were defined in the information seeking and ecology literature. These were proposed as heuristics which were believed by the authors to quantify and/or explain when searchers stopped searching, or when animals stopped foraging for food~\cite{maxwell2015stopping_strategies}. In this section, we take the rules defined in the literature and operationalise them so that they can be subsequently implemented and tested. Stopping heuristics are operationalised as a series of different~\gls{glos:stopping_strategy}, with each rule assigned an identifier. We split this section into the \todo{seven} broad categories of stopping heuristics that were analysed, with each operationalised stopping strategy listed, with detail provided for the criterion/criteria that must be satisfied before a user employing such a strategy would stop. \todo{This is for snippet level stopping only. Clarify?}
+
+\noindent\blueboxbold{A Note on Usefulness} In this section, we refer to the concept of a result summary being \emph{useful} and \emph{unhelpful}. By this, we mean that a summary appears to be of use for a searcher to satisfy his or her information need. In the context of simulation, this notion of relevance does not necessarily correspond to the judgement made in a gold standard that is being compared to: the notion of usefulness in this context represents the decisions that are taken by a searcher as to what constitutes a useful or unhelpful document/result summary.
 
 \subsection{Fixed Depth}
 The fixed depth stopping strategy is based upon an assumption held across many of the models and measures that are widely used throughout the~\gls{acr:ir} community. This assumption is that a searcher, when examining a list of ranked results for their query, will browse to a \emph{fixed depth} before stopping -- the roots of which can be traced back to the Cranfield Paradigm as discussed in Section~\ref{chap:intro}. Examples of use include the basic stopping model encoded within~\gls{acr:patk}. The assumption is also widely used in the simulation of interaction. For example,~\cite{azzopardi2011economics} conducted a large-scale simulated analysis, where simulated users examined content to depths ranging from $5$ to $1,000$ ($1,000$ is typically assumed in TREC style experimentation, where a single query is issued). Given the wide use of this fixed depth approach in historical and contemporary~\gls{acr:ir} research, we consider this stopping strategy as the baseline approach to which we will be comparing the more advanced, \emph{adaptive} stopping strategies.
@@ -28,7 +85,7 @@ Given the description of the stopping strategy above, we note that the fixed dep
 
 Despite the na\"{i}evty of the approach, the other main drawback of such an approach is exposed when a searcher complying with such a strategy issues a poor performing query. This is demonstrated in Figure~\ref{fig:ss1}, with two~\glsplural{acr:serp} presented side by side. Given a searcher's desire to find pages that provide information regarding \emph{CIKM 2015}\footnote{CIKM 2015 was a conference held in Melbourne, Australia, in October 2015. The paper that initially proposed many of these stopping strategies~\cite{maxwell2015stopping_strategies} was indeed presented at this conference.}, two queries are issued: the query on the left yielding poorer results than the query on the right, as denoted by the ticks and crosses, for useful and unhelpful result summaries, respectively. With \blueboxbold{SS1} @4 set, four result summaries are always examined before stopping, regardless of their perceived usefulness. As a result of this, na\"{i}vely examining four documents for the query on the left is by and large a waste of the searcher's time.
 
-\subsection{Tolerance to Non-Usefulness}
+\subsection{Searcher Frustration}
 The second category of stopping strategies that we propose in this thesis are those that consider a searcher's \emph{tolerance to non-usefulness}. Given a set of result summaries presented on a~\gls{acr:serp}, how many would a searcher be prepared to judge to be of no use before they become frustrated, and subsequently abandon their query?
 
 As detailed in Section~\ref{sec:stopping_background:heuristics}, a number of researchers have proposed stopping heuristics that consider non-usefulness (or \emph{non-relevance}, as defined in the literature). The rule intrinsically makes sense for exhaustive searches~\cite{kraft1979stopping_rules}. As an example, when tasked to find as many documents as possible related to different species of animals that are endangered, becoming disgusted with the presented~\gls{acr:serp} when a lack of new species are shown would be a suitable point at which to break and reformulate a new query, or abandon the search session altogether.
@@ -37,20 +94,40 @@ From the heuristics defined by~\citealt{cooper1973retrieval_effectiveness_ii} an
 
 \begin{itemize}
     
-    \item[]{\blueboxbold{SS2}} Blah
+    \item[]{\blueboxbold{SS2}} Under this stopping strategy, the searcher will stop once they have observed $x_2$ unhelpful result summaries. If a result summary has been previously seen in the search session and was considered non-relevant, it is included in the count.
     
-    \item[]{\blueboxbold{SS3}} Blah
+    \item[]{\blueboxbold{SS3}} Similar to the stopping strategy defined above above, a searcher employing this stopping strategy will stop once they have observed $x_3$ unhelpful result summaries \emph{in a row (contiguously)}. Previously observed unhelpful result summaries within the search session are included in the count.
     
 \end{itemize}
 
-Intuitively, these strategies will mean that the simulated searcher adapts their interaction with a ranked list of results depending upon the performance of the underlying query. For example, a ranked list is judged by a simulated searcher as [R,N,N,R,N,N,N], where R and N1 denote relevant and non-relevant items respectively. Under SS2 , with x2 = x3 = 3, the simulated searcher would stop at rank five. Under SS3, the simulated searcher would stop at rank seven.
-Since documents are examined when the associated snip- pet is considered relevant (see Figure 1), a simulated searcher may revise their opinion of the amount of relevant informa- tion observed once they see the document. A simulated searcher may for example inspect the first snippet thinking it is relevant, and then examine the document. The docu- ment is subsequently considered non-relevant, meaning the initial R is changed to a N. This updates the count, so that under a stopping strategy with revised relevance, simulated searchers would stop at rank three in the list shown above using SS2 , and similarly for SS3 . This therefore introduces two variants of SS2 and SS3, which were found in a pilot study to perform slightly better. Therefore, we only report the revised relevance variants of SS2 and SS3 in this paper.
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch4-ss23.pdf}}
+    \caption[Examples of frustration rules \blueboxbold{SS2} and \blueboxbold{SS3}]{An example of the two frustration rules, \blueboxbold{SS2} (left) and \blueboxbold{SS3} (right), both using a parameter of 3 unhelpful result summaries, and under the same query and results. Given that \blueboxbold{SS2} considers the \textbf{total} number of result summaries judged to be unhelpful, a searcher employing this stopping strategy would stop at rank 5 in the example above. Considering a set of contiguous unhelpful summaries, a searcher using \blueboxbold{SS3} would stop at rank 7.}
+    \label{fig:ss23}
+\end{figure}
 
-\subsection{Considering the Difference}
+As mentioned previously, these two stopping strategies are the first that we enumerate where a searcher would begin to \emph{adapt} their interactions with a ranked list of results, depending upon the performance of the underlying query that was issued. As such, this behaviour inherently makes these stopping strategies more realistic~\cite{moffat2013users_versus_models}. Figure~\ref{fig:ss23} illustrates this adaption in action, with the same query and associated results. On the left of the figure is an illustration of when a searcher employing \blueboxbold{SS2} would stop, and on the right, an example of \blueboxbold{SS3}. We use $x_2 = x_3 = 3$. Under \blueboxbold{SS2}, a searcher would stop at rank 5, while a searcher would stop at rank 7 when employing \blueboxbold{SS3}.
+
+% Intuitively, these strategies will mean that the simulated searcher adapts their interaction with a ranked list of results depending upon the performance of the underlying query. For example, a ranked list is judged by a simulated searcher as [R,N,N,R,N,N,N], where R and N1 denote relevant and non-relevant items respectively. Under SS2 , with x2 = x3 = 3, the simulated searcher would stop at rank five. Under SS3, the simulated searcher would stop at rank seven.
+% Since documents are examined when the associated snip- pet is considered relevant (see Figure 1), a simulated searcher may revise their opinion of the amount of relevant informa- tion observed once they see the document. A simulated searcher may for example inspect the first snippet thinking it is relevant, and then examine the document. The docu- ment is subsequently considered non-relevant, meaning the initial R is changed to a N. This updates the count, so that under a stopping strategy with revised relevance, simulated searchers would stop at rank three in the list shown above using SS2 , and similarly for SS3 . This therefore introduces two variants of SS2 and SS3, which were found in a pilot study to perform slightly better. Therefore, we only report the revised relevance variants of SS2 and SS3 in this paper.
 
 \subsection{Goal/Satisfaction Based}
+Analogous to the frustration rule are the satiation-based stopping rules. Here, rather than focus on the frustration or disgust that a searcher might experience when confronted with unhelpful result summaries, satisfaction based rules consider a searcher encountering a number of \emph{useful} result summaries (or documents) before deciding to stop.
+
+\begin{itemize}
+    
+    \item[]{\blueboxbold{SS4}} A searcher using this stopping strategy will stop examining content after encountering $x_4$ useful result summaries.
+    
+\end{itemize}
+
+\subsection{Considering the Difference}
+Is something sufficiently different?
 
 \subsection{Time-Based Rules}
+What about time? From ecology...
+
 
 \subsection{Combination Rules}
 
@@ -59,33 +136,7 @@ Combination rule by~\citealt{kraft1979stopping_rules} that considers satiation a
 Combination rule that is defined in Foraging Theory.
 
 \subsection{Optimal Foraging Rule}
-
-\section{The Complex Searcher Model}\label{sec:proposal:csm}
-
-- we take the models from previous works, and bring them together to produce the complex searcher model.
-
-- we introduce the Complex Searcher Model, derived from previous works.
-- based upon probabilities of interaction.
-
-\subsection{CSM Mark I}
-
-\subsection{CSM Mark II}
-
-\subsection{Stopping Decision Points}
-
-\subsection{Considering State and Agency}
-- based upon probabilities of interaction
-- but this is not the only way in which a user model can be instantiated.
-- can develop autonomous agents in which the model is instantiated in such a way so that its decisions are deterministic, not stochastic.
-- autonomous stuff is commonplace nowadays, recent example is the rocket launch.
-- in search, autonomous agents were commonplace in the mid 2000's, with lots of research going into the exploration of search agency. (brief bit lifted from cikm 2016 paper).
-
-- state is incorporated. indeed, we can argue that even the CSM I/II models consider state too -- but to a lesser degree. for example, the csm is able to consider what documents have been previously clicked on, or saved as useful.
-
-- indeed, this was explored in detail, but is not provided in great depth here.
-- refer to Appendix~\ref{appx:agency} for an analysis of incorporating state and agency within the CSM.
-
-- however, this thesis focuses primarily on the notion of stochastic models of interaction, i.e. decision points are determined by the roll of a dice. this in itself introduces a number of additional issues that must be addressed (e.g. the law of averages) which are detailed in Section~\ref{sec:proposal:method:simulations}.
+This is foraging theory... when the rate of gain excee
 
 \section{General Methodology Overview}\label{sec:proposal:method}
 
