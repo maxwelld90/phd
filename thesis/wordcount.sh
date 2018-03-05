@@ -1,0 +1,1 @@
+texcount chapters/*/*.tex

@@ -2,17 +2,87 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[Information Retrieval]{Information Retrieval:\\A History and Background}\label{chap:ir_background}
-We live today in the so-called \emph{Information Age},~\gls{acr:www}
-Cite Van Rijsbergen, not Baeza-Yates
+Searching for information is now commonplace in our daily lives. Given the familiarity and near ubiquity of the search box (as shown below), one may be forgiven into thinking that research and development into search engines focused exclusively upon the domain of \emph{web search}, where the names of \emph{search engines} like \emph{Google}, \emph{Bing}, and \emph{AltaVista} (for those more in tune with history) spring to mind.
 
-\section{A (Brief) History of IR}
+\begin{figure}[h]
+    \centering
+    \vspace{5mm}
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-searchbox.pdf}}
+    \label{fig:searchbox}
+    \vspace{-5mm}
+\end{figure}
 
-\section{The Cranfield Paradigm}
+Research into developing search and indexing technologies that bring near-instantaneous search results has been undertaken for a number of decades, long before the advent of computers and associated technologies, such as the~\gls{acr:www}. The culmination of this research led to the formation of the study of~\gls{acr:ir} and development of~\gls{acr:ir} systems. The key purpose of such a system is to locate information that is relevant to a user's given \emph{query}~\cite{sanderson2012history_of_ir}. Searching through a collection of structured or semi-structured data (primarily text, be can also be images, video, etc.)
 
-\section{Retrieval Models}
 
-\section{Search Tasks}
+which is what this chapter focuses on. We begin with a somewhat brief overview of the key technological advancements that has led to where we are today (Section~\ref{sec:ir_background:history}), before delving into the basics of an~\gls{acr:ir} system, as used for experimentation and evaluation~\ref{sec:ir_background:basics}. We then examine some of the key measured used for the evaluation of such systems in Section~\ref{sec:ir_background:evaluation}, before summarising the chapter.
 
-\section{Evaluating Retrieval Effectiveness}
+\section{A (Brief) History of Information Retrieval}\label{sec:ir_background:history}
+
+
+\section{Libraries and Punchcards}
+
+\section{The Rise of Computers}
+
+\subsection{Indexing}
+
+\subsection{Ranking}
+
+PageRank was rejected, like here \url{http://rakaposhi.eas.asu.edu/f08-cse494-mailarchive/msg00037.html}
+
+\subsection{The World Wide Web}
+
+- the brief history of IR.
+- lift from the paper by Sanderson and Croft.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-search_integration.png}}
+    \caption[Search Integration within Windows\textregistered~10]{An example of search integration within the Windows\textregistered~10 operating system. Here, results for the query \texttt{glasgow university} are shown. Results are returned from the \emph{Bing} search engine; one can also search for files on their local computer.}
+    \label{fig:search_integration}
+\end{figure}
+
+\section{Information Retrieval Basics}\label{sec:ir_background:basics}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-cranfield.pdf}}
+    \caption[The \emph{Cranfield Model}]{Illustration of the Cranfield Model, the \emph{de facto} approach experimental methodology used for~\gls{acr:ir} research. Given a corpus, topic(s) and predetermined judgements, one can compute various evaluation measures for a given retrieval model and search engine.}
+    \label{fig:ir_cranfield}
+\end{figure}
+
+\subsection{Methodologies}
+
+\subsubsection{System-Orientated}
+
+\subsubsection{User-Orientated}
+
+\subsection{Retrieval Models}
+
+\subsubsection{Boolean Model}
+
+\subsubsection{Vector Space Model}
+
+\subsubsection{Probabilistic Models}
+
+\subsubsection{Language Models}
+
+\subsection{Search Tasks}
+
+\section{Evaluating Retrieval Effectiveness}\label{sec:ir_background:evaluation}
+Basic measures and models.
+
+\subsection{Precision}
+
+\subsection{Recall}
+
+\subsection{Mean Average Precision}
+
+\subsection{F-Measure}
+
+\subsection{Towards User-Orientated Measures}
 
 \section{Chapter Summary}
