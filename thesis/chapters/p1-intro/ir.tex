@@ -2,39 +2,21 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[Information Retrieval]{Information Retrieval:\\A History and Background}\label{chap:ir_background}
-Searching for information is now commonplace in our daily lives. Given the familiarity and near ubiquity of the search box (as shown below), one may be forgiven into thinking that research and development into search engines focused exclusively upon the domain of \emph{web search}, where the names of \emph{search engines} like \emph{Google}, \emph{Bing}, and \emph{AltaVista} (for those more in tune with history) spring to mind.
+It may be fair to say that \emph{searching for information} is now a commonplace activity within our daily lives. Given the familiarity and near ubiquity of the search box (as shown below) on contemporary human-computer interfaces, one may be forgiven into na\"{i}vely thinking that research and development into the underlying \emph{search engine} that one interacts with when using the search box was focused exclusively upon the domain of \emph{web search}, where names like \emph{Google}, \emph{Bing} and \emph{AltaVista}\footnote{This name might spring to mind for those with more of a historical knowledge of search engines. The author of this thesis has very vague memories using AltaVista when he was around eight years old\dots} spring to mind. Despite potential negatives that these technologies may bring -- turning us into so-called \emph{shallow thinkers}~\citep{carr2008google_stupid}, for example -- search engines today by and large make our lives easier, allowing us to find that proverbial needle in the haystack with relative ease.
 
 \begin{figure}[h]
     \centering
-    \vspace{5mm}
+    \vspace{4mm}
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-searchbox.pdf}}
     \label{fig:searchbox}
     \vspace{-5mm}
 \end{figure}
 
-Research into developing search and indexing technologies that bring near-instantaneous search results has been undertaken for a number of decades, long before the advent of computers and associated technologies, such as the~\gls{acr:www}. The culmination of this research led to the formation of the study of~\gls{acr:ir} and development of~\gls{acr:ir} systems. The key purpose of such a system is to locate information that is relevant to a user's given \emph{query}~\cite{sanderson2012history_of_ir}. Searching through a collection of structured or semi-structured data (primarily text, be can also be images, video, etc.)
-
-
-which is what this chapter focuses on. We begin with a somewhat brief overview of the key technological advancements that has led to where we are today (Section~\ref{sec:ir_background:history}), before delving into the basics of an~\gls{acr:ir} system, as used for experimentation and evaluation~\ref{sec:ir_background:basics}. We then examine some of the key measured used for the evaluation of such systems in Section~\ref{sec:ir_background:evaluation}, before summarising the chapter.
+The research and development that has gone into search and indexing technologies that allow us to find that proverbial needle has been going on for decades, long before the advent of computers and associated communication technologies, such as the~\gls{acr:www}. This research has led to the formation of the study of~\gls{acr:ir} and the development of contemporary~\gls{acr:ir} systems.\footnote{Some within the~\gls{acr:ir} may consider this to be a contentious point: does the~\gls{acr:ir} community embrace those wishing to contribute? One of the most famous research papers associated with~\gls{acr:ir} discussing Google's \emph{PageRank} algorithm~\citep{page1998pagerank}, was rejected from SIGIR. See \url{http://rakaposhi.eas.asu.edu/f08-cse494-mailarchive/msg00037.html} (last accessed March 6\textsuperscript{th}, 2018) for more information.} With this field of study has come with it the development a \emph{de facto} approach to conducting~\gls{acr:ir} research, along with various retrieval models and means with which to evaluate their effectiveness. It is in this \todo{vain} that we frame this chapter: beginning with a brief history of~\gls{acr:ir} research (Section~\ref{sec:ir_background:history}), we then consider the basic assumptions and approaches used within the field for experimental research (Section~\ref{sec:ir_background:basics}) and how we evaluate these experiments (Section~\ref{sec:ir_background:evaluation})
 
 \section{A (Brief) History of Information Retrieval}\label{sec:ir_background:history}
-
-
-\section{Libraries and Punchcards}
-
-\section{The Rise of Computers}
-
-\subsection{Indexing}
-
-\subsection{Ranking}
-
-PageRank was rejected, like here \url{http://rakaposhi.eas.asu.edu/f08-cse494-mailarchive/msg00037.html}
-
-\subsection{The World Wide Web}
-
-- the brief history of IR.
-- lift from the paper by Sanderson and Croft.
+It has only been over the last two decades that search engines have become commonplace in our daily lives, primarily for the domain of web search -- as discussed in Section~\ref{sec:ir_background:history:www}. Contemporary search technologies are essentially ubiquitous, integrating seamlessly with computer operating systems (as illustrated in Figure~\ref{fig:search_integration}). Computerised~\gls{acr:ir} systems have however existed as far back as the late 1940's (as demonstrated by~\citealp{holmstrom1948univac}), with more primitive approaches (both mechanised and manual categorisation approaches) to sorting and categorising information being developed even earlier.
 
 \begin{figure}[t!]
     \centering
@@ -44,7 +26,53 @@ PageRank was rejected, like here \url{http://rakaposhi.eas.asu.edu/f08-cse494-ma
     \label{fig:search_integration}
 \end{figure}
 
+\subsection{Libraries and Mechanisation}
+Before the advent of computers and technologies such as the~\gls{acr:www}, one of the first locations in which one would consult when looking for information would be a \emph{library}. Containing a large volume of books discussing a virtually unlimited range of categories, the need for providing a means to organise (and thus locate) information with relative ease was of paramount importance. \emph{Catalogues} provide such a way in which to do this, with ancient Greek poet Callimachus being the first person to create such an item, in the third century BC~\citep{eliot2009companion}. A more recognisable approach to categorising content was devised by~\cite{dewey1891dcs} with the \emph{Dewey Decimal System}. The use of cards as an \emph{indexing system} was also considered by individuals such as~\cite{soper1920patent} who invented a system of providing information on what category a card belonged to based upon a punched hole.
+
+\todo{Start here Wed} In order to speed up the process of finding useful materials, mechanisation was also extensively used. Luhn developed a selector system utilising light and punchcards, searching at a rate of up to 600 cards per minute. \todo{Find ref.} As stated by Sanderson and Croft, it was around this time that IR was first used. Jahoda reports that the systems were developed and used until computers rendered them obsolete.
+
+\subsection{The Rise of Computers}
+Hand in hand with other technologies, the capabilities of~\gls{acr:ir} systems have grown in line with the advancement of the systems that they run on. 
+With advancements in technology, double the amount of information.
+So a computer is essentially required to do everything within a reasonable timeframe~\citep{sanderson2012history_of_ir}.
+
+first mention is a computer, UNIVAC, that sorted text. as used by Mitchell, too.
+indexing systems...
+led to developments until the 1960's when the field was formed. we discuss this in section~\ref{sec:ir_background:basics}.
+
+Developments in the field led to the WWW.
+
+
+\subsection{The World Wide Web}\label{sec:ir_background:history:www}
+
+- the brief history of IR.
+- lift section of Web search, summarise. perhaps try and get a screenshot of the first search engine.
+- or yahoo! wasn't really a search engine, more of a big categorisation platform.
+
+- yahoo, akin to the catalogues of libraries, breaking things into different categories!
+- of course, things grew quickly. and before long, such an approach was considered to be untenable.
+- which is where the idea of the query box (in terms of web search) comes in.
+
+- since the basic search engines, we've come a long way.
+- means to try and help improve results is exploitation of query logs (relevance feedback)
+- amongst other things.
+
+- now, we consider the basic constructs of IR research, as this thesis follows through with this.
+
+
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-yahoo.png}}
+    \caption[Screenshot of \emph{Yahoo!} Search, circa 1998]{A screenshot of the landing page of \emph{Yahoo!}, as shown on July 5\textsuperscript{th}, 1998. Notice the link for the 1998 \emph{FIFA World Cup} that was taking place at the time the page was created. More central to this thesis is the inclusion of a list of page categories in conjunction with the now ubiquitous search box. Screenshot acquired from the \href{https://web.archive.org/web/19980705003104/http://www.yahoo.com}{\emph{Internet Archive}}.}
+    \label{fig:yahoo}
+\end{figure}
+
 \section{Information Retrieval Basics}\label{sec:ir_background:basics}
+As may have already been surmised, the key purpose of an~\gls{acr:ir} system is to locate information that is relevant to a user's given \emph{query}~\cite{sanderson2012history_of_ir}. Searching through a collection of structured or semi-structured data (primarily text, be can also be images, video, etc.)
+
+``A [reference] retrieval system should rank references in the collection in order of their probability of relevance to the request, or of usefulness to the user, or of satisfying the user.''~\cite{robertson1977prp}
 
 \begin{figure}[t!]
     \centering
@@ -53,6 +81,42 @@ PageRank was rejected, like here \url{http://rakaposhi.eas.asu.edu/f08-cse494-ma
     \caption[The \emph{Cranfield Model}]{Illustration of the Cranfield Model, the \emph{de facto} approach experimental methodology used for~\gls{acr:ir} research. Given a corpus, topic(s) and predetermined judgements, one can compute various evaluation measures for a given retrieval model and search engine.}
     \label{fig:ir_cranfield}
 \end{figure}
+
+Basic concepts -- given a query, tries to satisfy that query.
+Follows a system-orientated methodology
+
+From Leif:
+- indexing
+    tokenizers, etc
+- retrieval models
+    - these models have some notion of how much someone should retrieve/stop.
+    - boolean, look at whole set of documents
+    - other models, there's a cutoff... e.g. cosine similarity, angle gets too large, so you stop.
+    - probabilistic ranking principle
+    
+        \begin{quote}
+            ``If a reference retrieval system's response to each request is a ranking of the documents in the collections in order of decreasing probability of usefulness to the user who submitted the request, where the probabilities are estimated as accurately as possible on the basis of whatever data has been made available to the system for this purpose, then the overall effectiveness of the system to its users will be the best that is obtainable on the basis of that data.''
+            \attrib{W.S. Cooper, in private correspondence to~\cite{robertson1977prp}.}
+        \end{quote}
+    
+    
+        - decreasing probbaility of relevance
+        - get odds of rel over non-rels, so there is some idea of a cut-off.
+        - why would you look at a document that is less relevant?
+        - nobody uses it, just make this observation.
+- evaluation
+    - system orientated (cranfield)
+        - precision
+        - recall
+    - user orientated
+    
+    - diane kelly's spectrum of system to user orientated
+        - TREC/Cranfield is a very basic approach to simulation
+            a model of how user performs
+        - user orientated approach looks at how users interact with the system
+        - models of how users search... to show how we develop models.
+        
+        - at the end of chapter 
 
 \subsection{Methodologies}
 
@@ -84,5 +148,11 @@ Basic measures and models.
 \subsection{F-Measure}
 
 \subsection{Towards User-Orientated Measures}
+
+\subsection{User Models}
+these measures/evaluations are thining about the way people go and search
+of relevance to this thesis are stopping strats
+diff. measures encoe different stopping models. different ways of evaluating this.
+in the next chapter, provide an overview of the different types of models of search, and how searching has been conceptualised with respect to stopping strategies.
 
 \section{Chapter Summary}
