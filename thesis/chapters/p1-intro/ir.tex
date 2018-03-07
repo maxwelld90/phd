@@ -13,7 +13,7 @@ It may be fair to say that \emph{searching for information} is now a commonplace
     \vspace{-5mm}
 \end{figure}
 
-The research and development that has gone into search and indexing technologies that allow us to find that proverbial needle has been going on for decades, long before the advent of computers and associated communication technologies, such as the~\gls{acr:www}. This research has led to the formation of the study of~\gls{acr:ir} and the development of contemporary~\gls{acr:ir} systems.\footnote{Some within the~\gls{acr:ir} may consider this to be a contentious point: does the~\gls{acr:ir} community embrace those wishing to contribute? One of the most famous research papers associated with~\gls{acr:ir} discussing Google's \emph{PageRank} algorithm~\citep{page1998pagerank}, was rejected from SIGIR. See \url{http://rakaposhi.eas.asu.edu/f08-cse494-mailarchive/msg00037.html} (last accessed March 6\textsuperscript{th}, 2018) for more information.} With this field of study has come with it the development a \emph{de facto} approach to conducting~\gls{acr:ir} research, along with various retrieval models and means with which to evaluate their effectiveness. It is in this \todo{vain} that we frame this chapter: beginning with a brief history of~\gls{acr:ir} research (Section~\ref{sec:ir_background:history}), we then consider the basic assumptions and approaches used within the field for experimental research (Section~\ref{sec:ir_background:basics}) and how we evaluate these experiments (Section~\ref{sec:ir_background:evaluation})
+The research and development that has gone into search and indexing technologies that allow us to find that proverbial needle has been going on for decades, long before the advent of computers and associated communication technologies, such as the~\gls{acr:www}. This research has led to the formation of the study of~\gls{acr:ir} and the development of contemporary~\gls{acr:ir} systems.\footnote{Some within the~\gls{acr:ir} may consider this to be a contentious point: does the~\gls{acr:ir} community embrace those wishing to contribute? One of the most famous research papers associated with~\gls{acr:ir} discussing Google's \emph{PageRank} algorithm~\citep{page1998pagerank}, was rejected from SIGIR. See \url{http://rakaposhi.eas.asu.edu/f08-cse494-mailarchive/msg00037.html} (last accessed March 6\textsuperscript{th}, 2018) for more information.} With this field of study has come with it the development a \emph{de facto} approach to conducting~\gls{acr:ir} research, along with various retrieval models and means with which to evaluate their effectiveness. It is in this \todo{vain} that we frame this chapter: beginning with a brief history of~\gls{acr:ir} research (Section~\ref{sec:ir_background:history}), we then consider the basic assumptions and approaches used within the field for experimental research (Section~\ref{sec:ir_background:basics}) and how we evaluate these experiments (Section~\ref{sec:ir_background:evaluation}).
 
 \section{A (Brief) History of Information Retrieval}\label{sec:ir_background:history}
 It has only been over the last two decades that search engines have become commonplace in our daily lives, primarily for the domain of web search -- as discussed in Section~\ref{sec:ir_background:history:www}. Contemporary search technologies are essentially ubiquitous, integrating seamlessly with computer operating systems (as illustrated in Figure~\ref{fig:search_integration}). Computerised~\gls{acr:ir} systems have however existed as far back as the late 1940's (as demonstrated by~\citealp{holmstrom1948univac}), with more primitive approaches (both mechanised and manual categorisation approaches) to sorting and categorising information being developed even earlier.
@@ -29,37 +29,14 @@ It has only been over the last two decades that search engines have become commo
 \subsection{Libraries and Mechanisation}
 Before the advent of computers and technologies such as the~\gls{acr:www}, one of the first locations in which one would consult when looking for information would be a \emph{library}. Containing a large volume of books discussing a virtually unlimited range of categories, the need for providing a means to organise (and thus locate) information with relative ease was of paramount importance. \emph{Catalogues} provide such a way in which to do this, with ancient Greek poet Callimachus being the first person to create such an item, in the third century BC~\citep{eliot2009companion}. A more recognisable approach to categorising content was devised by~\cite{dewey1891dcs} with the \emph{Dewey Decimal System}. The use of cards as an \emph{indexing system} was also considered by individuals such as~\cite{soper1920patent} who invented a system of providing information on what category a card belonged to based upon a punched hole.
 
-\todo{Start here Wed} In order to speed up the process of finding useful materials, mechanisation was also extensively used. Luhn developed a selector system utilising light and punchcards, searching at a rate of up to 600 cards per minute. \todo{Find ref.} As stated by Sanderson and Croft, it was around this time that IR was first used. Jahoda reports that the systems were developed and used until computers rendered them obsolete.
+In order to speed up the process of finding useful material, mechanisation was also extensively used. Allowing for searching at the rate of 600 cards per minute, Luhn devised in the early 1950's a mechanised system which utilised punchcards and light. As stated by~\cite{sanderson2012history_of_ir}, this was also around the time that the term~\glsfirst{acr:ir} was used~\citep{mooers1950theory}. It was at this point that computer technology was rapidly developing as a base for a viable, faster alternative to manual and mechanised approaches. This therefore led to the demise of mechanised systems, as highlighted by~\cite{jahoda1961electronic_searching}.
 
 \subsection{The Rise of Computers}
-Hand in hand with other technologies, the capabilities of~\gls{acr:ir} systems have grown in line with the advancement of the systems that they run on. 
-With advancements in technology, double the amount of information.
-So a computer is essentially required to do everything within a reasonable timeframe~\citep{sanderson2012history_of_ir}.
+Computers today provide the medium with which we closely associate a typical~\gls{acr:ir} system.~\cite{sanderson2012history_of_ir} state that digital storage capacity (e.g. hard disks) roughly doubles every two years -- similar to the famous \emph{Moore's Law}~\citep{moore1965law}, which observes that the number of transistors in a processor (or integrated circuit) doubles roughly every two years. Indeed, the speed at which contemporary computers can search vast indexes and databases of content is vastly superior to traditional cataloguing approaches.
 
-first mention is a computer, UNIVAC, that sorted text. as used by Mitchell, too.
-indexing systems...
-led to developments until the 1960's when the field was formed. we discuss this in section~\ref{sec:ir_background:basics}.
+One of the earliest discussions about the use of computers as the basis for an~\gls{acr:ir} system specifically mentioned the~\gls{acr:univac}.~\cite{holmstrom1948univac} described a (potentially pre-production)~\gls{acr:univac} system that was capable of searching for text with a given \emph{reference code} stored on steel tape.~\cite{mitchell1953univac_million} also showed a~\gls{acr:univac} system capable of searching one million records indexed by six subject codes. It was around this time that computers began to replace the traditional librarian, being able to provide a much more effective and cost effective means of trawling through a library's records.
 
-Developments in the field led to the WWW.
-
-
-\subsection{The World Wide Web}\label{sec:ir_background:history:www}
-
-- the brief history of IR.
-- lift section of Web search, summarise. perhaps try and get a screenshot of the first search engine.
-- or yahoo! wasn't really a search engine, more of a big categorisation platform.
-
-- yahoo, akin to the catalogues of libraries, breaking things into different categories!
-- of course, things grew quickly. and before long, such an approach was considered to be untenable.
-- which is where the idea of the query box (in terms of web search) comes in.
-
-- since the basic search engines, we've come a long way.
-- means to try and help improve results is exploitation of query logs (relevance feedback)
-- amongst other things.
-
-- now, we consider the basic constructs of IR research, as this thesis follows through with this.
-
-
+From this point on, work began to establish~\gls{acr:ir} as a scientific field. Gerard Salton established a large~\gls{acr:ir} research group, initially at Harvard University. Many of the basic constructs which we utilise within~\gls{acr:ir} today were established around this time, in addition to the experiments undertaken by~\cite{cleverdon1962cranfield_experiments} -- known as the \emph{Cranfield Experiments}. These experiments established the concept of using words to index documents within an~\gls{acr:ir} system, providing advancements in indexing technology.~\cite{luhn1957ranking_query} proposed, and~\cite{maron1959probabilistic_indexing} tested, an approach to ranking that scored documents in a collection in relation to a user issued \emph{query} -- a concept that is central to contemporary~\gls{acr:ir} systems. A detailed explanation of these concepts are provided later in this chapter -- see Section~\ref{sec:ir_background:basics}.
 
 \begin{figure}[t!]
     \centering
@@ -68,6 +45,12 @@ Developments in the field led to the WWW.
     \caption[Screenshot of \emph{Yahoo!} Search, circa 1998]{A screenshot of the landing page of \emph{Yahoo!}, as shown on July 5\textsuperscript{th}, 1998. Notice the link for the 1998 \emph{FIFA World Cup} that was taking place at the time the page was created. More central to this thesis is the inclusion of a list of page categories in conjunction with the now ubiquitous search box. Screenshot acquired from the \href{https://web.archive.org/web/19980705003104/http://www.yahoo.com}{\emph{Internet Archive}}.}
     \label{fig:yahoo}
 \end{figure}
+
+
+\subsection{The World Wide Web}\label{sec:ir_background:history:www}
+The distribution and ability to search for information over computer networks such as the internet was traditionally undertaken with legacy protocols such as \emph{Gopher}. Gopher would provide a series of options for a user to select (i.e. categorisation), akin to the traditional library cataloguing approaches described above.
+
+The advent of the~\gls{acr:www} in the early 1990's brought about a new type of search engine -- \emph{web search engines}. Regarded as the first experimental web search engine, \emph{JumpStation} was described by~\cite{mcbryan1994taming_tools}. In this system, \emph{anchor text} within \emph{hyperlinks} of~\gls{acr:html} pages could be exploited to aid the ranking of documents. However, popular search engines of the 1990's initially followed the categorisation approach hailing back from libraries, as illustrated in Figure~\ref{fig:yahoo} with a screenshot of \emph{Yahoo!} from 1998. However, as the volume of information on the~\gls{acr:www} began to increase, this approach became impractical. As such, it was not long before a more contemporary search engine took ahold, with the search box, allowing searchers to pose their own \emph{queries}, becoming the dominant (and defining) symbol of search. Algorithms such as Google's PageRank~\cite{page1998pagerank} took hold, with this algorithm credited for cementing Google's dominance of the search market. Over the years, approaches such as exploiting interaction logs have become commonplace in search engines to assist in providing higher quality results, and a more personable experience for searchers.
 
 \section{Information Retrieval Basics}\label{sec:ir_background:basics}
 As may have already been surmised, the key purpose of an~\gls{acr:ir} system is to locate information that is relevant to a user's given \emph{query}~\cite{sanderson2012history_of_ir}. Searching through a collection of structured or semi-structured data (primarily text, be can also be images, video, etc.)
@@ -78,7 +61,7 @@ As may have already been surmised, the key purpose of an~\gls{acr:ir} system is 
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-cranfield.pdf}}
-    \caption[The \emph{Cranfield Model}]{Illustration of the Cranfield Model, the \emph{de facto} approach experimental methodology used for~\gls{acr:ir} research. Given a corpus, topic(s) and predetermined judgements, one can compute various evaluation measures for a given retrieval model and search engine.}
+    \caption[The \emph{Cranfield Model}]{Illustration of the Cranfield Model, the \emph{de facto} approach experimental methodology used for~\gls{acr:ir} research. Given a corpus, topic(s) and document judgements (created by assessors), one can compute various evaluation measures for a given retrieval model and search engine.}
     \label{fig:ir_cranfield}
 \end{figure}
 
@@ -105,6 +88,7 @@ From Leif:
         - why would you look at a document that is less relevant?
         - nobody uses it, just make this observation.
 - evaluation
+    - effects of pooling in judgements?
     - system orientated (cranfield)
         - precision
         - recall
