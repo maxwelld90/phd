@@ -13,7 +13,7 @@ It may be fair to say that \emph{searching for information} is now a commonplace
     \vspace{-5mm}
 \end{figure}
 
-The research and development that has gone into search and indexing technologies that allow us to find that proverbial needle has been going on for decades, long before the advent of computers and associated communication technologies, such as the~\gls{acr:www}. This research has led to the formation of the study of~\gls{acr:ir} and the development of contemporary~\gls{acr:ir} systems.\footnote{Some within the~\gls{acr:ir} may consider this to be a contentious point: does the~\gls{acr:ir} community embrace those wishing to contribute? One of the most famous research papers associated with~\gls{acr:ir} discussing Google's \emph{PageRank} algorithm~\citep{page1998pagerank}, was rejected from SIGIR. See \url{http://rakaposhi.eas.asu.edu/f08-cse494-mailarchive/msg00037.html} (last accessed March 6\textsuperscript{th}, 2018) for more information.} With this field of study has come with it the development a \emph{de facto} approach to conducting~\gls{acr:ir} research, along with various retrieval models and means with which to evaluate their effectiveness. It is in this \todo{vain} that we frame this chapter: beginning with a brief history of~\gls{acr:ir} research (Section~\ref{sec:ir_background:history}), we then consider the basic assumptions and approaches used within the field for experimental research (Section~\ref{sec:ir_background:basics}) and how we evaluate these experiments (Section~\ref{sec:ir_background:evaluation}).
+The research and development that has gone into search and indexing technologies that allow us to find that proverbial needle has been going on for decades, long before the advent of computers and associated communication technologies, such as the~\gls{acr:www}. This research has led to the formation of the study of~\gls{acr:ir} and the development of contemporary~\gls{acr:ir} systems.\footnote{Some within the~\gls{acr:ir} may consider this to be a contentious point: does the~\gls{acr:ir} community embrace those wishing to contribute? One of the most famous research papers associated with~\gls{acr:ir} discussing Google's \emph{PageRank} algorithm~\citep{page1998pagerank}, was rejected from SIGIR. See \url{http://rakaposhi.eas.asu.edu/f08-cse494-mailarchive/msg00037.html} (last accessed March 6\textsuperscript{th}, 2018) for more information.} With this field of study has come with it the development a \emph{de facto} approach to conducting~\gls{acr:ir} research, along with various retrieval models and means with which to evaluate their effectiveness. It is in this vain that we frame this chapter: beginning with a brief history of~\gls{acr:ir} research (Section~\ref{sec:ir_background:history}), we then consider the basic assumptions and approaches used within the field for experimental research (Section~\ref{sec:ir_background:basics}) and how we evaluate these experiments (Section~\ref{sec:ir_background:evaluation}).
 
 \section{A (Brief) History of Information Retrieval}\label{sec:ir_background:history}
 It has only been over the last two decades that search engines have become commonplace in our daily lives, primarily for the domain of web search -- as discussed in Section~\ref{sec:ir_background:history:www}. Contemporary search technologies are essentially ubiquitous, integrating seamlessly with computer operating systems (as illustrated in Figure~\ref{fig:search_integration}). Computerised~\gls{acr:ir} systems have however existed as far back as the late 1940's (as demonstrated by~\citealp{holmstrom1948univac}), with more primitive approaches (both mechanised and manual categorisation approaches) to sorting and categorising information being developed even earlier.
@@ -50,12 +50,43 @@ From this point on, work began to establish~\gls{acr:ir} as a scientific field. 
 \subsection{The World Wide Web}\label{sec:ir_background:history:www}
 The distribution and ability to search for information over computer networks such as the internet was traditionally undertaken with legacy protocols such as \emph{Gopher}. Gopher would provide a series of options for a user to select (i.e. categorisation), akin to the traditional library cataloguing approaches described above.
 
-The advent of the~\gls{acr:www} in the early 1990's brought about a new type of search engine -- \emph{web search engines}. Regarded as the first experimental web search engine, \emph{JumpStation} was described by~\cite{mcbryan1994taming_tools}. In this system, \emph{anchor text} within \emph{hyperlinks} of~\gls{acr:html} pages could be exploited to aid the ranking of documents. However, popular search engines of the 1990's initially followed the categorisation approach hailing back from libraries, as illustrated in Figure~\ref{fig:yahoo} with a screenshot of \emph{Yahoo!} from 1998. However, as the volume of information on the~\gls{acr:www} began to increase, this approach became impractical. As such, it was not long before a more contemporary search engine took ahold, with the search box, allowing searchers to pose their own \emph{queries}, becoming the dominant (and defining) symbol of search. Algorithms such as Google's PageRank~\cite{page1998pagerank} took hold, with this algorithm credited for cementing Google's dominance of the search market. Over the years, approaches such as exploiting interaction logs have become commonplace in search engines to assist in providing higher quality results, and a more personable experience for searchers.
+The advent of the~\gls{acr:www} in the early 1990's brought about a new type of search engine -- \emph{web search engines}. Regarded as the first experimental web search engine, \emph{JumpStation} was described by~\cite{mcbryan1994taming_tools}. In this system, \emph{anchor text} within \emph{hyperlinks} of~\gls{acr:html} pages could be exploited to aid the ranking of documents. However, popular search engines of the 1990's initially followed the categorisation approach hailing back from libraries, as illustrated in Figure~\ref{fig:yahoo} with a screenshot of \emph{Yahoo!} from 1998. However, as the volume of information on the~\gls{acr:www} began to increase, this approach became impractical. As such, it was not long before a more contemporary search engine took ahold, with the search box, allowing searchers to pose their own \emph{queries}, becoming the dominant (and defining) symbol of search. Algorithms such as Google's PageRank~\citep{page1998pagerank} took hold, with this algorithm credited for cementing Google's dominance of the search market. Over the past two decades, there have been many advances from these initial approaches to developing~\gls{acr:ir} systems. For example, the exploitation of interaction logs have become commonplace in search engines to assist in providing higher quality results, and a more personable experience for searchers.
 
 \section{Information Retrieval Basics}\label{sec:ir_background:basics}
-As may have already been surmised, the key purpose of an~\gls{acr:ir} system is to locate information that is relevant to a user's given \emph{query}~\cite{sanderson2012history_of_ir}. Searching through a collection of structured or semi-structured data (primarily text, be can also be images, video, etc.)
+As may have already been surmised, the key purpose of an~\gls{acr:ir} system is to locate information that is relevant to a searchers's information need. Such a system would search through collection(s) of \emph{unstructured} or \emph{semi-structured} data (such as a collection of web pages, documents, images, videos, etc.), before returning potential matches to the searcher. 
 
-``A [reference] retrieval system should rank references in the collection in order of their probability of relevance to the request, or of usefulness to the user, or of satisfying the user.''~\cite{robertson1977prp}
+\blueboxheader{Unstructured vs. (Semi-)Structured Data}
+The examination of unstructured or semi-structured data is a key difference of an~\gls{acr:ir} system when compared to a~\gls{acr:rdbms}, for example (see Figure~\ref{fig:structured_data}). With a~\gls{acr:rdbms}, data is inherently structured based upon some predetermined \emph{schema}. With an~\gls{acr:ir} system, such a premise for structured data does not exist.\footnote{This may be a slight misnomer; schemas can be used for an~\gls{acr:ir} system index when considering \emph{fielded retrieval}. For example, a collection of newspaper articles may contain a title and body -- but within the fields, the data is unstructured.} Semi-structured data such as an~\gls{acr:html} page contains a series of \emph{elements} (e.g. \texttt{<h1>} for headers), but the text within these tags is largely of an unstructured nature. The unstructured data can contain information such as dates or entities (terms describing a real-world object and/or location, such as \texttt{canberra} or \texttt{dropbear}, and can be -- as it is probably written in a natural language -- ambiguous. As such, unstructured data presents a major challenge to address, and is the cornerstone of~\gls{acr:ir} research.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-structured.pdf}}
+    \caption[Structured and (semi-)structured data]{Examples of structured and (semi-)structured data. On the left is a structured~\gls{acr:rdbms} schema, represented in compressed Chen notation. Different types can be specified for each field, representing data in a structured way. On the right, semi-structured data, using a document from the \emph{TREC AQUAINT} newswire collection. Note the semi-structured component at the top of the document (containing an identifier and title), and the unstructured body text.}
+    \label{fig:structured_data}
+\end{figure}
+
+To complement this challenge, a contemporary~\gls{acr:ir} system is also expected by its users to return results that can be considered \emph{useful} to addressing the searcher's information need, as hypothesised by~\cite{luhn1957ranking_query}, and succinctly expressed by~\cite{robertson1977prp}.
+
+\begin{quote}
+    ``A [reference] retrieval system should rank references in the collection in order of their probability of relevance to the request, or of usefulness to the user, or of satisfying the user.''
+    \attrib{\cite{robertson1977prp}}
+\end{quote}
+
+\blueboxheader{Queries and Results}
+A searcher's information need is represented as a \emph{query}. which is in turn comprised of one or more salient \emph{query terms}. The process of converting an information need to a query is known as \emph{query formulation}~\citep{hiemstra2009ir_models}. Depending upon the search domain, the query language used may be artificial. For example, reserved keywords may be utilised to express a boolean query (e.g. use of \texttt{AND} or \texttt{NOT} preceding terms). Natural language however is considered to be the preferred choice within an~\gls{acr:ir} context~\citep{rijsbergen1979ir}. Given the claim by~\cite{robertson1977prp} above, an~\gls{acr:ir} system then typically returns a series of documents. Depending upon the type of system used, these results my be ranked in order of decreasing perceived relevance by some form of \emph{retrieval model}. The presentation of these results are perhaps known best as the \emph{ten blue links}~\citep{hearst2009_search}, a name given to the way in which web search engines traditionally present results to searchers. If none of the results returned to the searcher can be considered useful in any way to addressing his or her information need, the underlying~\gls{acr:ir} system is largely considered to have failed the searcher~\citep{rijsbergen1979ir}.
+
+\blueboxheader{Operational and Experimental Systems}
+\cite{rijsbergen1979ir} defines a difference between \emph{operational} and \emph{experimental}~\gls{acr:ir} systems. While a majority of individuals will only ever interact with an operational, probably commercial~\gls{acr:ir} system (e.g. Google), the work described in this thesis considers purely experimental systems. In order for one to determine how well a particular experimental~\gls{acr:ir} system performs compared to others, a rigid scientific methodology must be employed to allow for fair comparisons. As such, the remainder of this chapter discusses the \emph{de facto} approach that is considered for~\gls{acr:ir} experimentation -- from the setup of such an~\gls{acr:ir} system to the ways in which they can be evaluated.
+
+\subsection{The Cranfield Model}
+The methodology behind the majority of contemporary~\gls{acr:ir} research has centred around the concept of the so-called \emph{Cranfield Model}. Devised, unsurprisingly, at Cranfield University in Bedfordshire, England, the model is based upon the \emph{Cranfield II} experiments~\citep{aslib1966factors}. As highlighted by~\cite{borlund2003iir_model}, the experiments revolve around the notion of \emph{test collections}, with the basic components of the experimental setup illustrated in Figure~\ref{fig:ir_cranfield}. Essentially, the concept of test collections is comprised of three main components.
+
+\begin{itemize}
+    \item{A collection of \emph{documents} is provided, which is typically converted to an inverted index before experimentation can begin (see Section~\ref{sec:ir_background:basics:indexing}).}
+    \item{A collection of \emph{topics} provide a means of simulating different information needs -- and with each topic are one or more \emph{queries} that can be issued to an experimental~\gls{acr:ir} system.}
+    \item{Finally, a collection of \emph{relevance assessments} are provided as part of the collection.}
+\end{itemize}
 
 \begin{figure}[t!]
     \centering
@@ -64,6 +95,123 @@ As may have already been surmised, the key purpose of an~\gls{acr:ir} system is 
     \caption[The \emph{Cranfield Model}]{Illustration of the Cranfield Model, the \emph{de facto} approach experimental methodology used for~\gls{acr:ir} research. Given a corpus, topic(s) and document judgements (created by assessors), one can compute various evaluation measures for a given retrieval model and search engine.}
     \label{fig:ir_cranfield}
 \end{figure}
+
+In conjunction with the three components above, a complete retrieval system following the Cranfield model will also employ some form of \emph{retrieval model} (Section~\ref{sec:ir_background:basics:models}), and one or more measures to evaluate the performance of the system.
+
+Relevance assessments are created for each topic of the collection. Assessors examine a series of documents that are extracted from the document collection using a simple query (called \emph{pooling}). For example, given a topic \texttt{wildlife extinction}, a query typically issued to retrieve documents will also be \texttt{wildlife extinction}. The returned documents are then assessed for relevance to the given topic, and a judgement is assigned to each. Typically, such a judgement has been binary, with \texttt{0} denoting non-relevant, and \texttt{1} denoting relevant. The effects of pooling can mean that documents that are potentially relevant can be missed by assessors, and thus will receive no judgement~\citep{keenan2001effect}.
+
+\subsubsection{Evaluation Forums}
+Explain TREC, the motivation behind it. Donna Harman was the brains behind it. They have released numerous collections and topics for particular TREC Tracks.
+Does NTCIR follow a similar structure?
+
+~\cite{robertson2008history_ir_evaluation} has a good summary of TREC, including ad-hoc tasks.
+
+\subsection{Indexing Documents}\label{sec:ir_background:basics:indexing}
+basics of indexing -- what is an index? what is an inverted index?
+various processes/steps that are involved in turning a collection of documents into a queryable index.
+
+\subsubsection{Tokenisation}
+
+\subsubsection{Stopword Removal}
+
+\subsubsection{Stemming}
+
+- indexing
+    tokenizers, stopword removal, etc.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-inverted.pdf}}
+    \caption[Illustration of an \emph{Inverted index}]{A demonstration of an \emph{inverted index}, with three source documents for comparison. Depending upon the requirements of the~\gls{acr:ir} system, the indexing process may vary; all classical~\gls{acr:ir} systems however virtually rely upon some form of inverted index.}
+    \label{fig:inverted}
+\end{figure}
+
+
+\subsection{Retrieval Models}\label{sec:ir_background:basics:models}
+
+Hello world
+
+- retrieval models
+    - these models have some notion of how much someone should retrieve/stop.
+    - boolean, look at whole set of documents
+    - other models, there's a cutoff... e.g. cosine similarity, angle gets too large, so you stop.
+    - probabilistic ranking principle
+    
+        \begin{quote}
+            ``If a reference retrieval system's response to each request is a ranking of the documents in the collections in order of decreasing probability of usefulness to the user who submitted the request, where the probabilities are estimated as accurately as possible on the basis of whatever data has been made available to the system for this purpose, then the overall effectiveness of the system to its users will be the best that is obtainable on the basis of that data.''
+            \attrib{W.S. Cooper, in private correspondence to~\cite{robertson1977prp}.}
+        \end{quote}
+    
+    
+        - decreasing probability of relevance
+        - get odds of rel over non-rels, so there is some idea of a cut-off.
+        - why would you look at a document that is less relevant?
+        - nobody uses it, just make this observation.
+
+\subsubsection{Boolean Model}
+
+\subsubsection{Vector Space Model}
+
+\subsubsection{Probabilistic Models}
+
+\subsubsection{Language Models}
+
+\subsection{Evaluating Retrieval Effectiveness}\label{sec:ir_background:evaluation}
+- evaluation
+    - effects of pooling in judgements?
+    - system orientated (cranfield)
+        - precision
+        - recall
+    - user orientated
+    
+    - diane kelly's spectrum of system to user orientated
+        - TREC/Cranfield is a very basic approach to simulation
+            a model of how user performs
+        - user orientated approach looks at how users interact with the system
+        - models of how users search... to show how we develop models.
+        
+        - at the end of chapter
+
+\subsubsection{Precision}
+
+\subsubsection{Recall}
+
+\subsubsection{Mean Average Precision}
+
+\subsubsection{F-Measure}
+
+
+\subsection{Towards User-Orientated Measures}
+
+Stephen Robertson has good points in his paper on IR evaluation history:~\cite{robertson2008history_ir_evaluation}
+
+Cranfield isn't very good. Furthermore, this model uses only binary and topical-oriented relevance. The conclusion is that the batch-driven mode of the Cranfield model is not suitable for the evaluation of IIR systems, which, if carried out as realistically as possible, requires human interaction, potentially dynamic information need interpretations, and the assignment of multidimensional and dynamic relevance. (From Borlund 2003)
+
+\subsubsection{Relative Relevance}
+~\cite{borlund1997iir_evaluation}
+
+\subsubsection{Ranked Half-Life}
+~\cite{borlund1997iir_evaluation}
+
+\subsubsection{Cumulative Gain}
+
+\subsubsection{Rank-Biased Precision}
+
+\subsubsection{INST}
+
+\section{User Models}
+
+Look at Kelly (2009) -- Methods for Evaluating Interactive Information Retrieval Systems with Users
+
+these measures/evaluations are thining about the way people go and search
+of relevance to this thesis are stopping strats
+diff. measures encoe different stopping models. different ways of evaluating this.
+in the next chapter, provide an overview of the different types of models of search, and how searching has been conceptualised with respect to stopping strategies.
+
+\section{Chapter Summary}
+
+
 
 Basic concepts -- given a query, tries to satisfy that query.
 Follows a system-orientated methodology
@@ -100,43 +248,41 @@ From Leif:
         - user orientated approach looks at how users interact with the system
         - models of how users search... to show how we develop models.
         
-        - at the end of chapter 
+        - at the end of chapter
 
-\subsection{Methodologies}
-
-\subsubsection{System-Orientated}
-
-\subsubsection{User-Orientated}
-
-\subsection{Retrieval Models}
-
-\subsubsection{Boolean Model}
-
-\subsubsection{Vector Space Model}
-
-\subsubsection{Probabilistic Models}
-
-\subsubsection{Language Models}
-
-\subsection{Search Tasks}
-
-\section{Evaluating Retrieval Effectiveness}\label{sec:ir_background:evaluation}
-Basic measures and models.
-
-\subsection{Precision}
-
-\subsection{Recall}
-
-\subsection{Mean Average Precision}
-
-\subsection{F-Measure}
-
-\subsection{Towards User-Orientated Measures}
-
-\subsection{User Models}
-these measures/evaluations are thining about the way people go and search
-of relevance to this thesis are stopping strats
-diff. measures encoe different stopping models. different ways of evaluating this.
-in the next chapter, provide an overview of the different types of models of search, and how searching has been conceptualised with respect to stopping strategies.
-
-\section{Chapter Summary}
+% \subsection{Methodologies}
+%
+% \subsubsection{System-Orientated}
+%
+% \subsubsection{User-Orientated}
+%
+% \subsection{Retrieval Models}
+%
+% \subsubsection{Boolean Model}
+%
+% \subsubsection{Vector Space Model}
+%
+% \subsubsection{Probabilistic Models}
+%
+% \subsubsection{Language Models}
+%
+% \subsection{Search Tasks}
+%
+% \section{Evaluating Retrieval Effectiveness}\label{sec:ir_background:evaluation}
+% Basic measures and models.
+%
+% \subsection{Precision}
+%
+% \subsection{Recall}
+%
+% \subsection{Mean Average Precision}
+%
+% \subsection{F-Measure}
+%
+% \subsection{Towards User-Orientated Measures}
+%
+% \subsection{User Models}
+% these measures/evaluations are thining about the way people go and search
+% of relevance to this thesis are stopping strats
+% diff. measures encoe different stopping models. different ways of evaluating this.
+% in the next chapter, provide an overview of the different types of models of search, and how searching has been conceptualised with respect to stopping strategies.
