@@ -161,7 +161,7 @@ In order to achieve the goal of satisfying a searcher's underlying information n
 
 Retrieval models provide us with a means for discussion and further refinement; they provide us with the blueprint from which we operationalise an~\gls{acr:ir} system~\citep{hiemstra2009ir_models}. A retrieval model predicts and explains what a searcher will find, given a query formulated from their underlying information need. The correctness of such a model can then be subsequently tested via experimentation and evaluation. Mathematically defining these key models of an~\gls{acr:ir} system is important as they provide consistency, and ensure that such models can be implemented in the real world.
 
-As previously mentioned, several retrieval models have been defined by different~\gls{acr:ir} researchers over a number of decades, ranging from relatively simplistic to more complex. The more complex approaches not only define a notion of what documents would be considered relevant/useful, but also to what \emph{degree} that is so. This section considers four main retrieval model families in chronological order, with high level summaries of each. We consider: \emph{(i)} the \emph{boolean model}; \emph{(ii)} the \emph{vector space model}; \emph{(iii)} \emph{probabilistic models}; and \emph{(iv)} more recent \emph{language models.}
+As previously mentioned, several retrieval models have been defined by different~\gls{acr:ir} researchers over a number of decades, ranging from relatively simplistic to more complex. The more complex approaches not only define a notion of what documents would be considered relevant/useful, but also to what \emph{degree} that is so. This section considers four main retrieval model families in chronological order, with high level summaries of each. We consider: \emph{(i)} the \emph{boolean model}; \emph{(ii)} the \emph{vector space model}; \emph{(iii)} \emph{probabilistic models}; and \emph{(iv)} more recent \emph{language models.} While not totally exhaustive, this broad overview should provide a solid understanding of the developments in developing such models, and the benefits and disadvantages of each approach.
 
 
 \subsubsection{Boolean Model}\label{sec:ir_background:basics:models:boolean}
@@ -182,44 +182,58 @@ Despite the relative simplicity of this approach, there are major limitations. F
 Returning an unranked set of documents would appear as an alien concept to users of~\gls{acr:ir} systems today -- one would assume that the document presented first would be the document considered most likely to be useful as per the underlying retrieval model. This would make it difficult for a searcher to obtain some notion of how many results he or she should examine before stopping, as all terms and documents are considered equal. Despite not being required in contemporary~\gls{acr:ir} systems, many do still provide support for crafting a boolean query for when returning a good set of results is difficult. This may for example be useful when there is ambiguity in the searcher's information need, and clarification is required to eliminate a set of unhelpful documents. Boolean queries also find traction in patent searching, where \emph{recall} rather than \emph{precision} is preferred (refer to Section~\ref{sec:ir_background:evaluation}).
 
 \subsubsection{Vector Space Model}
-With major weaknesses present in the boolean retrieval model, work then progressed to develop more advanced approaches that mitigated the issues raised above.~\cite{luhn1957ranking_query} suggested that a searcher, when wishing to search for documents addressing their information need, should prepare a document that is similar to the documents that were sought after. By comparing documents against this \emph{representative} document, a system could begin to deduce what other documents would be useful, and by what margin.
+With major weaknesses present in the boolean retrieval model, work then progressed to develop more advanced approaches that mitigated the issues raised above.~\cite{luhn1957ranking_query} hypothesised that a searcher, when wishing to search for documents addressing their information need, should prepare a document that is similar to the documents that were sought after. By comparing documents against this \emph{representative} document, a system could begin to deduce what other documents would be useful, and by what margin.
 
-\begin{wrapfigure}{r}{0.45\textwidth}
+The vector space model proposed by~\cite{salton1975vsm} incorporates the principles as outlined by~\cite{luhn1957ranking_query}. These basic principles are operationalised by representing queries and documents within Euclidean geometry, where both are represented as vectors in multi-dimensional space. The notion of how close documents appear to each other denotes the usefulness of a document.
+
+The vector space model is popular, as it provides an intuitive means for addressing the overarching problem of an~\gls{acr:ir} system, and can incorporate methods such as term weighting which have been shown to improve retrieval effectiveness~\citep{croft2010search}. Furthermore, as queries and terms are represented in Euclidean space, vector similarity methods can be employed to determine relevance/usefulness. While many approaches have been trialled, empirical evidence has favoured \emph{cosine similarity}~\citep{croft2010search}. This is aptly illustrated in Figure~\ref{fig:vector_space}. Using such an approach allows one to then compute the degrees of relevance/usefulness, meaning that matched documents can be returned in a ranked order. This ranking than then be potentially utilised by a searcher to determine a cutoff point at which he or she should stop examining results.
+
+\begin{wrapfigure}[13]{r}{0.45\textwidth}
     \begin{center}
-    \vspace*{-8mm}
+    \vspace*{-10mm}
     \includegraphics[width=1\textwidth]{figures/ch2-vector.pdf}
     \end{center}
-    \vspace*{-2mm}
-    \caption[Vector Space Model (Cosine similarity)]{An illustration of the Vector Space Model in Euclidean space, with each term representing a dimension. Here, the cosine similarity between a query \emph{q} and document \emph{d} are shown.}
+    \vspace*{-4mm}
+    \caption[Vector Space Model (Cosine similarity)]{An illustration of the Vector Space Model in Euclidean space, with each term representing a dimension. Here, the cosine similarity between query \emph{q} and document \emph{d} is shown.}
     \label{fig:vector_space}
 \end{wrapfigure}
 
-The Vector Space Model proposed by~\cite{salton1975vsm} incorporates the principles as outlined by~\cite{luhn1957ranking_query}. These basic principles are operationalised by representing queries and documents within Euclidean geometry, where both are represented as vectors in multi-dimensional space. The notion of how close documents appear to each other denotes the usefulness of a document. The Vector Space Model is popular, as it provides an intuitive means for addressing the overarching problem of an~\gls{acr:ir} system, and can incorporate methods such as term weighting which have been shown to improve retrieval effectiveness~\citep{croft2010search}. Indeed, by providing estimates on the degree of relevance, results are returned in a ranked order. This subsequently allows a searcher to decide how many results to examine before stopping.
+In order to understand the basic workings of the vector space approach, let us consider a query, $Q$, with each of its constituent terms placed within a term vector in $t$-dimensional space, leading to $Q = (q_1, q_2, q_3,\dotsc, q_{it})$. Consider also a document, $D_i$, with terms from the document again represented in $t$-dimensional space, yielding $D_i = (d_{i1}, d_{i2}, d_{i3},\dotsc, d_{it})$. From this notation, $d_{ij}$ represents the \emph{term frequency (TF)} of term $j$ appearing in document $i$. With each term represented as a separate dimension within Euclidean space, a weighting scheme can be subsequently applied to emphasise or understate more discriminative or less discriminative terms, respectively. An example of less discriminative terms would for example be stopwords, as described in Section~\ref{sec:ir_background:basics:indexing:stopwords}. By applying weighting schemes, the vector space model at a stroke overcomes a previously discussed limitation of the boolean model in that all terms are weighted equally.
 
-Consider query $Q$, with each of its terms placed within a term vector in $t$-dimensional space. As such, $Q = (q_1, q_2, q_3,\dotsc, q_{it})$. Consider also a document, $D_i$, with terms from the document again represented in $t$-dimensional space, yielding $D_i = (d_{i1}, d_{i2}, d_{i3},\dotsc, d_{it})$. Essentially, $d_{ij}$ is the \emph{term frequency (TF)} of term $j$ appearing in document $i$. With each term represented as a separate dimension in the Vector Space Model, a weighting scheme can be applied to emphasise more discriminative terms, for example. This addresses the assumption in the boolean model that all terms are of equal weighting. This means that stopword terms, for example (refer to Section~\ref{sec:ir_background:basics:indexing:stopwords}) can be given a lower weighting than terms which are less frequently occurring, and thus more discriminative in allowing one to find particular documents. Other approaches have been trialled, such as \emph{Inverse Document Frequency (IDF)}
+Term frequency is one of many different term weighting schemes that have been trialled over the years in~\gls{acr:ir} research. Perhaps one of the best and widely used schemes is \emph{inverse document frequency (IDF)}, proposed by~\cite{sparck1972statistical}. Here, the frequency of a term is normalised against the length of a given document. In the words of its creator, IDF allows for one to define the specificity of a term as \emph{``an inverse function of the number of documents in which it occurs.''}~\citep{sparck1972statistical}. This is useful as non-discriminative terms that occur frequently within an index (e.g. \texttt{the}) would have its weight diminished, with the inverse happening for more discriminative terms, better able to describe a given document.
 
-Then explain that other approaches include Cosine Similarity, as documents and queries are represented as a series of term vectors. The larger the degree between two vectors, the less relevant two vectors are. So there is a cutoff point there, that determines when someone would stop -- how tolerant is someone before they give up and become frustrated with the results?
+TF and IDF are typically combined together as a measure of both term appearance and importance, under an approach called \emph{TF-IDF}. For a given term $k$, one can calculate a TF-IDF score with the following equation.
+
+\begin{equation*}
+tf_{i,k} \cdot idf_{k} = \frac{f_{i,k}}{\sum_{j=1}^{t} f_{i,j}} \cdot log \frac{N}{n_k}
+\end{equation*}
+
+Above, $f_{i,k}$ is the frequency of term $k$, $N$ is the number of documents in the collection used, and $n_k$ is the number of documents in which term $k$ appears at least once.
 
 \subsubsection{Probabilistic Models}
+From boolean to vector space retrieval models, a further model emerged based upon \emph{probability theory}. Probability theory allows one to define a means to formally model the relevance and/or usefulness of a document to a searcher's query, given \emph{uncertainty} about their precise information need. One of the most widely referred to ranking principles, known as the \emph{Probability Ranking Principle (PRP)} (defined by~\cite{robertson1977prp} -- who in turn attributed the development to~\cite{cooper1971relevance}), states the following.
+
+\begin{quote}
+\emph{``If a reference retrieval system's response to each request is ranking of the documents in the collections in order of decreasing probability of usefulness to the user who submitted the request, where the probabilities are estimated as accurately as possible on the basis of whatever data has been made available to the system for this purpose, then the overall effectiveness of the system to its users will be the best that is obtainable on the basis of that data.''}
+\attrib{\cite{robertson1977prp}}
+\end{quote}
+
+Essentially, this states that documents that are considered more likely to be relevant than non-relevant should be retrieved -- or where $P(R|D) < P(\overline{R}|D)$. However, while the PRP lays much of the foundation from which probabilistic retrieval models have been derived, it does not itself provide a concrete implementation of such a model. The framework provided by the PRP in order to score a document to a searcher's query is:
+
+\begin{equation*}
+score(d,q) = P(rel|q,d) \approx \sum_{t \in q}wt_{t,d}.
+\end{equation*}
+
+Above, $rel$ is defined as the relevance probability of document $d$, given query $q$. Early approaches following this framework utilised Bayes' theorem to define the probability of a document being relevant to the associated query, based upon the likelihood of drawing query terms from relevant and non-relevant documents. This was considered as a classification problem, where documents were considered as either relevant or non-relevant to said query. The aforementioned likelihood has been computed by many models -- perhaps the most important being \emph{Okapi BM25}~\citep{robertson1995trec3}. Indeed, this retrieval model has had considerable impact upon the~\gls{acr:ir} community and is still used extensively today, providing a solid baseline for contemporary research. This model is employed as the basic retrieval model for experimentation in this thesis due to its effectiveness and popularity.
 
 \subsubsection{Language Models}
+The final retrieval model family that we discuss are language models, closely related to the probabilistic model we define above. Indeed, while such probabilistic models have been demonstrated to perform well empirically, adapting the PRP and subsequent developments to more advanced approaches has been difficult and is generally not intuitive~\citep{hiemstra2000language_modelling} -- the interpretation offered by probabilistic models may be considered loose, and is not always theoretically principled~\citep{whiting2015phd}. This has led to the development of more formalised statistical language modelling approaches, as defined in the fields of \emph{Natural Language Processing (NLP)}, for example~\citep{lavrenko2001language_models}.
 
-% - retrieval models
-%     - these models have some notion of how much someone should retrieve/stop.
-%     - boolean, look at whole set of documents
-%     - other models, there's a cutoff... e.g. cosine similarity, angle gets too large, so you stop.
-%     - probabilistic ranking principle
-%
-%         \begin{quote}
-%             ``If a reference retrieval system's response to each request is a ranking of the documents in the collections in order of decreasing probability of usefulness to the user who submitted the request, where the probabilities are estimated as accurately as possible on the basis of whatever data has been made available to the system for this purpose, then the overall effectiveness of the system to its users will be the best that is obtainable on the basis of that data.''
-%             \attrib{W.S. Cooper, in private correspondence to~\cite{robertson1977prp}.}
-%         \end{quote}
-%
-%
-%         - decreasing probability of relevance
-%         - get odds of rel over non-rels, so there is some idea of a cut-off.
-%         - why would you look at a document that is less relevant?
-%         - nobody uses it, just make this observation.
+Given the strong rooting in the principles of language and associated fields, language models provide a solution to the so-called \emph{bag of words}~\citep{harris1954distributional} concept that a majority of preceding retrieval models subscribe to. Put simply, this concept considers each document and query as a bag of words, meaning that the ordering of terms loses any significance. While a simplifying assumption, losing the ordering of terms means that semantic meaning and grammar rules are lost -- and thus a retrieval engine employing a model using this simplifying assumption may lose key meanings, and subsequently retrieval effectiveness will suffer.
+
+Essentially, a language model is a probability distribution over strings of text. Given a string of text (i.e. a searcher's query), how likely is it that the given query appears in a given \emph{language}? Each document provides its own language, where we consider all possible phrases that the author of a document could have written when creating said document. Of course, some phrases are more likely than others. For example, the phrase \texttt{rain in glasgow} is more likely to appear in a document (in that order) than the seemingly random assortment of terms \texttt{purple monkey dishwasher}\footnote{If you ever watched \emph{The Simpsons}, you might disagree with this statement.}. Given this, and conceptualising a searcher's query in much the same fashion, we can produce a probability distribution $P(Q|D)$, concerning the probability of observing query $Q$ during some form of sampling within the language model of document $D$.
+
+The most simplistic approach to language modelling is undoubtedly the \emph{unigram} approach, where each term within a document and/or query are considered in isolation, which subscribes to the aforementioned simplifying bag of words concept. Essentially, such an approach provides a probability distribution over the words appearing in the language. Higher order \emph{grams} such as \emph{bi-grams} and \emph{tri-grams} begin to consider more the place in which terms appear with respect to others, and thus the semantic meaning defined by this positioning begins to be taken into account within the probability distribution. When considering a document, the more a document discusses a particular topic, the more likely one would begin to observe terms about that topic in said document. When a term is not mentioned in a document, smoothing can be applied (given the wider collection the document is part of) to avoid a zero probability when calculating the probability of terms permitting the partial matching of queries where not all terms appear within a target document.
 
 \subsection{Evaluating Systems}\label{sec:ir_background:evaluation}
 - evaluation
@@ -228,6 +242,14 @@ Then explain that other approaches include Cosine Similarity, as documents and q
         - precision
         - recall
     - user orientated
+    
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-pr.pdf}}
+    \caption[Precision and recall]{An illustration of precision and recall. On the left is an illustrated example of an index, containing many documents. The large circle represents the set of documents retrieved for a query. Documents that are relevant to the query are represented as~\includegraphics[height=\fontcharht\font`\d]{figures/ch2-pr-r.pdf}, with non-relevant documents represented as~\includegraphics[height=\fontcharht\font`\d]{figures/ch2-pr-nr.pdf}. Note that not all relevant documents are retrieved; doing so would mean that the retrieval engine used would have produced perfect results. From the illustration on the left, definitions of \emph{precision} and \emph{recall} are also provided.}
+    \label{fig:pr}
+\end{figure}
 
 \subsubsection{Precision}
 
@@ -246,7 +268,7 @@ Then explain that other approaches include Cosine Similarity, as documents and q
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-spectrum.pdf}}
     \caption[The spectrum of conceptualising IIR research~\citep{kelly2009iir}]{The spectrum of conceptualising IIR research. Methods on the left consider a more system-focused approach, with those on the right considering a more user-focused approach. The fifth step within the spectrum considering TREC interactive studies is considered to be an \emph{"archetypical~\gls{acr:iir} study"}. Figure adapted, with permission, from~\cite{kelly2009iir}.}
-    \label{fig:inverted}
+    \label{fig:spectrum}
 \end{figure}
 
     - diane kelly's spectrum of system to user orientated
