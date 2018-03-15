@@ -109,7 +109,7 @@ Output from the experiments should then be produced in a standardised format. Re
 
 The collaborative (and perhaps competitive) atmosphere that TREC has fostered has broadly been accepted to be good for the~\gls{acr:ir} community. As discussed by~\cite{robertson2008history_ir_evaluation}, some of the main advantages of~\gls{acr:trec} is that it has encouraged a good, formalised scientific methodology for~\gls{acr:ir}. In addition, the provision of providing the community with a large volume of standardised test materials of the quality and quantity in which~\gls{acr:trec} has done is nothing like what was previously available.~\cite{robertson2008history_ir_evaluation} goes on to claim that simply examining the number of research papers published in the field employing some form of~\gls{acr:trec} data is substantial, and that alone is enough to justify the existence of the forum. Standardised sets should also aid reproducibility of research, although we acknowledge that there are other factors at play in order to achieve that goal. 
 
-As previously mentioned,~\gls{acr:trec} is comprised of a series of different tracks, each with its own set of tasks. Some of the tasks, such as those in the \emph{Interactive Track}, as what as known as \emph{ad-hoc}. This type of task can be considered as one of the most obvious for search, when a searcher develops a need for information, and then issues a query to an underlying search engine. Tasks like ad-hoc essentially provide a form of \emph{user model}, one that has been extensively used within~\gls{acr:ir} research for a number of decades. Section~\ref{sec:ir_background:user:trec} provides more information on the steps involved in the model, and what it assumes.
+As previously mentioned,~\gls{acr:trec} is comprised of a series of different tracks, each with its own set of tasks. Some of the tasks, such as those in the \emph{Interactive Track}, as what as known as \emph{ad-hoc}. This type of task can be considered as one of the most obvious for search, when a searcher develops a need for information, and then issues a query to an underlying search engine. Tasks like ad-hoc essentially provide a form of \emph{user model}, one that has been extensively used within~\gls{acr:ir} research for a number of decades. Section~\ref{sec:ir_background:user:models:trec} provides more information on the steps involved in the model, and what it assumes.
 
 \subsection{Indexing Documents}\label{sec:ir_background:basics:indexing}
 As previously discussed, the conversion of a series of documents (corpus) into a data structure facilitating fast, full-text search -- as required of an~\gls{acr:ir} system -- is known as \emph{indexing}. This full-text searching is undertaken, usually in milliseconds, in aid of finding useful documents for a given query. Without an index, a retrieval engine would have to manually examine each and every document within a corpus. This would require significant computational power -- and is indeed infeasible for a large scale index, such as the index used in a contemporary commercial web search engine. The additional storage space and management required to maintain an index of documents is considered to be a necessary tradeoff to guarantee timely responses to queries.
@@ -236,13 +236,22 @@ Essentially, a language model is a probability distribution over strings of text
 The most simplistic approach to language modelling is undoubtedly the \emph{unigram} approach, where each term within a document and/or query are considered in isolation, which subscribes to the aforementioned simplifying bag of words concept. Essentially, such an approach provides a probability distribution over the words appearing in the language. Higher order \emph{grams} such as \emph{bi-grams} and \emph{tri-grams} begin to consider more the place in which terms appear with respect to others, and thus the semantic meaning defined by this positioning begins to be taken into account within the probability distribution. When considering a document, the more a document discusses a particular topic, the more likely one would begin to observe terms about that topic in said document. When a term is not mentioned in a document, smoothing can be applied (given the wider collection the document is part of) to avoid a zero probability when calculating the probability of terms permitting the partial matching of queries where not all terms appear within a target document.
 
 \subsection{Evaluating Systems}\label{sec:ir_background:evaluation}
-- evaluation
-    - effects of pooling in judgements?
-    - system orientated (cranfield)
-        - precision
-        - recall
-    - user orientated
-    
+Given the \emph{de facto} architecture of an experimental~\gls{acr:ir} system (Section~\ref{sec:ir_background:basics:cranfield}) and the numerous retrieval models that one can employ (Section~\ref{sec:ir_background:basics:models}), how can we then begin to evaluate a given retrieval system? Recalling that the \emph{modus operandi} of such a system is to satisfy the needs of the searchers who utilise it,~\cite{lancaster1968information} provides three criteria by which an~\gls{acr:ir} system can be evaluated:
+
+\begin{itemize}
+    \item[\emph{(i)}]{the suitability of an~\gls{acr:ir} system in terms of the specific tasks for which it will be used;}
+    \item[\emph{(ii)}]{the~\gls{acr:ir} system's task performance \emph{efficiency}; and}
+    \item[\emph{(iii)}]{the extent to which the system satisfies the information needs of its \emph{users.}}
+\end{itemize}
+
+These three criteria can themselves be subsequently split into two separate categories: approaches that consider how well the \emph{system} performs (i.e. criterion \emph{(i)} and \emph{(ii)}); and with regards to the individual who is using the~\gls{acr:ir} system at the time (\emph{user-orientated}, criterion \emph{(iii)})~\citep{voorhees2005trec_book}. Given the title of this section, we subsequently only consider system-orientated evaluation approaches here; a more detailed explanation of a user's role and how we can evaluate their performance is provided in Section~\ref{sec:ir_background:user:evaluation}.
+
+Considering system-orientated measures of evaluation, one can consider a system's \emph{efficiency} or \emph{effectiveness}. Efficiency concerns some form of operational metric, such as the speed of the~\gls{acr:ir} system. This example is important (especially in commercial web search engines) as even a fractional increase of the time taken to return results to a searcher can reduce the number of returning searchers, and impacts search engine revenue~\citep{brutlag2009speed}. Indeed, this is examined in more detail in Chapter~\ref{chap:temporal}.
+
+However, when one thinks of~\gls{acr:ir} evaluation, they usually think about how \emph{effective} the system is. Of course, the definition of what defines an~\gls{acr:ir} system to be effective hugely depends upon the type of search task being undertaken. A patent searcher would for example expect an~\gls{acr:ir} system to return \emph{all} relevant patents to avoid missing a related patent (and thus incurring penalties) -- whereas a casual web searcher curious about a topic they know little about (i.e. ad-hoc) would be satisfied with a single, relevant result.
+
+As such, this section provides a brief overview of the basic effectiveness measures widely used within~\gls{acr:ir} today. We consider four different measures.
+
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
@@ -252,16 +261,70 @@ The most simplistic approach to language modelling is undoubtedly the \emph{unig
 \end{figure}
 
 \subsubsection{Precision}
+The \emph{precision} ($p$) of an~\gls{acr:ir} system considers the fraction of documents that have been retrieved that are considered to be relevant or useful to the searcher's given query, information need. An~\gls{acr:ir} system that yields high precision is generally regarded as one that performs well.
+
+Figure~\ref{fig:pr} provides a visual illustration of what precision entails (as well as its counterpart, \emph{recall}, which is discussed below). Given the set of all documents within an index, an~\gls{acr:ir} system will retrieve a number of these documents that satisfy the criteria set out in the retrieval model employed. Of the documents retrieved, some will be considered relevant to the searcher's information need; others will be considered non-relevant. As such, prior knowledge of the relevance of particular documents to given topics is therefore required (e.g. TREC QRELs, as defined in Section~\ref{sec:ir_background:basics:cranfield:trec}).
+
+Precision can therefore be defined as:
+
+\begin{equation*}
+precision = \frac{|~\text{\emph{relevant documents}}~\cap~\text{\emph{retrieved documents}}~|}{|~\text{\emph{retrieved documents}}~|}.
+\end{equation*}
+
+Research in~\gls{acr:ir} typically reports precision up to a particular rank, i.e. $p@k$. For example, $p@10$ will provide a fractional value for the number of relevant documents that appeared within the top $10$ results of a query. Herein lies one of the most elementary and basic \emph{stopping models} that we find encoded within various measures and models defined by~\gls{acr:ir} researchers over the years -- stopping at $10$, or $k$, denotes that a system or searcher need not bother examining any further documents.
 
 \subsubsection{Recall}
+While precision considers the fraction of documents retrieved that are relevant, \emph{recall} ($r$) considers the fraction of documents that were retrieved and relevant to a query against \emph{all known relevant documents for a query}. Recall can formally be defined as:
 
-\subsubsection{Mean Average Precision}
+\begin{equation*}
+recall = \frac{|~\text{\emph{relevant documents retrieved}}~|}{|~\text{\emph{relevant documents}}~|}
+\end{equation*}
+
+Considering the patent searching example defined above, high recall would be desirable in this type of task -- high recall means more patents matching the searcher's query will be returned, thus reducing the possibility of missing important prior filings.
+
+Given more modern retrieval models, the notion of ranking would lead a searcher to assume (as per the PRP~\citep{robertson1977prp}) that relevant documents pertaining to their query will be the first results presented. Non-relevant documents will also of course appear, typically leading to some form of tradeoff between precision and recall, as discussed below. The tradeoff considers the notion that as you increase recall, the number of non-relevant items will undoubtedly also increase, thus reducing the~\gls{acr:ir} system's overall precision.
 
 \subsubsection{F-Measure}
+Considering the aforementioned tradeoff between precision and recall, the \emph{F-measure}, which represents a \emph{weighted, harmonic mean} between the two. Originally proposed by~\cite{rijsbergen1979ir}, the measure was provided to \emph{``measure the effectiveness of retrieval with respect to a user who attaches $\beta$ times as much importance to recall as precision.''} The F-measure, along with its $\beta$ parameter, is defined by~\cite{chinchor1992f_measure} as:
+
+\begin{equation*}
+F_\beta = \frac{(\beta^2 + 1)\cdot pr}{\beta^2 \cdot p + r}\hspace{10mm}(0\leqslant\beta\leqslant+\infty).
+\end{equation*}
+
+Above, $p$ and $r$ denote precision and recall respectively. $\beta$ is simply used as a parameter for controlling the balance between the two. When $\beta = 1$, $F_1$ is equivalent to the harmonic mean of precision and recall. Since the terms F-Measure and harmonic mean are ubiquitously linked (somewhat \emph{harmoniously}\dots), the two terms are used interchangeably within the literature. As $\beta$ tends towards $0$, the score becomes more precision orientated.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-ranking.pdf}}
+    \caption[The importance of ranking]{Given an information need to find out information about the \emph{Sir Alwyn Williams Building} (part of the University of Glasgow's estate portfolio), which ranked list of results would you prefer to make use of?}
+    \label{fig:ranking}
+\end{figure}
+
+\subsubsection{Mean Average Precision}
+One of the major limitations of the previously examined measures is that the \emph{ranking} of results is not specifically taken into consideration. For example, consider Figure~\ref{fig:ranking}. Looking at the {\color{dmax_green}ticks} and {\color{dmax_red}crosses} (denoting relevant and non-relevant content, respectively) within the figure, would it be desirable to be presented with the list of results ranked in order shown on the left, or on the right? Despite apparent differences in the ranking of results, precision for example would show no difference -- both ranked lists contain two relevant documents, and three non-relevant. A simple calculation would show that the $p@5$ score for both lists would therefore be $2 / 5 = 0.4$ -- there is no discernible difference between them.
+
+One of the most widely used measures that addresses this issue -- and provides a means of quantifying the all-round effectiveness of a retrieval system for a representative set of test topics -- is \emph{Mean Average Precision (MAP)}~\cite{voorhees2005trec_book}. Rather than considering a single set of results, MAP can consider multiple queries -- and, as alluded to above, considers the ranking in which results for each query are provided.
+
+As the name might imply, MAP provides a mean over the \emph{Average Precision (AP)} for each topic that is examined. AP provides the rank sensitive component of MAP up to some cuttoff $k$, as defined below:
+
+\begin{equation*}
+AP = \frac{\sum^{n}_{k=1}(p(k) \cdot rel(k))}{|~\text{\emph{relevant documents}}~|}.
+\end{equation*}
+
+Above, $P(K)$ is the precision cutoff at rank $k$, and $rel(k)$ is a function to denote the relevance of a particular document at rank $k$. This is assumed to be binary, with $1$ denoting a relevant document, and $0$ denoting a non-relevant document. The AP is then computed for each sample query, $q$, over the set of topics $T$ to produce a final MAP score for the~\gls{acr:ir} system:
+
+\begin{equation*}
+MAP = \frac{\sum^{T}_{q=1} AP(q)}{|~Q~|}.
+\end{equation*}
 
 
-\section{User Models}
-
+\section{Considering the User}\label{sec:ir_background:user}
+central to all of this is the user.
+talk about diane's spectrum of IR experimentation, from system to user focused.
+consider a variety of more user-centric evaluation approaches.
+here, you can also bring in the notion of simulation
+mention that this is IIR.
 
 \begin{figure}[t!]
     \centering
@@ -270,6 +333,31 @@ The most simplistic approach to language modelling is undoubtedly the \emph{unig
     \caption[The spectrum of conceptualising IIR research~\citep{kelly2009iir}]{The spectrum of conceptualising IIR research. Methods on the left consider a more system-focused approach, with those on the right considering a more user-focused approach. The fifth step within the spectrum considering TREC interactive studies is considered to be an \emph{"archetypical~\gls{acr:iir} study"}. Figure adapted, with permission, from~\cite{kelly2009iir}.}
     \label{fig:spectrum}
 \end{figure}
+
+\subsection{Simulating the User}\label{sec:ir_background:user:simulation}
+
+\subsection{Considering User Models}\label{sec:ir_background:user:models}
+
+\subsection{Evaluating User Performance}\label{sec:ir_background:user:evaluation}
+
+\subsubsection{Relative Relevance}
+~\cite{borlund1997iir_evaluation}
+
+\subsubsection{Ranked Half-Life}
+~\cite{borlund1997iir_evaluation}
+
+\subsubsection{Cumulative Gain}
+
+\subsubsection{Rank-Biased Precision}
+
+\subsubsection{INST}
+
+\section{User Models}
+
+\subsection{The TREC-Style User}\label{sec:ir_background:user:models:trec}
+
+
+
 
     - diane kelly's spectrum of system to user orientated
         - TREC/Cranfield is a very basic approach to simulation
@@ -291,18 +379,6 @@ in the next chapter, provide an overview of the different types of models of sea
 Stephen Robertson has good points in his paper on IR evaluation history:~\cite{robertson2008history_ir_evaluation}
 
 Cranfield isn't very good. Furthermore, this model uses only binary and topical-oriented relevance. The conclusion is that the batch-driven mode of the Cranfield model is not suitable for the evaluation of IIR systems, which, if carried out as realistically as possible, requires human interaction, potentially dynamic information need interpretations, and the assignment of multidimensional and dynamic relevance. (From Borlund 2003)
-
-\subsubsection{Relative Relevance}
-~\cite{borlund1997iir_evaluation}
-
-\subsubsection{Ranked Half-Life}
-~\cite{borlund1997iir_evaluation}
-
-\subsubsection{Cumulative Gain}
-
-\subsubsection{Rank-Biased Precision}
-
-\subsubsection{INST}
 
 
 \subsection{TREC Ad-Hoc}\label{sec:ir_background:user:trec}
@@ -331,6 +407,7 @@ making judgements of novelty separated from the relevance judgements). A typical
 supposed information need under the headings ‘description’ and ‘narrative’. The narrative contains explicit rules for
 judging the relevance of documents. An example title and description are: Hydroponics—Document will discuss the
 science of growing plants in water or some substance other than soil. 
+
 
 \section{Chapter Summary}
 
