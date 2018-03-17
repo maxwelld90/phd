@@ -566,3 +566,18 @@
     borderline north={10mm}{0pt}{dmax_lightblue},
     borderline south={1mm}{0pt}{dmax_lightblue}
 }
+
+% Renew the attribution command for quotes. Easier to do it this way.
+\renewcommand\attrib[1] {%
+  \begingroup
+    \at@init
+    \nobreak\hfil\penalty50%
+    \hskip\AttribMinSkip
+    \vadjust{}\nobreak\hfil
+    {\relax\blueboxbold{#1}}%
+    \parfillskip\z@
+    \nobreak
+    \finalhyphendemerits0%
+    \par
+  \endgroup
+}

@@ -202,10 +202,10 @@ In order to understand the basic workings of the vector space approach, let us c
 
 Term frequency is one of many different term weighting schemes that have been trialled over the years in~\gls{acr:ir} research. Perhaps one of the best and widely used schemes is \emph{inverse document frequency (IDF)}, proposed by~\cite{sparck1972statistical}. Here, the frequency of a term is normalised against the length of a given document. In the words of its creator, IDF allows for one to define the specificity of a term as \emph{``an inverse function of the number of documents in which it occurs.''}~\citep{sparck1972statistical}. This is useful as non-discriminative terms that occur frequently within an index (e.g. \texttt{the}) would have its weight diminished, with the inverse happening for more discriminative terms, better able to describe a given document.
 
-TF and IDF are typically combined together as a measure of both term appearance and importance, under an approach called \emph{TF-IDF}. For a given term $k$, one can calculate a TF-IDF score with the following equation.
+TF and IDF are typically combined together as a measure of both term appearance and importance, under an approach called \emph{TF-IDF}. For a given term $k$, one can calculate a TF-IDF score with the following equation:
 
 \begin{equation*}
-tf_{i,k} \cdot idf_{k} = \frac{f_{i,k}}{\sum_{j=1}^{t} f_{i,j}} \cdot log \frac{N}{n_k}
+tf_{i,k} \cdot idf_{k} = \frac{f_{i,k}}{\sum_{j=1}^{t} f_{i,j}} \cdot log \frac{N}{n_k}.
 \end{equation*}
 
 Above, $f_{i,k}$ is the frequency of term $k$, $N$ is the number of documents in the collection used, and $n_k$ is the number of documents in which term $k$ appears at least once.
@@ -261,7 +261,7 @@ As such, this section provides a brief overview of the basic effectiveness measu
 \end{figure}
 
 \subsubsection{Precision}
-The \emph{precision} ($p$) of an~\gls{acr:ir} system considers the fraction of documents that have been retrieved that are considered to be relevant or useful to the searcher's given query, information need. An~\gls{acr:ir} system that yields high precision is generally regarded as one that performs well.
+The \emph{precision} ($P$) of an~\gls{acr:ir} system considers the fraction of documents that have been retrieved that are considered to be relevant or useful to the searcher's given query, information need. An~\gls{acr:ir} system that yields high precision is regarded as one that performs well.
 
 Figure~\ref{fig:pr} provides a visual illustration of what precision entails (as well as its counterpart, \emph{recall}, which is discussed below). Given the set of all documents within an index, an~\gls{acr:ir} system will retrieve a number of these documents that satisfy the criteria set out in the retrieval model employed. Of the documents retrieved, some will be considered relevant to the searcher's information need; others will be considered non-relevant. As such, prior knowledge of the relevance of particular documents to given topics is therefore required (e.g. TREC QRELs, as defined in Section~\ref{sec:ir_background:basics:cranfield:trec}).
 
@@ -271,10 +271,10 @@ Precision can therefore be defined as:
 precision = \frac{|~\text{\emph{relevant documents}}~\cap~\text{\emph{retrieved documents}}~|}{|~\text{\emph{retrieved documents}}~|}.
 \end{equation*}
 
-Research in~\gls{acr:ir} typically reports precision up to a particular rank, i.e. $p@k$. For example, $p@10$ will provide a fractional value for the number of relevant documents that appeared within the top $10$ results of a query. Herein lies one of the most elementary and basic \emph{stopping models} that we find encoded within various measures and models defined by~\gls{acr:ir} researchers over the years -- stopping at $10$, or $k$, denotes that a system or searcher need not bother examining any further documents.
+Research in~\gls{acr:ir} typically reports precision up to a particular rank, i.e. $P@k$. For example, $P@10$ will provide a fractional value for the number of relevant documents that appeared within the top $10$ results of a query. Herein lies one of the most elementary and basic \emph{stopping models} that we find encoded within various measures and models defined by~\gls{acr:ir} researchers over the years -- stopping at $10$, or $k$, denotes that a system or searcher need not bother examining any further documents.
 
 \subsubsection{Recall}
-While precision considers the fraction of documents retrieved that are relevant, \emph{recall} ($r$) considers the fraction of documents that were retrieved and relevant to a query against \emph{all known relevant documents for a query}. Recall can formally be defined as:
+While precision considers the fraction of documents retrieved that are relevant, \emph{recall} ($R$) considers the fraction of documents that were retrieved and relevant to a query against \emph{all known relevant documents for a query}. Recall can formally be defined as:
 
 \begin{equation*}
 recall = \frac{|~\text{\emph{relevant documents retrieved}}~|}{|~\text{\emph{relevant documents}}~|}
@@ -288,10 +288,10 @@ Given more modern retrieval models, the notion of ranking would lead a searcher 
 Considering the aforementioned tradeoff between precision and recall, the \emph{F-measure}, which represents a \emph{weighted, harmonic mean} between the two. Originally proposed by~\cite{rijsbergen1979ir}, the measure was provided to \emph{``measure the effectiveness of retrieval with respect to a user who attaches $\beta$ times as much importance to recall as precision.''} The F-measure, along with its $\beta$ parameter, is defined by~\cite{chinchor1992f_measure} as:
 
 \begin{equation*}
-F_\beta = \frac{(\beta^2 + 1)\cdot pr}{\beta^2 \cdot p + r}\hspace{10mm}(0\leqslant\beta\leqslant+\infty).
+F_\beta = \frac{(\beta^2 + 1)\cdot PR}{\beta^2 \cdot P + R}\hspace{10mm}(0\leqslant\beta\leqslant+\infty).
 \end{equation*}
 
-Above, $p$ and $r$ denote precision and recall respectively. $\beta$ is simply used as a parameter for controlling the balance between the two. When $\beta = 1$, $F_1$ is equivalent to the harmonic mean of precision and recall. Since the terms F-Measure and harmonic mean are ubiquitously linked (somewhat \emph{harmoniously}\dots), the two terms are used interchangeably within the literature. As $\beta$ tends towards $0$, the score becomes more precision orientated.
+Above, $P$ and $R$ denote precision and recall respectively. $\beta$ is simply used as a parameter for controlling the balance between the two. When $\beta = 1$, $F_1$ is equivalent to the harmonic mean of precision and recall. Since the terms F-Measure and harmonic mean are ubiquitously linked (somewhat \emph{harmoniously}\dots), the two terms are used interchangeably within the literature. As $\beta$ tends towards $0$, the score becomes more precision orientated.
 
 \begin{figure}[t!]
     \centering
@@ -302,17 +302,17 @@ Above, $p$ and $r$ denote precision and recall respectively. $\beta$ is simply u
 \end{figure}
 
 \subsubsection{Mean Average Precision}
-One of the major limitations of the previously examined measures is that the \emph{ranking} of results is not specifically taken into consideration. For example, consider Figure~\ref{fig:ranking}. Looking at the {\color{dmax_green}ticks} and {\color{dmax_red}crosses} (denoting relevant and non-relevant content, respectively) within the figure, would it be desirable to be presented with the list of results ranked in order shown on the left, or on the right? Despite apparent differences in the ranking of results, precision for example would show no difference -- both ranked lists contain two relevant documents, and three non-relevant. A simple calculation would show that the $p@5$ score for both lists would therefore be $2 / 5 = 0.4$ -- there is no discernible difference between them.
+One of the major limitations of the previously examined measures is that the \emph{ranking} of results is not specifically taken into consideration. For example, consider Figure~\ref{fig:ranking}. Looking at the {\color{dmax_green}ticks} and {\color{dmax_red}crosses} (denoting relevant and non-relevant content, respectively) within the figure, would it be desirable to be presented with the list of results ranked in order shown on the left, or on the right? Despite apparent differences in the ranking of results, precision for example would show no difference -- both ranked lists contain two relevant documents, and three non-relevant. A simple calculation would show that the $P@5$ score for both lists would therefore be $2 / 5 = 0.4$ -- there is no discernible difference between them.
 
 One of the most widely used measures that addresses this issue -- and provides a means of quantifying the all-round effectiveness of a retrieval system for a representative set of test topics -- is \emph{Mean Average Precision (MAP)}~\cite{voorhees2005trec_book}. Rather than considering a single set of results, MAP can consider multiple queries -- and, as alluded to above, considers the ranking in which results for each query are provided.
 
 As the name might imply, MAP provides a mean over the \emph{Average Precision (AP)} for each topic that is examined. AP provides the rank sensitive component of MAP up to some cuttoff $k$, as defined below:
 
 \begin{equation*}
-AP = \frac{\sum^{n}_{k=1}(p(k) \cdot rel(k))}{|~\text{\emph{relevant documents}}~|}.
+AP = \frac{\sum^{n}_{k=1}(P(k) \cdot rel(k))}{|~\text{\emph{relevant documents}}~|}.
 \end{equation*}
 
-Above, $P(K)$ is the precision cutoff at rank $k$, and $rel(k)$ is a function to denote the relevance of a particular document at rank $k$. This is assumed to be binary, with $1$ denoting a relevant document, and $0$ denoting a non-relevant document. The AP is then computed for each sample query, $q$, over the set of topics $T$ to produce a final MAP score for the~\gls{acr:ir} system:
+Above, $P(K)$ is the precision cutoff at rank $k$ (i.e. $P@k$), and $rel(k)$ is a function to denote the relevance of a particular document at rank $k$. This is assumed to be binary, with $1$ denoting a relevant document, and $0$ denoting a non-relevant document. AP is then computed for each sample query, $q$, over the set of topics $T$ to produce a final MAP score for the~\gls{acr:ir} system:
 
 \begin{equation*}
 MAP = \frac{\sum^{T}_{q=1} AP(q)}{|~Q~|}.
@@ -320,25 +320,101 @@ MAP = \frac{\sum^{T}_{q=1} AP(q)}{|~Q~|}.
 
 
 \section{Considering the User}\label{sec:ir_background:user}
-central to all of this is the user.
-talk about diane's spectrum of IR experimentation, from system to user focused.
-consider a variety of more user-centric evaluation approaches.
-here, you can also bring in the notion of simulation
-mention that this is IIR.
+So far in this chapter, we have provided a background on several key developments in the area of~\gls{acr:ir} research. However, these aforementioned developments all purely consider the \emph{system} that is being evaluated (i.e \emph{system-sided} research). To reiterate once more, the overall goal of an~\gls{acr:ir} system is to satisfy some information need that a searcher, or \emph{user}, acquires. In short, satisfying the user is key to~\gls{acr:ir}. Central to this is our understanding and incorporation of a user's search behaviours and interactions into the evaluation of~\gls{acr:ir} systems~\citep{callan2007minds}.
+
+The study of~\glsfirst{acr:iir} attempts to address this gap in our collective knowledge.~\gls{acr:iir} studies can include aspects from user-sided and system-sided research. For example, one might present results of a user study examining a particular phenomenon of a user's behaviour, and also provided details of a system-sided evaluation. As discussed by~\cite{kelly2009iir},~\gls{acr:iir} can trace its roots back to a variety of different disciplines, including: traditional~\gls{acr:ir}; library and information science; psychology; and~\gls{acr:hci}. Typically presented as branch of~\gls{acr:ir} and/or~\gls{acr:hci}, arguments also exist to consider~\gls{acr:iir} as a distinct area of research~\citep{ruthven2008iir}.
+
+\begin{quote}
+\emph{``In~\gls{acr:iir}, users are typically studied along with their interactions with systems and information. While classic~\gls{acr:ir} studies abstract humans out of the evaluation model,~\gls{acr:iir} focuses on users' behaviors [sic] and experiences -- including physical, cognitive and affective -- and the interactions that occur between users and systems, and users and information. In simple terms, classic~\gls{acr:ir} evaluation asks the question, does this system retrieve relevant documents?~\gls{acr:iir} evaluation asks the question, can people use this system to retrieve relevant documents?''}
+\attrib{\cite{kelly2009iir}}
+\end{quote}
+
+In order to aptly describe where~\gls{acr:iir} fits into the system-sided vs. user-sided space,~\cite{kelly2009iir} also provided an intuitive spectrum of work in this area, comprised of eight types of study -- as shown in Figure~\ref{fig:spectrum}. Below, we provide a brief explanation of the key types of study as shown in the spectrum.
 
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-spectrum.pdf}}
-    \caption[The spectrum of conceptualising IIR research~\citep{kelly2009iir}]{The spectrum of conceptualising IIR research. Methods on the left consider a more system-focused approach, with those on the right considering a more user-focused approach. The fifth step within the spectrum considering TREC interactive studies is considered to be an \emph{"archetypical~\gls{acr:iir} study"}. Figure adapted, with permission, from~\cite{kelly2009iir}.}
+    \caption[Spectrum IIR research~\citep{kelly2009iir}]{The spectrum of conceptualising IIR research. Methods on the left consider a more system-focused approach, with those on the right considering a more user-focused approach. The fifth step within the spectrum considering TREC interactive studies is considered to be an \emph{"archetypical~\gls{acr:iir} study"}. Figure adapted, with permission, from~\cite{kelly2009iir}.}
     \label{fig:spectrum}
 \end{figure}
 
-\subsection{Simulating the User}\label{sec:ir_background:user:simulation}
+\begin{itemize}
+    
+    \item[\emph{(1)}]{\blueboxbold{TREC-style studies} focus on the development and evaluation of system-sided research, such as retrieval models and indexing methods. These would be considered akin to most of the studies undertaken in TREC tracks over the years (excluding tracks such as the Interactive Track, for example). No real users are utilised using this approach, although we do argue that there is a simplistic \todo{\emph{user model}} encoded within this approach. Human assessors however create judgements used for evaluation, but they do not function as searchers as such. Assessors are the only humans \emph{in the loop} for this type of study -- the rest is fully automated on computers.}
+    
+    \item[\emph{(2)}]{\blueboxbold{'User' relevance assessment studies} do consider humans \emph{in the loop}, but this time for exceptionally limited purposes. As the name for these studies may suggest, humans are employed for generating relevance assessments as part of the study, and as such, no searching takes place.~\cite{bota2016cards} undertook a study of this nature, where they examined search behaviour for predefined queries when presented with a series of \emph{information cards}\footnote{An \emph{information card} is a contemporary feature of a~\gls{acr:serp}, typically presented on the right rail of the page. They provide additional information to the topic in question, such as images and basic statistics of the entity.}}.
+    
+    \item[\emph{(5)}]{Moving along the spectrum,~\cite{kelly2009iir} cites~\blueboxbold{TREC interactive studies} in which typically a system and/or interface feature is evaluated. Typically, the feature is related to the human, such as examining their behaviour, cognition or information seeking context. These studies usually aim to assist in aiding our understanding of the search process, and to aid in the development of more intuitive and user-friendly search interfaces.}
+    
+\end{itemize}
 
-\subsection{Considering User Models}\label{sec:ir_background:user:models}
+The studies complying with point \emph{(5)}, called \emph{archetypical~\gls{acr:iir} studies}~\citep{kelly2009iir}, are the studies which we largely consider in this thesis -- indeed, later on in this thesis, we consider a variety of aspects that can influence the behaviour and performance of searchers. Moving further along the spectrum, the study of users becomes ever more prominent, until we reach:
+
+\begin{itemize}
+    
+    \item[\emph{(8)}]{\blueboxbold{information seeking behaviour in context studies} which considers research that (almost) exclusively focuses on users. Here, we consider the information needs of the individuals~\gls{acr:ir} systems aim to satisfy -- searchers. Researchers typically would examine a user search, while collating qualitative data about their experiences.}
+    
+\end{itemize}
+
+Of course, a more detailed explanation of these different types of study can be found in the work by~\cite{kelly2009iir} that illustrate the more user-centric approaches in detail. We now however turn our attention back to the idea of a loosely-defined user model present within \blueboxbold{TREC-style studies}.
+
+\subsection{Basic User Models of Search}\label{sec:ir_background:user:models}
+Thus far, we have discussed the notion that within \blueboxbold{TREC-style studies}, we argue that there is the notion of an underlying user model that is exploited to produce the list of results from a given~\gls{acr:ir} system that can then be subsequently evaluated. This model is typically used in a batch environment, where many queries are issued in turn.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-trec.pdf}}
+    \caption[The TREC-style user model]{A basic flowchart of the user model typically encoded within TREC-style experimentation. \emph{'Users'} subscribing to this model will issue a query – typically the title of a topic – and then proceed to examine results to some fixed depth, $k$.}
+    \label{fig:trec_model}
+\end{figure}
+
+A basic flowchart of the user model is presented in Figure~\ref{fig:trec_model}. With a given information need, a searcher (or system) will then translate that information need into some form of query -- from most TREC tasks, the title of a topic is used (as discussed in Section~\ref{sec:ir_background:basics:cranfield}). The query is then issued to the underlying retrieval engine, and a set of results are then returned. From this point on, the process, as alluded to above, is \emph{batch-like} in nature. Every result summary presented is `clicked', with the document subsequently considered relevant, up to some cutoff at $k$. Typically for TREC-style experimentation, this cutoff will be $k=1000$. Once this process has been completed, the next query will be issued to the underlying retrieval engine, until the list of queries have been exhausted. Once this process has been completed, the list of documents considered relevant to the information need (i.e. all $k$ documents) are passed to the evaluation stage of the Cranfield model (refer to Figure~\ref{fig:ir_cranfield}), where the various evaluation measures that are to be used can be calculated.
+
+The question one should ask considering this TREC-style user model is: \emph{is this model particularly realistic?} Arguments can obviously be made for and against such a model, but the general consensus in the~\gls{acr:ir} community is that it is \emph{not} particularly representative of a searcher in real life, regardless of the search task. A number of strong assumptions are made of the behaviour of the searcher, namely that:
+
+\begin{itemize}
+    \item{a single query is issued to address a given information need;}
+    \item{a searcher subscribing to this model will \emph{always} examine to a fixed depth in the presented results (their \emph{stopping behaviour}); and}
+    \item{a searcher will always consider an item presented to him/her as relevant to their information need.}
+\end{itemize}
+
+These assumptions have over the years been proven to be largely unrealistic through empirical evidence. For example, searchers will often adapt their stopping behaviour depending upon the quality of the list of results presented.~\cite{borlund2003iir_model} also puts forward the notion that the model does not consider a searcher's \emph{dynamic information needs}. Here, his or her understanding of a particular topic will evolve over time as content is examined and their mental model evolves. The TREC-style model of search considers that the only point at which a searcher `learns' is at the querying stage.
+
+While deficient in terms of considering a searcher's behaviours, the TREC-style model has worked well for the batch-style experimentation that is typically employed at such evaluation forums. It can be argued that the entire process is essentially \emph{simulating} a user, albeit in a limited way.
+
+\subsection{Simulation in~\gls{acr:ir} and~\gls{acr:iir}}\label{sec:ir_background:user:simulation}
+As outlined in Section~\ref{sec:intro:motivation}, employing simulation for~\gls{acr:iir} studies in conjunction with a model of the search process allows for consistent and reproducible results. Simulation however is not exclusively used for modelling searcher behaviours -- in traditional~\gls{acr:ir}, simulation has been used for example in simulated work tasks~\citep{borlund2003iir_model, voorhees2005trec_book}, simulated and synthetic data collection~\citep{azzopardi2009query_side, azzopardi2007languages, jordan2006cqg, tague1980simulation_bibliographic}, and the simulation of interaction~\citep{azzopardi2010workshop, carterette2011effectiveness_evaluation, clarke2013mube,  leuski2000relevance_reinforcement, white2004simulated_feedback_models}.
+
+There has also been a growing interest with the simulation of interaction, and in particular how to model searcher behaviour~\citep{azzopardi2010workshop, clarke2013mube}. This is for a variety of reasons. Firstly, simulation provides a cost effective means of evaluation which is reliable, repeatable and therefore reproducible. Secondly, most, if not all evaluation measures either implicitly or explicitly encode some form of user model (typically a stopping model) in order to make measurements. Simulation also provides a means in which to explore different searcher behaviours, methods and techniques to better understand how searchers do, could, or are likely to behave. However, if simulations are not properly grounded, motivated and validated, the findings from such simulations can be considered questionable. Thus, there is a pertinent need to ensure that the models developed are credible abstractions of the search process, and that they are seeded with data based on actual human interaction data~\citep{azzopardi2010workshop}\footnote{\scriptsize{The exception being when exploratory simulations are conducted to examine \emph{`what-if'} scenarios.}}. 
+
+Simulation has been used to examine a range of factors within the~\gls{acr:iir} process, usually independently, such as: query formulation and suggestions~\citep{azzopardi2009query_side, azzopardi2007languages, baskaya2013behavioural_factors, carterette2015test_collections, jordan2006cqg, keskustalo2008user_simulation, verberne2015personalised_queries}; browsing behaviours~\citep{carterette2015test_collections, chuklin2015click_models, guo2009click_chain, pakkonen2015behavioural_dimensions, smucker2011user_strategies}; relevance feedback~\citep{harman1992rf, jarvelin2009graded_relevance, keskustalo2006rf, keskustalo2008user_simulation, ruthven2003interactive_query_expansion}; the influence of costs and time~\cite{azzopardi2011economics, baskaya2012simulating_sessions}; stopping strategies and stopping models~\cite{carterette2011effectiveness_evaluation, carterette2015test_collections, maxwell2015initial_stopping, maxwell2015stopping_strategies, thomas2014modelling_behaviour}; and performance over sessions~\citep{luo2014winwin,luo2015pomdp}.
+
+To undertake the aforementioned simulated studies, either \emph{(i)} the simulated component itself is considered in isolation (e.g. evaluating the performance of individual query generation techniques~\citep{azzopardi2007languages, jordan2006cqg}), or \emph{(ii)} a simulation of the entire search process is performed. Here, a simulated user is instantiated and undertakes a series of interactions, typically based upon a predefined search process until they reach a certain level of gain, reach a time limit, or meet some other stopping condition~\citep{baskaya2013behavioural_factors, maxwell2015initial_stopping, maxwell2015stopping_strategies, moffat2013users_versus_models, thomas2014modelling_behaviour}.
+
+So, how do individuals actually interact with a ranked list? When, for example, do they stop examining results? In thesis, we address this question by employing a hybrid approach of conducting user studies to assist in the development of a more advanced, realistic user model that considers the search process. This model is thus guided by the findings of the user studies, as discussed in subsequent chapters~\ref{chap:temporal},~\ref{chap:snippets}, and~\ref{chap:diversity}. This model can then be tested by simulating a more complex user with weaker assumptions, thus moving the area of user modelling forward.
 
 \subsection{Evaluating User Performance}\label{sec:ir_background:user:evaluation}
+With the basic~\gls{acr:ir} measures described in Section~\ref{sec:ir_background:evaluation} consider system-sided aspects, we must also consider a number of key measures used within~\gls{acr:iir} studies. This section discusses six different measures, each with a short description of each. It may be interesting to note that a large number of measures for~\gls{acr:iir} have been proposed over the years (and indeed, over the experimental spectrum as shown in Figure~\ref{fig:spectrum}); however, only a small number of measures have been consistently used. For a more in-depth summary of measures that are available, consult~\cite{su1992iir_measures}, and more recently,~\cite{kelly2009iir}.
+
+In addition to the spectrum of~\gls{acr:ir}/\gls{acr:iir} experimentation,~\cite{kelly2009iir} also provides a taxonomy of the different types of measures used within~\gls{acr:iir} experimentation. The taxonomy consists of four main categories that are enumerated below.
+
+\begin{itemize}
+    
+    \item{The first category considers \blueboxbold{contextual} factors related to a subject of an~\gls{acr:iir} experiment. Factors include those commonly gathered from some form of demographics survey, such as the subject's age, sex, and prior search experience. In an information seeking context, one may also be able to gather information about a subject's prior knowledge, for example, on the topic they are asked to find information for.}
+    
+    \item{\blueboxbold{Interactions} are the second category. These measures characterise the interactions that take place between the system and the user -- including their behavioural characteristics. Examples of such interactions include: the number of queries that the user issues; the number of documents they examine; the depth to which they examine results; and the mean length (in terms) of the queries that they issue. These measures can usually be computed by extracting and parsing interaction \emph{log data}\footnote{By \emph{log data}, we refer to the file that is created by an experimental system as a subject conducts a search task. Typically, a series of different actions (i.e. issuing a query, clicking a document link) are logged, and post-hoc log parsing can then extract this data.}.}
+    
+    \item{The third category considers \blueboxbold{performance} factors. As the name suggests, these measures are related to the outcome of the interactions that take place between the user and the system. These measures can be considered analogous to the system-sided measures that we examined previously in Section~\ref{sec:ir_background:evaluation}. Typically, such measures can again be extracted from interaction log data.}
+    
+    \item{Finally, \blueboxbold{usability} measures are typically a series of qualitative and quantitative approaches for capturing a subject's feelings and attitudes towards a search system that they have just used. Common measures in this category include the subject's view of the system's \emph{effectiveness} and their overall \emph{satisfaction} with how they performed when undertaking the search task in question~\citep{hornbaek2006usability}.}
+    
+\end{itemize}
+
+When considering the work in this thesis, we employ measures from \emph{all four} of the above taxonomy's categories -- including extracting interaction data from user studies, which is subsequently employed to \emph{ground} simulations of interaction (as described in Section~\ref{sec:ir_background:user:simulation}). While contextual, interaction and usability measures are relatively straightforward to explain, we discuss in the remainder of this section a number of key \emph{performance} measures commonly employed in~\gls{acr:iir}.
+
+\subsubsection{Interactive Precision and Recall}
 
 \subsubsection{Relative Relevance}
 ~\cite{borlund1997iir_evaluation}
@@ -346,67 +422,21 @@ mention that this is IIR.
 \subsubsection{Ranked Half-Life}
 ~\cite{borlund1997iir_evaluation}
 
-\subsubsection{Cumulative Gain}
+\subsubsection{(Discounted) Cumulative Gain}
 
 \subsubsection{Rank-Biased Precision}
 
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-rbp.pdf}}
+    \caption[Rank-Biased Precision]{Rank-biased precision}
+    \label{fig:rbp}
+\end{figure}
+
 \subsubsection{INST}
 
-\section{User Models}
 
-\subsection{The TREC-Style User}\label{sec:ir_background:user:models:trec}
-
-
-
-
-    - diane kelly's spectrum of system to user orientated
-        - TREC/Cranfield is a very basic approach to simulation
-            a model of how user performs
-        - user orientated approach looks at how users interact with the system
-        - models of how users search... to show how we develop models.
-        
-        - at the end of chapter
-
-Look at Kelly (2009) -- Methods for Evaluating Interactive Information Retrieval Systems with Users
-
-these measures/evaluations are thining about the way people go and search
-of relevance to this thesis are stopping strats
-diff. measures encoe different stopping models. different ways of evaluating this.
-in the next chapter, provide an overview of the different types of models of search, and how searching has been conceptualised with respect to stopping strategies.
-
-\subsection{Towards User-Orientated Measures}
-
-Stephen Robertson has good points in his paper on IR evaluation history:~\cite{robertson2008history_ir_evaluation}
-
-Cranfield isn't very good. Furthermore, this model uses only binary and topical-oriented relevance. The conclusion is that the batch-driven mode of the Cranfield model is not suitable for the evaluation of IIR systems, which, if carried out as realistically as possible, requires human interaction, potentially dynamic information need interpretations, and the assignment of multidimensional and dynamic relevance. (From Borlund 2003)
-
-
-\subsection{TREC Ad-Hoc}\label{sec:ir_background:user:trec}
-\todo{does this bit need to be moved to the next chapter?}
-- searcher acquires an information need, sits down, and conducts a search against an existing collection of documents over a set period of time. Known as ad-hoc retrieval, or retrospective searching in older literature.
-
-- this is lifted from Robertson (2008), rephrasing required, and probably needs to be moved to the user model part.
-
-- The user model invoked here is what has now become the most obvious one for search: user has an
-information need, sits down in front of a system and conducts a search against an existing collection of
-documents, over a limited time period. This is known in TREC jargon as an ‘ad-hoc’ search – an earlier more-orless
-equivalent term was ‘retrospective searching’. System produces a ranked list of items, which the user consults
-in rank order. Users may judge documents good or bad, but in principle there may be any number of good
-documents in the collection. (The one significant change in this model from the Cranfield view is that there is now
-an assumption that each system will rank its results list.) It is often asserted that there is also an assumption that
-requests are topical or subject-based (documents about X); indeed the TREC jargon, which is to call requests
-‘topics’, encourages that view18. However, although most of the requests used in TREC (all of those in early
-TRECs) are indeed topical, there is no necessary requirement of the model that this should be so, or that they
-should be purely topical. In some sense the nature of the requests is determined by the relevance judgements; if
-the judgements depend on other criteria than pure topicality, then that is the nature of the task.
-However, it is fundamental to the model that the judge or assessor should indeed be able to make a judgement
-on each document, actually a binary one for most of the TREC ad-hoc tasks, and should be able to make the
-judgement irrespective of the order of presentation of the documents. This last precludes, for example, embedding
-a criterion of novelty in the usual ad-hoc task relevance judgements (although one track did investigate novelty by
-making judgements of novelty separated from the relevance judgements). A typical TREC ‘topic’ has a short title (which might be used directly as a query), and additional information about the
-supposed information need under the headings ‘description’ and ‘narrative’. The narrative contains explicit rules for
-judging the relevance of documents. An example title and description are: Hydroponics—Document will discuss the
-science of growing plants in water or some substance other than soil. 
 
 
 \section{Chapter Summary}
@@ -450,39 +480,75 @@ From Leif:
         
         - at the end of chapter
 
-% \subsection{Methodologies}
+
+
+% how do people actually interact with a ranked list?
+% when do they stop, for example?
 %
-% \subsubsection{System-Orientated}
+% we can employ a hybrid approach of conducting user studies to develop a more advanced, TREC++ user model of search.
 %
-% \subsubsection{User-Orientated}
+% this model is guided and informed by actual user studies (as discussed in chapters x, y and z).
 %
-% \subsection{Retrieval Models}
+% and then we can test these models out to see whether they are any good by simulating a more advance user, with weaker assumptions, thus moving the area of user modelling forward.
+
+
+
+
+
+
+
+% \subsection{Simulating the User}\label{sec:ir_background:user:simulation}
 %
-% \subsubsection{Boolean Model}
 %
-% \subsubsection{Vector Space Model}
+% For the purposes of this thesis, we focus upon the studies delineated by categories x and y.
 %
-% \subsubsection{Probabilistic Models}
 %
-% \subsubsection{Language Models}
+% central to all of this is the user.
+% talk about diane's spectrum of IR experimentation, from system to user focused.
+% consider a variety of more user-centric evaluation approaches.
+% here, you can also bring in the notion of simulation
+% mention that this is IIR.
 %
-% \subsection{Search Tasks}
+%     - diane kelly's spectrum of system to user orientated
+%         - TREC/Cranfield is a very basic approach to simulation
+%             a model of how user performs
+%         - user orientated approach looks at how users interact with the system
+%         - models of how users search... to show how we develop models.
 %
-% \section{Evaluating Retrieval Effectiveness}\label{sec:ir_background:evaluation}
-% Basic measures and models.
+%         - at the end of chapter
 %
-% \subsection{Precision}
+% Look at Kelly (2009) -- Methods for Evaluating Interactive Information Retrieval Systems with Users
 %
-% \subsection{Recall}
-%
-% \subsection{Mean Average Precision}
-%
-% \subsection{F-Measure}
-%
-% \subsection{Towards User-Orientated Measures}
-%
-% \subsection{User Models}
 % these measures/evaluations are thining about the way people go and search
 % of relevance to this thesis are stopping strats
 % diff. measures encoe different stopping models. different ways of evaluating this.
 % in the next chapter, provide an overview of the different types of models of search, and how searching has been conceptualised with respect to stopping strategies.
+%
+%
+%
+% \subsection{TREC Ad-Hoc}\label{sec:ir_background:user:trec}
+% \todo{does this bit need to be moved to the next chapter?}
+% - searcher acquires an information need, sits down, and conducts a search against an existing collection of documents over a set period of time. Known as ad-hoc retrieval, or retrospective searching in older literature.
+%
+% - this is lifted from Robertson (2008), rephrasing required, and probably needs to be moved to the user model part.
+%
+% - The user model invoked here is what has now become the most obvious one for search: user has an
+% information need, sits down in front of a system and conducts a search against an existing collection of
+% documents, over a limited time period. This is known in TREC jargon as an ‘ad-hoc’ search – an earlier more-orless
+% equivalent term was ‘retrospective searching’. System produces a ranked list of items, which the user consults
+% in rank order. Users may judge documents good or bad, but in principle there may be any number of good
+% documents in the collection. (The one significant change in this model from the Cranfield view is that there is now
+% an assumption that each system will rank its results list.) It is often asserted that there is also an assumption that
+% requests are topical or subject-based (documents about X); indeed the TREC jargon, which is to call requests
+% ‘topics’, encourages that view18. However, although most of the requests used in TREC (all of those in early
+% TRECs) are indeed topical, there is no necessary requirement of the model that this should be so, or that they
+% should be purely topical. In some sense the nature of the requests is determined by the relevance judgements; if
+% the judgements depend on other criteria than pure topicality, then that is the nature of the task.
+% However, it is fundamental to the model that the judge or assessor should indeed be able to make a judgement
+% on each document, actually a binary one for most of the TREC ad-hoc tasks, and should be able to make the
+% judgement irrespective of the order of presentation of the documents. This last precludes, for example, embedding
+% a criterion of novelty in the usual ad-hoc task relevance judgements (although one track did investigate novelty by
+% making judgements of novelty separated from the relevance judgements). A typical TREC ‘topic’ has a short title (which might be used directly as a query), and additional information about the
+% supposed information need under the headings ‘description’ and ‘narrative’. The narrative contains explicit rules for
+% judging the relevance of documents. An example title and description are: Hydroponics—Document will discuss the
+% science of growing plants in water or some substance other than soil.
