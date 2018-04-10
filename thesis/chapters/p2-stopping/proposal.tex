@@ -45,7 +45,7 @@ The searcher has to make a number of decision points throughout the search proce
 
 - however, this thesis focuses primarily on the notion of stochastic models of interaction, i.e. decision points are determined by the roll of a dice. this in itself introduces a number of additional issues that must be addressed (e.g. the law of averages) which are detailed in Section~\ref{sec:proposal:method:simulations}.
 
-\section{Stopping Decision Points}
+\section{Stopping Decision Points}\label{sec:proposal:stopping_points}
 - as alluded to in the decision making section, a searcher is required to make a number of decisions as he or she undertakes the complex search tasks.
 - one set of decisions is the point at which they should \emph{stop}. Within Mark II of the CSM, we have encoded a total of three different \emph{stopping decision points}.
 - Now we have illustrated our CSM, we examine the different stopping decision points within the model.
@@ -88,6 +88,9 @@ Given the description of the stopping strategy above, we note that the fixed dep
 Despite the na\"{i}evty of the approach, the other main drawback of such an approach is exposed when a searcher complying with such a strategy issues a poor performing query. This is demonstrated in Figure~\ref{fig:ss1}, with two~\glsplural{acr:serp} presented side by side. Given a searcher's desire to find pages that provide information regarding \emph{CIKM 2015}\footnote{CIKM 2015 was a conference held in Melbourne, Australia, in October 2015. The paper that initially proposed many of these stopping strategies~\cite{maxwell2015stopping_strategies} was indeed presented at this conference.}, two queries are issued: the query on the left yielding poorer results than the query on the right, as denoted by the ticks and crosses, for useful and unhelpful result summaries, respectively. With \blueboxbold{SS1} @4 set, four result summaries are always examined before stopping, regardless of their perceived usefulness. As a result of this, na\"{i}vely examining four documents for the query on the left is by and large a waste of the searcher's time.
 
 \subsection{Searcher Frustration}
+
+\todo{Mention that in~\cite{cooper1973retrieval_effectiveness_ii}, there are two ways to implement this rule: by either providing a pre-determined number of documents to stop at, or to search, and then go back and count. Our implementation takes the former, simulates a goal-based task? Allows us to vary the number easily and see what is going on.}
+
 The second category of stopping strategies that we propose in this thesis are those that consider a searcher's \emph{tolerance to non-usefulness}. Given a set of result summaries presented on a~\gls{acr:serp}, how many would a searcher be prepared to judge to be of no use before they become frustrated, and subsequently abandon their query?
 
 As detailed in Section~\ref{sec:stopping_background:heuristics}, a number of researchers have proposed stopping heuristics that consider non-usefulness (or \emph{non-relevance}, as defined in the literature). The rule intrinsically makes sense for exhaustive searches~\cite{kraft1979stopping_rules}. As an example, when tasked to find as many documents as possible related to different species of animals that are endangered, becoming disgusted with the presented~\gls{acr:serp} when a lack of new species are shown would be a suitable point at which to break and reformulate a new query, or abandon the search session altogether.
