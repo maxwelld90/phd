@@ -129,30 +129,84 @@ Figure~\ref{fig:mental_list} provides a graphical illustration of the mental lis
 \end{figure}
 
 \subsection{Summary of Heuristics}
+In this section, a number of different stopping heuristics have been discussed from a number of seminal papers in the literature. While a much larger of number of normative stopping heuristics have been defined in prior works, these have been omitted from the review as they do not adequately describe the cognitive behaviours of a searcher, often assuming a searcher has to \emph{think ahead} to make a decision to stop or continue~\citep{browne2004stopping_rules}. In contrast, the heuristics that are enumerated above do not make this assumption, making more realistic assumptions about the searcher's cognitive abilities.
 
-- applicable in difference circumstances.
-- which one works better?
+Of course, the different stopping heuristics discussed above are likely to behave differently under different search contexts. As an example, the mental list heuristic might be impossible to use given a searcher with a very limited knowledge of a topic. He or she simply would not know enough information to ascertain key aspects of the topic, and construct a set of criteria that must be met~\citep{browne2005stopping_rules} --~\cite{gigerenzer1999betting} also discuss this reasoning for the single criterion heuristic. As such, it is hypothesised that the aforementioned stopping heuristics would be likely to work better with a searcher who is more knowledgeable. Indeed,~\cite{browne2005stopping_rules} hypothesises that magnitude threshold and mental list heuristics would be best applied to searchers with a greater degree of understanding of the topic.
 
--if you don't know much, using the mental list rule might be impossible -- you don't know enough on the topic to be able to formulate a set of criteria that you must then extract information for and judge~\citep{browne2005stopping_rules}.
+\cite{browne2005stopping_rules} also discuss the so-called \emph{``structuredness''} of a given search task. If the task has well defined inputs and outputs -- or the goals and operations are clear and easily understood~\citep{simon1996sciences} -- then it it hypothesised that searchers will employ more precise stopping heuristics for deducing when to stop. For example, the mental list and single criterion stopping heuristics might offer greater degrees of precision than for example the frustration and satisfaction heuristics, although the frustration and satisfaction heuristics may perform well for any given search task. Altogether however, the heuristics discussed in this section would all be applicable for information search~\citep{browne2005stopping_rules}.
 
-- so it would be more likely to work better for tasks in which you are familiar, as an example.
-
-- same applies for single criterion -- you don't know anything about a topic, so you can't say what the most important factor is to judge your reasoning on. might however be used by those less knowledgeable, and has indeed been observed in user behaviour before~\cite{gigerenzer1999betting}.
-
-- browne2005 hypothesises that in familiar tasks, you should use the threshold and mental list rules.
-
-- additional rules are encoded within theories of interaction, etc. keep reading for more information on these.
+With the heuristics now enumerated, we later in this thesis discuss how we take the heuristics, and consider how to \emph{operationalise} them, such that they can be subsequently implemented and compared against each other in an empirical way. Refer to Section~\ref{sec:proposal:strategies} for the complete set of \emph{stopping strategies} that we employ.
 
 \section{User Studies}
 
-\section{Models of Search}
-From more conceptual, to theoretical.
+studies from CIKM 2015 paper.
 
-\subsection{Search Economic Theory}
+ryen white's expert stuff -- does he report stopping stuff?
 
-\section{Information Foraging Theory}
+depth first vs breadth first??
+
+conceptual models (e.g. following on from TREC, we end up with...thomas, baskaya...), then move on to theoretical models
+
+like we mentioned in Ch2, in the different measures, we have different stopping rules encoded within them.
+e.g. Carterette's 2011 model.
+
+
+\section{User Models of Search}
+In addition to the key stopping heuristics and user studies associated with examining a searcher's stopping behaviour, \emph{models of search} are also of paramount importance to the work detailed in this thesis. Models of search were briefly touched upon in Section~\ref{sec:ir_background:user:models}, with particular reference to the TREC-style approach of user modelling. There, we queried whether this model of search \emph{was particularly realistic.}
+
+This is a question that has been asked my many~\gls{acr:ir} researchers, and as a result, much work has been undertaken in this area in an attempt to develop our understanding of the processes that are undertaken by searchers during an interactive search session. In this section, we discuss a broad variety of models that are of particular relevance to the work discussed later in this thesis. We discuss two broad strands of user models: those that are \emph{conceptual} in nature, and those that are based on more \emph{theoretical} foundations.
+
+% so there are also developments in how people search, examining different activities.
+% we look at wider models of search, encapsulating different components of the search process.
+%
+% From more conceptual, to theoretical.
+%
+% What about the attention model in ``Beyond ten blue links: enabling user click modeling in federated web search''?
+%
+% here are some implicit models (e.g. Azzo 2011)
 
 \subsection{Conceptual Models}
+Put simply, a conceptual model is a representation of some system, \emph{comprised} of a series of concepts that can be used to help us learn, understand or \emph{simulate} what the model represents. In the context of~\gls{acr:iir}, models comprise of the different activities that a searcher undertakes during the search process. Examples include issuing a query, and examining document(s) for relevance. In this section, we discuss several key models that have been developed by researchers over a number of decades. Some of these models are explicitly or implicitly defined within the literature, as discussed in Section~\ref{sec:ir_background:user:simulation}.
+
+\subsubsection{The TREC User Model}\label{sec:stopping_background:models:conceptual:trec}
+Thus far, we have discussed the notion that within \blueboxbold{TREC-style studies}, we argue that there is the notion of an underlying user model that is exploited to produce the list of results from a given~\gls{acr:ir} system that can then be subsequently evaluated. This model is typically used in a batch environment, where many queries are issued in turn.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-trec.pdf}}
+    \caption[The TREC-style user model]{A basic flowchart of the user model typically encoded within TREC-style experimentation. \emph{'Users'} subscribing to this model will issue a query – typically the title of a topic – and then proceed to examine results to some fixed depth, $k$.}
+    \label{fig:trec_model}
+\end{figure}
+
+A basic flowchart of the user model is presented in Figure~\ref{fig:trec_model}. With a given information need, a searcher (or system) will then translate that information need into some form of query -- from most TREC tasks, the title of a topic is used (as discussed in Section~\ref{sec:ir_background:basics:cranfield}). The query is then issued to the underlying retrieval engine, and a set of results are then returned. From this point on, the process, as alluded to above, is \emph{batch-like} in nature. Every result summary presented is `clicked', with the document subsequently considered relevant, up to some cutoff at $k$. Typically for TREC-style experimentation, this cutoff will be $k=1000$. Once this process has been completed, the next query will be issued to the underlying retrieval engine, until the list of queries have been exhausted. Once this process has been completed, the list of documents considered relevant to the information need (i.e. all $k$ documents) are passed to the evaluation stage of the Cranfield model (refer to Figure~\ref{fig:ir_cranfield}), where the various evaluation measures that are to be used can be calculated.
+
+The question one should ask considering this TREC-style user model is: \emph{is this model particularly realistic?} Arguments can obviously be made for and against such a model, but the general consensus in the~\gls{acr:ir} community is that it is \emph{not} particularly representative of a searcher in real life, regardless of the search task. A number of strong assumptions are made of the behaviour of the searcher, namely that:
+
+\begin{itemize}
+    \item{a single query is issued to address a given information need;}
+    \item{a searcher subscribing to this model will \emph{always} examine to a fixed depth in the presented results (their \emph{stopping behaviour}); and}
+    \item{a searcher will always consider an item presented to him/her as relevant to their information need.}
+\end{itemize}
+
+These assumptions have over the years been proven to be largely unrealistic through empirical evidence. For example, searchers will often adapt their stopping behaviour depending upon the quality of the list of results presented.~\cite{borlund2003iir_model} also puts forward the notion that the model does not consider a searcher's \emph{dynamic information needs}. Here, his or her understanding of a particular topic will evolve over time as content is examined and their mental model evolves. The TREC-style model of search considers that the only point at which a searcher `learns' is at the querying stage.
+
+While deficient in terms of considering a searcher's behaviours, the TREC-style model has worked well for the batch-style experimentation that is typically employed at such evaluation forums. It can be argued that the entire process is essentially \emph{simulating} a user, albeit in a limited way.
+
+\subsubsection{Increasing User Model Complexity}
+To this end, a number of studies have over the years developed more complex (and arguably more realistic) models of the search process, encapsulating a greater number of concepts within them. In this section, we provide a brief overview of several key advancements in the field, discussing the concepts and advantages that each \emph{evolution} of the searcher model presents.
+
+
+
+- recap on the TREC model.
+- number of different simulated studies have 
+
+
+
+
+A conceptual model is a representation of a system, made of the composition of concepts which are used to help people know, understand, or simulate a subject the model represents. It is also a set of concepts.
+
+- begin with a reminder of the TREC model, as per Figure~\ref{fig:trec_model} on page~\pageref{fig:trec_model}.
 
 \begin{figure}[t!]
     \centering
@@ -170,15 +224,28 @@ From more conceptual, to theoretical.
     \label{fig:thomas_model}
 \end{figure}
 
-\subsubsection{Carterette}
+\subsection{Theoretical Models}
 
-\subsubsection{Baskaya}
+\subsection{Search Economic Theory}
 
-\subsubsection{Thomas}
+\subsection{Information Foraging Theory}
 
-\subsubsection{Vu}
+\subsubsection{Information Patch}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch3-berry_picking.pdf}}
+    \caption[The Berry Picking Model~\cite{bates1989berry_picking}]{The \emph{Berry Picking Model,} defined by~\cite{bates1989berry_picking}. A forager traverses through numerous bushes to pick the juiciest berries for his or her consumption. The model is high level and conceptual in nature, and thus does not provide any justification for \emph{how} or \emph{why} foragers search for the juiciest berries.}
+    \label{fig:berry_picking}
+\end{figure}
+
+\subsubsection{Information Scent}
+
+\subsubsection{Considering Stopping Behaviour}
 
 \section{Chapter Summary}
+Refer to the following chapter for more information on how we extend these models to make them more realistic.
 
 % - given you an outline of the basics of IR
 % - and more system-sided IR

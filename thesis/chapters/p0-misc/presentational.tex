@@ -13,11 +13,24 @@ A number of different presentational conventions have been employed in this thes
     
     \item{\emph{Italicised text} is used to define a term, but not thereafter. This applies to acronyms, where the full expansion is presented initially; associated abbreviations are used thereafter.}
     
-    \item{Research questions and other key shorthand descriptions for components of this research are presented inline within a \bluebox{shaded} box.}
+    \item{Research questions and other key shorthand descriptions for components of this research are presented inline within a \blueboxbold{shaded} box.}
     
     \item{Pseudo-code that is presented within this thesis uses the \emph{HAGGIS} high-level reference programming language, as per~\cite{cutts2014haggis}. This is particularly relevant for a Scottish PhD in Computing Science!}
     
 \end{itemize}
 
-This thesis is typeset in 12-point Palatino (body) and \metafont\selectfont Foundry Sterling (headers) \normalfont\selectfont using \XeTeX\ version 0.99998, using a custom made \texttt{.cls} that is fully compliant with University of Glasgow College of Science and Engineering thesis regulations.
+The main body of this thesis is typeset in 12-point Palatino (body) with \metafont\selectfont Foundry Sterling (headers) \normalfont\selectfont using \XeTeX\ version 0.99998. A custom made \texttt{.cls} is used that is fully compliant with University of Glasgow College of Science and Engineering thesis regulations.
+
+In order to effectively demonstrate some of the complex models that are outlined in this thesis, flowcharts are extensively used. While all figures are created for use in this thesis, several model flowcharts are based upon the figures provided in other publications. Where this is the case, acknowledgement of the source publication is included in the relevant figure caption. Permission was sought to include these figures wherever possible. Several vector artwork images have also been procured from \texttt{freepik.com} for non-commercial use.
+
+A standard design for model flowcharts is also employed, and follows the design guidelines as outlined in \href{https://www.iso.org/standard/11955.html}{\texttt{ISO 5807:1985}}\footnote{\href{https://www.iso.org/standard/11955.html}{\texttt{ISO 5807:1985}} defines symbols to be used in information processing documentation and gives guidance on conventions for their use in data flowcharts, program flowcharts, system flowcharts, program network charts, system resources charts.}. The following example demonstrates the symbols used.
+
+\begin{figure*}[h!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch0-example.pdf}}
+\end{figure*}
+
+Note that the sequence of events begins with a~\includegraphics[height=\fontcharht\font`\d]{figures/ch0-example-start.pdf}, and ends at a~\includegraphics[height=\fontcharht\font`\d]{figures/ch0-example-end.pdf}.\footnote{Note that these symbols are not part of the \href{https://www.iso.org/standard/11955.html}{\texttt{ISO 5807:1985}} standard; they are part of the \emph{Unified Modelling Language (UML)} specification, and have been included to ensure diagrams are simple to understand.} Diagram flow can be deduced by examining the direction of arrows. Actions (or events) are denoted by the text contained within unfilled rectangles~\includegraphics[height=\fontcharht\font`\d]{figures/ch0-example-action.pdf}, and decision points are represented as~\includegraphics[height=\fontcharht\font`\d]{figures/ch0-example-decision.pdf}. Outcomes of decisions are denoted by the \emph{italicised} text at each output point of a~\includegraphics[height=\fontcharht\font`\d]{figures/ch0-example-decision.pdf}.
+
 \end{preamble}

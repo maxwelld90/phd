@@ -357,35 +357,10 @@ The studies complying with point \emph{(5)}, called \emph{archetypical~\gls{acr:
     
 \end{itemize}
 
-Of course, a more detailed explanation of these different types of study can be found in the work by~\cite{kelly2009iir} that illustrate the more user-centric approaches in detail. We now however turn our attention back to the idea of a loosely-defined user model present within \blueboxbold{TREC-style studies}.
-
-\subsection{Basic User Models of Search}\label{sec:ir_background:user:models}
-Thus far, we have discussed the notion that within \blueboxbold{TREC-style studies}, we argue that there is the notion of an underlying user model that is exploited to produce the list of results from a given~\gls{acr:ir} system that can then be subsequently evaluated. This model is typically used in a batch environment, where many queries are issued in turn.
-
-\begin{figure}[t!]
-    \centering
-    \resizebox{1\hsize}{!}{
-    \includegraphics{figures/ch2-trec.pdf}}
-    \caption[The TREC-style user model]{A basic flowchart of the user model typically encoded within TREC-style experimentation. \emph{'Users'} subscribing to this model will issue a query – typically the title of a topic – and then proceed to examine results to some fixed depth, $k$.}
-    \label{fig:trec_model}
-\end{figure}
-
-A basic flowchart of the user model is presented in Figure~\ref{fig:trec_model}. With a given information need, a searcher (or system) will then translate that information need into some form of query -- from most TREC tasks, the title of a topic is used (as discussed in Section~\ref{sec:ir_background:basics:cranfield}). The query is then issued to the underlying retrieval engine, and a set of results are then returned. From this point on, the process, as alluded to above, is \emph{batch-like} in nature. Every result summary presented is `clicked', with the document subsequently considered relevant, up to some cutoff at $k$. Typically for TREC-style experimentation, this cutoff will be $k=1000$. Once this process has been completed, the next query will be issued to the underlying retrieval engine, until the list of queries have been exhausted. Once this process has been completed, the list of documents considered relevant to the information need (i.e. all $k$ documents) are passed to the evaluation stage of the Cranfield model (refer to Figure~\ref{fig:ir_cranfield}), where the various evaluation measures that are to be used can be calculated.
-
-The question one should ask considering this TREC-style user model is: \emph{is this model particularly realistic?} Arguments can obviously be made for and against such a model, but the general consensus in the~\gls{acr:ir} community is that it is \emph{not} particularly representative of a searcher in real life, regardless of the search task. A number of strong assumptions are made of the behaviour of the searcher, namely that:
-
-\begin{itemize}
-    \item{a single query is issued to address a given information need;}
-    \item{a searcher subscribing to this model will \emph{always} examine to a fixed depth in the presented results (their \emph{stopping behaviour}); and}
-    \item{a searcher will always consider an item presented to him/her as relevant to their information need.}
-\end{itemize}
-
-These assumptions have over the years been proven to be largely unrealistic through empirical evidence. For example, searchers will often adapt their stopping behaviour depending upon the quality of the list of results presented.~\cite{borlund2003iir_model} also puts forward the notion that the model does not consider a searcher's \emph{dynamic information needs}. Here, his or her understanding of a particular topic will evolve over time as content is examined and their mental model evolves. The TREC-style model of search considers that the only point at which a searcher `learns' is at the querying stage.
-
-While deficient in terms of considering a searcher's behaviours, the TREC-style model has worked well for the batch-style experimentation that is typically employed at such evaluation forums. It can be argued that the entire process is essentially \emph{simulating} a user, albeit in a limited way.
+Of course, a more detailed explanation of these different types of study can be found in the work by~\cite{kelly2009iir} that illustrate the more user-centric approaches in detail. We now however turn our attention back to the idea of employing simulation and a form of user model in order to better understand a searcher's complex interactions during the search process.
 
 \subsection{Simulation in~\gls{acr:ir} and~\gls{acr:iir}}\label{sec:ir_background:user:simulation}
-As outlined in Section~\ref{sec:intro:motivation}, employing simulation for~\gls{acr:iir} studies in conjunction with a model of the search process allows for consistent and reproducible results. Simulation however is not exclusively used for modelling searcher behaviours -- in traditional~\gls{acr:ir}, simulation has been used for example in simulated work tasks~\citep{borlund2003iir_model, voorhees2005trec_book}, simulated and synthetic data collection~\citep{azzopardi2009query_side, azzopardi2007languages, jordan2006cqg, tague1980simulation_bibliographic}, and the simulation of interaction~\citep{azzopardi2010workshop, carterette2011effectiveness_evaluation, clarke2013mube,  leuski2000relevance_reinforcement, white2004simulated_feedback_models}.
+As outlined in Section~\ref{sec:intro:motivation}, employing simulation for~\gls{acr:iir} studies in conjunction with a model of the search process allows for consistent and reproducible results. Several user models exist; one of the most widely used and simplistic approaches considered is the TREC-style user model, as detailed in Section~\ref{sec:stopping_background:models:conceptual:trec}. Simulation however is not exclusively used for modelling searcher behaviours -- in traditional~\gls{acr:ir}, simulation has been used for example in simulated work tasks~\citep{borlund2003iir_model, voorhees2005trec_book}, simulated and synthetic data collection~\citep{azzopardi2009query_side, azzopardi2007languages, jordan2006cqg, tague1980simulation_bibliographic}, and the simulation of interaction~\citep{azzopardi2010workshop, carterette2011effectiveness_evaluation, clarke2013mube,  leuski2000relevance_reinforcement, white2004simulated_feedback_models}.
 
 There has also been a growing interest with the simulation of interaction, and in particular how to model searcher behaviour~\citep{azzopardi2010workshop, clarke2013mube}. This is for a variety of reasons. Firstly, simulation provides a cost effective means of evaluation which is reliable, repeatable and therefore reproducible. Secondly, most, if not all evaluation measures either implicitly or explicitly encode some form of user model (typically a stopping model) in order to make measurements. Simulation also provides a means in which to explore different searcher behaviours, methods and techniques to better understand how searchers do, could, or are likely to behave. However, if simulations are not properly grounded, motivated and validated, the findings from such simulations can be considered questionable. Thus, there is a pertinent need to ensure that the models developed are credible abstractions of the search process, and that they are seeded with data based on actual human interaction data~\citep{azzopardi2010workshop}\footnote{\scriptsize{The exception being when exploratory simulations are conducted to examine \emph{`what-if'} scenarios.}}. 
 
