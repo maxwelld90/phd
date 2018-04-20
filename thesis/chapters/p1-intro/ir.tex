@@ -357,7 +357,30 @@ The studies complying with point \emph{(5)}, called \emph{archetypical~\gls{acr:
     
 \end{itemize}
 
-Of course, a more detailed explanation of these different types of study can be found in the work by~\cite{kelly2009iir} that illustrate the more user-centric approaches in detail. We now however turn our attention back to the idea of employing simulation and a form of user model in order to better understand a searcher's complex interactions during the search process.
+Of course, a more detailed explanation of these different types of study can be found in the work by~\cite{kelly2009iir} that illustrate the more user-centric approaches in detail. We now however turn our attention back to the idea of employing simulation and a form of \emph{user model} in order to better understand a searcher's complex interactions during the search process.
+
+\subsection{Considering User Models}
+Models of the search process attempt to capture the high level, cognitive processes that a searcher undertakes during a search session -- such as issuing a query, or examining a document for relevance. User models of the search process have been present in more system sided~\gls{acr:ir} research for a number of decades (as discussed in Section~\ref{sec:ir_background:user}), as well as implicitly encoded within the variety of measures that have been used.
+
+\cite{carterette2011models} argues that the measures widely used within the~\gls{acr:ir} community are themselves typically comprised of three, distinct underlying models:
+
+\begin{enumerate}
+    \item{a \emph{browsing model}, describing how a searcher interacts with a search engine and the subsequent~\glsplural{acr:serp} that are presented to them;}
+    \item{a model encoding some form of \emph{document utility} that provides a description for how utility can be derived from relevant documents; and}
+    \item{a \emph{utility accumulation model} that describes how a searcher accumulates utility over the course of a search session.}
+\end{enumerate}
+
+Of particular interest to the work in this thesis are the \emph{browsing models} that attempt to capture the broad interactions that take place between the searcher and the search engine. One of the most well developed browsing models highlighted by~\cite{carterette2011models} is that of a searcher, after issuing a query, examines a series of documents presented to him or her on the resultant~\gls{acr:serp} one by one (in a linear fashion), and at some depth, $k$, stops. This is the basic model followed by measures such as $P@k$, for example. (refer to Section~\ref{sec:ir_background:evaluation:precision}). This process is illustrated with a flowchart in Figure~\ref{fig:basic_model}.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-basic_model.pdf}}
+    \caption[A basic user model of search]{A basic model of the search process. Here, a searcher, after issuing a query to the underlying search engine, examines a number of different items presented to him or her before deciding to stop at some rank \emph{k}. This basic approach is widely used in many measures of~\gls{acr:ir} effectiveness, and is considered by~\cite{carterette2011models} as a form of \emph{browsing model}, capturing the interactions that take place between the searcher and search engine.}
+    \label{fig:basic_model}
+\end{figure}
+
+While perhaps deficient in terms of representing a real-world searcher's behaviours, this basic model has served the~\gls{acr:ir} community well for a number of decades, and works well in batch-style experimentation that is common in the community. While more advanced models of the search process have been developed, we leave these to Section~\ref{sec:stopping_background:models:conceptual}. Instead, we now consider the notion that with a user model of the search process, we can then take this model to provide a \emph{simulation} of the interactions that take place.
 
 \subsection{Simulation in~\gls{acr:ir} and~\gls{acr:iir}}\label{sec:ir_background:user:simulation}
 As outlined in Section~\ref{sec:intro:motivation}, employing simulation for~\gls{acr:iir} studies in conjunction with a model of the search process allows for consistent and reproducible results. Several user models exist; one of the most widely used and simplistic approaches considered is the TREC-style user model, as detailed in Section~\ref{sec:stopping_background:models:conceptual:trec}. Simulation however is not exclusively used for modelling searcher behaviours -- in traditional~\gls{acr:ir}, simulation has been used for example in simulated work tasks~\citep{borlund2003iir_model, voorhees2005trec_book}, simulated and synthetic data collection~\citep{azzopardi2009query_side, azzopardi2007languages, jordan2006cqg, tague1980simulation_bibliographic}, and the simulation of interaction~\citep{azzopardi2010workshop, carterette2011effectiveness_evaluation, clarke2013mube,  leuski2000relevance_reinforcement, white2004simulated_feedback_models}.
