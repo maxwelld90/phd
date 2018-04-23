@@ -146,17 +146,10 @@ In addition to the key stopping heuristics outlined in Section~\ref{sec:stopping
 
 Work in this area has been extensive, and in this section we provide an overview of the key advancements of browsing models, and how they are able to allow us to model the stopping behaviour of searchers. In particular, we consider these models from two angles: \emph{(i)} those that are \emph{conceptual} in nature, providing a broad overview of the key processes involved; and \emph{(ii)} models that are more theoretical in nature.
 
-% so there are also developments in how people search, examining different activities.
-% we look at wider models of search, encapsulating different components of the search process.
-%
-% From more conceptual, to theoretical.
-%
 % What about the attention model in ``Beyond ten blue links: enabling user click modeling in federated web search''?
-%
-% here are some implicit models (e.g. Azzo 2011)
 
 \subsection{Conceptual Models}\label{sec:stopping_background:models:conceptual}
-Put simply, a conceptual model is a representation of some system, \emph{comprised} of a series of concepts that can be used to help us learn, understand or \emph{simulate} what the model represents. In the context of~\gls{acr:iir}, models comprise of the different activities that a searcher undertakes during the search process. Examples include issuing a query, and examining document(s) for relevance. In this section, we discuss several key models that have been developed by researchers over a number of decades.
+Put simply, a conceptual model is a representation of some system, \emph{comprised} of a series of concepts that can be used to help us learn, understand or \emph{simulate} what the model represents. In the context of~\gls{acr:iir}, models comprise of the different activities that a searcher undertakes during the search process. Examples include issuing a query, and examining document(s) for relevance. Such models are particularly useful for understanding the different components involved within the search process, and what factors are likely to influence the outcome of the model~\citep{azzopardi2015theories}. In this section, we discuss several key models that have been developed by researchers over a number of decades.
 
 \subsubsection{The TREC User Model}\label{sec:stopping_background:models:conceptual:trec}
 We have previously alluded to the fact that in so-called TREC-style studies, there is the notion of an underlying user model. This user model is exploited to produce a basic series of interactions with a list of ranked results, such that the list can be subsequently evaluated. This type of model is typically used within a batch environment, where many queries are issued in turn. A simplistic model complying with this general approach was illustrated in Figure~\ref{fig:basic_model} on page~\pageref{fig:basic_model}. However, in this section we explore the TREC-style model in more detail, discussing many of the assumptions that the model makes, along with the weaknesses that arise from such an approach.
@@ -194,7 +187,7 @@ One of the major limitations of the TREC-style model of search is the restrictiv
     \item{on a related note, permitting a searcher to issue \emph{multiple queries} for the same information need during a search session.}
 \end{itemize}
 
-These improvements are demonstrated in a flowchart, illustrated in Figure~\ref{fig:baskaya_model_flow}. A number of decision points are added, allowing a searcher subscribing to such a model to exhibit more realistic, adaptive behaviour. These decision points are explained in more detail below.
+These improvements are demonstrated in a flowchart, illustrated in Figure~\ref{fig:baskaya_model_flow}. As can be seen from the flowchart, the typical \emph{browsing model} components (e.g. inspecting a document for relevance) as per~\cite{carterette2011models} is also integrated with \emph{query generation} and \emph{utility accumulation}, allowing a searcher to issue multiple queries, and gain utility from examining content. This, in addition to the three key additions list above, are detailed below.
 
 \begin{figure}[t!]
     \centering
@@ -210,22 +203,22 @@ Effectively modelling stopping behaviour is also important to providing a more r
 
 This intuition has been confirmed by empirical analysis, where~\cite{azzopardi2011economics} demonstrated that simulated searchers examined significantly fewer documents when the underlying search engine failed to retrieve any relevant material in the top ten results, in contrast to when it did. Thus, searchers are inherently adaptive, with their behaviours conditions on the quality of the ranked lists that they interact with. This provides a justification for including these additional stopping decision points.
 
-Indeed, as previously discussed~\cite{azzopardi2011economics} simulated the behaviour of searchers using economic grounding to explain their observed behaviours. This led to the development of \emph{Search Economic Theory,} which we discuss in more detail in Section~\ref{sec:stopping_background:models:theoretical:set}. The model employed by~\cite{azzopardi2011economics} was largely the same as that demonstrated in Figure~\ref{fig:baskaya_model_flow}, but without the addition of examining snippets in isolation from their complete document counterparts. \todo{Better explain Azzopardi's model, then say that the Yilmaz and Carterette models broadly follow the same concepts.}
+Indeed, as previously discussed~\cite{azzopardi2011economics} simulated the behaviour of searchers using economic grounding to explain their observed behaviours. This led to the development of \emph{Search Economic Theory,} which we discuss in more detail in Section~\ref{sec:stopping_background:models:theoretical:set}. The model employed by~\cite{azzopardi2011economics} was largely the same as that demonstrated in Figure~\ref{fig:baskaya_model_flow}, but without the addition of examining snippets in isolation from their complete document counterparts. Similar models have also been demonstrated by~\cite{yilmaz2010browsing_utility},~\cite{carterette2011models}, and more recently~\cite{zhang2017simulation_model}.
 
-\todo{Explain Paul Thomas's model, and explain what differs about it. They also consider the utility that a searcher obtains, which is essentially a hybrid of a browsing model and utility model. This is represented as a flowchart, again providing a high level, conceptual description of the processes involved -- detail is left up to the individual to implement.}
+A further explicitly defined user model was proposed by~\cite{thomas2014modelling_behaviour}. This model, illustrated, again with a flowchart in Figure~\ref{fig:thomas_model}, essentially encapsulates the same principles as the previously described models: given an information need, a searcher will issue one or more queries, and examine a varying number of result summaries and documents. Also included is a form of utility accumulation model, that considers the utility obtained from a result summary $s_i$ and the relevancy judgement of a document, $r_i$. An addition to this model is the inclusion of an additional step at the beginning of the search session, where a searcher has the ability to \emph{select a search engine}.
 
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch3-thomas.pdf}}
-    \caption[Model of the search process by~\cite{thomas2014modelling_behaviour}]{A model of the search process, considering the high-level processes undertaken by a searcher, as outlined by~\cite{thomas2014modelling_behaviour}. Also included are a number of decision points (represented as diamonds) that searchers must consider when following this model. Figure adapted (with permission) from the authors of~\citealt{thomas2014modelling_behaviour}. \textcopyright~Paul Thomas, Peter Bailey, Alistair Moffat and Falk Scholer.}
+    \caption[Model of the search process by~\cite{thomas2014modelling_behaviour}]{A model of the search process, considering the high-level processes undertaken by a searcher, as outlined by~\cite{thomas2014modelling_behaviour}. Figure adapted (with permission) from the authors of~\citealt{thomas2014modelling_behaviour}. \textcopyright~Paul Thomas, Peter Bailey, Alistair Moffat and Falk Scholer.}
     \label{fig:thomas_model}
 \end{figure}
 
-\todo{So, we can say...} As these models are conceptual in nature, there are many different means by which one can instantiate such a model, and subsequently simulate the behaviours of a searcher. For example, a stopping heuristic could be operationalised in such a way that it could form a basis for one of the decision points in the model illustrated in Figure~\ref{fig:baskaya_model_flow} above. We discuss ways in which we instantiated these components in Chapter~\ref{chap:proposal}.
+As these models are conceptual in nature, there are many different means by which one can instantiate such a model, and subsequently simulate the behaviours of a searcher. For example, a stopping heuristic could be operationalised in such a way that it could form a basis for one of the decision points in the model illustrated in Figure~\ref{fig:baskaya_model_flow} above. We discuss ways in which we instantiated these components in Chapter~\ref{chap:proposal}.
 
 \noindent
-\blueboxbold{Representing Models} These are represented as flowcharts, but depending upon the way in which you wish to implement the model, different approaches might be better. For example, the model by Baskaya is depicted in their work as a Markov model, as they were primarily concerned with the search process interactions with respect to a number of probabilities. This is illustrated in Figure~\ref{fig:baskaya_model}. This is also present in the work, as an example, by Tran (ICTIR). Flowcharts provide a versatile means for representing a conceptual model, as the different activities and decision points are level abstracted, meaning that you can implement them how you wish.
+\blueboxbold{Representing Models} These are represented as flowcharts, but depending upon the way in which you wish to implement the model, different approaches might be better. For example, the model by Baskaya is depicted in their work as a Markov model, as they were primarily concerned with the search process interactions with respect to a number of probabilities. This is illustrated in Figure~\ref{fig:baskaya_model}. This is also present in the work, as an example, by~\cite{tran2017markov_models}. Flowcharts provide a versatile means for representing a conceptual model, as the different activities and decision points are level abstracted, meaning that you can implement them how you wish.
 
 \begin{figure}[t!]
     \centering
@@ -235,9 +228,9 @@ Indeed, as previously discussed~\cite{azzopardi2011economics} simulated the beha
     \label{fig:baskaya_model}
 \end{figure}
 
-\subsection{Considering Stopping Decision Points}
-\todo{Need to say that it's clear that two main stopping decision points have evolved out of the models of search.}
-It is important to note that in the context of search, stopping heuristics have often been discussed at two key \emph{stopping decision points} in the literature. To demonstrate this, Figure~\ref{fig:model_two_points} illustrates an excerpt from a basic user model that highlights these two key stopping decision points. In the figure, decision point \blueboxbold{1} considers \emph{snippet level stopping} -- often referred to as \emph{query level stopping} in the literature.\footnote{In this thesis, we use the terminology \emph{snippet level stopping} to avoid potential confusion between this well defined stopping decision point, and a further one that we introduce in Chapter~\ref{chap:proposal}.} This stopping decision point addresses the issue of how deep a searcher should examine a ranked list of results presented to him or her on a given SERP. In addition to this, the second stopping decision point, \blueboxbold{2}, as demonstrated in Figure~\ref{fig:model_two_points}, considers wider \emph{session level stopping}. This stopping decision point permits a searcher to determine whether they have met their overall search goal, have run out of time, or have simply become exasperated with the lack of promising results. While these two key stopping decision points are discussed in more detail in Section~\ref{sec:proposal:stopping_points}, it should be noted that the heuristics defined in this section can be applied to snippet level stopping, session level stopping, or both.
+\noindent
+\blueboxbold{Considering Stopping Decision Points}
+Considering the models described above, two clear \emph{stopping decision points} occur in every model presented. To demonstrate this, Figure~\ref{fig:model_two_points} illustrates an excerpt from a basic user model that highlights these two key stopping decision points. In the figure, decision point \blueboxbold{1} considers \emph{snippet level stopping} -- often referred to as \emph{query level stopping} in the literature.\footnote{In this thesis, we use the terminology \emph{snippet level stopping} to avoid potential confusion between this well defined stopping decision point, and a further one that we introduce in Chapter~\ref{chap:proposal}.} This stopping decision point addresses the issue of how deep a searcher should examine a ranked list of results presented to him or her on a given SERP. In addition to this, the second stopping decision point, \blueboxbold{2}, as demonstrated in Figure~\ref{fig:model_two_points}, considers wider \emph{session level stopping}. This stopping decision point permits a searcher to determine whether they have met their overall search goal, have run out of time, or have simply become exasperated with the lack of promising results. While these two key stopping decision points are discussed in more detail in Section~\ref{sec:proposal:stopping_points}, it should be noted that the heuristics defined in this section can be applied to snippet level stopping, session level stopping, or both.
 
 \begin{figure}[t!]
     \centering
@@ -248,11 +241,9 @@ It is important to note that in the context of search, stopping heuristics have 
 \end{figure}
 
 \subsection{Theoretical Models}
+In addition to the conceptual models described above, a number of different theoretical models have been defined in the literature that attempt to model the search process. In particular, we focus on two main models that provide a means of explaining the optimal stopping point for a searcher: an economic based model of search, and a model of search based upon theory from the field of ecology.
 
-\subsubsection{Search Economic Theory}\label{sec:stopping_background:models:theoretical:set}
-
-\subsubsection{Information Foraging Theory}
-
+A well known conceptual model is the so-called \emph{Berry Picking model} proposed by~\cite{bates1989berry_picking}. In this model, an analogy is struck between a searcher and a \emph{forager} -- a forager scavenges between different bushes, looking to collect the juiciest and ripest berries, as depicted in Figure~\ref{fig:berry_picking}. This is likened to a searcher examining a number of different~\glsplural{acr:serp}, where the searcher looks for the documents that are most relevant to his or her information need (or the juiciest berries). While this model is intuitive, there is no explanation for how long an individual should spend examining results, or how the results/berries would affect the searcher's behaviour. However, it is alluded to later by~\cite{bates1989alluding} that searchers could weigh up the costs and benefits in order to decide what to do next.
 
 \begin{figure}[t!]
     \centering
@@ -261,6 +252,34 @@ It is important to note that in the context of search, stopping heuristics have 
     \caption[The Berry Picking Model~\cite{bates1989berry_picking}]{The \emph{Berry Picking Model,} defined by~\cite{bates1989berry_picking}. A forager traverses through numerous bushes to pick the juiciest berries for his or her consumption. The model is high level and conceptual in nature, and thus does not provide any justification for \emph{how} or \emph{why} foragers search for the juiciest berries.}
     \label{fig:berry_picking}
 \end{figure}
+
+\subsubsection{Information Foraging Theory}\label{sec:stopping_background:models:theoretical:ift}
+Following on from the notion of searchers being analogous 
+
+What is IFT?
+What is the motivation behind it?
+
+Now, what is the theory comprised of? There are three underlying models here.
+Scent model, and patch model.
+
+What does the scent model tell us?
+    - We use this later on in the thesis.
+
+What does the patch model tell us?
+    - Illustration from the ECIR slides.
+    - Also provides an explanation of when people stop.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch3-patch.pdf}}
+    \caption[The Patch Model]{A graphical depiction of the \emph{Patch Model}, part of \emph{Information Foraging Theory.} When presented with two patches, each containing food that can be represented as gain, what patch should our forager choose first — patch 1 or 2?}
+    \label{fig:patch_model}
+\end{figure}
+
+
+\subsubsection{Search Economic Theory}\label{sec:stopping_background:models:theoretical:set}
+
 
 
 \section{Chapter Summary}
