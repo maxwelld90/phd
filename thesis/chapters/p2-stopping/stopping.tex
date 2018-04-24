@@ -129,6 +129,10 @@ With the heuristics now enumerated, we later in this thesis discuss how we take 
 
 \section{User Studies}\label{sec:stopping_background:user_studies}
 
+
+talk about Wu, and scent here.
+~\cite{card2001scent_graphs}
+
 studies from CIKM 2015 paper.
 
 ryen white's expert stuff -- does he report stopping stuff?
@@ -243,7 +247,8 @@ Considering the models described above, two clear \emph{stopping decision points
 \subsection{Theoretical Models}
 In addition to the conceptual models described above, a number of different theoretical models have been defined in the literature that attempt to model the search process. In particular, we focus on two main models that provide a means of explaining the optimal stopping point for a searcher: an economic based model of search, and a model of search based upon theory from the field of ecology.
 
-A well known conceptual model is the so-called \emph{Berry Picking model} proposed by~\cite{bates1989berry_picking}. In this model, an analogy is struck between a searcher and a \emph{forager} -- a forager scavenges between different bushes, looking to collect the juiciest and ripest berries, as depicted in Figure~\ref{fig:berry_picking}. This is likened to a searcher examining a number of different~\glsplural{acr:serp}, where the searcher looks for the documents that are most relevant to his or her information need (or the juiciest berries). While this model is intuitive, there is no explanation for how long an individual should spend examining results, or how the results/berries would affect the searcher's behaviour. However, it is alluded to later by~\cite{bates1989alluding} that searchers could weigh up the costs and benefits in order to decide what to do next.
+\subsubsection{Information Foraging Theory}\label{sec:stopping_background:models:theoretical:ift}
+A well known conceptual model in the field of information seeking is the so-called \emph{Berry Picking model}, as proposed by~\cite{bates1989berry_picking}. As shown in Figure~\ref{fig:berry_picking}, this model considers searchers looking for information to be analogous to \emph{foragers} scavenging for food in the wild. In the model, foragers are looking for the juiciest and ripest berries on a number of different \emph{patches}, or bushes. The juiciest and ripest berries offer the highest levels of gain, or utility -- picking these berries help the forager maximise their level of \emph{gain.} Switching context, a searcher forages for information, picking the most relevant (or, if you will, juiciest) documents that help them maximise their gain, and in turn satisfy their information need.
 
 \begin{figure}[t!]
     \centering
@@ -253,21 +258,20 @@ A well known conceptual model is the so-called \emph{Berry Picking model} propos
     \label{fig:berry_picking}
 \end{figure}
 
-\subsubsection{Information Foraging Theory}\label{sec:stopping_background:models:theoretical:ift}
-Following on from the notion of searchers being analogous 
+While the Berry Picking model is an intuitive and simple model to understand, its highly descriptive nature does not provide an explanation regarding the behaviour of the forager. \emph{How long should a forager spend examining this berry bush?} This question cannot be answered as such by the model, but~\cite{bates1989alluding} in a later publication does allude to the fact that searchers could weigh up the costs and benefits in order to decide what to do next.
 
-What is IFT?
-What is the motivation behind it?
+Theories do however exist that attempt to explain the behaviour of a searcher when \emph{foraging} for information. Initial attempts by~\cite{russell1993sense_making} and~\cite{sandstrom1994optimal_foraging} demonstrated that \emph{Optimal Foraging Theory}~\citep{stephens1986foraging_theory} could be potentially used to model the search process. This led to the development of~\gls{acr:ift}, proposed by~\cite{pirolli1999ift}. The theory provides an explanation as to how information foragers will behave, and as such, also provides a rationale as to how they will \emph{stop.}~\gls{acr:ift} is extensively used in this thesis as a theoretical underpinning to several hypotheses. It also provides a stopping heuristic that we outline later in this section.
 
-Now, what is the theory comprised of? There are three underlying models here.
-Scent model, and patch model.
+\noindent
+\blueboxbold{Diet, Patches and Scent}~\gls{acr:ift} is comprised of three main models: the \emph{information diet model}, concerning \emph{what} information is consumed; the \emph{information patch model}; and the \emph{information scent model.} With the work on this thesis considering the patch and scent models, we now provide an explanation of these two models.
 
-What does the scent model tell us?
-    - We use this later on in the thesis.
+Central to~\gls{acr:ift} is the notion of a \emph{patch}, as per the patch model. In the wild, a patch is modelled as an area of land with a degree of potential gain (food) that can be acquired by foraging through said patch. The \emph{between patch time} is the amount of time a forager spends moving towards a patch, and the \emph{within patch time} is the time spent within the patch, examining its contents.
 
-What does the patch model tell us?
-    - Illustration from the ECIR slides.
-    - Also provides an explanation of when people stop.
+With~\gls{acr:ift}, a patch can be modelled in a variety of ways. However, as outlined by~\cite{azzopardi2015theories}, the generally agreed approach to model a patch in terms of information seeking is to consider it as a~\gls{acr:serp}. In this model, moving between a patch is akin to \emph{issuing a query,} and thus incurs a cost (between patch time), and staying within a patch is the same as assessing result summaries on the presented~\gls{acr:serp} and their associated documents, with each summary and/or document taking a certain amount of time to process (within patch time). The patch model essentially predicts how long an information forager should stay in a patch, before moving onto the next patch.
+
+Given a series of patches, however, how does a forager deduce which one he or she should \emph{enter} next, and examine in closer detail? This is described by the information scent model, and encapsulates a currently active area of research. Figure~\ref{fig:patch_model} graphically illustrates the scent of a patch in action -- given two patches as depicted in the illustration, what patch will the forager travel to next? Following the scent, or \emph{cues} on the ground next to him, the forager observes that the paw prints to the first patch are more prevalent, and thus will venture to that patch first. Like foragers in the wild, information foragers will observe a series of \emph{proximal cues} presented to them on a~\gls{acr:serp}, such as hypertext links, document titles, snippet text and thumbnails to locate information~\citep{pirolli1995ift, pirolli1999ift, chi2001information_scent, oltston2003scenttrails, pirolli2007ift}. In the context of news search, cues were examined by~\cite{sundar2007news_scent}. Here, cues such as the source of an article were shown to have a powerful effect on the perception of said article.
+
+If these cues provide a rationale as to what leads to a promising scent trail, it follows that scent, in combination with patches, provides a rationale as to when a searcher will stop examining a set of results~\citep{pirolli1999ift, wu2012dc, wu2014information_scent}. For example, as demonstrated in Section~\ref{sec:stopping_background:user_studies},~\cite{wu2014information_scent} demonstrated that a searcher would forage to greater depths if the~\gls{acr:serp} appears to contain many relevant items. This trend was also observed by~\cite{card2001scent_graphs}, who found that when navigating through webpages, searchers were more likely to leave when the information scent began to decline.
 
 \begin{figure}[t!]
     \centering
@@ -277,6 +281,35 @@ What does the patch model tell us?
     \label{fig:patch_model}
 \end{figure}
 
+\noindent
+\blueboxbold{The~\gls{acr:ift} Stopping Heuristic}
+Given a patch with a scent, how can one deduce \emph{when they should stop?} Like all theories,~\gls{acr:ift} makes some key assumptions from which we can deduce behavioural characteristics of a forager. These assumptions are that a forager will:
+
+\begin{itemize}
+    \item[\emph{(i)}]{enter a patch with what appears to be the highest yield first; and}
+    \item[\emph{(ii)}]{attempt to maximise their gain per unit of time.}
+\end{itemize}
+
+Given these assumptions, one would now be able to answer the question posed in the graphical illustration of patches in Figure~\ref{fig:patch_model}. With the better scent, and greater volume of potential energy to be gained, the first patch is the obvious answer that a forager would answer to the question: \emph{which patch should I explore first?}
+
+In addition, the assumptions provided above allow us to begin formulating a stopping heuristic based upon the \emph{optimal behaviour} of a forager. The \emph{Maximum Marginal Theorem} by~\cite{charnov1976mvt} states...
+
+\begin{quote}
+    \emph{``...that a forager should remain in a patch so long as the slope of the gain function is greater than the average rate of gain in the environment.''}
+    \attrib{\cite{pirolli1999ift}}
+\end{quote}
+
+\begin{wrapfigure}[12]{r}{0.45\textwidth}
+    \begin{center}
+    \vspace*{-10mm}
+    \includegraphics[width=1\textwidth]{figures/ch3-ift_stop.pdf}
+    \end{center}
+    \vspace*{-4mm}
+    \caption[\gls{acr:ift} Stopping Heuristic]{The~\gls{acr:ift} stopping heuristic. The searcher should stop when the rate of gain (solid {\color{dmax_green}green} line) no longer outperforms the average rate of gain (dotted {\color{dmax_green}green} line).}
+    \label{fig:ift_stopping}
+\end{wrapfigure}
+
+The Maximum Marginal Theorem implies that is a forager is within a patch that initially looked promising, yet is yielding a rate of gain less than the \emph{average rate of gain,} he or she should abandon the patch and then move to another one. In the context of information seeking, this would imply a query reformulation. Conversely however, a forager who has found himself or herself in a patch yielding gain at a rate \emph{greater} than the average rate of gain would be best advised to stay within said patch. This is graphically illustrated in Figure~\ref{fig:ift_stopping}, where the \emph{gain curve} for a forager is highlighted in {\color{dmax_green}green.} In addition, the plot illustrates: \emph{(1)} the between patch time, where the forager is not acquiring any gain; \emph{(2)} the within patch time, where the forager is examining the~\gls{acr:serp} and associated documents; and \emph{(3)} the optimal stopping point, based upon the Maximum Marginal Theorem. Graphically, this is best described as the point at which the tangent to the curve (from the origin) touches the gain curve. From this point onwards, the rate of gain decreases, meaning that the forager is receiving ever increasing diminishing returns for the investment in examining content on the current patch.
 
 \subsubsection{Search Economic Theory}\label{sec:stopping_background:models:theoretical:set}
 
