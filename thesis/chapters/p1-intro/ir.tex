@@ -306,7 +306,7 @@ One of the major limitations of the previously examined measures is that the \em
 
 One of the most widely used measures that addresses this issue -- and provides a means of quantifying the all-round effectiveness of a retrieval system for a representative set of test topics -- is \emph{Mean Average Precision (MAP)}~\cite{voorhees2005trec_book}. Rather than considering a single set of results, MAP can consider multiple queries -- and, as alluded to above, considers the ranking in which results for each query are provided.
 
-As the name might imply, MAP provides a mean over the \emph{Average Precision (AP)} for each topic that is examined. AP provides the rank sensitive component of MAP up to some cuttoff $k$, as defined below:
+As the name might imply, MAP provides a mean over the \emph{Average Precision (AP)} for each topic that is examined. AP provides the rank sensitive component of MAP up to some cutoff $k$, as defined below:
 
 \begin{equation*}
 AP = \frac{\sum^{n}_{k=1}(P(k) \cdot rel(k))}{|~\text{\emph{relevant documents}}~|}.
@@ -318,6 +318,17 @@ Above, $P(K)$ is the precision cutoff at rank $k$ (i.e. $P@k$), and $rel(k)$ is 
 MAP = \frac{\sum^{T}_{q=1} AP(q)}{|~Q~|}.
 \end{equation*}
 
+\subsubsection{Expected Search Length}\label{sec:ir_background:evaluation:esl}
+Given a series of well established measures, we now consider the so-called \emph{Expected Search Length (ESL)}~\citep{cooper1968expected_search_length} of a searcher. Put simply, the expected search length is the number of non-relevant documents that a searcher will have to search through to obtain a \emph{desired number of relevant documents.} Therefore, systems demonstrating a shorter expected search length are considered to be more effective than systems with a comparatively longer expected search length. In other words, the measure indicates how much wasted search effort one would expect using a given retrieval system, as opposed to randomly searching until the needed relevant documents are found.
+
+From~\cite{cooper1968expected_search_length}, the expected search length can be computed thus:
+
+\begin{equation*}
+ESL(q) = j + \frac{i \cdot s}{r + 1}
+\end{equation*}
+
+\noindent
+where $q$ represents some query, and $j$ represents the number of non-relevant documents when considered to query $q$. This is the minimum number of documents that must be found in order to satisfy the searcher's information need -- this is the minimum number before $s$ of the $r$ total relevant documents are found by the searcher.
 
 \section{Considering the User}\label{sec:ir_background:user}
 So far in this chapter, we have provided a background on several key developments in the area of~\gls{acr:ir} research. However, these aforementioned developments all purely consider the \emph{system} that is being evaluated (i.e \emph{system-sided} research). To reiterate once more, the overall goal of an~\gls{acr:ir} system is to satisfy some information need that a searcher, or \emph{user}, acquires. In short, satisfying the user is key to~\gls{acr:ir}. Central to this is our understanding and incorporation of a user's search behaviours and interactions into the evaluation of~\gls{acr:ir} systems~\citep{callan2007minds}.
