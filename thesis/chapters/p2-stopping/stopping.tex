@@ -289,7 +289,7 @@ Effectively modelling stopping behaviour is also important to providing a more r
 
 This intuition has been confirmed by empirical analysis, where~\cite{azzopardi2011economics} demonstrated that simulated searchers examined significantly fewer documents when the underlying search engine failed to retrieve any relevant material in the top ten results, in contrast to when it did. Thus, searchers are inherently adaptive, with their behaviours conditions on the quality of the ranked lists that they interact with. This provides a justification for including these additional stopping decision points.
 
-Indeed, as previously discussed~\cite{azzopardi2011economics} simulated the behaviour of searchers using economic grounding to explain their observed behaviours. This led to the development of \emph{Search Economic Theory,} which we discuss in more detail in Section~\ref{sec:stopping_background:models:theoretical:set}. The model employed by~\cite{azzopardi2011economics} was largely the same as that demonstrated in Figure~\ref{fig:baskaya_model_flow}, but without the addition of examining snippets in isolation from their complete document counterparts. Similar models have also been demonstrated by~\cite{yilmaz2010browsing_utility},~\cite{carterette2011models}, and more recently~\cite{zhang2017simulation_model}.
+Indeed, as previously discussed~\cite{azzopardi2011economics} simulated the behaviour of searchers using economic grounding to explain their observed behaviours. This led to the development of \emph{Search Economic Theory,} which we briefly discuss in more detail in Section~\ref{sec:stopping_background:models:theoretical:other}. The model employed by~\cite{azzopardi2011economics} was largely the same as that demonstrated in Figure~\ref{fig:baskaya_model_flow}, but without the addition of examining snippets in isolation from their complete document counterparts. Similar models have also been demonstrated by~\cite{yilmaz2010browsing_utility},~\cite{carterette2011models}, and more recently~\cite{zhang2017simulation_model}.
 
 A further explicitly defined user model was proposed by~\cite{thomas2014modelling_behaviour}. This model, illustrated, again with a flowchart in Figure~\ref{fig:thomas_model}, essentially encapsulates the same principles as the previously described models: given an information need, a searcher will issue one or more queries, and examine a varying number of result summaries and documents. Also included is a form of utility accumulation model, that considers the utility obtained from a result summary $s_i$ and the relevancy judgement of a document, $r_i$. An addition to this model is the inclusion of an additional step at the beginning of the search session, where a searcher has the ability to \emph{select a search engine}.
 
@@ -327,7 +327,7 @@ Considering the models described above, two clear \emph{stopping decision points
 \end{figure}
 
 \subsection{Theoretical Models}
-In addition to the conceptual models described above, a number of different theoretical models have been defined in the literature that attempt to model the search process. In particular, we focus on two main models that provide a means of explaining the optimal stopping point for a searcher: an economic based model of search, and a model of search based upon theory from the field of ecology.
+In addition to the conceptual models described above, a number of different theoretical models have been defined in the literature that attempt to model the search process. In particular, we focus on~\gls{acr:ift} as a means for explaining a searcher's \emph{optimal stopping behaviour}. We also briefly discuss other competing theoretical models of search interactions.
 
 \subsubsection{Information Foraging Theory}\label{sec:stopping_background:models:theoretical:ift}
 A well known conceptual model in the field of information seeking is the so-called \emph{Berry Picking model}, as proposed by~\cite{bates1989berry_picking}. As shown in Figure~\ref{fig:berry_picking}, this model considers searchers looking for information to be analogous to \emph{foragers} scavenging for food in the wild. In the model, foragers are looking for the juiciest and ripest berries on a number of different \emph{patches}, or bushes. The juiciest and ripest berries offer the highest levels of gain, or utility -- picking these berries help the forager maximise their level of \emph{gain.} Switching context, a searcher forages for information, picking the most relevant (or, if you will, juiciest) documents that help them maximise their gain, and in turn satisfy their information need.
@@ -393,12 +393,44 @@ In addition, the assumptions provided above allow us to begin formulating a stop
 
 The Maximum Marginal Theorem implies that is a forager is within a patch that initially looked promising, yet is yielding a rate of gain less than the \emph{average rate of gain,} he or she should abandon the patch and then move to another one. In the context of information seeking, this would imply a query reformulation. Conversely however, a forager who has found himself or herself in a patch yielding gain at a rate \emph{greater} than the average rate of gain would be best advised to stay within said patch. This is graphically illustrated in Figure~\ref{fig:ift_stopping}, where the \emph{gain curve} for a forager is highlighted in {\color{dmax_green}green.} In addition, the plot illustrates: \emph{(1)} the between patch time, where the forager is not acquiring any gain; \emph{(2)} the within patch time, where the forager is examining the~\gls{acr:serp} and associated documents; and \emph{(3)} the optimal stopping point, based upon the Maximum Marginal Theorem. Graphically, this is best described as the point at which the tangent to the curve (from the origin) touches the gain curve. From this point onwards, the rate of gain decreases, meaning that the forager is receiving ever increasing diminishing returns for the investment in examining content on the current patch.
 
-\subsubsection{Search Economic Theory}\label{sec:stopping_background:models:theoretical:set}
+\subsubsection{Other Theoretical Models of Search}\label{sec:stopping_background:models:theoretical:other}
+It is important to acknowledge that apart from~\gls{acr:ift}, other competing theoretical models of search exist. While we do not discuss them in any great depth, we do in this section provide a brief overview of the work undertaken that led to each, along with references to both. We consider an economics based theory, \emph{Search Economic Theory (SET)} outlined by~\cite{azzopardi2011economics}, and the \emph{Interactive Probability Ranking Principle (iPRP)} as outlined by~\cite{fuhr2008iprp}. With many of the contributions in this thesis utilising~\gls{acr:ift}, we limit the discussion provided for SET and the iPRP.
 
+\noindent
+\blueboxbold{Modelling Stopping Behaviours}~\cite{azzopardi2015theories} conducted an extensive empirical study comparing the two competing theoretical models of search listed above, in tandem with~\gls{acr:ift}. Their goal was to develop a model for ad-hoc topic retrieval using each of the three approaches, in order to determine what predictions make about search behaviours, and show the relationships and differences between the three approaches. The authors noted that while the three competing models took different perspectives on modelling searcher interactions, their mathematical proofs led to similar hypotheses regarding searcher behaviours -- including stopping behaviours.
 
+\noindent
+\blueboxbold{Cost/Benefit Decision Making} Cost-benefit and other decision making tools form the foundations of both SET and the iPRP, and indeed are nothing new to the field of~\gls{acr:ir}. For example, the \emph{Probability Ranking Principle (PRP)} proposed by~\cite{robertson1977prp} and discussed in Section~\ref{sec:ir_background:basics} is an example of a prior application of such a framework, and offered advancements in how~\gls{acr:ir} systems ranked documents. Indeed, the PRP has been recently revised by~\cite{fuhr2008iprp} to consider a series of interactions that take place during a~\gls{acr:iir} session. This high level, generalisable model accounts for the different costs and benefits that are associated with particular \emph{choices} when ranking a series of documents.
+
+\noindent
+\blueboxbold{\gls{acr:ir} from an Economic Perspective}~\cite{varian1999economics} outlined three directions in which economics could be of use when considering search:
+
+\begin{itemize}
+    \item[\emph{(i)}]{obtaining a better estimate of the probabilities of relevance;}
+    \item[\emph{(ii)}]{applying \emph{Optimal Search Behaviour}~\cite{stigler1961economics} to~\gls{acr:ir}; and}
+    \item[\emph{(iii)}]{examining the economic value of information using \emph{consumer theory}, where \emph{``a consumer is making a choice to maximise expected utility of minimise expected cost''}~\citep{varian1999economics}.;}
+\end{itemize}
+
+Several studies have tackled the first two directions (refer to~\cite{birchler1999information} and more recently~\cite{wang2009economics} for examples). However, with regards to the third option, \emph{production theory}~\cite{varian1987intermediate} was employed by~\cite{azzopardi2011economics} to model the interactive search process. This led to the development of SET, which has been subsequently revised in future publications to include more complex components of the search process, such as snippet examinations -- including the associated costs and benefits from such a process (refer to~\cite{azzopardi2014economics}).
 
 \section{Chapter Summary}
-Refer to the following chapter for more information on how we extend these models to make them more realistic.
+In this chapter, we have provided an extensive overview of how stopping behaviours have been examined in~\gls{acr:iir}. In addition to this, we have examined a variety of different user models that attempt to capture the search process.
+
+In particular, we have detailed a number of different stopping heuristics that have been proposed in the literature. These heuristics are the attempts of researchers to attempt and capture what is described as a searcher's feeling of what they have found is \emph{``good enough''}~\citep{zach2005enough_is_enough}. Indeed, we also provided a review of the literature concerning user studies examining searcher stopping behaviours. Many of these studies discovered that searchers are simply unable to articulate their behaviours, and found that a searcher stops when their internal stopping heuristics consider that what they have found is enough to satisfy them -- complying with the \emph{satisfaction stopping heuristic,} for example. However, these different internal stopping heuristics vary from person to person, with factors such as domain knowledge and external factors like time constraints affecting their behaviours~\cite{marchionini1995information_seeking}. As such, although several studies have been undertaken, examining stopping behaviours is a very difficult phenomenon to capture effectively.
+
+Our discussion on user models also provided an overview of the different evolutions of model. These range from the basic TREC-style model of search up to the contemporary simple user models, capturing several additional activities and decision points, which provide a natural entry point for modelling searcher stopping behaviours. We also provided an overview of~\gls{acr:ift}, considering how this theory allows us to determine a searcher's optimal stopping behaviour~\citep{stigler1961economics}.
+
+With this outline of the current state-of-the-art, we now turn our attention to the contributions provided in this thesis. In the next chapter, we outline our updated user model of search, incorporating additional decision points for examining and modelling searcher stopping behaviours. We also detail how we \emph{operationalise} the aforementioned stopping heuristics, and turn them into a series of \emph{implementable stopping strategies.}
+
+
+
+
+
+
+
+
+
+
 
 % - given you an outline of the basics of IR
 % - and more system-sided IR
