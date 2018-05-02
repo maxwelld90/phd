@@ -15,22 +15,18 @@ Previous chapters in this thesis discussed prior work that has been undertaken i
 We begin this chapter by continuing along the same theme as what concluded the previous chapter: \emph{user modelling}. We introduce our revised model of the search process, the~\gls{acr:csm}.
 
 \section{The Complex Searcher Model}\label{sec:proposal:csm}
-% The~\glsfirst{acr:csm} is a conceptual model of the search process, capturing the key stages undertaken by a searcher during the information seeking process. The~\gls{acr:csm} framework is based upon several prior models proposed in the literature, as discussed in Section~\ref{sec:stopping_background:models:conceptual}. Prime examples of prior works include the Markov-based approach developed by~\cite{baskaya2013behavioural_factors}, and the searcher model outlined by~\cite{thomas2014modelling_behaviour}. Both of these prior examples of prior models are in agreement with the general processes and searcher flow during the search process. For example, both agree that first, a searcher will issue a query followed by the examination of one or more result summaries. The model proposed by~\cite{thomas2014modelling_behaviour} also considers \emph{which search engine} should be employed for the given search task.
-%
-% While selecting an individual search engine is important (selecting \emph{Google Scholar}\footnote{\url{https://scholar.google.com} -- last accessed May 1\textsuperscript{st}, 2018.} to find an academic article may be useful, for example), it is not crucial, and when considering the core activities undertaken during search, one will assume that a search engine has already been selected.
+The~\glsfirst{acr:csm} is a high level model of the search process, capturing the key stages undertaken by a searcher during the information seeking process. Illustrated in Figure~\ref{fig:csm}, the~\gls{acr:csm} is based upon prior models as proposed in the literature, previously discussed in Section~\ref{sec:stopping_background:models:conceptual}. Prime examples of prior models include the Markov-based approach by~\cite{baskaya2013behavioural_factors}, and the searcher model proposed by~\cite{thomas2014modelling_behaviour}. These models (along with others) are in broad agreement with the general sequence of events that searchers undertake during search, with searchers issuing queries, examining result summaries, and then examining documents for relevance. Refer to Figures~\ref{fig:baskaya_model_flow} and~\ref{fig:thomas_model} on pages~\pageref{fig:baskaya_model_flow} and~\pageref{fig:thomas_model} respectively for illustrations of the two aforementioned models.
 
-- motivation for doing this
-- to make more advanced models of the search process that better captures the complex interactions that take place.
+Given the baselines outlined above and in Section~\ref{sec:stopping_background:models:conceptual}, the~\gls{acr:csm} offers a number of advancements of modelling the search process. These advancements are made in two key areas, both of which are discussed below.
 
-\vspace*{5mm}
-\begin{publications_box}{Associated Publications}
-The~\gls{acr:csm} has been detailed and developed over a number of different publications. Developments of the~\gls{acr:csm} can be observed in the following publications. Note that the publications are listed in chronological order; the latest evolution of the~\gls{acr:csm} appears in the latest publication.
 \begin{itemize}
-    \item{\bibentry{maxwell2015stopping_strategies}}
-    \item{\bibentry{maxwell2016agents}}
-    \item{\bibentry{maxwell2018serp}}
+    \item{We provide improvements to the \blueboxbold{querying} aspects of the searcher model. Namely, a searcher subscribing to the~\gls{acr:csm} is able to generate an updated set of potential queries once he or she has completed interactions on a given~\gls{acr:serp}.}
+    \item{We also introduce a \blueboxbold{further stopping decision point} concerning the \emph{overall impression} of a~\gls{acr:serp} once it has initially presented to the searcher.}
 \end{itemize}
-\end{publications_box}
+
+\noindent
+\blueboxbold{Selecting a Query} With a search session an inherently interactive process~\citep{ingwersen2005theturn}, a searcher is able to \emph{learn} and develop their mental model of the given information need as they examine information presented to them. As such, during a search task, a searcher may decide to reformulate their query as they obtain a better appreciation of the topic, and are able to formulate a better query, perhaps with descriptive key terms. The~\gls{acr:csm} provides the mechanism for a searcher subscribing to such a model to update the list of potential queries that could be issued once he or she has finished examining a set of results from the previous~\gls{acr:serp}. This is in direct contrast to prior models of search, where queries were selected from a list generated at the start of the search session. This improvement in the modelling process permits a better representation of a searcher's so-called \emph{dynamic information needs}~\citep{borlund2003iir_model}.~\cite{maxwell2016agents} provide an in-depth discussion on this issue.
+
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
@@ -39,37 +35,85 @@ The~\gls{acr:csm} has been detailed and developed over a number of different pub
     \label{fig:csm}
 \end{figure}
 
-- combines the frameworks from several previous works as discussed in section x.x.
-- these frameworks capture broadly the steps shown in previous works. Prime examples: models by Baskaya et al. and other works, along with model by Thomas et al.
-- however, Thomas also considers "choosing a search engine".
+\noindent
+\blueboxbold{New Stopping Decision Point} As mentioned above, the second development within the~\gls{acr:csm} is the inclusion of an additional \emph{stopping decision point} within the model. With two stopping decision points already present within established models of the search process (refer to Section~\ref{sec:stopping_background:models:conceptual:simple}), we propose a third -- the so-called \blueboxbold{\gls{acr:serp} stopping decision point}.
 
-- selecting a search engine is important, but we consider in this thesis a model that captures the search process using a single search engine. it is superfluous! also assume that the model is based upon the concept of ad-hoc topic retrieval, as discussed in section x.x.
+As outlined by~\cite{maxwell2018serp}, this additional stopping decision point is motivated by the idea of the \emph{information scent} present on a given~\gls{acr:serp}. This was briefly discussed in Sections~\ref{sec:stopping_background:user_studies:understanding} and~\ref{sec:stopping_background:models:theoretical:ift}, and in these sections we highlighted the concept of \emph{proximal cues} providing insights into whether the presented page will yield information that will aid the searcher in satisfying their underlying information need. This has been previously demonstrated in prior studies~\citep{wu2014information_scent, ong2017scent_behaviour, maxwell2017snippets}. By operationalising the notion of information scent as the perceived performance of a given~\gls{acr:serp}, we argue that incorporating this additional activity and stopping decision point allows a searcher to obtain an \emph{impression} of the~\gls{acr:serp} before deciding to \emph{enter} the~\gls{acr:serp} and examine content in detail, or \emph{abandon} the~\gls{acr:serp} and move to the next activity. In other words, when a poor query is issued, the searcher will not expend effort examining content which will have a high probability of not being relevant to their information need.
 
-- we also consider some new additions to the model:
-    - take the concept of including querying within the browsing model a step further
-    - allow searchers complying with this model to reconsider the queries they wish to generate.
-    - thus change the list of queries to be issued.
-    - complies with the notion of a search session being interactive, with a searcher's mental model developing as he or she searches.
-    - and when the queries are exhausted, the searcher stops.
+This is analogous to the well-studied phenomenon of \emph{\gls{acr:serp} abandonment} in which limited interaction occurs with the searcher. This has been typically assumed to provide an indication of the searcher's \emph{dissatisfaction} with the presented results~\citep{dassarma2008serp_abandonment, chuklin2012serp_abandonment}. Thus, we provide, to the best of our knowledge, a model of the search process incorporating a path for a searcher to abandon a~\gls{acr:serp} that appears to be of poor quality (or a \emph{low scent}).
+
+\noindent
+\blueboxbold{\gls{acr:csm} Assumptions} Of course, being a conceptual model of a real-world phenomenon, the~\gls{acr:csm} also makes a number of key assumptions, each of which are listed and detailed below.
+
+\begin{itemize}
     
-    - also consider a SERP examination stage.
-    - explain this from the overview paragraph in 2018 paper, linking back to IFT and scent.
-    - remember, wan ching wu motivates scent.
-        - scent been shown to have an effect on behavious etc.
-        - so what about getting an overview?
-    - this additional component also comes with an additional searcher stopping decision point.
-        - given my impression of the SERP, does it appear to be useful enough to examine?
-        - provide a means for abandoning a SERP, before considering the snippets in detail.
-        - this is largely analogous to the well-studied concept of \emph{SERP abandonment}, where a searcher abandons a page when they are not finding anything useful. different explanations as to what is considered by SERP abandonment, Hassan and White consider when no clicks are recorded on a page. Although other interpretations can exist, such as no hovers, or any interaction.
-        - so this additional decision point further strives to make models more realistic.
-        - provides a SERP abandonment point
-        - and thus a searcher should not waste time examining snippets in detail on a SERP that appears to offer a \emph{low scent.}
+    \item{The~\gls{acr:csm} models the task of \blueboxbold{ad-hoc topic retrieval}, as previously discussed earlier in this thesis in Section~\ref{sec:ir_background:basics:cranfield:trec}. Numerous task types exist (e.g. patent search), and each task may vary slightly in terms of the order of activities -- and what activities are present.\footnote{This assumption is present at the request of Professor Nick Belkin, who discussed that this assumption should be made clear when the author of this thesis presented his work at the first \emph{ACM CHIIR} conference in Chapel Hill, NC, USA -- refer to~\cite{maxwell2016dc}.} Referring to Senior \emph{Microsoft} Applied Scientist Peter Bailey's \emph{SIGIR} paper tips\footnote{\url{https://www.microsoft.com/en-us/research/people/pbailey/} -- last accessed May 1\textsuperscript{st}, 2018.} -- specifically tip 10 -- we agree that ad-hoc topic retrieval is foundational to many areas of~\gls{acr:ir}, although it may not represent actual searcher behaviour in a real-world scenario, such as web search. According to Dr. Bailey, there is indeed \emph{``more to life than ad-hoc''}, though the scope of this thesis is generally restricted to such.}
+    
+    \item{The searcher, when subscribing to the~\gls{acr:csm}, is assumed to have already undertaken the necessary tasks to \blueboxbold{choose the search engine} that he or she will interact with. This is important to clarify, as models of search proposed in the literature -- such as the model by~\cite{thomas2014modelling_behaviour} -- assume a searcher decides what search engine to select, before beginning their interactions with it. Of course, this is an important step. For example, a patent searcher may use a bespoke search engine\footnote{For example, a patent searcher in the United Kingdom may utilise the \emph{GOV.UK} patent search engine, at \url{https://www.gov.uk/search-for-patent} -- last accessed May 1\textsuperscript{st}, 2018.}, rather than a general purpose web search engine such as \emph{Google} or \emph{Bing}. We however consider this step superfluous to the requirements of the~\gls{acr:csm}.}
+    
+    \item{When considering whether the~\gls{acr:serp} should be abandoned, we assume that the searcher will always consider this decision under the pretence of \blueboxbold{bad abandonment} (i.e. a dissatisfaction of the presented results). This is in contrast to the notion of \emph{good abandonment}~\citep{khabsa2016good_abandonment}, which we do not consider within the~\gls{acr:csm}. Good abandonment is typically prevalent in contemporary search research (and on small-screen devices such as smartphones). With the inclusion of~\gls{acr:serp} components such as the information card~\citep{bota2016information_cards}, certain information needs can be satisfied by examining the~\gls{acr:serp} without needing to click on any results.}
+    
+    \item{For simplification, a~\gls{acr:serp} presented to a searcher utilising this model will consist only of one set of \emph{verticals}, i.e. the traditional \blueboxbold{ten blue links} that we still see today in contemporary search engines. However, contemporary web~\glsplural{acr:serp} also consist of additional components, such as the information card discussed above. Indeed, models have been proposed that incorporate additional~\gls{acr:serp} components, such as multimedia content in federated search~\cite{chen2012federated_search_click_model} (in this instance, a click model was derived). However, for simplification, the~\gls{acr:csm} assumes that such components are not present within a~\gls{acr:serp}.}
+    
+    \item{Offered in a linear order.}
+    
+    \item{Does not consider pagination.}
+    
+\end{itemize}
+
+Combined together, these advancements demonstrate an improvement in user modelling, and should provide a more realistic means with which to model the process.
+
+\vspace*{5mm}
+\begin{publications_box}{Associated Publications}
+The~\gls{acr:csm} has been developed over a number years. Development of the model can be observed from a number of publications. The first version of the~\gls{acr:csm}, essentially analogous to the prior models of search outlined in Section~\ref{sec:stopping_background:models:conceptual:simple}, were outlined and used in simulated analyses, as reported in two publications.
+
+\begin{itemize}
+    \item{\bibentry{maxwell2015initial_stopping}}
+    \item{\bibentry{maxwell2015stopping_strategies}}
+\end{itemize}
+
+Further developments to the~\gls{acr:csm} were found in a subsequent publication which experimented with the notion of \emph{intelligent search agents} (refer to \todo{Section~\ref{}}). Here, developments in the~\gls{acr:csm} led to the updating of the querying aspects of the model.
+
+\begin{itemize}
+    \item{\bibentry{maxwell2016agents}}
+\end{itemize}
+
+The final development of the~\gls{acr:csm} led to the inclusion of the third stopping decision point, complete with a large-scale simulated analysis. This led to the finding that the inclusion of the new decision point within the~\gls{acr:csm} led to improvements in overall search performance, and approximations of actual searcher behaviours.
+
+\begin{itemize}
+    \item{\bibentry{maxwell2018serp}}
+\end{itemize}
+\end{publications_box}
+
+With the underlying assumptions and developments of the~\gls{acr:csm} now outlined, we next provide a high-level description of the various stages of the model.
+
+\subsection{Model Flow}\label{sec:proposal:csm:flow}
+The~\gls{acr:csm} is illustrated as a flowchart in Figure~\ref{fig:csm} on page~\pageref{fig:csm}. Here, the model is described, with an explanation of the different processes involved, and the associated stopping decision points.
+
+When subscribing to the~\gls{acr:csm}, a searcher, once he or she has attained a form of information need, will begin by performing an \blueboxbold{examination of the topic}. This is typically considered to be provided by an experimenter in the form of a \emph{TREC topic}, where a searcher will be provided with a predefined \emph{topic description} of what will constitute as a relevant document (refer to Figure~\ref{fig:topics} for examples). The searcher will then begin to formulate an initial mental model of the topic, identifying key terms and phrases that could be potentially used to translate this information need into a query formulation~\citep{borlund2003iir_model}.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch4-topics.pdf}}
+    \caption[Examples of TREC Topics]{Three examples of \emph{TREC topic descriptions}, as outlined in Section~\ref{sec:proposal:csm:flow}. Topics are extracted from the \emph{TREC 2005 Robust Track,} as outlined by~\cite{voorhees2006trec_robust}. Descriptions provide an explanation as to what constitutes a relevant (and often non-relevant) document.}
+    \label{fig:topics}
+\end{figure}
+
+Once a model of the information need has been established, the searcher will then move onto the \blueboxbold{query generation}, \blueboxbold{query selection} and \blueboxbold{query issuance} stages. Here, the searcher will employ some form of \emph{querying strategy} in order to formulate one or more queries from the underlying model of the information need, and then make a decision, \emph{selecting} one of the candidate queries to take forward and issue to the underlying search engine. It should be noted that if all candidate queries have been exhausted, the searcher will then stop their search session at this point. A number of \emph{querying strategies} have been proposed in the literature; refer to \todo{Section~\ref{}} for more information.
+
+Once a query has been submitted the search engine, the searcher is then presented with the~\gls{acr:serp}. As per the assumptions stated earlier in Section~\ref{sec:proposal:csm}, we assume that the presented~\gls{acr:serp} consists solely of the result summaries -- including a title, snippet(s) and a document source for each. From here, the searcher is able to \blueboxbold{view the~\gls{acr:serp}} -- that is, obtain an \emph{initial impression} from examining the proximal cues presented to him or her. If the~\gls{acr:serp} does not appear to \emph{look good,} or offers a poor information scent, the searcher will abandon the~\gls{acr:serp} and proceed to then issue a further query from the list of candidate queries discussed previously.
+
+If the~\gls{acr:serp} however appears to offer a high information scent, the searcher will then proceed to \blueboxbold{enter the~\gls{acr:serp}}. From here, individual \blueboxbold{snippets will be examined} in detail. As per the assumptions listed above, these are examined in a linear fashion. For each snippet, a judgement is made as to whether the searcher considers it to be sufficiently \blueboxbold{attractive} to click. If deemed sufficiently attractive, the link is clicked, and the searcher is then presented with the \blueboxbold{document} examined in full for an \blueboxbold{assessment}. Once complete, the searcher then makes a further decision with regards to the \blueboxbold{relevancy} of the document to the given information need (or topic, using~\gls{acr:trec} terminology). If deemed relevant, the document is then \blueboxbold{marked} as such, providing a simplistic means for determining what documents have been considered relevant and those that weren't -- refer to Section~\ref{sec:ir_background:user:evaluation:interactive_pr}.
+
+Once the searcher has marked a document as relevant, he or she is returned to the~\gls{acr:serp}. At this point, the searcher must make a decision: \emph{should I continue to examine snippets on this current~\gls{acr:serp}?} This point is also reached by the searcher if he or she judges a snippet to have insufficient attractiveness to pursue further. If the answer is \emph{yes,} the next snippet is examined -- if the answer is \emph{no,} the searcher must then make a further decision. \emph{Given my overall search goals, have I met them? Should I continue my search session?} Search goals will vary between task type -- for ad-hoc retrieval, searchers will often attempt to find a predetermined number of relevant documents before a time limit expires. If the criteria have or criterion has not been met, the searcher will continue his or her search session by jumping back to the near start of the process, and undertake \blueboxbold{query generation} once more. If the stopping criteria have or criterion has been met, then the searcher will then abandon the search session, hopefully satisfied with what he or she has found.
+
+Note that at each process -- whether it be issuing a query or examining a document for relevance -- a searcher will pay some form of \blueboxbold{cost} for the effort that they need to expend performing the aforementioned activity. 
 
 
-\subsection{Model Flow}
-- explain the various steps of the model in plain English.
 
-\subsection{Components of the CSM}
+\subsection{Components of the Complex Searcher Model}
+Of course, this model is high level and conceptual in nature. How can we instantiate it?
 Being a high level, conceptual model, what are the main components, and how can they be instantiated?
 
 What are the key components of the CSM, and what literature has been examined, in order to justify each of the blocks being present? Appendix~\ref{appx:simiir} provides an in-depth overview of the different components of the simulator framework used, which are essentially analogous to the blocks and decision points of the CSM.

@@ -137,7 +137,7 @@ With the heuristics now enumerated, we later in this thesis discuss how we take 
 \section{User Studies}\label{sec:stopping_background:user_studies}
 While stopping heuristics provide a means for quantitatively characterising and predicting stopping behaviour~\citep{wu2014information_scent}, only a handful of user studies have been undertaken that attempt to understand what the aforementioned sense of what is \emph{``good enough''}~\citep{zach2005enough_is_enough} actually entails. This is not necessarily surprising. As we have already discussed, stopping is an inherently difficult phenomenon to model effectively -- this is because it is instrumented by a series of internal factors to the decision maker's thinking~\citep{nickles1995judgment}. But what are these internal factors? In this section, we detail a number of different user studies that have attempted to provide an explanation for a searcher's stopping behaviours.
 
-\subsection{Understanding Stopping Behaviours}
+\subsection{Understanding Stopping Behaviours}\label{sec:stopping_background:user_studies:understanding}
 %\todo{Satisficing offers a framework~\citep{toms2009predicting_stopping} ~\cite{simon1955satiation}, considering bounded rationality}
 
 As reported by~\cite{wu2014information_scent}, a majority of user studies that examine stopping behaviours have been conducted as a series of interviews. These studies primarily focused on the notion of \emph{why} searchers stopped when they did.
@@ -254,7 +254,7 @@ These assumptions have over the years been proven to be largely unrealistic thro
 
 While deficient in terms of considering a searcher's behaviours, the TREC-style user model has worked well for the batch-style experimentation that is typically employed at evaluation forums. Indeed, the model has been demonstrated as an effective means for evaluating the effectiveness when considering system sided research. Next, we discuss what advancements have been achieved in developing the notion of a user model of search further.
 
-\subsubsection{Simple Searcher Models}
+\subsubsection{Simple Searcher Models}\label{sec:stopping_background:models:conceptual:simple}
 A number of studies have proposed more complex (and arguably more realistic) models of the search process, encapsulating a greater number of concepts within them. While no definitive line of research exists that demonstrates these advancements, closer examination of the relevant publications yields a series of developments.
 
 One of the major limitations of the TREC-style model of search is the restrictive definition of what is regarded as a search session, with a \emph{single query} issued to address the underlying information need of the searcher. The search process however is inherently interactive~\citep{baskaya2013behavioural_factors}, with a searcher potentially issuing multiple queries (perhaps through query reformulations) as he or she accrues utility from the search results presented~\citep{ingwersen2005theturn}. To this end, seminal work by~\cite{baskaya2013behavioural_factors} presented an explicit, revised model of the interactive search process that improved on the definition of \emph{interactive}. Improvements over the TREC-style model included the following three key additions:
