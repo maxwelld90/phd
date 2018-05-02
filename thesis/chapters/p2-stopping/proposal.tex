@@ -31,14 +31,14 @@ Given the baselines outlined above and in Section~\ref{sec:stopping_background:m
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch4-csm.pdf}}
-    \caption[The Complex Searcher Model]{A flowchart of the proposed~\glsfirst{acr:csm}, as used in experimental work discussed later in this thesis. Refer to Section~\ref{sec:proposal:csm} for an explanation of each of the different components shown above. The three main \emph{stopping decision points} that the~\gls{acr:csm} considers – highlighted with \blueboxbold{1}, \blueboxbold{2} and \blueboxbold{3} – are discussed in Section~\ref{sec:proposal:stopping_points}.}
+    \caption[The Complex Searcher Model]{A flowchart of the proposed~\glsfirst{acr:csm}, as used in experimental work discussed later in this thesis. Refer to Section~\ref{sec:proposal:csm} for an explanation of each of the different components shown above. The three main \emph{stopping decision points} that the~\gls{acr:csm} considers – highlighted with \blueboxbold{1}, \blueboxbold{2} and \blueboxbold{3} – are discussed in Section~\ref{sec:proposal:model:stopping_points}.}
     \label{fig:csm}
 \end{figure}
 
 \noindent
 \blueboxbold{New Stopping Decision Point} As mentioned above, the second development within the~\gls{acr:csm} is the inclusion of an additional \emph{stopping decision point} within the model. With two stopping decision points already present within established models of the search process (refer to Section~\ref{sec:stopping_background:models:conceptual:simple}), we propose a third -- the so-called \blueboxbold{\gls{acr:serp} stopping decision point}.
 
-As outlined by~\cite{maxwell2018serp}, this additional stopping decision point is motivated by the idea of the \emph{information scent} present on a given~\gls{acr:serp}. This was briefly discussed in Sections~\ref{sec:stopping_background:user_studies:understanding} and~\ref{sec:stopping_background:models:theoretical:ift}, and in these sections we highlighted the concept of \emph{proximal cues} providing insights into whether the presented page will yield information that will aid the searcher in satisfying their underlying information need. This has been previously demonstrated in prior studies~\citep{wu2014information_scent, ong2017scent_behaviour, maxwell2017snippets}. By operationalising the notion of information scent as the perceived performance of a given~\gls{acr:serp}, we argue that incorporating this additional activity and stopping decision point allows a searcher to obtain an \emph{impression} of the~\gls{acr:serp} before deciding to \emph{enter} the~\gls{acr:serp} and examine content in detail, or \emph{abandon} the~\gls{acr:serp} and move to the next activity. In other words, when a poor query is issued, the searcher will not expend effort examining content which will have a high probability of not being relevant to their information need.
+As outlined by~\cite{maxwell2018serp}, this additional stopping decision point is motivated by the idea of the \emph{information scent} present on a given~\gls{acr:serp}. This was briefly discussed in Sections~\ref{sec:stopping_background:user_studies:understanding} and~\ref{sec:stopping_background:models:theoretical:ift}, and in these sections we highlighted the concept of \emph{proximal cues} providing insights into whether the presented page will yield information that will aid the searcher in satisfying their underlying information need. This has been previously demonstrated in prior studies~\citep{wu2014information_scent, ong2017scent_behaviour, maxwell2017snippets}. By operationalising the notion of information scent as the perceived performance of a given~\gls{acr:serp}, we argue that incorporating this additional activity and stopping decision point allows a searcher to obtain an \emph{impression} of the~\gls{acr:serp} before deciding to \emph{enter} the~\gls{acr:serp} and examine content in detail, or \emph{abandon} the~\gls{acr:serp} and move to the next activity. In other words, when a poor query is issued, the searcher will not expend effort examining content which will have a high probability of not being relevant to their information need. The notion of forming an impression is similar to the summary impressions formed by searchers subscribing to the model defined by~\cite{thomas2014modelling_behaviour}, as detailed in Section~\ref{sec:stopping_background:models:conceptual:simple}. However, in this model, the searcher does not form an overview of the~\gls{acr:serp}, but rather an impression of each summary. This allows him or her to then deduce whether it is enticing enough to examine in more detail.
 
 This is analogous to the well-studied phenomenon of \emph{\gls{acr:serp} abandonment} in which limited interaction occurs with the searcher. This has been typically assumed to provide an indication of the searcher's \emph{dissatisfaction} with the presented results~\citep{dassarma2008serp_abandonment, chuklin2012serp_abandonment}. Thus, we provide, to the best of our knowledge, a model of the search process incorporating a path for a searcher to abandon a~\gls{acr:serp} that appears to be of poor quality (or a \emph{low scent}).
 
@@ -53,15 +53,15 @@ This is analogous to the well-studied phenomenon of \emph{\gls{acr:serp} abandon
     
     \item{When considering whether the~\gls{acr:serp} should be abandoned, we assume that the searcher will always consider this decision under the pretence of \blueboxbold{bad abandonment} (i.e. a dissatisfaction of the presented results). This is in contrast to the notion of \emph{good abandonment}~\citep{khabsa2016good_abandonment}, which we do not consider within the~\gls{acr:csm}. Good abandonment is typically prevalent in contemporary search research (and on small-screen devices such as smartphones). With the inclusion of~\gls{acr:serp} components such as the information card~\citep{bota2016information_cards}, certain information needs can be satisfied by examining the~\gls{acr:serp} without needing to click on any results.}
     
-    \item{For simplification, a~\gls{acr:serp} presented to a searcher utilising this model will consist only of one set of \emph{verticals}, i.e. the traditional \blueboxbold{ten blue links} that we still see today in contemporary search engines. However, contemporary web~\glsplural{acr:serp} also consist of additional components, such as the information card discussed above. Indeed, models have been proposed that incorporate additional~\gls{acr:serp} components, such as multimedia content in federated search~\cite{chen2012federated_search_click_model} (in this instance, a click model was derived). However, for simplification, the~\gls{acr:csm} assumes that such components are not present within a~\gls{acr:serp}.}
+    \item{For simplification, a~\gls{acr:serp} presented to a searcher utilising this model will consist only of one set of \emph{verticals}, i.e. the traditional \blueboxbold{ten blue links} that we still see today in contemporary search engines. However, contemporary web~\glsplural{acr:serp} also consist of additional components, such as the information card discussed above. Indeed, models have been proposed that incorporate additional~\gls{acr:serp} components, such as multimedia content in federated search~\citep{chen2012federated_search_click_model} (in this instance, a click model was derived). However, for simplification, the~\gls{acr:csm} assumes that such components are not present within a~\gls{acr:serp}.}
     
-    \item{Offered in a linear order.}
+    \item{Once a searcher has decided to examine a~\gls{acr:serp} in detail, the result summaries presented to the searcher will be examined in \blueboxbold{linear order}. There is evidence to suggest that searchers in real life examine results from top to bottom, as demonstrated by~\cite{joachims2002click_model} and~\cite{joachims2005click_model}, for example. Click models, such as the \emph{cascade model}~\citep{craswell2008click_models}, have been developed that employ this assumption, where a searcher examines results in a linear fashion and stops once they have observed a relevant result. These approaches are all subject to \emph{positional bias,} that considers the notion that the searcher will trust the results of retrieval algorithm, and assume the first result is the most relevant.}
     
-    \item{Does not consider pagination.}
+    \item{The~\gls{acr:csm} also assumes that the~\gls{acr:serp} presented to a searcher is \blueboxbold{not paginated.} This simplifies the modelling process somewhat, with pagination not included in searcher models previously examined in prior works, such as the TREC style user model (refer to Section~\ref{sec:stopping_background:models:conceptual:trec}).}
     
 \end{itemize}
 
-Combined together, these advancements demonstrate an improvement in user modelling, and should provide a more realistic means with which to model the process.
+Combined together, these advancements demonstrate an improvement in user modelling, and should provide a more realistic means with which to model the process. While there are still assumptions in what is presented (i.e. no pagination) and how searchers interact with the~\gls{acr:serp} (i.e. examining results in a linear fashion), the improvements in the model should nevertheless lead to some improvements and provide a credible step forward in providing a better model of the search process.
 
 \vspace*{5mm}
 \begin{publications_box}{Associated Publications}
@@ -85,10 +85,8 @@ The final development of the~\gls{acr:csm} led to the inclusion of the third sto
 \end{itemize}
 \end{publications_box}
 
-With the underlying assumptions and developments of the~\gls{acr:csm} now outlined, we next provide a high-level description of the various stages of the model.
-
 \subsection{Model Flow}\label{sec:proposal:csm:flow}
-The~\gls{acr:csm} is illustrated as a flowchart in Figure~\ref{fig:csm} on page~\pageref{fig:csm}. Here, the model is described, with an explanation of the different processes involved, and the associated stopping decision points.
+With the underlying assumptions and developments of the~\gls{acr:csm} now outlined, we next provide a high-level description of the various stages of the model. The~\gls{acr:csm} is illustrated as a flowchart in Figure~\ref{fig:csm} on page~\pageref{fig:csm}. Here, the model is described, with an explanation of the different processes involved, and the associated stopping decision points.
 
 When subscribing to the~\gls{acr:csm}, a searcher, once he or she has attained a form of information need, will begin by performing an \blueboxbold{examination of the topic}. This is typically considered to be provided by an experimenter in the form of a \emph{TREC topic}, where a searcher will be provided with a predefined \emph{topic description} of what will constitute as a relevant document (refer to Figure~\ref{fig:topics} for examples). The searcher will then begin to formulate an initial mental model of the topic, identifying key terms and phrases that could be potentially used to translate this information need into a query formulation~\citep{borlund2003iir_model}.
 
@@ -108,7 +106,23 @@ If the~\gls{acr:serp} however appears to offer a high information scent, the sea
 
 Once the searcher has marked a document as relevant, he or she is returned to the~\gls{acr:serp}. At this point, the searcher must make a decision: \emph{should I continue to examine snippets on this current~\gls{acr:serp}?} This point is also reached by the searcher if he or she judges a snippet to have insufficient attractiveness to pursue further. If the answer is \emph{yes,} the next snippet is examined -- if the answer is \emph{no,} the searcher must then make a further decision. \emph{Given my overall search goals, have I met them? Should I continue my search session?} Search goals will vary between task type -- for ad-hoc retrieval, searchers will often attempt to find a predetermined number of relevant documents before a time limit expires. If the criteria have or criterion has not been met, the searcher will continue his or her search session by jumping back to the near start of the process, and undertake \blueboxbold{query generation} once more. If the stopping criteria have or criterion has been met, then the searcher will then abandon the search session, hopefully satisfied with what he or she has found.
 
-Note that at each process -- whether it be issuing a query or examining a document for relevance -- a searcher will pay some form of \blueboxbold{cost} for the effort that they need to expend performing the aforementioned activity. 
+Note that at each process -- whether it be issuing a query or examining a document for relevance -- a searcher will pay some form of \blueboxbold{cost} for the effort that they need to expend performing the aforementioned activity.
+
+\subsection{Stopping Decision Points}\label{sec:proposal:model:stopping_points}
+- as alluded to in the decision making section, a searcher is required to make a number of decisions as he or she undertakes the complex search tasks.
+- one set of decisions is the point at which they should \emph{stop}. Within Mark II of the CSM, we have encoded a total of three different \emph{stopping decision points}.
+- Now we have illustrated our CSM, we examine the different stopping decision points within the model.
+
+- Of central focus to this thesis are the three different stopping decision points that we consider in the Complex Searcher Model (both Mark I and II).
+
+- These are:
+    - snippet level stopping, referred to as query level stopping
+    - query level stopping
+    - session level stopping.
+
+How these are operationalised is dependent upon a variety of factors. For example, the task type is highly likely to influence the session level stopping strategy. The literature, as shown in Section~\ref{sec:stopping_background:heuristics} provides a number of heuristics to potentially operationalise stopping.
+
+These are primarily geared towards the concept of snippet level stopping.
 
 
 
@@ -149,22 +163,6 @@ leads on to the notion of \emph{state and agency.}
 - refer to Appendix~\ref{appx:agency} for an analysis of incorporating state and agency within the CSM.
 
 - however, this thesis focuses primarily on the notion of stochastic models of interaction, i.e. decision points are determined by the roll of a dice. this in itself introduces a number of additional issues that must be addressed (e.g. the law of averages) which are detailed in Section~\ref{sec:proposal:method:simulations}.
-
-\section{Stopping Decision Points}\label{sec:proposal:stopping_points}
-- as alluded to in the decision making section, a searcher is required to make a number of decisions as he or she undertakes the complex search tasks.
-- one set of decisions is the point at which they should \emph{stop}. Within Mark II of the CSM, we have encoded a total of three different \emph{stopping decision points}.
-- Now we have illustrated our CSM, we examine the different stopping decision points within the model.
-
-- Of central focus to this thesis are the three different stopping decision points that we consider in the Complex Searcher Model (both Mark I and II).
-
-- These are:
-    - snippet level stopping, referred to as query level stopping
-    - query level stopping
-    - session level stopping.
-
-How these are operationalised is dependent upon a variety of factors. For example, the task type is highly likely to influence the session level stopping strategy. The literature, as shown in Section~\ref{sec:stopping_background:heuristics} provides a number of heuristics to potentially operationalise stopping.
-
-These are primarily geared towards the concept of snippet level stopping.
 
 \section{Selected Stopping Strategies}\label{sec:proposal:strategies}
 As previously illustrated in Section~\ref{sec:stopping_background:heuristics}, a number of different~\glspl{glos:stopping_heuristic} were defined in the information seeking and ecology literature. These were proposed as heuristics which were believed by the authors to quantify and/or explain when searchers stopped searching, or when animals stopped foraging for food~\cite{maxwell2015stopping_strategies}. In this section, we take the rules defined in the literature and operationalise them so that they can be subsequently implemented and tested. Stopping heuristics are operationalised as a series of different~\gls{glos:stopping_strategy}, with each rule assigned an identifier. We split this section into the \todo{seven} broad categories of stopping heuristics that were analysed, with each operationalised stopping strategy listed, with detail provided for the criterion/criteria that must be satisfied before a user employing such a strategy would stop. \todo{This is for snippet level stopping only. Clarify?}
