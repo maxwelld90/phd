@@ -49,7 +49,7 @@ This is analogous to the well-studied phenomenon of \emph{\gls{acr:serp} abandon
     
     \item{The~\gls{acr:csm} models the task of \blueboxbold{ad-hoc topic retrieval}, as previously discussed earlier in this thesis in Section~\ref{sec:ir_background:basics:cranfield:trec}. Numerous task types exist (e.g. patent search), and each task may vary slightly in terms of the order of activities -- and what activities are present.\footnote{This assumption is present at the request of Professor Nick Belkin, who discussed that this assumption should be made clear when the author of this thesis presented his work at the first \emph{ACM CHIIR} conference in Chapel Hill, NC, USA -- refer to~\cite{maxwell2016dc}.} Referring to Senior \emph{Microsoft} Applied Scientist Peter Bailey's \emph{SIGIR} paper tips\footnote{\url{https://www.microsoft.com/en-us/research/people/pbailey/} -- last accessed May 1\textsuperscript{st}, 2018.} -- specifically tip 10 -- we agree that ad-hoc topic retrieval is foundational to many areas of~\gls{acr:ir}, although it may not represent actual searcher behaviour in a real-world scenario, such as web search. According to Dr. Bailey, there is indeed \emph{``more to life than ad-hoc''}, though the scope of this thesis is generally restricted to such.}
     
-    \item{The searcher, when subscribing to the~\gls{acr:csm}, is assumed to have already undertaken the necessary tasks to \blueboxbold{choose the search engine} that he or she will interact with. This is important to clarify, as models of search proposed in the literature -- such as the model by~\cite{thomas2014modelling_behaviour} -- assume a searcher decides what search engine to select, before beginning their interactions with it. Of course, this is an important step. For example, a patent searcher may use a bespoke search engine\footnote{For example, a patent searcher in the United Kingdom may utilise the \emph{GOV.UK} patent search engine, at \url{https://www.gov.uk/search-for-patent} -- last accessed May 1\textsuperscript{st}, 2018.}, rather than a general purpose web search engine such as \emph{Google} or \emph{Bing}. We however consider this step superfluous to the requirements of the~\gls{acr:csm}.}
+    \item{The searcher, when subscribing to the~\gls{acr:csm}, is assumed to have already undertaken the necessary tasks to \blueboxbold{choose the search engine} that he or she will interact with. This is important to clarify, as models of search proposed in the literature -- such as the model by~\cite{thomas2014modelling_behaviour} -- assume a searcher decides what search engine to select, before beginning their interactions with it. Of course, this is an important step. For example, a patent searcher may use a bespoke search engine\footnote{For example, a patent searcher in the United Kingdom may utilise the \emph{Intellectual Property Office's} patent search engine, at \url{https://www.ipo.gov.uk/p-ipsum.htm} -- last accessed May 1\textsuperscript{st}, 2018.}, rather than a general purpose web search engine such as \emph{Google} or \emph{Bing}. We however consider this step superfluous to the requirements of the~\gls{acr:csm}.}
     
     \item{When considering whether the~\gls{acr:serp} should be abandoned, we assume that the searcher will always consider this decision under the pretence of \blueboxbold{bad abandonment} (i.e. a dissatisfaction of the presented results). This is in contrast to the notion of \emph{good abandonment}~\citep{khabsa2016good_abandonment}, which we do not consider within the~\gls{acr:csm}. Good abandonment is typically prevalent in contemporary search research (and on small-screen devices such as smartphones). With the inclusion of~\gls{acr:serp} components such as the information card~\citep{bota2016information_cards}, certain information needs can be satisfied by examining the~\gls{acr:serp} without needing to click on any results.}
     
@@ -108,21 +108,46 @@ Once the searcher has marked a document as relevant, he or she is returned to th
 
 Note that at each process -- whether it be issuing a query or examining a document for relevance -- a searcher will pay some form of \blueboxbold{cost} for the effort that they need to expend performing the aforementioned activity.
 
+% \todo{Thursday -- start here.}
+%
+% Consider a chapter restucture:
+%
+% Part I: Introduction and Background
+%     Intro
+%     IR Background
+%     IIR Stopping Background
+%
+% Part II: Modelling and Methodology
+%     The Complex Searcher Model
+%     Stopping Strategies
+%     Methodology
+%
+% Part III: Stopping Behaviours
+%     Time
+%     Snippets
+%     Diversity
+%
+% Part IV: Conclusions
+%     Conclusion
+
 \subsection{Stopping Decision Points}\label{sec:proposal:model:stopping_points}
-- as alluded to in the decision making section, a searcher is required to make a number of decisions as he or she undertakes the complex search tasks.
-- one set of decisions is the point at which they should \emph{stop}. Within Mark II of the CSM, we have encoded a total of three different \emph{stopping decision points}.
-- Now we have illustrated our CSM, we examine the different stopping decision points within the model.
+Of central focus to the work in this thesis are the \emph{stopping decision points} of the~\gls{acr:csm}. As previously discussed, the~\gls{acr:csm} contains an additional, third stopping decision point. This is in combination with the two established stopping decision points, as previously highlighted in Section~\ref{sec:stopping_background:models:conceptual:simple} on page~\pageref{sec:stopping_background:models:conceptual:simple}.
 
-- Of central focus to this thesis are the three different stopping decision points that we consider in the Complex Searcher Model (both Mark I and II).
+The three stopping decision points that the~\gls{acr:csm} considers are listed below. While these are explained in Section~\ref{sec:proposal:csm:flow}, it is nevertheless good practice to enumerate them.
 
-- These are:
-    - snippet level stopping, referred to as query level stopping
-    - query level stopping
-    - session level stopping.
+\begin{itemize}
+    
+    \item{\blueboxbold{\gls{acr:serp} level stopping} considers the point at which a searcher can abandon a~\gls{acr:serp} after attaining an \emph{initial impression} of the presented~\gls{acr:serp}, thus saving a searcher from examining summaries in depth if the~\gls{acr:serp} appears to be of poor quality.}
+    
+    \item{\blueboxbold{Snippet level stopping} As previously mentioned, this is sometimes labelled as \emph{query level stopping} in the literature. We name this decision point snippet level stopping to remove any ambiguity between~\gls{acr:serp} level stopping and this point. Snippet level stopping considers the depth to which a searcher will traverse a list of results, before deciding to stop their examination.}
+    
+    \item{\blueboxbold{Session level stopping} Finally, session level stopping concerns the notion of when a searcher will decide to terminate their search session altogether. This could be constrained by time limits, or some predetermined notion of how many relevant items they have found.}
+    
+\end{itemize}
 
-How these are operationalised is dependent upon a variety of factors. For example, the task type is highly likely to influence the session level stopping strategy. The literature, as shown in Section~\ref{sec:stopping_background:heuristics} provides a number of heuristics to potentially operationalise stopping.
+Figure~\ref{fig:csm} on page~\pageref{fig:csm} also provides a visual illustration of the stopping decision points within the wider~\gls{acr:csm} flowchart. Decision points \blueboxbold{1}, \blueboxbold{2} and \blueboxbold{3} represent~\gls{acr:serp} level stopping, snippet level stopping and session level stopping respectively.
 
-These are primarily geared towards the concept of snippet level stopping.
+How these stopping decision points are operationalised is dependent upon a variety of different factors. For example, the task type is highly likely to influence the overall session stopping strategy that is employed. The literature, as overviewed in Section~\ref{sec:stopping_background:heuristics} provides a number of heuristics to potentially operationalise stopping. These are primarily geared towards the concept of snippet level stopping.
 
 
 
