@@ -102,6 +102,7 @@
 % Blue boxes!
 \setlength\fboxsep{2mm} % Applies padding to the blue boxes.
 \newcommand{\bluebox}[1]{\colorbox{dmax_lightblue}{\color{white}\metafont#1}}
+\newcommand{\darkbluebox}[1]{\colorbox{dmax_darkblue}{\color{white}\metafont#1}}
 \newcommand{\blueboxbold}[1]{\colorbox{dmax_lightblue}{\color{white}\headerfont#1}}
 \newcommand{\darkblueboxbold}[1]{\colorbox{dmax_darkblue}{\color{white}\headerfont#1}}
 \newcommand{\blueboxheader}[1]{\vspace{3mm}\noindent\blueboxbold{#1}\vspace{3mm}\\}

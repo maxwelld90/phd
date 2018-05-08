@@ -4,7 +4,42 @@
 \chapter[Models and Proposal]{Research Proposal and\\IIR Modelling}\label{chap:proposal}
 
 
-Previous chapters in this thesis discussed prior work that has been undertaken in the field of~\gls{acr:ir} -- and ~\gls{acr:iir}, with regards to stopping in search. In this chapter, we outline three key components that will be employed in the remainder of this thesis. In particular we will focus on:
+% Previous chapters in this thesis discussed prior work that has been undertaken in the field of~\gls{acr:ir} -- and ~\gls{acr:iir}, with regards to stopping in search. In this chapter, we outline three key components that will be employed in the remainder of this thesis. In particular we will focus on:
+%
+% in this chapter, we will be proposing a new conceptual user model of search that advances the state of the art.
+% then we will take heuristics, and formulate them into operational stopping strategies, that are formalised into rules that can be applied in practice. given chapters 5,6,7, we will empirically explore the quality of this model.
+%
+% We outline the main conceptual and theoretical contributions of this thesis, which is:
+% - a more complex and realistic user model; and
+% - enumerate the different stopping strategies that we will be evaluating.
+%
+% subsequent chapters are the empirical chapters, testing them out.
+%
+%
+% less important:
+% - method.
+%
+% ~~~~
+%
+% csm expl:
+%
+% updating the searcher model. considering the stopping
+% paper at number 1
+% focus at number 2
+%
+% main focus is on number 2.
+% do some stuff with number 1.
+% do some stuff with number 3.
+%
+% re-order the boxes.
+%
+% as outlined by maxwell and azzopardi, the reason why this has been brought in is because...
+%
+% **ad-hoc topic retrieval...could argue that the same basic process is followed for different search tasks, like navigational.
+%
+% we are focusing mainly on ad-hoc topic retrieval, because it facilitates the flow of this process many times.
+% more interest to stopping strategies that people employ because they become more crucial.
+
 
 \begin{itemize}
     \item[\emph{(i)}]{introducing an evolution of the conceptual user models of search, as previously discussed in Section~\ref{sec:stopping_background:models:conceptual};}
@@ -137,11 +172,11 @@ The three stopping decision points that the~\gls{acr:csm} considers are listed b
 
 \begin{itemize}
     
-    \item{\blueboxbold{\gls{acr:serp} level stopping} considers the point at which a searcher can abandon a~\gls{acr:serp} after attaining an \emph{initial impression} of the presented~\gls{acr:serp}, thus saving a searcher from examining summaries in depth if the~\gls{acr:serp} appears to be of poor quality.}
+    \item{\blueboxbold{\gls{acr:serp} Level Stopping} considers the point at which a searcher can abandon a~\gls{acr:serp} after attaining an \emph{initial impression} of the presented~\gls{acr:serp}, thus saving a searcher from examining summaries in depth if the~\gls{acr:serp} appears to be of poor quality.}
     
-    \item{\blueboxbold{Snippet level stopping} As previously mentioned, this is sometimes labelled as \emph{query level stopping} in the literature. We name this decision point snippet level stopping to remove any ambiguity between~\gls{acr:serp} level stopping and this point. Snippet level stopping considers the depth to which a searcher will traverse a list of results, before deciding to stop their examination.}
+    \item{\blueboxbold{Snippet Level Stopping} As previously mentioned, this is sometimes labelled as \emph{query level stopping} in the literature. We name this decision point snippet level stopping to remove any ambiguity between~\gls{acr:serp} level stopping and this point. Snippet level stopping considers the depth to which a searcher will traverse a list of results, before deciding to stop their examination.}
     
-    \item{\blueboxbold{Session level stopping} Finally, session level stopping concerns the notion of when a searcher will decide to terminate their search session altogether. This could be constrained by time limits, or some predetermined notion of how many relevant items they have found.}
+    \item{\blueboxbold{Session Level Stopping} Finally, session level stopping concerns the notion of when a searcher will decide to terminate their search session altogether. This could be constrained by time limits, or some predetermined notion of how many relevant items they have found.}
     
 \end{itemize}
 
@@ -149,15 +184,18 @@ Figure~\ref{fig:csm} on page~\pageref{fig:csm} also provides a visual illustrati
 
 How these stopping decision points are operationalised is dependent upon a variety of different factors. For example, the task type is highly likely to influence the overall session stopping strategy that is employed. The literature, as overviewed in Section~\ref{sec:stopping_background:heuristics} provides a number of heuristics to potentially operationalise stopping. These are primarily geared towards the concept of snippet level stopping.
 
-
-
 \subsection{Components of the Complex Searcher Model}
+With the~\gls{acr:csm} high level and conceptual in nature, there are many different ways in which the model can be instantiated.
+
+
 Of course, this model is high level and conceptual in nature. How can we instantiate it?
 Being a high level, conceptual model, what are the main components, and how can they be instantiated?
 
 What are the key components of the CSM, and what literature has been examined, in order to justify each of the blocks being present? Appendix~\ref{appx:simiir} provides an in-depth overview of the different components of the simulator framework used, which are essentially analogous to the blocks and decision points of the CSM.
 
-\subsubsection{Topic Modelling and Query Formulation}
+\subsubsection{Topic Modelling}
+
+\subsubsection{Query Formulation}
 
 \subsubsection{SERP Abandonment}
 
@@ -190,9 +228,31 @@ leads on to the notion of \emph{state and agency.}
 - however, this thesis focuses primarily on the notion of stochastic models of interaction, i.e. decision points are determined by the roll of a dice. this in itself introduces a number of additional issues that must be addressed (e.g. the law of averages) which are detailed in Section~\ref{sec:proposal:method:simulations}.
 
 \section{Selected Stopping Strategies}\label{sec:proposal:strategies}
-As previously illustrated in Section~\ref{sec:stopping_background:heuristics}, a number of different~\glspl{glos:stopping_heuristic} were defined in the information seeking and ecology literature. These were proposed as heuristics which were believed by the authors to quantify and/or explain when searchers stopped searching, or when animals stopped foraging for food~\cite{maxwell2015stopping_strategies}. In this section, we take the rules defined in the literature and operationalise them so that they can be subsequently implemented and tested. Stopping heuristics are operationalised as a series of different~\gls{glos:stopping_strategy}, with each rule assigned an identifier. We split this section into the \todo{seven} broad categories of stopping heuristics that were analysed, with each operationalised stopping strategy listed, with detail provided for the criterion/criteria that must be satisfied before a user employing such a strategy would stop. \todo{This is for snippet level stopping only. Clarify?}
+In Section~\ref{sec:stopping_background:heuristics}, we discussed a number of different \emph{stopping heuristics} that have been previously defined in the literature. A majority of these heuristics were derived from the concept of \emph{satiation}~\citep{simon1955satiation} -- that is, the searcher abandons their search when they feel satisfied with what they have found. These heuristics were conceptual in nature, being derived from a number of underlying theories and assumptions.
+
+In this section, we take a number of these stopping heuristics forward to produce a number of different~\glsplural{glos:stopping_strategy}. These strategies are operationalised versions of the corresponding heuristics, which mean we can subsequently implement and test them. The stopping strategies are enumerated, and split into five main categories, as listed below:
+
+\begin{itemize}
+    \item{a baseline, \blueboxbold{fixed depth} stopping strategy;}
+    \item{a stopping strategy based upon the \blueboxbold{frustration} stopping heuristic;}
+    \item{\blueboxbold{satisfaction} based stopping strategies;}
+    \item{a number of stopping strategies based upon the \blueboxbold{difference} threshold stopping heuristic; and}
+    \item{several stopping strategies based upon~\blueboxbold{\gls{acr:ift}}.}
+\end{itemize}
+
+Note that these stopping strategies are primarily presented as snippet level stopping strategies -- they can in theory be applied to the other two stopping decision points of the~\gls{acr:csm}, as outlined previously in Section~\ref{sec:proposal:model:stopping_points}. We also do not consider every stopping heuristic mentioned previously in Section~\ref{sec:stopping_background:heuristics} -- a number of these heuristics, such as the mental list heuristic are not trivial to implement, and do not necessarily comply with the search task we will be simulating.
 
 \noindent\blueboxbold{A Note on Usefulness} In this section, we refer to the concept of a result summary being \emph{useful} and \emph{unhelpful}. By this, we mean that a summary appears to be of use for a searcher to satisfy his or her information need. In the context of simulation, this notion of relevance does not necessarily correspond to the judgement made in a gold standard that is being compared to: the notion of usefulness in this context represents the decisions that are taken by a searcher as to what constitutes a useful or unhelpful document/result summary.
+
+\vspace*{5mm}
+\begin{publications_box}{Associated Publications}
+Several of the stopping strategies listed in this section are based from previous work, listed earlier in this thesis.
+\vspace*{-3mm}
+\begin{itemize}
+    \item{\bibentry{maxwell2015initial_stopping}}
+    \item{\bibentry{maxwell2015stopping_strategies}}
+\end{itemize}
+\end{publications_box}
 
 \subsection{Fixed Depth}
 The fixed depth stopping strategy is based upon an assumption held across many of the models and measures that are widely used throughout the~\gls{acr:ir} community. This assumption is that a searcher, when examining a list of ranked results for their query, will browse to a \emph{fixed depth} before stopping -- the roots of which can be traced back to the Cranfield Paradigm as discussed in Section~\ref{chap:intro}. Examples of use include the basic stopping model encoded within~\gls{acr:patk}. The assumption is also widely used in the simulation of interaction. For example,~\cite{azzopardi2011economics} conducted a large-scale simulated analysis, where simulated users examined content to depths ranging from $5$ to $1,000$ ($1,000$ is typically assumed in TREC style experimentation, where a single query is issued). Given the wide use of this fixed depth approach in historical and contemporary~\gls{acr:ir} research, we consider this stopping strategy as the baseline approach to which we will be comparing the more advanced, \emph{adaptive} stopping strategies.
@@ -216,10 +276,7 @@ Given the description of the stopping strategy above, we note that the fixed dep
 Despite the na\"{i}evty of the approach, the other main drawback of such an approach is exposed when a searcher complying with such a strategy issues a poor performing query. This is demonstrated in Figure~\ref{fig:ss1}, with two~\glsplural{acr:serp} presented side by side. Given a searcher's desire to find pages that provide information regarding \emph{CIKM 2015}\footnote{CIKM 2015 was a conference held in Melbourne, Australia, in October 2015. The paper that initially proposed many of these stopping strategies~\cite{maxwell2015stopping_strategies} was indeed presented at this conference.}, two queries are issued: the query on the left yielding poorer results than the query on the right, as denoted by the ticks and crosses, for useful and unhelpful result summaries, respectively. With \blueboxbold{SS1} @4 set, four result summaries are always examined before stopping, regardless of their perceived usefulness. As a result of this, na\"{i}vely examining four documents for the query on the left is by and large a waste of the searcher's time.
 
 \subsection{Searcher Frustration}
-
-\todo{Mention that in~\cite{cooper1973retrieval_effectiveness_ii}, there are two ways to implement this rule: by either providing a pre-determined number of documents to stop at, or to search, and then go back and count. Our implementation takes the former, simulates a goal-based task? Allows us to vary the number easily and see what is going on.}
-
-The second category of stopping strategies that we propose in this thesis are those that consider a searcher's \emph{tolerance to non-usefulness}. Given a set of result summaries presented on a~\gls{acr:serp}, how many would a searcher be prepared to judge to be of no use before they become frustrated, and subsequently abandon their query?
+The second category of stopping strategies that we propose in this thesis are those that consider a searcher's \emph{tolerance to non-relevance}. Given a set of result summaries presented on a~\gls{acr:serp}, how many would a searcher be prepared to judge to be of no use before they become frustrated, and subsequently abandon their query?
 
 As detailed in Section~\ref{sec:stopping_background:heuristics}, a number of researchers have proposed stopping heuristics that consider non-usefulness (or \emph{non-relevance}, as defined in the literature). The rule intrinsically makes sense for exhaustive searches~\cite{kraft1979stopping_rules}. As an example, when tasked to find as many documents as possible related to different species of animals that are endangered, becoming disgusted with the presented~\gls{acr:serp} when a lack of new species are shown would be a suitable point at which to break and reformulate a new query, or abandon the search session altogether.
 
@@ -243,35 +300,65 @@ From the heuristics defined by~\citealt{cooper1973retrieval_effectiveness_ii} an
 
 As mentioned previously, these two stopping strategies are the first that we enumerate where a searcher would begin to \emph{adapt} their interactions with a ranked list of results, depending upon the performance of the underlying query that was issued. As such, this behaviour inherently makes these stopping strategies more realistic~\cite{moffat2013users_versus_models}. Figure~\ref{fig:ss23} illustrates this adaption in action, with the same query and associated results. On the left of the figure is an illustration of when a searcher employing \blueboxbold{SS2} would stop, and on the right, an example of \blueboxbold{SS3}. We use $x_2 = x_3 = 3$. Under \blueboxbold{SS2}, a searcher would stop at rank 5, while a searcher would stop at rank 7 when employing \blueboxbold{SS3}.
 
-% Intuitively, these strategies will mean that the simulated searcher adapts their interaction with a ranked list of results depending upon the performance of the underlying query. For example, a ranked list is judged by a simulated searcher as [R,N,N,R,N,N,N], where R and N1 denote relevant and non-relevant items respectively. Under SS2 , with x2 = x3 = 3, the simulated searcher would stop at rank five. Under SS3, the simulated searcher would stop at rank seven.
-% Since documents are examined when the associated snip- pet is considered relevant (see Figure 1), a simulated searcher may revise their opinion of the amount of relevant informa- tion observed once they see the document. A simulated searcher may for example inspect the first snippet thinking it is relevant, and then examine the document. The docu- ment is subsequently considered non-relevant, meaning the initial R is changed to a N. This updates the count, so that under a stopping strategy with revised relevance, simulated searchers would stop at rank three in the list shown above using SS2 , and similarly for SS3 . This therefore introduces two variants of SS2 and SS3, which were found in a pilot study to perform slightly better. Therefore, we only report the revised relevance variants of SS2 and SS3 in this paper.
+\cite{cooper1973retrieval_effectiveness_ii} highlights the above as one way of operationalising such a stopping strategy: by providing a pre-determined number of documents to stop at. The other approach, which we do not consider in this thesis, would be to allow a searcher to find a series of documents, then go back and count. Such an approach seems unnatural, with the former approach simulating a form of goal-based task. By varying the number of non-relevant documents to stop at, one will be able to attain a better understanding of how performance and other behaviours differ.
 
 \subsection{Goal/Satisfaction Based}
-Analogous to the frustration rule are the satiation-based stopping rules. Here, rather than focus on the frustration or disgust that a searcher might experience when confronted with unhelpful result summaries, satisfaction based rules consider a searcher encountering a number of \emph{useful} result summaries (or documents) before deciding to stop.
+Analogous to the frustration rule are the satiation-based stopping heuristics. Here, rather than focus on the frustration or disgust that a searcher might experience when confronted with unhelpful result summaries, satisfaction based rules -- explained in Section~\ref{sec:stopping_background:heuristics:judgement:satisfaction_frustration} -- consider a searcher encountering a number of \emph{useful} result summaries (or documents) before deciding to stop.
 
 \begin{itemize}
-    
-    \item[]{\blueboxbold{SS4}} A searcher using this stopping strategy will stop examining content after encountering $x_4$ useful result summaries.
-    
+    \item[\blueboxbold{SS4}] A searcher using this stopping strategy will stop examining content after encountering $x_4$ useful result summaries.
 \end{itemize}
 
-\subsection{Considering the Difference}
-Is something sufficiently different?
-
-\subsection{Time-Based Rules}
-What about time? From ecology...
-
+While demonstrated above in the context of snippet level stopping, such a strategy, depending upon the search task, may not be particularly useful when operationalised at this stopping decision point. For example, consider the scenario where a searcher issues a poor query, yielding next to no summaries deemed to be worthy of further examination. In this scenario, a searcher fully complying with \blueboxbold{SS4} may struggle to find enough documents to reach their goal, and this will waste time examining poor results. Such a stopping strategy may be better suited to an overall search goal (i.e. a session level stopping strategy), and deploying a more suitable stopping strategy for snippet level stopping decisions.
 
 \subsection{Combination Rules}
-
 Combination rule by~\citealt{kraft1979stopping_rules} that considers satiation and non-usefulness rules.
 
 Combination rule that is defined in Foraging Theory.
 
-\subsection{Optimal Foraging Rule}
+\subsection{Considering the Difference}
+Is something sufficiently different?
+
+
+\begin{itemize}
+    \item[\blueboxbold{SS5}] Term overlap difference
+\end{itemize}
+
+\begin{itemize}
+    \item[\blueboxbold{SS6}] KL Divergence difference
+\end{itemize}
+
+\subsection{\glsfirst{acr:ift}}
 This is foraging theory... when the rate of gain excee
 
+\subsubsection{Optimal Foraging}
+
+\begin{itemize}
+    \item[\blueboxbold{SS7}] Optimal Foraging
+\end{itemize}
+
+\subsubsection{Time-Based Strategies}
+
+\begin{itemize}
+    \item[\blueboxbold{SS8}] Time-Based
+\end{itemize}
+
+\begin{itemize}
+    \item[\blueboxbold{SS9}] Giving Up Rule
+\end{itemize}
+
+\begin{itemize}
+    \item[\blueboxbold{SS10}] Combination of SS8 and SS9
+\end{itemize}
+
 \section{General Methodology Overview}\label{sec:proposal:method}
+
+2 pages -- in the following chapters, this is what we are going to do.
+
+ground the data
+ground the simulation
+evaluate it later on
+explore influence of these decision points and stopping strategies under different contexts
 
 We want to examine what happens to a searcher's behaviour when different stopping rules are employed under certain contexts.
 How can we do this? Here, we provide a broad overview of the methodology that was employed in the later chapters of this thesis. Broadly split across two main sections.
