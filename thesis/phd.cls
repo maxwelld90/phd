@@ -59,6 +59,7 @@
 \usepackage[nopostdot,acronym,savewrites,style=superborder]{glossaries}
 \usepackage[most]{tcolorbox}
 \usepackage{metalogo}
+\usepackage{xfrac,fontspec,unicode-math}
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
@@ -94,6 +95,7 @@
 \setcounter{secnumdepth}{3}
 
 % Define colour styles to fit "my" colours
+\definecolor{dmax_lightlightblue}{HTML}{B3D5EE}
 \definecolor{dmax_lightblue}{HTML}{0072C6}
 \definecolor{dmax_darkblue}{HTML}{00243D}
 \definecolor{dmax_red}{HTML}{89171F}
@@ -111,6 +113,7 @@
 \setmainfont{Palatino}
 \newfontfamily\headerfont[Path=./fonts/]{fs-demi.ttf}
 \newfontfamily\metafont[Path=./fonts/, ItalicFont=*italic, BoldFont=*bold]{fs-book.ttf}
+\setmathfont{Palatino}
 
 % % Set header/footer content -- create a phdpagestyle style
 \fancypagestyle{phdpagestyle}{
@@ -149,6 +152,9 @@
 % Left-align captions, and change the way in which caption text is displayed (e.g. Figure x in blue box).
 \DeclareCaptionFormat{cancaption}{\blueboxbold{#1}\hspace*{2mm}#3\par} % Normal format actually
 \captionsetup{format=cancaption}
+
+% Command for URLs (last accessed)
+\newcommand{\urlaccessed}[1]{~\colorbox{dmax_lightlightblue}{\color{dmax_darkblue}\metafont{\textbf{LA}~\emph{#1}}}}
 
 %%%%%%%%%%
 %%% Table of Contents Styling

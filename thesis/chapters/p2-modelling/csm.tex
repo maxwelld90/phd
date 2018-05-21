@@ -401,45 +401,58 @@ All queries submitted during experiments were also handled with the \emph{Whoosh
 With an index weighing in at 800MB, consisting of $128,894$ documents. \todo{What else did we do to reduce this number?} We could then issue queries against the index. All ranked results from queries were computed with the BM25 algorithm, where $\beta=0.75$. Terms in the queries issues were implicitly \texttt{AND}ed together to restrict the set of retrieved documents to those that only contained all of the query terms. This was chosen to reduce the size of the returned set -- most search systems employ such an implicit approach.
 
 \subsection{Conducting a User Study}
+Using the document collection, topics and search engine defined above, our methodology then moved to conducing a user study. These studies are discussed in depth in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. While the intricate details of each study's methodology (and therefore overall goal) do differ extensively, there are nevertheless some common components that we can discuss here. The two studies consider how the behaviour, performance and perceived experiences of searchers varies when:
 
-- conducted two large scale user studies for the work reported in this thesis.
-- chapter x looks at temporal delays
-- chapter y looks at the effects of task goals (session level stopping) and the diversification of results
-- both examine searcher behaviours.
+\begin{itemize}
+    \item{the length of snippets are varied; and}
+    \item{the diversity of results and task goal are varied.}
+\end{itemize}
 
-- using the document collection and topics defined above, we task subjects to find documents 
+Specifically, the two studies consider stopping behaviour at both the snippet (via stopping strategies) and session (via goal) level. We discuss the specific interfaces and conditions that we trial in more detail in the relevant chapters.
 
-X
-X
-X
-X
+Studies were undertaken using a custom built experimental framework called \emph{TREConomics.}\footnote{TREConomics can be found online at \url{https://github.com/leifos/treconomics} -- last accessed May 15\textsuperscript{th}, 2018.} The framework has been developed over a number of years, and has been successfully deployed over a number of studies, including those by~\cite{azzopardi2013query_cost},~\cite{maxwell2014temporal_delays} and~\cite{kelly2015serp_size}.
 
-- conditions are explained in more detail in the relevant chapters; refer to Chapters X and Y for more details about the precise setup.
+Within-subjects design...
 
-- both user studies were crowdsourced, explain the crowdsourcing stuff.
-- using a custom built framework called Treconomics, which has also been used in prior works, such as Azz2013, Max2014.
+\subsubsection{Experimental Flow}\label{sec:csm:methodology:user:flow}
+demo
+practice
+task
+surveys
 
-- framework allows for flexible study design.
+\subsubsection{Experimental Interface}
+Screenshot of the experimental interface
 
-- within subjects design, trialled a range of different interfaces and experimental conditions.
-- for each interface/condition trialled, we were able to record a variety of information that we discuss below.
+\subsubsection{Capturing Interactions}
+Produces a log file, that captures a number of different interactions with the search engine.
 
+\subsubsection{Crowdsourcing}
+For both studies highlighted above, we employed a \emph{crowdsourced} approach to our experimentation. As highlighted by Zuccon et al.~\cite{zuccon2013crowdsourcing}, crowdsourcing provides an alternative means for capturing user interactions and search behaviours from traditional lab-based user studies. Greater volumes of data can be obtained from more heterogeneous workers at a lower cost -- all within a shorter timeframe. Of course, pitfalls of a crowdsourced approach include the possibility of workers completing tasks as efficiently as possible, or submitting their tasks without performing the requested operations~\cite{feild2010turkers}. Despite these issues, it has been shown that there is little difference in the quality between crowdsourced and lab-based studies~\cite{zuccon2013crowdsourcing}. Nevertheless, quality control is a major component of a well-executed crowdsourced experiment~\cite{bota2016playing_your_cards}. Here, we detail our subjects and precautions taken.
+
+The study was run over the \emph{Amazon Mechanical Turk (MTurk)} platform. Workers from the platform performed a single \emph{Human Intelligence Task (HIT)}, which corresponded to the entire experiment. Due to the expected length of completion for the study (45-50 minutes), subjects who completed the study in full were reimbursed for their time with US\$9; a typically larger sum (and HIT duration) than most crowdsourced experiments. We examined extra precautionary measures to ensure the integrity of the log data that was recorded. Precautions were taken from several angles. First, workers were only permitted to begin the experiment on the MTurk platform that: \emph{(i)} were from the United States, and were native English speakers; \emph{(ii)} had a HIT acceptance rate of at least 95\%; and \emph{(iii)} had at least 1000 HITs approved. Requiring \emph{(ii)} and \emph{(iii)} reduced the likelihood of recruiting individuals who would not complete the study in a satisfactory manner. Recruits were forewarned about the length of the HIT, which was considerably longer than other crowdsourced experiments.
+
+We also ensured that the computer the subject was attempting the experiment on had a sufficiently large screen resolution (1024x768 or greater) so as to display all of the experimental interface on screen. With the experiment being conducted in a Web browser popup window of a fixed size, we wanted to ensure that all subjects would be able to see the same number of results on a SERP within the popup window's viewport. As the experiment was conducted via a Web browser, we wanted to ensure that only the controls provided by the experimental apparatus were used, meaning that the popup window had all other browser controls disabled to the best of our ability (i.e. history navigation, etc.). The experimental system was tested on several major web browsers, across different operating systems. This gave us confidence that a similar experience would be had across different system configurations.
+
+For each of the different interfaces and conditions that we trialled, a number of post-processing scripts were implemented to record a variety of different information that we discuss below.
+
+\todo{Need to mention interaction log}
 
 \subsection{Extracting User Study Interaction Data}\label{sec:csm:methodology:extracting}
-The TREConomics framework provides the necessary infrastructure allowing us to capture a variety of different aspects to how
+With the TREConomics framework providing the necessary infrastructure allowing us to capture a variety of different behavioural and experience characteristics, we now detail what aspects we consider. Figure~\ref{fig:evaluation_methodology} provides examples of the different aspects we consider, being split into four different categories.
 
-- framework provided the necessary infrastructure to allow us to capture various aspects relating the how the searchers: behaved, performed, and what their overall experience judgement was.
+The first three categories can be extracted directly from the interaction log that recorded different interactions by each subject as they progressed through the experiment. The categories we considered are listed below.
 
-- the various data sources that we derived our information from are illustrated in Figure~\ref{fig:evaluation_methodology},
+\begin{itemize}
+    
+    \item[]{\blueboxbold{Interactions} capture the broad interactions that take place, such as clicks.}
+    \item[]{\blueboxbold{Performance} measures could be extrapolated, with aid of TREC QREL relevance judgements, to ascertain the performance of subjects.}
+    \item[]{\blueboxbold{Time-Based} measures can also be derived from directly examining the interaction log, measuring the time spent between different logged interactions.}
+    
+\end{itemize}
 
+In addition to these categories, we also observed a number of \blueboxbold{user experience} measures that are derived from a series of surveys that subjects were presented with as they were walked through the experimental process. In particular, as highlighted in Section~\ref{sec:csm:methodology:user:flow}, surveys were presented to subjects at a number of different stages throughout the experiment. In conjunction with the three log-based categories defined above, the user experience measures could be used to complement the empirical evidence to see whether the interactions of subjects actually correlated with their perceived experiences.
 
-- here, we discuss the basic behavioural and performance measures that we obtained, along with a basic overview of the user experience involved. as the components of the user experience component varied considerably between the two studies, we leave detailed explanation of these components until Chapters X and Y.
-
-- in all, behavioural measures can then be used as the \emph{grounding} for our user simulations, which we discuss in Section~\ref{chap:csm:method:simulation}. these were extracted across all different experimental conditions or interfaces trialled, depending upon the considered user study.
-
-% - from the log file, ascertain key data points across the different experimental conditions or interfaces trialled.
-% - link back to the complex searcher model section to show where each of the probabilities and costs are used/employed.
-% - then, these costs can be fed into simulations, which can then be run (see Section~\ref{sec:proposal:method:simulations} below).
+In all, the interactions -- including aspects such as clicks, and time-based measures, were used as a \emph{grounding} for our subsequent user simulations. These are discussed in Section~\ref{chap:csm:method:simulation} and derived for each experimental condition and interface trialled.
 
 \begin{figure}[t!]
     \centering
@@ -449,22 +462,41 @@ The TREConomics framework provides the necessary infrastructure allowing us to c
     \label{fig:evaluation_methodology}
 \end{figure}
 
-\subsubsection{Behavioural Measures}
+\subsubsection{Basic Interactions}
 - recorded from log data.
 - a number of different behavioural measures were recorded!
+
+- clicks
+- hovers
+- and from that, the click depths. only click depths -- see time-based measures for an explanation as to why this is the case.
+- number of queries
+- number of documents marked
 
 - list from the papers.
 
 \subsubsection{Time-Based Measures}
+- from the log data, as mentioned above, we also derived a number of time based measures.
+
+- calculated from the point at which a searcher clicks or whatever, to the point they begin to do something else.
+
+- query time -- from focus, to issuance.
+
+- document time -- from clicking on a document, to returning to the~\gls{acr:serp}.
+
+- per snippet time -- originally calculated from hover events. however, this in both studies proved to be unreliable.
+- events triggered an AJAX callback...these came back to the server in a different order from which they were sent from the client, in a random order. as such, logging was inconsistent. and difficult to parse, unreliable.
+
+- so made assumptions instead. we instead looked purely at the click depths for stopping -- and ignored hovers. use these for stopping depths.
 
 \subsubsection{Performance Measures}
 - as shown from figure~\ref{}, we were also able to extract a number of performance measures, too.
 - using the raw data extracted from the interaction log file, we could, in conjunction with an additional evaluation tool (i.e. trec\_eval), use these two resources to calculate measures.
 
 - measures that we considered across both studies included:
-- X
-- Y
-- Z
+
+- P@10 -- query-based measures
+- interactive precision and recall
+- considering things too like number of documents marked, yet are not relevant.
 
 - used in conjunction with behavioural measures, formed the basis of the seeded experiments.
 
