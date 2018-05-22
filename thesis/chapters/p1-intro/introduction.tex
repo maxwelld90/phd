@@ -17,7 +17,7 @@ We live today in the so-called \emph{Information Age}, an era of human history c
 
 Sifting through such large volumes of information online to find the elusive and proverbial \emph{needle in the haystack} has been an area of active research and development over a number of decades. Since the early 1990's, the~\gls{acr:www} has emerged as the dominant means of publishing information online over the Internet, replacing obsolete technologies such as the \emph{Gopher} protocol.\footnote{Gopher was designed primarily with a menu-driven interface in mind (i.e. selecting options from a series of choices). The Gopher ecosystem provided the foundations for the~\gls{acr:http} protocol, with which the~\gls{acr:www} today utilises.}. As the amount of information available on the~\gls{acr:www} grew\footnote{According to \url{http://www.internetlivestats.com/total-number-of-websites/}, September 2014 saw the point at which 1 billion unique websites were present on the~\gls{acr:www}.\urlaccessed{2018-05-21}}, so too did the paradigms that were employed by those wishing to seek information on it.
 
-Over the course of the \emph{noughties}, the approach demonstrated by \emph{information seekers} for finding information online changed from the concept of \emph{surfing} a particular domain by following a series of set~\glspl{glos:hyperlink} within documents, to explicitly \blueboxbold{searching} the ever increasing universe of documents available at their disposal (refer to Figure~\ref{fig:ch1-surfing}).\footnote{Indeed,~\citep{mcbryan1994taming_tools} considered a search engine as a means of \emph{taming} the considerable number of documents online.} This is not to say that surfing no longer occurs; procrastinators (the author included...) might find solace by surfing the myriad of content available on \emph{Reddit,} billed as the \emph{``front page of the Internet''}\footnote{\url{https://www.reddit.com}\urlaccessed{2018-05-21}}. However, for a task where an individual has a specific \emph{information need,} searching has far and become the most dominant paradigm for seeking the required information. As such, the development of effective \emph{search engines} has been of paramount important to achieve this, with the development of search engines seen as the \emph{raison d'\^{e}tre} of the study of~\gls{acr:ir}.
+Over the course of the \emph{noughties}, the approach demonstrated by \emph{information seekers} for finding information online changed from the concept of \emph{surfing} a particular domain by following a series of set~\glspl{glos:hyperlink} within documents, to explicitly \blueboxbold{searching} the ever increasing universe of documents available at their disposal (refer to Figure~\ref{fig:ch1-surfing}).\footnote{Indeed,~\cite{mcbryan1994taming_tools} considered a search engine as a means of \emph{taming} the considerable number of documents online.} This is not to say that surfing no longer occurs; procrastinators (the author included...) might find solace by surfing the myriad of content available on \emph{Reddit,} billed as the \emph{``front page of the Internet''}\footnote{\url{https://www.reddit.com}\urlaccessed{2018-05-21}}. However, for a task where an individual has a specific \emph{information need,} searching has far and become the most dominant paradigm for seeking the required information. As such, the development of effective \emph{search engines} has been of paramount important to achieve this, with the development of search engines seen as the \emph{raison d'\^{e}tre} of the study of~\gls{acr:ir}.
 
 \begin{figure}[t!]
     \centering
@@ -70,12 +70,12 @@ The final two options \emph{do not explicitly} consider real-world searchers, bu
 
 Obtaining interaction data from studies utilising real-world users undertaking search tasks (categories \blueboxbold{1} and \blueboxbold{2}) will of course always be the preferred option. There can never be a better substitute than examining the real thing. However, there are pitfalls with both approaches that must be considered, primarily in terms of \emph{availability} and \emph{cost}. Obtaining data for studies conducted in category \blueboxbold{1} is difficult if the researchers do not work for an organisation offering a large-scale search engine, such as \emph{Google} or \emph{Microsoft.} Working within an academic setting for example may greatly restrict what data can be obtained. Indeed, working with real-world interaction data also leads to major ethical and privacy concerns~\citep{korolova2009aol_query_log_privacy}. The release of the \emph{AOL Query Log} (and subsequent fallout) in August 2006 is testament to that, although this has not stopped researchers from utilising the data in their work (refer to~\cite{brenes2009aol_query_log} for such an example).
 
-This will leave many researchers with category \blueboxbold{2}. While this approach also leads to the capturing of real-world interaction data, pitfalls of this approach primarily are the significant costs involved in such an approach -- both financially and in terms of time. Considerations must also be placed into study design to mitigate potential biases as much as possible. In recent years however, the concept of \emph{crowdsourcing} may alleviate some of these concerns, and open up a potential study to a larger potential audience. A recent study has shown that using crowdsourcing to capture interaction data is no worse than a carefully controlled lab-based user study~\citep{zuccon2013crowdsourcing_comparisons}, although quality control measures must be taken.
+This will leave many researchers with category \blueboxbold{2} -- especially those in a non-industrial setting. While this approach also leads to the capturing of real-world interaction data, pitfalls of this approach primarily are the significant costs involved in such an approach -- both financially and in terms of time. Considerations must also be placed into study design to mitigate potential biases as much as possible. In recent years however, the concept of \emph{crowdsourcing} may alleviate some of these concerns, and open up a potential study to a larger potential audience. A recent study has shown that using crowdsourcing to capture interaction data is no worse than a carefully controlled lab-based user study~\citep{zuccon2013crowdsourcing_comparisons}, although quality control measures must be taken.
 
-While categories \blueboxbold{1} and \blueboxbold{2} provide real-world interaction data, options \blueboxbold{3} and \blueboxbold{4} do not. Such approaches however, if executed correctly, can potentially lead to insights that would not otherwise be possible when involving real-world users. As an example, covering an extensive set of test cases with real-world searchers may simply not be possible~\citep{keskustalo2008user_simulation} -- perhaps due to financial constraints, or a lack of suitable subjects. Category \blueboxbold{4} can be considered as a means of conducting \emph{traditional, TREC-style}~\gls{acr:ir} lab experimentation that is, as previously mentioned, largely na\"{i}ve of the user's complex interactions. This leaves category \blueboxbold{3} as a means of conducting and evaluating user-sided experimentation without the explicit need for real-world users to be present. \emph{Simulation} is used as a means to conducting such experiments.
+While categories \blueboxbold{1} and \blueboxbold{2} provide real-world interaction data, options \blueboxbold{3} and \blueboxbold{4} do not. Such approaches however, if executed correctly, can potentially lead to insights that would not otherwise be possible when involving real-world users. As an example, covering an extensive set of test cases with real-world searchers may simply not be possible~\citep{keskustalo2008user_simulation} -- perhaps due to financial constraints, or a lack of suitable subjects. Category \blueboxbold{4} can be considered as a means of conducting \emph{traditional, TREC-style}~\gls{acr:ir} lab experimentation that is, as previously mentioned, largely na\"{i}ve of the user's complex interactions. This leaves category \blueboxbold{3} as a means of conducting and evaluating user-sided experimentation without the explicit need for real-world users to be present. \blueboxbold{Simulation} is used as a means to conducting such experiments.
 
-\subsection{Why Simulation?}\label{sec:intro:simulation}
-Simulation is defined as the \emph{imitation of the operation of a real-world process or system over time}~\citep{banks1996discrete}. Such an approach allows one to gain insight into the functioning of some real-world phenomenon. Simulation has been used in a wide range of areas, including, for example, examining physical processes~\citep{haessig1991physics_modelling}, psychology~\citep{hastie1988human_memory_simulation}, road traffic~\citep{mahmud2016traffic_modelling_electric} and training for various activities, such as piloting an aeroplane~\citep{sparko2010flight_simulators}. Central to contemporary uses of simulation if the idea \emph{computerised simulation}~\citep{heermann1990computer_simulation}. Thanks to ever increasing computational power in~\glspl{acr:cpu} and~\glspl{acr:gpu} available for such tasks, such as the simulation of racing cars for the purposes of driver development, as shown in Figure~\ref{fig:ch1-mclaren}. With computer simulation, a real-world object can be imitated with varying degrees of realism. Alternatively, individual components that comprise a larger system can be examined and simulated in isolation, allowing researchers to obtain a more detailed understanding of how individual components react to changes in their environment. As such, simulation can provide a rapid means of exploring aspects of a real-world phenomenon, all at a low cost -- all the while permitting repeatable (and therefore reproducible) results~\citep{maxwell2016agents}.
+\subsection{Considering Simulation}\label{sec:intro:simulation}
+Simulation is defined as the \emph{imitation of the operation of a real-world process or system over time}~\citep{banks1996discrete}. Such an approach allows one to gain insight into the functioning of some real-world phenomenon. Simulation has been used in a wide range of areas, including, for example, examining physical processes~\citep{haessig1991physics_modelling}, psychology~\citep{hastie1988human_memory_simulation}, road traffic~\citep{mahmud2016traffic_modelling_electric} and training for various activities, such as piloting an aeroplane~\citep{sparko2010flight_simulators}. Central to contemporary uses of simulation if the idea \emph{computerised simulation}~\citep{heermann1990computer_simulation}. Thanks to ever increasing computational power in~\glspl{acr:cpu} and~\glspl{acr:gpu} available for such tasks, such as the simulation of racing cars for the purposes of driver development, as shown in Figure~\ref{fig:ch1-mclaren}. With computer simulation, a real-world object can be imitated with varying degrees of realism. Alternatively, individual components that comprise a larger system can be examined and simulated in isolation, allowing researchers to obtain a more detailed understanding of how individual components react to changes in their environment. As such, simulation can provide a rapid means of exploring aspects of a real-world phenomenon, all at a low cost -- all the while permitting repeatable, and therefore reproducible, results~\citep{maxwell2016agents}.
 
 \begin{figure}[t!]
     \centering
@@ -103,61 +103,100 @@ Simulation provides a means of using a uniform model execution technique that ca
 As a means of testing better and more flexible models of search, simulation has been extensively used within~\gls{acr:ir}. While we provide an overview of simulation of~\gls{acr:ir} in Section~\ref{sec:ir_background:user:simulation}, one such area that has been studied is \emph{simulated interaction,} where one attempts to mimic the behaviours that a searcher exerts when interacting with a search engine -- and is exactly what we consider in this thesis. While this encapsulates category \blueboxbold{3} of the four categories outlined by~\cite{keskustalo2008user_simulation}, we also argue that in order to run simulations of interaction \emph{`correctly',} they must be \emph{grounded} using real-world observations, which in turn means that the assumptions can be considered to be credible abstractions of the real-world phenomenon. As such, this necessitates access to data obtained through either categories \blueboxbold{1} or \blueboxbold{2} -- or, in other words, data from \emph{real-world searchers.} Without access to a large-scale search engine for this research, this leaves category \blueboxbold{2} as a means for acquiring such data, and provides an explanation between the linking of the real-world interaction log, and simulated users (via the dashed line) in Figure~\ref{fig:ch1-options} on page~\pageref{fig:ch1-options}.
 
 \noindent
-\blueboxbold{In a Nutshell – What do we do?}
-Given all of the above, this thesis presents a model, and using a mixed methodology, we test it out.
+\blueboxbold{In a Nutshell – Simulation and this Thesis}
+Given all of the above, this thesis proposes a more advanced, realistic model of the search process. In line with the suggestions outlined in the work by~\cite{keskustalo2008user_simulation}, simulations of interaction are trialled (category \blueboxbold{3}), with the underlying components of the model \emph{grounded} using interaction data extracted from two different user studies, also conducted as part of this thesis. One particularly important phenomenon that has been largely overlooked in the~\gls{acr:iir} literature is that of a searcher's \blueboxbold{stopping behaviour} (e.g. \emph{given this list of ranked results, how far down the list should I go before I stop?}). In the next section, we provide a brief introduction on why stopping behaviour is important, before considering this thesis' research statement.
 
-% As a means to providing better and more flexible models, simulation has been used extensively within~\gls{acr:ir}, such as the simulation of work tasks and tracks, simulated and synthetic data collections, and of course \emph{simulated interaction}, which is what this thesis considers. While this encapsulated category \blueboxbold{3} of the four categories as outlined by~\citealp{keskustalo2008user_simulation}, we also argue that in order to run simulations of interaction, they must be \emph{grounded} using real-world observations, which in turn means the assumptions that are made in the simulated model can be considered to be a credible abstraction of the real-world phenomenon. As such, this necessitates access to data obtained through either categories \blueboxbold{1} or \blueboxbold{2} -- and without access to a large-scale search engine, this leaves category \blueboxbold{2} as means for acquiring such data. As such, this thesis presents the \emph{Complex Searcher Model (CSM)} as a means of modelling the IIR process, with each component grounded using interaction data from a number of user studies, also conducted as part of this thesis. Of particular interest within this model is the concept of \emph{stopping behaviour} (e.g. \emph{how far down this ranked list of results should I go?}).
+\subsection{Considering Stopping Behaviours}\label{sec:intro:stopping}
+\begin{wrapfigure}[7]{r}{0.45\textwidth}
+    \begin{center}
+    \vspace*{-13mm}
+    \includegraphics[width=1\textwidth]{figures/ch1-bee.pdf}
+    \end{center}
+    \vspace*{-4mm}
+    \label{fig:bee}
+\end{wrapfigure}
 
-\subsection{Why Stopping?}
-\todo{This is essentially duplicated in Chapter 3.} Knowing when to stop is a fundamental aspect of human thinking, with individuals commonly employing some form of \emph{stopping criterion} to decide when they should stop with their interactions in the world around them~\citep{nickles1995judgment}. As an example, a shopper looking to buy a new smartphone will stop shopping around once he or she has obtained sufficient information on what new device to purchase. A doctor, once their case notes about a patient's condition have been finished, will then diagnose their ailment. In the context of search, stopping may be considered at a variety of different points during the search process. The commonly used example of \emph{search stopping behaviour} is the point at which a searcher should stop examining a list of ranked results, or, in other words, \emph{how far down the ranked list the searcher should go}, for example.
+With any activity that a creature makes, there has to come a time when it makes a decision to \emph{stop} what it is doing. A honeybee, when collecting pollen on a flowerhead, will eventually stop collecting and fly away to another flower. An exhausted PhD student, when writing his or her thesis, will eventually stop writing for the night once he or she has become too tired -- something the author knows only all too well. Similarly, when applied to the context of search, an individual will also make a decision to eventually stop examining content. These examples demonstrate that knowing when to stop is a fundamental aspect of animal -- and by definition, human -- thinking and behaviour.
 
-The decision of when to stop is not necessarily due to external factors, but from a series of \emph{internal factors} of the decision maker's thinking process. In the context of informational search, knowing when to stop requires that the individual makes a judgement regarding the sufficiency of the information obtained, and whether or not additional information is required to be obtained~\citep{browne2004stopping_rules}. This is normally characterised by both the completeness and correctness of the information obtained thus far~\citep{smith1991belief}. These claims can be mirrored by qualitative studies on examining stopping behaviour, where researchers have found that searchers stop examining a ranked list of results simply because what they have found previously is \emph{``good enough''}~\citep{wu2014information_scent}.
+But given this, what actually makes us decide when to stop doing something? Obviously, different \emph{external factors} can influence this decision, such as finding no more pollen on a flowerhead, or time pressure that is exerted on us. Moreover,~\citep{nickles1995judgment} argues that \emph{knowing when to stop} is largely determined by a series of \emph{internally defined, stopping criteria} that the decision maker employs. This makes stopping a phenomenon that is incredibly difficult to model effectively. We discuss in more detail in Section~\ref{chap:stopping_background:why}.
 
-Considering the above, is there any means by which we can quantify what this feeling of \emph{``good enough''} actually is? Researchers have devised a series of different \emph{stopping heuristics} as a means to try and encapsulate the differing stopping behaviours exhibited by searchers. However, the literature in examining which of these heuristics offers the best approximations to what searchers actually do is somewhat limited. By focusing on stopping behaviour within this thesis, our model provides additional points at which a simulated user can stop interactions with a search engine, and thus save time and effort that might otherwise have been wasted if they continued to examine content.
+Given the fact that internal factors are a major drive to determining when to stop, studies have largely been unable to quantify \emph{why} searchers stop, other than what they find gives them the feeling that it is \emph{``good enough''}~\citep{zach2005enough_is_enough}. Researchers have however attempted to create a series of \emph{reasoning} and \emph{judgement} based \blueboxbold{stopping heuristics} that attempt to formally define when a searcher should stop. It is these stopping heuristics that we will primarily consider in this thesis. In conjunction with an updated user model of search, these heuristics can then be integrated into the model, allowing us to determine whether they offer better or worse approximations of actual searcher stopping behaviours.
 
-\vspace{-5mm}
-\section{Thesis Statement}
-The statement of this thesis is that by considering various \emph{stopping decision points} within model representing a user's interactions during the search process, one can run simulations of interaction that offer a greater degree of realism -- and thus a better approximation of the actual behaviours exhibited by real-world searchers -- than currently employed models.
+Examining stopping behaviour during search is important because it considers the judgements of a searcher as part of their interactions. For example, it would be prudent of a searcher examining a list of results that are mostly considered to be non-relevant to a given information need to stop early, and thus save time and effort. In other words, a good stopping heuristic allows a searcher to become \emph{more efficient.} This can be achieved in a number of different places -- or \blueboxbold{stopping decision points} -- during search, such as the depth to which a searcher will examine a list of results.
 
-In particular, incorporating such stopping decision points within a representation of the search process will allow the simulated user following such a model a greater degree of flexibility -- allowing them, for example, to abandon a set of results that is judged to be of low relevancy to the given query. In addition, these decision points can be instantiated by operationalising a series of different \emph{stopping heuristics} that attempt to encapsulate the stopping behaviours exhibited by real-world searchers. Furthermore, by taking this knowledge forward, we can then apply grounded simulations over a variety of different search contexts, examining how stopping behaviour of real-world searchers varies under each context -- and through simulation, we can then deduce what particular heuristic(s) offer the best approximation to searcher behaviours.
-
-\section{Overarching Research Questions}
-From the introductory remarks, motivation and thesis statement provided previously in this chapter, we can now formulate the three main research questions that this thesis addresses. 
+\section{Overarching Research Questions}\label{sec:intro:rqs}
+From the introductory explanations of the problem space above, we can now formulate the four main overarching, high level research questions -- denoted as \blueboxbold{HL-RQ} -- that the work in this thesis addresses. Our first research question considers the concept of user modelling, and how, with an emphasis of examining stopping decision points, we can improve the current model to better reflect actual searcher behaviours.
 
 \begin{itemize}
-
-    \item[]{\blueboxbold{HL-RQ1} Considering stopping behaviours, can we improve upon and make \emph{more realistic models} of the~\gls{acr:iir} search process -- as a whole?}
-
-    \item[]{\blueboxbold{HL-RQ2} How can we operationalise and subsequently implement more realistic stopping strategies for use within many of the commonly used~\gls{acr:ir} and~\gls{acr:iir} models and measures that are in use today?}
-
-    \item[]{\blueboxbold{HL-RQ3} How do the real-world stopping behaviours of searchers vary under different contexts?}
-
+    \item[]{\blueboxbold{HL-RQ1} How can we improve the current state-of-the-art searcher model to incorporate different points where individuals subscribing to such a model can stop?}
 \end{itemize}
+
+As previously stated, being able to improve the current state-of-the-art from a stopping perspective should allow those subscribing to such a model to become more efficient at how they search. Closely related to this advancement in user modelling is the consideration of the various stopping heuristics, as briefly outlined in Section~\ref{sec:intro:stopping}.
+
+\begin{itemize}
+    \item[]{\blueboxbold{HL-RQ2} Given the stopping heuristics defined in the literature, how can we encode these heuristics into a series of operationalised, programmable \blueboxbold{stopping strategies} that can be subsequently evaluated?}
+\end{itemize}
+
+The heuristics that we detail later in Section~\ref{sec:stopping_background:heuristics} are high level in nature, and no not provide an explanation as to how they can be \emph{operationalised} within a wider system. The challenge that must be addressed in order to answer this question will be how we can operationalise these heuristics within a wider, common framework.
+
+Our final two overarching research questions can be considered similar in nature, and are numbered as such. With a more realistic model of the search process defined by addressing \blueboxbold{HL-RQ1} and a series of stopping strategies defined by addressing \blueboxbold{HL-RQ2}, how well do the combinations of an improved model and different stopping strategies perform?
+
+\begin{itemize}
+    \item[]{\blueboxbold{HL-RQ3a} Given these operationalised stopping strategies, how well do simulated searchers using these strategies perform?}
+    \item[]{\blueboxbold{HL-RQ3b} How closely do the operationalised stopping strategies compare to the stopping behaviours of real-world searchers?}
+\end{itemize}
+
+With the flexibility provided by the approach, simulation is an ideal mechanism for achieving a means to address these two research questions. These questions are of course very broad in nature -- as should be expected for overarching questions -- and it is simply not possible to evaluate them in every conceivable search context. As we discuss in the following section, we will examine these questions in several different contexts which are likely to impact upon the stopping behaviours of searchers.
+
+\section{Thesis Contributions}\label{sec:intro:contribs}
+From our four overarching research questions defined above, we identify four major contributions offered by the work presented in this thesis. Listed and detailed below, we consider primary contributions from conceptual, theoretical and empirical standpoints. We also consider the general methodology that we utilise throughout the work in this thesis.
+
+\noindent
+\blueboxbold{Conceptual Model}
+Our first contribution is that of a searcher model. Taking the current state-of-the-art, we propose an updated, high-level model of the search process. We call this model the \blueboxbold{\gls{acr:csm}}, and this provides us with a solution for addressing \blueboxbold{HL-RQ1}. Outlined in Section~\ref{sec:csm:csm}, the conceptual~\gls{acr:csm} outlines a series of different activities and decision points that searchers undertake throughout the search process, and establishes a flow of interaction based upon established models. Within the~\gls{acr:csm} are a number of innovations, central to the work in this being a new stopping decision point. Combined together, these improvements allow us to ascertain a better understanding of the search process, and the complex interactions between a searcher and search system that take place. Being a conceptual model, we can take the~\gls{acr:csm} and instantiate it in a number of different ways. For example, the stopping decision points (i.e. \emph{should I continue examining this set of results?}) must be instantiated -- and for this, our second contribution provides a solution to this problem.
+
+\noindent
+\blueboxbold{Theoretical Examination}
+As briefly outlined in Section~\ref{sec:intro:stopping}, there are a range of different stopping heuristics that have been defined in the literature -- some directly applicable to search, some defined in other branches of science (such as ecology, for example). The second major contribution of this thesis is the development of a series of operationalised, programmable stopping strategies that can be subsequently implemented as a stopping decision point of the~\gls{acr:csm}, defined above. These are delivered within a common framework. These operationalised stopping strategies provide a solution to our second overarching research question, \blueboxbold{HL-RQ2}.
+
+\noindent
+\blueboxbold{Empirical Studies}
+As discussed in Section~\ref{sec:intro:rqs}, the~\gls{acr:csm} and the various stopping strategies that we operationalise need to be evaluated, such that we can then subsequently address \blueboxbold{HL-RQ3a} and \blueboxbold{HL-RQ3b}. To do this, the third major contribution of this thesis is empirical. We conduct two user studies, choosing to examine different factors which are likely to affect stopping behaviours. These factors are:
+
+\begin{itemize}
+    \item{varying snippet length (and subsequently snippet quality);}
+    \item{varying task goals -- from time-limited to \emph{find $x$ relevant items}; and}
+    \item{varying task type, considering \emph{ad-hoc topic retrieval} and \emph{diversifying results.}}
+\end{itemize}
+
+Conducting these studies is part of the \blueboxbold{general methodology} that we utilise. After the studies have been completed and stopping behaviours investigated empirically, we then use the data from these studies to ground a series of simulations, as discussed in Section~\ref{sec:intro:simulation}. This improves the credibility of the simulations, which are then examined allow us to address which stopping strategies, under a certain context, offer \blueboxbold{HL-RQ3a} the best overall performance, and \blueboxbold{HL-RQ3b} closest approximations to actual searcher behaviours. Simulations are conducted entirely using a custom built simulation framework, \blueboxbold{SimIIR}.
+
+\section{Thesis Statement}
+Given the above, the statement of this thesis is that by considering additional stopping decision points within a model of the interactions between a searcher and a search system, one can run simulations of interaction that offer a greater degree of realism.
+
+%Thus, one should be able to deduce an optimal \emph{stopping strategy} yielding high performance, and a better approximation of the actual behaviours exhibited by real-world searchers than currently employed models.
+
+In particular, incorporating such stopping decision points within a model of the search process will allow a simulated user abiding by it a greater degree of flexibility. For example, a searcher will be able to abandon a set of results that is judged to be of low relevancy to a given information need. This will be abandoned comparatively earlier than a set of results that are perceived to be of higher quality. In addition, these stopping decision points can be instantiated by operationalising a series of different stopping heuristics that are \emph{believed}~\citep{maxwell2015stopping_strategies} to encapsulate the stopping behaviours exhibited by real-world searchers. By taking this knowledge forward, we can then ground these simulations of interaction over a variety of different search contexts with differing goals, examining how the stopping behaviours of searchers varies under each context. Through simulation, we can then deduce what particular heuristic(s) offer the best performance and best approximations to actual searcher behaviours.
 
 \section{Origins of the Material}
-Material presented in this thesis has appeared previously in several conference papers. All of these papers were published throughout the duration of this PhD programme (2013-2018). The list below details each of the publications in chronological order.
+Material presented in this thesis has appeared in several conference papers throughout the duration of the author's PhD programme, from October 2013 to June 2018. All are listed in the front matter of this thesis in chronological order. In this section, we provide narrative, explaining how the developments in the listed publications led to the contributions of this thesis, listed above. Work can be considered over three main strands:
 
 \begin{itemize}
-    \item{\bibentry{maxwell2014temporal_delays}}
-    \item{\bibentry{maxwell2015initial_stopping}}
-    \item{\bibentry{maxwell2015stopping_strategies}}
-    \item{\bibentry{maxwell2016dc}}
-    \item{\bibentry{maxwell2016simiir}}
-    \item{\bibentry{maxwell2016agents}}
-    \item{\bibentry{maxwell2017snippets}}
+    \item{the development of the conceptual and theoretical contributions to this work;}
+    \item{the development of the SimIIR framework; and}
+    \item{a series of empirical studies.}
 \end{itemize}
 
-\vspace*{5mm}
-\begin{publications_box}{Associated Publications}
-\todo{Moved from chapter 4 -- will rework this into the section, providing a narrative for each paper.}
-The~\gls{acr:csm} has been developed over a number years. Development of the model can be observed from a number of publications. The first version of the~\gls{acr:csm}, essentially analogous to the prior models of search outlined in Section~\ref{sec:stopping_background:models:conceptual:simple}, were outlined and used in simulated analyses, as reported in two publications.
+\noindent
+\blueboxbold{Conceptual and Theoretical}
+Work on the~\gls{acr:csm} has been undertaken over a number of years. A number of iterations of the~\gls{acr:csm} were presented in various publications. However, in order to simplify the work reported in this thesis, we consider only the latest iteration. The first version of the~\gls{acr:csm}, essentially analogous to the prior models of search outlined in Section~\ref{sec:stopping_background:models:conceptual:simple}, were outlined and used in simulated analyses, as reported in two publications.
 
 \begin{itemize}
     \item{\bibentry{maxwell2015initial_stopping}}
     \item{\bibentry{maxwell2015stopping_strategies}}
 \end{itemize}
 
-Further developments to the~\gls{acr:csm} were found in a subsequent publication which experimented with the notion of \emph{intelligent search agents} (refer to \todo{Section~\ref{}}). Here, developments in the~\gls{acr:csm} led to the updating of the querying aspects of the model.
+These publications are notable for also including a number of operationalised stopping strategies, providing the foundations for the second major contribution of this thesis. The stopping strategies defined in these publications were used in subsequent publications. Further developments to the~\gls{acr:csm} were found in a subsequent publication which experimented with the notion of \emph{intelligent search agents}.
 
 \begin{itemize}
     \item{\bibentry{maxwell2016agents}}
@@ -168,29 +207,115 @@ The final development of the~\gls{acr:csm} led to the inclusion of the third sto
 \begin{itemize}
     \item{\bibentry{maxwell2018serp}}
 \end{itemize}
-\end{publications_box}
 
-\section{Thesis Contributions}
-This thesis offers four main contributions to the research community, revolving around the concepts of user modelling and stopping behaviours during search.
+\noindent
+\blueboxbold{SimIIR Framework}
+One of the major pieces of scientific apparatus utilised throughout all of the aforementioned studies is the SimIIR framework, touched upon in Section~\ref{sec:intro:contribs}. While we do not explicitly discuss the framework in great depth in this thesis, but rather focus on how we implemented the different components, conducting the simulated analyses would not have been possible without it. A publication demonstrating the framework and the various components that could be instantiated was published.
 
 \begin{itemize}
-    \item[\blueboxbold{C1}]{We provide a series of contributions on user modelling within the IIR process. Specifically, we focus on the development of accepted user models by incorporating additional \textbf{stopping decision points}, and incorporating the ability for a simulated user to remember what has been examined through the inclusion of some basic \textbf{form of state}.}
-
-    \item[\blueboxbold{C2}]{The second main contribution is the \textbf{SimIIR framework}, developed to allow for the running of \textbf{simulations of interaction}. Within the framework, our proposed user model is encoded, along with the ability to specify and configure various components of the search process. An explanation of the framework is provided in Appendix~\ref{appx:simiir}.}
-
-    \item[\blueboxbold{C3}]{We provide a comprehensive survey on various s\textbf{topping heuristics} that have been proposed over the years in the literature, before providing analysis on how performance and behavioural characteristics vary when considering:}
-
-    \begin{itemize}
-        \item{Snippet-Level stopping and associated strategies;}
-        \item{SERP-Level stopping; and}
-        \item{Session-Level stopping.}
-    \end{itemize}
-
-    \item[\blueboxbold{C4}]{Finally, we provide analysis examining how the \textbf{stopping behaviour of searchers varies under different search contexts}, such as when we vary the overall search goal, or vary presentational aspects of the presented results.}
-
+    \item{\bibentry{maxwell2016simiir}}
 \end{itemize}
 
+\noindent
+\blueboxbold{Empirical Studies}
+The general methodology that we employ for the third major contribution of this thesis has been introduced and refined in the publications listed previously. In addition to this, a basic description of the methodology is provided in a Doctoral Consortium paper that the author presented at the first \emph{ACM Conference on Human Information Interaction and Retrieval (CHIIR)} in Chapel Hill, NC, USA.
+
+\begin{itemize}
+    \item{\bibentry{maxwell2016dc}}
+\end{itemize}
+
+The results of two studies were also published, and are of direct relevance to the work detailed later in this thesis.
+
+\begin{itemize}
+    \item{\bibentry{maxwell2014temporal_delays}}
+    \item{\bibentry{maxwell2017snippets}}
+\end{itemize}
+
+These studies provide the grounding for simulated analyses that we also consider later in this thesis. The data extracted from these user studies provides credibility to our simulations, through the extraction of aspects such as interaction costs and probabilities.
+
 \section{Remaining Thesis Outline}
+With the introduction to this thesis complete, we now provide a brief outline of the remainder of this thesis.
+
+\noindent
+\darkblueboxbold{Part I}
+The remainder of Part I of this thesis concerns prior work that has been undertaken in the fields of~\gls{acr:ir} and~\gls{acr:iir}. Two chapters discuss the basics of~\gls{acr:ir} and~\gls{acr:iir}, before we begin to examine prior work that considers search and stopping.
+
+\begin{itemize}
+    \item[]{\blueboxbold{Chapter 2}} Beginning on page~\pageref{chap:ir_background}, this chapter provides an overview of the key concepts of the fields of~\gls{acr:ir} and~\gls{acr:iir}. In particular, we focus on basic~\gls{acr:ir} concepts such as the indexing and retrieval processes (including retrieval models), before moving towards a more user-centric examination of various evaluation measures that are commonly deployed in~\gls{acr:iir} research.
+    
+    \item[]{\blueboxbold{Chapter 3}} We then consider work that has been undertaken in relation to stopping behaviours. In this chapter, we focus on the development of various stopping heuristics, examine previous studies that have examined searcher stopping behaviours, examine key theoretical models of search that provide explanations for when individuals stop, and finally discuss prior models of search -- focusing particularly on the components that consider stopping behaviours. 
+\end{itemize}
+
+\noindent
+\darkblueboxbold{Part II} Beginning on page~\pageref{part:stopping}, Part II begins to consider the conceptual and theoretical contributions of this thesis, including a discussion of the~\gls{acr:csm}. We also in this part of the thesis provide an outline of the general methodology that is extensively utilised in Part III.
+
+\begin{itemize}
+    \item[]{\blueboxbold{Chapter 4} This chapter introduces the~\gls{acr:csm}, discussing the advancements the conceptual model provides over the current state-of-the-art. We discuss the key stopping decision points provided by the~\gls{acr:csm} that are central to this thesis, before discussing the assumptions of the model.}
+    
+    \item[]{\blueboxbold{Chapter 5} In this chapter, we introduce and discuss the various stopping strategies that we operationalise as part of the contributions of this thesis. Each of the different stopping strategies are discussed in depth, complete with examples of each. The chosen stopping strategies are linked back to their source stopping heuristics, which are detailed in Chapter~\ref{chap:stopping_background}.}
+    
+    \item[]{\blueboxbold{Chapter 6} The third chapter of this part outlines our general methodology, detailing the high-level structure of the scientific method used in the empirical work discussed in Part III. We also provide in-depth discussion of common approaches that were followed across all subsequent chapters, providing a neat overview of the work that was undertaken.}
+\end{itemize}
+
+\noindent
+\darkblueboxbold{Part III}
+The third part of this thesis considers the empirical contributions that are made. In this part, we discuss the user studies that were undertaken, as well as a number of simulated analyses that allow us to address research questions \blueboxbold{HL-RQ3a} and \blueboxbold{HL-RQ3b}.
+
+\begin{itemize}
+    \item[]{\blueboxbold{Chapter 7} This first empirical chapter considers how a searcher's behaviour varies when the length (and subsequently quality) of snippets is varied. We provide a discussion of a user study that examined this phenomenon, before summarising the findings of a simulated analyses that was conducted in order to determine what stopping strategies offered the best performance and approximations under this context.}
+    \item[]{\blueboxbold{Chapter 8} A similar approach to the chapter above is followed here, with a variation on the user study discussed and subsequently simulated. In this chapter, we examine how a searcher's stopping behaviour varies when subjected to different constraints and task goals, considering time limits, \emph{find $x$} and diversified and non-diversified tasks.}
+    \item[]{\blueboxbold{Chapter 9} This final contributory chapter of the thesis considers the new stopping decision point that is provided by the~\gls{acr:csm}. We empirically test the~\gls{acr:csm}, allowing us to determine whether the inclusion of the new stopping decision point discussed in Chapter~\ref{chap:csm} provides improvements in overall performance and approximations of actual searcher behaviours. Conducted via simulation, we utilise data from user studies discussed in prior chapters to ground these reported simulations.}
+\end{itemize}
+
+\noindent
+\darkblueboxbold{Part IV}
+
+\begin{itemize}
+    \item[]{\blueboxbold{Chapter 10} The concluding chapter of this thesis provides a summary of the work that was undertaken, and the results that were subsequently found. We then consider the results and discuss what they mean in terms of directions for future work.}
+\end{itemize}
+
+% From the introductory explanations of the problem space above, we can now enumerate the three main contributions that this thesis provides to the community.
+%
+%
+% This thesis offers four main contributions to the research community, revolving around the concepts of user modelling and stopping behaviours during search.
+%
+% \begin{itemize}
+%     \item[\blueboxbold{C1}]{We provide a series of contributions on user modelling within the IIR process. Specifically, we focus on the development of accepted user models by incorporating additional \textbf{stopping decision points}, and incorporating the ability for a simulated user to remember what has been examined through the inclusion of some basic \textbf{form of state}.}
+%
+%     \item[\blueboxbold{C2}]{The second main contribution is the \textbf{SimIIR framework}, developed to allow for the running of \textbf{simulations of interaction}. Within the framework, our proposed user model is encoded, along with the ability to specify and configure various components of the search process. An explanation of the framework is provided in Appendix~\ref{appx:simiir}.}
+%
+%     \item[\blueboxbold{C3}]{We provide a comprehensive survey on various s\textbf{topping heuristics} that have been proposed over the years in the literature, before providing analysis on how performance and behavioural characteristics vary when considering:}
+%
+%     \begin{itemize}
+%         \item{Snippet-Level stopping and associated strategies;}
+%         \item{SERP-Level stopping; and}
+%         \item{Session-Level stopping.}
+%     \end{itemize}
+%
+%     \item[\blueboxbold{C4}]{Finally, we provide analysis examining how the \textbf{stopping behaviour of searchers varies under different search contexts}, such as when we vary the overall search goal, or vary presentational aspects of the presented results.}
+%
+% \end{itemize}
+
+% Moved in May, 2018
+%%%
+
+% As previously mentioned, knowing when to stop is a fundamental aspect of human thinking and behaviour. Humans and other animals when interacting with the world will employ some form of \emph{stopping criterion} to decide when they should stop~\citep{nickles1995judgment}. As an example, a shopper who is looking to purchase a new smartphone will stop shopping around once he or she has obtained sufficient information on what new smartphone to purchase. Once their case notes for a patient have been compiled, a medical doctor will then be in a position to diagnose the patient's ailment.
+%
+% The decision of when to stop is not exclusively due to factors external to the decision maker, but rather from a series of \emph{internal, cognitive factors} of their thinking process~\citep{nickles1995judgment}. An individual who is hungry will stop eating once he or she is no longer hungry, rather than stopping when all of the food presented to him or her has been consumed. Empirical research has over the years demonstrated that individuals, regardless of the task presented to them, will frequently stop prematurely. Indeed, this na\"{i}ve behaviour demonstrates that individuals may be willing to go with what \emph{``sounds right''} to them -- often minimising the cognitive effort that is required at the expense of greater accuracy~\citep{perkins1983difficulties}. However, this lower level of potential accuracy does lead searchers to making a greater number of errors in their decision making~\citep{baron1988heuristics}, with individuals overlooking important elements, and potentially miss out useful information~\citep{fischhoff1977cost_benefit, fischhoff1978fault, shafir1992thinking}, with the individual then failing to consider alternatives~\citep{farquhar1993decision_structuring}.
+%
+% Based upon prior research into the phenomenon of stopping behaviour, it is clear that this is driven primarily from internal factors. As such, we then consider: \emph{what aspects of the decision maker's thinking processes prompt him or her to stop assessing the information provided?} Knowing when to stop requires that the individual in question makes a \emph{judgement} regarding the sufficiency of the information obtained, and whether or not additional information is required to be obtained~\citep{browne2004stopping_rules}. This judgement is normally characterised by both the completeness and correctness of the information obtained thus far~\citep{smith1991belief}. These claims can be mirrored by qualitative studies on examining stopping behaviour, where researchers have found that searchers stop examining a ranked list of results simply because what they have found previously is \emph{``good enough''}~\citep{zach2005enough_is_enough}, echoing the reasoning that individuals will be happy to stop when what they have found \emph{``sounds right''}~\citep{perkins1983difficulties}.
+
+%%%
+
+
+
+% \todo{This is essentially duplicated in Chapter 3.} Knowing when to stop is a fundamental aspect of human thinking, with individuals commonly employing some form of \emph{stopping criterion} to decide when they should stop with their interactions in the world around them~\citep{nickles1995judgment}. As an example, a shopper looking to buy a new smartphone will stop shopping around once he or she has obtained sufficient information on what new device to purchase. A doctor, once their case notes about a patient's condition have been finished, will then diagnose their ailment. In the context of search, stopping may be considered at a variety of different points during the search process. The commonly used example of \emph{search stopping behaviour} is the point at which a searcher should stop examining a list of ranked results, or, in other words, \emph{how far down the ranked list the searcher should go}, for example.
+%
+% The decision of when to stop is not necessarily due to external factors, but from a series of \emph{internal factors} of the decision maker's thinking process. In the context of informational search, knowing when to stop requires that the individual makes a judgement regarding the sufficiency of the information obtained, and whether or not additional information is required to be obtained~\citep{browne2004stopping_rules}. This is normally characterised by both the completeness and correctness of the information obtained thus far~\citep{smith1991belief}. These claims can be mirrored by qualitative studies on examining stopping behaviour, where researchers have found that searchers stop examining a ranked list of results simply because what they have found previously is \emph{``good enough''}~\citep{wu2014information_scent}.
+%
+% Considering the above, is there any means by which we can quantify what this feeling of \emph{``good enough''} actually is? Researchers have devised a series of different \emph{stopping heuristics} as a means to try and encapsulate the differing stopping behaviours exhibited by searchers. However, the literature in examining which of these heuristics offers the best approximations to what searchers actually do is somewhat limited. By focusing on stopping behaviour within this thesis, our model provides additional points at which a simulated user can stop interactions with a search engine, and thus save time and effort that might otherwise have been wasted if they continued to examine content.
+
+% End May 2018 move
 
 % \todo{======}
 %
