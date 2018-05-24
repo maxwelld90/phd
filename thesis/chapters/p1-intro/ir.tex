@@ -1,5 +1,5 @@
 %!TEX TS-program = xelatex
-%!TEX root = ../../maxwell2018thesis.tex
+%!TEX root = ../../maxwell2018thesis.tex\cdot
 
 \chapter[Information Retrieval]{Information Retrieval:\\A History and Background}\label{chap:ir_background}
 It may be fair to say that \emph{searching for information} is now a commonplace activity within our daily lives. Given the familiarity and near ubiquity of the search box (as shown below) on contemporary human-computer interfaces, one may be forgiven into na\"{i}vely thinking that research and development into the underlying \emph{search engine} that one interacts with when using the search box was focused exclusively upon the domain of \emph{web search}, where names like \emph{Google}, \emph{Bing} and \emph{AltaVista}\footnote{This name might spring to mind for those with more of a historical knowledge of search engines. The author of this thesis has very vague memories using AltaVista when he was around eight years old\dots} spring to mind. Despite potential negatives that these technologies may bring -- turning us into so-called \emph{shallow thinkers}~\citep{carr2008google_stupid}, for example -- search engines today by and large make our lives easier, allowing us to find that proverbial needle in the haystack with relative ease.
@@ -205,7 +205,7 @@ In order to understand the basic workings of the vector space approach, let us c
 
 Term frequency is one of many different term weighting schemes that have been trialled over the years in~\gls{acr:ir} research. Perhaps one of the best and widely used schemes is \emph{inverse document frequency (IDF)}, proposed by~\cite{sparck1972statistical}. Here, the frequency of a term is normalised against the length of a given document. In the words of its creator, IDF allows for one to define the specificity of a term as \emph{``an inverse function of the number of documents in which it occurs.''}~\citep{sparck1972statistical}. This is useful as non-discriminative terms that occur frequently within an index (e.g. \texttt{the}) would have its weight diminished, with the inverse happening for more discriminative terms, better able to describe a given document.
 
-TF and IDF are typically combined together as a measure of both term appearance and importance, under an approach called \emph{TF-IDF}. For a given term $k$, one can calculate a TF-IDF score with the following equation:
+TF and IDF are typically combined together as a measure of both term appearance and importance, under an approach called \emph{TF-IDF}. For a given term $k$, one can calculate a TF-IDF score with the following equation: $ 2 3 4 $
 
 \begin{equation*}
 tf_{i,k} \cdot idf_{k} = \frac{f_{i,k}}{\sum_{j=1}^{t} f_{i,j}} \cdot log \frac{N}{n_k}.
