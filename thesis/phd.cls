@@ -60,6 +60,7 @@
 \usepackage[most]{tcolorbox}
 \usepackage{metalogo}
 \usepackage{pxfonts}
+\usepackage{fontspec}
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
@@ -101,19 +102,29 @@
 \definecolor{dmax_red}{HTML}{89171F}
 \definecolor{dmax_green}{HTML}{377A31}
 
+% "Search" Colours
+\definecolor{search_blue}{HTML}{567CBE}
+\definecolor{search_red}{HTML}{E43628}
+\definecolor{search_yellow}{HTML}{F7BE01}
+\definecolor{search_green}{HTML}{2F9F42}
+
+% The "Search" Logotype
+\newcommand{\searchlogo}{{\headerfont\color{search_blue}S\color{search_red}e\color{search_yellow}a\color{search_blue}r\color{search_green}c\color{search_red}h}}
+
 % Blue boxes!
 \setlength\fboxsep{2mm} % Applies padding to the blue boxes.
 \newcommand{\bluebox}[1]{\colorbox{dmax_lightblue}{\color{white}\metafont#1}}
 \newcommand{\darkbluebox}[1]{\colorbox{dmax_darkblue}{\color{white}\metafont#1}}
 \newcommand{\blueboxbold}[1]{\colorbox{dmax_lightblue}{\color{white}\headerfont#1}}
 \newcommand{\darkblueboxbold}[1]{\colorbox{dmax_darkblue}{\color{white}\headerfont#1}}
-\newcommand{\blueboxheader}[1]{\vspace{3mm}\noindent\blueboxbold{#1}\vspace{3mm}\\}
+\newcommand{\blueboxheader}[1]{\noindent\blueboxbold{#1}}
 
 % Set fonts -- main narrative font to Palatino (fancy serif) and FoundrySterling for the meta stuff.
 % Palatino is set as the math font by including package pxfonts.
 \setmainfont{Palatino}
 \newfontfamily\headerfont[Path=./fonts/]{fs-demi.ttf}
 \newfontfamily\metafont[Path=./fonts/, ItalicFont=*italic, BoldFont=*bold]{fs-book.ttf}
+\setmonofont{inconsolata}[Scale=MatchLowercase]
 
 % % Set header/footer content -- create a phdpagestyle style
 \fancypagestyle{phdpagestyle}{
