@@ -2,18 +2,18 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[General Methodology]{General Methodology}\label{chap:method}
-
-\section{General Methodology Overview}\label{sec:csm:methodology}
-In Chapters~\ref{chap:snippets} and~\ref{chap:diversity}, we will be exploring how an individual's searching behaviours (particularly their stopping behaviours) vary under differing contexts. This section provides a high level overview of the \emph{general methodology} that we will employ in these two chapters, focusing on four main tasks:
+In Part~\ref{part:context}, we will be exploring how an individual's stopping behaviours vary under different search contexts. In this chapter, we provide an overview of the general methodology that we deploy in subsequent chapters. As per the overview provided in Chapter~\ref{chap:intro}, our methodology is broadly divided into four main areaa:
 
 \begin{itemize}
     \item{conducting a \blueboxbold{user study} to examine real-world searcher behaviours;}
-    \item{extracting the \blueboxbold{interaction data and performance measures} from the user study;}
+    \item{extracting the key \blueboxbold{interaction data and performance measures} from the user study;}
     \item{using the aforementioned data to ground a series of \blueboxbold{simulations} that attempt to replicate the user studies; and}
     \item{\blueboxbold{evaluating} the performance of the simulated users, and \blueboxbold{comparing} the simulated user behaviours against those of their real-world counterparts.}
 \end{itemize}
 
-We now discuss each of these different tasks in greater depth, highlighting the key decisions and \todo{assumptions} that we have made. Note that this section is directly applicable to contributory Chapters~\ref{chap:snippets} and~\ref{chap:diversity}; Chapter~\ref{chap:serp} provides an in-depth examination on the realism of the~\gls{acr:csm} before we employ it in the following two contributory chapters. Indeed, given that this chapter relies solely on simulations, we follow the approach followed in Section~\ref{chap:csm:method:simulation} and~\ref{chap:csm:method:evaluation}. However, we do ground our experimentation in Chapter~\gls{acr:csm} with user study interaction data from a following chapter.
+We now discuss each of these different tasks in greater depth, highlighting the key decisions that we have made, and discuss supporting literature for our choices.
+
+%Note that this section is directly applicable to contributory Chapters~\ref{chap:snippets} and~\ref{chap:diversity}; Chapter~\ref{chap:serp} provides an in-depth examination on the realism of the~\gls{acr:csm} before we employ it in the following two contributory chapters. Indeed, given that this chapter relies solely on simulations, we follow the approach followed in Section~\ref{chap:csm:method:simulation} and~\ref{chap:csm:method:evaluation}. However, we do ground our experimentation in Chapter~\gls{acr:csm} with user study interaction data from a following chapter.
 
 % Now that we have outlined the~\gls{acr:csm} and the various stopping strategies that we will operationalise, this section provides a high level explanation of the \emph{general methodology} that we will employ in subsequent contributory chapters of this thesis.
 %
@@ -32,7 +32,7 @@ We now discuss each of these different tasks in greater depth, highlighting the 
 % We want to examine what happens to a searcher's behaviour when different stopping rules are employed under certain contexts.
 % How can we do this? Here, we provide a broad overview of the methodology that was employed in the later chapters of this thesis. Broadly split across two main sections.
 
-\subsection{Test Collection, Topics and Search Engine}\label{sec:csm:methodology:collection}
+\section{Test Collection, Topics and Search Engine}\label{sec:csm:methodology:collection}
 Central to any~\gls{acr:ir} experiment is a corpus of documents (refer to Section~\ref{sec:ir_background:basics:indexing}) with which subjects participating in the experiment can issue queries against. In conjunction with the document corpus, a number of topics are also used to provide simulated information needs.
 
 For the contributory chapters of this thesis, all work detailed uses the TREC AQUAINT corpus, consisting of over one million news articles from the period ranging 1996 to 2000. All of the news articles were collected from three newswires, namely: the \emph{Associated Press (AP);} the \emph{New York Times (NYT);} and \emph{Xinhua}. More contemporary collections could have been used; the reasons for selecting an older were twofold: \emph{(i)} using such a collection enabled us to easily evaluate the performance of subjects; and \emph{(ii)} employing the AQUAINT corpus provides continuity with a prior line of research using this collection, as shown by~\cite{azzopardi2013query_cost}, for example.
@@ -67,8 +67,10 @@ All queries submitted during experiments were also handled with the \emph{Whoosh
 
 With an index weighing in at 800MB, consisting of $128,894$ documents. \todo{What else did we do to reduce this number?} We could then issue queries against the index. All ranked results from queries were computed with the BM25 algorithm, where $\beta=0.75$. Terms in the queries issues were implicitly \texttt{AND}ed together to restrict the set of retrieved documents to those that only contained all of the query terms. This was chosen to reduce the size of the returned set -- most search systems employ such an implicit approach.
 
-\subsection{Conducting a User Study}
+\section{User Study Framework}\label{sec:method:user_study}
 Using the document collection, topics and search engine defined above, our methodology then moved to conducing a user study. These studies are discussed in depth in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. While the intricate details of each study's methodology (and therefore overall goal) do differ extensively, there are nevertheless some common components that we can discuss here. The two studies consider how the behaviour, performance and perceived experiences of searchers varies when:
+
+\todo{Conducted in August, 2016 and January, 2018. Similar setup, with obvious differences in the basic interfaces and conditions trialled.}
 
 \begin{itemize}
     \item{the length of snippets are varied; and}
@@ -81,30 +83,48 @@ Studies were undertaken using a custom built experimental framework called \emph
 
 Within-subjects design...
 
-\subsubsection{Experimental Flow}\label{sec:csm:methodology:user:flow}
+\subsection{Experimental Flow}\label{sec:csm:methodology:user:flow}
+
+Takes about 45-50 minutes, overall.
+
+
 demo
 practice
 task
 surveys
 
-\subsubsection{Experimental Interface}
+\subsection{Experimental Interface}
 Screenshot of the experimental interface
 
-\subsubsection{Capturing Interactions}
+\subsection{Capturing Interactions}
 Produces a log file, that captures a number of different interactions with the search engine.
 
-\subsubsection{Crowdsourcing}
-For both studies highlighted above, we employed a \emph{crowdsourced} approach to our experimentation. As highlighted by Zuccon et al.~\cite{zuccon2013crowdsourcing}, crowdsourcing provides an alternative means for capturing user interactions and search behaviours from traditional lab-based user studies. Greater volumes of data can be obtained from more heterogeneous workers at a lower cost -- all within a shorter timeframe. Of course, pitfalls of a crowdsourced approach include the possibility of workers completing tasks as efficiently as possible, or submitting their tasks without performing the requested operations~\cite{feild2010turkers}. Despite these issues, it has been shown that there is little difference in the quality between crowdsourced and lab-based studies~\cite{zuccon2013crowdsourcing}. Nevertheless, quality control is a major component of a well-executed crowdsourced experiment~\cite{bota2016playing_your_cards}. Here, we detail our subjects and precautions taken.
+\subsection{Crowdsourcing Considerations}
+An important factor in planning any user study is the economics of collecting input from subjects. \emph{Where do the subjects come from? How do we recruit them?} A traditional, lab-based study as discussed in Section~\ref{sec:ir_background:user} typically involves a significant investment in time and monetary cost from the researchers conducting the experiment~\citep{spool2001testing}. For both user studies previously detailed, we employed a \emph{crowdsourced} approach to our experimentation. Crowdsourcing is the practice of obtaining input into a task by enlisting the services of a number of people, recruited over the Internet.
 
-The study was run over the \emph{Amazon Mechanical Turk (MTurk)} platform. Workers from the platform performed a single \emph{Human Intelligence Task (HIT)}, which corresponded to the entire experiment. Due to the expected length of completion for the study (45-50 minutes), subjects who completed the study in full were reimbursed for their time with US\$9; a typically larger sum (and HIT duration) than most crowdsourced experiments. We examined extra precautionary measures to ensure the integrity of the log data that was recorded. Precautions were taken from several angles. First, workers were only permitted to begin the experiment on the MTurk platform that: \emph{(i)} were from the United States, and were native English speakers; \emph{(ii)} had a HIT acceptance rate of at least 95\%; and \emph{(iii)} had at least 1000 HITs approved. Requiring \emph{(ii)} and \emph{(iii)} reduced the likelihood of recruiting individuals who would not complete the study in a satisfactory manner. Recruits were forewarned about the length of the HIT, which was considerably longer than other crowdsourced experiments.
+As highlighted by Zuccon et al.~\cite{zuccon2013crowdsourcing_comparisons}, crowdsourcing provides an alternative means for capturing user interactions and search behaviours. Greater volumes of data can be obtained from more heterogeneous workers at a lower cost -- all within a shorter timeframe. Of course, pitfalls of a crowdsourced approach include the possibility of workers completing tasks as efficiently as possible, or submitting their tasks without performing the requested operations~\cite{feild2010turkers}.
 
-We also ensured that the computer the subject was attempting the experiment on had a sufficiently large screen resolution (1024x768 or greater) so as to display all of the experimental interface on screen. With the experiment being conducted in a Web browser popup window of a fixed size, we wanted to ensure that all subjects would be able to see the same number of results on a SERP within the popup window's viewport. As the experiment was conducted via a Web browser, we wanted to ensure that only the controls provided by the experimental apparatus were used, meaning that the popup window had all other browser controls disabled to the best of our ability (i.e. history navigation, etc.). The experimental system was tested on several major web browsers, across different operating systems. This gave us confidence that a similar experience would be had across different system configurations.
+Despite these issues, it has been shown that there is little difference in the quality between crowdsourced and lab-based studies~\cite{zuccon2013crowdsourcing_comparisons}. Nevertheless, quality control is a major component of a well-executed crowdsourced experiment~\cite{bota2016information_cards}. Employing crowdsourcing for our two user studies, we detail in the remainder of this section the precautions that were taken during, discussing both the requirements for the subjects and their technical setup -- as well as a discussion of the crowdsourcing platform used.
 
-For each of the different interfaces and conditions that we trialled, a number of post-processing scripts were implemented to record a variety of different information that we discuss below.
+\subsubsection{Platform Details}
+Both studies were run over the \emph{Amazon Mechanical Turk (MTurk)} platform. Workers\footnote{In this section, a \emph{worker} refers to an individual undertaking the experiment on the MTurk platform. This term is considered interchangeable with a \emph{subject.}} from the platform each performed a single task (or, to use MTurk language, a \emph{Human Intelligence Task (HIT)}), with a single HIT corresponding to the entire experiment. This is in contrast to many HITs, where workers would typically undertake small, typically decision-based, transactions (for an example of such a study where this took place, refer to~\cite{bota2016information_cards}).
 
-\todo{Need to mention interaction log}
+\subsubsection{Subject Requirements}
+Due to the expected length that workers would take to complete the two studies\footnote{Note that two different sets of workers were used -- the studies were run at different times.}, workers who completed the study in full were reimbursed for their time with US\$9 -- greater than the hourly minimum wage set by the US federal government. Workers interested in undertaking each of the two studies were required to meet a certain minimum set of criteria to be eligible to participate. We required that workers were:
 
-\subsection{Extracting User Study Interaction Data}\label{sec:csm:methodology:extracting}
+\begin{itemize}
+    \item[\emph{(i)}]{from the United States;}
+    \item[\emph{(ii)}]{native English speakers;}
+    \item[\emph{(iii)}]{possessed a HIT acceptance rate of at least 95\%; and}
+    \item[\emph{(iv)}]{had at least had 1000 prior HITs approved.}
+\end{itemize}
+
+Requiring \emph{(iii)} and \emph{(iv)} reduced the likelihood of recruiting workers who would not complete the study in a satisfactory manner. Recruits were forewarned about the length of the HIT, providing them with a chance to abandon the experiment if they felt the expected time was too long.
+
+\subsubsection{Technical Requirements}
+Given worker limitations, we also enforced a number of technical constraints. Workers attempting each experiment were required to have a sufficiently large computer screen to display the experimental interface without having to resort to excessive scrolling, and ensured a consistent number of result summaries would be present on different worker's screens. As such, we imposed a minimum display resolution of $1024x768$ for both studies. Conducted through a web browser, we wanted to ensure that only the controls provided by the experimental apparatus were used, meaning that the popup window had all other browser controls disabled to the best of our ability (i.e. browser history navigation, etc.). The experimental system was tested on several major web browsers, across different operating systems. This gave us confidence that a similar experience would be had across different system configurations.
+
+\section{Extracting User Study Interaction Data}\label{sec:csm:methodology:extracting}
 With the TREConomics framework providing the necessary infrastructure allowing us to capture a variety of different behavioural and experience characteristics, we now detail what aspects we consider. Figure~\ref{fig:evaluation_methodology} provides examples of the different aspects we consider, being split into four different categories.
 
 The first three categories can be extracted directly from the interaction log that recorded different interactions by each subject as they progressed through the experiment. The categories we considered are listed below.
@@ -129,7 +149,7 @@ In all, the interactions -- including aspects such as clicks, and time-based mea
     \label{fig:evaluation_methodology}
 \end{figure}
 
-\subsubsection{Basic Interactions}
+\subsection{Basic Interactions}
 - recorded from log data.
 - a number of different behavioural measures were recorded!
 
@@ -141,7 +161,7 @@ In all, the interactions -- including aspects such as clicks, and time-based mea
 
 - list from the papers.
 
-\subsubsection{Time-Based Measures}
+\subsection{Time-Based Measures}
 - from the log data, as mentioned above, we also derived a number of time based measures.
 
 - calculated from the point at which a searcher clicks or whatever, to the point they begin to do something else.
@@ -155,7 +175,7 @@ In all, the interactions -- including aspects such as clicks, and time-based mea
 
 - so made assumptions instead. we instead looked purely at the click depths for stopping -- and ignored hovers. use these for stopping depths.
 
-\subsubsection{Performance Measures}
+\subsection{Performance Measures}
 - as shown from figure~\ref{}, we were also able to extract a number of performance measures, too.
 - using the raw data extracted from the interaction log file, we could, in conjunction with an additional evaluation tool (i.e. trec\_eval), use these two resources to calculate measures.
 
@@ -167,7 +187,7 @@ In all, the interactions -- including aspects such as clicks, and time-based mea
 
 - used in conjunction with behavioural measures, formed the basis of the seeded experiments.
 
-\subsubsection{User Experience}
+\subsection{User Experience}
 - not strictly necessary to forming a grounded simulation.
 - but included to ascertain whether subjects perceived a difference between the interfaces and conditions trialled across the two experiments.
 
@@ -180,7 +200,7 @@ In all, the interactions -- including aspects such as clicks, and time-based mea
 
 - as previously mentioned, many of these components differed across the two studies that were undertaken. as such, we leave explanation of these surveys to each of the chapters.
 
-\subsection{Simulating Searcher Behaviours}\label{chap:csm:method:simulation}
+\section{Simulating Searcher Behaviours}\label{chap:csm:method:simulation}
 Simulation as defined earlier is a good means for experimentation.
 Low cost, always use the same users, no issue of learning bias, etc.
 
@@ -193,18 +213,18 @@ EXPLORE how people's behaviours change
 - pick a corpus
 - basic structure of the methodology from previous papers
 
-\subsubsection{Instantiating the Simulations}
+\subsection{Instantiating the Simulations}
 
-\subsubsection{Performance Runs}
+\subsection{Performance Runs}
 
-\subsubsection{Comparison Runs}
+\subsection{Comparison Runs}
 
-\subsection{Evaluation of Simulations}\label{chap:csm:method:evaluation}
+\section{Evaluation of Simulations}\label{chap:csm:method:evaluation}
 - how do we evaluate how good the system performs?
 - how do we work out which one approximates best? on average.
 
-\subsubsection{Determining Simulated User Performance}
+\subsection{Determining Simulated User Performance}
 
-\subsubsection{Comparing Simulated and Real-World Subjects}
+\subsection{Comparing Simulated and Real-World Subjects}
 
 \section{Chapter Summary}

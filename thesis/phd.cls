@@ -24,7 +24,7 @@
 \usepackage[bindingoffset=1.5cm,top=2.8cm,bottom=2.8cm,left=1.2cm,right=1.5cm,footskip=1.3cm]{geometry}
 \usepackage{url}
 \usepackage{abstract}
-\usepackage[usenames,dvipsnames]{color}
+\usepackage[usenames,dvipsnames,table]{xcolor}
 \usepackage{epsfig}
 \usepackage{epstopdf}
 \usepackage{colortbl}
@@ -107,6 +107,9 @@
 \definecolor{search_red}{HTML}{E43628}
 \definecolor{search_yellow}{HTML}{F7BE01}
 \definecolor{search_green}{HTML}{2F9F42}
+
+% Table line width
+\setlength\arrayrulewidth{1pt}
 
 % The "Search" Logotype
 \newcommand{\searchlogo}{{\headerfont\color{search_blue}S\color{search_red}e\color{search_yellow}a\color{search_blue}r\color{search_green}c\color{search_red}h}}

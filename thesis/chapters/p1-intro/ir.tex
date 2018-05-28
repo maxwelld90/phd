@@ -325,14 +325,14 @@ Considering the patent searching example defined above, high recall would be des
 
 Given more modern retrieval models, the notion of ranking would lead a searcher to assume (as per the PRP~\citep{robertson1977prp}) that relevant documents pertaining to their query will be the first results presented. Non-relevant documents will also of course appear, typically leading to some form of tradeoff between precision and recall, as discussed below. The tradeoff considers the notion that as you increase recall, the number of non-relevant items will undoubtedly also increase, thus reducing the~\gls{acr:ir} system's overall precision.
 
-\subsubsection{F-Measure}
-Considering the aforementioned tradeoff between precision and recall, the \emph{F-measure}, which represents a \emph{weighted, harmonic mean} between the two. Originally proposed by~\cite{rijsbergen1979ir}, the measure was provided to \emph{``measure the effectiveness of retrieval with respect to a user who attaches $\beta$ times as much importance to recall as precision.''} The F-measure, along with its $\beta$ parameter, is defined by~\cite{chinchor1992f_measure} as:
-
-\begin{equation*}
-F_\beta = \frac{(\beta^2 + 1)\cdot PR}{\beta^2 \cdot P + R}\hspace{10mm}(0\leqslant\beta\leqslant+\infty).
-\end{equation*}
-
-Above, $P$ and $R$ denote precision and recall respectively. $\beta$ is simply used as a parameter for controlling the balance between the two. When $\beta = 1$, $F_1$ is equivalent to the harmonic mean of precision and recall. Since the terms F-Measure and harmonic mean are ubiquitously linked (somewhat \emph{harmoniously}\dots), the two terms are used interchangeably within the literature. As $\beta$ tends towards $0$, the score becomes more precision orientated.
+% \subsubsection{F-Measure}
+% Considering the aforementioned tradeoff between precision and recall, the \emph{F-measure}, which represents a \emph{weighted, harmonic mean} between the two. Originally proposed by~\cite{rijsbergen1979ir}, the measure was provided to \emph{``measure the effectiveness of retrieval with respect to a user who attaches $\beta$ times as much importance to recall as precision.''} The F-measure, along with its $\beta$ parameter, is defined by~\cite{chinchor1992f_measure} as:
+%
+% \begin{equation*}
+% F_\beta = \frac{(\beta^2 + 1)\cdot PR}{\beta^2 \cdot P + R}\hspace{10mm}(0\leqslant\beta\leqslant+\infty).
+% \end{equation*}
+%
+% Above, $P$ and $R$ denote precision and recall respectively. $\beta$ is simply used as a parameter for controlling the balance between the two. When $\beta = 1$, $F_1$ is equivalent to the harmonic mean of precision and recall. Since the terms F-Measure and harmonic mean are ubiquitously linked (somewhat \emph{harmoniously}\dots), the two terms are used interchangeably within the literature. As $\beta$ tends towards $0$, the score becomes more precision orientated.
 
 \begin{figure}[t!]
     \centering
@@ -435,15 +435,98 @@ Of particular interest to the work in this thesis are the \emph{browsing models}
 While perhaps deficient in terms of representing a real-world searcher's behaviours, this basic model has served the~\gls{acr:ir} community well for a number of decades, and works well in batch-style experimentation that is common in the community. While more advanced models of the search process have been developed, we leave these to Section~\ref{sec:stopping_background:models:conceptual}. Instead, we now consider the notion that with a user model of the search process, we can then take this model to provide a \emph{simulation} of the interactions that take place.
 
 \subsection{Simulation in~\gls{acr:ir} and~\gls{acr:iir}}\label{sec:ir_background:user:simulation}
-As outlined in Section~\ref{sec:intro:motivation}, employing simulation for~\gls{acr:iir} studies in conjunction with a model of the search process allows for consistent and reproducible results. Several user models exist; one of the most widely used and simplistic approaches considered is the TREC-style user model, as detailed in Section~\ref{sec:stopping_background:models:conceptual:trec}. Simulation however is not exclusively used for modelling searcher behaviours -- in traditional~\gls{acr:ir}, simulation has been used for example in simulated work tasks~\citep{borlund2003iir_model, voorhees2005trec_book}, simulated and synthetic data collection~\citep{azzopardi2009query_side, azzopardi2007languages, jordan2006cqg, tague1980simulation_bibliographic}, and the simulation of interaction~\citep{azzopardi2010workshop, carterette2011effectiveness_evaluation, clarke2013mube,  leuski2000relevance_reinforcement, white2004simulated_feedback_models}.
+As outlined in Section~\ref{sec:intro:simulation}, simulation provides a powerful tool for conducing low-cost, reproducible research~\citep{azzopardi2010workshop}. As discussed by~\cite{fishwick1995simulation}, simulation allows one to solve a large variety of systems, without the need to resort to a \emph{``bag of tricks'',} whereby one must choose special purpose and sometimes arcane solutions.
 
-There has also been a growing interest with the simulation of interaction, and in particular how to model searcher behaviour~\citep{azzopardi2010workshop, clarke2013mube}. This is for a variety of reasons. Firstly, simulation provides a cost effective means of evaluation which is reliable, repeatable and therefore reproducible. Secondly, most, if not all evaluation measures either implicitly or explicitly encode some form of user model (typically a stopping model) in order to make measurements. Simulation also provides a means in which to explore different searcher behaviours, methods and techniques to better understand how searchers do, could, or are likely to behave. However, if simulations are not properly grounded, motivated and validated, the findings from such simulations can be considered questionable. Thus, there is a pertinent need to ensure that the models developed are credible abstractions of the search process, and that they are seeded with data based on actual human interaction data~\citep{azzopardi2010workshop}\footnote{\scriptsize{The exception being when exploratory simulations are conducted to examine \emph{`what-if'} scenarios.}}. 
+Simulation has of course been extensively used within~\gls{acr:ir} and~\gls{acr:iir}. As discussed by~\cite{gordon1990evaluating}, much of the classical work in~\gls{acr:ir} employing simulation addressed issues such of \emph{retrieval efficiency}, such as response time or throughput, rather than \emph{retrieval effectiveness.}\footnote{For an in-depth discussion of various classical~\gls{acr:ir} simulation works, refer to~\cite{heine1981simulation}. In this section, we provide a more in-depth summary of more relevant, contemporary work.}
 
-Simulation has been used to examine a range of factors within the~\gls{acr:iir} process, usually independently, such as: query formulation and suggestions~\citep{azzopardi2009query_side, azzopardi2007languages, baskaya2013behavioural_factors, carterette2015test_collections, jordan2006cqg, keskustalo2008user_simulation, verberne2015personalised_queries}; browsing behaviours~\citep{carterette2015test_collections, chuklin2015click_models, guo2009click_chain, pakkonen2015behavioural_dimensions, smucker2011user_strategies}; relevance feedback~\citep{harman1992rf, jarvelin2009graded_relevance, keskustalo2006rf, keskustalo2008user_simulation, ruthven2003interactive_query_expansion}; the influence of costs and time~\cite{azzopardi2011economics, baskaya2012simulating_sessions}; stopping strategies and stopping models~\cite{carterette2011effectiveness_evaluation, carterette2015test_collections, maxwell2015initial_stopping, maxwell2015stopping_strategies, thomas2014modelling_behaviour}; and performance over sessions~\citep{luo2014winwin,luo2015pomdp}.
+To address retrieval effectiveness,~\cite{cooper1973simulation} generated representations of simulated documents. The author studied the effects of differently constructed queries through use of simulation, and how many documents each of the queries retrieved. Results from this study showed that the more terms that were present in a query, the greater the number of terms the query tended to have in common with the matched document descriptions. With the retrieval approach based upon \emph{simple term matching}, a greater number of documents were retrieved by queries comprised of more terms. Other studies that consider the concept of synthetic and simulated data collection include works by~\cite{tague1980simulation_bibliographic}, ~\cite{jordan2006cqg}, ~\cite{azzopardi2007languages} and~\cite{azzopardi2009query_side}.
 
-To undertake the aforementioned simulated studies, either \emph{(i)} the simulated component itself is considered in isolation (e.g. evaluating the performance of individual query generation techniques~\citep{azzopardi2007languages, jordan2006cqg}), or \emph{(ii)} a simulation of the entire search process is performed. Here, a simulated user is instantiated and undertakes a series of interactions, typically based upon a predefined search process until they reach a certain level of gain, reach a time limit, or meet some other stopping condition~\citep{baskaya2013behavioural_factors, maxwell2015initial_stopping, maxwell2015stopping_strategies, moffat2013users_versus_models, thomas2014modelling_behaviour}.
+Of particular relevance to this thesis however is the notion of the \emph{simulation of interaction,} where one attempts to mimic behaviours that a searcher exerts when interacting with a retrieval system. Given the above, simulation provides a means in which to explore different searcher behaviours, methods and techniques to better understand how searchers do, could, or are likely to behave~\citep{azzopardi2010workshop}. As discussed earlier in Section~\ref{sec:intro:simulation} however, results from such simulations can be deemed questionable if they are not properly motivated, grounded and validated. Thus, there is a pertinent need to ensure that the models developed are credible abstractions of the search process, and that they are seeded with data based on actual human interaction data~\citep{azzopardi2010workshop}. One exception to this rule would be the exploration of \emph{what-if} scenarios, as demonstrated, for example, by~\cite{azzopardi2011economics}.
 
-So, how do individuals actually interact with a ranked list? When, for example, do they stop examining results? In thesis, we address this question by employing a hybrid approach of conducting user studies to assist in the development of a more advanced, realistic user model that considers the search process. This model is thus guided by the findings of the user studies, as discussed in subsequent chapters~\ref{chap:temporal},~\ref{chap:snippets}, and~\ref{chap:diversity}. This model can then be tested by simulating a more complex user with weaker assumptions, thus moving the area of user modelling forward.
+Considering the simulation of interaction (as part of the~\gls{acr:iir} process), a variety of different factors have been examined. These have been often examined independently from one another~\citep{azzopardi2010workshop}, with examples including: query formulation and suggestions; browsing behaviours; the influences of cost and time; and performance over search sessions. In the remainder of this section, we provide an overview of several key areas that have been examined and are pertinent to the work in this thesis.
+
+\subsubsection{Query Generation}
+- What approaches have been taken for query generation?
+- Apart from the basic TREC one.
+
+- Azzopardi, Jordan, etc...
+
+- In this thesis, we consider one other different query generation component.
+- Keskustalo 2009 proposed a series of idealised, prototypical querying strategies.
+
+- These offer good approximations to what actual searchers did in an actual user study, so we employ these.
+
+\subsubsection{Probabilities of Interaction and Cost}
+
+
+Snippets are not always informative, and of the searcher does not understand or overlooks their relevance~\citep{turpin2009summaries}.
+
+
+
+\subsubsection{Gain}
+
+
+\subsubsection{Stopping}
+
+
+
+
+
+% As outlined in Section~\ref{sec:intro:motivation}, employing simulation for~\gls{acr:iir} studies in conjunction with a model of the search process allows for consistent and reproducible results. Several user models exist; one of the most widely used and simplistic approaches considered is the TREC-style user model, as detailed in Section~\ref{sec:stopping_background:models:conceptual:trec}. Simulation however is not exclusively used for modelling searcher behaviours -- in traditional~\gls{acr:ir}, simulation has been used for example in simulated work tasks~\citep{borlund2003iir_model, voorhees2005trec_book}, simulated and synthetic data collection~\citep{azzopardi2009query_side, azzopardi2007languages, jordan2006cqg, tague1980simulation_bibliographic}, and the simulation of interaction~\citep{azzopardi2010workshop, carterette2011effectiveness_evaluation, clarke2013mube,  leuski2000relevance_reinforcement, white2004simulated_feedback_models}.
+%
+% There has also been a growing interest with the simulation of interaction, and in particular how to model searcher behaviour~\citep{azzopardi2010workshop, clarke2013mube}. This is for a variety of reasons. Firstly, simulation provides a cost effective means of evaluation which is reliable, repeatable and therefore reproducible. Secondly, most, if not all evaluation measures either implicitly or explicitly encode some form of user model (typically a stopping model) in order to make measurements. Simulation also provides a means in which to explore different searcher behaviours, methods and techniques to better understand how searchers do, could, or are likely to behave. However, if simulations are not properly grounded, motivated and validated, the findings from such simulations can be considered questionable. Thus, there is a pertinent need to ensure that the models developed are credible abstractions of the search process, and that they are seeded with data based on actual human interaction data~\citep{azzopardi2010workshop}\footnote{\scriptsize{The exception being when exploratory simulations are conducted to examine \emph{`what-if'} scenarios.}}.
+%
+% Simulation has been used to examine a range of factors within the~\gls{acr:iir} process, usually independently, such as: query formulation and suggestions~\citep{azzopardi2009query_side, azzopardi2007languages, baskaya2013behavioural_factors, carterette2015test_collections, jordan2006cqg, keskustalo2008user_simulation, verberne2015personalised_queries}; browsing behaviours~\citep{carterette2015test_collections, chuklin2015click_models, guo2009click_chain, pakkonen2015behavioural_dimensions, smucker2011user_strategies}; relevance feedback~\citep{harman1992rf, jarvelin2009graded_relevance, keskustalo2006rf, keskustalo2008user_simulation, ruthven2003interactive_query_expansion}; the influence of costs and time~\cite{azzopardi2011economics, baskaya2012simulating_sessions}; stopping strategies and stopping models~\cite{carterette2011effectiveness_evaluation, carterette2015test_collections, maxwell2015initial_stopping, maxwell2015stopping_strategies, thomas2014modelling_behaviour}; and performance over sessions~\citep{luo2014winwin,luo2015pomdp}.
+%
+% To undertake the aforementioned simulated studies, either \emph{(i)} the simulated component itself is considered in isolation (e.g. evaluating the performance of individual query generation techniques~\citep{azzopardi2007languages, jordan2006cqg}), or \emph{(ii)} a simulation of the entire search process is performed. Here, a simulated user is instantiated and undertakes a series of interactions, typically based upon a predefined search process until they reach a certain level of gain, reach a time limit, or meet some other stopping condition~\citep{baskaya2013behavioural_factors, maxwell2015initial_stopping, maxwell2015stopping_strategies, moffat2013users_versus_models, thomas2014modelling_behaviour}.
+%
+% So, how do individuals actually interact with a ranked list? When, for example, do they stop examining results? In thesis, we address this question by employing a hybrid approach of conducting user studies to assist in the development of a more advanced, realistic user model that considers the search process. This model is thus guided by the findings of the user studies, as discussed in subsequent chapters~\ref{chap:temporal},~\ref{chap:snippets}, and~\ref{chap:diversity}. This model can then be tested by simulating a more complex user with weaker assumptions, thus moving the area of user modelling forward.
+
+
+
+% %%%
+%
+% \newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+%
+% \tcbset{tab1/.style={fonttitle=\bfseries\large,fontupper=\normalsize\sffamily,
+% colback=dmax_lightblue!10!white,colframe=red!75!black,colbacktitle=dmax_lightblue!40!white,
+% coltitle=black,center title,freelance,frame code={
+% \foreach \n in {north east,north west,south east,south west}
+% {\path [fill=red!75!black] (interior.\n) circle (3mm); };},}}
+%
+% \begin{tcolorbox}[tab1,tabularx={X||XYYY||Y}]
+% Group & \cellcolor{dmax_lightblue}One     & Two     & Three    & Four     & Sum      \\\hline\hline
+% Red   & 1000.00 & 2000.00 &  3000.00 &  4000.00 & 10000.00 \\
+% Green & \cellcolor{dmax_lightblue} 2000.00 & 3000.00 &  4000.00 &  5000.00 & 14000.00 \\
+% Blue  & \cellcolor{dmax_lightblue} 3000.00 & 4000.00 &  5000.00 &  6000.00 & 18000.00 \\\hline\hline
+% Sum   & 6000.00 & 9000.00 & 12000.00 & 15000.00 & 42000.00
+% \end{tcolorbox}
+%
+%
+% %%%
+
+
+% \newcommand\markup[1]{\leavevmode{\color{white}#1}}
+%
+% \begin{table}[t]
+%     \caption{Table illustrating a summary of interaction probabilities over each of the four interfaces evaluated. Note the increasing trends for each probability from \textbf{\emph{T0}} $\rightarrow$ \textbf{\emph{T4}} (short to long snippets). Refer to Section~\ref{sec:results:behaviours} for an explanation of what each probability represents.}
+%     \label{tbl_probs}
+%     \renewcommand{\arraystretch}{1.9}
+%     \begin{center}
+%     \begin{tabulary}{\textwidth}{>{\columncolor{dmax_lightblue}}L{2.5cm}|D{3cm}|D{3cm}|D{3cm}|D{3cm}}
+%     %\hline
+%     \rowcolor{dmax_lightblue} & \markup{\textbf{Col 1}} & \markup{\textbf{Col 2}} & \markup{\textbf{Col 3}} & \markup{\textbf{Col 4}}  \\
+%     % OUTPUT FROM script
+%
+%      & \multicolumn{2}{c}{\cellcolor{dmax_lightblue}\textbf{\markup A}} & \multicolumn{2}{|c}{\cellcolor{dmax_lightblue}\textbf{\markup B}} \\ \hline
+%     \markup{\textbf{Row 2}} & 0.28$\pm$ 0.03 & 0.34$\pm$ 0.03 & 0.35$\pm$ 0.03 & 0.40$\pm$ 0.04 \\ \hline
+%     \markup{\textbf{Row 3}} & 0.18$\pm$ 0.02 & 0.23$\pm$ 0.02 & 0.25$\pm$ 0.03 & 0.24$\pm$ 0.03 \\ \hline
+%     \markup{\textbf{Row 4}} & 0.61$\pm$ 0.04 & 0.68$\pm$ 0.04 & 0.65$\pm$ 0.03 & 0.71$\pm$ 0.03 \\ \hline
+%     \markup{\textbf{Row 5}} & 0.66$\pm$ 0.06 & 0.69$\pm$ 0.05 & 0.67$\pm$ 0.05 & 0.66$\pm$ 0.05 \\ \hline
+%     \markup{\textbf{Row 6}} & 0.55$\pm$ 0.04 & 0.65$\pm$ 0.04 & 0.58$\pm$ 0.04 & 0.67$\pm$ 0.04 \\
+%     \end{tabulary}
+%     \end{center}
+% \end{table}
 
 \subsection{Evaluating User Performance}\label{sec:ir_background:user:evaluation}
 With the basic~\gls{acr:ir} measures described in Section~\ref{sec:ir_background:evaluation} consider system-sided aspects, we must also consider a number of key measures used within~\gls{acr:iir} studies. This section discusses six different measures, each with a short description of each. It may be interesting to note that a large number of measures for~\gls{acr:iir} have been proposed over the years (and indeed, over the experimental spectrum as shown in Figure~\ref{fig:spectrum}); however, only a small number of measures have been consistently used. For a more in-depth summary of measures that are available, consult~\cite{su1992iir_measures}, and more recently,~\cite{kelly2009iir}.
