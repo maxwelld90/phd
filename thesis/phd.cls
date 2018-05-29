@@ -114,6 +114,9 @@
 % The "Search" Logotype
 \newcommand{\searchlogo}{{\headerfont\color{search_blue}S\color{search_red}e\color{search_yellow}a\color{search_blue}r\color{search_green}c\color{search_red}h}}
 
+% The "Treconomics" Logotype
+\newcommand{\treconomics}{{\headerfont TREConomics}}
+
 % Blue boxes!
 \setlength\fboxsep{2mm} % Applies padding to the blue boxes.
 \newcommand{\bluebox}[1]{\colorbox{dmax_lightblue}{\color{white}\metafont#1}}
