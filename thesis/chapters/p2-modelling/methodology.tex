@@ -250,34 +250,142 @@ Responses were provided on a five-point scale, providing the option for neutrali
 Post-task and post-experiment surveys were unique to each of the two user studies. Chapters~\ref{chap:snippets} and~\ref{chap:diversity} provide further information on what questions were asked. However, the post-task surveys focused on how well the subjects thought they (and the retrieval system, under the given condition and/or interface) performed during the search task. Post-task surveys considered the experiment as a whole, asking a range of questions about what condition and/or interface the subjects preferred, or performed more to their liking, for example.
 
 \section{Simulating Searcher Behaviours}\label{chap:csm:method:simulation}
-Simulation as defined earlier is a good means for experimentation.
-Low cost, always use the same users, no issue of learning bias, etc.
+With the general layout and components of the two user studies discussed, we now move onto the next part of the methodology -- \emph{simulating searcher behaviours.} Discussed previously in Section~\ref{sec:ir_background:user:simulation}, simulation provides a low-cost means for exploring a variety of different searcher strategies and configurations. In this section, we provide an overview of the different aspects of our searcher simulations, including:
 
-EXPLORE how people's behaviours change
+\begin{itemize}
+    \item{a discussion of how our simulations are \emph{grounded;}}
+    \item{how we instantiated the different components of the~\gls{acr:csm} defined in Chapter~\ref{chap:csm} for our simulation experiments.}
+\end{itemize}
 
-- set up the probabilities
-- instantiate the components
+We then outline the different types of simulation runs that we undertook, allowing us to address our two research questions, \blueboxbold{HL-RQ3a} \emph{(considering overall performance of a particular experimental configuration)} and \blueboxbold{HL-RQ3b} \emph{(considering how well a particular configuration approximates real-world searcher stopping behaviours),} defined previously in Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs}. Finally, we discuss our approach for evaluating the simulations, allowing us what stopping strategies offer the best overall performance and approximations of real-world searcher behaviours. This general methodology is employed for the two user studies discussed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}, to provide us with the best insight into how searcher stopping behaviours vary under different contexts.
 
-- pick a topic set
-- pick a corpus
-- basic structure of the methodology from previous papers
+\blueboxheader{The SimIIR Framework} All simulations that were run as part of this thesis were done so using the \simiir~framework, a custom built framework for the simulation of interaction within the~\gls{acr:iir} process.\footnote{\simiir~can be accessed at \url{https://github.com/leifos/simiir}. \urlaccessed{2018-05-29}} As outlined in Chapter~\ref{chap:intro}, the \simiir~framework is in effect is one of the major contributions offered by this thesis. The~\gls{acr:csm}, as outlined in Chapter~\ref{chap:csm}, is implemented within the framework and offers a high level of customisability in order to trial various different component configurations.~\cite{maxwell2016simiir} provides an overview of the framework.
 
-Probabilities - From this raw data, we could then produce summaries of a search session, producing summarising measures such as the number of documents examined by searchers per query that they issued. We could also calculate from the log data probabilities of interaction, including a given subject’s probability of clicking a result sum- mary link, given that it was TREC relevant (P(C|R)) or TREC non- relevant (P (C |N )) – or the probability of marking a document that was clicked, given it was either TREC relevant (P(M|R)) or TREC non-relevant (P (M |N )). Actions such as hover depth over result summaries were inferred from the movement of the mouse cursor, which in prior studies has been shown to correlate strongly with the user’s gaze on the screen [7, 44].
+\subsection{Grounding and Instantiating the Simulations}\label{chap:csm:method:simulation:grounding}
+Repeated many times throughout this thesis so far, the \emph{grounding} of simulations is crucial for ensuring their overall credibility~\citep{azzopardi2010workshop}. Simulations that are not properly grounded with data from real-world observations means that the results become questionable. As such, this is an area that was taken seriously during the design of our methodology. After consideration of the~\gls{acr:csm}, we considered grounding from two key perspectives:
 
-\subsection{Grounding the Simulations}\label{chap:csm:method:simulation:grounding}
+\begin{itemize}
+    \item{the generation of pseudo-realistic \blueboxbold{queries} to issue;}
+    \item{the consideration of \blueboxbold{interaction costs and probabilities}.}
+\end{itemize}
 
-\subsection{Instantiating the Simulations}
+With these components sufficiently grounded, we could then investigate a variety of different stopping strategies, allowing us to determine which ones offered the best performance and real-world search approximations. In the remainder of this section, we provide an overview of the ways in which we instantiated the three major components of the~\gls{acr:csm}.
 
-\subsection{Performance Runs}
+\subsubsection{Query Generation Strategy}
+Discussed previously in Section~\ref{sec:ir_background:user:simulation}, there has been a significant volume of work undertaken on how to simulate the generation of queries. To instantiate the query generation component of the \simiir~framework, we utilised a \emph{prototypical, idealised querying strategy} that
 
-\subsection{Comparison Runs}
+\todo{explain the query generation strategy!}
 
-\section{Evaluation of Simulations}\label{chap:csm:method:evaluation}
-- how do we evaluate how good the system performs?
-- how do we work out which one approximates best? on average.
+\subsubsection{Summary and Document Decision Making}
 
-\subsection{Determining Simulated User Performance}
+\todo{explain the probabilities of interaction, look at heikkis paper that says that probability of clicking doesnt mean probability of relevance.}
 
-\subsection{Comparing Simulated and Real-World Subjects}
+\subsubsection{\gls{acr:serp} Decision Making}
+
+\todo{expain the serp level decision point.}
+
+\subsubsection{Snippet Level Decision Making}
+
+\todo{explain the different stopping strategies, explaining how we instantiated them all.}
+
+\subsubsection{Time Constraints and Search Goals}
+these vary between the two studies -- refer to the two chapters for more information on how we set these up.
+
+\subsection{Simulation Runs}
+
+explain that we did this 10 times, using pre-rolled judgements.
+better than monte-carlo simulation.
+reproducible, as long as you use the same seed.
+
+\subsubsection{Performance Runs}
+
+50 topics, using these configurations.
+
+\subsubsection{Comparison Runs}
+
+only four topics to compare against. and we re-issue the queries
+
+\subsection{Evaluating the Simulations}\label{chap:csm:method:evaluation}
+
+so how did we compare? used the same measures as are discussed in the user study section.
+add in cumulative gain.
+
+\subsubsection{Overall Performance}
+
+simply took the mean of the 10 runs. and then we could compute the cumulative gain and other measures to get an overall figure.
+
+\subsubsection{Comparisons to Real-World Searchers}
+
+re-ran each query over each configuration.
+used the mean-squared error of the click depths.
+this then allowed us to determine how far away on average the simulated searcher was from the real-world searchers.
 
 \section{Chapter Summary}
+
+
+
+% - why do the simulations again?
+% - continues discussion from background chapter.
+%
+% - in this section we detail...
+%     - how we ground the simulations from prior user study data
+%     - how we instantiated the different components of the CSM for experimentation
+%
+%     and then
+%
+%     - discuss how we did the two different types of run, allowing us to address our two research questions.
+%
+%
+% Simulation as defined earlier is a good means for experimentation.
+% Low cost, always use the same users, no issue of learning bias, etc.
+%
+% EXPLORE how people's behaviours change
+%
+% - set up the probabilities
+% - instantiate the components
+%
+% - pick a topic set
+% - pick a corpus
+% - basic structure of the methodology from previous papers
+%
+% Probabilities - From this raw data, we could then produce summaries of a search session, producing summarising measures such as the number of documents examined by searchers per query that they issued. We could also calculate from the log data probabilities of interaction, including a given subject’s probability of clicking a result sum- mary link, given that it was TREC relevant (P(C|R)) or TREC non- relevant (P (C |N )) – or the probability of marking a document that was clicked, given it was either TREC relevant (P(M|R)) or TREC non-relevant (P (M |N )). Actions such as hover depth over result summaries were inferred from the movement of the mouse cursor, which in prior studies has been shown to correlate strongly with the user’s gaze on the screen [7, 44].
+
+% \subsubsection{Query Generation}
+% - What approaches have been taken for query generation?
+% - Apart from the basic TREC one.
+%
+% - Azzopardi, Jordan, etc...
+%
+% - In this thesis, we consider one other different query generation component.
+% - Keskustalo 2009 proposed a series of idealised, prototypical querying strategies.
+%
+% - These offer good approximations to what actual searchers did in an actual user study, so we employ these.
+%
+% \subsubsection{Probabilities of Interaction and Cost}
+%
+%
+% Snippets are not always informative, and of the searcher does not understand or overlooks their relevance~\citep{turpin2009summaries}.
+%
+%
+%
+% \subsubsection{Gain}
+%
+%
+% \subsubsection{Stopping}
+
+% \subsection{Grounding the Simulations}\label{chap:csm:method:simulation:grounding}
+%
+% \subsection{Instantiating the Simulations}
+%
+% \subsection{Performance Runs}
+%
+% \subsection{Comparison Runs}
+%
+% \section{Evaluation of Simulations}\label{chap:csm:method:evaluation}
+% - how do we evaluate how good the system performs?
+% - how do we work out which one approximates best? on average.
+%
+% \subsection{Determining Simulated User Performance}
+%
+% \subsection{Comparing Simulated and Real-World Subjects}
+

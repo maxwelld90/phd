@@ -115,7 +115,10 @@
 \newcommand{\searchlogo}{{\headerfont\color{search_blue}S\color{search_red}e\color{search_yellow}a\color{search_blue}r\color{search_green}c\color{search_red}h}}
 
 % The "Treconomics" Logotype
-\newcommand{\treconomics}{{\headerfont TREConomics}}
+\newcommand{\treconomics}{{\headerfont\color{dmax_darkblue}TREConomics}}
+
+% The "SimIIR" Logotype
+\newcommand{\simiir}{{\headerfont\color{dmax_darkblue}SimIIR}}
 
 % Blue boxes!
 \setlength\fboxsep{2mm} % Applies padding to the blue boxes.

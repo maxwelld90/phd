@@ -1,11 +1,7 @@
 %!TEX TS-program = xelatex
 %!TEX root = ../../maxwell2018thesis.tex
 
-% Revise
-% Add in simulation part, considering querying, stochastic...
-% What is an information need
-% What is a snippet?
-%
+% Mention stochastic simulations...
 
 \chapter[Information Retrieval]{Information Retrieval:\\A History and Background}\label{chap:ir_background}
 It may be fair to say that \emph{searching for information} is now a commonplace activity within our daily lives. Given the familiarity and near ubiquity of the search box (as shown below) on contemporary human-computer interfaces, one may be forgiven into na\"{i}vely thinking that research and development into the underlying \emph{search engine} that one interacts with when using the search box was focused exclusively upon the domain of \emph{web search}, where names like \emph{Google}, \emph{Bing} and \emph{AltaVista}\footnote{This name might spring to mind for those with more of a historical knowledge of search engines. The author of this thesis has very vague memories using AltaVista when he was around eight years old\dots} spring to mind. Despite potential negatives that these technologies may bring -- turning us into so-called \emph{shallow thinkers}~\citep{carr2008google_stupid}, for example -- search engines today by and large make our lives easier, allowing us to find that proverbial needle in the haystack with relative ease.
@@ -443,34 +439,7 @@ To address retrieval effectiveness,~\cite{cooper1973simulation} generated repres
 
 Of particular relevance to this thesis however is the notion of the \emph{simulation of interaction,} where one attempts to mimic behaviours that a searcher exerts when interacting with a retrieval system. Given the above, simulation provides a means in which to explore different searcher behaviours, methods and techniques to better understand how searchers do, could, or are likely to behave~\citep{azzopardi2010workshop}. As discussed earlier in Section~\ref{sec:intro:simulation} however, results from such simulations can be deemed questionable if they are not properly motivated, grounded and validated. Thus, there is a pertinent need to ensure that the models developed are credible abstractions of the search process, and that they are seeded with data based on actual human interaction data~\citep{azzopardi2010workshop}. One exception to this rule would be the exploration of \emph{what-if} scenarios, as demonstrated, for example, by~\cite{azzopardi2011economics}.
 
-Considering the simulation of interaction (as part of the~\gls{acr:iir} process), a variety of different factors have been examined. These have been often examined independently from one another~\citep{azzopardi2010workshop}, with examples including: query formulation and suggestions; browsing behaviours; the influences of cost and time; and performance over search sessions. In the remainder of this section, we provide an overview of several key areas that have been examined and are pertinent to the work in this thesis.
-
-\subsubsection{Query Generation}
-- What approaches have been taken for query generation?
-- Apart from the basic TREC one.
-
-- Azzopardi, Jordan, etc...
-
-- In this thesis, we consider one other different query generation component.
-- Keskustalo 2009 proposed a series of idealised, prototypical querying strategies.
-
-- These offer good approximations to what actual searchers did in an actual user study, so we employ these.
-
-\subsubsection{Probabilities of Interaction and Cost}
-
-
-Snippets are not always informative, and of the searcher does not understand or overlooks their relevance~\citep{turpin2009summaries}.
-
-
-
-\subsubsection{Gain}
-
-
-\subsubsection{Stopping}
-
-
-
-
+Considering the simulation of interaction (as part of the~\gls{acr:iir} process), a variety of different factors have been examined. These have been often examined independently from one another~\citep{azzopardi2010workshop}, with examples including: query formulation and suggestions; browsing behaviours; the influences of cost and time; and performance over search sessions. The various simulation components that we utilise for the work in this thesis are discussed in the general methodology, in Section~\ref{chap:csm:method:simulation}. \todo{mention stochastic simulations}
 
 % As outlined in Section~\ref{sec:intro:motivation}, employing simulation for~\gls{acr:iir} studies in conjunction with a model of the search process allows for consistent and reproducible results. Several user models exist; one of the most widely used and simplistic approaches considered is the TREC-style user model, as detailed in Section~\ref{sec:stopping_background:models:conceptual:trec}. Simulation however is not exclusively used for modelling searcher behaviours -- in traditional~\gls{acr:ir}, simulation has been used for example in simulated work tasks~\citep{borlund2003iir_model, voorhees2005trec_book}, simulated and synthetic data collection~\citep{azzopardi2009query_side, azzopardi2007languages, jordan2006cqg, tague1980simulation_bibliographic}, and the simulation of interaction~\citep{azzopardi2010workshop, carterette2011effectiveness_evaluation, clarke2013mube,  leuski2000relevance_reinforcement, white2004simulated_feedback_models}.
 %
