@@ -2,13 +2,13 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[General Methodology]{General\\Methodology}\label{chap:method}
-In Part~\ref{part:context}, we will be exploring how an individual's stopping behaviours vary under different search contexts. In this chapter, we provide an overview of the general methodology that we deploy in subsequent chapters. As per the overview provided in Chapter~\ref{chap:intro}, our methodology is broadly divided into four main areaa:
+In Part~\ref{part:context}, we will be exploring how an individual's stopping behaviours vary under different search contexts. In this chapter, we provide an overview of the general methodology that we deploy in subsequent chapters. As per the overview provided in Chapter~\ref{chap:intro}, our methodology is divided into four main areas:
 
 \begin{itemize}
     \item{conducting a \blueboxbold{user study} to examine real-world searcher behaviours;}
     \item{extracting the key \blueboxbold{interaction data and performance measures} from the user study;}
     \item{using the aforementioned data to ground a series of \blueboxbold{simulations} that attempt to replicate the user studies; and}
-    \item{\blueboxbold{evaluating} the performance of the simulated users, and \blueboxbold{comparing} the simulated user behaviours against those of their real-world counterparts.}
+    \item{\blueboxbold{evaluating} the performance of the simulated users, as well as \blueboxbold{comparing} the simulated user behaviours against those of their real-world counterparts.}
 \end{itemize}
 
 We now discuss each of these different tasks in greater depth, highlighting the key decisions that we have made, and discuss supporting literature for our choices.
@@ -36,7 +36,7 @@ Five topics were also selected from the 50 provided in the \emph{TREC 2005 Robus
     
     \item[]{\blueboxbold{Topic 367 – Piracy} Instances of modern piracy are considered relevant to this topic -- not in the sense of software piracy, but the act of a water going vessel being boarded by individuals wishing to hijack it. Document \texttt{APW19980601.1065} provides an example of this -- the \emph{Petro Ranger}, a large fuel tanker, was boarded by pirates in 1998 in the South China Sea. To be relevant to the topic, the name of the vessel and the body of water it was hijacked on must be mentioned -- those discussing instances of when states intercepted vessels are not relevant.}
     
-    \item[]{\blueboxbold{Topic 408 – Tropical Storms} Documents discussing major tropical storms are to be considered relevant, where the storm is reported to have caused significant damage and a large number of casualties. This is a particularly timely topic for the document corpus considered, as the 1998 hurricane season in the Caribbean has been reported to be one of the most costly -- both in terms of damage caused and lives lost -- in history.\footnote{This is reported by the US \emph{National Oceanic and Atmospheric Administration (NOAA),} as seen at \url{http://www.outlook.noaa.gov/98hurricanes/} -- last accessed May 15\textsuperscript{th}, 2018.} Document \texttt{APW19980921.1265} for example discusses the effects on Puerto Rico of Hurricane Georges in September 1998, leaving -- at the time of reporting -- three dead, many houses damaged, and thousands homeless.}
+    \item[]{\blueboxbold{Topic 408 – Tropical Storms} Documents discussing major tropical storms are to be considered relevant, where the storm is reported to have caused significant damage and a large number of casualties. This is a particularly timely topic for the document corpus considered, as the 1998 hurricane season in the Caribbean has been reported to be one of the most costly -- both in terms of damage caused and lives lost -- in history.\footnote{This is reported by the US \emph{National Oceanic and Atmospheric Administration (NOAA),} as seen at \url{http://www.outlook.noaa.gov/98hurricanes/}. \urlaccessed{2018-05-18}} Document \texttt{APW19980921.1265} for example discusses the effects on Puerto Rico of Hurricane Georges in September 1998, leaving -- at the time of reporting -- three dead, many houses damaged, and thousands homeless.}
     
     \item[]{\blueboxbold{Topic 435 – Curbing Population Growth} The final topic considers efforts that have been made by countries around the world to control the ever increasing human population. Documents discussing this issue are only relevant to the topic if the results to a case have been made public, and a reduction in population has been actively pursued. The document must mention the country, the As such, events like famines are not relevant. A perhaps well known example of such a phenomenon is the one child policy that was pursued by China in the late 20\textsuperscript{th} century. Document \texttt{NYT19981031.0070} discusses the Chinese government's efforts to curb its expanding population at the time, with sexual education and heavy financial penalties for additional children. These efforts were shown to lead to a reduction in population, although whether this actually occurred is open to debate.}
     
@@ -44,7 +44,7 @@ Five topics were also selected from the 50 provided in the \emph{TREC 2005 Robus
 
 For all user studies reported in this thesis, we selected topic \blueboxbold{367} as a \emph{practice topic,} permitting the participating subjects to familiarise themselves with the experimental system used. As such, we do not report any results from interactions that took place with this topic -- comparisons between simulated and actual searcher behaviours are also omitted. 
 
-All queries submitted during experiments were also handled with the \emph{Whoosh~\gls{acr:ir} Toolkit}.\footnote{\emph{Whoosh} can be freely acquired using the \texttt{pip} \emph{Python} package manager -- documentation for Whoosh is available online at \url{http://whoosh.readthedocs.io/en/latest/intro.html} (last accessed May 15\textsuperscript{th}, 2018). The corpus was indexed with Whoosh \texttt{2.7.4}.} Using the toolkit, we indexed the AQUAINT document collection, applying Porter stemming. Stopwords -- from Fox's classical stopword list -- were also removed (refer to Section~\ref{sec:ir_background:basics:indexing} for more information on the indexing process). For this index, we also removed documents with \todo{duplicate titles}. This is an issue, especially with documents originating from a newswire. A document discussing an ongoing event may be continually revised as new information arises, leading to multiple revisions. \todo{For documents with duplicate titles, we retained the document with the latest timestamp.}
+All queries submitted during experiments were also handled with the \emph{Whoosh~\gls{acr:ir} Toolkit}.\footnote{\emph{Whoosh} can be freely acquired using the \texttt{pip} \emph{Python} package manager -- documentation for Whoosh is available online at \url{http://whoosh.readthedocs.io/en/latest/intro.html}. \urlaccessed{2018-05-18} The corpus was indexed with Whoosh \texttt{2.7.4}.} Using the toolkit, we indexed the AQUAINT document collection, applying Porter stemming. Stopwords -- from Fox's classical stopword list -- were also removed (refer to Section~\ref{sec:ir_background:basics:indexing} for more information on the indexing process). For this index, we also removed documents with \todo{duplicate titles}. This is an issue, especially with documents originating from a newswire. A document discussing an ongoing event may be continually revised as new information arises, leading to multiple revisions. \todo{For documents with duplicate titles, we retained the document with the latest timestamp.}
 
 With an index weighing in at 800MB, consisting of $128,894$ documents. \todo{What else did we do to reduce this number?} We could then issue queries against the index. All ranked results from queries were computed with the BM25 algorithm, where $\beta=0.75$. Terms in the queries issues were implicitly \texttt{AND}ed together to restrict the set of retrieved documents to those that only contained all of the query terms. This was chosen to reduce the size of the returned set -- most search systems employ such an implicit approach.
 
@@ -59,7 +59,7 @@ Using the document collection, topics and search engine outlined above, we now m
 
 Specifically, the methodology used for these studies allowed us to determine how the stopping behaviour of a searcher varies when these conditions are varied. We discuss the specific interfaces and conditions that we trialled in subsequent chapters of this thesis.
 
-Both user studies were undertaken using a custom built experimental framework called \blueboxbold{TREConomics}.\footnote{\treconomics~can be found online at \url{https://github.com/leifos/treconomics} -- \urlaccessed{2018-05-15}.} The pure-\emph{Python} framework has been developed over a number of years, and allows straightforward deployment of various~\gls{acr:iir}-based studies. It has been successfully deployed in a number of prior works, including those by~\cite{azzopardi2013query_cost},~\cite{maxwell2014temporal_delays} and~\cite{kelly2015serp_size}.
+Both user studies were undertaken using a custom built experimental framework called \blueboxbold{TREConomics}.\footnote{\treconomics~can be found online at \url{https://github.com/leifos/treconomics}. \urlaccessed{2018-05-15}} The pure-\emph{Python} framework has been developed over a number of years, and allows straightforward deployment of various~\gls{acr:iir}-based studies. It has been successfully deployed in a number of prior works, including those by~\cite{azzopardi2013query_cost},~\cite{maxwell2014temporal_delays} and~\cite{kelly2015serp_size}.
 
 \subsection{Experimental Details and Flow}\label{sec:csm:methodology:user:flow}
 Subjects who participated in the two different user studies spent approximately 45-50 minutes of their time performing the requested tasks (including completion of all surveys, as discussed below). Both experiments followed a similar structure, where subjects would complete a number of surveys before beginning a search task, and completing a further survey upon completion of the task. These surveys, as discussed in Section~\ref{sec:csm:methodology:extracting:user}, permitted us to gather information about the subjects' perceived experiences when trialling the various interfaces and conditions.
@@ -247,78 +247,106 @@ Between both user studies, we asked the same questions within the pre-task surve
 Responses were provided on a five-point scale, providing the option for neutrality between the two extremes -- extremes being \emph{nothing/not at all/very difficult} to \emph{lots/very much/very easy.} Responses to these questions helped us gauge the perceived difficulty of the task, and ascertain how much background knowledge could potentially affect results.
 
 \subsubsection{Post-Task and Post-Experiment}
-Post-task and post-experiment surveys were unique to each of the two user studies. Chapters~\ref{chap:snippets} and~\ref{chap:diversity} provide further information on what questions were asked. However, the post-task surveys focused on how well the subjects thought they (and the retrieval system, under the given condition and/or interface) performed during the search task. Post-task surveys considered the experiment as a whole, asking a range of questions about what condition and/or interface the subjects preferred, or performed more to their liking, for example.
+Post-task and post-experiment surveys were unique to each of the two user studies. Chapters~\ref{chap:snippets} and~\ref{chap:diversity} provide further information on what questions were asked. However, the post-task surveys focused on how well the subjects thought they (and the retrieval system, under the given condition and/or interface) performed during the search task. Post-task surveys considered the experiment as a whole, asking questions about what condition and/or interface the subjects preferred, or performed more to their liking, for example.
 
 \section{Simulating Searcher Behaviours}\label{chap:csm:method:simulation}
-With the general layout and components of the two user studies discussed, we now move onto the next part of the methodology -- \emph{simulating searcher behaviours.} Discussed previously in Section~\ref{sec:ir_background:user:simulation}, simulation provides a low-cost means for exploring a variety of different searcher strategies and configurations. In this section, we provide an overview of the different aspects of our searcher simulations, including:
+With the general layout and components of the two user studies explained, we now consider how we \emph{simulated searcher behaviours.} Highlighted in Section~\ref{sec:ir_background:user:simulation}, simulation provides a low-cost means for exploring a variety of different searcher strategies and configurations. In this section, we provide an overview of the general aspects of the \blueboxbold{stochastically-based} searcher simulations that we discuss the results of in subsequent chapters of this thesis. Specifically, we discuss in this section:
 
 \begin{itemize}
-    \item{a discussion of how our simulations are \emph{grounded;}}
+    \item{how our simulations were \emph{grounded;} and}
     \item{how we instantiated the different components of the~\gls{acr:csm} defined in Chapter~\ref{chap:csm} for our simulation experiments.}
 \end{itemize}
 
-We then outline the different types of simulation runs that we undertook, allowing us to address our two research questions, \blueboxbold{HL-RQ3a} \emph{(considering overall performance of a particular experimental configuration)} and \blueboxbold{HL-RQ3b} \emph{(considering how well a particular configuration approximates real-world searcher stopping behaviours),} defined previously in Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs}. Finally, we discuss our approach for evaluating the simulations, allowing us what stopping strategies offer the best overall performance and approximations of real-world searcher behaviours. This general methodology is employed for the two user studies discussed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}, to provide us with the best insight into how searcher stopping behaviours vary under different contexts.
+We conclude the chapter with a discussion as to how we evaluate the results from our simulations, allowing us to determine what stopping strategies offer the best overall performance and approximations of real-world searcher behaviours. This is done in consideration of the two user studies discussed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. By grounding our simulations with data derived from the two aforementioned user studies, we can then obtain an insight into how searcher stopping behaviours varies under different contexts.
+
+\blueboxheader{Considering Average Behaviours} \todo{Discuss that we consider searcher behaviours over the different interfaces and conditions, and thus take the average behaviour for each of those different interfaces and conditions. So we don't compare individual behaviours per se. Why? This is acceptable, because models do consider an average behaviour (Azzopardi?). Plus, see below. Providing an average approximation will be good as this has not been done before.}
+
+% From Azzopardi BLISS
+% However, what is not clear is whether the theory can explain observed behaviour outside of these specific contexts, nor is it clear to what level it can make credible predictions (only at an aggregated/population level only or at an individual user?). This is for a number of reasons. We lack task and user specific models that apply the theory in a range of different contexts. We lack the methods to approximate the gain and benefit resulting from the information found/encountered. We also lack the methods to estimate the different costs that a user experiences. Furthermore, search involves a range of different goals and intention, and so other maximisation criteria need to be considered depending on the task (i.e. for exploring, learning, saving, etc.).
+
+
+\blueboxheader{Considering Stochastic Simulations} As eluded to above, we consider in this thesis a series of different \emph{stochastically-based} simulations that attempt to mimic searcher behaviours. Currently, a majority of research that considers the simulation of interaction are also stochastic in nature, utilising probabilistic models. For example,~\cite{carterette2011effectiveness_evaluation} simulated the interaction of users for the purposes of evaluation through a dynamic test collection. While not explicitly stated, the underlying model of their simulations followed a similar process to the~\gls{acr:csm} as described in Chapter~\ref{chap:csm}, and were instantiated with probabilistic components.~\cite{baskaya2013behavioural_factors}, as discussed in Section~\ref{sec:stopping_background:models:conceptual:simple}, developed a Markov-based model of the search process, with changes in state determined by a series of different probabilities. A similar, probabilistic browsing model was also proposed by~\cite{yilmaz2010browsing_utility}. These models considered probabilistically determining, for instance, the attractiveness of a result summary to the given information need -- something that we also utilise. We discuss this further in Section~\ref{chap:csm:method:simulation:grounding:judgements}.
 
 \blueboxheader{The SimIIR Framework} All simulations that were run as part of this thesis were done so using the \simiir~framework, a custom built framework for the simulation of interaction within the~\gls{acr:iir} process.\footnote{\simiir~can be accessed at \url{https://github.com/leifos/simiir}. \urlaccessed{2018-05-29}} As outlined in Chapter~\ref{chap:intro}, the \simiir~framework is in effect is one of the major contributions offered by this thesis. The~\gls{acr:csm}, as outlined in Chapter~\ref{chap:csm}, is implemented within the framework and offers a high level of customisability in order to trial various different component configurations.~\cite{maxwell2016simiir} provides an overview of the framework.
 
-\subsection{Grounding and Instantiating the Simulations}\label{chap:csm:method:simulation:grounding}
-Repeated many times throughout this thesis so far, the \emph{grounding} of simulations is crucial for ensuring their overall credibility~\citep{azzopardi2010workshop}. Simulations that are not properly grounded with data from real-world observations means that the results become questionable. As such, this is an area that was taken seriously during the design of our methodology. After consideration of the~\gls{acr:csm}, we considered grounding from two key perspectives:
+\subsection{Grounding and Instantiating Simulations}\label{chap:csm:method:simulation:grounding}
+Repeated many times throughout this thesis so far, the \emph{grounding} of simulations is crucial for ensuring their overall credibility~\citep{azzopardi2010workshop}. Simulations that are not properly grounded with data from real-world observations means that results would then be questionable. As such, this is an area that was taken seriously during the design of our methodology. After consideration of the~\gls{acr:csm}, we considered grounding from three key perspectives:
 
 \begin{itemize}
-    \item{the generation of pseudo-realistic \blueboxbold{queries} to issue;}
-    \item{the consideration of \blueboxbold{interaction costs and probabilities}.}
+    \item{the generation of pseudo-realistic \blueboxbold{queries} to issue to the underlying Whoosh search engine (refer to Section~\ref{sec:csm:methodology:collection});}
+    \item{the consideration of various \blueboxbold{interaction costs}; and}
+    \item{the inclusion of various \blueboxbold{interaction probabilities} for determining relevancy.}
 \end{itemize}
 
-With these components sufficiently grounded, we could then investigate a variety of different stopping strategies, allowing us to determine which ones offered the best performance and real-world search approximations. In the remainder of this section, we provide an overview of the ways in which we instantiated the three major components of the~\gls{acr:csm}.
+These are considered in conjunction with our aforementioned stopping strategies (refer to Chapter~\ref{chap:strategies}), and imposed constrained on the session for each simulated searcher. The remainder of this section discusses each of the key components of our simulations, and how we instantiated them to produce realistic, credible simulations of interaction.
 
-\subsubsection{Query Generation Strategy}
-Discussed previously in Section~\ref{sec:ir_background:user:simulation}, there has been a significant volume of work undertaken on how to simulate the generation of queries. To instantiate the query generation component of the \simiir~framework, we utilised a \emph{prototypical, idealised querying strategy} that
+\subsubsection{Interaction Costs}
+Upon the examination of the~\gls{acr:csm}, illustrated in Figure~\ref{fig:csm} on page~\pageref{fig:csm}, a number of different \emph{interaction costs} can be derived. These are costs that must be expended by searchers subscribing to the model, in order for them to successfully complete the search process. We identified five different interaction costs that searchers are faced with. The five different interaction costs are:
 
-\todo{explain the query generation strategy!}
+\begin{itemize}
+    \item{the time taken to \blueboxbold{issue a query} to the underlying search engine;}
+    \item{how long a searcher will spend \blueboxbold{examining a~\gls{acr:serp}}, using the time to judge whether the contents of the~\gls{acr:serp} should be examined in more detail, or abandoned altogether;}
+    \item{the time taken to \blueboxbold{examine an individual result summary} in depth;}
+    \item{the amount of time required to \blueboxbold{examine a document} in full; and}
+    \item{the time taken for determining whether a \blueboxbold{document should be saved as relevant}.}
+\end{itemize}
 
-\subsubsection{Summary and Document Decision Making}
+Costs, measured in seconds, are averaged over each different condition and interface trialled between the two different user studies discussed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. Refer to these chapters for tables of the actual interaction costs that were extracted from the interaction log data.
 
-\todo{explain the probabilities of interaction, look at heikkis paper that says that probability of clicking doesnt mean probability of relevance.}
+\blueboxheader{Extracting Interaction Costs}
+To extract interaction costs for each interface and condition, we followed the same approach as discussed in Section~\ref{sec:csm:methodology:extracting:time} for extracting time-based measures. For each of the five interaction costs, we measured the time difference between two different logged events, before computing an average. Below, we outline the key events that we used to measure each of the five interaction costs. The interaction costs are also illustrated in Figure~\ref{fig:costs}.
 
-\subsubsection{\gls{acr:serp} Decision Making}
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch6-costs.pdf}}
+    \caption[Interaction costs]{Interaction costs illustration}
+    \label{fig:costs}
+\end{figure}
 
-\todo{expain the serp level decision point.}
+\begin{itemize}
+    \item{\blueboxbold{Querying} As discussed in Section~\ref{sec:csm:methodology:extracting:time}, querying is measured from when the subject focused on the query box, to the point where they submitted the query.}
+    \item{\blueboxbold{\gls{acr:serp} Examination} For this particular cost, we assumed that searchers would spend time judging the overall quality of the~\gls{acr:serp} from the point at which the~\gls{acr:serp} is rendered on their screen, to the point where they begin interacting with it in any way.}
+    \item{\blueboxbold{Result Summary Examination} Considering the difficulties in estimating the depth to which subjects hovered over result summaries (discussed in Section~\ref{sec:csm:methodology:extracting:time}), we again used the click depth to estimate result summary examination times. This was achieved by taking the point at which a searcher began interacting with a~\gls{acr:serp}, to the point that they left it. This time was then divided by the subject's click depth for that particular~\gls{acr:serp}, yielding the estimation used.}
+    \item{\blueboxbold{Document Examination} A straightforward measure, this cost was determined by measuring the difference between the point at which a requested document was displayed on the subject's screen, to the point at which they left it.}
+    \item{\blueboxbold{Saving a Document} \todo{The final interaction cost considered the time from which a searcher did x, to when they did y.}}
+\end{itemize}
 
-\subsubsection{Snippet Level Decision Making}
+As can be seen from the discussion above, determining some interaction costs (e.g. querying) are more straightforward than others. For the~\gls{acr:serp} examination interaction and result summary interaction costs in particular, key assumptions are made considering evidence from prior studies, showing that the movements of the mouse cursor on the subject's computer screen correlate strongly with their gaze~\citep{chen2001mouse_cursor, smucker2014judging_relevance_movements}. In addition, \todo{the user interface illustrated in the right screenshot in Figure~\ref{fig:interfaces} on page~\pageref{fig:interfaces} shows that saving a document involves only the click of a button, we argue that a period of additional time must be spent to do what. As such, this is why we consider the last interaction cost listed above.}
 
-\todo{explain the different stopping strategies, explaining how we instantiated them all.}
+\blueboxheader{Fixed Interaction Costs}
+All simulations in this thesis rely on the notion that all of the above interaction costs are \emph{fixed} over each interface and condition trialled. This decision was primarily chosen to reduce the complexity of our simulations -- by including dynamic interaction costs, this would have made the simulations themselves and the subsequent comparisons much more complex. We do acknowledge this as a limitation of our work. A searcher for example should take considerably less time to judge a two-paragraph document than a document consisting of 20 paragraphs. We also acknowledge the existence of measures such as \emph{time-biased gain}~\citep{smucker2012tbg} that permit would allow for such a time estimation to be made.
+
+\subsubsection{Query Generation Strategies}\label{chap:csm:method:simulation:grounding:querying}
+
+\subsubsection{Summary and Document Decision Making}\label{chap:csm:method:simulation:grounding:judgements}
+
+
+\blueboxheader{Stochastic Simulations}
+% With the studies described above, all instantiated models determine the likelihood of a click on a result summary ($P(C)$), for example, with a probability derived from a prior user study. As such, we follow a similar approach for the simulations in this thesis. This stochastic approach to modelling interactions provides a simple means of operationalising the components of the simulation that attempt to judge the attractiveness and relevancy of result summaries and documents, respectively.\footnote{This is not to say that stochastically-based approaches are the only way the model such a process. For example,~\cite{maxwell2016agents} considered a \emph{deterministic-based} approach. A classifier was trained that then allowed a \emph{simulated agent} to deterministically decide the attractiveness of a result summary, for example.}
+
+% However, such an approach is not without limitation. By their very nature, a stochastic simulation, based upon random probabilities, will require a large number of different trials to be executed from which an \emph{average} can be formed. This is because each trial will potentially result in a different outcome -- perhaps, for example, with fewer documents marked in a second trial than compared to the first. This need to run a large number of trials substantially increases the costs and time required to run such \emph{Monte-Carlo style simulations}~\citep{benov2016manhattan}.
+
+\blueboxheader{Pre-Rolled Judgements}
+
+\subsubsection{\gls{acr:serp} Level Decision Making}\label{chap:csm:method:simulation:grounding:serp}
+
+\subsubsection{Snippet Level Stopping Strategies}
 
 \subsubsection{Time Constraints and Search Goals}
-these vary between the two studies -- refer to the two chapters for more information on how we set these up.
 
-\subsection{Simulation Runs}
+\subsection{Considering Stochastic Simulations}
 
-explain that we did this 10 times, using pre-rolled judgements.
-better than monte-carlo simulation.
-reproducible, as long as you use the same seed.
+\subsubsection{Limitations of Stochastically-Based Simulations}
+
+\subsubsection{Pre-Rolled Judgements}
+
+\subsection{Simulation Runs and Evaluation}\label{chap:csm:method:sim:runs}
 
 \subsubsection{Performance Runs}
 
-50 topics, using these configurations.
-
 \subsubsection{Comparison Runs}
 
-only four topics to compare against. and we re-issue the queries
-
-\subsection{Evaluating the Simulations}\label{chap:csm:method:evaluation}
-
-so how did we compare? used the same measures as are discussed in the user study section.
-add in cumulative gain.
-
-\subsubsection{Overall Performance}
-
-simply took the mean of the 10 runs. and then we could compute the cumulative gain and other measures to get an overall figure.
-
-\subsubsection{Comparisons to Real-World Searchers}
-
-re-ran each query over each configuration.
-used the mean-squared error of the click depths.
-this then allowed us to determine how far away on average the simulated searcher was from the real-world searchers.
 
 \section{Chapter Summary}
 
