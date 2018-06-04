@@ -324,7 +324,7 @@ Of the five strategies identified by the authors, we consider two in this thesis
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch6-querying.pdf}}
-    \caption[Query Strategies example]{Extensive examples of the four querying strategies used in this thesis, \blueboxbold{QS1}, \blueboxbold{QS3}, \blueboxbold{QS13} and \blueboxbold{QS13\textsuperscript{+}}. Queries are denoted by \emph{Q\textsubscript{n}}, with individual terms denoted by \darkblueboxbold{t\textsubscript{n}}. In these examples, a total of six terms are used (from \darkblueboxbold{t\textsubscript{0}} to \darkblueboxbold{t\textsubscript{5}}). The stop sign denotes a lack of further queries; at this point a searcher would stop if they wished to issue a further query – their query list has been exhausted.}
+    \caption[Query Strategies example]{Extensive examples of the four querying strategies used in this thesis, \blueboxbold{QS1}, \blueboxbold{QS3}, \blueboxbold{QS13} and \blueboxbold{QS13\textsuperscript{+}}. Queries are denoted by \emph{Q\textsubscript{n}}, with individual terms denoted by \darkblueboxbold{t\textsubscript{n}}. In these examples, a total of six terms are used (from \darkblueboxbold{t\textsubscript{0}} to \darkblueboxbold{t\textsubscript{5}}). Queries are separated by arrows (~\includegraphics[height=\fontcharht\font`\d]{figures/src/arrow-blue-right.pdf}). The stop sign denotes a lack of further queries; at this point a searcher would have exhausted possible query combinations.}
     \label{fig:querying}
 \end{figure}
 
@@ -359,32 +359,118 @@ In this section, we introduced four different querying strategies -- two underly
 \blueboxheader{Term List Generation}
 Each of the querying strategies above are dependent upon a series of ranked terms from which queries can be created. This was achieved by first taking the \gls{acr:trec} title and description for a given topic, and creating a \emph{Maximum Likelihood Estimate (MLE)} language model (as discussed in Section~\ref{sec:ir_background:basics:models:language}), allowing us to create a probability distribution for the likelihood of a term to appear in a topic description, i.e. $p(term|topic)$. Considering our first underlying querying strategy \blueboxbold{QS1}, we could then extract a list of single terms, ranked according to $p(term|topic)$. This provided the list of terms from which queries could be generated. Our approach to pivot term-based \blueboxbold{QS3} was more complex. Taking the title terms exclusively, we then took all possible two-term combinations of the title terms, and selected the pair with the highest joint probability to act as the two pivot terms for the querying strategy. A list of candidate queries, $q$, could then be constructed by appending another term from the topic to the pivot terms (from both the topic title and description). These three term queries were then ranked according to $p(q|topic)$, yielding the final list of queries to be issued.
 
-
-
 \subsubsection{Summary and Document Decision Making}\label{chap:csm:method:simulation:grounding:judgements}
+Previously discussed in Section~\ref{chap:csm:method:simulation}, our simulations were stochastic in nature, with the decisions pertaining to the \blueboxbold{attractiveness of a result summary} \emph{(should I click this link and examine it further?)} and the \blueboxbold{relevancy of a document} to the given information need \emph{(should I save this document?)} determined through a series of different interaction probabilities. As we consider each interface and condition trialled separately, Chapters~\ref{chap:snippets} and~\ref{chap:diversity} present the interaction probabilities that were actually used within the simulations. In this section, we describe the approach used to derive them.
 
-discuss the different probabilities, and integrate the stuff below.
+Like in previous studies considering the simulation of interaction -- such as those by~\cite{yilmaz2010browsing_utility} and~\cite{baskaya2013behavioural_factors}, for instance -- result summary and document decision making revolve around two key probabilities:
 
+\begin{itemize}
+    \item{the probability \blueboxbold{P(C)} of considering a given result summary on a~\gls{acr:serp} to be sufficiently attractive to \emph{`click'} and load the associated document; and}
+    \item{the probability \blueboxbold{P(S)} of determining the document to be relevant to the given information need after examination, and thus \emph{saving} it.}
+\end{itemize}
+
+These are considered separately as the action of requesting a document from clicking on the associated result summary does not necessarily mean that the document \emph{is} relevant; merely, it means it appears attractive enough to examine in more detail~\citep{turpin2009summaries}. The above probabilities are broken down further with regards to~\gls{acr:trec} relevance. This entails examination of the~\gls{acr:trec} relevance judgements as discussed in Section~\ref{sec:csm:methodology:collection}, determining whether the result summary and/or document being clicked and/or saved was considered to be relevant to the given topic by the~\gls{acr:trec} assessors. As such, $P(C)$ and $P(S)$ can be split further, such that we can then determine:
+
+\begin{itemize}
+    \item{the probability that a result summary clicked is~\gls{acr:trec} relevant \blueboxbold{P(C|R)} or not \blueboxbold{P(C|N)}; and}
+    \item{the probability that a document saved is~\gls{acr:trec} relevant \blueboxbold{P(S|R)} or not \blueboxbold{P(S|N)}.}
+\end{itemize}
+
+Taking these explanations, we could then take the interaction logs from the two user studies, split the interactions by the interface or condition that probabilities were to be derived for, and summate different measures -- as shown by the equation for calculating $P(C)$:
+
+\begin{equation*}
+    P(C) = \frac{|clicked_{Rel}| + |clicked_{\neg Rel}|}{|hovered_{Rel}| + |hovered_{\neg Rel}|};
+\end{equation*}
+
+and $P(S)$:
+
+\begin{equation*}
+    P(S) = \frac{|saved_{Rel}| + | saved_{\neg Rel} |}{|clicked_{Rel}| + |clicked_{\neg Rel}|}.
+\end{equation*}
+
+In the above equations, $Rel$ denotes the count for~\gls{acr:trec} relevant items, with $\neg Rel$ representing items that were not~\gls{acr:trec} relevant. Finally, $|clicked|$ represents the number of result summaries that were clicked (deemed attractive enough to examine further), $|hovered|$ denotes the number of result summaries that a subject hovered over with their mouse, with $|saved|$ denoting the number of documents that were identified as relevant, and subsequently \emph{saved.} To compute probabilities concerning~\gls{acr:trec} relevance only (i.e. $P(C|R)$ and $P(S|R)$), $\neg Rel$ elements were removed, with $Rel$ elements being removed for computing probabilities of interaction for items that were not~\gls{acr:trec} relevant (i.e. $P(C|N)$ and $P(S|N)$).
+
+Like in Section~\ref{sec:csm:methodology:extracting:time}, the number of hovered result summaries was inferred due to issues with collecting actual hover events. To calculate the hover counts, we obtained the subject's greatest click depth for a given~\gls{acr:serp}, and summed up to that point. For example, if a subject clicked a document at a depth of $7$, the hover depth was assumed to be as such.
 
 \blueboxheader{Stochastic Simulations}
-% With the studies described above, all instantiated models determine the likelihood of a click on a result summary ($P(C)$), for example, with a probability derived from a prior user study. As such, we follow a similar approach for the simulations in this thesis. This stochastic approach to modelling interactions provides a simple means of operationalising the components of the simulation that attempt to judge the attractiveness and relevancy of result summaries and documents, respectively.\footnote{This is not to say that stochastically-based approaches are the only way the model such a process. For example,~\cite{maxwell2016agents} considered a \emph{deterministic-based} approach. A classifier was trained that then allowed a \emph{simulated agent} to deterministically decide the attractiveness of a result summary, for example.}
+This stochastic approach to modelling interactions provides a simple means of operationalising the components of the simulation that attempt to judge the attractiveness and relevancy of result summaries and documents, respectively.\footnote{This is not to say that stochastic approach is the only way the model such a process. For example,~\cite{maxwell2016agents} considered a \emph{deterministic} approach. A classifier was trained that then allowed a \emph{simulated agent} to deterministically decide the attractiveness of a result summary, for example.}
 
-% However, such an approach is not without limitation. By their very nature, a stochastic simulation, based upon random probabilities, will require a large number of different trials to be executed from which an \emph{average} can be formed. This is because each trial will potentially result in a different outcome -- perhaps, for example, with fewer documents marked in a second trial than compared to the first. This need to run a large number of trials substantially increases the costs and time required to run such \emph{Monte-Carlo style simulations}~\citep{benov2016manhattan}.
+However, such an approach is not without limitation. By their very nature, a stochastic simulation, based upon random probabilities, will require a large number of different trials to be executed from which an \emph{average} can be formed. Each trial will potentially result in a different outcome -- perhaps, for example, with fewer documents marked in a second trial than compared to the first. This leads to a huge variance between different trials, which in turn leads to a requirement of running a large number of trials, such \emph{Monte-Carlo style simulations}~\citep{benov2016manhattan}. This in turn leads to huge increases in the amount of time required to run all simulations, as well as the computational power required.
 
 \blueboxheader{Pre-Rolled Judgements}
+To mitigate this issue, we used a series of so-called \emph{pre-rolled judgements.} This ensured that we could provide a fair comparison between configurations, whilst reducing the number of runs required to reach a point at which the simulations converged. For each document within the AQUAINT collection used, we pre-computed the various probabilities, storing them in \emph{action judgement files,} with one related to result summaries (i.e. $P(C)$), and the other related to saving documents (i.e. $P(S)$). If a document was judged to be relevant in one run, then by pre-computing these actions in advance, the same document would then be considered to be relevant in other runs.
+
+This process was repeated ten times using different seeded values for each run. This meant that for every different simulated searcher configuration (i.e. considering stopping strategies, etc.), we ran a total of ten trials in which documents could be marked as either relevant or non-relevant. This meant, as previously mentioned, a fairer and paired comparison could be undertaken within runs. This subsequently also means that for each run, all results reported later in this thesis are the average over all ten trials. \todo{do validation simulation too}
+
+\subsubsection{Computing Gain}\label{chap:csm:method:simulation:grounding:gain}
+As searchers examine information, they \emph{gain knowledge} that helps shape their mental model of the underlying information need~\citep{nickles1995judgment}. While other works have focused upon this issue in depth, such as the work by~\cite{baskaya2013behavioural_factors}, we consider gain from a relatively simple standpoint. This keeps the complexity of our simulations manageable.
+
+Gain is acquired when a simulated searcher, having determined to examine a document for relevance, considers it to be relevant, and subsequently \emph{saves} said document. During post-hoc analysis, we then can compute how many documents were saved and were~\gls{acr:trec} relevant. These are determined by examining the~\gls{acr:trec} relevancy judgements. The gain for the document is then simply computed as the relevancy judgement score from the~\gls{acr:trec} QRELs. Given that we utilised the~\gls{acr:trec} 2005 Robust Track~\citep{voorhees2006trec_robust}, \emph{graded relevance judgements} are used, as discussed in Section~\ref{sec:ir_background:user:evaluation:cg}. In essence, this value, when summated over all saved documents, is the \blueboxbold{Cumulative Gain (CG)} score for a simulated trial. This is discussed in more detail in Section~\ref{chap:csm:method:sim:runs}.
+
+\blueboxheader{Gaining Elsewhere}
+The means by which gain is computed in the work detailed in this thesis provides a further assumption. Gain can only be accrued from examination of a document, and subsequently saving it. This is not to say that in the real-world, searchers will not accrue gain from examination of other components, such as the result summary. This is particularly prevalent in the concept of \emph{good abandonment}~\citep{li2009good_abandonment}, where a searcher will abandon a~\gls{acr:serp} if he or she is satisfied by simply examining the information provided within result summaries, for example. We do not consider this within our simulations to simplify how gain is computed.
 
 \subsubsection{\gls{acr:serp} Level Decision Making}\label{chap:csm:method:simulation:grounding:serp}
 
-\subsubsection{Snippet Level Stopping Strategies}\label{chap:csm:method:simulation:grounding:stopping_strats}
+\todo{Mention that this comes from a scent background.}
+\todo{The scent influences your behaviour.}
+\todo{Talk about the definitoion of what a poor scent is.}
+\todo{Then talk about the probabilities, and how we extracted them.}
+\todo{Then draw the diagram explaining the probabilities.}
+\todo{From there, discuss the three strategies.}
+\todo{}
 
-\subsubsection{Time Constraints and Search Goals}
+Previously outlined in Section~\ref{sec:csm:new_stopping}, the~\gls{acr:csm} includes a~\gls{acr:serp} level stopping decision point. This is in addition to the two established snippet level and session level stopping decision points. The additional stopping decision point allows for a searcher subscribing to the~\gls{acr:csm} to either begin examining individual result summaries for attractiveness, or abandon the presented~\gls{acr:serp} in its entirety. In this section, we provide details on how we operationalised this new stopping decision point, considering: the definitions we used for implementation; a discussion of a new set of interaction probabilities, used specifically for this stopping decision point; and a discussion of the three different approaches we implemented.
+
+\begin{wrapfigure}[12]{r}{0.45\textwidth}
+    \begin{center}
+    \vspace*{-10mm}
+    \includegraphics[width=1\textwidth]{figures/ch6-viewport.pdf}
+    \end{center}
+    \vspace*{-4mm}
+    \caption[Viewport cutoff example]{The~\gls{acr:serp} viewport threshold. In this example, three result summaries are visible, with two not visible within the viewport. Therefore, \emph{view\textsubscript{size}=3}. Cheers!}
+    \label{fig:viewport_cutoff}
+\end{wrapfigure}
+
+\blueboxheader{Considering a \glsplural{acr:serp} Scent} Before we can discuss how we implemented the new stopping decision point, we must first clarify the definition we used for determining what we considered a poor quality~\gls{acr:serp}. If we consider a~\gls{acr:serp} from the perspective of~\glsfirst{acr:ift} (refer to Section~\ref{sec:stopping_background:models:theoretical:ift}), considering said~\gls{acr:serp} as a \emph{patch}, we can then consider the \emph{information scent} of the patch. For a given~\gls{acr:serp}, if $P@10=0.0$, the scent offered would be considered low. This value was suggested by~\cite{wu2014information_scent}, who stated that a~\gls{acr:serp} that returns little or no relevant content can be considered to offer a low information scent. We refer to this value as the \emph{patch threshold.}
+
+\blueboxheader{The Probability of Examining a~\gls{acr:serp}}
+These probabilities are interface/condition dependent, so we do not present them here. However, refer to the relevant Chapter for more information.
+
+\blueboxheader{Three~\gls{acr:serp} Stopping Implementations}
+We can now outline the three different strategies that we trialled for the new~\gls{acr:serp} level stopping decision point. These are enumerated below, with our baseline implementation listed first.
+
+\begin{itemize}
+    \item{\blueboxbold{Always Examine (Baseline)} With this strategy, a searcher will \emph{always} enter a given~\gls{acr:serp} and examine at least one result summary (dependent upon the snippet level stopping strategy selected). This is considered as the current state-of-the-art.}
+    \item{\blueboxbold{Perfect~\gls{acr:serp} Judgements} Here, a simulated searcher will only begin to examine a~\gls{acr:serp} in detail if $P@k > 0$. If $P@k = 0$, the searcher will abandon the~\gls{acr:serp}, and then proceed to the next action as dictated by the~\gls{acr:csm}. This can be considered as the upper bound in terms of performance -- analogous to, as an example, the \emph{ideal user} of~\cite{hagen2016simulating_users}.}
+    \item{\blueboxbold{Stochastic~\gls{acr:serp} Judgements} Our third strategy uses a stochastic element to determine whether the simulated searcher should enter the~\gls{acr:serp} or not. Like above, the $P@k$ of the~\gls{acr:serp} is computed. If the~\gls{acr:serp} is deemed to be of high scent, }
+    
+\end{itemize}
+
+
+
+
+extract this from the ecir paper.
+
+\subsubsection{Snippet Level Stopping Strategies}\label{chap:csm:method:simulation:grounding:stopping_strats}
+enumerate the different stopping strategies.
+add explanation as to where values come from, based upon what Leif said.
+
+
+\subsubsection{Simulated Searcher Constraints}
+Like in the user studies, we imposed different constrains upon the simulated searchers to keep the comparisons as fair as possible. For example, in Chapter~\ref{chap:snippets}, a session time constraint of ten minutes was imposed, as per the user study. The total time spent by a simulated searcher could be then computed, for example, by summating the interaction costs a simulated searcher had accrued up until a given point. These constraints are discussed in more detail in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.
 
 \subsection{Simulation Runs and Evaluation}\label{chap:csm:method:sim:runs}
+two research questions: how do we do this?
+
+note that we have an interaction log for each simulation configuration trialled, similar to the interaction log shown in the previous section.
 
 \subsubsection{Performance Runs}
+mention that performance runs discuss the stuff above, over the 50 topics.
+queries generated via the querying strategies.
 
 \subsubsection{Comparison Runs}
-
+we do the same, but this time only over four topics, and replaying the different
 
 \section{Chapter Summary}
 
