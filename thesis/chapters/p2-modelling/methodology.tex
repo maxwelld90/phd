@@ -1,7 +1,7 @@
 %!TEX TS-program = xelatex
 %!TEX root = ../../maxwell2018thesis.tex
 
-\chapter[General Methodology]{General\\Methodology}\label{chap:method}
+\chapter[General Methodology]{General Methodology}\label{chap:method}
 In Part~\ref{part:context}, we will be exploring how an individual's stopping behaviours vary under different search contexts. In this chapter, we provide an overview of the general methodology that we deploy in subsequent chapters. As per the overview provided in Chapter~\ref{chap:intro}, our methodology is divided into four main areas:
 
 \begin{itemize}
@@ -259,11 +259,7 @@ With the general layout and components of the two user studies explained, we now
 
 We conclude the chapter with a discussion as to how we evaluate the results from our simulations, allowing us to determine what stopping strategies offer the best overall performance and approximations of real-world searcher behaviours. This is done in consideration of the two user studies discussed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. By grounding our simulations with data derived from the two aforementioned user studies, we can then obtain an insight into how searcher stopping behaviours varies under different contexts.
 
-\blueboxheader{Considering Average Behaviours} \todo{Discuss that we consider searcher behaviours over the different interfaces and conditions, and thus take the average behaviour for each of those different interfaces and conditions. So we don't compare individual behaviours per se. Why? This is acceptable, because models do consider an average behaviour (Azzopardi?). Plus, see below. Providing an average approximation will be good as this has not been done before.}
-
-% From Azzopardi BLISS
-% However, what is not clear is whether the theory can explain observed behaviour outside of these specific contexts, nor is it clear to what level it can make credible predictions (only at an aggregated/population level only or at an individual user?). This is for a number of reasons. We lack task and user specific models that apply the theory in a range of different contexts. We lack the methods to approximate the gain and benefit resulting from the information found/encountered. We also lack the methods to estimate the different costs that a user experiences. Furthermore, search involves a range of different goals and intention, and so other maximisation criteria need to be considered depending on the task (i.e. for exploring, learning, saving, etc.).
-
+\blueboxheader{The Mean Searcher} Comparisons between simulations and real-world searcher approximations are made between the \emph{average} behaviours observed. This average behaviour is considered across each of the different experimental interfaces and conditions that we trial across the two user studies, discussed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. This consideration: \emph{(i)} simplifies and reduces the number of simulations that are required to be run; and \emph{(ii)} provides a simple overview of how stopping behaviour varies across each interface and condition, rather than across each individual searcher.
 
 \blueboxheader{Considering Stochastic Simulations} As eluded to above, we consider in this thesis a series of different \emph{stochastically-based} simulations that attempt to mimic searcher behaviours. Currently, a majority of research that considers the simulation of interaction are also stochastic in nature, utilising probabilistic models. For example,~\cite{carterette2011effectiveness_evaluation} simulated the interaction of users for the purposes of evaluation through a dynamic test collection. While not explicitly stated, the underlying model of their simulations followed a similar process to the~\gls{acr:csm} as described in Chapter~\ref{chap:csm}, and were instantiated with probabilistic components.~\cite{baskaya2013behavioural_factors}, as discussed in Section~\ref{sec:stopping_background:models:conceptual:simple}, developed a Markov-based model of the search process, with changes in state determined by a series of different probabilities. A similar, probabilistic browsing model was also proposed by~\cite{yilmaz2010browsing_utility}. These models considered probabilistically determining, for instance, the attractiveness of a result summary to the given information need -- something that we also utilise. We discuss this further in Section~\ref{chap:csm:method:simulation:grounding:judgements}.
 
@@ -280,7 +276,7 @@ Repeated many times throughout this thesis so far, the \emph{grounding} of simul
 
 These are considered in conjunction with our aforementioned stopping strategies (refer to Chapter~\ref{chap:strategies}), and imposed constrained on the session for each simulated searcher. The remainder of this section discusses each of the key components of our simulations, and how we instantiated them to produce realistic, credible simulations of interaction.
 
-\subsubsection{Interaction Costs}
+\subsubsection{Interaction Costs}\label{chap:csm:method:simulation:grounding:costs}
 Upon the examination of the~\gls{acr:csm}, illustrated in Figure~\ref{fig:csm} on page~\pageref{fig:csm}, a number of different \emph{interaction costs} can be derived. These are costs that must be expended by searchers subscribing to the model, in order for them to successfully complete the search process. We identified five different interaction costs that searchers are faced with. The five different interaction costs are:
 
 \begin{itemize}
@@ -300,26 +296,74 @@ To extract interaction costs for each interface and condition, we followed the s
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch6-costs.pdf}}
-    \caption[Interaction costs]{Interaction costs illustration}
+    \caption[Interaction costs]{Illustration of the five interaction costs paid by searchers subscribing to the~\gls{acr:csm}. Each cost is shown with the start and end events, by which the costs were measured from the user study interaction logs. Time spent on individual components is shown in white. Refer to Section~\ref{chap:csm:method:simulation:grounding:costs} for a detailed explanation of each interaction cost considered.}
     \label{fig:costs}
 \end{figure}
 
 \begin{itemize}
-    \item{\blueboxbold{Querying} As discussed in Section~\ref{sec:csm:methodology:extracting:time}, querying is measured from when the subject focused on the query box, to the point where they submitted the query.}
-    \item{\blueboxbold{\gls{acr:serp} Examination} For this particular cost, we assumed that searchers would spend time judging the overall quality of the~\gls{acr:serp} from the point at which the~\gls{acr:serp} is rendered on their screen, to the point where they begin interacting with it in any way.}
-    \item{\blueboxbold{Result Summary Examination} Considering the difficulties in estimating the depth to which subjects hovered over result summaries (discussed in Section~\ref{sec:csm:methodology:extracting:time}), we again used the click depth to estimate result summary examination times. This was achieved by taking the point at which a searcher began interacting with a~\gls{acr:serp}, to the point that they left it. This time was then divided by the subject's click depth for that particular~\gls{acr:serp}, yielding the estimation used.}
-    \item{\blueboxbold{Document Examination} A straightforward measure, this cost was determined by measuring the difference between the point at which a requested document was displayed on the subject's screen, to the point at which they left it.}
-    \item{\blueboxbold{Saving a Document} \todo{The final interaction cost considered the time from which a searcher did x, to when they did y.}}
+    \item{\blueboxbold{1 (Querying)} As discussed in Section~\ref{sec:csm:methodology:extracting:time}, querying is measured from when the subject focused on the query box, to the point where they submitted the query.}
+    \item{\blueboxbold{2 (\gls{acr:serp} Examination)} For this particular cost, we assumed that searchers would spend time judging the overall quality of the~\gls{acr:serp} from the point at which the~\gls{acr:serp} is rendered on their screen, to the point where they begin interacting with it in any way.}
+    \item{\blueboxbold{3 (Result Summary Examination)} Considering the difficulties in estimating the depth to which subjects hovered over result summaries (discussed in Section~\ref{sec:csm:methodology:extracting:time}), we again used the click depth to estimate result summary examination times. This was achieved by taking the point at which a searcher began interacting with a~\gls{acr:serp}, to the point that they left it. This time was then divided by the subject's click depth for that particular~\gls{acr:serp}, yielding the estimation used.}
+    \item{\blueboxbold{4 (Document Examination)} A straightforward measure, this cost was determined by measuring the difference between the point at which a requested document was displayed on the subject's screen, to the point at which they left it.}
+    \item{\blueboxbold{5 (Saving a Document)} \todo{The final interaction cost considered the time from which a searcher did x, to when they did y.}}
 \end{itemize}
 
 As can be seen from the discussion above, determining some interaction costs (e.g. querying) are more straightforward than others. For the~\gls{acr:serp} examination interaction and result summary interaction costs in particular, key assumptions are made considering evidence from prior studies, showing that the movements of the mouse cursor on the subject's computer screen correlate strongly with their gaze~\citep{chen2001mouse_cursor, smucker2014judging_relevance_movements}. In addition, \todo{the user interface illustrated in the right screenshot in Figure~\ref{fig:interfaces} on page~\pageref{fig:interfaces} shows that saving a document involves only the click of a button, we argue that a period of additional time must be spent to do what. As such, this is why we consider the last interaction cost listed above.}
 
 \blueboxheader{Fixed Interaction Costs}
-All simulations in this thesis rely on the notion that all of the above interaction costs are \emph{fixed} over each interface and condition trialled. This decision was primarily chosen to reduce the complexity of our simulations -- by including dynamic interaction costs, this would have made the simulations themselves and the subsequent comparisons much more complex. We do acknowledge this as a limitation of our work. A searcher for example should take considerably less time to judge a two-paragraph document than a document consisting of 20 paragraphs. We also acknowledge the existence of measures such as \emph{time-biased gain}~\citep{smucker2012tbg} that permit would allow for such a time estimation to be made.
+All simulations discussed in this thesis rely on the notion that all interaction costs are \emph{fixed} over each interface and condition trialled. This decision was primarily chosen to reduce the complexity of our simulations. By including dynamic interaction costs, this would have made the simulations themselves -- and the subsequent comparisons -- much more complex. We do acknowledge this as a limitation of our work, as a searcher should take considerably less time to judge a document consisting of two paragraphs than a document consisting of 20. We also acknowledge the existence of measures such as \emph{time-biased gain}~\citep{smucker2012tbg} that would allow for such an estimation of cost to be made.
 
 \subsubsection{Query Generation Strategies}\label{chap:csm:method:simulation:grounding:querying}
+The \emph{generation of queries} is an important aspect of any simulation of interaction. From the simplistic~\gls{acr:trec}-style model of search where a single query is issued (refer to Section~\ref{sec:stopping_background:models:conceptual:trec}), numerous studies have focused upon the issue of query generation, and how one can generate a series of pseudo-realistic queries. We discuss these prior works in Section~\ref{sec:ir_background:user:simulation}.
+
+However, we consider a number of different \emph{querying strategies} as proposed by~\cite{keskustalo2009querying} and~\cite{baskaya2013behavioural_factors} in order to generate queries for our simulations. These strategies are considered to be \emph{idealised, prototypical} approaches to query generation, being grounded from a prior user study examining the query behaviour of subjects.\footnote{Refer to~\cite{keskustalo2009querying} for further information on the user study undertaken.}
+
+Of the five strategies identified by the authors, we consider two in this thesis that were shown in subsequent simulations by~\cite{keskustalo2009querying} to yield the worst and best performance. The two querying strategies, named as \blueboxbold{QS1} and \blueboxbold{QS3}, are briefly explained below. We also provide an illustration of the two strategies in Figure~\ref{fig:querying}, where $Q_n$ represents query $n$ within a search session, and $t_n$ represents query term $n$ from a list of terms available to formulate queries.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch6-querying.pdf}}
+    \caption[Query Strategies example]{Extensive examples of the four querying strategies used in this thesis, \blueboxbold{QS1}, \blueboxbold{QS3}, \blueboxbold{QS13} and \blueboxbold{QS13\textsuperscript{+}}. Queries are denoted by \emph{Q\textsubscript{n}}, with individual terms denoted by \darkblueboxbold{t\textsubscript{n}}. In these examples, a total of six terms are used (from \darkblueboxbold{t\textsubscript{0}} to \darkblueboxbold{t\textsubscript{5}}). The stop sign denotes a lack of further queries; at this point a searcher would stop if they wished to issue a further query – their query list has been exhausted.}
+    \label{fig:querying}
+\end{figure}
+
+\begin{itemize}
+    \item{\blueboxbold{QS1 (Single Term)} This querying strategy generates a series of \emph{single term queries.}}
+    \item{\blueboxbold{QS3 (Three Term)} This second querying strategy generates queries with two \emph{pivot} terms, and one other term. The first two terms therefore remain constant, with the third term changing for each subsequent query.}
+\end{itemize}
+
+These queries are relatively short, and are considered realistic in the sense that queries issued in real-life web search sessions consist three terms on average~\citep{keskustalo2009querying}.
+
+With these two querying strategies in mind, we then combined them together to produce an \emph{interleaved querying strategy,} \blueboxbold{QS13}.
+
+\begin{itemize}
+    \item{\blueboxbold{QS13 (Interleaved)} With this querying strategy, queries from both \blueboxbold{QS1} and \blueboxbold{QS3} are generated, and subsequently interleaved between each other, starting with the first query from \blueboxbold{QS1}.}
+\end{itemize}
+
+Refer to Figure~\ref{fig:querying} for an example of how this strategy works. The idea behind this querying strategy is that it allows us to test the \blueboxbold{robustness} of the new~\gls{acr:serp} level stopping decision point and the various stopping strategies that we trial (our implementations of each are discussed in Sections~\ref{chap:csm:method:simulation:grounding:serp} and~\ref{chap:csm:method:simulation:grounding:stopping_strats} respectively). With~\cite{keskustalo2009querying} highlighting that \blueboxbold{QS1} yields relatively poor performance compare to~\blueboxbold{QS3}, it therefore follows that a searcher, when issuing a query generated by \blueboxbold{QS1}, will observe that the results presented are of poor quality, and thus stop at a comparatively shallower depth when compared to examining the results of queries issued by \blueboxbold{QS3}. Examining many results from a poor query is by and large a waste of the searcher's time.
+
+Our final querying strategy, \blueboxbold{QS3\textsuperscript{+}}, is based upon the pivot term approach as seen by \blueboxbold{QS3}. Again, refer to Figure~\ref{fig:querying} for an example of how this strategy works.
+
+\begin{itemize}
+    \item{\blueboxbold{QS3\textsuperscript{+} (Realistic)} This final querying strategy builds up queries to three terms in length, using the two pivot terms as described before as a starting point.}
+\end{itemize}
+
+Previous work has shown that real-world searchers steadily build up the number of terms they used in their queries as they acquire more information. Short queries are issued initially, and the length then increases~\citep{keskustalo2009querying}. This is our rationale behind \blueboxbold{QS3\textsuperscript{+}}, and provides a more \blueboxbold{realistic} querying strategy with which to examine performance with. This is in conjunction with \blueboxbold{QS13} that allows us to test the robustness of the different stopping strategies and the~\gls{acr:serp} stopping decision point.
+
+\blueboxheader{Reported Querying Strategies}
+In this section, we introduced four different querying strategies -- two underlying strategies from the work by~\cite{keskustalo2009querying}, and two strategies based upon this prior work. The latter two allowed us to test the robustness and realism of the various simulation configurations. As such, the work in this thesis reports only on simulations that were run with \blueboxbold{QS13} and \blueboxbold{QS13\textsuperscript{+}}.
+
+%To recap, the interleaving of good and bad queries poses a key challenge to the stopping components of the~\gls{acr:csm}: to spot a poor performing query and subsequently stop early, thus saving time.
+
+\blueboxheader{Term List Generation}
+Each of the querying strategies above are dependent upon a series of ranked terms from which queries can be created. This was achieved by first taking the \gls{acr:trec} title and description for a given topic, and creating a \emph{Maximum Likelihood Estimate (MLE)} language model (as discussed in Section~\ref{sec:ir_background:basics:models:language}), allowing us to create a probability distribution for the likelihood of a term to appear in a topic description, i.e. $p(term|topic)$. Considering our first underlying querying strategy \blueboxbold{QS1}, we could then extract a list of single terms, ranked according to $p(term|topic)$. This provided the list of terms from which queries could be generated. Our approach to pivot term-based \blueboxbold{QS3} was more complex. Taking the title terms exclusively, we then took all possible two-term combinations of the title terms, and selected the pair with the highest joint probability to act as the two pivot terms for the querying strategy. A list of candidate queries, $q$, could then be constructed by appending another term from the topic to the pivot terms (from both the topic title and description). These three term queries were then ranked according to $p(q|topic)$, yielding the final list of queries to be issued.
+
+
 
 \subsubsection{Summary and Document Decision Making}\label{chap:csm:method:simulation:grounding:judgements}
+
+discuss the different probabilities, and integrate the stuff below.
 
 
 \blueboxheader{Stochastic Simulations}
@@ -331,15 +375,9 @@ All simulations in this thesis rely on the notion that all of the above interact
 
 \subsubsection{\gls{acr:serp} Level Decision Making}\label{chap:csm:method:simulation:grounding:serp}
 
-\subsubsection{Snippet Level Stopping Strategies}
+\subsubsection{Snippet Level Stopping Strategies}\label{chap:csm:method:simulation:grounding:stopping_strats}
 
 \subsubsection{Time Constraints and Search Goals}
-
-\subsection{Considering Stochastic Simulations}
-
-\subsubsection{Limitations of Stochastically-Based Simulations}
-
-\subsubsection{Pre-Rolled Judgements}
 
 \subsection{Simulation Runs and Evaluation}\label{chap:csm:method:sim:runs}
 
