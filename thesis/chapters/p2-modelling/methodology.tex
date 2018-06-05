@@ -467,9 +467,78 @@ While we do not specifically examine different cues, instead relying on more sim
 By considering these different approaches to implementing the new~\gls{acr:serp} level stopping decision point, we can then clearly identify whether it can offer improved performance and approximations of actual searcher stopping behaviours.
 
 \subsubsection{Snippet Level Stopping Strategies}\label{chap:csm:method:simulation:grounding:stopping_strats}
-enumerate the different stopping strategies.
-add explanation as to where values come from, based upon what Leif said.
+In Chapter~\ref{chap:strategies}, we detailed thirteen different stopping strategies, operationalised from various stopping heuristics and commonly used measures in~\gls{acr:ir}. Here, we once again enumerate each of the different stopping strategies, discussing what stopping threshold values that we trialled for each. For several stopping strategies, values need to be approximated from real-world interaction data (such as, for example, the~\gls{acr:rbp} patience factor). As such, many of these values were approximated from the user study detailed in Chapter~\ref{chap:snippets}, and used for all simulation experimentation. The values we ascertained were of most interest as they offer close approximations to what real-world searchers actually did.
 
+Each of the stopping strategies, along with threshold values trialled, are enumerated below.
+
+\begin{itemize}
+    
+    \item{For our fixed depth stopping strategy \blueboxbold{SS1-FIX}, we trialled a range values, where $x_1$ was set from $1$ to $10$ in steps of $1$, and then $15$ to $25$ in steps of $3$. This resulted in 14 separate configurations, with enough values such that a searcher would comfortably reach the time limits imposed in the study detailed in Chapter~\ref{chap:snippets}.}
+    
+    \item{The same range of values were used for threshold variables $x_2$ and $x_3$, for \blueboxbold{SS2-NT} and \blueboxbold{SS3-NC} respectively. These stopping strategies focused upon a searchers tolerance to non-relevance, as discussed in Section~\ref{sec:strategies:frustsat:frustration} on page~\pageref{sec:strategies:frustsat:frustration}.}
+    
+\end{itemize}
+
+As alluded to in Section~\ref{sec:strategies:frustsat:frustration}, it should be noted that for \blueboxbold{SS1-FIX}, $x_1$ corresponds to the \emph{maximum depth per query,} whereas for both \blueboxbold{SS2-NT} and \blueboxbold{SS3-NC}, $x_2$ and $x_3$ represent the \emph{minimum depth per query.} For example, if $x_2=3$, a searcher would be willing to tolerate three non-relevant result summaries, finally stopping at a depth of five.
+
+Next, we enumerate the stopping strategies considering the satisfaction, or \emph{satiation}~\citep{simon1955satiation} of a searcher.
+
+\begin{itemize}
+    
+    \item{For stopping strategy \blueboxbold{SS4-SAT} concerning the number of documents a searcher should before being satisfied, find we examined a range of values for $x_4$, from $1$ to $10$ in steps of $1$.}
+    
+    \item{We employed the same range of values for \blueboxbold{SS13-INST}, that also considers the satisfaction of a searcher. This is considered as $T$ in INST, as discussed in Section~\ref{sec:ir_background:user:evaluation:inst}.}
+    
+\end{itemize}
+
+Our combination rule then combines the frustration and satiation heuristics together to produce a strategy combining both.
+
+\begin{itemize}
+    
+    \item{For \blueboxbold{SS5-COMBO}, we utilised the values used in \blueboxbold{SS1-FIX} and \blueboxbold{SS4-SAT} for frustration and satisfaction components, respectively. We trialled each possible combination of the two sets of parameter settings.}
+    
+\end{itemize}
+
+Next, we consider the two stopping strategies that focus upon the \emph{difference threshold heuristic}~\citep{nickles1995judgment}, where searchers will abandon a~\gls{acr:serp} if the result summaries provided do not yield any new information.
+
+\begin{itemize}
+    
+    \item{For \blueboxbold{SS6-DT}, considering the term overlap between a result summary and prior summaries, the threshold $x_6$, a range of values from $0.0$ to $1.0$ were used in steps of $0.05$. This was to explore the entire range, with the smaller the threshold, the less similar the content of the new result summary to previously examined ones.}
+    
+    \item{Considering \blueboxbold{SS7-DKL}, using KL-divergence, a range of values for $x_7$ from $3.0$ to $8.0$ in steps of $0.5$ were trialled. In a small-scale pilot study examining this stopping strategy over the AQUAINT document collection, a majority of values fell within this range.}
+    
+\end{itemize}
+
+Next are the stopping strategy based upon optimal foraging behaviour.
+
+\begin{itemize}
+    
+    \item{Following with Optimal Foraging, \blueboxbold{SS8-OFT} considers a searcher's average rate of gain. If this falls below a set threshold, then the searcher stops. We experimented with manipulating the gain threshold parameter and the number of documents first viewed before estimating the gain. For this stopping strategy, we consider only two snippets, and values for $x_8$ ranging from $0.002$ to $0.03$ in steps of $0.002$.}
+    
+\end{itemize}
+
+Two result summaries were chosen for the following reason. If the first document was non-relevant, the searcher would always stop. We found that basing the estimate on two result summaries was much less sensitive and resulted in better performance.
+
+Next, we consider the time-based stopping strategies. These values were grounded from the user study discussed in Chapter~\ref{chap:snippets}. We apply these values to the study in Chapter~\ref{chap:diversity} for a fairer comparison.
+
+\begin{itemize}
+    \item{Considering the total amount of time spent on a~\gls{acr:serp} and its associated documents, we considered for stopping strategy \blueboxbold{SS9-TT} ($x_9$) values from $30$ to $150$ seconds, in steps of $30$ seconds.}
+    
+    \item{Stopping after $x_{10}$ have elapsed since saving a relevant document (or the start of the search session), we for \blueboxbold{SS10-TR} considered a smaller range of values, from $10$ to $50$ seconds, in steps of $10$ seconds.}
+    
+    \item{The final time-based stopping strategy \blueboxbold{SS11-TCOMBO} combined together both prior time-based stopping strategies. Depending upon the quality of the~\gls{acr:serp}, a different strategy was employed. Values from \blueboxbold{SS9-TT} and \blueboxbold{SS10-TR} were used. \todo{Discuss high yield and low yield.}}
+    
+\end{itemize}
+
+The final stopping strategy was based upon the~\gls{acr:rbp}~\gls{acr:ir} measure. Once again, the patience factor was grounded from the user study detailed in Section~\ref{chap:snippets}.
+
+\begin{itemize}
+    
+    \item{For \blueboxbold{SS12-RBP}, we found that fitting~\gls{acr:rbp} to the user study interaction data, the patience factor ($x_{12}$) was 0.9087. As such, we trialled a range of values around this area, from $0.8$ to $0.95$ in steps of $0.05$. We also trialled $0.99$.}
+    
+\end{itemize}
+
+These values, as discussed previously, were used in all simulations to provide a broad examination of the performance of each stopping strategy.
 
 \subsubsection{Simulated Searcher Constraints}
 Like in the user studies, we imposed different constrains upon the simulated searchers to keep the comparisons as fair as possible. For example, in Chapter~\ref{chap:snippets}, a session time constraint of ten minutes was imposed, as per the user study. The total time spent by a simulated searcher could be then computed, for example, by summating the interaction costs a simulated searcher had accrued up until a given point. These constraints are discussed in more detail in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.
