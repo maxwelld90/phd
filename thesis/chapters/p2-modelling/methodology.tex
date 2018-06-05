@@ -303,8 +303,9 @@ To extract interaction costs for each interface and condition, we followed the s
 \begin{itemize}
     \item{\blueboxbold{1 (Querying)} As discussed in Section~\ref{sec:csm:methodology:extracting:time}, querying is measured from when the subject focused on the query box, to the point where they submitted the query.}
     \item{\blueboxbold{2 (\gls{acr:serp} Examination)} For this particular cost, we assumed that searchers would spend time judging the overall quality of the~\gls{acr:serp} from the point at which the~\gls{acr:serp} is rendered on their screen, to the point where they begin interacting with it in any way.}
-    \item{\blueboxbold{3 (Result Summary Examination)} Considering the difficulties in estimating the depth to which subjects hovered over result summaries (discussed in Section~\ref{sec:csm:methodology:extracting:time}), we again used the click depth to estimate result summary examination times. This was achieved by taking the point at which a searcher began interacting with a~\gls{acr:serp}, to the point that they left it. This time was then divided by the subject's click depth for that particular~\gls{acr:serp}, yielding the estimation used.}
-    \item{\blueboxbold{4 (Document Examination)} A straightforward measure, this cost was determined by measuring the difference between the point at which a requested document was displayed on the subject's screen, to the point at which they left it.}
+    \item{\blueboxbold{3 (Result Summary Examination)} Considering the difficulties in estimating the depth to which subjects hovered over result summaries (discussed in Section~\ref{sec:csm:methodology:extracting:time}), we again used the click depth to estimate result summary examination times.}
+    % This was achieved by taking the point at which a searcher began interacting with a~\gls{acr:serp}, to the point that they left it. This time was then divided by the subject's click depth for that particular~\gls{acr:serp}, yielding the estimation used.
+    \item{\blueboxbold{4 (Document Examination)} This cost was determined by measuring the difference between the point at which a requested document was displayed on the subject's screen, to the point at which they left it.}
     \item{\blueboxbold{5 (Saving a Document)} \todo{The final interaction cost considered the time from which a searcher did x, to when they did y.}}
 \end{itemize}
 
@@ -411,16 +412,31 @@ Gain is acquired when a simulated searcher, having determined to examine a docum
 The means by which gain is computed in the work detailed in this thesis provides a further assumption. Gain can only be accrued from examination of a document, and subsequently saving it. This is not to say that in the real-world, searchers will not accrue gain from examination of other components, such as the result summary. This is particularly prevalent in the concept of \emph{good abandonment}~\citep{li2009good_abandonment}, where a searcher will abandon a~\gls{acr:serp} if he or she is satisfied by simply examining the information provided within result summaries, for example. We do not consider this within our simulations to simplify how gain is computed.
 
 \subsubsection{\gls{acr:serp} Level Decision Making}\label{chap:csm:method:simulation:grounding:serp}
+Previously outlined in Section~\ref{sec:csm:new_stopping}, the~\gls{acr:csm} includes an additional~\gls{acr:serp} level stopping decision point. Motivated by the \emph{information scent}\footnote{To recap, we discuss the notion of information scent in Section~\ref{sec:stopping_background:models:theoretical:ift}.} offered by a~\gls{acr:serp} (or \emph{patch}), this stopping point joins other established decision points, including snippet and session level stopping. The new decision point permits a searcher subscribing to the~\gls{acr:csm} to either \emph{enter} the~\gls{acr:serp} and begin examining result summaries in detail (if the~\gls{acr:serp}) appears to offer a good scent, or abandon the~\gls{acr:serp} if it appears to be poor, and thus save time. The remainder of this section discusses the various ways in which we implemented this new stopping decision point, allowing us to determine whether it leads to any improvements in overall search performance and better approximations to real-world searcher stopping behaviours.
 
-\todo{Mention that this comes from a scent background.}
-\todo{The scent influences your behaviour.}
-\todo{Talk about the definitoion of what a poor scent is.}
-\todo{Then talk about the probabilities, and how we extracted them.}
-\todo{Then draw the diagram explaining the probabilities.}
-\todo{From there, discuss the three strategies.}
-\todo{}
+\blueboxbold{Definition: Low vs. High Scent} First, we must define our interpretation of how the scent of a~\gls{acr:serp} was measured. We follow the work of~\cite{wu2014information_scent}, who stated that a page offering little or no relevant content could be considered to offer a low information scent. As such, our definition of a poor quality~\gls{acr:serp} is defined as $P@10=0.0$. We use this definition to delineate between \emph{good} and \emph{bad}~\glsplural{acr:serp} when considering interaction probabilities below.
 
-Previously outlined in Section~\ref{sec:csm:new_stopping}, the~\gls{acr:csm} includes a~\gls{acr:serp} level stopping decision point. This is in addition to the two established snippet level and session level stopping decision points. The additional stopping decision point allows for a searcher subscribing to the~\gls{acr:csm} to either begin examining individual result summaries for attractiveness, or abandon the presented~\gls{acr:serp} in its entirety. In this section, we provide details on how we operationalised this new stopping decision point, considering: the definitions we used for implementation; a discussion of a new set of interaction probabilities, used specifically for this stopping decision point; and a discussion of the three different approaches we implemented.
+\blueboxbold{Probability of Examination} For this new stopping decision point, we introduce the \emph{probability of examining a~\gls{acr:serp}}, or \blueboxbold{P(E)}. This determines how likely it is a searcher will \emph{enter} a~\gls{acr:serp} and begin to examine result summaries in detail. Taking this concept further, we can then consider two additional probabilities that incorporate the notion of a~\glsplural{acr:serp} information scent, yielding:
+
+\begin{itemize}
+    \item{\blueboxbold{P(E|HS)}, the probability of examining a~\gls{acr:serp} perceived to give a high information scent (i.e. a good quality~\gls{acr:serp}); and}
+    \item{\blueboxbold{P(E|LS)}, the probability of examining a~\gls{acr:serp} offering what appears to be a low information scent (i.e. a poor quality~\gls{acr:serp}).}
+\end{itemize}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch6-serp_probabilities.pdf}}
+    \caption[Computing~\gls{acr:serp} examination probabilities]{A simple illustration highlighting how the different~\gls{acr:serp} examination costs were computed. We consider both the probability of examining~\glsplural{acr:serp} yielding both high and low information scents. Definitions are used from~\cite{wu2014information_scent} and~\cite{hassan2013serp_abandonment}.}
+    \label{fig:serp_probabilities}
+\end{figure}
+
+These values were once again computed from interaction log data, derived from the two user studies discussed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. As such, we do not report values for these probabilities here; rather, we discuss how we derived them. Refer to the specific chapters for specific values over each interface and condition trialled. Intuitively however, one would expect a searcher demonstrating competency at searching for information to know when a query is returning good results, and vice versa. As such, one would expect to see a higher probability for $P(E|HS)$ than when compared to $P(E|LS)$, and would thus provide evidence that searchers do indeed attempt to avoid low quality~\glsplural{acr:serp}.
+
+As illustrated in Figure~\ref{fig:serp_probabilities}, we took each query issued from the interaction log, and extracted for each the $P@10$ score (as per~\cite{wu2014information_scent}). If $P@10=0.0$, the associated~\gls{acr:serp} for the query would have offered a low information scent. Conversely, if $P@10 > 0.0$, the information scent would have been considered to be high. For the interactions recorded on each~\gls{acr:serp}, we could then count the number that recorded no clicks (or no result summaries deemed to be attractive enough to examine further). We considered this as a definition of an \emph{abandoned~\gls{acr:serp}}, as used in previous work by~\cite{hassan2013serp_abandonment}. From these counts, we could then compute the probabilities of examining a~\gls{acr:serp}, as illustrated in Figure~\ref{fig:serp_probabilities}.
+
+\blueboxbold{Considering Browser Viewport Size}
+We now turn our attention to how a simulated searcher is able to make a judgement of the presented~\gls{acr:serp}. As we discussed previously in Section~\ref{sec:csm:new_stopping}, real-world searchers are able to infer the quality (and perhaps relevance) of a given page or~\gls{acr:serp} through the examination of various \emph{proximal cues}~\citep{chi2001information_scent}.
 
 \begin{wrapfigure}[12]{r}{0.45\textwidth}
     \begin{center}
@@ -428,29 +444,27 @@ Previously outlined in Section~\ref{sec:csm:new_stopping}, the~\gls{acr:csm} inc
     \includegraphics[width=1\textwidth]{figures/ch6-viewport.pdf}
     \end{center}
     \vspace*{-4mm}
-    \caption[Viewport cutoff example]{The~\gls{acr:serp} viewport threshold. In this example, three result summaries are visible, with two not visible within the viewport. Therefore, \emph{view\textsubscript{size}=3}. Cheers!}
+    \caption[Viewport cutoff example]{The~\gls{acr:serp} viewport threshold. In this example, three result summaries are visible, with two not visible within the viewport. Therefore, \emph{v\textsubscript{size}=3}. Cheers!}
     \label{fig:viewport_cutoff}
 \end{wrapfigure}
 
-\blueboxheader{Considering a \glsplural{acr:serp} Scent} Before we can discuss how we implemented the new stopping decision point, we must first clarify the definition we used for determining what we considered a poor quality~\gls{acr:serp}. If we consider a~\gls{acr:serp} from the perspective of~\glsfirst{acr:ift} (refer to Section~\ref{sec:stopping_background:models:theoretical:ift}), considering said~\gls{acr:serp} as a \emph{patch}, we can then consider the \emph{information scent} of the patch. For a given~\gls{acr:serp}, if $P@10=0.0$, the scent offered would be considered low. This value was suggested by~\cite{wu2014information_scent}, who stated that a~\gls{acr:serp} that returns little or no relevant content can be considered to offer a low information scent. We refer to this value as the \emph{patch threshold.}
+While we do not specifically examine different cues, instead relying on more simplistic means to operationalise the stopping decision point, we nevertheless do consider the \emph{size of the browser's viewport}. A~\gls{acr:serp} is typically larger than the viewport it is displayed within, which leads to the inclusion of scrollbars. We argue that a searcher can infer the quality of the~\gls{acr:serp} from the initial view they are presented with, and thus incorporate a \emph{viewport size} ($v_{size}$) variable in our implementations. A searcher can only judge what they can see. This variable can vary between the different interfaces we trialled -- for example, longer snippet text results in fewer result summaries being displayed in the initial view. By using a fixed-size popup window in the two user studies (as discussed in Section~\ref{sec:csm:methodology:user:interface}), we were then able to manually check the number of result summaries displayed within the popup window, and use these values to ground the new stopping decision point further.
 
-\blueboxheader{The Probability of Examining a~\gls{acr:serp}}
-These probabilities are interface/condition dependent, so we do not present them here. However, refer to the relevant Chapter for more information.
-
-\blueboxheader{Three~\gls{acr:serp} Stopping Implementations}
-We can now outline the three different strategies that we trialled for the new~\gls{acr:serp} level stopping decision point. These are enumerated below, with our baseline implementation listed first.
+\blueboxbold{Decision Point Implementations} We trialled three different implementations of the~\gls{acr:serp} level stopping decision point, providing us with the ability to determine the effect of incorporating it within the~\gls{acr:csm}. These are enumerated below, with an explanation of each.
 
 \begin{itemize}
-    \item{\blueboxbold{Always Examine (Baseline)} With this strategy, a searcher will \emph{always} enter a given~\gls{acr:serp} and examine at least one result summary (dependent upon the snippet level stopping strategy selected). This is considered as the current state-of-the-art.}
-    \item{\blueboxbold{Perfect~\gls{acr:serp} Judgements} Here, a simulated searcher will only begin to examine a~\gls{acr:serp} in detail if $P@k > 0$. If $P@k = 0$, the searcher will abandon the~\gls{acr:serp}, and then proceed to the next action as dictated by the~\gls{acr:csm}. This can be considered as the upper bound in terms of performance -- analogous to, as an example, the \emph{ideal user} of~\cite{hagen2016simulating_users}.}
-    \item{\blueboxbold{Stochastic~\gls{acr:serp} Judgements} Our third strategy uses a stochastic element to determine whether the simulated searcher should enter the~\gls{acr:serp} or not. Like above, the $P@k$ of the~\gls{acr:serp} is computed. If the~\gls{acr:serp} is deemed to be of high scent, }
+    \item{\blueboxbold{Always Examine (Baseline)} With this approach, a searcher will \emph{always enter} the~\gls{acr:serp}, and examine at least one result summary -- the exact number would be determined by the snippet level stopping strategy. This is the current state-of-the-art, and we consider this as our baseline.}
+    \item{\blueboxbold{Perfect~\gls{acr:serp} Judgements} Here, a simulated searcher will only begin to examine a~\gls{acr:serp} in detail if $P@v_{size} > 0$ (considering the viewport size). If $P@v_{size} = 0$, the searcher will abandon the~\gls{acr:serp}, and proceed to the next action as dictated by the~\gls{acr:csm}. This is the upper bound in terms of performance for the stopping decision point, and is analogous to, as an example, the \emph{ideal user} of~\cite{hagen2016simulating_users}.}
+    \item{\blueboxbold{Stochastic~\gls{acr:serp} Judgements} This implementation used a stochastic element to determine whether the simulated searcher should enter the~\gls{acr:serp} or not. Like above, the viewport size ($P@v_{size}$) of the~\gls{acr:serp} is computed. If the~\gls{acr:serp} is of high scent, $P(E|HS)$ is used to determine whether the searcher should enter the~\gls{acr:serp}. Conversely, if the~\gls{acr:serp} is considered to be of low scent, $P(E|LS)$ is used instead to determine the likelihood of abandonment. We considered three different sets of probabilities for the stochastic implementation.}
     
+    \begin{itemize}
+        \item{\blueboxbold{Average} $P(E|HS)$ and $P(E|LS)$ are estimated over all subjects of a particular interface or condition.}
+        \item{\blueboxbold{Savvy} $P(E|HS)$ and $P(E|LS)$ are estimated based upon the top 15 subjects for a particular interface/condition with the lowest $P(E|LS)$.}
+        \item{\blueboxbold{Na\"{i}ve} $P(E|HS)$ and $P(E|LS)$ are estimated based upon the top 15 subjects for a particular interface/condition with the highest $P(E|LS)$.}
+    \end{itemize}
 \end{itemize}
 
-
-
-
-extract this from the ecir paper.
+By considering these different approaches to implementing the new~\gls{acr:serp} level stopping decision point, we can then clearly identify whether it can offer improved performance and approximations of actual searcher stopping behaviours.
 
 \subsubsection{Snippet Level Stopping Strategies}\label{chap:csm:method:simulation:grounding:stopping_strats}
 enumerate the different stopping strategies.
