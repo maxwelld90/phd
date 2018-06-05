@@ -48,7 +48,7 @@ All queries submitted during experiments were also handled with the \emph{Whoosh
 
 With an index weighing in at 800MB, consisting of $128,894$ documents. \todo{What else did we do to reduce this number?} We could then issue queries against the index. All ranked results from queries were computed with the BM25 algorithm, where $\beta=0.75$. Terms in the queries issues were implicitly \texttt{AND}ed together to restrict the set of retrieved documents to those that only contained all of the query terms. This was chosen to reduce the size of the returned set -- most search systems employ such an implicit approach.
 
-\section{User Study Framework}\label{sec:method:user_study}
+\section{User Study Methodology}\label{sec:method:user_study}
 Using the document collection, topics and search engine outlined above, we now move onto discussing the common methodology used for the two user studies. These are detailed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. While intricate details of each study's methodology do indeed vary, there are nevertheless common components between both that we discuss here. As a reminder, the two studies examine how a searcher's behaviours, performance and perceived user experience varies when:
 
 \begin{itemize}
@@ -544,83 +544,48 @@ These values, as discussed previously, were used in all simulations to provide a
 Like in the user studies, we imposed different constrains upon the simulated searchers to keep the comparisons as fair as possible. For example, in Chapter~\ref{chap:snippets}, a session time constraint of ten minutes was imposed, as per the user study. The total time spent by a simulated searcher could be then computed, for example, by summating the interaction costs a simulated searcher had accrued up until a given point. These constraints are discussed in more detail in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.
 
 \subsection{Simulation Runs and Evaluation}\label{chap:csm:method:sim:runs}
-two research questions: how do we do this?
+Having now discussed how all of the various components of the~\gls{acr:csm} and the \simiir~framework were instantiated for our simulations, we now move to a discussion of how we ran the simulations. We also provide a brief discussion of our evaluation approach. Our simulation runs are based upon the two research questions posed back in Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs}. As such, we considered two different sets of simulation runs. 
 
-note that we have an interaction log for each simulation configuration trialled, similar to the interaction log shown in the previous section.
+\begin{itemize}
+    \item[]{\blueboxbold{HL-RQ3a} \emph{Given the operationalised stopping strategies outlined in Chapter~\ref{chap:strategies}, how well do simulated searchers using these strategies perform?} To address this question, we propose a series of \blueboxbold{performance runs} that allow us to determine the best overall level of performance that can be attained using a particular configuration of simulated searcher.}
+    \item[]{\blueboxbold{HL-RQ3b} \emph{How closely do the operationalised stopping strategies compare to the stopping behaviours of real-world searchers?} To address this second research question, we also propose a series of \blueboxbold{comparison runs} that instead focus upon how closely different configurations of simulated searcher approximate the stopping depth of real-world searchers.}
+\end{itemize}
+
+- simulations fit into the broader framework as shown in Figure~\ref{}.
+- of note is the generation of an interaction log for each simulation configuration trialled, with a series of scripts that then convert this to a summary which we can then analyse and report.
+- the figure also provides a visual illustration of the difference between the two sets of runs, which we discuss in detail below.
 
 \subsubsection{Performance Runs}
+
+- examine the overall performance of each configuration.
+- 
+
+
+
 mention that performance runs discuss the stuff above, over the 50 topics.
 queries generated via the querying strategies.
 
+
+
+
 \subsubsection{Comparison Runs}
+Rather than focus on the overall performance attained by simulated searchers, this set of simulations focuses instead on making a fair comparison between the simulated searcher and real-world counterparts. As such, we follow the same approach as the general methodology explained above, except for two key differences, which:
+
+\begin{itemize}
+    
+    \item{consider only the \blueboxbold{four topics} used within the user studies; and}
+    \item{\blueboxbold{replaying the queries} issued by the real-world subjects, rather than generating them through a querying strategy.}
+    
+\end{itemize}
+
 we do the same, but this time only over four topics, and replaying the different
 
+\blueboxheader{Comparing Simulated Searchers and Real-World Searchers}
+As discussed previously, comparisons are made between the \emph{average} behaviours exhibited by the two, rather than on a per-searcher basis. This average is considered across each interface and condition trialled over the two user studies.
+
 \section{Chapter Summary}
+In this chapter, we have provided an overview of the \emph{general methodology} that is used throughout the empirical work of this thesis. As we report on two separate user studies in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}, this chapter provides an overview of the common approaches followed, with unique aspects discussed in the appropriate chapter.
 
+In order to tackle the research questions posed in Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs}, our general methodology was to first undertake a \blueboxbold{user study} that captured a variety of different behavioural, performance and user experience measures, as discussed in Section~\ref{sec:method:user_study}. The data derived from this user study was then used to ground a series of complex \blueboxbold{simulations of interaction}, attempting to mimic the behaviours exhibited by the real-world user study subjects. After discussing how we instantiated each of the different components of the~\gls{acr:csm} and \simiir~framework, we then concluded the chapter with a discussion on the two sets of simulation runs trialled, allowing us to address research questions \blueboxbold{HL-RQ3a} and \blueboxbold{HL-RQ3b}.
 
-
-% - why do the simulations again?
-% - continues discussion from background chapter.
-%
-% - in this section we detail...
-%     - how we ground the simulations from prior user study data
-%     - how we instantiated the different components of the CSM for experimentation
-%
-%     and then
-%
-%     - discuss how we did the two different types of run, allowing us to address our two research questions.
-%
-%
-% Simulation as defined earlier is a good means for experimentation.
-% Low cost, always use the same users, no issue of learning bias, etc.
-%
-% EXPLORE how people's behaviours change
-%
-% - set up the probabilities
-% - instantiate the components
-%
-% - pick a topic set
-% - pick a corpus
-% - basic structure of the methodology from previous papers
-%
-% Probabilities - From this raw data, we could then produce summaries of a search session, producing summarising measures such as the number of documents examined by searchers per query that they issued. We could also calculate from the log data probabilities of interaction, including a given subject’s probability of clicking a result sum- mary link, given that it was TREC relevant (P(C|R)) or TREC non- relevant (P (C |N )) – or the probability of marking a document that was clicked, given it was either TREC relevant (P(M|R)) or TREC non-relevant (P (M |N )). Actions such as hover depth over result summaries were inferred from the movement of the mouse cursor, which in prior studies has been shown to correlate strongly with the user’s gaze on the screen [7, 44].
-
-% \subsubsection{Query Generation}
-% - What approaches have been taken for query generation?
-% - Apart from the basic TREC one.
-%
-% - Azzopardi, Jordan, etc...
-%
-% - In this thesis, we consider one other different query generation component.
-% - Keskustalo 2009 proposed a series of idealised, prototypical querying strategies.
-%
-% - These offer good approximations to what actual searchers did in an actual user study, so we employ these.
-%
-% \subsubsection{Probabilities of Interaction and Cost}
-%
-%
-% Snippets are not always informative, and of the searcher does not understand or overlooks their relevance~\citep{turpin2009summaries}.
-%
-%
-%
-% \subsubsection{Gain}
-%
-%
-% \subsubsection{Stopping}
-
-% \subsection{Grounding the Simulations}\label{chap:csm:method:simulation:grounding}
-%
-% \subsection{Instantiating the Simulations}
-%
-% \subsection{Performance Runs}
-%
-% \subsection{Comparison Runs}
-%
-% \section{Evaluation of Simulations}\label{chap:csm:method:evaluation}
-% - how do we evaluate how good the system performs?
-% - how do we work out which one approximates best? on average.
-%
-% \subsection{Determining Simulated User Performance}
-%
-% \subsection{Comparing Simulated and Real-World Subjects}
-
+With the conclusion of this chapter, all the necessary groundwork has been laid to present the results of our user studies and simulations, which we begin in Part~\ref{part:context}.
