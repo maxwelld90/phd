@@ -128,6 +128,8 @@
 \newcommand{\darkblueboxbold}[1]{\colorbox{dmax_darkblue}{\color{white}\headerfont#1}}
 \newcommand{\blueboxheader}[1]{\noindent\blueboxbold{#1}}
 
+\newcommand{\stoppingstratbox}[2]{\blueboxbold{#1}\darkblueboxbold{@#2}}
+
 % Set fonts -- main narrative font to Palatino (fancy serif) and FoundrySterling for the meta stuff.
 % Palatino is set as the math font by including package pxfonts.
 \setmainfont{Palatino}

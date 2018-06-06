@@ -212,7 +212,7 @@ It should be noted that in this thesis, \blueboxbold{we report all durations in 
 
 One further point worthy of note was how we computed the time spent examining each result summary. The per result summary time was approximated by taking the total time spent on a given~\gls{acr:serp}, and dividing that value by the click depth that was reached on that~\gls{acr:serp}. This was originally computed by summing up the time spent hovering over results with the subject's mouse cursor, as this was shown in prior studies to correlate strongly with the user's gaze on the screen~\citep{chen2001mouse_cursor, smucker2014judging_relevance_movements}. However, issues with network latency meant that several of the hover events were logged in the incorrect order, making such an approach unviable. Using the click depth and total~\gls{acr:serp} time provided us with an approximation with which to work with. However, the approximation also makes an assumption that subjects examined each result summary on a~\gls{acr:serp}, up until a particular depth, for an equal period of time. This was sufficient for the work in our study to ascertain whether or not a variation in the task goal or presentation of results affected search depths.
 
-\subsection{Performance Measures}
+\subsection{Performance Measures}\label{sec:csm:methodology:extracting:performance}
 As previously discussed, we were also able to extract a number of different performance measures from the interaction logs, too. Using the raw data from the logs, we could then, in conjunction with our set of~\gls{acr:trec} QRELs, compute a number of performances measures.\footnote{Some measures were computed with the \texttt{trec\_eval} evaluation tool, discussed in Section~\ref{sec:ir_background:basics:cranfield:trec}.} Key performance measures that we captured included:
 
 \begin{itemize}
@@ -464,12 +464,12 @@ While we do not specifically examine different cues, instead relying on more sim
     \end{itemize}
 \end{itemize}
 
-By considering these different approaches to implementing the new~\gls{acr:serp} level stopping decision point, we can then clearly identify whether it can offer improved performance and approximations of actual searcher stopping behaviours.
+By considering these different approaches to implementing the new~\gls{acr:serp} level stopping decision point, we can then clearly identify whether it can offer improved performance and approximations of actual searcher stopping behaviours. \todo{Do we need to do 10 trials for the stochastic components here, too?}
 
 \subsubsection{Snippet Level Stopping Strategies}\label{chap:csm:method:simulation:grounding:stopping_strats}
 In Chapter~\ref{chap:strategies}, we detailed thirteen different stopping strategies, operationalised from various stopping heuristics and commonly used measures in~\gls{acr:ir}. Here, we once again enumerate each of the different stopping strategies, discussing what stopping threshold values that we trialled for each. For several stopping strategies, values need to be approximated from real-world interaction data (such as, for example, the~\gls{acr:rbp} patience factor). As such, many of these values were approximated from the user study detailed in Chapter~\ref{chap:snippets}, and used for all simulation experimentation. The values we ascertained were of most interest as they offer close approximations to what real-world searchers actually did.
 
-Each of the stopping strategies, along with threshold values trialled, are enumerated below.
+Each of the stopping strategies, along with threshold values trialled, are enumerated below. Threshold variables are named \blueboxbold{x\textsubscript{n}}, were $n$ is the stopping strategy number. In the remainder of the thesis, we use the @ symbol to denote a particular stopping strategy with a particular threshold value, as illustrated in the front matter. For example, \stoppingstratbox{SS1-FIX}{3} represents stopping strategy \blueboxbold{SS1-FIX} with its associated threshold parameter set to $x_1=3$.
 
 \begin{itemize}
     
@@ -544,52 +544,94 @@ These values, as discussed previously, were used in all simulations to provide a
 Like in the user studies, we imposed different constrains upon the simulated searchers to keep the comparisons as fair as possible. For example, in Chapter~\ref{chap:snippets}, a session time constraint of ten minutes was imposed, as per the user study. The total time spent by a simulated searcher could be then computed, for example, by summating the interaction costs a simulated searcher had accrued up until a given point. These constraints are discussed in more detail in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.
 
 \subsection{Simulation Runs and Evaluation}\label{chap:csm:method:sim:runs}
-Having now discussed how all of the various components of the~\gls{acr:csm} and the \simiir~framework were instantiated for our simulations, we now move to a discussion of how we actually ran the simulations. We also provide a brief discussion of our evaluation approach. The simulations runs were based upon the two research questions posed back in Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs}. As such, we considered two different sets of runs.
+Having now discussed how all of the various components of the~\gls{acr:csm} and the \simiir~framework were instantiated for our simulations, we now move to a discussion of how we actually ran the simulations.
+
+With two key research questions regarding the empirical work discussed in this thesis, we designed and executed two different sets of simulation runs in order to address them.
 
 \begin{itemize}
-    \item[]{\blueboxbold{HL-RQ3a} \emph{Given the operationalised stopping strategies outlined in Chapter~\ref{chap:strategies}, how well do simulated searchers using these strategies perform?} To address this question, we propose a series of \blueboxbold{performance runs} that allow us to determine the best overall level of performance that can be attained using a particular configuration of simulated searcher.}
-    \item[]{\blueboxbold{HL-RQ3b} \emph{How closely do the operationalised stopping strategies compare to the stopping behaviours of real-world searchers?} To address this second research question, we also propose a series of \blueboxbold{comparison runs} that instead focus upon how closely different configurations of simulated searcher approximate the stopping depth of real-world searchers.}
+    \item[]{\blueboxbold{HL-RQ3a} \emph{Given the operationalised stopping strategies outlined in Chapter~\ref{chap:strategies}, how well do simulated searchers using these strategies perform?}}
+    
+    \item[]{To address this question, we propose a series of \blueboxbold{performance runs} that allow us to determine the best overall level of performance that can be attained using a particular configuration of simulated searcher, via a large number of \emph{what-if} scenarios.}
+    
+    \item[]{\blueboxbold{HL-RQ3b} \emph{How closely do the operationalised stopping strategies compare to the stopping behaviours of real-world searchers?}}
+    
+    \item[]{To address this second research question, we also propose a series of \blueboxbold{comparison runs} that instead focus upon how closely different configurations of simulated searcher approximate the stopping depth of real-world searchers.}
 \end{itemize}
 
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch6-sim_evaluation.pdf}}
-    \caption[Sim Evaluation]{Evaluation Framework}
+    \caption[The wider evaluation framework]{How the two sets of simulations, represented as dark blue boxes, fit within the wider experimentation framework as discussed in this chapter. The illustration also shows what components address the two high level research questions, \blueboxbold{HL-RQ3a} and \blueboxbold{HL-RQ3b}.}
     \label{fig:sim_evaluation}
 \end{figure}
 
-- simulations fit into the broader framework as shown in Figure~\ref{}.
-- of note is the generation of an interaction log for each simulation configuration trialled, with a series of scripts that then convert this to a summary which we can then analyse and report.
-- the figure also provides a visual illustration of the difference between the two sets of runs, which we discuss in detail below.
+These simulations fit within the wider experimental framework discussed in this chapter, illustrated in Figure~\ref{fig:sim_evaluation}. Within the figure, we can see the link between the user studies and the two sets of simulations (highlighted with \darkblueboxbold{dark blue} boxes) via the act of \emph{grounding.} The illustration also provides linkage between the simulations, and the two sets of analyses that are undertaken -- the performance analysis, addressing \blueboxbold{HL-RQ3a}, and the behaviour comparison analysis that addressing \blueboxbold{HL-RQ3b}. The performance analysis is an examination of the hundreds of different possible simulation configurations, allowing us to explore how performance varies through \emph{what-if} simulations (refer to Section~\ref{sec:ir_background:user:simulation}). In all, this process is \textbf{\color{dmax_red} repeated twice}, once per user study, as shown in the illustration. We discuss the two different sets of simulations that address research questions \blueboxbold{HL-RQ3a} and \blueboxbold{HL-RQ3b} in Sections~\ref{chap:csm:method:sim:runs:performance} and~\ref{chap:csm:method:sim:runs:comparison} respectively.
 
-\subsubsection{Performance Runs}
+One point that has not been discussed is highlighted in Figure~\ref{fig:sim_evaluation}. When executed, the simulations, employing the \simiir~framework, are saved to a series of different interaction log files. Employing the same basic structure as the real-world interaction log file illustrated in Figure~\ref{fig:log} on page~\pageref{fig:log}, the similarity between the real-world and simulated logs allowed for the same parsing infrastructure to be used with minimal changes.
 
-- examine the overall performance of each configuration.
-- 
+\subsubsection{Performance Runs}\label{chap:csm:method:sim:runs:performance}
+Named as a series of \emph{what-if} simulations above, the performance runs instantiate the different components of the~\gls{acr:csm} and \simiir~framework as previously discussed throughout Section~\ref{chap:csm:method:simulation:grounding}. Using the grounded interaction probabilities and costs, these simulations were trialled over the 50 individual topics of the~\gls{acr:trec} 2005 Robust Track~\cite{voorhees2006trec_robust}, with queries generated via the two querying strategies outlined in Section~\ref{chap:csm:method:simulation:grounding:querying}. All in all, this provided us with a wealth of simulated interaction data from which we could calculate a series of averages over the different trials experimented. As illustrated in the example figure below, we then computed the various performance measures (unless otherwise stated) over each simulated searcher configuration, taking an average over each of the 50 topics.
 
+\begin{figure*}[h]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \vspace*{5mm}
+    \includegraphics{figures/ch6-performance.pdf}}
+    \vspace*{-6mm}
+\end{figure*}
 
+This example illustrates a single configuration of simulated searcher, using: querying strategy \blueboxbold{QS13}; the \blueboxbold{Always} (baseline)~\gls{acr:serp} examination strategy;
+\stoppingstratbox{SS1-FIX}{1}; all while examining~\gls{acr:trec} topic \textnumero~303, all of which were in turn executed over ten trials. This meant that over one individual simulated search configuration, a total of $500$ simulation trials were required. Section~\ref{chap:csm:method:simulation:grounding:judgements} provides an explanation as to why these trials were required.
 
-mention that performance runs discuss the stuff above, over the 50 topics.
-queries generated via the querying strategies.
+Given the name performance runs, we primarily examined the performance of each simulated searcher trialled. While examining the performance of queries (via the measures outlined previously in Section~\ref{sec:csm:methodology:extracting:performance}), we also examined measures illustrated in the figure above, primarily mean level of~\gls{acr:cg} attained by each simulated searcher, and the mean \blueboxbold{depth per query (D/Q)}.
 
+\gls{acr:cg} was discussed in passing in Section~\ref{chap:csm:method:simulation:grounding:gain}. For our simulations, we consider the~\gls{acr:cg} as the amount of gain accrued over the \emph{course of a search session} -- which, by definition, can entail more than a single query. A more effective series of stopping strategies, that are better at stopping a simulated searcher examining poor quality~\glsplural{acr:serp} in any great depth, will therefore provide higher levels of~\gls{acr:cg}, but only if the queries issued offer good performance. Similarly, an effective~\gls{acr:serp} level stopping decision point implementation will stop the searcher from examining a poor~\gls{acr:serp} in the first instance, leaving more time to examine~\glsplural{acr:serp} that could potentially offer more relevant results.
 
+The other major measure used in our performance measures was the depth per query. With this measure, performance is not measured, but rather the stopping behaviour of the simulated searchers. As shown in the illustration below, a fictional search session consists of three queries, $Q_0$, $Q_1$ and $Q_2$.
 
+\begin{figure*}[h]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \vspace*{5mm}
+    \includegraphics{figures/ch6-dq.pdf}}
+    \vspace*{-6mm}
+\end{figure*}
 
-\subsubsection{Comparison Runs}
-Rather than focus on the overall performance attained by simulated searchers, this set of simulations focuses instead on making a fair comparison between the simulated searcher and real-world counterparts. As such, we follow the same approach as the general methodology explained above, except for two key differences, which:
+In the example, a simulated searcher examines to a depth of $2$ for $Q_0$, and a depth of $1$ for $Q_2$. The searcher does not even enter the associated~\gls{acr:serp} for $Q_1$, as the~\gls{acr:serp} level stopping decision point prevents the searcher from examining result summaries in detail. This resultant $D/Q$ for the search session is therefore $1$.
+
+\subsubsection{Comparison Runs}\label{chap:csm:method:sim:runs:comparison}
+Rather than focus upon the overall performance attained by simulated searchers under different scenarios, the second set of simulations we ran focused on comparing simulated searcher behaviours against their real-world counterparts. As such, the simulations for this set were run with minor differences in order to improve the ability for comparing the two populations of searchers -- both simulated and real-world. The first difference considered the querying component of the simulations:
 
 \begin{itemize}
-    
-    \item{consider only the \blueboxbold{four topics} used within the user studies; and}
-    \item{\blueboxbold{replaying the queries} issued by the real-world subjects, rather than generating them through a querying strategy.}
-    
+    \item{rather than considering the issuance of simulated queries via a querying strategy, we instead took the queries from the associated user study, and issued each one in turn. In effect, we \blueboxbold{replayed} all real-world queries issued.}
 \end{itemize}
 
-we do the same, but this time only over four topics, and replaying the different
+Following the real-world queries, we improved the realism of our simulations yet further. Queries were extracted from those issued over each individual interface and condition trialled. This also provided us with the ability to perform a direct comparison on searcher behaviour at a query level, rather than across an entire search session. However, this limited our simulations, in that:
 
-\blueboxheader{Comparing Simulated Searchers and Real-World Searchers}
-As discussed previously, comparisons are made between the \emph{average} behaviours exhibited by the two, rather than on a per-searcher basis. This average is considered across each interface and condition trialled over the two user studies.
+\begin{itemize}
+    \item{we considered only the \blueboxbold{four~\gls{acr:trec} topics} trialled in the user studies; the remaining 46 topics were not considered in this set of simulations.}
+\end{itemize}
+
+This was due to the fact that we only had real-world query data for the four sessions trialled in the user studies. We once again ran a simulated searcher for each different configuration, over every query issued. Ten trials were once again used, as explained in Section~\ref{chap:csm:method:simulation:grounding:judgements}.
+
+To perform our comparisons with the real-world searchers and simulated searchers, we used the \blueboxbold{Mean Squared Error (MSE)} to compute the difference between the two. For this, our calculations were performed between the click depth of the real-world searchers over each query, and taking the simulated click depths. Simulated click depths are defined as the depth of the last document that was considered attractive enough to examine on a given simulated~\gls{acr:serp}. Considering each of simulated searcher (i.e. a combination of~\gls{acr:serp} level stopping component and snippet level stopping strategy and threshold), we could then produce a table of click depths, as provided in the example below.
+
+\begin{figure*}[h]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \vspace*{5mm}
+    \includegraphics{figures/ch6-mse.pdf}}
+    \vspace*{-6mm}
+\end{figure*}
+
+In the above, \emph{Sim. x} represents the mean value of a particular simulated searcher configuration, with the mean taken over the different simulated trials. This is the same concept as discussed previously in Section~\ref{chap:csm:method:sim:runs:performance}. For each query, the real-world click depth is shown, along with the simulated click depth from each simulated searcher trialled. The cells highlighted in light blue show what is being compared on each row -- for instance, for query $Q_0$, the real-world click depth of $5$ is compared against the \emph{Sim. 1} click depth of $3$. Considering the MSE value between the two, using the following formula:
+
+\begin{equation*}
+MSE = (\theta - \hat{\theta})^{2},
+\end{equation*}
+
+where $\theta$ denotes the real-world click depth, and $\hat{\theta}$ denotes the click depth approximation, we arrive at a MSE value of $4$. The closer the MSE value is to $0$, the better the approximation given. As such, in the above example, the compared values for $Q_1$ offer the best approximation of the actual stopping depth of the searcher. The above is just for illustration: we considered every simulated searcher, over every query. After each MSE value had been calculated, this could then be used to plot the mean depth per query across a variety of different stopping strategies. Recall, for example, that \blueboxbold{SS1-FIX} considers the stopping depth across a range of parameter values, with the parameter denoting the stopping depth. The higher this value, the greater the depth per query that will be attained. At each point, with a MSE value, we then are able to determine which stopping threshold offers the best approximation of stopping behaviour, for that particular stopping strategy.
 
 \section{Chapter Summary}
 In this chapter, we have provided an overview of the \emph{general methodology} that is used throughout the empirical work of this thesis. As we report on two separate user studies in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}, this chapter provides an overview of the common approaches followed, with unique aspects discussed in the appropriate chapter.
