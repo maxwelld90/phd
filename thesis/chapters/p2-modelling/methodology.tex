@@ -544,12 +544,20 @@ These values, as discussed previously, were used in all simulations to provide a
 Like in the user studies, we imposed different constrains upon the simulated searchers to keep the comparisons as fair as possible. For example, in Chapter~\ref{chap:snippets}, a session time constraint of ten minutes was imposed, as per the user study. The total time spent by a simulated searcher could be then computed, for example, by summating the interaction costs a simulated searcher had accrued up until a given point. These constraints are discussed in more detail in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.
 
 \subsection{Simulation Runs and Evaluation}\label{chap:csm:method:sim:runs}
-Having now discussed how all of the various components of the~\gls{acr:csm} and the \simiir~framework were instantiated for our simulations, we now move to a discussion of how we ran the simulations. We also provide a brief discussion of our evaluation approach. Our simulation runs are based upon the two research questions posed back in Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs}. As such, we considered two different sets of simulation runs. 
+Having now discussed how all of the various components of the~\gls{acr:csm} and the \simiir~framework were instantiated for our simulations, we now move to a discussion of how we actually ran the simulations. We also provide a brief discussion of our evaluation approach. The simulations runs were based upon the two research questions posed back in Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs}. As such, we considered two different sets of runs.
 
 \begin{itemize}
     \item[]{\blueboxbold{HL-RQ3a} \emph{Given the operationalised stopping strategies outlined in Chapter~\ref{chap:strategies}, how well do simulated searchers using these strategies perform?} To address this question, we propose a series of \blueboxbold{performance runs} that allow us to determine the best overall level of performance that can be attained using a particular configuration of simulated searcher.}
     \item[]{\blueboxbold{HL-RQ3b} \emph{How closely do the operationalised stopping strategies compare to the stopping behaviours of real-world searchers?} To address this second research question, we also propose a series of \blueboxbold{comparison runs} that instead focus upon how closely different configurations of simulated searcher approximate the stopping depth of real-world searchers.}
 \end{itemize}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch6-sim_evaluation.pdf}}
+    \caption[Sim Evaluation]{Evaluation Framework}
+    \label{fig:sim_evaluation}
+\end{figure}
 
 - simulations fit into the broader framework as shown in Figure~\ref{}.
 - of note is the generation of an interaction log for each simulation configuration trialled, with a series of scripts that then convert this to a summary which we can then analyse and report.
