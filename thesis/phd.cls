@@ -369,7 +369,7 @@
     \vskip 1cm
     {\Large\singlespacing\noindent A thesis submitted for the degree of\\\textbf{\emph{Doctor of Philosophy (PhD)}}\par}
     \begin{bottompar}
-    {\singlespacing\large\noindent\textcopyright~David Maxwell}
+    {\singlespacing\large\noindent\textcopyright~David Martin Maxwell}
     \end{bottompar}
 
     \vfill
