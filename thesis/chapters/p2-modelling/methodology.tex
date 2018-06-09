@@ -517,7 +517,7 @@ Next are the stopping strategy based upon optimal foraging behaviour.
     
 \end{itemize}
 
-Two result summaries were chosen for the following reason. If the first document was non-relevant, the searcher would always stop. We found that basing the estimate on two result summaries was much less sensitive and resulted in better performance.
+Two result summaries were chosen for the following reason. If the first document was non-relevant, the searcher would always stop. We found that basing the estimate on two result summaries was much less sensitive and resulted in better performance. \todo{Explain this better. What about the rate of gain for different topics?}
 
 Next, we consider the time-based stopping strategies. These values were grounded from the user study discussed in Chapter~\ref{chap:snippets}. We apply these values to the study in Chapter~\ref{chap:diversity} for a fairer comparison.
 
@@ -639,3 +639,5 @@ In this chapter, we have provided an overview of the \emph{general methodology} 
 In order to tackle the research questions posed in Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs}, our general methodology was to first undertake a \blueboxbold{user study} that captured a variety of different behavioural, performance and user experience measures, as discussed in Section~\ref{sec:method:user_study}. The data derived from this user study was then used to ground a series of complex \blueboxbold{simulations of interaction}, attempting to mimic the behaviours exhibited by the real-world user study subjects. After discussing how we instantiated each of the different components of the~\gls{acr:csm} and \simiir~framework, we then concluded the chapter with a discussion on the two sets of simulation runs trialled, allowing us to address research questions \blueboxbold{HL-RQ3a} and \blueboxbold{HL-RQ3b}.
 
 With the conclusion of this chapter, all the necessary groundwork has been laid to present the results of our user studies and simulations, which we begin in Part~\ref{part:context}.
+
+\todo{For SS8, we need to consider the per-topic average rate of gain, I think. What about the goal-based session stopping thing? Do we need a little subsection in there, too, to explain that? We consider - time based, and - goal-based. So that is where stopping strategy 4 is used on a session-wide basis.}
