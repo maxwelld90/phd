@@ -77,7 +77,7 @@ During the course of a search session, searchers may encounter the same document
 \cite{cooper1973retrieval_effectiveness_ii} highlights the above as one way of operationalising such a stopping strategy: by providing a pre-determined number of documents to stop at. The other approach, which we do not consider in this thesis, would be to allow a searcher to find a series of documents, then go back and count. Such an approach seems unnatural, with the former approach simulating a form of goal-based task. By varying the number of non-relevant documents to stop at, one will be able to attain a better understanding of how performance and searcher behaviours differ.
 
 \subsection{Goal/Satisfaction Based}
-Analogous to frustration and disgust are the satisfaction and satiation based~\citep{simon1955satiation} stopping heuristics. Rather than focus on the frustration or disgust that a searcher might experience when confronted with unattractive result summaries, satisfaction based rules -- explained in Section~\ref{sec:stopping_background:heuristics:judgement:satisfaction_frustration} -- consider a searcher encountering a number of \emph{attractive} result summaries before deciding to stop.
+Analogous to frustration and disgust are the satisfaction, satiation and number based~\citep{simon1955satiation, gibbs1958number_rule} stopping heuristics. Rather than focus on the frustration or disgust that a searcher might experience when confronted with unattractive result summaries, satisfaction based rules -- explained in Section~\ref{sec:stopping_background:heuristics:judgement:satisfaction_frustration} -- consider a searcher encountering a number of \emph{attractive} result summaries before deciding to stop.
 
 \begin{itemize}
     \item{\stoppingstratboxsingular{SS4} A searcher using this stopping strategy will stop examining content after encountering $x_4$ attractive result summaries.}
@@ -93,7 +93,6 @@ The next stopping strategy proposed considers a combination of the frustration/d
 \end{itemize}
 
 Note that we consider only a searcher's total tolerance to non-relevance, meaning that \stoppingstratboxsingular{SS2} is used. This was because such a strategy was shown to offer better performance in prior work by~\cite{maxwell2015stopping_strategies}. As such, to reduce the number of stopping strategies used, we follow this approach.
-
 
 \section{Difference Threshold}
 The next set of stopping strategies are based upon the difference threshold heuristic, as outlined in Section~\ref{sec:stopping_background:heuristics:judgement:difference} on page~\pageref{sec:stopping_background:heuristics:judgement:difference}. To operationalise this stopping heuristic, we considered the difference between the text of a result summary's snippet, and the snippet text of previously examined summaries. Here, the idea was that as a simulated searcher examined result summaries on a~\gls{acr:serp}, they may encounter one that is not sufficiently different from what they had already observed. The rationale behind this decision is that searchers would then be more unlikely to find new information~\citep{nickles1995judgment}. The searcher, when encountering this result summary, would then stop and move to the next action as dictated by the~\gls{acr:csm}.
@@ -114,7 +113,7 @@ For both \stoppingstratboxsingular{SS6} and \stoppingstratboxsingular{SS7}, we c
 
 A number of other additional variants were also considered but not explored, such as using the document and snippet text, and using only text from result summaries considered relevant. To compute the KL-Divergence, we used a \emph{Maximum Likelihood Estimate (MLE)} of the term distribution given the new result summary text, and all the previously examined summaries. We also explored smoothing the distribution with the probabilities of each collection used. However, this approach was not considered further; performance was not increased, only complexity.
 
-\section{\gls{acr:ift} and Optimal Foraging}
+\section{Instantaneous Intake}\label{sec:strategies:ift}
 In Section~\ref{sec:stopping_background:models:theoretical:ift}, we discussed~\gls{acr:ift}, highlighting the \emph{optimal stopping point} at which a forager, as suggested by the underlying models of~\gls{acr:ift}. This is calculated by observing the forager's \emph{average rate of gain} -- if the value of what knowledge they gain drops below this threshold, the searcher will stop, as illustrated in~\ref{fig:ift_stopping} on page~\pageref{fig:ift_stopping}. This was labelled the \emph{instantaneous intake heuristic} in Section~\ref{sec:stopping_background:models:theoretical:ift}. As such, we now propose an eighth snippet level stopping strategy based upon this notion of the average rate of gain accrued by a forager (or searcher).
 
 \begin{itemize}
@@ -126,44 +125,36 @@ To determine the rate of gain at a given result summary at rank $i$, we first co
 The estimate computed was very dependent upon the first document in the ranked list. For examine, if judged to be non-relevant, the searcher would gain $0$. The simulated searcher would then immediately stop when $x_8 > 0$. To counter this, we also considered an additional parameter which specified how many result summaries the searcher should \emph{always} examine before making a decision based upon the rate of gain.\footnote{This parameter was set to 2 for all experiments discussed in this thesis -- refer to Section~\ref{chap:csm:method:simulation:grounding:stopping_strats}.} The would essentially mean that a searcher employing \stoppingstratboxsingular{SS8} would look at a minimum of $y_8$ result summaries (and documents), and then begin to make decisions as to whether they should continue with the current query.
 
 \section{Time-Based Strategies}\label{sec:strategies:time}
-
-% Move the first few paragraphs to the stopping background chapter.
-% Then you can say that the alternatives are discussed there, and here we operationalise some of them.
-
-Approximating the instantaneous intake heuristic can be difficult -- the above stopping strategy is one possible implementation of such. Other researchers that have studied Foraging Theory~\citep{stephens1986foraging_theory} have attempted to approximate the theorem from different perspectives. For example, 
-
-
-
-More directly connected to stopping is the Information Patch Model~\cite{pirolli1999ift} which is derived from Optimal Foraging Theory. The stopping rule from Foraging Theory is based on Charnov's Maximal Marginal Theorem~\cite{charnov1976mvt}, which states that when the rate of gain within the patch falls below the average rate of gain in the environment then the forager will stop (see Figure~\ref{fig:ift_patch}). This lead to the \emph{instantaneous intake} rule, where a forager will leave when their rate of gain falls below a given threshold (refer to Figure~\ref{fig:ift_patch}). However, it is often difficult to operationalize this rule/theorem in practice. Instead several other stopping rules that influence patch leaving decisions have been developed in Foraging Theory ~\citet{stephens1986foraging_theory}, which approximate the theorem. These  include: the \emph{number rule}~\cite{gibbs1958number_rule}, where a forager stops after finding $n$ prey (similar to the satisfaction~\cite{cooper1973retrieval_effectiveness} and satiation rules~\cite{kraft1979stopping_rules}); the \emph{time rule}~\cite{krebs1973time_rule}~\cite{charles1972behaviour}, where a forager stops after $x$ seconds; the \emph{leave after an $x$} rule~\cite{krebs1974leave_after_rule}, where a forager would stop after $x$ seconds of unsuccessfully finding anything. A study of different \emph{patch types} (i.e. where the density of prey varies), was conducted by~\citet{mcnair1982gut_mvt} who found that across different patch types, different stopping rules worked better in different environments~\cite{mcnair1982gut_mvt, green1984oft_stopping, iwasa1981prey_distribution}. Consequently, a combination rule was devised where in a patch that is fruitful early on, a satisfaction/satisficing rule would perform well; otherwise employing the leave after $x$ rule would work best. In this paper, we develop several new stopping strategies based on these rules from Optimal Foraging Theory and also introduce a SERP level stopping decision component that considers the information scent of the page before examining the snippets in detail.
-
-The next two strategies are based on the \emph{time} rule and the \emph{Giving Up} rule~\cite{gibbs1958number_rule}:
+In Section~\ref{sec:stopping_background:models:theoretical:ift}, we discussed the instantaneous intake heuristic, from which defined a stopping strategy as proposed in Section~\ref{sec:strategies:ift}. A number of different additional stopping heuristics that influence patch leaving have been developed as part of Foraging Theory~\citep{stephens1986foraging_theory}. We consider the \emph{time-based} approaches that have been proposed in the literature, creating two additional stopping strategies.
 
 \begin{itemize}
-    \item[\blueboxbold{SS9}] Employing this stopping strategy, a searcher will leave a SERP after $x_9$ seconds have elapsed from first entering it.
+    \item{\stoppingstratboxsingular{SS9} Based upon the time heuristic, a simulated searcher using this stopping strategy will abandon a~\gls{acr:serp} after $x_9$ seconds have elapsed since they entered it.}
+    
+    \item{\stoppingstratboxsingular{SS10} A searcher will abandon a presented~\gls{acr:serp} $x_{10}$ seconds after the last document was considered relevant to the given information need.}
 \end{itemize}
+
+Given these definitions, \stoppingstratboxsingular{SS9} is not particularly adaptive based upon the quality of the presented~\gls{acr:serp} -- a searcher using this stopping strategy will always abandon the~\gls{acr:serp} after the predetermined period of time. \stoppingstratboxsingular{SS10} offers a more adaptive solution, basing the time at which the~\gls{acr:serp} is abandoned upon the last document that was considered relevant.
+
+For this thesis, we also consider the combination heuristic proposed by~\cite{mcnair1982gut_mvt}. The stopping strategy that we propose based upon this heuristic assumes that a searcher has been able to acquire an idea of how potentially relevant summaries \emph{distributed} across the results presented within the~\gls{acr:serp}.
 
 \begin{itemize}
-    \item[\blueboxbold{SS10}] A searcher employing this strategy will stop after $x_10$ seconds have elapsed since a snippet judged to be relevant was found. If no relevant items have been encountered on the given SERP, then the searcher will stop after $x_9$ seconds have elapsed since arriving at the SERP.
+    \item{\stoppingstratboxsingular{SS11} When encountering a~\gls{acr:serp} expected to yield a high volume of relevant content early on (high scent), a searcher will employ the satisfaction stopping strategy \stoppingstratboxsingular{SS4}. If the~\gls{acr:serp} however yields relevant items over greater depths, or is judged to be of poor quality (low scent), the giving-up stopping strategy, \stoppingstratboxsingular{SS10}, is used instead.}
 \end{itemize}
 
-These stopping strategies are similar to the frustration based strategies previously proposed (i.e. \textbf{SS2} and \textbf{SS3}) except bound by time~\cite{gibbs1958number_rule}. As mentioned earlier ~\citet{mcnair1982gut_mvt} studied how animals would change their stopping strategies based on their initial evaluation  of the patch, where his suggested combination rule would be as follows.
-
-\begin{itemize}
-    \item[\blueboxbold{SS11}] When encountering a SERP expected to yield a high volume of relevant content early on (high scent), the searcher will employ the satisfaction stopping strategy \textbf{SS8S}. If the SERP however yields relevant items over greater depths, or is judged to be of poor quality (low scent), the giving-up stopping strategy, \textbf{SS10G}, is used instead.
-\end{itemize}
-
-The combination rule tries to ensure that searcher avoids wasting time on patches with a low yield, but capitalize on patches with a high yield. In the following section, we shall describe the simulated analysis to compare the existing and proposed stopping strategies.
+This combination stopping strategy attempts to ensure that a searcher does not waste time on a~\gls{acr:serp} that appear to offer a low yield, but conversely capitalise upon patches that present a high yield. Of course, determining the perceived yield is a question of implementation; refer to Section~\ref{chap:csm:method:simulation:grounding:stopping_strats} for more information on how we implemented this particular stopping strategy.
 
 \section{\gls{acr:ir} Evaluation Measures}
-As previously mentioned most evaluation measures implicitly encode some stopping model (e.g. P$@$10 encodes SS1$@$10). Two measures that have been recently proposed that explicitly encode a stopping model are \textbf{RBP}~\cite{moffat2008rbp} and \textbf{INST}~\cite{bailey2015inst, moffat2015inst}. 
-Under \textbf{RBP}, the decision to continue to the next results is based on the patience parameter (e.g. the probability of continuing), while under \textbf{INST} the probability of continuing is based on how many the documents the searcher expects to encounter, how many they have encountered and their current rank - essentially the probability of continuing decreases as they encounter more relevant information, and as they progress further down the ranking.
+The final two proposed stopping strategies are based upon established~\gls{acr:ir} measures. A previously discussed throughout this thesis, most evaluation measures implicitly encode some form of stopping model (e.g.~\gls{acr:patk} encodes \stoppingstratbox{SS1-FIX}{k}).
+
+Two measures that have been more recently proposed, and that explicitly encode a stopping model, are~\gls{acr:rbp}~\citep{moffat2008rbp} and INST~\citep{bailey2015inst, moffat2015inst}. Under~\gls{acr:rbp}, the decision to continue to the next result in a list of results is based upon a patience parameter, or the probability of continuing. Under INST, the probability of continuing is based upon how many documents the searcher expects to encounter, how many they have encountered, and their current rank. Essentially, the probability of continuing decreases as they encounter more relevant information and they progress further down the rankings. This was discussed in detail in Section~\ref{}.
 
 \begin{itemize}
-    \item[\blueboxbold{SS12}] RBP
+    \item{\stoppingstratboxsingular{SS12-RBP} With this stopping strategy, a searcher will stop examining a~\gls{acr:serp} when the likelihood of continuing falls below the~\gls{acr:rbp} probability computed at that rank.}
+    
+    \item{\stoppingstratboxsingular{SS13-INST} Under this stopping strategy, a searcher will abandon a~\gls{acr:serp} once they have found $x_{13}$ documents that are relevant to the given information need.}
 \end{itemize}
 
-\begin{itemize}
-    \item[\blueboxbold{SS13}] INST
-\end{itemize}
+For \stoppingstratboxsingular{SS13-INST}, an additional condition must be included within the implementation whereby the searcher will abandon the~\gls{acr:serp} after a larger number of documents have been examined. In many cases, a session time limit will cause the searcher to stop; a failsafe should also be incorporated where this condition does not exist.
 
-The satisfaction stopping strategy \textbf{SS8S} was set to consider $1$ to $7$ (hence providing values for $x_8$). A maximum of seven was chosen as this was closest integer to the mean number of documents marked by subjects in the log data. With our \textbf{INST} stopping strategy employing a similar approach, considering the ``number of useful pages that the searcher expects they will need''~\cite{moffat2015inst}, we subsequently set $T$ in INST to the same range. For our other baseline, \textbf{RBP} considers a \emph{patience factor} that influences the depth to which a searcher is prepared to tolerate examining to. Using the log data we estimated the patience of users to be approximately $p=0.9087$. In this study, examined patience from $0.8$ to $0.95$ in steps of $0.05$, and also $0.99$.
+\section{Chapter Summary}
+This chapter has outlined 13 different stopping strategies, all of which are based upon prior stopping heuristics and established~\gls{acr:ir} measures. As such, this chapter therefore provides an answer to \blueboxbold{HL-RQ2}. In subsequent chapters, we take these stopping strategies forward, discuss how we implemented them such that they could then be employed within simulations of interaction.
