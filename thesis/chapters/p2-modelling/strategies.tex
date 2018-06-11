@@ -146,7 +146,7 @@ This combination stopping strategy attempts to ensure that a searcher does not w
 \section{\gls{acr:ir} Evaluation Measures}
 The final two proposed stopping strategies are based upon established~\gls{acr:ir} measures. A previously discussed throughout this thesis, most evaluation measures implicitly encode some form of stopping model (e.g.~\gls{acr:patk} encodes \stoppingstratbox{SS1-FIX}{k}).
 
-Two measures that have been more recently proposed, and that explicitly encode a stopping model, are~\gls{acr:rbp}~\citep{moffat2008rbp} and INST~\citep{bailey2015inst, moffat2015inst}. Under~\gls{acr:rbp}, the decision to continue to the next result in a list of results is based upon a patience parameter, or the probability of continuing. Under INST, the probability of continuing is based upon how many documents the searcher expects to encounter, how many they have encountered, and their current rank. Essentially, the probability of continuing decreases as they encounter more relevant information and they progress further down the rankings. This was discussed in detail in Section~\ref{}.
+Two measures that have been more recently proposed, and that explicitly encode a stopping model, are~\gls{acr:rbp}~\citep{moffat2008rbp} and INST~\citep{bailey2015inst, moffat2015inst}. Under~\gls{acr:rbp}, the decision to continue to the next result in a list of results is based upon a patience parameter, or the probability of continuing. Under INST, the probability of continuing is based upon how many documents the searcher expects to encounter, how many they have encountered, and their current rank. Essentially, the probability of continuing decreases as they encounter more relevant information and they progress further down the rankings. These were discussed in detail in Sections~\ref{sec:ir_background:user:evaluation:rbp} and~\ref{sec:ir_background:user:evaluation:inst} respectively.
 
 \begin{itemize}
     \item{\stoppingstratboxsingular{SS12-RBP} With this stopping strategy, a searcher will stop examining a~\gls{acr:serp} when the likelihood of continuing falls below the~\gls{acr:rbp} probability computed at that rank.}
@@ -155,6 +155,9 @@ Two measures that have been more recently proposed, and that explicitly encode a
 \end{itemize}
 
 For \stoppingstratboxsingular{SS13-INST}, an additional condition must be included within the implementation whereby the searcher will abandon the~\gls{acr:serp} after a larger number of documents have been examined. In many cases, a session time limit will cause the searcher to stop; a failsafe should also be incorporated where this condition does not exist.
+
+\section{\gls{acr:serp} Level Stopping}
+\todo{Do I need to explain that the SERP level decision point that we include within the CSM may make some of these strategies a bit useless? There's definitely a connection between the two. For example, SS11 is largely redundant if we use SERP level stopping within the model. We are confident that the SERP is good if SERP level stopping is used, and the snippet level stopping strategy is used.}
 
 \section{Chapter Summary}
 This chapter has outlined 13 different stopping strategies, all of which are based upon prior stopping heuristics and established~\gls{acr:ir} measures. As such, this chapter therefore provides an answer to \blueboxbold{HL-RQ2}. In subsequent chapters, we take these stopping strategies forward, discuss how we implemented them such that they could then be employed within simulations of interaction.
