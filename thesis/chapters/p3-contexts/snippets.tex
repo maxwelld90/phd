@@ -2,10 +2,49 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[Snippet Lengths and Stopping Behaviour]{Snippet Lengths and\\Stopping Behaviour}\label{chap:snippets}
+One of the primary components of a retrieval system that searchers interact with the~\glsfirst{acr:serp}. The presentation and design of the~\gls{acr:serp} has over the years been subject to much research. With more complex components now becoming commonplace in contemporary web search engines (such as the \emph{information card}~\citep{navalpakkam2013non_linear_serp, bota2016information_cards} or \emph{social annotations}~\citep{muralidharan2012social_annotations}), much work however still remains on examining how more traditional~\gls{acr:serp} components, such as \emph{result summaries,} are designed and presented to searchers.
 
-\section{Varying Snippet Lengths}
+\begin{figure}[h]
+    \centering
+    \vspace{4mm}
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch7-serpintro.pdf}}
+    \label{fig:serpintro}
+    \vspace{-5mm}
+\end{figure}
 
-\subsection{Prior Work}
+Result summaries (an example of which is shown above) have been traditionally viewed as the \emph{ten blue links}, each with their corresponding title and source (typically a~\gls{acr:url}) of the document. Included with these two components are the textual \emph{snippets} of \emph{keywords-in-context}, derived from the document itself. These snippets are approximately 130-150 characters (or two lines) in length~\citep{hearst2009_search}. Numerous researchers have explored result summaries in a variety of different ways, such as: examining their length; the use of thumbnails; their attractiveness; and the generation of \emph{query-biased snippets}. The performance of searchers has broadly been evaluated in a limited fashion (for example, by examining task completion times).
+
+In this chapter, we are interested in examining how the length (and subsequently information content) of result summaries affects~\gls{acr:serp} interactions -- specifically examining their stopping behaviours -- and a searcher's ability to select relevant over non-relevant items. Prior research has demonstrated that longer result summaries tend to lower completion times for informational tasks, where searchers need to find only a single relevant document~\citep{cutrell2007eye_tracking}. Does this finding however hold in an ad-hoc context, where searchers need to find \emph{several} relevant items? Furthermore, how does the length and information associated with longer result summaries affect the searcher's ability to discern the relevant from the non-relevant? We address these questions from the perspective of both:
+
+\begin{itemize}
+    \item{a user study examining this phenomenon, as detailed in Section~\ref{chap:snippets:user}; and}
+    \item{a simulated analysis, closely examining how varying snippet lengths affects searcher performance and stopping behaviours, discussed in Section~\ref{chap:snippets:simulations}.}
+\end{itemize}
+
+The outline for both of these studies follow the general methodology, as discussed in Chapter~\ref{chap:method}. Before discussing the studies and their results, we begin this chapter with an overview of the prior work that has examined the length of result summary snippets.
+
+\section{Prior Work}\label{chap:snippets:background}
+As previously discussed, the design and presentation of~\glsplural{acr:serp} has been examined in depth. Researchers have examined various aspects of~\glsplural{acr:serp}, and how the designs of such aspects influence the behaviour of searchers. In this section, we provide a summary of the various aspects that have been examined over time. Specifically, we consider:
+
+\begin{itemize}
+    \item{the layout and presentation of~\glsplural{acr:serp};}
+    \item{the size of~\glsplural{acr:serp};}
+    \item{how snippet text for result summaries is generated; and}
+    \item{how much text should be presented within each result summary}.
+\end{itemize}
+
+Of the four areas of~\gls{acr:serp} research that we examine in this section, we consider the latter to be the main focus of this work. Each area is summarised below.
+
+\subsection{\gls{acr:serp} Layout and Presentation}
+
+\subsection{Generating Snippet Text}
+
+\subsection{Results per Page}
+
+\subsection{Snippet Lengths: Longer or Shorter?}
+
+\section{Varying Snippet Lengths}\label{chap:snippets:user}
 
 \subsection{Methodology}
 
@@ -31,7 +70,7 @@ Results report the first x seconds, because of.
 
 \subsection{Discussion}
 
-\section{Simulated Analysis}
+\section{Simulated Analysis}\label{chap:snippets:simulations}
 
 \subsection{Methodology}
 
