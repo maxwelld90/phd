@@ -141,19 +141,19 @@ As highlighted by Zuccon et al.~\cite{zuccon2013crowdsourcing_comparisons}, crow
 Despite these issues, it has been shown that there is little difference in the quality between crowdsourced and lab-based studies~\cite{zuccon2013crowdsourcing_comparisons}. Nevertheless, quality control is a major component of a well-executed crowdsourced experiment~\cite{bota2016information_cards}. Employing crowdsourcing for our two user studies, we detail in the remainder of this section the precautions that were taken during, discussing both the requirements for the subjects and their technical setup -- as well as a discussion of the crowdsourcing platform used.
 
 \subsubsection{Platform Details}
-Both studies were run over the \emph{Amazon Mechanical Turk (MTurk)} platform. Workers\footnote{In this section, a \emph{worker} refers to an individual undertaking the experiment on the MTurk platform. This term is considered interchangeable with a \emph{subject.}} from the platform each performed a single task (or, to use MTurk language, a \emph{Human Intelligence Task (HIT)}), with a single HIT corresponding to the entire experiment. This is in contrast to many HITs, where workers would typically undertake small, typically decision-based, transactions (for an example of such a study where this took place, refer to~\cite{bota2016information_cards}).
+Both studies were run over the~\glsfirst{acr:mturk} platform. Workers\footnote{In this section, a \emph{worker} refers to an individual undertaking the experiment on the MTurk platform. This term is considered interchangeable with a \emph{subject.}} from the platform each performed a single task (or, to use MTurk language, a \emph{Human Intelligence Task (HIT)}), with a single HIT corresponding to the entire experiment. This is in contrast to many HITs, where workers would typically undertake small, typically decision-based, transactions (for an example of such a study where this took place, refer to~\cite{bota2016information_cards}).
 
 \subsubsection{Subject Requirements}
 Due to the expected length that workers would take to complete the two studies\footnote{Note that two different sets of workers were used -- the studies were run at different times.}, workers who completed the study in full were reimbursed for their time with US\$9 -- greater than the hourly minimum wage set by the US federal government. Workers interested in undertaking each of the two studies were required to meet a certain minimum set of criteria to be eligible to participate. We required that workers were:
 
 \begin{itemize}
-    \item[\emph{(i)}]{from the United States;}
-    \item[\emph{(ii)}]{native English speakers;}
-    \item[\emph{(iii)}]{possessed a HIT acceptance rate of at least 95\%; and}
-    \item[\emph{(iv)}]{had at least had 1000 prior HITs approved.}
+    \item{from the United States;}
+    \item{native English speakers;}
+    \item{possessed a HIT acceptance rate of at least 95\%; and}
+    \item{had at least had 1000 prior HITs approved.}
 \end{itemize}
 
-Requiring \emph{(iii)} and \emph{(iv)} reduced the likelihood of recruiting workers who would not complete the study in a satisfactory manner. Recruits were forewarned about the length of the HIT, providing them with a chance to abandon the experiment if they felt the expected time was too long.
+Requiring a high HIT acceptance rate reduced the likelihood of recruiting workers who would not complete the study in a satisfactory manner. Recruits were forewarned about the length of the HIT, providing them with a chance to abandon the experiment if they felt the expected time was too long.
 
 \subsubsection{Technical Requirements}\label{sec:csm:methodology:user:crowdsourcing:technical}
 Given worker limitations, we also enforced a number of technical constraints. Workers attempting each experiment were required to have a sufficiently large computer screen to display the experimental interface without having to resort to excessive scrolling, and ensured a consistent number of result summaries would be present on different worker's screens. As such, we imposed a minimum display resolution of $1024x768$ for both studies. Conducted through a web browser, we wanted to ensure that only the controls provided by the experimental apparatus were used, meaning that the popup window that we highlighted in Section~\ref{sec:csm:methodology:user:interface} had all other browser controls disabled to the best of our ability (i.e. browser history navigation, etc.). The experimental system was tested on several major web browsers, across different operating systems. This gave us confidence that a similar experience would be had across different system configurations.
@@ -244,7 +244,7 @@ Between both user studies, we asked the same questions within the pre-task surve
     \item{how difficult they felt it would be to search for information on the topic before commencing.}
 \end{itemize}
 
-Responses were provided on a five-point scale, providing the option for neutrality between the two extremes -- extremes being \emph{nothing/not at all/very difficult} to \emph{lots/very much/very easy.} Responses to these questions helped us gauge the perceived difficulty of the task, and ascertain how much background knowledge could potentially affect results.
+Responses were provided on a seven-point scale, providing the option for neutrality between the two extremes -- extremes being \emph{nothing/not at all/very difficult} to \emph{lots/very much/very easy.} Responses to these questions helped us gauge the perceived difficulty of the task, and ascertain how much background knowledge could potentially affect results.
 
 \subsubsection{Post-Task and Post-Experiment}
 Post-task and post-experiment surveys were unique to each of the two user studies. Chapters~\ref{chap:snippets} and~\ref{chap:diversity} provide further information on what questions were asked. However, the post-task surveys focused on how well the subjects thought they (and the retrieval system, under the given condition and/or interface) performed during the search task. Post-task surveys considered the experiment as a whole, asking questions about what condition and/or interface the subjects preferred, or performed more to their liking, for example.
