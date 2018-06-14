@@ -96,6 +96,7 @@
 \setcounter{secnumdepth}{3}
 
 % Define colour styles to fit "my" colours
+\definecolor{dmax_cellcolour}{HTML}{CCE3F4}
 \definecolor{dmax_lightlightblue}{HTML}{B3D5EE}
 \definecolor{dmax_lightblue}{HTML}{0072C6}
 \definecolor{dmax_darkblue}{HTML}{00243D}
@@ -110,6 +111,19 @@
 
 % Table line width
 \setlength\arrayrulewidth{1pt}
+
+% A load of special table definitions
+\newcommand\CS{\hskip 16pt}
+\newcommand\RS{\addlinespace[4pt]}
+\newcommand\RSD{\addlinespace[12pt]}
+
+\newcommand\dbluecell{\leavevmode\cellcolor{dmax_darkblue}\color{white}}
+\newcommand\lbluecell{\leavevmode\cellcolor{dmax_lightblue}\color{white}}
+\newcommand\cell{\leavevmode\cellcolor{dmax_cellcolour}\color{dmax_darkblue}}
+\newcommand\cellemph{\leavevmode\cellcolor{dmax_red}\color{white}}
+
+% For multirow -- try something like
+% & \multicolumn{2}{@{\hskip 0pt}c@{\CS}}{\dbluecell First} & \multicolumn{2}{@{\hskip 0pt}c@{\hskip 6pt}}{\dbluecell First} \\
 
 % The "Search" Logotype
 \newcommand{\searchlogo}{{\headerfont\color{search_blue}S\color{search_red}e\color{search_yellow}a\color{search_blue}r\color{search_green}c\color{search_red}h}}

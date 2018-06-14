@@ -203,8 +203,29 @@ At the end of the experiment, subjects also completed a post-experiment survey. 
 
 These questions allowed us to determine which interface delivered the best impression overall across the five different questions asked.
 
+\subsection{Results and Analysis}\label{chap:snippets:user:results}
 
-\subsection{Results and Analysis}
+
+
+
+\begin{table}[t]
+    \caption[Information gain across interfaces]{Characters, words and \emph{Information Gain (IG)} across each of the four interfaces trialled. An ANOVA test revealed significant differences, with follow-up tests (refer to Section~\ref{chap:snippets:user:results}) showing that each interface is significantly different to others. There are clearly diminishing returns in information gain as snippet length increases. An IG value closer to zero denotes a higher level of IG. In the table below, \emph{IG/W.} denotes \emph{IG per word}.\vspace{-3mm}}
+    \label{tbl_info_gain}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{3.75cm}@{\CS}D{2.6cm}@{\CS}D{2.6cm}@{\CS}D{2.6cm}@{\CS}D{2.6cm}}
+    
+    \RS & \lbluecell\textbf{\emph{T0}} & \lbluecell\textbf{\emph{T1}} & \lbluecell\textbf{\emph{T2}} & \lbluecell\textbf{\emph{T4}}\\
+    % OUTPUT FROM script
+    
+    \RS\lbluecell\textbf{Words} & \cell6.58$\pm$0.01* & \cell25.21$\pm$0.06* & \cell44.29$\pm$0.10* & \cell77.06$\pm$0.13* \\
+    \RS\lbluecell\textbf{Characters} & \cell37.37$\pm$0.05* & \cell103.29$\pm$0.17* & \cell168.36$\pm$0.23* & \cell284.78$\pm$0.31* \\
+    \RS\lbluecell\textbf{IG} & \cell-6.35$\pm$0.01* & \cell-3.59$\pm$0.00* & \cell-3.00$\pm$0.00* & \cell-2.67$\pm$0.00* \\
+    \RS\lbluecell\textbf{IG/Word} & \cell-1.17$\pm$0.00* & \cell-0.18$\pm$0.00* & \cell-0.08$\pm$0.00* & \cell0.04$\pm$0.00* \\
+    
+\end{tabulary}
+\end{center}
+\end{table}
 
 \subsubsection{Interactions}
 
