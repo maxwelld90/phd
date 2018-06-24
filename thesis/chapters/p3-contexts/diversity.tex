@@ -24,7 +24,7 @@ However, while there have been numerous diversification algorithms developed and
 
 In particular, we use~\glsfirst{acr:ift}~\citep{pirolli1999ift} in this chapter -- outlined in Section~\ref{sec:stopping_background:models:theoretical:ift} on page~\pageref{sec:stopping_background:models:theoretical:ift} -- to derive a number of hypotheses, and thus ground our work. We begin this chapter however with a discussion of the prior work in the area, focusing upon aspectual retrieval, and a brief discussion of how~\gls{acr:ift} is used to provide us with a series of hypotheses about searcher behaviours across the different experimental conditions we trial.
 
-\section{Background}
+\section{Background, Motivation and Hypotheses}\label{sec:diversity:background}
 As discussed previously, a searcher will likely pose a varying number of queries (and~\glsplural{acr:serp}), and examine a number of documents (if any) before issuing a new query, or stopping their search altogether. The reasons for stopping are numerous. Stopping at a \emph{session level} can occur because:
 
 \begin{itemize}
@@ -55,39 +55,150 @@ As work shifted from aspectual retrieval to other areas, studies related to dete
 
 Recently however, a growing interest in new, more complex and exploratory search tasks has taken hold. This is true in the aforementioned context of \emph{``searching as learning''}~\citep{collins2017sal}.~\cite{syed2017sal} hypothesised that diversifying the results presented to searchers would improve their learning efficiency, and that this would be observed by a change in vocabulary expressed in their queries. This work reported in this chapter motivates our interest examining the effects of diversification when considering the task of aspectual retrieval, where a searcher needs to learn about different aspects of a topic. To ground our work, we now consider how search behaviours are likely to be changed by generating a series of hypotheses from~\gls{acr:ift}.
 
-\subsection{Tasks and Information Foraging Theory}
+\subsection{Tasks and Information Foraging Theory}\label{sec:diversity:background:tasks}
 To motivate our hypotheses for this chapter, we can draw upon~\gls{acr:ift}~\citep{pirolli1999ift}, and the \emph{patch model} in particular, to ground our research and provide insights into how search behaviours may change. The patch model, as detailed in Section~\ref{sec:stopping_background:models:theoretical:ift}, provides a mechanism for predicting how long foragers will stay in a patch before moving onwards to the next. Using the established approach discussed previously -- where moving between patches is akin to issuing a new query, while staying within a patch considered examining a~\gls{acr:serp} and linked documents -- we can then make a series of predictions as to how searchers will behave under different experimental conditions.
 
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch8-ift_theory_plots.pdf}}
-    \caption[\gls{acr:ift} and Diversification: Hypothesis Illustrations]{Graphical illustrations of the hypotheses motivated by~\gls{acr:ift}, with each plot showing how stopping behaviour is likely to be affected when using a system that \emph{(a)} diversifies results and \emph{(b)} doesn't, and over \emph{(c)} aspectual and \emph{(d)} ad-hoc tasks. Refer to Section~\ref{sec:diversity:users:method:system} for details on the four different experimental conditions shown here, such as \dualbluebox{ND}{Ad}, for instance.}
+    \caption[\gls{acr:ift} and Diversification: Hypothesis Illustrations]{Graphical illustrations of the hypotheses motivated by~\gls{acr:ift}, with each plot showing how stopping behaviour is likely to be affected when using a system that \emph{(a)} diversifies results and \emph{(b)} doesn't, and over \emph{(c)} aspectual and \emph{(d)} ad-hoc tasks. Section~\ref{sec:diversity:users:method} enumerates the four different experimental conditions shown here, such as \dualbluebox{ND}{AD} for instance.}
     \label{fig:ift_theory}
 \end{figure}
 
+These predictions are graphically illustrated in the four plots shown in Figure~\ref{fig:ift_theory} -- over a diversified \blueboxbold{D} and non-diversified \blueboxbold{ND} system, with ad-hoc \darkblueboxbold{AD} and aspectual \darkblueboxbold{AS} retrieval tasks.\footnote{The system and task are combined together to produce a complete condition, such as \dualbluebox{ND}{AD} representing a non-diversified system, with an ad-hoc retrieval task.} Gain curves for each of the four conditions are shown. In the top left plot~\ref{fig:ift_theory} \emph{(a)}, where a non-diversified system is being used, the gain curve for the ad-hoc retrieval task is higher, as any relevant document contributes to the searcher's gain. Conversely, the gain curve is lower for the aspectual retrieval task. This is because similar relevant documents would not contribute to the overall level of gain experienced by the searcher.
+
+From~\gls{acr:ift}, the optimal stopping point would be different between the two tasks. As we discussed in~\ref{sec:stopping_background:models:theoretical:ift}, we can graphically find this point by drawing a line from the origin to the tangent of the gain curve. Red and blue dots indicate the optimal stopping points for ad-hoc and aspectual retrieval, respectively.~\gls{acr:ift} therefore suggests that with a non-diversified system, searchers will examine more documents per query for aspectual retrieval tasks when compared to ad-hoc tasks.
 Discuss IFT, and then lead onto the hypotheses.
 
+Plot~\ref{fig:ift_theory} \emph{(b)} illustrates gain curves where a diversified system would be used, with gain curves for ad-hoc and aspectual retrieval being similar in nature. This is because the diversified should bring relevant but different documents closer to the top of the rankings earlier. In the case of ad-hoc retrieval, these relevant (even if different) documents would still contribute to the overall level of gain. For aspectual retrieval, relevant and different documents will also contribute to the overall level of gain experienced by the searchers -- up to the point where the documents become similar to previously examined material. Therefore,~\gls{acr:ift} appears to suggest that similar stopping behaviours would be observed when searchers use a diversified search system.
+
+Plot~\ref{fig:ift_theory} \emph{(c)} shows the predicted stopping behaviour for the aspectual retrieval task, where we have plotted the aspectual gain curves from the system plots \emph{(a)} and \emph{(b).} Interestingly,~\gls{acr:ift} suggests that searchers will stop sooner when using the diversified system. As such, if searching for the same length of time, searchers would thus issue more queries. Finally plot~\ref{fig:ift_theory} \emph{(d)} shows the predicted stopping behaviour for the ad-hoc retrieval task, where again we plot the curves from the respective systems in plots \emph{(a)} and \emph{(b).} Note that here, the gain curve for the diversified system may be a little lower as some irrelevant but different material may bubble up the rankings. However, as can be seen, we expect little difference overall between the two systems, and so we hypothesise that the two levels of gain (and searcher behaviours) will be approximately be the same. Consequently,~\gls{acr:ift} suggests that there will be little difference in terms of stopping behaviours between the two systems with ad-hoc retrieval tasks.
+
+However, we found~\gls{acr:ift} to counter our intuitions as to how searchers would \emph{behave.} When using a standard, non-diversified retrieval system, our intuition suggests that since the aspectual retrieval task is rather exploratory, searchers are then more likely to issue more queries as they learn about the topic, and try to explore efforts made by different countries to protect different specifies, for example.~\cite{kelly2015search_tasks} for example showed that more complex search tasks required a greater number of queries. If a searcher submits a query that retrieves relevant material such as \texttt{protecting Pandas in China}, then one would expect them to only select one or two examples, rather than many more. In the case of ad-hoc topic retrieval, we would \emph{intuitively} expected that searchers would issue fewer queries and examine more documents. This is because they don't need to find multiple aspects. However, when using a diversified system, which attempts to promote different aspects of a given topic, we would \emph{intuitively} expect that the behaviour of searchers would change, such that when undertaking aspectual retrieval, they would issue fewer queries and examine a greater number of documents per query.
+
+\subsubsection{Hypotheses}\label{sec:diversity:background:tasks:hypotheses}
+From the plots and descriptions provided above, we can formulate a number of different hypotheses relating to the expected searcher behaviours under different contexts.
+
+Under aspectual retrieval search tasks, using a diversified system will lead to:
+\begin{itemize}
+    \item{\blueboxbold{H1} fewer documents examined per query; and}
+    \item{\blueboxbold{H2a} more queries issued; or}
+    \item{\blueboxbold{H2b} a decrease in the task completion time.}
+\end{itemize}
+
+With ad-hoc retrieval tasks, diversification will lead to:
+\begin{itemize}
+    \item{\blueboxbold{H3} no difference in the number of documents examined; and}
+    \item{\blueboxbold{H4} no difference in the number of queries issued.}
+\end{itemize}
+
+While the contradiction between~\gls{acr:ift} and our intuitions provides an ulterior hypothesis. In addition, given the findings demonstrated by~\cite{syed2017sal}, we also hypothesis that diversification will lead to a greater awareness of the topic, regardless of the task put forward, as more aspects will be encountered and found.
+
 \section{Diversifying Search Results}\label{sec:diversity:users}
-Including research questions, motivated by IFT
+Following on from the motivation and experimental,~\gls{acr:ift}-based hypotheses outlined above, this section discusses the user study that was undertaken in order to examine the aforementioned hypotheses. As per our general user study methodology discussed previously in Section~\ref{sec:method:user_study}, we conducted a within-subjects experiment, with the specific details for this study discussed in Section~\ref{sec:diversity:users:method} below.
 
+The primary research question for this user study is as follows.
 
-Following on from the aspectual retrieval part, the aim of this study is to better understand how searchers performance and search behaviour change when they undertake different types of search task, using search systems that diversify the ranked results, and those that do not. To ground this study, we first consider how search behaviour is likely to change by generating hypotheses from~\gls{acr:ift}.
+\begin{itemize}
+    \item{\blueboxbold{RQ} How does diversification affect the search performance and behaviour when searchers under ad-hoc and aspectual retrieval tasks?}
+\end{itemize}
 
-\subsection{Research Questions and Hypotheses}
+This research question is addressed in tandem with the hypotheses put forward above in Section~\ref{sec:diversity:background:tasks:hypotheses}. Below, we now discuss the specific details for this user study, before discussing the results, with an emphasis on stopping behaviours, and whether or not the empirical evidence supports our hypotheses.
 
-\subsection{Methodology}
+\subsection{Methodology}\label{sec:diversity:users:method}
+As discussed above, this section outlines the specific details of this user study, and is to be considered in conjunction with the general user study methodology we employ, outlined in Section~\ref{sec:method:user_study}. The same basic retrieval system, corpus and topics were used as previously discussed.
 
-\subsubsection{Search System and Conditions}\label{sec:diversity:users:method:system}
+The within-subjects study considers two key factors: the \emph{system} and the \emph{task.} For the system factor, our baseline control system was based upon BM25 (i.e. no diversification), and a diversified system. The details of our diversification approach are discussed in Section~\ref{sec:diversity:users:diversifying}. For the task factor, we used the standard ad-hoc retrieval task, and compared this against the aspectual retrieval task. This resulted in a $2x2$ factorial design. Each subject who took part in this study therefore completed four different search tasks, one in each of the four conditions (as we enumerate below). Each of the conditions were assigned using a Latin square rotation to minimise any ordering effects. The conditions listed below are also used in Section~\ref{sec:diversity:background:tasks} when explaining the plots supporting our hypotheses.
 
-\subsubsection{Diversifying Search Results}
+The first two conditions consider a non-diversified retrieval system \blueboxbold{ND} (i.e. BM25, our baseline).
 
-\subsubsection{Search Task}
+\begin{itemize}
+    \item{\dualbluebox{ND}{AS} A non-diversified system, with an aspectual retrieval task.}
+    \item{\dualbluebox{ND}{AD} A non-diversified system, with an ad-hoc retrieval task.}
+\end{itemize}
 
-\subsubsection{Additional Performance Measures}
+Our second set of conditions therefore consider a diversified system \blueboxbold{D}, using BM25 as a baseline and an additional diversifying component, as we discuss later in Section~\ref{sec:diversity:users:diversifying}.
+
+\begin{itemize}
+    \item{\dualbluebox{D}{AS} A diversified system, with an aspectual retrieval task.}
+    \item{\dualbluebox{D}{AD} A diversified system, with an ad-hoc retrieval task.}
+\end{itemize}
+
+\subsubsection{Search Tasks}
+As we discussed in Section~\ref{sec:csm:methodology:user:flow}, subjects were grounded by instructing them to imagine that they were newspaper reports. As such, they were required to gather documents to write stories about the four topics they searched for. Given each topic, each subject was then further instructed for this study to focus on a different criterion.
+
+\begin{itemize}
+    \item{For \blueboxbold{ad-hoc retrieval} tasks, subjects were simply instructed to find documents that were \emph{relevant} to the topic provided.}
+    \item{For \blueboxbold{aspectual retrieval} tasks, subjects were instructed not only to find documents that were relevant, but also discussed \emph{different} aspects of the provided topic.}
+\end{itemize}
+
+For example, take the \emph{Airport Security} topic (refer to Section~\ref{sec:csm:methodology:collection}). Under an ad-hoc retrieval task, subjects were required to learn about the efforts taken by international airports to better screen passengers and their carry-on luggage. For aspectual retrieval tasks, subjects were also asked to find relevant documents that are different, mentioning \emph{new airports.} Thus, subjects were explicitly instructed to find a number of examples from different airports, as opposed to a similar or the same example based in the same airport multiple times.
+
+\blueboxheader{Task Goal}
+Instead of imposing a time limit as per the user study reported previously in Chapter~\ref{chap:snippets}, we instead instructed subjects to find and save at least four useful documents -- with useful denoted as being relevant, or relevant and different, depending upon the given task. Refer to the following section for details on the reasons behind selecting this value.
+
+\subsubsection{Crowdsourced Subjects and Controls}
+Subjects undertaking the user study were informed that from a small-scale pilot study, it would take approximately 7-10 minutes of their time to find at least four useful documents per task. Combining everything together, this meant that the entire experiment would take approximately 40-50 minutes of their time. Since we did not impose any time constrains on how long subjects searched for, we instead established accuracy based control. We informed subjects that their accuracy in identifying useful material would be examined, and that they were required to find four useful documents with at least $50\%$ accuracy (based upon~\gls{acr:trec} relevance judgements as the gold standard). Using data from the prior user study reported in Chapter~\ref{chap:snippets}, the accuracy of those subjects was between $25\%$ and $40\%$ on average, depending upon the topic. While we stipulated a higher accuracy, this was to motivate subjects to work diligently.
+
+In all, a total of $64$ subjects performed the the experiments that complied with the~\gls{acr:mturk} recruiting constraints we imposed. However, a total of $13$ were omitted from this figure because they either:
+
+\begin{itemize}
+    \item{failed to complete all the search tasks (a total of five subjects were removed);}
+    \item{failed to mark at least four documents (two subjects); or}
+    \item{spent less than two minutes per task, and failed to retrieve any relevant documents (six subjects).}
+\end{itemize}
+
+Of the $51$ subjects who successfully completed the experiment, $26$ females and $25$ males participated. The average age of the subjects was $38.66$ years ($min=20$; $max=71$; $stdev=11.43$). In addition to these basic demographics, a total of $22$ subjects reported possessing a bachelor's degree or higher, with the remaining $29$ possessing an associate's degree or lower. All subjects bar one expressed a preference to \emph{Google} as their everyday search engine of choice. All subjects indicated that they conducted many searches for information via a search engine per week. Nearly three quarters of the subjects ($38$) reported using a mouse of the experiment, with the remaining $13$ using a form of trackpad.
+
+\subsubsection{Aspects}\label{sec:diversity:users:method:aspects}
+For each topic, we used corresponding~\gls{acr:trec} QRELs from the 2005 Robust Track~\citep{voorhees2006trec_robust}, as discussed in our general methodology (Section~\ref{sec:csm:methodology:collection}). However, to assess how many aspects were retrieved by subjects, we needed to commission additional labels as existing labels were not available for all the selected topics. First, for each topic, we examined the topic descriptions to identify what dimensions could be considered aspects of the topic. We noted that for each topic, there was at least two ways this could be achieved: \emph{entity-} or \emph{narrative-based}. For example, a useful document the topic \emph{Curbing Population Growth} could either state the country taking measures (entity-based), or a description of the actual measure used to reduce population growth (narrative-based).
+
+\begin{table}[t!]
+    \caption[Entity- and narrative-based topic aspects]{A list of the different entity- and narrative-based approaches trialled during the aspect extraction process. As discussed in Section~\ref{sec:diversity:users:method:aspects}, the entity-based approach was carried forward for this study with a higher agreement rate between assessors.}
+    \label{tbl:entities_across_topics}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{3.75cm}@{\CS}D{3.75cm}@{\CS}D{7.75cm}@{\CS}}
+    
+    \RS & \lbluecell\textbf{Entity} & \lbluecell\textbf{Narrative}\\
+    
+    \RS\lbluecell\textbf{Airport Security} & \cell Airports & \cell Security measures taken \\
+    \RS\lbluecell\textbf{Wildlife Extinction} & \cell Species & \cell Protection/conservation measures \\
+    \RS\lbluecell\textbf{Piracy} & \cell Vessels Boarded & \cell Acts of piracy \\
+    \RS\lbluecell\textbf{Tropical Storms} & \cell Storms & \cell Death and destruction \\
+    \RS\lbluecell\textbf{Curb. Pop. Growth} & \cell Countries & \cell Population control methods \\
+    
+\end{tabulary}
+\end{center}
+\end{table}
+
+For this study, it was decided that we should focus on entity-based aspects. This decision was taken as \emph{different narratives} were subject to greater interpretation that \emph{different entities} -- it is easier to identify from a document that China, for example, is the country being discussed, rather than the measures the country took -- and their effects. For each~\gls{acr:trec} relevant document across the five topics considered, the author and his supervisor manually extracted the different aspects for each, with much higher agreement ($95\%$ vs. $67\%$) between the author and his supervisor across the entity-based aspects. Both the entity and narrative based approaches for each of the five topics are shown in Table~\ref{tbl:entities_across_topics}.
+
+To complement Table~\ref{tbl:entities_across_topics}, we also list below a number of different example entity-based aspects that were extracted for each of the five topics. The number provided with the topic title denotes the number of individual aspects that were extracted for said topic.
+
+\begin{itemize}
+    \item{\blueboxbold{Airport Security (14 unique aspects)} Considering different \emph{airports} in which additional security measures were taken, examples include \emph{John F. Kennedy International Airport, Boston Logan International Airport,} or \emph{Leonardo da Vinci International Airport.}}
+    \item{\blueboxbold{Wildlife Extinction (168 unique aspects)} Considering different \emph{species of endangered animals} under protection by states, such as the \emph{golden monkey, Javan Rhino,} or \emph{Manchurian tiger.}}
+    \item{\blueboxbold{Piracy (18 unique aspects)} Considers different \emph{vessels} that were either boarded or hijacked, such as the \emph{Petro Ranger, Achille Lauro} or \emph{Global Mars.}}
+    \item{\blueboxbold{Tropical Storms (43 unique aspects)} Considers different \emph{tropical storms} where individuals were killed, and/or there was major damage, such as \emph{Hurricane Mitch, Typhoon Linda} or \emph{Tropical Storm Frances.}}
+    \item{\blueboxbold{Curbing Population Growth (26 unique aspects)} Considers different \emph{countries} where population control methods were employed, such as \emph{China, India} or \emph{Zimbabwe.}}
+\end{itemize}
+
+Each of the unique aspects were assigned an identifying number, and stored in the~\gls{acr:trec} diversity format. By storing the aspects in this format, this then permitted us to use the \texttt{ndeval} application\footnote{The \texttt{ndeval} source code can be acquired from the~\gls{acr:trec} website at \url{https://trec.nist.gov/data/web/10/ndeval.c}. \urlaccessed{2018-06-24}}, which was in turn used to compute a number of measures related to aspectual retrieval. This process is illustrated in Figure~\ref{fig:entity_ids} (with the wildlife extinction topic used as an example), while we discuss these additional measures in Section~\ref{sec:diversity:users:measures}.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch8-entity_ids.pdf}}
+    \caption[Entity-based aspects example]{An example of documents, each with one or more entity-based aspects discussed within them. From these identified aspects, we can then provide a unique identifier for each aspect per topic, before creating a~\gls{acr:trec} diversity format file to be used in evaluation applications such as \texttt{ndeval}, allowing us to compute many diversity-based measures.}
+    \label{fig:entity_ids}
+\end{figure}
+
+\subsubsection{Diversifying Search Results}\label{sec:diversity:users:diversifying}
+
+\subsubsection{Additional Performance Measures}\label{sec:diversity:users:measures}
 $\alpha DCG$ and aspectual recall
-
-\subsubsection{Crowdsourced Subjects}
 
 \subsubsection{Post-Task Surveys}
 
