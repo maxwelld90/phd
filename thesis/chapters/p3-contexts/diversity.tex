@@ -2,7 +2,7 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[Result Diversification and Stopping Behaviour]{Result Diversification and\\Stopping Behaviour}\label{chap:diversity}
-A searcher, when developing an information need, will often possess an incomplete mental model of the topic. As such, they may arrive at a retrieval system with an \emph{Anomalous State of Knowledge (ASK)}~\citep{belkin1980ask}. To address this deficiency in their mental model, a searcher will often issue a variety of different queries to explore the topic space~\citep{kelly2015search_tasks}. Often, such topics are \emph{aspectual} in nature, where an underlying goal is to find out about the different facets, dimensions of aspects of the topic. An example of aspects within a topic is illustrated below, taken from TREC Robust Track~\citep{voorhees2006trec_robust} topic 347.
+A searcher, when developing an information need, will often possess an incomplete mental model of the topic. As such, they may arrive at a retrieval system with an \emph{Anomalous State of Knowledge (ASK)}~\citep{belkin1980ask}. To address this deficiency in their mental model, a searcher will often issue a variety of different queries to explore the topic space~\citep{kelly2015search_tasks}. Often, such topics are \emph{aspectual} in nature, where an underlying goal is to find out about the different facets, dimensions or aspects\footnote{We consider aspects in this chapter, defined as `\emph{`roughly one of many possible answers to a question which the topic in effect poses''}~\citep{over1998trec}.} of the topic. An example of aspects within a topic is illustrated below, taken from TREC Robust Track~\citep{voorhees2006trec_robust} topic 347.
 
 \begin{figure}[h]
     \centering
@@ -140,7 +140,9 @@ With non-diversifying and diversifying systems, we developed different sets of b
     \label{fig:interface_headers}
 \end{figure}
 
-The names were chosen as they were not associated with any major search engine (to the best of our knowledge), nor did they imply that one of the systems performed better than the other. Colour schemes were chosen to provide the greatest different in visual appearance to those with colourblindness (two of the more common variants of colourblindness, \emph{protanopia} and \emph{deuteranopia,} were both considered). This was to ensure that subjects could later on indicate what one of the two systems that they preferred, for example. Note that only the colour schemes and logos varied -- the same basic interface layout as previously discussed in Section~\ref{sec:csm:methodology:user:interface} was employed. Figure~\ref{fig:interface_headers} demonstrates the two different colour schemes and logos for the two systems. It should also be noted that the practice task used the standard, blue colour scheme as employed in the user study reported in Chapter~\ref{chap:snippets}. This is illustrated in Figure~\ref{fig:interfaces} on page~\pageref{fig:interfaces}.
+These names were chosen as they were not associated with any major search engine (to the best of our knowledge), nor did they imply that one of the systems performed better than the other. Colour schemes were chosen to provide the greatest different in visual appearance to those with colourblindness.\footnote{Two of the more common variants of colourblindness, \emph{protanopia} and \emph{deuteranopia,} were both considered.} This was to ensure that subjects could later on indicate what one of the two systems that they preferred, for example. Note that only the colour schemes and logos varied -- the same basic interface layout as previously discussed in Section~\ref{sec:csm:methodology:user:interface} was employed. Figure~\ref{fig:interface_headers} demonstrates the two different colour schemes and logos for the two systems.
+
+For the practice task, it should be noted that the standard, blue colour scheme as shown in Figure~\ref{fig:interfaces} on page~\pageref{fig:interfaces} was used. This is the same colour scheme as used in the user study reported in Chapter~\ref{chap:snippets}. A standard \texttt{News Search System Study} title was also used in place of any logos. This decision was taken to remove any impact that incorporating an individual system's colour scheme in the practice task would have on searcher behaviour or perceptions. All subjects used the \dualbluebox{ND}{AS} system and task for the practice task.
 
 \subsubsection{Search Tasks}
 As we discussed in Section~\ref{sec:csm:methodology:user:flow}, subjects were grounded by instructing them to imagine that they were newspaper reports. As such, they were required to gather documents to write stories about the four topics they searched for. Given each topic, each subject was then further instructed for this study to focus on a different criterion.
@@ -182,7 +184,7 @@ For each topic, we used corresponding~\gls{acr:trec} QRELs from the 2005 Robust 
     
     \RS\lbluecell\textbf{Airport Security} & \cell Airports & \cell Security measures taken \\
     \RS\lbluecell\textbf{Wildlife Extinction} & \cell Species & \cell Protection and conservation measures \\
-    \RS\lbluecell\textbf{Piracy} & \cell Vessels Boarded & \cell Acts of piracy \\
+    \RS\lbluecell\textbf{Piracy} & \cell Vessels boarded & \cell Acts of piracy \\
     \RS\lbluecell\textbf{Tropical Storms} & \cell Storms & \cell Lives lost, destruction caused \\
     \RS\lbluecell\textbf{Curb. Pop. Growth} & \cell Countries & \cell Population control methods \\
     
@@ -202,7 +204,7 @@ To complement Table~\ref{tbl:entities_across_topics}, we also list below a numbe
     \item{\blueboxbold{Curbing Population Growth (26 unique aspects)} Considers different \emph{countries} where population control methods were employed, such as \emph{China, India} or \emph{Zimbabwe.}}
 \end{itemize}
 
-Each of the unique aspects were assigned an identifying number, and stored in the~\gls{acr:trec} diversity format. By storing the aspects in this format, this then permitted us to use the \texttt{ndeval} application\footnote{The \texttt{ndeval} source code can be acquired from the~\gls{acr:trec} website at \url{https://trec.nist.gov/data/web/10/ndeval.c}. \urlaccessed{2018-06-24}}, which was in turn used to compute a number of measures related to aspectual retrieval. This process is illustrated in Figure~\ref{fig:entity_ids} (with the wildlife extinction topic used as an example), while we discuss these additional measures in Section~\ref{sec:diversity:users:measures}.
+Each of the unique aspects were assigned an identifying number, and stored in the~\gls{acr:trec} diversity format. By storing the aspects in this format, this then permitted us to use the \texttt{ndeval} application\footnote{The \texttt{ndeval} source code can be acquired from the~\gls{acr:trec} website at \url{https://trec.nist.gov/data/web/10/ndeval.c}. \urlaccessed{2018-06-24}}, which was in turn used to compute a number of measures related to aspectual retrieval. This process is illustrated in Figure~\ref{fig:entity_ids} (with the wildlife extinction topic used as an example).
 
 \begin{figure}[t!]
     \centering
@@ -212,60 +214,45 @@ Each of the unique aspects were assigned an identifying number, and stored in th
     \label{fig:entity_ids}
 \end{figure}
 
+\subsubsection{Additional Performance Measures}\label{sec:diversity:users:measures}
+In conjunction with the standard performance measures that we discussed back in Section~\ref{sec:csm:methodology:extracting:performance} on page~\pageref{sec:csm:methodology:extracting:performance}, we also include for this chapter two additional measures that consider aspectual search tasks. While traditional measures consider what documents are relevant, these additional measures allow us to determine \emph{why} said documents are relevant (i.e. what aspects each document covers).
+
+The first measure we consider is \emph{aspectual recall.}~\cite{over1998trec} defines aspectual recall as:
+
+\begin{quote}
+    \emph{``...the fraction of the submitted documents which contain one or more aspects.''}
+    \attrib{\cite{over2001trec}}
+\end{quote}
+
+\begin{wrapfigure}[3]{r}{0.45\textwidth}
+    \begin{center}
+    \vspace*{-5mm}
+    \includegraphics[width=1\textwidth]{figures/ch8-aspectual_recall.pdf}
+    \end{center}
+    \vspace*{-4mm}
+    \label{fig:aspectual_recall}
+\end{wrapfigure}
+
+Given a ranking, aspectual recall can be therefore computed by summing the number of \emph{unseen aspects} regarding a given topic up to a given ranking, $k$, and dividing by the rank. This is in contrast to more simplistic relevance measures, that consider only the~\gls{acr:trec} relevance judgement score for a document and topic combination. An example is provided above: given three documents, with three, one and zero new aspects to a topic, the aspectual recall at rank 3 is therefore $(3+1+0)/3 = 1.33$.
+
+In addition to aspectual recall, \emph{aspectual precision} was also defined by~\cite{over2001trec} as \emph{``the fraction of total aspects...for the topic that are covered by the submitted documents.''} Given this definition, it was argued by~\cite{sanderson2010test} that aspectual precision appears to be the same as precision, and thus we do not report aspectual precision in this chapter.
+
+The second measure that considers the diversity of the results returned is $\alpha DCG$. A~\glsfirst{acr:cg}-based measure, we discuss~\gls{acr:cg} basics in Section~\ref{sec:ir_background:user:evaluation:cg}. $\alpha DCG$ is intent-aware, as per~\cite{agrawal2009diversifying}. \todo{Need to add some more}
+
 \subsubsection{Diversifying Search Results}\label{sec:diversity:users:diversifying}
-As discussed earlier, our system factor considered both a baseline BM25 retrieval system, and a diversified approach, again using BM25 as an initial ranking baseline. The algorithm that we employed, based upon the \emph{XQuAD} framework by~\cite{santos2010query_reformulations_diversification}, re-scores and subsequently re-ranks documents based upon the number of unseen entities that appear within the document. The algorithm is presented as pseudo-code in Algorithm~\ref{alg:diversifying} below. Essentially, documents are re-ranked according to the number of new entities that are contained within them, with $\lambda$ determining the weighting of the aspectual scoring component.
+As discussed earlier, our system factor considered both a baseline BM25 retrieval system, and a diversified approach, again using BM25 as an initial ranking baseline. The algorithm that we employed, based upon the \emph{XQuAD} framework by~\cite{santos2010query_reformulations_diversification}, re-scores and subsequently re-ranks documents based upon the number of unseen entities that appear within the document. The algorithm is presented as pseudo-code in Algorithm~\ref{alg:diversifying} below. Essentially, documents are re-ranked according to the number of new entities that are contained within them, with $w$ determining the weighting of the aspectual scoring component.
 
-% \begin{algorithm}[t!]
-%     \textbf{Inputs:} original ranking \texttt{existing\_results}; \emph{(ii)} diversification depth, $k$; \emph{(iii)} $\lambda$, weighting for diversification scoring component\\
-%     \textbf{Output:} manipulated set of results, diversified to rank $k$
-%     \BlankLine
-%
-%     \texttt{entities} $\longleftarrow$ []\\
-%     \texttt{new\_rankings} $\longleftarrow$ []\\
-%     \texttt{i} $\longleftarrow$ $1$\\
-%
-%     \BlankLine
-%
-%     \texttt{pop()} top ranked document from \texttt{existing\_results} into \texttt{new\_rankings}\\
-%
-%     \BlankLine
-%
-%     \While{$i <= k$} {
-%         \texttt{entities} $\longleftarrow$ all entities in \texttt{new\_rankings} from $0$ to \texttt{i}$-1$\\
-%         \texttt{j}$\longleftarrow 0$\\
-%
-%         \BlankLine
-%
-%         \While{$j <=$ length of \texttt{existing\_results}} {
-%             \texttt{new\_entity\_count} $\longleftarrow$ the number of entities in document that are not in \texttt{entities} (unseen in the previous rankings)
-%
-%             \BlankLine
-%
-%             \texttt{existing\_results}[$j$]\texttt{.score} $\longleftarrow$ score + $(\lambda \cdot$ \texttt{new\_entity\_count}$)$
-%
-%             \BlankLine
-%
-%             increment \texttt{j}\\
-%         }
-%
-%         \BlankLine
-%
-%         sort \texttt{existing\_results} by \texttt{score}\\
-%         \texttt{pop()} top ranked document from \texttt{existing\_results} into \texttt{new\_rankings}\\
-%
-%         \BlankLine
-%
-%         increment \texttt{i}\\
-%     }
-%
-%     \BlankLine
-%     \Return{\texttt{new\_rankings}}
-%
-%     \caption{Pseudo-code of the diversification algorithm used in this study, based upon the XQuAD framework by~\cite{santos2010query_reformulations_diversification}.}
-%     \label{alg:diversifying}
-% \end{algorithm}
+\renewcommand{\figurename}{Figure/Algorithm}
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch8-pseudocode.pdf}}
+    \caption[Diversification algorithm pseudo-code]{Pseudo-code of the diversification algorithm used in this study, based upon the XQuAD framework by~\cite{santos2010query_reformulations_diversification}. As described in Section~\ref{sec:diversity:users:diversifying}, the algorithm guarantees that~\gls{acr:trec} relevant documents containing different aspects from each other will bubble up the baseline (BM25) rankings. Psuedo-code is provided in \emph{HAGGIS}~\citep{cutts2014haggis}.}
+    \label{alg:diversifying}
+\end{figure}
+\renewcommand{\figurename}{Figure}
 
-In order to select a reasonable approximation for the algorithm's $\lambda$ weighting, we performed a pilot study, running the diversification algorithm over the set of queries that were issued by subjects of the user study reported in Chapter~\ref{chap:snippets}. We assumed that re-ranking would take place over the first $30$ documents of each query, as subjects from this previous study didn't go lower than a depth of $24$ on average over interface \blueboxbold{T0}. Re-ranking the first $30$ documents was also not particularly computationally intensive, ensuring the implicit contract between the searcher and the retrieval system, of a quick response, was not violated. We selected $\lambda=0.7$, as it offered reasonable performance without producing results that were too perfect. We discuss this issue below.
+In order to select a reasonable approximation for the algorithm's $w$ weighting, we performed a pilot study, running the diversification algorithm over the set of queries that were issued by subjects of the user study reported in Chapter~\ref{chap:snippets}. We assumed that re-ranking would take place over the first $30$ documents of each query, as subjects from this previous study didn't go lower than a depth of $24$ on average over interface \blueboxbold{T0}. Re-ranking the first $30$ documents was also not particularly computationally intensive, ensuring the implicit contract between the searcher and the retrieval system, of a quick response, was not violated. We selected $w=0.7$, as it offered reasonable performance without producing results that were too perfect. We discuss this issue below.
 
 For the diversity re-ranking to work in this scenario, the algorithm must be aware of the ground truths which were collated, as described in Section~\ref{sec:diversity:users:method:aspects} above. The reasons for following this approach were:
 
@@ -277,7 +264,7 @@ For the diversity re-ranking to work in this scenario, the algorithm must be awa
 Without such a ground truth based approach, ensuring that~\gls{acr:trec} relevant documents would bubble up would have been difficult to achieve. Given the effects of document pooling as part of how the~\gls{acr:trec} QRELs were created (refer to Section~\ref{sec:ir_background:basics:cranfield}), it is highly likely that many other documents exist within the corpus that could be considered to be useful to a given topic, but were not assessed.
 
 \blueboxheader{Avoiding Perfect Results}
-As previously discussed, one major pitfall of this approach is that the diversification algorithm would have become \emph{too perfect.} With access to the ground truths, it would subsequently proceed to assign a higher rank to documents that were~\gls{acr:trec} assessed, leading to every document in the top $k$ containing new entities. To make this more of a challenge for subjects, we also incorporated within our aspectual data documents that were considered to be non-relevant by~\gls{acr:trec} assessors (i.e. a~\gls{acr:trec} assessment of $0$). This led to including an additional $2,663$ document that would be included within the diversity re-ranking, but were not relevant. For each of the five topics we consider in this thesis, the number of non-relevant documents from the~\gls{acr:trec} QRELs over each topic are:
+As previously discussed, one major pitfall of this approach is that the diversification algorithm would have become \emph{too perfect.} With access to the ground truths, it would subsequently proceed to assign a higher rank to documents that were~\gls{acr:trec} assessed, leading to every document in the top $k$ containing new entities. To make this more of a challenge for subjects, we also incorporated within our aspectual data documents that were considered to be non-relevant by~\gls{acr:trec} assessors (i.e. a~\gls{acr:trec} assessment of $0$). This led to including an additional $2,663$ document that would be included within the diversity re-ranking, but were not relevant. For each of the five topics we consider in this thesis, the number of non-relevant documents from the~\gls{acr:trec} QRELs over each topic were:
 
 \begin{itemize}
     \item{\blueboxbold{Airport Security} with 580 non-relevant documents;}
@@ -288,9 +275,6 @@ As previously discussed, one major pitfall of this approach is that the diversif
 \end{itemize}
 
 Rather than manually assess each document, we took the list of entities that were discovered for~\gls{acr:trec} relevant documents, and performed an exact keyword search for each of the entities within each of the $2,663$ documents. Any matches would have the corresponding entity attached to the document.
-
-\subsubsection{Additional Performance Measures}\label{sec:diversity:users:measures}
-$\alpha DCG$ and aspectual recall
 
 \subsubsection{Post-Task Surveys}
 

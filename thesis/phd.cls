@@ -62,6 +62,8 @@
 \usepackage{pxfonts}
 \usepackage{fontspec}
 
+\usepackage[]{algorithm2e}
+
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
 \setlength{\parskip}{12pt plus 5pt}  % Add some spacing at the end of a paragraph (compensating for no indentation)
