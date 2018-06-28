@@ -111,6 +111,10 @@
 \definecolor{search_yellow}{HTML}{F7BE01}
 \definecolor{search_green}{HTML}{2F9F42}
 
+% Hula and YoYo Colours
+\definecolor{hula}{HTML}{7E4895}
+\definecolor{yoyo}{HTML}{469E84}
+
 % Table line width
 \setlength\arrayrulewidth{1pt}
 
@@ -135,6 +139,12 @@
 
 % The "SimIIR" Logotype
 \newcommand{\simiir}{{\headerfont\color{dmax_darkblue}SimIIR}}
+
+% The Hula Search Logotype
+\newcommand{\hula}{{\headerfont\color{hula}Hula Search}}
+
+% The YoYo Search Logotype
+\newcommand{\yoyo}{{\headerfont\color{yoyo}YoYo Search}}
 
 % Blue boxes!
 \setlength\fboxsep{2mm} % Applies padding to the blue boxes.

@@ -128,15 +128,15 @@ Our second set of conditions therefore consider a diversified system \blueboxbol
 With non-diversifying and diversifying systems, we developed different sets of branding for each system, each with their own distinct colour scheme, name and logo. This was to assist searchers in differentiating between the two. First, in terms of branding, we created two fictional search engine names:
 
 \begin{itemize}
-    \item{\blueboxbold{YoYo Search}, representing the non-diversified \blueboxbold{ND} system; and}
-    \item{\blueboxbold{Hula Search}, representing the diversified \blueboxbold{D} system.}
+    \item{\hula, representing the non-diversified \blueboxbold{ND} system; and}
+    \item{\yoyo, representing the diversified \blueboxbold{D} system.}
 \end{itemize}
 
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch8-interface_headers.pdf}}
-    \caption[Diversity user study interface mockups]{Mockups of the two names and colour schemes used to differentiate between the two experimental systems used in this user study. \emph{Hula Search} and \emph{YoYo Search} represented the non-diversified and diversified systems respectively. Refer to Section~\ref{sec:diversity:users:method} for more information.}
+    \caption[Diversity user study interface mockups]{Mockups of the two names and colour schemes used to differentiate between the two experimental systems used in this user study. \hula~and \yoyo~represented the non-diversified and diversified systems respectively. Refer to Section~\ref{sec:diversity:users:method} for more information.}
     \label{fig:interface_headers}
 \end{figure}
 
@@ -336,9 +336,9 @@ In addition to the behavioural component of the survey, the system-sided compone
 \end{itemize}
 
 \subsubsection{Post-Experiment Survey}
-In addition to the post-task surveys, we also asked subjects to answer a post-experiment survey upon completion of all four search tasks. Here, we wanted to ascertain which of the two retrieval systems (Hula Search, representing the baseline, non-diversified system \blueboxbold{ND} or YoYo Search, representing the diversified system, \blueboxbold{D}) offered subjects a better experience, and which one of the two that they preferred overall.
+In addition to the post-task surveys, we also asked subjects to answer a post-experiment survey upon completion of all four search tasks. Here, we wanted to ascertain which of the two retrieval systems (\hula, representing the baseline, non-diversified system \blueboxbold{ND} or \yoyo~Search, representing the diversified system, \blueboxbold{D}) offered subjects a better experience, and which one of the two that they preferred overall.
 
-Seven questions were posed, with answers again provided on a Likert scale. However, we this time provided six possible choices, from $1$ (definitely Hula Search) to $3$ (slightly Hula Search), from $4$ (slightly YoYo Search) to $6$ (definitely YoYo Search). We opted not to include a neutral option to force subjects into deciding between one of the two systems. We asked the subjects the following questions.
+Seven questions were posed, with answers again provided on a Likert scale. However, we this time provided six possible choices, from $1$ (definitely \hula) to $3$ (slightly \hula), from $4$ (slightly \yoyo) to $6$ (definitely \yoyo). We opted not to include a neutral option to force subjects into deciding between one of the two systems. We asked the subjects the following questions.
 
 \begin{itemize}
     \item{\blueboxbold{Informative} Of the two retrieval systems, subjects were asked to pick which of the two returned the most informative results.}
@@ -358,6 +358,37 @@ The final three questions then led on to asking subjects about what one of the t
 While responses from subjects did definitely provide a preferred retrieval system, we nevertheless discuss the results from this survey in Section~\ref{sec:diversity:users:results:experience}.
 
 \subsection{Results}
+We now move onto an analysis of the user study results, addressing the overarching study research question and chapter hypotheses posed in Section~\ref{sec:diversity:background:tasks:hypotheses}. In this analysis, we examine both the behaviour and performance of each subject across the four different experimental conditions, \dualbluebox{D}{AS}, \dualbluebox{ND}{AS}, \dualbluebox{D}{AD} and \dualbluebox{ND}{AD}. Both task (considering \blueboxbold{AD} vs. \blueboxbold{AS}) and system (considering \blueboxbold{ND} and \blueboxbold{D}) effects were also examined. To evaluate these data, ANOVAs were conducted using the experimental conditions, tasks and systems each as factors; main effects were examined with $\alpha=0.05$. Bonferroni tests were then used for post-hoc analysis where required. To reiterate, as discussed in Section~\ref{sec:diversity:users:measures}, $\alpha DCG$ is computed at $\alpha=0.5$.
+
+\begin{table}[t!]
+    \caption[Query performance over retrieval systems \blueboxbold{ND} and \blueboxbold{D}]{Query statistics and performance measures across both of the experimental systems trialled, \blueboxbold{ND} (baseline, non-diversified) and \blueboxbold{D} (diversified). Note the significant differences between the diversity-centric measures, $\alpha$DCG (where $\alpha$=0.5) and aspectual recall (AR), highlighting that the diversification algorithm did indeed provide subjects with a more diverse set of results with which to examine.\vspace*{-3mm}}
+    \label{tbl:aspects_system_comparison}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{5.3cm}@{\CS}D{4.5cm}@{\CS}D{4.5cm}@{\CS}}
+    
+    \RS & & \lbluecell \textbf{ND} & \lbluecell \textbf{D} \\
+    
+    \RS & \lbluecell\textbf{Queries Issued} & \cell 718 & \cell 555 \\
+    \RS & \lbluecell\textbf{Terms per Query} & \cell 3.59 & \cell 3.80 \\
+    \RS & \lbluecell\textbf{Unique Terms} & \cell 345 & \cell 292 \\
+    
+    \RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-3mm}\textbf{Precision}}} & \lbluecell\textbf{P@5} & \cell 0.25$\pm$0.01* & \cell 0.29$\pm$0.01* \\
+    \RS & \lbluecell\textbf{P@10} & \cell 0.22$\pm$0.01 & \cell 0.24$\pm$0.01 \\
+    
+    \RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-3mm}\textbf{$\alpha$DCG}}} & \lbluecell\textbf{$\alpha$DCG@5} & \cell 0.02$\pm$0.00* & \cell 0.04$\pm$0.00* \\
+    \RS & \lbluecell\textbf{$\alpha$DCG@10} & \cell 0.03$\pm$0.00* & \cell 0.04$\pm$0.00* \\
+    
+    \RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{AR}}} & \lbluecell\textbf{AR@5} & \cell 1.40$\pm$0.11* & \cell 3.39$\pm$0.21* \\
+    \RS & \lbluecell\textbf{AR@10} & \cell 2.11$\pm$0.14* & \cell 4.07$\pm$0.24* \\
+    
+\end{tabulary}
+\end{center}
+\end{table}
+
+To begin our analysis, we first examined whether the performance experienced by subjects over the two retrieval systems was in fact different, as indicated it would be by our pilot study (refer to Section~\ref{sec:diversity:users:diversifying}). We took the queries subjects issued to each of the two systems, and measured the performance according to $\alpha DCG$, AR and precision. Results are presented in Table~\ref{tbl:aspects_system_comparison}. Statistical testing confirms that the two systems were significantly different in terms of diversity (i.e. $\alpha DCG@10$: $F(1, 1272=28.74, p<0.001)$ and $AR@10$: $F(1,1272 = 55.43, p<0.001)$. However, $P@10$ was not significantly different between the two retrieval systems. This suggests that the re-ranking promoted relevant and diverse documents, but only from the top ten results (on average).
+
+Aside from showing query performance, Table~\ref{tbl:aspects_system_comparison} also reports the number of terms issued per query over retrieval systems \blueboxbold{ND} and \blueboxbold{D}. Of the $1273$ total queries issued, those issued to \blueboxbold{ND} were shorter on average, with $3.59$ terms compared to $3.80$ terms for system \blueboxbold{D}. However, the vocabulary used by subjects issuing queries to \blueboxbold{ND} was greater than \blueboxbold{D} -- queries issued to \blueboxbold{ND} contained a total of $345$ unique terms, compared to $292$. This provides our first finding of note from the data. When using retrieval system \blueboxbold{ND} that did not diversify search results, subjects issued a greater number of queries -- but were slightly shorter and more varied -- in order to accomplish their tasks.
 
 \subsubsection{Interactions}
 
