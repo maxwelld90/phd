@@ -61,8 +61,7 @@
 \usepackage{metalogo}
 \usepackage{pxfonts}
 \usepackage{fontspec}
-
-\usepackage[]{algorithm2e}
+\usepackage[figuresright]{rotating}
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
@@ -114,6 +113,16 @@
 % Hula and YoYo Colours
 \definecolor{hula}{HTML}{7E4895}
 \definecolor{yoyo}{HTML}{469E84}
+\definecolor{yoyo1}{HTML}{7EBBA9}
+\definecolor{yoyo2}{HTML}{A3CFC2}
+\definecolor{yoyo3}{HTML}{C8E2DA}
+\definecolor{yoyo4}{HTML}{152F28}
+
+\definecolor{hula}{HTML}{7E4895}
+\definecolor{hula1}{HTML}{A57FB5}
+\definecolor{hula2}{HTML}{BFA4CA}
+\definecolor{hula3}{HTML}{D8C8DF}
+\definecolor{hula4}{HTML}{26162d}
 
 % Table line width
 \setlength\arrayrulewidth{1pt}
@@ -125,6 +134,15 @@
 
 \newcommand\dbluecell{\leavevmode\cellcolor{dmax_darkblue}\color{white}}
 \newcommand\lbluecell{\leavevmode\cellcolor{dmax_lightblue}\color{white}}
+\newcommand\yoyocell{\leavevmode\cellcolor{yoyo}\color{white}}
+\newcommand\yoyocellone{\leavevmode\cellcolor{yoyo1}\color{yoyo4}}
+\newcommand\yoyocelltwo{\leavevmode\cellcolor{yoyo2}\color{yoyo4}}
+\newcommand\yoyocellthree{\leavevmode\cellcolor{yoyo3}\color{yoyo4}}
+\newcommand\hulacellone{\leavevmode\cellcolor{hula1}\color{hula4}}
+\newcommand\hulacelltwo{\leavevmode\cellcolor{hula2}\color{hula4}}
+\newcommand\hulacellthree{\leavevmode\cellcolor{hula3}\color{hula4}}
+
+\newcommand\hulacell{\leavevmode\cellcolor{hula}\color{white}}
 \newcommand\cell{\leavevmode\cellcolor{dmax_cellcolour}\color{dmax_darkblue}}
 \newcommand\cellemph{\leavevmode\cellcolor{dmax_red}\color{white}}
 
@@ -145,6 +163,9 @@
 
 % The YoYo Search Logotype
 \newcommand{\yoyo}{{\headerfont\color{yoyo}YoYo Search}}
+
+% Generic black text
+\newcommand{\genericblack}[1]{{\headerfont#1}}
 
 % Blue boxes!
 \setlength\fboxsep{2mm} % Applies padding to the blue boxes.
