@@ -497,7 +497,7 @@ All values in the two tables for time-based measures are reported in seconds. Su
 There were no notable significant differences between conditions, tasks, or systems for any of the post-task surveys. For the post-experiment survey, subjects were roughly evenly split between their preference for system \blueboxbold{D} or \blueboxbold{ND} -- again with no significant differences. This finding suggests that despite the substantial (and significant) difference in aspectual recall and other system performance measures, between the systems, subjects seemed largely ambivalent to the different system's influences. Of course, however, their observed behaviours do suggest that the system (and task) did affect their performance.
 
 \begin{table}[t!]
-    \caption[xx]{Results from the post-task surveys, consisting of both the behavioural- and system-based questions. Results shown are averages recorded for each of the four experimental conditions when considering the seven-point Likert scale. }
+    \caption[Post-task survey results]{Results from the post-task surveys, consisting of both the behavioural- and system-based questions. Results shown are averages recorded for each of the four experimental conditions when considering the seven-point Likert scale. }
     \label{tbl:aspects_post_behavioural}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -632,5 +632,38 @@ In past work, many interface-based solutions were studied, where a few significa
 From this study, we now move towards examining in more detail the stopping behaviour of searchers through a simulated analysis. The next section of this chapter details the simulated study, grounded from interaction data extracted from this user study.
 
 \section{Simulated Analysis}\label{sec:diversity:simulated}
+
+\subsection{Methodology}
+
+\begin{table}[t!]
+    \caption[Interaction costs and probabilities]{Interaction costs (in seconds) and probabilities, as observed over each of the four different experimental conditions trialled. These are used to ground the simulations. A discussion into the probabilities can be found in Section~\ref{chap:csm:method:simulation:grounding:judgements} on page~\pageref{chap:csm:method:simulation:grounding:judgements}, with interaction costs discussed in Section~\ref{chap:csm:method:simulation:grounding:costs} on page~\pageref{chap:csm:method:simulation:grounding:costs}.}
+    \label{tbl:aspects_post_behavioural}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.2cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}}
+
+        \RS & & \lbluecell \textbf{D-AS} & \lbluecell \textbf{ND-AS} & \lbluecell \textbf{D-AD} & \lbluecell \textbf{ND-AD} \\
+
+        \RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Click}}} & \lbluecell\textbf{P(C)} & \cell \small{0.16} & \cell \small{0.21} & \cell \small{0.16} & \cell \small{0.20}\\
+        \RS & \lbluecell\textbf{P(C|R)} & \cell \small{0.27} & \cell \small{0.30} & \cell \small{0.25} & \cell \small{0.31}\\
+        \RS & \lbluecell\textbf{P(C|N)} & \cell \small{0.13} & \cell \small{0.18} & \cell \small{0.13} & \cell \small{0.17}\\
+        
+        \RS\RS\RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Save}}} & \lbluecell\textbf{P(S)} & \cell \small{0.67} & \cell \small{0.66} & \cell \small{0.70} & \cell \small{0.71}\\
+        \RS & \lbluecell\textbf{P(S|R)} & \cell \small{0.78} & \cell \small{0.63} & \cell \small{0.74} & \cell \small{0.67}\\
+        \RS & \lbluecell\textbf{P(S|N)} & \cell \small{0.59} & \cell \small{0.61} & \cell \small{0.65} & \cell \small{0.65}\\
+        
+        \RS\RS\RS \multirow{5}{*}{\rotatebox{90}{\hspace*{-6mm}\textbf{Interaction Costs}}} & \lbluecell\textbf{Query} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx}\\
+        \RS & \lbluecell\textbf{SERP Ex.} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx}\\
+        \RS & \lbluecell\textbf{Result Summary} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx}\\
+        \RS & \lbluecell\textbf{Document} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx}\\
+        \RS & \lbluecell\textbf{Save} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx}\\
+        
+    \end{tabulary}
+    \end{center}
+\end{table}
+
+\subsection{Results}
+
+\subsection{Discussion}
 
 \section{Chapter Summary}
