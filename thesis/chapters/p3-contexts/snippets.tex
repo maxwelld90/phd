@@ -176,7 +176,7 @@ A total of $60$ subjects took part on the~\gls{acr:mturk} platform between July 
 
 With a total of $53$ subjects considered in the results of this study, each searching over four topics, this meant a total of $212$ search sessions being logged and available for analysis. Finally, we report results over a reduced time period of six minutes ($360$ seconds). This decision was taken as not all of the $53$ subjects spent the full ten minutes searching, with these subjects skewing results. By reducing the time period that we considered, we ensured that we could extract meaningful data from the interaction logs, where all subjects were interacting with the experimental system.
 
-\subsubsection{Post-Task Surveys}
+\subsubsection{Post-Task Surveys}\label{sec:snippets:method:posttask}
 With the pre-task survey the same as that outlined in the general methodology (refer to Section~\ref{sec:csm:methodology:extracting:user}), surveys for this study differed post-task and post-experiment. Here, we discuss the questions posed in each of the four post-task surveys.
 
 A seven-point Likert scale was used for post-task surveys, similar to the pre-task surveys. Upon completion of each search task, the following statements were completed by each subject, selecting from \emph{strongly disagree} to \emph{strongly agree.}
@@ -192,7 +192,7 @@ A seven-point Likert scale was used for post-task surveys, similar to the pre-ta
 
 These questions allowed us to obtain quantitative data alluding to how each subject perceived the search interface that they interacted with, and ascertain what they thought of the different result summary lengths.
 
-\subsubsection{Post-Experiment Survey}
+\subsubsection{Post-Experiment Survey}\label{sec:snippets:method:postexperiment}
 At the end of the experiment, subjects also completed a post-experiment survey. Five questions were posed, this time asking subjects to select which one of the four different interfaces best matched up with their opinion of the question asked.
 
 \begin{itemize}
@@ -268,6 +268,30 @@ Across the four experimental interfaces trialled, Table~\ref{tbl:snippets_intper
 
 These are all presented within the \genericblack{Interactions}~grouping. Across the four experimental interfaces of \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}, there were no significant differences reported between any of these measures. The number of queries issued follows a slight downward trend as the length of the result summaries (dictated by the interface conditions) increased ($3.72 \pm 0.34$ for \blueboxbold{T0}, to $3.28\pm0.31$ for \blueboxbold{T4}). This was also true for the number of~\glsplural{acr:serp} examined, and the number of documents examined per query. The depth to which subjects went to per query however follows a downward trend. As the length of each result summary increased, subjects were likely to go to shallower depths per query when examining result summaries ($24.47\pm2.96$ for \blueboxbold{T0}, to $19.4\pm20.04$ for \blueboxbold{T4}).
 
+\begin{table}[t!]
+    \caption[Interaction probabilities]{A summary of the various interaction probabilities over each of the four experimental interfaces examined. Note the increasing trends for each probability from \blueboxbold{T0} $\rightarrow$ \blueboxbold{T4}. Section~\ref{chap:csm:method:simulation:grounding:judgements} on page~\pageref{chap:csm:method:simulation:grounding:judgements} provides an explanation of the various probabilities listed here.}
+    \label{tbl:snippets_probabilities}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.2cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}}
+
+        \RS & & \lbluecell \textbf{T0} & \lbluecell \textbf{T1} & \lbluecell \textbf{T2} & \lbluecell \textbf{T4} \\
+
+        \RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Click}}} & \lbluecell\textbf{P(C)} & \cell \small{0.20$\pm$0.02} & \cell \small{0.25$\pm$0.02} & \cell \small{0.26$\pm$0.03} & \cell \small{0.28$\pm$0.03}\\
+        \RS & \lbluecell\textbf{P(C|R)} & \cell \small{0.28$\pm$0.03} & \cell \small{0.34$\pm$0.03} & \cell \small{0.35$\pm$0.03} & \cell \small{0.40$\pm$0.04}\\
+        \RS & \lbluecell\textbf{P(C|N)} & \cell \small{0.18$\pm$0.02} & \cell \small{0.23$\pm$0.02} & \cell \small{0.25$\pm$0.03} & \cell \small{0.24$\pm$0.03}\\
+        
+        \RS\RS\RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Save}}} & \lbluecell\textbf{P(S)} & \cell \small{0.61$\pm$0.04} & \cell \small{0.68$\pm$0.04} & \cell \small{0.65$\pm$0.03} & \cell \small{0.71$\pm$0.03}\\
+        \RS & \lbluecell\textbf{P(S|R)} & \cell \small{0.66$\pm$0.06} & \cell \small{0.69$\pm$0.05} & \cell \small{0.67$\pm$0.05} & \cell \small{0.66$\pm$0.05}\\
+        \RS & \lbluecell\textbf{P(S|N)} & \cell \small{0.55$\pm$0.04} & \cell \small{0.65$\pm$0.04} & \cell \small{0.58$\pm$0.04} & \cell \small{0.67$\pm$0.04}\\
+        
+    \end{tabulary}
+    \end{center}
+\end{table}
+
+Interaction probabilities all showed an increasing trend as result summary length increased over the four experimental interfaces, as shown in Table~\ref{tbl:snippets_probabilities}. Explanations for what each of the different probabilities represent can be found in Section~\ref{chap:csm:method:simulation:grounding:judgements} on page~\pageref{chap:csm:method:simulation:grounding:judgements}. Although no significant differences were observed over the four interfaces and the different probabilities examined, trends across all probabilities show an increase as result summary length increased. An increase of both the probability of clicking result summaries on the~\gls{acr:serp} ($P(C)$) and saving the associated documents ($P(S)$) as relevant were observed. When these probabilities are examined in more detail by separating the result summaries clicked and documents saved by their~\gls{acr:trec} relevancy, we see increasing trends for clicking and saving -- both for~\gls{acr:trec} relevant ($P(C|R)$ and $P(S|R)$ for clicking and saving, respectively), and~\gls{acr:trec} non-relevant documents ($P(C|N)$ and $P(M|N)$). This interesting finding shows that an increase in result summary length does not necessarily improve a subject's accuracy, but simply the likelihood that they will consider documents to be relevant.
+
+
 \subsubsection{Time-Based Measures}\label{chap:snippets:user:results:time}
 Table~\ref{tbl:snippets_intperftime} also presents three time-based measures (within the \genericblack{Times}~grouping) that were observed across the four experimental interfaces. We show:
 
@@ -299,11 +323,88 @@ Also included within Table~\ref{tbl:snippets_intperftime} are our reported perfo
 
 Like the interaction measures examined previously, no significant differences were observed over the four experimental interfaces examined. The performance of queries issued by subjects was very similar across all interfaces ($P@10 \approx 0.25$), along with the number of documents identified by subjects as relevant ($6.49\pm0.58$) for \blueboxbold{T2} to $7.6\pm0.79$ for \blueboxbold{T4}, and the interactive precision ($2.28\pm0.25$ for \blueboxbold{T1} to $2.66\pm0.32$ for \blueboxbold{T4}). Considering the number of saved,~\gls{acr:trec} non-relevant documents, where subjects on averaged saved two such documents. However, there again no significant differences between the four interfaces.
 
-\subsubsection{User Experience}
+\subsubsection{User Experience}\label{chap:snippets:user:results:ux}
+In this section, we analyse the results of the post-task and post-experiment surveys that subjects completed. Examining the results from these surveys allow us to capture the subject's perceived experiences of using the experimental system across all four interfaces trialled.
 
-\subsection{Discussion}
+\begin{table}[t!]
+    \caption[Post-task survey results]{Summary table of the recorded observations for the post-task surveys, indicating the preferences of subjects over the six criteria and four experimental interfaces. Across all criteria, \blueboxbold{T0} was significantly different from the other three interfaces (denoted by *). Using the seven-point Likert scale, results are shown from 1 (strongly disagree) to 7 (strongly agree).}
+    \label{tbl:snippets_posttask}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{4.15cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}}
+
+        \RS & \lbluecell \textbf{T0} & \lbluecell \textbf{T1} & \lbluecell \textbf{T2} & \lbluecell \textbf{T4} \\
+
+        \RS \lbluecell\textbf{Clarity} & \cell \small{4.16$\pm$0.27*} & \cell \small{5.00$\pm$0.21} & \cell \small{5.06$\pm$0.24} & \cell \small{5.40$\pm$0.20}\\
+        \RS \lbluecell\textbf{Confidence} & \cell \small{3.71$\pm$0.26*} & \cell \small{4.66$\pm$0.26} & \cell \small{4.75$\pm$0.24} & \cell \small{5.06$\pm$0.25}\\
+        \RS \lbluecell\textbf{Informativeness} & \cell \small{4.20$\pm$0.30*} & \cell \small{5.38$\pm$0.24} & \cell \small{5.27$\pm$0.24} & \cell \small{5.62$\pm$0.20}\\
+        \RS \lbluecell\textbf{Relevance} & \cell \small{3.84$\pm$0.28*} & \cell \small{4.89$\pm$0.25} & \cell \small{5.08$\pm$0.24} & \cell \small{5.36$\pm$0.20}\\
+        \RS \lbluecell\textbf{Readability} & \cell \small{5.18$\pm$0.31*} & \cell \small{6.32$\pm$0.17} & \cell \small{6.46$\pm$0.14} & \cell \small{6.36$\pm$0.14}\\
+        \RS \lbluecell\textbf{Size} & \cell \small{4.00$\pm$0.31*} & \cell \small{4.94$\pm$0.25} & \cell \small{5.21$\pm$0.22} & \cell \small{5.36$\pm$0.19}\\
+        
+    \end{tabulary}
+    \end{center}
+\end{table}
+
+\blueboxheader{Post-Task Surveys}
+Table~\ref{tbl:snippets_posttask} presents the mean set of results (and their standard deviations) from subjects across the four interfaces trialled. As previously discussed, these questions were answered upon the completion of each search task. The survey questions are detailed in Section~\ref{sec:snippets:method:posttask}. Using a seven-point Likert scale for their responses (with $1$ denoting a strong disagreement, and $7$ denoting a strong agreement), significant differences were found in all question responses, as shown below.
+
+\begin{itemize}
+    \item{\blueboxbold{Clarity} $F(3,208)=5.22, p=0.001$}
+    \item{\blueboxbold{Confidence} $F(3,208)=5.2, p=0.001$}
+    \item{\blueboxbold{Informativeness} $F(3,208)=5.22, p=0.001$}
+    \item{\blueboxbold{Relevance} $F(3,208)=6.44, p<0.001$}
+    \item{\blueboxbold{Readability} $F(3,208)=9.25, p<0.001$}
+    \item{\blueboxbold{Size} $F(3,208)=7.28, p<0.001$}
+\end{itemize}
+
+Follow-up Bonferroni tests however shows that the significant difference existed only between \blueboxbold{T0} and the remaining three interfaces, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}. A series of discernible trends can be observed throughout the responses, with subjects regarding longer result summaries as more concise, and a possessing a higher degree of clarity ($4.16\pm0.27$ for \blueboxbold{T0} to $5.4\pm0.2$ for \blueboxbold{T4}). This perceived clarity also made subjects feel more confidence that the longer result summaries helped them make better decisions as to whether they were relevant to the given topic. Interaction results presented above however differ from this (as shown in Table~\ref{tbl:snippets_probabilities}), where the overall probability of saving documents increased, regardless of the document/topic relevancy judgement. Other notable trends observed from the results included an increase in how informative subjects perceived results to be -- again, with longer result summaries proving to be more informative. Subjects also reported a general increase in satisfaction of the length of the presented result summaries. However, as mentioned, no significant difference existed between the three interfaces in which snippets were generated as part of the result summaries (i.e. \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}).
+
+\blueboxheader{Post-Experiment Survey}
+As detailed previously in Section~\ref{sec:snippets:method:postexperiment}, subjects completed a post-experiment exit survey. Responses from the subjects are presented in Table~\ref{tbl:snippets_posttask}. From the results, subjects found result summaries of longer lengths (i.e. those generated by interfaces \blueboxbold{T2} and \blueboxbold{T4}) to be the most informative, and those generated by \blueboxbold{T0} -- without any snippet(s) -- to be the least helpful and useful. The longer result summaries were also consistently favoured by subjects who preferred them over the result summaries generated by interfaces \blueboxbold{T0} and \blueboxbold{T1}. Subjects also found the result summaries of longer length easier to use to satisfy the given information need.
+
+From the results, it is therefore clear that a majority of subjects preferred longer result summaries to be presented on~\glsplural{acr:serp}, generated by interfaces \blueboxbold{T2} and \blueboxbold{T4}.
+
+\begin{table}[t!]
+    \caption[Post-experiment survey results]{Raw results presenting responses from the post-experiment exit survey completed by each subject. More information on the survey can be found in SectionSection~\ref{sec:snippets:method:postexperiment}, with results discussed in Section~\ref{chap:snippets:user:results:ux}.}
+    \label{tbl:snippets_posttask}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{4.15cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}}
+
+        \RS & \lbluecell \textbf{T0} & \lbluecell \textbf{T1} & \lbluecell \textbf{T2} & \lbluecell \textbf{T4} \\
+
+        \RS \lbluecell\textbf{Most Informative} & \cell \small{1} & \cell \small{4} & \cell \small{\textbf{20}} & \cell \small{\textbf{29}}\\
+        \RS \lbluecell\textbf{Least Helpful} & \cell \small{\textbf{46}} & \cell \small{5} & \cell \small{1} & \cell \small{2}\\
+        \RS \lbluecell\textbf{Easiest} & \cell \small{4} & \cell \small{4} & \cell \small{\textbf{24}} & \cell \small{\textbf{22}}\\
+        \RS \lbluecell\textbf{Least Useful} & \cell \small{\textbf{49}} & \cell \small{4} & \cell \small{0} & \cell \small{1}\\
+        \RS \lbluecell\textbf{Most Preferred} & \cell \small{3} & \cell \small{5} & \cell \small{\textbf{20}} & \cell \small{\textbf{26}}\\
+        
+    \end{tabulary}
+    \end{center}
+\end{table}
+
+\subsection{Discussion and User Study Conclusions}
+This user study investigated the influence of result summary length on search behaviour and performance. Using Kullback-Leibler distance~\citep{kullback1951information} as a measure of information gain, we examined result summaries of different lengths, selected a series of result summary lengths (comprised of snippet fragments) where there was a significant difference in information gain between them, which yielded the configurations for our four experimental conditions, \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}. A crowdsourced, within-subjects user study was performed comprising of 53 subjects, each of whom undertook four search tasks, using each of the four experimental interfaces.
+
+This work was focused around addressing the two key research questions, which explored \blueboxbold{RQ1} how the length of a result summary affected search behaviour and user experience; and \blueboxbold{RQ2} whether the length of result summaries affected the decision making ability and accuracy of the subjects. Addressing \blueboxbold{RQ1} first in terms of search behaviour, there was admittedly little difference -- but we did observe the following trends. As result summary length increased, subjects:
+
+\begin{itemize}
+    \item{issued fewer queries;}
+    \item{examined fewer pages; \emph{but}}
+    \item{clicked more documents.}
+\end{itemize}
+
+These findings demonstrate that subjects would spend more of their time assessing documents at higher ranks. Second, our results show that in terms of experience, subjects broadly preferred longer result summaries. The subjects felt that longer summaries were more clear, informative, readable -- and interestingly -- gave them more confidence in their relevance decisions.
+
+With respect to \blueboxbold{RQ2}, we again observed little difference in subjects' decision making abilities and accuracy between the four experimental interfaces. While subjects perceived longer result summaries to help them infer relevance more accurately, our empirical evidence suggests otherwise. In fact, it would appear that longer result summaries were more attractive, increasing the information scent of the~\gls{acr:serp}. This may account for the increase in clicks on the early results, without the benefits, however: accuracy of our subjects did not improve with longer result summaries, nor did they find more relevant documents. Increased confidence in the result summaries (from interfaces \blueboxbold{T0} $\rightarrow$ \blueboxbold{T4}) may have led to a more relaxed approach at saving content as relevant -- as can be seen by increasing click and mark probabilities for both relevant and non-relevant content. It is also possible that the \emph{paradox of choice}~\citep{oulasvirta2009serp_size} could play a role in shaping a searcher's preferences. For example, in the interface with the longest result summaries, \blueboxbold{T4}, subjects viewed fewer results/choices than on other conditions. This may have contributed to their feelings of greater satisfaction and increased confidence in their decisions.
+
+These novel findings provide new insights into how searchers interact with result summaries in terms of their experiences and search behaviours. Previous work had only focused upon task completion times and accuracy of the first result while not considering their experiences~\citep{cutrell2007eye_tracking, kaisser2008improving}. Our findings show that longer result summaries, while containing a greater amount of information content, are not necessarily better in terms of decision making -- although subjects perceived this to be the case. We also show a positive relationship between the length and informativeness of result summaries and their attractiveness (clickthrough rates). These results show that the experiences and perceptions of searchers -- and the actual performance of those searchers -- is different, and when designing interfaces, this needs to be taken into account.
+
+Taking our findings from this user study, the next section discusses our simulation experiment, considering data from this user study as a means of grounding our simulations.
 
 \section{Simulated Analysis}\label{chap:snippets:simulations}
+Simulated part!
 
 \subsection{Methodology}
 
