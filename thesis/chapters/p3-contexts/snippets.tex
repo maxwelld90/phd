@@ -227,13 +227,77 @@ From the four aspects we highlighted in Section~\ref{sec:csm:methodology:extract
 \end{center}
 \end{table}
 
-To check whether the interfaces were sufficiently different with respect to snippet length and information gain, we performed an analysis of the result summaries that were presented to the subjects. Table~\ref{tbl:snippets_info_gain} summarises, over each interface, the number of words and characters that result summaries contained on average. As expected, the table shows an increasing trend of words and characters as the number of snippet fragments were increased. Information gain (or relative entropy), as previously discussed, was calculated using~\gls{glos:kl}~\citep{kullback1951information}. Statistical testing showed that the differences between snippet length \todo{(F() = ??)} and information gain \todo{(F() = ??)} were significant. Follow up tests revealed that this was the case over all four interfaces, indicating that our conditions were indeed different on these dimensions. These findings provide some justification for our choices of the number of snippet fragments used with each interface. A diminishing increase in information gain after four snippet fragments suggested that there would not have been much point generating result summaries that were any longer.
+To check whether the interfaces were sufficiently different with respect to snippet length and information gain, we performed an analysis of the result summaries that were presented to the subjects. Table~\ref{tbl:snippets_info_gain} summarises, over each interface, the number of words and characters that result summaries contained on average. As expected, the table shows an increasing trend of words and characters as the number of snippet fragments were increased. Information gain (or relative entropy), as previously discussed, was calculated using~\gls{glos:kl}~\citep{kullback1951information}. Statistical testing showed that the differences between snippet length ($F(3,208 = 1.2x10^5, p<0.001)$) and information gain ($F(3,208) = 2.6x10^5, p<0.001)$) were significant. Follow up tests revealed that this was the case over all four interfaces, indicating that our conditions were indeed different on these dimensions. These findings provide some justification for our choices of the number of snippet fragments used with each interface. A diminishing increase in information gain after four snippet fragments suggested that there would not have been much point generating result summaries that were any longer.
 
-\subsubsection{Behavioural Measures}
+\begin{table}[t!]
+    \caption[Behaviour and performance over experimental interfaces]{Various measures reported over each of the four experimental interfaces, \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}. Included are interaction and time-based measures (behavioural), as well as performance-based measures. No significant differences were observed, bar for the time per result summary. Refer to Section~\ref{chap:snippets:user:results:time} for details.}
+    \label{tbl:snippets_intperftime}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.2cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}}
 
-\subsubsection{Time-Based Measures}
+        \RS & & \lbluecell \textbf{T0} & \lbluecell \textbf{T1} & \lbluecell \textbf{T2} & \lbluecell \textbf{T4} \\
+
+        \RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Interactions}}} & \lbluecell\textbf{\#Queries} & \cell \small{3.72$\pm$0.34} & \cell \small{3.19$\pm$0.35} & \cell \small{3.30$\pm$0.35} & \cell \small{3.28$\pm$0.31}\\
+        \RS & \lbluecell\textbf{\#\glsplural{acr:serp}/Query} & \cell \small{2.87$\pm$0.29} & \cell \small{2.69$\pm$0.23} & \cell \small{2.43$\pm$0.13} & \cell \small{2.40$\pm$0.20}\\
+        \RS & \lbluecell\textbf{\#Docs./Query} & \cell \small{4.23$\pm$0.55} & \cell \small{4.83$\pm$0.54} & \cell \small{5.14$\pm$0.66} & \cell \small{4.76$\pm$0.62}\\
+        \RS & \lbluecell\textbf{Depth/Query} & \cell \small{24.47$\pm$2.96} & \cell \small{22.87$\pm$2.47} & \cell \small{20.02$\pm$1.46} & \cell \small{19.40$\pm$2.04}\\
+        
+        \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Performance}}} & \lbluecell\textbf{P@10} & \cell \small{0.25$\pm$0.02} & \cell \small{0.23$\pm$0.02} & \cell \small{0.27$\pm$0.02} & \cell \small{0.25$\pm$0.03}\\
+        \RS & \lbluecell\textbf{\#Saved} & \cell \small{6.68$\pm$0.66} & \cell \small{7.00$\pm$0.63} & \cell \small{6.49$\pm$0.58} & \cell \small{7.60$\pm$0.79}\\
+        \RS & \lbluecell\textbf{\#\gls{acr:trec} Saved} & \cell \small{2.58$\pm$0.34} & \cell \small{2.28$\pm$0.25} & \cell \small{2.47$\pm$0.28} & \cell \small{2.66$\pm$0.32}\\
+        \RS & \lbluecell\textbf{\#\gls{acr:trec} Non.} & \cell \small{1.85$\pm$0.32} & \cell \small{2.08$\pm$0.29} & \cell \small{1.98$\pm$0.24} & \cell \small{1.68$\pm$0.32}\\
+        
+        \RS\RS\RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Times}}} & \lbluecell\textbf{Per Query} & \cell \small{8.29$\pm$0.57} & \cell \small{7.99$\pm$0.57} & \cell \small{9.42$\pm$0.79} & \cell \small{8.12$\pm$0.48}\\
+        \RS & \lbluecell\textbf{Per Document} & \cell \small{17.32$\pm$2.12} & \cell \small{22.82$\pm$6.03} & \cell \small{17.19$\pm$1.86} & \cell \small{18.99$\pm$2.13}\\
+        \RS & \lbluecell\textbf{Per Summary} & \cell \small{1.63$\pm$0.13*} & \cell \small{2.21$\pm$0.21} & \cell \small{2.35$\pm$0.23} & \cell \small{2.60$\pm$0.27*}\\
+        
+    \end{tabulary}
+    \end{center}
+\end{table}
+
+\subsubsection{Interaction Measures}
+Across the four experimental interfaces trialled, Table~\ref{tbl:snippets_intperftime} presents the mean (and standard deviations) of:
+
+\begin{itemize}
+    \item{the number of queries issued \emph{(\#Queries);}}
+    \item{the number of~\gls{acr:serp} viewed per query \emph{(\#\glsplural{acr:serp}/Query);}}
+    \item{the number of documents viewed per query \emph{(\#Docs./Query);} and}
+    \item{the mean click depth -- or stopping depth \emph{(Depth/Query).}}
+\end{itemize}
+
+These are all presented within the \genericblack{Interactions}~grouping. Across the four experimental interfaces of \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}, there were no significant differences reported between any of these measures. The number of queries issued follows a slight downward trend as the length of the result summaries (dictated by the interface conditions) increased ($3.72 \pm 0.34$ for \blueboxbold{T0}, to $3.28\pm0.31$ for \blueboxbold{T4}). This was also true for the number of~\glsplural{acr:serp} examined, and the number of documents examined per query. The depth to which subjects went to per query however follows a downward trend. As the length of each result summary increased, subjects were likely to go to shallower depths per query when examining result summaries ($24.47\pm2.96$ for \blueboxbold{T0}, to $19.4\pm20.04$ for \blueboxbold{T4}).
+
+\subsubsection{Time-Based Measures}\label{chap:snippets:user:results:time}
+Table~\ref{tbl:snippets_intperftime} also presents three time-based measures (within the \genericblack{Times}~grouping) that were observed across the four experimental interfaces. We show:
+
+\begin{itemize}
+    \item{the mean time spent by subjects issuing queries \emph{(Per Query);}}
+    \item{the mean time spent by subjects examining individual documents \emph{(Per Document);} and}
+    \item{the mean time spent by subjects examining individual result summaries \emph{(Per Summary).}}
+\end{itemize}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch7-time_snippet.pdf}}
+    \caption[Time per result summary]{Plot and table illustrating the mean time spent examining result summaries across each of the four experimental interfaces trialled. Note the increasing mean examination time as the result summary length increases, from \blueboxbold{T0} $\rightarrow$ \blueboxbold{T4}. Error bars denote the standard deviation.}
+    \label{fig:time_snippet}
+\end{figure}
+
+No significant differences were found between the time spent per query, and the time spent examining individual documents. However, a significant difference did exist for the time spent per result summary, as can be seen from the table. A clear upward trend in the time spent examining result summaries can be seen in Figure~\ref{fig:time_snippet} as result summaries progressively got longer, from $1.63\pm0.13$ for \blueboxbold{T0} to $2.6\pm0.27$ for \blueboxbold{T4}, which was significantly different ($F(3,208) = 3.6, p=0.014$). The follow-up Bonferroni test showed that the significant difference did exist between interfaces \blueboxbold{T0} and \blueboxbold{T4}. This finding suggests that as result summary length increases, the amount of time spent examining individual result summaries also increases, presenting us with an intuitive result. This also complies with trends observed regarding examination depths. When the length of result summaries increased, subjects were likely to examine result summaries to shallower depths.
 
 \subsubsection{Performance}
+Also included within Table~\ref{tbl:snippets_intperftime} are our reported performance measures, this time shown under the \genericblack{Performance}~grouping. Again, these are reported over each of the four experimental interfaces trialled. We report the mean performance of:
+
+\begin{itemize}
+    \item{the issued queries, with the $P@10$ score;}
+    \item{the number of documents that were saved by subjects \emph{(\#Saved);}}
+    \item{the interactive precision, or the number of saved documents that were~\gls{acr:trec} relevant \emph{(\#\gls{acr:trec} Saved);} and also}
+    \item{the number of saved documents that were not~\gls{acr:trec} relevant \emph{(\#\gls{acr:trec} Non.).}}
+\end{itemize}
+
+Like the interaction measures examined previously, no significant differences were observed over the four experimental interfaces examined. The performance of queries issued by subjects was very similar across all interfaces ($P@10 \approx 0.25$), along with the number of documents identified by subjects as relevant ($6.49\pm0.58$) for \blueboxbold{T2} to $7.6\pm0.79$ for \blueboxbold{T4}, and the interactive precision ($2.28\pm0.25$ for \blueboxbold{T1} to $2.66\pm0.32$ for \blueboxbold{T4}). Considering the number of saved,~\gls{acr:trec} non-relevant documents, where subjects on averaged saved two such documents. However, there again no significant differences between the four interfaces.
 
 \subsubsection{User Experience}
 
