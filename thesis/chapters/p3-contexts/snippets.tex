@@ -171,7 +171,7 @@ The ordered set of fragments were then joined together (one only for \blueboxbol
 \subsubsection{Search Task}
 As discussed previously in Section~\ref{sec:csm:methodology:user:flow}, subjects were grounded by instructing them to imagine that they were newspaper reporters. As such, they were required to gather documents to write stories about each of the four topics they searched for. For this study, subjects were assigned ten minutes to each of the four search tasks, and were specifically instructed to find as many relevant documents as they could during this allotted time. As shown in Section~\ref{sec:csm:methodology:user:interface}, subjects interacted with the standard search interface. Documents were \emph{saved} by subjects when they were considered to be relevant to the given~\gls{acr:trec} topic.
 
-\subsubsection{Crowdsourced Subjects}
+\subsubsection{Crowdsourced Subjects}\label{sec:snippets:method:subjects}
 A total of $60$ subjects took part on the~\gls{acr:mturk} platform between July and August, 2016. However, seven subjects were omitted due to quality control constraints imposed on the study -- refer to Section~\ref{sec:csm:methodology:user:crowdsourcing} for more information on the constrains imposed. This left $53$ subjects who satisfied the conditions of the experiment. In all, of the $53$ subjects who satisfied the criteria, $28$ were male, with the remaining $25$ female. The average age of the subjects was $33.8$ years ($min=22$; $max=48$; $stdev=7.0$). A total of $19$ subjects reported possessing a bachelor's degree or higher, and all expressing a high degree of search literacy, and conducted at least five searches for information online per week.
 
 With a total of $53$ subjects considered in the results of this study, each searching over four topics, this meant a total of $212$ search sessions being logged and available for analysis. Finally, we report results over a reduced time period of six minutes ($360$ seconds). This decision was taken as not all of the $53$ subjects spent the full ten minutes searching, with these subjects skewing results. By reducing the time period that we considered, we ensured that we could extract meaningful data from the interaction logs, where all subjects were interacting with the experimental system.
@@ -390,9 +390,8 @@ This user study investigated the influence of result summary length on search be
 This work was focused around addressing the two key research questions, which explored \blueboxbold{RQ1} how the length of a result summary affected search behaviour and user experience; and \blueboxbold{RQ2} whether the length of result summaries affected the decision making ability and accuracy of the subjects. Addressing \blueboxbold{RQ1} first in terms of search behaviour, there was admittedly little difference -- but we did observe the following trends. As result summary length increased, subjects:
 
 \begin{itemize}
-    \item{issued fewer queries;}
-    \item{examined fewer pages; \emph{but}}
-    \item{clicked more documents.}
+    \item{issued fewer queries and examined fewer pages; \emph{but importantly}}
+    \item{\emph{clicked more documents.}}
 \end{itemize}
 
 These findings demonstrate that subjects would spend more of their time assessing documents at higher ranks. Second, our results show that in terms of experience, subjects broadly preferred longer result summaries. The subjects felt that longer summaries were more clear, informative, readable -- and interestingly -- gave them more confidence in their relevance decisions.
@@ -404,11 +403,50 @@ These novel findings provide new insights into how searchers interact with resul
 Taking our findings from this user study, the next section discusses our simulation experiment, considering data from this user study as a means of grounding our simulations.
 
 \section{Simulated Analysis}\label{chap:snippets:simulations}
-Simulated part!
+In this section, we report on a simulated analysis that takes the thirteen different snippet level stopping strategies described in Chapter~\ref{chap:strategies}
+
+- simulated analysis
+- key aim of this is to provide answers to HL-RQ3a and HL-RQ3b, under the context of varying snippet lengths.
+- as snippet lengths vary, do different snippet level stopping strategies perform better? do different approaches offer better approximations of searcher behaviour?
 
 \subsection{Methodology}
+- as previously discussed, we follow the general simulation methodology we outlined in Section~\ref{chap:csm:method:simulation}.
+
+- stochastic in nature, with the decision makers for snippets and documents (whether i should click on a result summary link, whether i should save a document) determined by a series of probabilities.
+- in order to differentiate between the different experimental interfaces, we extracted the interaction probabilities and interaction costs from the log data, discussed in Section~\ref{chap:csm:method:simulation:grounding}.
+
+- for the four interfaces, the interaction probabilities and costs are outlined in Table~\ref{}.
+
+- of particular importance to the work for this particular study are 
 
 \subsubsection{Interaction Costs and Probabilities}
+
+\begin{table}[t!]
+    \caption[Simulation interaction probabilities and costs]{Summary table of the different interaction costs (in seconds) and probabilities, with \emph{P(C)} denoting the probability of a click, and \emph{P(S)} denoting the probability of saving a document (considering it relevant). Refer to Sections~\ref{chap:csm:method:simulation:grounding:costs} and~\ref{chap:csm:method:simulation:grounding:judgements} respectively for further information on how the costs and probabilities were derived. All data in this table is attained from interaction data extracted from the user study reported in Section~\ref{chap:snippets:user}.}
+    \label{tbl:snippets_simulation_probcosts}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.2cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}}
+
+        \RS & & \lbluecell \textbf{T0} & \lbluecell \textbf{T1} & \lbluecell \textbf{T2} & \lbluecell \textbf{T4} \\
+
+        \RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{P(C)}}} & \lbluecell\textbf{P(C|R)} & \cell \small{0.28} & \cell \small{0.34} & \cell \small{0.35} & \cell \small{0.40}\\
+        \RS & \lbluecell\textbf{P(C|N)} & \cell \small{0.18} & \cell \small{0.23} & \cell \small{0.25} & \cell \small{0.24}\\
+        
+        \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{P(S)}}} & \lbluecell\textbf{P(S|R)} & \cell \small{0.66} & \cell \small{0.69} & \cell \small{0.67} & \cell \small{0.66}\\
+        \RS & \lbluecell\textbf{P(S|N)} & \cell \small{0.55} & \cell \small{0.65} & \cell \small{0.58} & \cell \small{0.67}\\
+        
+        \RS\RS\RS \multirow{5}{*}{\rotatebox{90}{\hspace*{-5.5mm}\textbf{Costs (in seconds)}}} & \lbluecell\textbf{Query} & \cell \small{8.29} & \cell \small{7.99} & \cell \small{9.42} & \cell \small{8.12}\\
+        \RS & \lbluecell\textbf{\gls{acr:serp}} & \cell \small{3.22} & \cell \small{3.56} & \cell \small{3.93} & \cell \small{3.45}\\
+        \RS & \lbluecell\textbf{Result Summary} & \cell \small{1.63} & \cell \small{2.21} & \cell \small{2.35} & \cell \small{2.60}\\
+        \RS & \lbluecell\textbf{Document} & \cell \small{17.32} & \cell \small{22.82} & \cell \small{17.19} & \cell \small{18.99}\\
+        \RS & \lbluecell\textbf{Save} & \cell \small{1.26} & \cell \small{1.11} & \cell \small{1.26} & \cell \small{1.17}\\
+        
+        \RS\RS\RS & \lbluecell\textbf{Time Limit} & \multicolumn{4}{@{\hskip 0pt}c@{\CS}}{\cell 360 seconds (refer to Section~\ref{sec:snippets:method:subjects})}\\
+        
+    \end{tabulary}
+    \end{center}
+\end{table}
 
 \subsection{Results}
 

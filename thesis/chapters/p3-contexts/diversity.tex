@@ -160,7 +160,7 @@ Instead of imposing a time limit as per the user study reported previously in Ch
 \subsubsection{Crowdsourced Subjects and Controls}
 Subjects undertaking the user study were informed that from a small-scale pilot study, it would take approximately 7-10 minutes of their time to find at least four useful documents per task. Combining everything together, this meant that the entire experiment would take approximately 40-50 minutes of their time. Since we did not impose any time constrains on how long subjects searched for, we instead established accuracy based control. We informed subjects that their accuracy in identifying useful material would be examined, and that they were required to find four useful documents with at least $50\%$ accuracy (based upon~\gls{acr:trec} relevance judgements as the gold standard). Using data from the prior user study reported in Chapter~\ref{chap:snippets}, the accuracy of those subjects was between $25\%$ and $40\%$ on average, depending upon the topic. While we stipulated a higher accuracy, this was to motivate subjects to work diligently.
 
-In all, a total of $64$ subjects performed the the experiments that complied with the~\gls{acr:mturk} recruiting constraints we imposed. However, a total of $13$ were omitted from this figure because they either:
+In all, a total of $64$ subjects performed the the experiments that complied with the~\gls{acr:mturk} recruiting constraints we imposed in January 2018. However, a total of $13$ were omitted from this figure because they either:
 
 \begin{itemize}
     \item{failed to complete all the search tasks (a total of five subjects were removed);}
@@ -390,7 +390,7 @@ To begin our analysis, we first examined whether the performance experienced by 
 
 Aside from showing query performance, Table~\ref{tbl:aspects_system_comparison} also reports the number of terms issued per query over retrieval systems \blueboxbold{ND} and \blueboxbold{D}. Of the $1273$ total queries issued, those issued to \blueboxbold{ND} were shorter on average, with $3.59$ terms compared to $3.80$ terms for system \blueboxbold{D}. However, the vocabulary used by subjects issuing queries to \blueboxbold{ND} was greater than \blueboxbold{D} -- queries issued to \blueboxbold{ND} contained a total of $345$ unique terms, compared to $292$. This provides our first finding of note from the data. When using retrieval system \blueboxbold{ND} that did not diversify search results, subjects issued a greater number of queries -- but were slightly shorter and more varied -- in order to accomplish their tasks.
 
-\subsubsection{Interactions}
+\subsubsection{Interaction Measures}
 Firstly, we examine the different interactions between searchers and the retrieval systems. Tables~\ref{tbl:aspectual_combo_beperftime} and~\ref{tbl:aspectual_system_tasks_beperftime} both present the mean (and standard deviations) of:
 
 \begin{itemize}
@@ -462,7 +462,7 @@ Now we turn our attention to the ad-hoc retrieval tasks. Our hypotheses suggeste
     \end{center}
 \end{table}
 
-\subsubsection{Performance}
+\subsubsection{Performance Measures}
 Tables~\ref{tbl:aspectual_combo_beperftime} and~\ref{tbl:aspectual_system_tasks_beperftime} also report a number of different performance measures, reported within the \genericblack{Performance} grouping. Included in these tables are:
 
 \begin{itemize}
@@ -479,9 +479,32 @@ Tables~\ref{tbl:aspectual_combo_beperftime} and~\ref{tbl:aspectual_system_tasks_
 
 In terms of the number of documents saved, there were no significant differences between conditions, systems or tasks. On average, subjects saved around six documents on average, with was two more than the minimum goal of four. This suggests that subjects wanted to make sure that they found a few extra, potentially useful documents, just in case some of their other selections turned out to be not useful.
 
+\begin{table}[t!]
+    \caption[Interaction probabilities]{Interaction probabilities, as observed over the four experimental conditions. Refer to Section~\ref{chap:csm:method:simulation:grounding:judgements} on page~\pageref{chap:csm:method:simulation:grounding:judgements} for  an explanation of the different probabilities listed here.}
+    \label{tbl:diversity_probabilities}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.2cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}}
+
+        \RS & & \lbluecell \textbf{D-AS} & \lbluecell \textbf{ND-AS} & \lbluecell \textbf{D-AD} & \lbluecell \textbf{ND-AD} \\
+
+        \RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Click}}} & \lbluecell\textbf{P(C)} & \cell \small{0.16$\pm$0.01*} & \cell \small{0.21$\pm$0.02*} & \cell \small{0.16$\pm$0.01*} & \cell \small{0.20$\pm$0.01*}\\
+        \RS & \lbluecell\textbf{P(C|R)} & \cell \small{0.27$\pm$0.03} & \cell \small{0.30$\pm$0.04} & \cell \small{0.25$\pm$0.03} & \cell \small{0.31$\pm$0.04}\\
+        \RS & \lbluecell\textbf{P(C|N)} & \cell \small{0.13$\pm$0.02*} & \cell \small{0.18$\pm$0.02*} & \cell \small{0.13$\pm$0.01*} & \cell \small{0.17$\pm$0.02*}\\
+        
+        \RS\RS\RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Save}}} & \lbluecell\textbf{P(S)} & \cell \small{0.67$\pm$0.03} & \cell \small{0.66$\pm$0.03} & \cell \small{0.70$\pm$0.03} & \cell \small{0.71$\pm$0.04}\\
+        \RS & \lbluecell\textbf{P(S|R)} & \cell \small{0.78$\pm$0.04} & \cell \small{0.63$\pm$0.05} & \cell \small{0.74$\pm$0.04} & \cell \small{0.67$\pm$0.05}\\
+        \RS & \lbluecell\textbf{P(S|N)} & \cell \small{0.59$\pm$0.04} & \cell \small{0.61$\pm$0.04} & \cell \small{0.65$\pm$0.04} & \cell \small{0.65$\pm$0.04}\\
+        
+    \end{tabulary}
+    \end{center}
+\end{table}
+
 When we turn our attention to the entity-related measures, we note that subjects found more documents that contained new entities, and found more new entities overall, when using the diversity system \blueboxbold{D}. This was statistically significant ($6.52\pm0.61$ compared to $4.34\pm0.42$ for systems \blueboxbold{D} and \blueboxbold{ND} respectively, where $F(1,203 = 8.70, p<0.05)$). When examining each condition, the Bonferroni follow-up test showed significant differences between conditions \dualbluebox{D}{AS} and conditions \dualbluebox{D}{AD} and \dualbluebox{ND}{AD}, where $F(3,203 = 3.49, p < 0.05)$. We also noticed that subjects found more documents with new entities, and thus more entities generally, for task \dualbluebox{D}{AD} than when using \blueboxbold{ND} (documents with new entities: $2.63$ vs. $2.02$, new entities: $5.82$ vs. $4.37$). Though this was not significantly different, it does suggest that when subjects used system \blueboxbold{D}, they did learn more about the different aspects of the given topic (or at least encountered more aspects) than when using system \blueboxbold{ND} that did not diversify results.
 
-\subsubsection{Time-Based}
+Table~\ref{tbl:diversity_probabilities} reports interaction probabilities associated with searcher interactions, the details of which are discussed in Section~\ref{chap:csm:method:simulation:grounding:judgements} on page~\pageref{chap:csm:method:simulation:grounding:judgements}. From the table, we can see that there was a significant difference between conditions for the probability of clicking on a result summary link, and the probability of clicking on~\gls{acr:trec} non-relevant items. Comparing systems indicated that subjects clicked more when using the non-diversified system, and clicked on more non-relevant documents. However, we did not observe any task effects, and thus do not report these measures here. This suggests that the non-diversified system \blueboxbold{ND} led to subjects examining more documents, but often more non-relevant documents. This is reflected by the fact that across all the performance measures, subjects, when using system \blueboxbold{ND}, performed worse.
+
+\subsubsection{Time-Based Measures}
 Tables~\ref{tbl:aspectual_combo_beperftime} and~\ref{tbl:aspectual_system_tasks_beperftime} also report a third grouping of results, showing a series of times recorded for various interactions. These are all reported in the \genericblack{Times} grouping. Across both tables (conditions, systems and tasks), we report:
 
 \begin{itemize}
@@ -493,7 +516,7 @@ Tables~\ref{tbl:aspectual_combo_beperftime} and~\ref{tbl:aspectual_system_tasks_
 
 All values in the two tables for time-based measures are reported in seconds. Surprisingly, no significant differences were found between any of the comparisons over the total session times, the per query times, the per document times, and the individual result summary examination times. Results however do show a relatively constant mean session time over each of the four experimental conditions, as shown in Table~\ref{tbl:aspectual_combo_beperftime}. At $\approx 438.5$ seconds, this is around seven minutes on average -- in line with the time taken to find four documents in the previous user study reported in Chapter~\ref{chap:snippets}. Considering \blueboxbold{H2b}, no evidence was found to support that task completion times were lower under the diversifying retrieval system with an aspectual retrieval task \dualbluebox{D}{AS}. From Table~\ref{tbl:aspectual_system_tasks_beperftime}, we can see that subjects in actuality spent slightly longer on the task, with $443$ seconds reported for \blueboxbold{D} vs. $430$ seconds for \blueboxbold{ND} -- essentially, the difference of examining approximately one document on average.
 
-\subsubsection{User Experience}\label{sec:diversity:users:results:experience}
+\subsubsection{User Experience Measures}\label{sec:diversity:users:results:experience}
 There were no notable significant differences between conditions, tasks, or systems for any of the post-task surveys. For the post-experiment survey, subjects were roughly evenly split between their preference for system \blueboxbold{D} or \blueboxbold{ND} -- again with no significant differences. This finding suggests that despite the substantial (and significant) difference in aspectual recall and other system performance measures, between the systems, subjects seemed largely ambivalent to the different system's influences. Of course, however, their observed behaviours do suggest that the system (and task) did affect their performance.
 
 \begin{table}[t!]
@@ -636,27 +659,27 @@ From this study, we now move towards examining in more detail the stopping behav
 \subsection{Methodology}
 
 \begin{table}[t!]
-    \caption[Interaction costs and probabilities]{Interaction costs (in seconds) and probabilities, as observed over each of the four different experimental conditions trialled. These are used to ground the simulations. A discussion into the probabilities can be found in Section~\ref{chap:csm:method:simulation:grounding:judgements} on page~\pageref{chap:csm:method:simulation:grounding:judgements}, with interaction costs discussed in Section~\ref{chap:csm:method:simulation:grounding:costs} on page~\pageref{chap:csm:method:simulation:grounding:costs}.}
-    \label{tbl:aspects_post_behavioural}
+    \caption[Simulation interaction probabilities and costs]{Summary table of the different interaction costs (in seconds) and probabilities, with \emph{P(C)} denoting the probability of a click, and \emph{P(S)} denoting the probability of saving a document (considering it relevant). Values are reported across the four experimental conditions trialled. Refer to Sections~\ref{chap:csm:method:simulation:grounding:costs} and~\ref{chap:csm:method:simulation:grounding:judgements} respectively for further information on how the costs and probabilities were derived. All data in this table is attained from interaction data extracted from the user study reported in Section~\ref{chap:diversity:users}.}
+    \label{tbl:diversity_simulation_probcosts}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
     \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.2cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}}
 
         \RS & & \lbluecell \textbf{D-AS} & \lbluecell \textbf{ND-AS} & \lbluecell \textbf{D-AD} & \lbluecell \textbf{ND-AD} \\
 
-        \RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Click}}} & \lbluecell\textbf{P(C)} & \cell \small{0.16} & \cell \small{0.21} & \cell \small{0.16} & \cell \small{0.20}\\
-        \RS & \lbluecell\textbf{P(C|R)} & \cell \small{0.27} & \cell \small{0.30} & \cell \small{0.25} & \cell \small{0.31}\\
+        \RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{P(C)}}} & \lbluecell\textbf{P(C|R)} & \cell \small{0.27} & \cell \small{0.30} & \cell \small{0.25} & \cell \small{0.31}\\
         \RS & \lbluecell\textbf{P(C|N)} & \cell \small{0.13} & \cell \small{0.18} & \cell \small{0.13} & \cell \small{0.17}\\
         
-        \RS\RS\RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Save}}} & \lbluecell\textbf{P(S)} & \cell \small{0.67} & \cell \small{0.66} & \cell \small{0.70} & \cell \small{0.71}\\
-        \RS & \lbluecell\textbf{P(S|R)} & \cell \small{0.78} & \cell \small{0.63} & \cell \small{0.74} & \cell \small{0.67}\\
+        \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{P(S)}}} & \lbluecell\textbf{P(S|R)} & \cell \small{0.78} & \cell \small{0.63} & \cell \small{0.74} & \cell \small{0.67}\\
         \RS & \lbluecell\textbf{P(S|N)} & \cell \small{0.59} & \cell \small{0.61} & \cell \small{0.65} & \cell \small{0.65}\\
         
-        \RS\RS\RS \multirow{5}{*}{\rotatebox{90}{\hspace*{-6mm}\textbf{Interaction Costs}}} & \lbluecell\textbf{Query} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx}\\
-        \RS & \lbluecell\textbf{SERP Ex.} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx}\\
-        \RS & \lbluecell\textbf{Result Summary} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx}\\
-        \RS & \lbluecell\textbf{Document} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx}\\
-        \RS & \lbluecell\textbf{Save} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx} & \cell \small{x.xx}\\
+        \RS\RS\RS \multirow{5}{*}{\rotatebox{90}{\hspace*{-5.5mm}\textbf{Costs (in seconds)}}} & \lbluecell\textbf{Query} & \cell \small{8.80} & \cell \small{9.99} & \cell \small{9.69} & \cell \small{8.69}\\
+        \RS & \lbluecell\textbf{\gls{acr:serp}} & \cell \small{5.92} & \cell \small{6.29} & \cell \small{6.36} & \cell \small{5.79}\\
+        \RS & \lbluecell\textbf{Result Summary} & \cell \small{1.59} & \cell \small{1.75} & \cell \small{1.71} & \cell \small{1.71}\\
+        \RS & \lbluecell\textbf{Document} & \cell \small{15.97} & \cell \small{13.03} & \cell \small{13.66} & \cell \small{15.09}\\
+        \RS & \lbluecell\textbf{Save} & \cell \small{1.73} & \cell \small{1.78} & \cell \small{1.58} & \cell \small{1.68}\\
+        
+        \RS\RS\RS & \lbluecell\textbf{Task Goal} & \multicolumn{2}{@{\hskip 0pt}c@{\CS}}{\cell Find 4 relevant} & \multicolumn{2}{@{\hskip 0pt}c@{\CS}}{\cell Find 4 relevant \& different}\\
         
     \end{tabulary}
     \end{center}
