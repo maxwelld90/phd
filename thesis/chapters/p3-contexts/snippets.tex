@@ -21,7 +21,7 @@ In this chapter, we are interested in examining how the length (and subsequently
 
 \begin{itemize}
     \item{a \blueboxbold{user study} examining this phenomenon, as detailed in Section~\ref{chap:snippets:user}; and}
-    \item{a \blueboxbold{simulated analysis}, closely examining how varying snippet lengths affects searcher performance and stopping behaviours, discussed in Section~\ref{chap:snippets:simulations}.}
+    \item{a \blueboxbold{simulated analysis}, closely examining how varying snippet lengths affects searcher performance and stopping behaviours, discussed in Section~\ref{sec:snippets:simulations}.}
 \end{itemize}
 
 The outline for both of these studies follow the general methodology, as discussed in Chapter~\ref{chap:method}. Before discussing the studies and their results, we begin this chapter with an overview of the prior work that has examined the length of result summary snippets.
@@ -106,7 +106,7 @@ With longer result summaries comes a greater volume of information gain, as we d
     \item{discuss the implications of the study.}
 \end{itemize}
 
-We then take the interaction data from this study forward to Section~\ref{chap:snippets:simulations}, using it as a means of grounding a series of simulations to examine in greater depth how snippet length affects searcher stopping behaviours.
+We then take the interaction data from this study forward to Section~\ref{sec:snippets:simulations}, using it as a means of grounding a series of simulations to examine in greater depth how snippet length affects searcher stopping behaviours.
 
 \subsection{Methodology}\label{sec:snippets:method}
 In this section, we outline the methodology employed for this user study. This section provides study-specific, supplementary details to the general user study methodology that was outlined in Section~\ref{sec:method:user_study}. This general user study methodology is employed here, and in the subsequent user study discussed in Chapter~\ref{chap:diversity}. For each subsection discussed below, we refer back to the relevant section in the general methodology to assist in understanding how each of the different components fit together.
@@ -402,14 +402,14 @@ These novel findings provide new insights into how searchers interact with resul
 
 Taking our findings from this user study, the next section discusses our simulation experiment, considering data from this user study as a means of grounding our simulations.
 
-\section{Simulated Analysis}\label{chap:snippets:simulations}
+\section{Simulated Analysis}\label{sec:snippets:simulations}
 In this section, we report on a simulated analysis that takes the thirteen different snippet level stopping strategies described in Chapter~\ref{chap:strategies}
 
 - simulated analysis
 - key aim of this is to provide answers to HL-RQ3a and HL-RQ3b, under the context of varying snippet lengths.
 - as snippet lengths vary, do different snippet level stopping strategies perform better? do different approaches offer better approximations of searcher behaviour?
 
-\subsection{Methodology}
+\subsection{Methodology}\label{sec:snippets:simulations:method}
 - as previously discussed, we follow the general simulation methodology we outlined in Section~\ref{chap:csm:method:simulation}.
 
 - stochastic in nature, with the decision makers for snippets and documents (whether i should click on a result summary link, whether i should save a document) determined by a series of probabilities.
