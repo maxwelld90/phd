@@ -655,21 +655,37 @@ In past work, many interface-based solutions were studied, where a few significa
 From this study, we now move towards examining in more detail the stopping behaviour of searchers through a simulated analysis. The next section of this chapter details the simulated study, grounded from interaction data extracted from this user study.
 
 \section{Simulated Analysis}\label{sec:diversity:simulated}
+From the user study, we now move a simulated analysis of searcher stopping behaviour and performance. In this section, we detail how stopping behaviour and performance vary when searchers are subjected to differing search systems (i.e. \blueboxbold{D} vs. \blueboxbold{ND}) and search tasks (i.e. \darkblueboxbold{AD} vs. \darkblueboxbold{AS}). These are again, like in Section~\ref{sec:snippets:simulations}, addressed in the context of the two high-level research questions. Considering each of the thirteen snippet level stopping strategies enumerated in Chapter~\ref{chap:strategies}, how does each:
+
+\begin{itemize}
+    \item{\blueboxbold{HL-RQ3a} perform; and}
+    \item{\blueboxbold{HL-RQ3b} approximate actual searcher stopping behaviour?}
+\end{itemize}
+
+In the remainder of this section, we discuss the specific details of our methodology (Section~\ref{sec:diversity:simulated:method}), discussing in particular how we instantiated the task goals for these experiments. We then move onto an examination of the results from our simulations (Section~\ref{sec:diversity:simulated:results}).
 
 \subsection{Methodology}\label{sec:diversity:simulated:method}
+This methodology section outlines the details specific to how we instantiated this set of simulations. One can assume that any components that are not discussed in this section were instantiated as shown in the general simulation methodology. The general methodology is presented in Section~\ref{chap:csm:method:simulation} on page~\pageref{chap:csm:method:simulation}.
 
-\subsubsection{Experimental System and Conditions}
+Two of the key differences between the simulations reported in Chapter~\ref{chap:snippets} are the how we operationalise the underlying retrieval engine to support diversity, and the simulated searcher \emph{task goals}. These are discussed in Section~\ref{sec:diversity:simulated:method:probscosts} below, after which we outline the interaction costs and probabilities we extracted from the user study data reported above (Section~\ref{sec:diversity:simulated:method:probscosts}).
 
-- d and nd
+\subsubsection{Experimental System and Conditions}\label{sec:diversity:simulated:method:system}
+The \simiir~framework was adapted to incorporate additional components, allowing the simulations to employ the use of the diversified system \blueboxbold{D}, as well as the standard BM25-based non-diversified system, \blueboxbold{ND}. This therefore allowed us to run simulations over the four experimental conditions trialled as discussed in Section~\ref{sec:diversity:users:method}. Results returned for systems \blueboxbold{D} and \blueboxbold{ND} were therefore identical to results returned to the real-world subjects of the user study.
 
-- simulations like this have never been run before, so let's keep it simple.
-- new decision maker could be included to consider aspectual components, too.
-- but decided for simplicity's sake to keep it the same. if it seems relevant, it saves it.
-- evaluation process, we can use the diversity measures to work out how well it performed.
+The second major components of the \simiir~framework that we considered were the result summary and document decision makers. These components, discussed in Section~\ref{chap:csm:method:simulation:grounding:judgements}, determine whether a result summary is considered attractive enough to click, and whether a document is relevant to the given~\gls{acr:trec} topic. For aspectual search tasks \darkblueboxbold{AS}, the focus is not to simply save relevant documents, but to save relevant documents containing at least one new aspect of the topic. We however decided to keep the decision makers the same for both search tasks, meaning that only the relevance to the topic was considered. We do however report results with aspectual measures, such as aspectual recall, in Section~\ref{sec:diversity:simulated:results}.
 
+\subsubsection{Interaction Costs and Probabilities}\label{sec:diversity:simulated:method:probscosts}
+Interaction log data from the associated user study was then taken and filtered by the four experimental conditions. Following the methodology outlined in Sections~\ref{chap:csm:method:simulation:grounding:judgements} and~\ref{chap:csm:method:simulation:grounding:costs}, we then extracted the different interaction probabilities and costs to ground our simulations.
 
+Table~\ref{tbl:diversity_simulation_probcosts} presents said interaction probabilities and costs across the four experimental interfaces trialled. Included within the table are the interaction probabilities for clicking on result summaries (under the \genericblack{P(C)} grouping) and saving documents (under the \genericblack{P(S)} grouping). Also included are the five main interaction costs, presented under the \genericblack{Costs} grouping.
 
-\subsubsection{Interaction Costs and Probabilities}
+\blueboxheader{Task Goal}
+Also included in Table~\ref{tbl:diversity_simulation_probcosts} is the task goal. In the user study, subjects were instructed to find and save a minimum of four useful documents pertaining to the~\gls{acr:trec} topic, as reported back in Section~\ref{sec:diversity:users:method:tasks}. Subjects across all four experimental interfaces saved on average $5.87$ documents, perhaps to hedge their bets in the eventuality that certain saved documents turned out to not be useful after all. These values can be found in the \emph{\#Saved} row in Table~\ref{tbl:aspectual_combo_beperftime} on page~\pageref{tbl:aspectual_combo_beperftime}. As such, simulated searchers were given a goal of finding \emph{six} useful documents to mirror the average saved by their real-world counterparts.
+
+\blueboxheader{Session Timeout}
+A session timeout was also provided such that if simulated searchers failed to find the minimum of six useful documents, the timeout would prevent the simulation from getting stuck, with the simulated searchers browsing to wholly unrealistic depths. Again referring to Table~\ref{tbl:aspectual_combo_beperftime} on page~\pageref{tbl:aspectual_combo_beperftime}, the mean total session time (reported on row \emph{Total Session}) was reported to be $438.47$ seconds on average across all four experimental conditions. With a large variance in time, we set a hard simulated search session time limit of $800$ seconds (roughly doubled), to grant sufficient time for searchers to find the six required documents, yet not permitting runaway behaviours.
+
+It should be noted that simulations of this kind -- attempting to simulate different search tasks under different search systems -- has to the best of our knowledge not been attempted before. We therefore believe that the assumptions that we take in these simulations provides a reasonable approximation for how real-world searchers actually performed and behaved, and leaves scope for development of these simulations in future work.
 
 \begin{table}[t!]
     \caption[Simulation interaction probabilities and costs]{Summary table of the different interaction costs (in seconds) and probabilities, with \emph{P(C)} denoting the probability of a click, and \emph{P(S)} denoting the probability of saving a document (considering it relevant). Values are reported across the four experimental conditions trialled. Refer to Sections~\ref{chap:csm:method:simulation:grounding:costs} and~\ref{chap:csm:method:simulation:grounding:judgements} respectively for further information on how the costs and probabilities were derived. All data in this table is attained from interaction data extracted from the user study reported in Section~\ref{chap:diversity:users}.}
@@ -692,14 +708,14 @@ From this study, we now move towards examining in more detail the stopping behav
         \RS & \lbluecell\textbf{Document} & \cell \small{15.97} & \cell \small{13.03} & \cell \small{13.66} & \cell \small{15.09}\\
         \RS & \lbluecell\textbf{Save} & \cell \small{1.73} & \cell \small{1.78} & \cell \small{1.58} & \cell \small{1.68}\\
         
-        \RS\RS\RS & \lbluecell\textbf{Task Goal} & \multicolumn{4}{@{\hskip 0pt}c@{\CS}}{\cell Find 6 relevant}\\
-        \RS & \lbluecell\textbf{Session Timeout} & \multicolumn{4}{@{\hskip 0pt}c@{\CS}}{\cell xxx seconds (refer to Section~\ref{})}\\
+        \RS\RS\RS & \lbluecell\textbf{Task Goal} & \multicolumn{4}{@{\hskip 0pt}c@{\CS}}{\cell Find 6 relevant (refer to Section~\ref{sec:diversity:simulated:method:probscosts})}\\
+        \RS & \lbluecell\textbf{Session Timeout} & \multicolumn{4}{@{\hskip 0pt}c@{\CS}}{\cell 800 seconds (refer to Section~\ref{sec:diversity:simulated:method:probscosts})}\\
         
     \end{tabulary}
     \end{center}
 \end{table}
 
-\subsection{Results}
+\subsection{Results}\label{sec:diversity:simulated:results}
 
 \subsection{Discussion}
 
