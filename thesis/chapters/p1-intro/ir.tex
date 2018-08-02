@@ -2,7 +2,9 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[Information Retrieval]{Information Retrieval:\\A History and Background}\label{chap:ir_background}
-Search today is ubiquitous, and is now commonplace due to the proliferation of the~\gls{acr:www} and commercial search engines\footnote{Or, as we refer to them in this thesis, \emph{retrieval systems.}} such as \emph{Google} and \emph{Bing}. Despite potential negatives that these technologies may bring -- turning us into \emph{shallow thinkers}~\citep{carr2008google_stupid}, for example -- retrieval systems today by and large make our lives easier, allowing us to find the proverbial needle in the haystack with minimal effort. This is achieved while often attaining near perfect accuracy~\citep{vaughan2004new_measurements}.
+Search today is ubiquitous, and is now commonplace due to the proliferation of the~\gls{acr:www} and commercial search engines\footnote{Or, as we refer to them in this thesis, \emph{retrieval systems.}}. Despite potential negatives that these technologies may bring -- turning us into \emph{shallow thinkers}~\citep{carr2008google_stupid}, for example -- retrieval systems today by and large make our lives easier, allowing us to find the proverbial needle in the haystack with minimal effort. These results are returned while honouring the implicit searcher contract by returning results in a timely manner.
+
+%This is achieved while often attaining near perfect accuracy~\citep{vaughan2004new_measurements}.
 
 \begin{figure}[h]
     \centering
@@ -30,8 +32,6 @@ Computers now provide the underlying technologies with which we closely associat
 
 Leading on from computers was the development of \emph{computer networks,} permitting the transmission of information between computers over potentially vast distances. With the development of the internet, the scene was set for the introduction of a technology that is extensively used today -- the~\glsfirst{acr:www}.
 
-% From this point on, work began to establish~\gls{acr:ir} as a scientific field. Gerard Salton established a large~\gls{acr:ir} research group, initially at Harvard University. Many of the basic constructs which we utilise within~\gls{acr:ir} today were established around this time, in addition to the experiments undertaken by~\cite{cleverdon1962cranfield_experiments} -- known as the \emph{Cranfield Experiments}. These experiments established the concept of using words to index documents within an~\gls{acr:ir} system, providing advancements in indexing technology.~\cite{luhn1957ranking_query} proposed, and~\cite{maron1959probabilistic_indexing} tested, an approach to ranking that scored documents in a collection in relation to a user issued \emph{query} -- a concept that is central to contemporary~\gls{acr:ir} systems. A detailed explanation of these concepts are provided later in this chapter -- refer to Section~\ref{sec:ir_background:basics}.
-
 \subsection{The World Wide Web}
 The distribution and ability to search for information over computer networks such as the internet was traditionally undertaken with legacy protocols such as \emph{Gopher.} Gopher would provide a series of options for a user to select (i.e. categorisation of content), akin to the traditional library cataloguing approaches described above.
 
@@ -39,7 +39,7 @@ The distribution and ability to search for information over computer networks su
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-yahoo.png}}
-    \caption[Screenshot of \emph{Yahoo!} Search, July 1998]{A screenshot of the landing page of \emph{Yahoo!}, as shown on July 5\textsuperscript{th}, 1998. Notice the link for the 1998 \emph{FIFA World Cup} that was taking place at the time the page was created. More central to this thesis is the inclusion of a list of page categories in conjunction with the now ubiquitous search box. Screenshot acquired from the \href{https://web.archive.org/web/19980705003104/http://www.yahoo.com}{\emph{Internet Archive}}.}
+    \caption[Screenshot of \emph{Yahoo!} Search, July 1998]{A screenshot of the landing page of \emph{Yahoo!}, as shown on July 5\textsuperscript{th}, 1998. Notice the link for the 1998 \emph{FIFA World Cup} that was taking place at the time the page was created. More central to this thesis is the inclusion of a list of page categories in conjunction with the now ubiquitous search box. Screenshot acquired from the \href{https://web.archive.org/web/19980705003104/http://www.yahoo.com}{\emph{Internet Archive}} (under fair use).}
     \label{fig:yahoo}
 \end{figure}
 
@@ -66,29 +66,29 @@ A key difference between a traditional database system -- or~\gls{acr:rdbms} -- 
     \label{fig:structured_data}
 \end{figure}
 
-Being able to effectively sift through large volumes of unstructured data led to the development of retrieval systems. Consisting of a number of key components, the basic process of a retrieval system -- complete with \emph{searcher interactions} -- can be seen in Figure~\ref{fig:irs}. Core to the wider system is the \blueboxbold{retrieval engine}, of which many \emph{experimental}\footnote{\cite{rijsbergen1979ir} defines a difference between \emph{operational} and \emph{experimental}~\gls{acr:ir} systems. A majority of individuals will only ever interact with an operational system (such as Google). The work in this thesis however focuses more on experimental~\gls{acr:ir} systems, and the methodology employed to compare different experimental retrieval systems against each other.} systems can be selected based upon the requirements and existing infrastructure available. Examples include \emph{Lemur/Indri,} \emph{Lucene for~\gls{acr:ir}}, \emph{Okapi,} the \emph{Terrier~\gls{acr:ir} platform,} \emph{Wumpus} and \emph{Zettair.} Common to all systems are three key inputs, which are:
+Being able to effectively sift through large volumes of unstructured data led to the development of retrieval systems. Consisting of a number of key components, the basic process of a retrieval system -- along with the \emph{users,} or \emph{searchers} that utilise such systems -- can be seen in Figure~\ref{fig:irs}. Core to the wider system is the \blueboxbold{retrieval engine}, of which many \emph{experimental}\footnote{\cite{rijsbergen1979ir} defines a difference between \emph{operational} and \emph{experimental}~\gls{acr:ir} systems. A majority of individuals will only ever interact with an operational system (such as Google). The work in this thesis however focuses more on experimental~\gls{acr:ir} systems, and the methodology employed to compare different experimental retrieval systems against each other.} retrieval engines can be selected based upon the requirements and existing infrastructure available. Examples include \emph{Lemur/Indri,} \emph{Lucene for~\gls{acr:ir}}, \emph{Okapi,} the \emph{Terrier~\gls{acr:ir} platform,} \emph{Wumpus} and \emph{Zettair.} Common to all systems are three key inputs, which are:
 
 \begin{itemize}
     \item{an \blueboxbold{index} of documents, a specially crafted data structure used for the fast lookup of documents derived from a source collection, or \emph{corpus};}
-    \item{a \blueboxbold{retrieval model} that scores and identifies documents that may constitute as relevant; and}
-    \item{a \blueboxbold{query}, the construct that represents the searcher's \emph{information need.}}
+    \item{a \blueboxbold{retrieval model} that scores and identifies documents that may constitute as relevant to what is being searched for; and}
+    \item{a \blueboxbold{query}, the construct that represents a given \emph{information need} by a searcher -- or one of several queries issued in a \emph{batch environment.}}
 \end{itemize}
 
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-irs.pdf}}
-    \caption[Basics of an experimental retrieval system]{The basic components of an~\gls{acr:ir} system, including the \emph{index, retrieval model} and a \emph{query.} Core to the entire process is the \emph{retrieval engine,} responsible for matching documents against said query. Also included in this diagram are nods to both \emph{system} and \emph{searcher} evaluation, discussed in depth later in this chapter.}
+    \caption[Basics of an experimental retrieval system]{The core components of a retrieval system, including the key processes that we discuss in this chapter, highlighted in blue boxes. Central to the discussion in this chapter is the delineation between \emph{system-sided} and \emph{user-sided} evaluation, with both clearly separated in this figure by the dashed line. On the top, system-sided aspects include the \emph{retrieval engine, retrieval model} and \emph{index.} Below, user-sided aspects include the \emph{interface}, \emph{interactions} that take place with said interface, and constructs such as the searcher's \emph{information need} and derived \emph{query/queries.}}
     \label{fig:irs}
 \end{figure}
 
-The retrieval engine combines these inputs to yield an output. This is typically a \emph{ranked} list of documents that the retrieval model believes to offer relevant documents to the issued query -- often called the \emph{matching process.} The query is formulated by the \blueboxbold{searcher} that is utilising the retrieval system; this stems from some information need that the searcher develops. Searchers then are \blueboxbold{presented} with results, formed as part of a~\glsfirst{acr:serp}, before they begin a series of different \blueboxbold{interactions} during a search session~\citep{ingwersen2005theturn}. These interactions provide the basis of the~\gls{acr:iir} process, which we discuss in \todo{\ref{sec:}}.
+The retrieval engine combines these inputs to yield an output. This is a ranked list of documents\footnote{Depending upon the retrieval model used, ranking may or may not occur -- refer to Section~\ref{sec:ir_background:basics:models} for more information.} that the retrieval model believes are relevant to the given query. This is often called the \emph{matching process.} The retrieval model is responsible for performing the matching of documents from an index. This index typically constitutes a number of different data structures that are generated through the \emph{indexing process}, where a source document corpus is processed. As highlighted by the blue boxes in Figure~\ref{fig:irs}, we discuss the indexing process and various retrieval models in this chapter, explained in Sections~\ref{sec:ir_background:basics:indexing} and~\ref{sec:ir_background:basics:models} respectively. These components are all considered as \blueboxbold{system-sided} aspects of the wider retrieval system, with evaluation of system-sided aspects concerning the quality of returned rankings, how efficient the retrieval engine is, etc.
 
-Additionally, the interactions that take place, or the system itself, can be evaluated to determine how \emph{efficient} or \emph{effective} the searcher or system is. System-sided evaluation will consider a series of ground truths, or \emph{relevance assessments,} to provide a means of determining how good the results returned by the retrieval system are. Output can be evaluated using these assessments in conjunction with some \emph{evaluation tool,} producing different measures.
+The system-sided aspects only however tell part of the wider retrieval process. We build retrieval systems to help searchers satisfy their information need -- and hence the study of~\gls{acr:iir} is devoted to considering the interactions between the searcher and retrieval system. While we discuss more \blueboxbold{user-sided} aspects later on in this chapter (Section~\ref{sec:ir_background:user}), searchers, given an information need, will issue one or more queries, and \blueboxbold{interact} with the presented interface~\citep{ingwersen2005theturn} -- with the goal of satisfying said information need. User-sided evaluation is also considered extensively in this thesis, with aspects such as the interactions that take place, how presentation of results affects behaviour, etc. all being considered.
 
-We now provide a more in-depth discussion of the key components of indexing and basic retrieval models, before we move onto a discussion of the \emph{interactions} that take place between a retrieval system and its searchers.
+Before discussing user-sided aspects, we now turn our attention to the system-sided components of the wider retrieval system: the indexing process, and various retrieval models that are commonly employed.
 
-\subsection{The Indexing Process}
+\subsection{The Indexing Process}\label{sec:ir_background:basics:indexing}
 The process of indexing takes into account the conversion of a collection of documents (or corpus) into a data structure that facilitates fast, full-text search -- a key requirement of any retrieval system. This full-text search is typically undertaken in milliseconds, with the goal of finding documents that will be relevant to a given query (and thus information need). The additional storage space and management requirements to maintain an index of documents is considered to be a necessary tradeoff to guarantee timely responses to searcher queries.
 
 As illustrated in Figure~\ref{fig:inverted}, the indexing process can be split into three main steps:
@@ -96,7 +96,7 @@ As illustrated in Figure~\ref{fig:inverted}, the indexing process can be split i
 \begin{itemize}
     \item{gathering the corpus of documents to be indexed;}
     \item{performing pre-indexing data preparation; and}
-    \item{creating the index.}
+    \item{creating the various data structures that constitute an index.}
 \end{itemize}
 
 Experimental corpora are available for use with batch experimentation, typically for \todo{various evaluation forums.} For operational retrieval systems, data is collated by other means. For example, web search engines employ a \emph{web crawler} to examine pages on the~\gls{acr:www}, and accumulates more content by following the~\glsplural{acr:www} hyperlink structure. Google's crawler, \emph{Googlebot,} regularly crawls high impact websites to ensure that the associated index is continually refreshed with up to date information.
@@ -130,7 +130,7 @@ The concept of stemming has been studied since the 1960's, with the \emph{Porter
 
 Issues such as \emph{overstemming} can impact upon the performance of a retrieval system. This is when terms are reduced back too far to the point that it loses meaning -- and can thus negatively affect the results returned. Terms like \texttt{universe}, \texttt{university} and \texttt{universal} when stemmed will be reduced to \texttt{univers}. While the three original terms may be etymologically linked, their modern meanings are however very different. If stemming is applied like so, documents containing both \texttt{universe} and \texttt{university} could be returned. While we do not go into depth into the solutions to this problem in this thesis, one potential solution is to consider the \emph{$n$-gram} context of a given term, allowing the retrieval system to thus select the correct step for the term~\citep{mcnamee2005stemminggrams}.
 
-\subsection{Retrieval Models}
+\subsection{Retrieval Models}\label{sec:ir_background:basics:models}
 Given a generated document index and a searcher's query, the next part of the process is retrieval, or \emph{matching.} For this, a number of mathematically-based \emph{retrieval models} have over the years been developed that attempt to operationalise the notion of relevance. Such models provide us with a means for discussion and further refinement. They also provide us with the blueprint from which we operationalise a retrieval system~\citep{hiemstra2009ir_models}. The usefulness of such a model can be subsequently tested via experimentation and evaluation.
 
 Several different types of retrieval model have been defined, ranging from the relatively simplistic, to the more complex. More complex approaches not only define a notion of what documents would be considered relevant, but also to what \emph{degree} that is so. This section considers four main retrieval model families, including:
@@ -170,7 +170,7 @@ Returning an unranked set of documents would appear as an alien concept to searc
     \vspace{-5mm}
 \end{figure}
 
-Instead, a searcher utilising a boolean retrieval system will often find an initial exploratory query will return a large set of documents, too many to examine each in sufficient detail. Rather, what a searcher will do is gradually reformulate their query -- like in the illustration above -- until the document set returned is of a manageable size, and small enough to process. This is an inherently different kind of stopping behaviour from the examples provided thus far in this thesis that assumes documents are presented in a \emph{ranked} list, with the notion of a stopping depth coming into play.
+Instead, a searcher utilising a boolean retrieval system will often find an initial exploratory query will return a large set of documents, too many to examine each in sufficient detail. Rather, what a searcher will do is gradually reformulate their query -- like in the illustration above -- until the document set returned is of a manageable size, and small enough to process. This is an inherently different kind of stopping behaviour from the examples provided thus far in this thesis that assumes documents are presented in a \emph{ranked} list, with some notion of a \emph{depth} at which a searcher would stop.
 
 Despite not being required in contemporary retrieval systems, many systems still do provide support for crafting a boolean query for when returning a good set of results is difficult. Boolean queries may also be of use where ambiguity exists within a searcher's query, and clarification is required to eliminate a set of non-relevant documents. Indeed, boolean queries still find considerable traction in professional search systems, such as patent search. Here, missing an existing, relevant patent may be incredibly costly -- here, \emph{recall} is preferred over \emph{precision}, as discussed in \todo{Section~\ref{}.}
 
@@ -178,8 +178,6 @@ Despite not being required in contemporary retrieval systems, many systems still
 With major weaknesses present in the boolean retrieval model, work then progressed to develop more advanced approaches that mitigated the issued raised above.~\cite{luhn1957ranking_query} hypothesised that a searcher, when wishing to search for documents addressing their information need, should prepare a document that is similar to the documents being sought after. By comparing documents against this \emph{representative} document, a retrieval system could then begin to deduce what other documents would be useful, and by \emph{what margin.}
 
 The vector space model proposed by~\cite{salton1975vsm} incorporates the principles as outlined by~\cite{luhn1957ranking_query}. These basic principles are operationalised by representing queries and documents within Euclidean geometry, where both are represented as vectors in multi-dimensional space. The notion of how close documents appear to each other denotes the relevance of a document.
-
-The vector space model has been very popular, as it provides an intuitive means for addressing the overarching problem of a retrieval system. It can also incorporate methods such as \emph{term weighting,} which has been shown to improve retrieval effectiveness~\citep{croft2010search}. Furthermore, as queries and terms ad represented in Euclidean space, vector similarity methods can be employed to determine relevance. While many approaches have been trialled, empirical evidence have favoured \emph{cosine similarity}~\citep{croft2010search}. This is illustrated in Figure~\ref{fig:vector_space}. Using such an approach allows one to then compute the degrees of relevance, meaning that matched document can be returned in a ranked order. The ability of providing a ranking then permits searchers interacting with the results list to decide at what depth they should stop examining them. In other words, the ranking provides searchers with an \emph{estimate} as to when they should stop, or when the scores assigned to documents from a particular ranking begin to fall below an acceptable threshold.
 
 \begin{wrapfigure}[13]{r}{0.45\textwidth}
     \begin{center}
@@ -190,6 +188,8 @@ The vector space model has been very popular, as it provides an intuitive means 
     \caption[Vector space model (cosine similarity)]{An illustration of the vector space model in Euclidean space, with each term representing a dimension. Here, the cosine similarity between query \emph{q} and document \emph{d} is shown.}
     \label{fig:vector_space}
 \end{wrapfigure}
+
+The vector space model has been very popular, as it provides an intuitive means for addressing the overarching problem of a retrieval system. It can also incorporate methods such as \emph{term weighting,} which has been shown to improve retrieval effectiveness~\citep{croft2010search}. Furthermore, as queries and terms ad represented in Euclidean space, vector similarity methods can be employed to determine relevance. While many approaches have been trialled, empirical evidence have favoured \emph{cosine similarity}~\citep{croft2010search}. This is illustrated in Figure~\ref{fig:vector_space}. Using such an approach allows one to then compute the degrees of relevance, meaning that matched document can be returned in a ranked order. The ability of providing a ranking then permits searchers interacting with the results list to decide at what depth they should stop examining them. In other words, the ranking provides searchers with an \emph{estimate} as to when they should stop, or when the scores assigned to documents from a particular ranking begin to fall below an acceptable threshold.
 
 In order to understand the basic workings of the vector space approach, let us consider a query, $Q$, with each of its constituent terms placed within a term vector in $t$-dimensional space, leading to $Q = (q_1, q_2, q_3,\dotsc, q_{it})$. Consider also a document, $D_i$, with terms from the document again represented in $t$-dimensional space, yielding $D_i = (d_{i1}, d_{i2}, d_{i3},\dotsc, d_{it})$. From this notation, $d_{ij}$ represents the \emph{term frequency (TF)} of term $j$ appearing in document $i$. With each term represented as a separate dimension within Euclidean space, a weighting scheme can be subsequently applied to emphasise or understate more discriminative or less discriminative terms, respectively. By applying weighting schemes, the vector space model ranks documents which promotes terms that are more discriminative, thus improving the quality of the returned ranked list.
 
@@ -223,52 +223,142 @@ Given the strong rooting in the principles of language and associated fields, la
 
 Essentially, a language model is a probability distribution over strings of text. Given a string of text (i.e. a searcher's query), how likely is it that the given query appears in a given \emph{language}? Each document provides its own language, where we consider all possible phrases that the author of a document could have written when creating said document. Of course, some phrases are more likely than others. For example, the phrase \texttt{rain in glasgow} is more likely to appear in a document (in that order) than the seemingly random assortment of terms \texttt{purple monkey dishwasher}\footnote{If you ever watched \emph{The Simpsons}, you might disagree with this statement.}. Given this, and conceptualising a searcher's query in much the same fashion, we can produce a probability distribution $P(Q|D)$, concerning the probability of observing query $Q$ during some form of sampling within the language model of document $D$.
 
-The most simplistic approach to language modelling is undoubtedly the \emph{unigram} approach, where each term within a document and/or query are considered in isolation, which subscribes to the aforementioned simplifying bag of words concept. Essentially, such an approach provides a probability distribution over the words appearing in the language. Higher order \emph{grams} such as \emph{bi-grams} and \emph{tri-grams} begin to consider more the place in which terms appear with respect to others, and thus the semantic meaning defined by this positioning begins to be taken into account within the probability distribution. When considering a document, the more a document discusses a particular topic, the more likely one would begin to observe terms about that topic in said document. When a term is not mentioned in a document, smoothing can be applied (given the wider collection the document is part of) to avoid a zero probability when calculating the probability of terms permitting the partial matching of queries where not all terms appear within a target document.
+The most simplistic approach to language modelling is the \emph{unigram} approach, where each term within a document and/or query are considered in isolation, which subscribes to the aforementioned simplifying bag of words concept. Essentially, such an approach provides a probability distribution over the words appearing in the language. Higher order \emph{grams} such as \emph{bi-grams} and \emph{tri-grams} begin to consider more the place in which terms appear with respect to others, and thus the semantic meaning defined by this positioning begins to be taken into account within the probability distribution. When considering a document, the more a document discusses a particular topic, the more likely one would begin to observe terms about that topic in said document. When a term is not mentioned in a document, smoothing can be applied (given the wider collection the document is part of) to avoid a zero probability when calculating the probability of terms permitting the partial matching of queries where not all terms appear within a target document.
 
+\section{From System to Searcher}\label{sec:ir_background:user}
+So far in this chapter, we have provided a background on several key developments in the field of~\gls{acr:ir}. However, these developments are focused exclusively on the \emph{system.} Indeed, the overall goal of a retrieval system is to satisfy the information needs of the \emph{user.} Satisfying this information need is key to a successful retrieval system.
 
-\section{From System to Searcher}
-Considering the user -- what is IIR?
-Core to their experience is the SERP as shown above.
+In this section, we discuss a line of research that moves primarily from considering the system to a more extensive examination of the searcher and his or her interactions with a retrieval system. This is examined in the study of~\glsfirst{acr:iir}. However, before discussing the~\gls{acr:iir} process, we must first consider in more detail the paradigms that have been extensively used in traditional, \emph{system-sided} ~\gls{acr:ir} research. These paradigms have been the underpinnings of scientific methodology for many decades, and can be largely considered to be largely na\"{i}ve of the behaviour of a searcher. After discussing these paradigms, we then move onto our discussion of~\gls{acr:iir}, emphasising the \emph{spectrum} of research between the system-sided and user-sided extremes. This then leads onto the concept of \emph{searcher models} that attempt to capture the high-level, cognitive processes that searchers undertake.
 
-Kelly has a spectrum of studies that consider the searcher.
+% Considering the user -- what is IIR?
+% Core to their experience is the SERP as shown above.
+%
+% Kelly has a spectrum of studies that consider the searcher.
+%
+% From system-focused, to user focused.
+%
+% Explain the IIR process.
+% Talk about the different kinds of tasks that people do.
 
-From system-focused, to user focused.
+\subsection{Experimental Paradigms}\label{sec:ir_background:paradigms}
+The methodology behind the majority of classical~\gls{acr:ir} research has focused around the \emph{Cranfield paradigm.} Developed at Cranfield University in Bedfordshire, England, the experimental paradigm is based upon the \emph{Cranfield II} experiments~\citep{aslib1966factors}. The goal of these experiments was to create:
 
-Explain the IIR process.
-Talk about the different kinds of tasks that people do.
+\begin{quote}
+\emph{``a laboratory type situation where, freed as far as possible from the contamination of operational variables, the performance of index languages could be considered in isolation.''}
+\attrib{\cite{cleverdon1991cranfield}}
+\end{quote}
+
+The experimental paradigm required the same set of documents, and same set of information needs to be used for each language, and the use of common~\gls{acr:ir} measures, \emph{precision} and \emph{recall} \todo{(refer to Section~\ref{})} to be used to measure a given retrieval system's \emph{effectiveness.} This gave rise to the notion of a \blueboxbold{test collection}, consisting of three key components:
+
+\begin{itemize}
+    \item{the corpus (collection of documents) to be used;}
+    \item{the statements of information need, hereafter referred to as \blueboxbold{topics}; and}
+    \item{a set of \blueboxbold{relevance judgements} -- a list of documents that \emph{should} be retrieved by the retrieval system for each topic trialled.}
+\end{itemize}
+
+Given these three components, the Cranfield experiments made a number of major simplifying assumptions, as outlined by~\cite{voorhees2001iir_philosophy}. The first considers the notion of \emph{topical similarity,} with which relevance is assumed to be approximated by. In short, all relevant documents are equally desirable, and the relevance of one given document is independent of the relevance of any other document. This also leads to the notion of a \emph{static information need} -- under Cranfield, there is assumed to be no change during the search process to what the searcher is looking for. Additionally, the single set of relevance judgements provided as part of the test collection are to be considered to be \emph{representative of an entire population.} This means that for a given topic, every searcher will seek to find the same set of relevant documents. Finally, the list of relevant documents for a given topic is assumed to be \emph{total and complete,} i.e. all relevant documents to a topic have been identified and are listed.
+
+\subsubsection{The~\glsfirst{acr:trec}}
+A number of different \emph{evaluation forums} have been borne out of the Cranfield experimental paradigm, utilising many of the different assumptions. These forums promote the development of~\gls{acr:ir} as a field, fostering a drive to develop improvements in the various retrieval models and other retrieval system components. Examples of evaluation forums include \emph{NTCIR}~\citep{kando1999ntcir}, \emph{CLEF}~\citep{braschler2001clef} and \emph{INEX}~\citep{fuhr2006advances}. However, one of the most well-known evaluation forums is the U.S. Government funded,~\gls{acr:nist} sponsored~\glsfirst{acr:trec}~\citep{harman1993trec1}. Experimentation following the~\gls{acr:trec} approach is hereafter referred to as \blueboxbold{\gls{acr:trec}-style} in this thesis.
+
+\gls{acr:trec} provides a platform for annual collaboration between research groups interested in different aspects of~\gls{acr:ir} research. Each year, a series of~\gls{acr:trec} \emph{tracks} are defined, with each consisting of a test collection, in turn consisting of the three components defined above. Within each track is a set of tasks. Some of the tasks, such as those belonging to the \emph{\gls{acr:trec} Interactive Track}~\citep{over2001trec}, are known as \blueboxbold{ad-hoc}. This type of task can be considered as one of the most obvious for search, where a searcher develops an information need in an ad-hoc fashion, and then issues a query to a retrieval system.
+
+These tasks are used in conjunction with the relevance judgements, provided by assessors. Assessors are usually employees of NIST~\citep{robertson2008history_ir_evaluation}, who were in turn previously employed as news analysts by various U.S. security agencies. A series of documents are extracted from the document collection using a simple query (a process called \emph{pooling}). Due to the potentially large size of document collections, pooling is an acceptable solution to reducing the number of documents to be examined. As an example, given the topic \emph{wildlife extinction,} the query \texttt{wildlife extinction} is issued. Documents returned are judged by assessors. For many~\gls{acr:trec} tracks, judgements are binary, with \texttt{0} denoting non-relevance, and \texttt{1} denoting relevance. Graded relevance judgements can also be used -- the initial Cranfield II experiments for example used a five-point relevance scale~\citep{voorhees2001iir_philosophy}. Of course, pooling can mean that documents that are potentially relevant can be missed by assessors, and thus will receive no judgement~\citep{keenan2001effect}. This could potentially mean that a retrieval system may return a document that a searcher judges to be relevant, and may be considered to be so, yet will not have a judgement associated with it.
+
+Each team wishing to participate in a track receives the associated test collection, indexes the document collection, and runs their experimental retrieval system over the provided material. Experiments are typically run over $25$-$50$ different topics~\citep{voorhees2001iir_philosophy}, with a solitary query issued for each (the topic's \emph{title}). These are typically executed in a batch environment, with a large number of results (typically $1,000$) returned from the retrieval engine. Output from the experiments is then produced in a standardised format. Results can then be used in conjunction with the judgements (termed \emph{Query RELevance judgements}, or \blueboxbold{QRELs}), and fed into a standardised program called \texttt{trec\_eval}\footnote{\texttt{trec\_eval} is downloadable from \url{http://trec.nist.gov/trec_eval/} -- URL last accessed on March 8\textsuperscript{th}, 2018. Version 8.1 of the software was used for computing most of the evaluation measures reported in this thesis.} to perform evaluation of the runs that are undertaken. The application returns the values for a number of common system-sided evaluation measures, some of which are discussed in Section~\ref{sec:ir_background:evaluation:system}.
+
+\subsubsection{The~\gls{acr:trec} Searcher Model}
+Given the assumptions of the Cranfield paradigm -- and subsequently evaluation forums such as~\gls{acr:trec}, one may be forgiven into thinking that the searcher -- the target audience of any retrieval system -- has been completely ignored from the process. While it is true that the paradigm focuses primarily on system-sided evaluation of retrieval systems, a searcher \emph{is} considered -- just in a highly abstracted form. The assumption that a searcher's information does not vary as they search is just one example of an abstraction from reality -- a searcher's information need typically evolves and changes as they search~\citep{borlund2003iir_model}.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-basic_model.pdf}}
+    \caption[\gls{acr:trec} searcher model]{The~\gls{acr:trec} searcher model. Considering a highly abstracted searcher, a query is issued, with each individual result examined in a linear order, up to some depth \emph{k} (typically 1,000), before the searcher stops. No notion to relevance is considered; all documents up to rank \emph{k} are assumed by the searcher to be relevant to the topic provided.}
+    \label{fig:trec_model}
+\end{figure}
+
+The basic searcher model employed by a~\gls{acr:trec}-style experiment is illustrated as a flowchart in Figure~\ref{fig:trec_model}. Given the batch-style nature of~\gls{acr:trec}-style experimentation, this particular searcher model is well suited to such an environment, as the simplifying assumptions and complete lack of interaction from the searcher go hand in hand with the design goals of the initial Cranfield II experiments, detailed in Section~\ref{sec:ir_background:paradigms} above. Searchers, when provided with an information need (or topic), will issue a single query pertaining to said information need -- the topic's title -- and then examine each individual item, one by one, considering each item as relevant to said information need. This process continues until some rank $k$, at which point the searcher will cease and the search process ends. This rank $k$ is typically set to $1,000$ to provide evaluation programs such as \texttt{trec\_eval} with a large a set of rankings as possible for accurate values for the various evaluation measures that can be computed.
+
+With this highly abstracted searcher model being agonistic of the complex interactions that take place during search, a number of different criticisms can be made. Below, we enumerate on three primary criticisms that have been highlighted in the literature.
+
+\begin{itemize}
+    \item{\blueboxbold{A Single Query} The~\gls{acr:trec} searcher model assumes that a single query is issued for a given information need. This severely limits the potential for interaction between the searcher and retrieval system -- a single query means no \emph{query reformulation} is possible, for example. In reality, searchers \emph{do} reformulate queries, issuing multiple queries during a search session~\citep{keskustalo2009querying}.}
+    \item{\blueboxbold{Assuming a Fixed Depth} Searchers subscribing to this searcher model will always examine documents to a depth of $k$. This assumes a \emph{fixed-depth stopping strategy,} where searchers are agnostic of the results as presented to them, etc. In reality, searchers adapt their stopping depths dependent upon a variety of different factors, such as the number of non-relevant items uncovered thus far~\citep{cooper1973retrieval_effectiveness_ii}.}
+    \item{\blueboxbold{Everything is Inspected} The final key, limiting assumption in the~\gls{acr:trec} searcher model is that \emph{all} documents are examined and considered relevant. In reality, searchers may skim through results, or simply decide that a document does not look to be promising, and thus skip it. There is no concept of a \emph{result summary,} a shorthand overview of the contents of the document.}
+\end{itemize}
+
+Over time, researchers have begun to examine ways in which to improve upon the basic, rigid assumptions laid out by this searcher model. For example,~\cite{smucker2012tbg} introduced \emph{time-biased gain,} where probabilities of interacting with documents were included, for example. Work by~\cite{tran2017markov_models} considered the~\gls{acr:trec} searcher model from the standpoint of a Markov model, with probabilities of transitioning between different states. This work can be considered part of the study of~\gls{acr:iir}, a field that has strived to improve models of the search process, and thus improve our collective knowledge of the complex interactions that take place during search.
+
+\subsection{\glsfirst{acr:iir}}\label{sec:ir_background:user:iir}
+The study of~\glsfirst{acr:iir} attempt to address our lack of understanding and incorporation of a searcher's behaviours and interactions into the evaluation of retrieval systems~\citep{callan2007minds}.~\gls{acr:iir} studies can include aspects from both user-sided and system-sided research. For example, one might present results of a user study examining a particular phenomenon of a searcher's behaviour, and also provide details of a system-sided evaluation. As discussed by~\cite{kelly2009iir},~\gls{acr:iir} can trace its root back to a variety of different disciplines, including: traditional~\gls{acr:ir} (i.e. exclusively system-sided research); library and information sciences; psychology; and~\gls{acr:hci}. Typically presented as a branch of~\gls{acr:ir} and/or~\gls{acr:hci}, arguments also exist to consider~\gls{acr:iir} as a distinct area of research~\citep{ruthven2008iir}.
+
+\begin{quote}
+\emph{``In~\gls{acr:iir}, users are typically studied along with their interactions with systems and information. While classic~\gls{acr:ir} studies abstract humans out of the evaluation model,~\gls{acr:iir} focuses on users' behaviors [sic] and experiences -- including physical, cognitive and affective -- and the interactions that occur between users and systems, and users and information. In simple terms, classic~\gls{acr:ir} evaluation asks the question, does this system retrieve relevant documents?~\gls{acr:iir} evaluation asks the question, can people use this system to retrieve relevant documents?''}
+\attrib{\cite{kelly2009iir}}
+\end{quote}
+
+To address the question of whether \emph{people can use a retrieval system}, we begin by examining the wider~\gls{acr:iir} process. Figure~\ref{fig:irs} on page~\pageref{fig:irs} considered a number of user-focused aspects, which are elaborated on in \todo{Figure~\ref{fig:iir}.} Given some phenomenon in the natural world (perhaps by observation, reading a book, or through conversation with another human) a searcher will then begin to formulate an information need. As discussed previously in this thesis, this information need can arise from a knowledge gap in the searcher's mind, an internal inconsistency in what he or she is seeing or hearing, or a conflict of evidence. In an \emph{Anomalous State of Knowledge (ASK)}~\citep{belkin1980ask}, the searcher will then begin the~\gls{acr:iir} process, with the aim of satisfying their (perhaps vague) information need.
+
+Upon bringing up the interface of a retrieval system, the searcher begins their so-called \blueboxbold{search session}, which begins with the formulation of the information need as a series of terms -- or query. Upon submission of this query with the retrieval system, a complex series of \blueboxbold{interactions} begin to take place between the system and the searcher, and these interactions are of great importance to those studying~\gls{acr:iir}. Results will be retrieved by the underlying retrieval system and presented to the searcher in the form of a~\glsfirst{acr:serp}. While we discuss the~\gls{acr:serp} in more detail in Section~\ref{sec:ir_background:user:iir:serp}, a majority of the interactions that take place happen on the~\gls{acr:serp}.
+
+Searchers for example will begin to examine the content on the~\gls{acr:serp}, examining individual summaries for potential relevance. At each stage, the searcher is continually learning, and thus the interaction cycle may prompt the searcher for example to provide a \emph{query reformulation} as they begin to develop their underlying mental model of the topic. A revised~\gls{acr:serp} may then begin to yield more promising results. As the searcher examines these updated results, he or she may find that a particular summary is deemed sufficiently attractive to investigate further, and thus clicks on the provided link. Taking the searcher to the corresponding document, the searcher can then examine the document in more detail, and make a decision as to its relevance. If not satisfied, the searcher may navigate back to the~\gls{acr:serp}, and continue their examination of further results. At some point, the searcher will make a decision to \blueboxbold{stop} their search session -- perhaps as they have satisfied their information need, have become frustrated with the retrieval system's inability to return relevant results~\citep{cooper1973retrieval_effectiveness_ii}, or from external factors such as time pressure.
+
+While this example above may be highly abstract in nature, it clearly shows that the search process is \emph{inherently interactive,} and thus the work in~\gls{acr:iir} provides a basis for developing more complex, advanced models of the search process, offering vast improvements in the realism of such models when compared to the~\gls{acr:trec}-style searcher model, as illustrated in Figure~\ref{fig:trec_model}. 
+
+\subsubsection{The~\glsfirst{acr:serp}}\label{sec:ir_background:user:iir:serp}
+Core to the experience of a searcher when using a given retrieval system are the interactions that take place on its~\glsplural{acr:serp}. Figure~\ref{fig:serp_example} depicts an example~\gls{acr:serp} of fictional retrieval system, \searchlogo.\footnote{We utilise \searchlogo~throughout this thesis to illustrate various concepts.} The illustration highlights several key~\gls{acr:serp} components that are extensively referred to in latter parts of this thesis. At the top of the~\gls{acr:serp} is the \blueboxbold{query box}, allowing for a searcher to reformulate their query if he or she desires.
+
+The main body of the~\gls{acr:serp} is then divided up into the left rail and right rail. Contemporary~\glsplural{acr:serp} utilise the right rail to display additional components such as \emph{information cards} as illustrated in Figure~\ref{fig:serp_example}, and are thus become more and more complex in nature. We however in this thesis exclusively consider simplified~\glsplural{acr:serp} \emph{without} the right rail, or~\glsplural{acr:serp} comprised entirely of \emph{result summaries.}
+
+These result summaries are typically displayed on a~\gls{acr:serp} as the \emph{ten blue links}~\citep{hearst2009_search}, or the first ten ranked results, with the document judged to be most relevant (as defined by the underlying retrieval model) displayed at the top of the list. These result summaries are short summaries of the corresponding document, and consist of three main components:
+
+\begin{itemize}
+    \item{a \blueboxbold{title} that represents the title, or headline, or a source object;}
+    \item{one or more \blueboxbold{textual snippets}, providing a summary of the source object such that searchers can determine whether it is worth examining the result in more detail or not; and}
+    \item{a \blueboxbold{source} for the object, typically an~\gls{acr:url} if the object is~\gls{acr:www}-based.}
+\end{itemize}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-example.pdf}}
+    \caption[Example of a~\gls{acr:serp}]{An example of a~\glsfirst{acr:serp} for the query \texttt{canberra australia}. \blueboxbold{Labels} illustrate the names of the key components of a~\gls{acr:serp} – of relevance for the work in this thesis are the \emph{result summaries.}}
+    \label{fig:serp_example}
+\end{figure}
+
+Snippets are of particular interest to the work in this thesis; we explore the effect of their length on stopping behaviour in Chapter~\ref{chap:snippets}. Snippets are typically presented in contemporary retrieval systems as \emph{query-biased}~\citep{tombros1998query_biased}. This means that the snippet text relates to terms that were present in the searcher's query. Figure~\ref{fig:serp_example} demonstrates this with the use of \textbf{bolded} terms in example snippet text.
+
+\subsection{The~\gls{acr:ir}/\gls{acr:iir} Spectrum}
+As previously stated, the interactions that take place on a~\gls{acr:serp} are part of the wider~\gls{acr:iir} process. In the next section, we turn our attention to different kinds of study -- from system-focused to user-focused.
+
+So there's this spectrum. Consider the comments from Leif,
 
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-spectrum.pdf}}
-    \caption[Spectrum IIR research~\citep{kelly2009iir}]{The spectrum of conceptualising~\gls{acr:iir} research. Methods on the left consider a more system-focused approach, with those on the right considering a more user-focused approach. The fifth step within the spectrum considering~\gls{acr:trec} interactive studies is considered to be an \emph{"archetypical~\gls{acr:iir} study"}. Figure adapted, with permission, from~\cite{kelly2009iir}.}
+    \caption[Spectrum IIR research~\citep{kelly2009iir}]{The spectrum of conceptualising~\gls{acr:iir} research. Methods on the left consider a more system-focused approach, with those on the right considering a more user-focused approach. The fifth step within the spectrum considering~\gls{acr:trec} interactive studies is considered to be an \emph{"archetypical~\gls{acr:iir} study"}. Figure adapted, with acknowledgement, from~\cite{kelly2009iir}.}
     \label{fig:spectrum}
 \end{figure}
-
-\subsection{Presenting Results}
-Core to the experience of a searcher is their interactions on a SERP. Explain the SERP, keep is simple and don't talk too much about the right rail.
-
-\subsection{Cranfield and~\gls{acr:trec}}
-- in the old history (rise of computers), there is a discussion about cranfield. bring it over here.
-- explain TREC paradigm.
-
-    Certain improvements have been made, time-biased gain.
-        Like in TBG, look at snippet, some probability of document cost. snippet and document costs.
-        simple markov model from vu's paper. This could go in the user models section.
 
 \subsection{Searcher Models}
 
 reiterate that there is a disconnect between the trec model (list assumptions), and reality.
 and thus, people have worked on developing different models of the search process that better capture the IIR process.
 
+    Certain improvements have been made, time-biased gain.
+        Like in TBG, look at snippet, some probability of document cost. snippet and document costs.
+        simple markov model from vu's paper. This could go in the user models section.
+
 2.3.1, bring it over, rephrased.
 trec model of search.
 
 start bringing over the stuff from chapter 3 in here.
 
-\section{Evaluation Measures}
+\section{Evaluation Measures}\label{sec:ir_background:evaluation}
 
-\subsection{System-Based Evaluation}
+\subsection{System-Based Evaluation}\label{sec:ir_background:evaluation:system}
 
 \subsubsection{Precision}
 
