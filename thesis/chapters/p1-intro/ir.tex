@@ -268,7 +268,7 @@ These tasks are used in conjunction with the relevance judgements, provided by a
 Each team wishing to participate in a track receives the associated test collection, indexes the document collection, and runs their experimental retrieval system over the provided material. Experiments are typically run over $25$-$50$ different topics~\citep{voorhees2001iir_philosophy}, with a solitary query issued for each (the topic's \emph{title}). These are typically executed in a batch environment, with a large number of results (typically $1,000$) returned from the retrieval engine. Output from the experiments is then produced in a standardised format. Results can then be used in conjunction with the judgements (termed \emph{Query RELevance judgements}, or \blueboxbold{QRELs}), and fed into a standardised program called \texttt{trec\_eval}\footnote{\texttt{trec\_eval} is downloadable from \url{http://trec.nist.gov/trec_eval/} -- URL last accessed on March 8\textsuperscript{th}, 2018. Version 8.1 of the software was used for computing most of the evaluation measures reported in this thesis.} to perform evaluation of the runs that are undertaken. The application returns the values for a number of common system-sided evaluation measures, some of which are discussed in Section~\ref{sec:ir_background:evaluation:system}.
 
 \subsubsection{The~\gls{acr:trec} Searcher Model}\label{sec:ir_background:paradigms:trec:model}
-Given the assumptions of the Cranfield paradigm -- and subsequently evaluation forums such as~\gls{acr:trec}, one may be forgiven into thinking that the searcher -- the target audience of any retrieval system -- has been completely ignored from the process. While it is true that the paradigm focuses primarily on system-sided evaluation of retrieval systems, a searcher \emph{is} considered -- just in a highly abstracted form. The assumption that a searcher's information does not vary as they search is just one example of an abstraction from reality -- a searcher's information need typically evolves and changes as they search~\citep{borlund2003iir_model}.
+Given the assumptions of the Cranfield paradigm -- and subsequently evaluation forums such as~\gls{acr:trec}, one may be forgiven into thinking that the searcher -- the target audience of any retrieval system -- has been completely ignored from the process. While it is true that the paradigm focuses primarily on system-sided evaluation of retrieval systems, a searcher \emph{is} considered -- just in a highly abstracted form. The assumption that a searcher's information does not vary as they search is just one example of an abstraction from reality -- a searcher's information need is \emph{dynamic,} and typically evolves as they search~\citep{borlund2003iir_model}.
 
 \begin{figure}[t!]
     \centering
@@ -314,6 +314,8 @@ Searchers for example will begin to examine the content on the~\gls{acr:serp}, e
 
 While this example above may be highly abstract in nature, it clearly shows that the search process is extremely complex and \emph{inherently interactive.} Thus, work in the field of~\gls{acr:iir} provides a basis for developing more complex, \emph{realistic} models of the search process, improving the offering when compared to the~\gls{acr:trec}-style searcher model.
 
+\todo{WHAT ABOUT DIFFERENT TASKS?}
+
 \subsubsection{The~\glsfirst{acr:serp}}\label{sec:ir_background:user:iir:serp}
 Core to the experience of a searcher when using a given retrieval system are the interactions that take place on its~\glsplural{acr:serp}. Figure~\ref{fig:serp_example} depicts an example~\gls{acr:serp} of fictional retrieval system, \searchlogo.\footnote{We utilise \searchlogo~throughout this thesis to illustrate various concepts.} The illustration highlights several key~\gls{acr:serp} components that are extensively referred to in latter parts of this thesis. At the top of the~\gls{acr:serp} is the \blueboxbold{query box}, allowing for a searcher to reformulate their query if he or she desires.
 
@@ -351,7 +353,7 @@ In order to aptly describe where~\gls{acr:iir} fits into the system-sided and us
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-spectrum.pdf}}
-    \caption[Spectrum IIR research~\citep{kelly2009iir}]{The spectrum of conceptualising~\gls{acr:iir} research. Methods on the left consider a more system-focused approach, with those on the right considering a more user-focused approach. The fifth step within the spectrum considering~\gls{acr:trec} interactive studies is considered to be an \emph{"archetypical~\gls{acr:iir} study"}. Figure adapted, with acknowledgement, from~\cite{kelly2009iir}.}
+    \caption[Spectrum IIR research~\citep{kelly2009iir}]{The spectrum of conceptualising~\gls{acr:iir} research. Methods on the left consider a more system-focused approach, with those on the right considering a more user-focused approach. The fifth step within the spectrum considering~\gls{acr:trec} interactive studies is considered to be an \emph{"archetypical~\gls{acr:iir} study"}. Figure adapted, with support from~\cite{kelly2009iir}.}
     \label{fig:spectrum}
 \end{figure}
 
@@ -394,25 +396,78 @@ Simulation provides a means for examining the aforementioned components from two
 The work in this thesis considers the latter, or the entire search process, meaning that potential influences of components over others can be considered. This also justifies the need for a more advanced searcher \emph{model} that captures the interactions of the wider search process. A model is a key component of a simulation, or the representation of the real-world phenomenon being simulated~\citep{tocher1963art_of_simulation}. With the~\gls{acr:trec}-style searcher model outlined, we turn our attention to considering more advanced searcher models of the~\gls{acr:iir} process.
 
 \subsection{Searcher Models}\label{sec:ir_background:user:models}
+Models of the search process attempt to capture the high level, cognitive processes that a searcher undertakes during a search session -- such as issuing a query, or examining a document for relevance. As we have discussed previously, highly abstracted searcher models have been present in system-sided~\gls{acr:ir} research, as well as implicitly encoded within a variety of different evaluation measures, as discussed in Section~\ref{sec:ir_background:evaluation}.
 
-in order for a simulation to work, you need a searcher model.
-we already introduced the TREC searcher model, which is agnostic of interaction.
+\cite{carterette2011effectiveness_evaluation} argues that the measures widely used within~\gls{acr:ir} research are themselves typically comprised of three distinct underlying models that are enumerated below.
 
+\begin{itemize}
+    \item{\blueboxbold{Browsing Model} Browsing models describe how a searcher interacts with a retrieval system's interface, including the~\glsplural{acr:serp} that are presented to them.}
+    \item{\blueboxbold{Document Utility Model} These models encode some form of \blueboxbold{document utility} that provides a description for how utility or \emph{gain} can be derived from relevant documents; and}
+    \item{\blueboxbold{Utility Accumulation Model} This final model describes how a searcher accumulates said utility over the course of an entire search session.}
+\end{itemize}
 
-don't talk about the stopping points here. you can move this into the start of chapter 3.
+Of particular interest to the work in this thesis are the browsing models that attempt to capture the broad array of interactions that take place between the searcher and the search engine. The~\gls{acr:trec} searcher model is a high abstracted example of such a model, yet there is a disconnect between the assumptions made in this searcher model and reality. As such, we now discuss a number of more advanced searcher models, providing better representations of the complex interactions that take place during~\gls{acr:iir}.
 
+Seminal work undertaken by~\cite{baskaya2013behavioural_factors} presented an explicit, revised searcher model that improved upon the \emph{interactive} capabilities that could be exploited. Improvements over the~\gls{acr:trec}-style searcher model included the following:
 
-reiterate that there is a disconnect between the trec model (list assumptions), and reality.
-and thus, people have worked on developing different models of the search process that better capture the IIR process.
+\begin{itemize}
+    \item{the ability to \blueboxbold{separately judge result summaries} presented on a~\gls{acr:serp} from the documents associated with each;}
+    \item{permitting a searcher the ability to \blueboxbold{stop at a variable depth on the~\gls{acr:serp}}, avoiding fixed depth stopping behaviours as typically employed in searcher models; and}
+    \item{permitting a searcher to \blueboxbold{issue multiple queries} during a search session, lifting one of the major constraints of the~\gls{acr:trec} searcher model.}
+\end{itemize}
 
-    Certain improvements have been made, time-biased gain.
-        Like in TBG, look at snippet, some probability of document cost. snippet and document costs.
-        simple markov model from vu's paper. This could go in the user models section.
+These improvements are demonstrated as a Markov model, illustrated in Figure~\ref{fig:baskaya_model}. Compared to the~\gls{acr:trec}-style searcher model illustrated in Figure~\ref{fig:trec_model} on page~\pageref{fig:trec_model}, the model can be visually seen as more complex, consisting of six main actions:
 
-2.3.1, bring it over, rephrased.
-trec model of search.
+\begin{itemize}
+    \item{\blueboxbold{query formulation}, where a searcher formulates the terms that they wish to enter, as well as the issuance of the query to the underlying retrieval system;}
+    \item{\blueboxbold{snippet scanning}, the action that considers the examination of individual result summaries for \emph{attractiveness;}}
+    \item{\blueboxbold{link clicking} that occurs when a result summary is considered to be attractive enough to warrant further examination;}
+    \item{\blueboxbold{document examination} that considers the process of examining a document for relevance to the underlying information need;}
+    \item{\blueboxbold{relevance judging}, for determining whether or not the document is relevant to the searcher's information need; and}
+    \item{\blueboxbold{session stopping}, the action that curtails the search session.}
+\end{itemize}
 
-start bringing over the stuff from chapter 3 in here.
+These steps broadly match up the~\gls{acr:iir} process as outlined in Figure~\ref{fig:iir} on page~\pageref{fig:iir}, and described in abstract form in Section~\ref{sec:ir_background:user:iir}.~\cite{azzopardi2011economics},~\cite{yilmaz2010browsing_utility},~\cite{carterette2011models}, and more recently~\cite{zhang2017simulation_model} have all introduced and utilised searcher models that are similar in terms of the broad set of actions as outlined by~\cite{baskaya2013behavioural_factors}. Being a Markov model, this searcher model considers each of the different actions as a \emph{state} within the model, with a series of \emph{transition probabilities} linking each of the actions together (i.e. \emph{what is the probability of a searcher moving from scanning a snippet to stopping the search session?)}.\footnote{This searcher model can also be represented as a flowchart, as illustrated in Figure~\ref{fig:baskaya_model_flow}.} Indeed, the typical browsing model components (e.g. inspecting a document for relevance) as per~\cite{carterette2011effectiveness_evaluation} are also integrated with query generation and utility accumulation, allowing a searcher to issue multiple queries and gain utility.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch3-baskaya.pdf}}
+    \caption[Markov model of the search process by~\cite{baskaya2013behavioural_factors}]{The user model of search, as outlined by~\citealt{baskaya2013behavioural_factors}. Represented as a Markov model, the model considers six steps in all. Encoded within two of the steps are decision points that a user following this model must consider in order to continue. Figure adapted with the support from the authors of~\citealt{baskaya2013behavioural_factors}.}
+    \label{fig:baskaya_model}
+\end{figure}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch3-baskaya_flow.pdf}}
+    \caption[Flowchart of the search process by~\cite{baskaya2013behavioural_factors}]{The user search model, as outlined by~\cite{baskaya2013behavioural_factors}. Adapted from the version of the model illustrated later in Figure~\ref{fig:baskaya_model}, this flowchart illustrates the main processes, decisions and interaction flow that an individual subscribing to this model will follow.}
+    \label{fig:baskaya_model_flow}
+\end{figure}
+
+Judging result summaries separately from the associated documents is to be regarded as a major development in searcher models. The snippet text forming part of each result summary can be generated in a variety of different ways, with approaches today typically \emph{query biased} in nature~\citep{tombros1998query_biased}. As such, what may look like a result summary that is attractive enough to explore further could potentially lead to a document that is in actuality not pertinent to the given information need. This is a clear development from the~\gls{acr:trec}-style searcher model that doesn't even consider the notion of a result summary.
+
+Effectively modelling stopping behaviour is also important to providing a more realistic model of the search process. The addition of decision points allowing a searcher to judge the attractiveness of a snippet, or the relevancy of a document, provide natural locations for stopping decision points.
+
+\begin{quote}
+\emph{Given this snippet looks unattractive and therefore not useful to satisfying my information need, should I stop examining the results presented to me on this~\gls{acr:serp}?}
+\end{quote}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch3-thomas.pdf}}
+    \caption[Model of the search process by~\cite{thomas2014modelling_behaviour}]{A model of the search process, considering the high-level processes undertaken by a searcher, as outlined by~\cite{thomas2014modelling_behaviour}. Figure adapted, with the support of the authors Thomas, Moffat, Bailey and Scholer.}
+    \label{fig:thomas_model}
+\end{figure}
+
+As an example, a searcher may issue a query that returns very few relevant documents. Once a few snippets and/or documents have been examined, he or she will then conclude that the issued query was unsuccessful, and that they would be essentially wasting their time examining more content on the present~\gls{acr:serp}. In this case, issuing a reformulated query would be a better course of action. This intuition has been confirmed by empirical analysis, where~\cite{azzopardi2011economics} demonstrated that simulated searchers examined significantly fewer documents when the underlying search engine failed to retrieve any relevant material in the top ten results, in contrast to when they did. Thus, searchers are inherently adaptive, with their behaviours conditioned upon the quality of the ranked lists that they interact with. This justifies the inclusion of these additional stopping decision points.
+
+A further explicitly defined searcher model was proposed by~\cite{thomas2014modelling_behaviour}. This model, illustrated as a flowchart in Figure~\ref{fig:thomas_model}, encapsulates the same principles as the previously described searcher models: given an information need, a searcher will issue one or more queries, and examine a varying number of result summaries and documents for attractiveness and relevance respectively. This searcher model also includes a form of utility accumulation model that considers the utility obtained from a result summary $s_i$ and the relevancy judgement of a document, $r_i$. An addition to this searcher model is the inclusion of an additional step at the beginning of the search session, where a searcher must decide \emph{what retrieval system to use.} This may be dependent upon the task at hand: a patent retrieval system would be a better bet for finding associated patents as opposed to a general web retrieval system, for example.
+
+The searcher model proposed by~\cite{thomas2014modelling_behaviour} also considers the examination of result summaries from a different perspective. Instead of assuming that a searcher (perhaps na\"{i}vely) examines each individual result summary in detail before making a decision to its attractiveness, searchers subscribing to this searcher model undertake an \emph{initial inspection} of result summaries, where they can examine in either direction on the list of ranked results (by increasing or decreasing some positional counter, $i$). Essentially, this can be regarded as a searcher \emph{skimming} result summaries, determining if they are worthy of further examination.
+
+Despite the slight variations in how different researchers interpret the~\gls{acr:iir} process, what can be clearly seen from examination of the models discussed in this section is a similar workflow between each. From query issuance to document examination and judgement, this has emerged as the generally accepted process of~\gls{acr:iir}. While studies examining explicit searcher models are not common, searcher models have been encoded within many of the different evaluation measures used within~\gls{acr:ir} and~\gls{acr:iir}. Moving onto the final section of this background chapter, this is now what we turn our attention towards.
 
 \section{Evaluation Measures}\label{sec:ir_background:evaluation}
 
