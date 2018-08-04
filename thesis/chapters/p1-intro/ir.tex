@@ -528,7 +528,7 @@ Considering Figure~\ref{fig:ranking} that presents two lists of rankings -- with
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-ranking.pdf}}
-    \caption[The importance of ranking]{Given an information need to find out information about the \emph{Sir Alwyn Williams Building} (part of the University of Glasgow's estate portfolio), which ranked list of results would you prefer to make use of?}
+    \caption[The importance of ranking]{Given an information need to find out information about the \emph{Sir Alwyn Williams Building} (part of the University of Glasgow's estate portfolio), which ranked list of results would you prefer to make use of? Given \emph{positional bias}~\citep{craswell2008click_models}, it is highly likely that searchers would consider the ranked list on the right~\gls{acr:serp} to be preferable.}
     \label{fig:ranking}
 \end{figure}
 
@@ -540,7 +540,7 @@ As the name might imply, MAP provides a mean over the \emph{Average Precision (A
 AP = \frac{\sum^{n}_{k=1}(P(k) \cdot rel(k))}{|~\text{\emph{relevant documents}}~|}.
 \end{equation*}
 
-Above, $P(K)$ is the precision cutoff at rank $k$ (i.e. $P@k$), and $rel(k)$ is a function to denote the relevance of a particular document at rank $k$. This is assumed to be binary, with $1$ denoting a relevant document, and $0$ denoting a non-relevant document. AP is then computed for each sample query, $q$, over the set of topics $T$ to produce a final MAP score for the~\gls{acr:ir} system:
+Above, $P(K)$ is the precision cutoff at rank $k$ (i.e. $P@k$), and $rel(k)$ is a function to denote the relevance of a particular document at rank $k$. This is assumed to be binary, with $1$ denoting a relevant document, and $0$ denoting a non-relevant document. AP is then computed for each sample query, $q$, over all of the topics defined in set $T$ to produce a final MAP score for the retrieval system:
 
 \begin{equation*}
 MAP = \frac{\sum^{T}_{q=1} AP(q)}{|~Q~|}.
@@ -560,10 +560,10 @@ Indeed,~\cite{kelly2009iir} provides a taxonomy of the different types of measur
     
     \item{\blueboxbold{Performance Factors} As the name suggests, these measures are related to the outcome of the interactions that take place between the searcher and the retrieval system. These measures can be considered analogous to the system-sided measures that we examined previously in Section~\ref{sec:ir_background:evaluation:system}. Typically, such measures can again be extracted from interaction log data.}
     
-    \item{\blueboxbold{Usability Measures} These measures are typically a series of qualitative and quantitate approaches for capturing a subject's feelings and attitudes towards a search system that they have just used. Common measures in this category include the subject's view of the system's effectiveness, and their overall \emph{satisfaction} with how they performed when undertaking the search task in question~\citep{hornbaek2006usability}.}
+    \item{\blueboxbold{Usability Measures} These measures are typically a series of qualitative and quantitative approaches for capturing a subject's feelings and attitudes towards a search system that they have just used. Common measures in this category include the subject's view of the system's effectiveness, and their overall \emph{satisfaction} with how they performed when undertaking the search task in question~\citep{hornbaek2006usability}.}
 \end{itemize}
 
-We employ measures from \emph{all four} of the above -- including the extraction of interaction data from user studies, which is subsequently employed to \emph{ground} simulations of interaction. This section considers \todo{six} different measures that are used throughout the evaluation of the contributory work reported in this thesis, which are:
+We employ measures from \emph{all four} of the above -- including the extraction of interaction data from user studies, which is subsequently employed to \emph{ground} simulations of interaction. This section considers six different measures that are used throughout the evaluation of the contributory work reported in this thesis, which are:
 
 \begin{itemize}
     \item{\blueboxbold{interactive precision} and \blueboxbold{interactive recall}, variants of their system-focused namesakes that consider a searcher's interactions;}
