@@ -228,17 +228,7 @@ The most simplistic approach to language modelling is the \emph{unigram} approac
 \section{From System to Searcher}\label{sec:ir_background:user}
 So far in this chapter, we have provided a background on several key developments in the field of~\gls{acr:ir}. However, these developments are focused exclusively on the \emph{system.} Indeed, the overall goal of a retrieval system is to satisfy the information needs of the \emph{user.} Satisfying this information need is key to a successful retrieval system.
 
-In this section, we discuss a line of research that moves primarily from considering the system to a more extensive examination of the searcher and his or her interactions with a retrieval system. This is examined in the study of~\glsfirst{acr:iir}. However, before discussing the~\gls{acr:iir} process, we must first consider in more detail the paradigms that have been extensively used in traditional, \emph{system-sided} ~\gls{acr:ir} research. These paradigms have been the underpinnings of scientific methodology for many decades, and can be largely considered to be largely na\"{i}ve of the behaviour of a searcher. After discussing these paradigms, we then move onto our discussion of~\gls{acr:iir}, emphasising the \emph{spectrum} of research between the system-sided and user-sided extremes. This then leads onto the concept of \emph{searcher models} that attempt to capture the high-level, cognitive processes that searchers undertake.
-
-% Considering the user -- what is IIR?
-% Core to their experience is the SERP as shown above.
-%
-% Kelly has a spectrum of studies that consider the searcher.
-%
-% From system-focused, to user focused.
-%
-% Explain the IIR process.
-% Talk about the different kinds of tasks that people do.
+In this section, we discuss a line of research that moves primarily from considering the system to a more extensive examination of the searcher and his or her interactions with a retrieval system. This is examined in the study of~\glsfirst{acr:iir}. However, before discussing the~\gls{acr:iir} process, we must first consider in more detail the paradigms that have been extensively used in traditional, \emph{system-sided} ~\gls{acr:ir} research. These paradigms have been the underpinnings of scientific methodology for many decades, and can be largely considered to be largely na\"{i}ve of the searcher's behaviour. After discussing these paradigms, we then move onto our discussion of~\gls{acr:iir}, emphasising the \emph{spectrum} of research between the system-sided and user-sided extremes. This then leads onto the concept of \emph{searcher models} that attempt to capture the high-level, cognitive processes that searchers undertake.
 
 \subsection{Experimental Paradigms}\label{sec:ir_background:paradigms}
 The methodology behind the majority of classical~\gls{acr:ir} research has focused around the \emph{Cranfield paradigm.} Developed at Cranfield University in Bedfordshire, England, the experimental paradigm is based upon the \emph{Cranfield II} experiments~\citep{aslib1966factors}. The goal of these experiments was to create:
@@ -345,7 +335,7 @@ In order to aptly describe where~\gls{acr:iir} fits into the system-sided and us
 \begin{itemize}
         \item[]{\hspace{-6mm}\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point1.pdf}\hspace{1.5mm}}\blueboxbold{\gls{acr:trec}-Style Studies} With a majority of traditional~\gls{acr:ir} studies falling into this category,~\gls{acr:trec}-style studies focus upon the development and evaluation of system-sided research, such as retrieval models and indexing techniques. No real searchers are included \emph{in the loop} with this approach, although a simplistic, abstracted searcher model is encoded, as previously discussed in Section~\ref{sec:ir_background:paradigms:trec:model}. While assessors do create relevance judgements used for evaluation, they are not involved in the actual batch-style search process. As such, interaction is assumed to be very simplistic, with a single query issued, for example. This is illustrated in Figure~\ref{fig:trec_model} on page~\pageref{fig:trec_model}.}
     \item[]{\hspace{-6mm}\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point2.pdf}\hspace{2mm}}\blueboxbold{'User' Relevance Assessment Studies} The second category of study does explicitly consider a human \emph{in the loop,} but only in exceptionally limited circumstances. As the name of the category suggests, the humans that are employed for this category of study are used only for generating relevance assessments, perhaps because a specific corpus is used, and no pre-existing~\gls{acr:trec} relevance assessments are available.}
-    \item[]{\hspace{-6mm}\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point5.pdf}\hspace{1mm}} \blueboxbold{\gls{acr:trec} Interactive Studies} Studies belonging to this category typically are used to evaluate a retrieval system and/or a feature of a its user interface, where and experimental retrieval system is used. Typically, aspects such as searcher behaviours, their cognition or the information seeking context are examined. These studies usually aim to assist in aiding our understanding of the search process, and the development of more intuitive and user-friendly search interfaces. Interaction is considered -- search sessions in this category of study permit searchers to issue multiple queries through query reformulation, assess documents for relevance, and conduct a number of other interactions that studies closer to the left of Figure~\ref{fig:spectrum} simply do not cater for. These studies, therefore, are more \emph{realistic} and considerate of real-world searcher behaviours.}
+    \item[]{\hspace{-6mm}\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point5.pdf}\hspace{0.2mm}} \blueboxbold{\gls{acr:trec} Interactive Studies} Studies belonging to this category typically are used to evaluate a retrieval system and/or a feature of a its user interface, where and experimental retrieval system is used. Typically, aspects such as searcher behaviours, their cognition or the information seeking context are examined. These studies usually aim to assist in aiding our understanding of the search process, and the development of more intuitive and user-friendly search interfaces. Interaction is considered -- search sessions in this category of study permit searchers to issue multiple queries through query reformulation, assess documents for relevance, and conduct a number of other interactions that studies closer to the left of Figure~\ref{fig:spectrum} simply do not cater for. These studies, therefore, are more \emph{realistic} and considerate of real-world searcher behaviours.}
     
 \end{itemize}
 
@@ -463,25 +453,126 @@ Effectively modelling stopping behaviour is also important to providing a more r
 
 As an example, a searcher may issue a query that returns very few relevant documents. Once a few snippets and/or documents have been examined, he or she will then conclude that the issued query was unsuccessful, and that they would be essentially wasting their time examining more content on the present~\gls{acr:serp}. In this case, issuing a reformulated query would be a better course of action. This intuition has been confirmed by empirical analysis, where~\cite{azzopardi2011economics} demonstrated that simulated searchers examined significantly fewer documents when the underlying search engine failed to retrieve any relevant material in the top ten results, in contrast to when they did. Thus, searchers are inherently adaptive, with their behaviours conditioned upon the quality of the ranked lists that they interact with. This justifies the inclusion of these additional stopping decision points.
 
-A further explicitly defined searcher model was proposed by~\cite{thomas2014modelling_behaviour}. This model, illustrated as a flowchart in Figure~\ref{fig:thomas_model}, encapsulates the same principles as the previously described searcher models: given an information need, a searcher will issue one or more queries, and examine a varying number of result summaries and documents for attractiveness and relevance respectively. This searcher model also includes a form of utility accumulation model that considers the utility obtained from a result summary $s_i$ and the relevancy judgement of a document, $r_i$. An addition to this searcher model is the inclusion of an additional step at the beginning of the search session, where a searcher must decide \emph{what retrieval system to use.} This may be dependent upon the task at hand: a patent retrieval system would be a better bet for finding associated patents as opposed to a general web retrieval system, for example.
+A further explicitly defined searcher model was proposed by~\cite{thomas2014modelling_behaviour}. This model, illustrated as a flowchart in Figure~\ref{fig:thomas_model}, encapsulates the same principles as the previously described searcher models: given an information need, a searcher will issue one or more queries, and examine a varying number of result summaries and documents for attractiveness and relevance respectively. This searcher model also includes a form of utility accumulation model that considers the utility obtained from a result summary $s_i$ and the relevancy judgement of a document, $r_i$. An addition to this searcher model is the inclusion of an additional step at the beginning of the search session, where a searcher must decide \emph{what retrieval system to use.}
+
+%This may be dependent upon the task at hand: a patent retrieval system would be a better bet for finding associated patents as opposed to a general web retrieval system, for example.
 
 The searcher model proposed by~\cite{thomas2014modelling_behaviour} also considers the examination of result summaries from a different perspective. Instead of assuming that a searcher (perhaps na\"{i}vely) examines each individual result summary in detail before making a decision to its attractiveness, searchers subscribing to this searcher model undertake an \emph{initial inspection} of result summaries, where they can examine in either direction on the list of ranked results (by increasing or decreasing some positional counter, $i$). Essentially, this can be regarded as a searcher \emph{skimming} result summaries, determining if they are worthy of further examination.
 
 Despite the slight variations in how different researchers interpret the~\gls{acr:iir} process, what can be clearly seen from examination of the models discussed in this section is a similar workflow between each. From query issuance to document examination and judgement, this has emerged as the generally accepted process of~\gls{acr:iir}. While studies examining explicit searcher models are not common, searcher models have been encoded within many of the different evaluation measures used within~\gls{acr:ir} and~\gls{acr:iir}. Moving onto the final section of this background chapter, this is now what we turn our attention towards.
 
 \section{Evaluation Measures}\label{sec:ir_background:evaluation}
+With the basics of~\gls{acr:ir} and~\gls{acr:iir} discussed, we now turn our attention towards the \emph{evaluation} of both a retrieval system and the searchers that use it. Careful and thorough evaluation of retrieval systems is required to demonstrate superior performance of new retrieval models or a new way of presenting of results, for example~\citep{manning2008ir}. Recalling that the \emph{modus operandi} of a retrieval system is to satisfy the information needs of the searchers who utilise it,~\cite{lancaster1968information} provided three criteria by which an~\gls{acr:ir} system can be evaluated:
+
+\begin{itemize}
+    \item{the suitability of a retrieval system in terms of the specific tasks for which it is used;}
+    \item{the retrieval system's task performance efficiency; and}
+    \item{the extent to which the retrieval system satisfies the information needs of its searchers.}
+\end{itemize}
+
+These three criteria can themselves be subsequently split into two separate categories: approaches that consider:
+
+\begin{itemize}
+    \item{how well the \emph{system} performs, considering the first two criterion above; and}
+    \item{how the system performs in the eyes of the \emph{user} who is using the retrieval system at the time~\citep{voorhees2005trec_book}, considering the third criterion.}
+\end{itemize}
+
+Measures for both system and user-focused evaluation are considered in this section, in Subsections~\ref{sec:ir_background:evaluation:system} and~\ref{sec:ir_background:evaluation:user} respectively.
+
+\blueboxheader{Other Evaluation Measures}
+We acknowledge that the measures discussed in this section are only a subset of the wider, full range of measures that have been developed and trialled in~\gls{acr:ir} and~\gls{acr:iir} research. For a more comprehensive summary of different evaluation measures, refer to~\cite{sanderson2010test}.
 
 \subsection{System-Based Evaluation}\label{sec:ir_background:evaluation:system}
+Considering system-orientated measures of evaluation, one can consider a system's \emph{efficiency} or \emph{effectiveness}. Efficiency concerns some form of operational metric, such as the speed of the retrieval system. This example is important (especially in commercial retrieval systems) as even a fractional increase of the time taken to return results to a searcher can reduce the number of returning searchers, and impacts the amount revenue generated through advertising~\citep{brutlag2009speed}.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-pr.pdf}}
+    \caption[Precision and recall]{An illustration of precision and recall. On the left is an illustrated example of an index, containing many documents. The large circle represents the set of documents retrieved for a query. Documents that are relevant to the query are represented as~\includegraphics[height=\fontcharht\font`\d]{figures/ch2-pr-r.pdf}, with non-relevant documents represented as~\includegraphics[height=\fontcharht\font`\d]{figures/ch2-pr-nr.pdf}. Note that not all relevant documents are retrieved; doing so would mean that the retrieval engine used would have produced perfect results. From the illustration on the left, definitions of \emph{precision} and \emph{recall} are also provided.}
+    \label{fig:pr}
+\end{figure}
+
+However, when one thinks of the evaluation of a retrieval system, they usually think about how \emph{effective} the system is. Of course, the definition of what defines a retrieval system to be effective hugely depends upon the type of search task being undertaken. A patent searcher would for example expect a retrieval system to return \emph{all} relevant patents to avoid missing a related patent (and thus incurring penalties). However, a casual web searcher curious about a topic they know little about (i.e. searching in an \emph{ad-hoc} fashion) may be satisfied with a single, relevant result.
+
+As such, this section provides a brief overview of the basic effectiveness measures widely used within~\gls{acr:ir} today from the perspective of system-sided evaluation. We consider four different measures.
 
 \subsubsection{Precision}
+The \emph{precision} ($P$) of a ranked list of results is the fraction of documents that have been retrieved that considered to be relevant or useful for the searcher's information need. A retrieval system that yields high precision is regarded as one that performs well. 
+
+Figure~\ref{fig:pr} provides a visual illustration of what precision entails (as well as its counterpart, \emph{recall,} which is discussed below). Given the set of all documents within an index, a retrieval system will retrieve a number of these documents that satisfy the criteria set out in the employed retrieval model. Of the documents retrieved, some will be considered relevant to the searcher's information need; others will be considered non-relevant. As such, prior knowledge as to what documents are relevant to a given topic are therefore required --~\gls{acr:trec} QRELs are an example of this, as discussed in Section~\ref{sec:ir_background:paradigms:trec}.
+
+Precision can therefore be defined as:
+
+\begin{equation*}
+precision = \frac{|~\text{\emph{relevant documents}}~\cap~\text{\emph{retrieved documents}}~|}{|~\text{\emph{retrieved documents}}~|}.
+\end{equation*}
+
+\gls{acr:ir} research reports precision up to a particular rank, i.e. $P@k$. For example, $P@10$ will provide a fractional value for the number of relevant documents that appeared within the top $10$ results for a given query. Herein lies one of the most elementary and basic \emph{stopping models} that we find implicitly encoded within various~\gls{acr:ir} measures. Stopping at a depth of $10$, or $k$ (refer to\footnote{The value of $k=10$ is often chosen in~\gls{acr:ir} research as it has been shown that this is typically the depth to which searchers would look through web search results, perhaps due to the effects of pagination~\citep{jansen2006www}.}) denotes that documents past this rank are not examined.
 
 \subsubsection{Recall}
+While precision considers the fraction of documents retrieved that are relevant, \emph{recall} ($R$) considers the fraction of documents that were retrieved and relevant to a query against \emph{all known relevant documents for a query.} Recall can formally be defined as:
 
-\subsubsection{Mean Average Precision}
+\begin{equation*}
+recall = \frac{|~\text{\emph{relevant documents retrieved}}~|}{|~\text{\emph{relevant documents}}~|}
+\end{equation*}
 
-\subsubsection{Expected Search Length}
+Considering the patent searching example defined above, high recall would be more desirable in a patent searching task. This means that more patents matching the searcher's query will be returned, thus reducing the possibility of missing important prior, relevant filings.
 
-\subsection{Searcher-Based Evaluation}
+Given more modern retrieval models, the notion of ranking would lead a searcher to assume (as per the PRP~\citep{robertson1977prp}) that relevant documents pertaining to their query will be the first results presented. Non-relevant documents will also of course appear, typically leading to some form of tradeoff between precision and recall, as discussed below. The tradeoff considers the notion that as you increase recall, the number of non-relevant items will undoubtedly also increase, thus reducing the overall precision of the retrieval system.
+
+\subsubsection{Average Precision}
+Considering Figure~\ref{fig:ranking} that presents two lists of rankings -- with ticks denoting relevant items, and crosses denoting non-relevant items -- what list would be more desirable? An obvious answer would be the list presented on the right, as the relevant documents are positioned at the top of the rankings. However, if we computed the $P@5$ score for both lists, they would be identical -- $2/5 = 0.4$. Precision offers no discernible difference.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-ranking.pdf}}
+    \caption[The importance of ranking]{Given an information need to find out information about the \emph{Sir Alwyn Williams Building} (part of the University of Glasgow's estate portfolio), which ranked list of results would you prefer to make use of?}
+    \label{fig:ranking}
+\end{figure}
+
+One of the most widely used measures that addresses this issue -- and provides a means of quantifying the all-round effectiveness of a retrieval system for a representative set of test topics -- is \emph{Mean Average Precision (MAP).} Rather than considering a single set of results, MAP considers multiple queries -- and, as alluded to above, considers the position at which relevant results appear in the rankings provided.
+
+As the name might imply, MAP provides a mean over the \emph{Average Precision (AP)} for each topic that is examined. AP provides the rank sensitive component of MAP up to some cutoff $k$, as defined below:
+
+\begin{equation*}
+AP = \frac{\sum^{n}_{k=1}(P(k) \cdot rel(k))}{|~\text{\emph{relevant documents}}~|}.
+\end{equation*}
+
+Above, $P(K)$ is the precision cutoff at rank $k$ (i.e. $P@k$), and $rel(k)$ is a function to denote the relevance of a particular document at rank $k$. This is assumed to be binary, with $1$ denoting a relevant document, and $0$ denoting a non-relevant document. AP is then computed for each sample query, $q$, over the set of topics $T$ to produce a final MAP score for the~\gls{acr:ir} system:
+
+\begin{equation*}
+MAP = \frac{\sum^{T}_{q=1} AP(q)}{|~Q~|}.
+\end{equation*}
+
+%\subsubsection{Expected Search Length}
+
+\subsection{User-Based Evaluation}\label{sec:ir_background:evaluation:user}
+With the basic evaluation measures above considering the system-sided aspects (i.e. the quality of the retrieved ranked list), this section considers a number of~\gls{acr:iir} evaluation measures considering the searcher and their interactions. It may be interesting to note that a large number of measures for~\gls{acr:iir} have been proposed over the years (and indeed, over the experimental spectrum as shown in Figure~\ref{fig:spectrum}); however, only a small number of measures have been consistently used. A more in-depth summary of~\gls{acr:iir} measures can be found in works by~\cite{su1992iir_measures} and~\cite{kelly2009iir}.
+
+Indeed,~\cite{kelly2009iir} provides a taxonomy of the different types of measures used within~\gls{acr:iir} experimentation. The taxonomy consists of four main categories that are enumerated below.
+
+\begin{itemize}
+    \item{\blueboxbold{Contextual Factors} These measures are related to the \emph{subject,} or participant, of an~\gls{acr:iir} experiment. Factors include those commonly gathered from some form of demographics survey, such as the subject's age, sex, and prior search experience. In an information seeking context, one will also be able to gather information about the prior knowledge of the searcher, for example, on the topic that they are asked to find information on.}
+    
+    \item{\blueboxbold{Interactions} These measures characterise the interactions that take place between the system and the searcher -- including their behavioural characteristics. Examples of such interactions include: the number of queries that the searcher issues; the number of documents that they examine; the depth to which they examine results (stopping depth); and the mean length (in terms) of the queries that they issue. Time-based measures are also included in this category -- both at a gross level (i.e. the total session time), and at a more specific level (i.e. the mean time spent entering queries). These measures can be usually computed by extracting and parsing interaction \emph{log data}.\footnote{By \emph{log data,} we refer to the file that is created by an experimental retrieval system as a subject conducts a search task. Typically, a series of different actions (i.e. issuing a query, or clicking a document link) are logged, and post-hoc log parsing can then extract this data.}}
+    
+    \item{\blueboxbold{Performance Factors} As the name suggests, these measures are related to the outcome of the interactions that take place between the searcher and the retrieval system. These measures can be considered analogous to the system-sided measures that we examined previously in Section~\ref{sec:ir_background:evaluation:system}. Typically, such measures can again be extracted from interaction log data.}
+    
+    \item{\blueboxbold{Usability Measures} These measures are typically a series of qualitative and quantitate approaches for capturing a subject's feelings and attitudes towards a search system that they have just used. Common measures in this category include the subject's view of the system's effectiveness, and their overall \emph{satisfaction} with how they performed when undertaking the search task in question~\citep{hornbaek2006usability}.}
+\end{itemize}
+
+We employ measures from \emph{all four} of the above -- including the extraction of interaction data from user studies, which is subsequently employed to \emph{ground} simulations of interaction. This section considers \todo{six} different measures that are used throughout the evaluation of the contributory work reported in this thesis, which are:
+
+\begin{itemize}
+    \item{\blueboxbold{interactive precision} and \blueboxbold{interactive recall}, variants of their system-focused namesakes that consider a searcher's interactions;}
+    \item{\blueboxbold{\glsfirst{acr:cg}}-based measures, including a widely-used and extensively trialled variant, \blueboxbold{\glsfirst{acr:dcg}};}
+    \item{\blueboxbold{\glsfirst{acr:rbp}}, considering a decreasing probability of interaction the further down a list of ranked results; and}
+    \item{\blueboxbold{INST}, a more complex user-sided evaluation measure.}
+\end{itemize}
+
+We now take each of these measures in turn, discussing the rationale behind each, with a nod towards explaining how each considers the stopping behaviours of searchers.
 
 \subsubsection{Interactive Precision and Recall}
 
