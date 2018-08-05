@@ -522,7 +522,7 @@ Considering the patent searching example defined above, high recall would be mor
 Given more modern retrieval models, the notion of ranking would lead a searcher to assume (as per the PRP~\citep{robertson1977prp}) that relevant documents pertaining to their query will be the first results presented. Non-relevant documents will also of course appear, typically leading to some form of tradeoff between precision and recall, as discussed below. The tradeoff considers the notion that as you increase recall, the number of non-relevant items will undoubtedly also increase, thus reducing the overall precision of the retrieval system.
 
 \subsubsection{Average Precision}
-Considering Figure~\ref{fig:ranking} that presents two lists of rankings -- with ticks denoting relevant items, and crosses denoting non-relevant items -- what list would be more desirable? An obvious answer would be the list presented on the right, as the relevant documents are positioned at the top of the rankings. However, if we computed the $P@5$ score for both lists, they would be identical -- $2/5 = 0.4$. Precision offers no discernible difference.
+Considering Figure~\ref{fig:ranking} that presents two lists of rankings -- with a~\includegraphics[height=\fontcharht\font`\d]{figures/ch0-tick.pdf}~denoting relevant items, and a \includegraphics[height=\fontcharht\font`\d]{figures/ch0-cross.pdf}~~denoting non-relevant items -- what list would be more desirable? An obvious answer would be the list presented on the right, as the relevant documents are positioned at the top of the rankings. However, if we computed the $P@5$ score for both lists, they would be identical -- $2/5 = 0.4$. Precision offers no discernible difference.
 
 \begin{figure}[t!]
     \centering
@@ -575,6 +575,19 @@ We employ measures from \emph{all four} of the above -- including the extraction
 We now take each of these measures in turn, discussing the rationale behind each, with a nod towards explaining how each considers the stopping behaviours of searchers.
 
 \subsubsection{Interactive Precision and Recall}
+One of the aforementioned assumptions of the~\gls{acr:trec}-style searcher model is that all documents provided in the ranked list of results are considered relevant. As can be seen from more complex searcher models discussed in Section~\ref{sec:ir_background:user:models}, this is not true in reality. During the~\gls{acr:iir} process, searchers examine a number of different result summaries (and their associated documents), making individual judgements as to the relevance of each. Some may not be relevant, and are disregarded by the searcher.
+
+Subjects of~\gls{acr:iir} studies are typically instructed to \emph{save} documents that they consider relevant to a provided information need. As such, the judgements created by subjects of~\gls{acr:iir} studies may not match with those made by the assessors of relevance judgements, provided as part of a test collection. Indeed, some~\gls{acr:trec} topics that are widely used contain hundreds of documents marked as relevant by assessors. It is unlikely that a subject would be able to find \emph{all} of these documents, or agree with an assessor's judgement.
+
+To counter these issues, \emph{interactive precision, interactive recall} and \emph{interactive~\gls{acr:trec} precision} were defined by~\cite{veerasamy1996iir} and~\cite{veerasamy1996iir}. Instead of purely considering precision and recall as measures exclusively utilising the relevance assessments provided as part of a test collection, one would also consider the number of documents considered relevant by a subject of an~\gls{acr:iir} study that were also \blueboxbold{\gls{acr:trec} relevant}. This therefore means that a document judged relevant by an assessor may not be retrieved, viewed and subsequently judged by the subject of an~\gls{acr:iir} study.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-interactive-precision.pdf}}
+    \caption[Interactive precision]{Interactive precision}
+    \label{fig:interactive_precision}
+\end{figure}
 
 \subsubsection{Cumulative Gain Measures}
 
