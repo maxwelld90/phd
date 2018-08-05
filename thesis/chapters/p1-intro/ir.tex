@@ -579,13 +579,13 @@ One of the aforementioned assumptions of the~\gls{acr:trec}-style searcher model
 
 Subjects of~\gls{acr:iir} studies are typically instructed to \emph{save} documents that they consider relevant to a provided information need. As such, the judgements created by subjects of~\gls{acr:iir} studies may not match with those made by the assessors of relevance judgements, provided as part of a test collection. Indeed, some~\gls{acr:trec} topics that are widely used contain hundreds of documents marked as relevant by assessors. It is unlikely that a subject would be able to find \emph{all} of these documents, or agree with an assessor's judgement.
 
-To counter these issues, \emph{interactive precision, interactive recall} and \emph{interactive~\gls{acr:trec} precision} were defined by~\cite{veerasamy1996iir} and~\cite{veerasamy1996iir}. Instead of purely considering precision and recall as measures exclusively utilising the relevance assessments provided as part of a test collection, one would also consider the number of documents considered relevant by a subject of an~\gls{acr:iir} study that were also \blueboxbold{\gls{acr:trec} relevant}. This therefore means that a document judged relevant by an assessor may not be retrieved, viewed and subsequently judged by the subject of an~\gls{acr:iir} study.
+To counter these issues, \emph{interactive precision (iP), interactive recall} and \emph{interactive~\gls{acr:trec} precision} were defined by~\cite{veerasamy1996iir} and~\cite{veerasamy1996iir}. Instead of purely considering precision and recall as measures exclusively utilising the relevance assessments provided as part of a test collection, one would also consider the number of documents considered relevant by a subject of an~\gls{acr:iir} study that were also \blueboxbold{\gls{acr:trec} relevant}. This therefore means that a document judged relevant by an assessor may not be retrieved, viewed and subsequently judged by the subject of an~\gls{acr:iir} study. We demonstrate this in Figure~\ref{fig:interactive_precision}. Assessors provide judgements for documents, with these relevance judgements comprising the \emph{gold standard} to which searcher assessments are compared against. These can differ: in the example illustration, the retrieval system's $P@5$ score is $3/5=0.6$, while the searcher's $iP@5 = 2/5 = 0.4$. This is because although the searcher saved three documents as relevant, the document at rank two was not assessed as such; therefore, only two of the three saved documents count.
 
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-interactive-precision.pdf}}
-    \caption[Interactive precision]{Interactive precision}
+    \caption[Interactive precision example]{A visual example of \emph{interactive precision} alongside traditional, system-sided precision. In the example ranking, the retrieval system returned three relevant documents, yet the searcher only correctly identified two of them, hence an interactive precision \emph{(iP)} score of \emph{2/5=0.4.}}
     \label{fig:interactive_precision}
 \end{figure}
 
