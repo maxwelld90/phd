@@ -99,7 +99,7 @@ As illustrated in Figure~\ref{fig:inverted}, the indexing process can be split i
     \item{creating the various data structures that constitute an index.}
 \end{itemize}
 
-Experimental corpora are available for use with batch experimentation, typically for \todo{various evaluation forums.} For operational retrieval systems, data is collated by other means. For example, web search engines employ a \emph{web crawler} to examine pages on the~\gls{acr:www}, and accumulates more content by following the~\glsplural{acr:www} hyperlink structure. Google's crawler, \emph{Googlebot,} regularly crawls high impact websites to ensure that the associated index is continually refreshed with up to date information.
+Experimental corpora are available for use with batch experimentation, typically for various evaluation forums, as discussed in Section~\ref{sec:ir_background:paradigms:trec}. For operational retrieval systems, data is collated by other means. For example, web search engines employ a \emph{web crawler} to examine pages on the~\gls{acr:www}, and accumulates more content by following the~\glsplural{acr:www} hyperlink structure. Google's crawler, \emph{Googlebot,} regularly crawls high impact websites to ensure that the associated index is continually refreshed with up to date information.
 
 \begin{figure}[t!]
     \centering
@@ -124,7 +124,7 @@ While stopword lists may be manually crafted under particular scenarios, automat
 Issues of course also exist with the removal of stopwords. Removing stopwords from a query may decrease processing time, but what if all terms within a query are stopwords? The resultant query passed to the retrieval engine could contain zero terms! As such, commercial retrieval systems are less likely to employ stopword removal to counter such an occurrence~\citep{manning2008ir, dolamic2010stopword}. Techniques such as compression may be employed to keep the size of the resultant index down. Queries such as \texttt{`to be or not to be'} may well contain some semantical meaning. Like tokenisation, there is often more to this problem than meets the eye.
 
 \subsubsection{Stemming}
-Another common pre-indexing process is \emph{stemming} (also called \emph{lemmatisation).} This is the process of reducing inflected -- or sometimes derived -- words from their \emph{word stem, base} or \emph{root.} For example, given the terms \texttt{fisher}, \texttt{fished} and \texttt{fishing}, reducing each of these terms to their respective word stem would result in \texttt{fish}. Essentially, stemming allows one to group words together with a similar, basic semantical meaning. This provides the advantage of reducing the size of an index, with fewer terms to index. A further benefit may be the potential increase in the number of possible matches that can be found with a stemmed set of query terms, increasing the retrieval system's \todo{\emph{recall.}}
+Another common pre-indexing process is \emph{stemming} (also called \emph{lemmatisation).} This is the process of reducing inflected -- or sometimes derived -- words from their \emph{word stem, base} or \emph{root.} For example, given the terms \texttt{fisher}, \texttt{fished} and \texttt{fishing}, reducing each of these terms to their respective word stem would result in \texttt{fish}. Essentially, stemming allows one to group words together with a similar, basic semantical meaning. This provides the advantage of reducing the size of an index, with fewer terms to index. A further benefit may be the potential increase in the number of possible matches that can be found with a stemmed set of query terms, increasing the retrieval system's \emph{recall} (refer to Section~\ref{sec:ir_background:evaluation:system:recall}).
 
 The concept of stemming has been studied since the 1960's, with the \emph{Porter stemmer}~\citep{porter1980algorithm} emerging over time as empirically the most effective.\footnote{The Porter stemming algorithm is not provided in this thesis; refer to~\cite{porter1980algorithm} for an in-depth explanation of the algorithm.} Comprised of a series of linguistic rules, the \emph{measure} of a word can be considered, where \emph{``loosely checking the number of syllables to see whether a word is long enough that it is reasonable to regard the matching portion of a rule as a suffix rather than as part of the stem of the word.''}~\citep{manning2008ir}. Porter stemming is utilised in the indexing process for the work reported in this thesis; other stemmers do exist, with examples including the original single pass stemmer devised by~\cite{lovins1968development}, and the Krovetz stemmer~\citep{krovetz1993stemming}.
 
@@ -172,7 +172,7 @@ Returning an unranked set of documents would appear as an alien concept to searc
 
 Instead, a searcher utilising a boolean retrieval system will often find an initial exploratory query will return a large set of documents, too many to examine each in sufficient detail. Rather, what a searcher will do is gradually reformulate their query -- like in the illustration above -- until the document set returned is of a manageable size, and small enough to process. This is an inherently different kind of stopping behaviour from the examples provided thus far in this thesis that assumes documents are presented in a \emph{ranked} list, with some notion of a \emph{depth} at which a searcher would stop.
 
-Despite not being required in contemporary retrieval systems, many systems still do provide support for crafting a boolean query for when returning a good set of results is difficult. Boolean queries may also be of use where ambiguity exists within a searcher's query, and clarification is required to eliminate a set of non-relevant documents. Indeed, boolean queries still find considerable traction in professional search systems, such as patent search. Here, missing an existing, relevant patent may be incredibly costly -- here, \emph{recall} is preferred over \emph{precision}, as discussed in \todo{Section~\ref{}.}
+Despite not being required in contemporary retrieval systems, many systems still do provide support for crafting a boolean query for when returning a good set of results is difficult. Boolean queries may also be of use where ambiguity exists within a searcher's query, and clarification is required to eliminate a set of non-relevant documents. Indeed, boolean queries still find considerable traction in professional search systems, such as patent search. Here, missing an existing, relevant patent may be incredibly costly -- here, \emph{recall} is preferred over \emph{precision}, as discussed in Sections~\ref{sec:ir_background:evaluation:system:recall} and~\ref{sec:ir_background:evaluation:system:precision} respectively.
 
 \subsubsection{Vector Space Model}
 With major weaknesses present in the boolean retrieval model, work then progressed to develop more advanced approaches that mitigated the issued raised above.~\cite{luhn1957ranking_query} hypothesised that a searcher, when wishing to search for documents addressing their information need, should prepare a document that is similar to the documents being sought after. By comparing documents against this \emph{representative} document, a retrieval system could then begin to deduce what other documents would be useful, and by \emph{what margin.}
@@ -238,7 +238,7 @@ The methodology behind the majority of classical~\gls{acr:ir} research has focus
 \attrib{\cite{cleverdon1991cranfield}}
 \end{quote}
 
-The experimental paradigm required the same set of documents, and same set of information needs to be used for each language, and the use of common~\gls{acr:ir} measures, \emph{precision} and \emph{recall} \todo{(refer to Section~\ref{})} to be used to measure a given retrieval system's \emph{effectiveness.} This gave rise to the notion of a \blueboxbold{test collection}, consisting of three key components:
+The experimental paradigm required the same set of documents, and same set of information needs to be used for each language, and the use of common~\gls{acr:ir} measures, \emph{precision} and \emph{recall} (refer to Sections~\ref{sec:ir_background:evaluation:system:precision} and~\ref{sec:ir_background:evaluation:system:recall} respectively) to be used to measure a given retrieval system's \emph{effectiveness.} This gave rise to the notion of a \blueboxbold{test collection}, consisting of three key components:
 
 \begin{itemize}
     \item{the corpus (collection of documents) to be used;}
@@ -300,11 +300,11 @@ To address the question of whether \emph{people can use a retrieval system}, we 
 
 Upon bringing up the interface of a retrieval system, the searcher begins their so-called \blueboxbold{search session}, which begins with the formulation of the information need as a series of terms -- or query. Upon submission of this query with the retrieval system, a complex series of \blueboxbold{interactions} begin to take place between the system and the searcher, and these interactions are of great importance to those studying~\gls{acr:iir}. Results will be retrieved by the underlying retrieval system and presented to the searcher in the form of a~\glsfirst{acr:serp}. While we discuss the~\gls{acr:serp} in more detail in Section~\ref{sec:ir_background:user:iir:serp}, a majority of the interactions that take place happen on the~\gls{acr:serp}.
 
+Interactions however may be dependent upon the searcher's \emph{intent} -- that is, what they are aiming to achieve through the satisfaction of their information need. Three intents typically used are \emph{navigational, transactional} and \emph{informational}~\citep{jansen2008intents}. Navigational intents for example simply refer to the notion of using a retrieval system to navigate the searcher to some~\gls{acr:url}. This means that the searcher will simply need to click the link to satisfy their information need.\footnote{A searcher intent analysis by~\cite{jansen2008intents} showed that approximately 10\% of queries issued to web retrieval systems were either navigational or transactional in nature.} Informational intents will however require a greater degree of interaction with the retrieval system, as we discuss below.
+
 Searchers for example will begin to examine the content on the~\gls{acr:serp}, examining individual summaries for potential relevance. At each stage, the searcher is continually learning, and thus the interaction cycle may prompt the searcher for example to provide a \emph{query reformulation} as they begin to develop their underlying mental model of the topic. A revised~\gls{acr:serp} may then begin to yield more promising results. As the searcher examines these updated results, he or she may find that a particular summary is deemed sufficiently attractive to investigate further, and thus clicks on the provided link. Taking the searcher to the corresponding document, the searcher can then examine the document in more detail, and make a decision as to its relevance. If not satisfied, the searcher may navigate back to the~\gls{acr:serp}, and continue their examination of further results. At some point, the searcher will make a decision to \blueboxbold{stop} their interactions -- either with a given~\gls{acr:serp}, or the search session as a whole (both are illustrated in Figure~\ref{fig:iir} with stop signs). Stopping may occur for example if a searcher has satisfied their information need, has been frustrated with the retrieval system's inability to return relevant results~\citep{cooper1973retrieval_effectiveness_ii}, or from a variety of different factors external to the search process, such as time pressure.
 
 While this example above may be highly abstract in nature, it clearly shows that the search process is extremely complex and \emph{inherently interactive.} Thus, work in the field of~\gls{acr:iir} provides a basis for developing more complex, \emph{realistic} models of the search process, improving the offering when compared to the~\gls{acr:trec}-style searcher model.
-
-\todo{WHAT ABOUT DIFFERENT TASKS?}
 
 \subsubsection{The~\glsfirst{acr:serp}}\label{sec:ir_background:user:iir:serp}
 Core to the experience of a searcher when using a given retrieval system are the interactions that take place on its~\glsplural{acr:serp}. Figure~\ref{fig:serp_example} depicts an example~\gls{acr:serp} of fictional retrieval system, \searchlogo.\footnote{We utilise \searchlogo~throughout this thesis to illustrate various concepts.} The illustration highlights several key~\gls{acr:serp} components that are extensively referred to in latter parts of this thesis. At the top of the~\gls{acr:serp} is the \blueboxbold{query box}, allowing for a searcher to reformulate their query if he or she desires.
@@ -417,8 +417,6 @@ These improvements are demonstrated as a Markov model, illustrated in Figure~\re
     \item{\blueboxbold{session stopping}, the action that curtails the search session.}
 \end{itemize}
 
-These steps broadly match up the~\gls{acr:iir} process as outlined in Figure~\ref{fig:iir} on page~\pageref{fig:iir}, and described in abstract form in Section~\ref{sec:ir_background:user:iir}.~\cite{azzopardi2011economics},~\cite{yilmaz2010browsing_utility},~\cite{carterette2011models}, and more recently~\cite{zhang2017simulation_model} have all introduced and utilised searcher models that are similar in terms of the broad set of actions as outlined by~\cite{baskaya2013behavioural_factors}. Being a Markov model, this searcher model considers each of the different actions as a \emph{state} within the model, with a series of \emph{transition probabilities} linking each of the actions together (i.e. \emph{what is the probability of a searcher moving from scanning a snippet to stopping the search session?)}.\footnote{This searcher model can also be represented as a flowchart, as illustrated in Figure~\ref{fig:baskaya_model_flow}.} Indeed, the typical browsing model components (e.g. inspecting a document for relevance) as per~\cite{carterette2011effectiveness_evaluation} are also integrated with query generation and utility accumulation, allowing a searcher to issue multiple queries and gain utility.
-
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
@@ -426,6 +424,8 @@ These steps broadly match up the~\gls{acr:iir} process as outlined in Figure~\re
     \caption[Markov model of the search process by~\cite{baskaya2013behavioural_factors}]{The user model of search, as outlined by~\citealt{baskaya2013behavioural_factors}. Represented as a Markov model, the model considers six steps in all. Encoded within two of the steps are decision points that a user following this model must consider in order to continue. Figure adapted with the support from the authors of~\citealt{baskaya2013behavioural_factors}.}
     \label{fig:baskaya_model}
 \end{figure}
+
+These steps broadly match up the~\gls{acr:iir} process as outlined in Figure~\ref{fig:iir} on page~\pageref{fig:iir}, and described in abstract form in Section~\ref{sec:ir_background:user:iir}.~\cite{azzopardi2011economics},~\cite{yilmaz2010browsing_utility},~\cite{carterette2011models}, and more recently~\cite{zhang2017simulation_model} have all introduced and utilised searcher models that are similar in terms of the broad set of actions as outlined by~\cite{baskaya2013behavioural_factors}. Being a Markov model, this searcher model considers each of the different actions as a \emph{state} within the model, with a series of \emph{transition probabilities} linking each of the actions together (i.e. \emph{what is the probability of a searcher moving from scanning a snippet to stopping the search session?)}.\footnote{This searcher model can also be represented as a flowchart, as illustrated in Figure~\ref{fig:baskaya_model_flow}.} Indeed, the typical browsing model components (e.g. inspecting a document for relevance) as per~\cite{carterette2011effectiveness_evaluation} are also integrated with query generation and utility accumulation, allowing a searcher to issue multiple queries and gain utility.
 
 \begin{figure}[t!]
     \centering
@@ -497,7 +497,7 @@ However, when one thinks of the evaluation of a retrieval system, they usually t
 
 As such, this section provides a brief overview of the basic effectiveness measures widely used within~\gls{acr:ir} today from the perspective of system-sided evaluation. We consider four different measures.
 
-\subsubsection{Precision}
+\subsubsection{Precision}\label{sec:ir_background:evaluation:system:precision}
 The \emph{precision} ($P$) of a ranked list of results is the fraction of documents that have been retrieved that considered to be relevant or useful for the searcher's information need. A retrieval system that yields high precision is regarded as one that performs well. 
 
 Figure~\ref{fig:pr} provides a visual illustration of what precision entails (as well as its counterpart, \emph{recall,} which is discussed below). Given the set of all documents within an index, a retrieval system will retrieve a number of these documents that satisfy the criteria set out in the employed retrieval model. Of the documents retrieved, some will be considered relevant to the searcher's information need; others will be considered non-relevant. As such, prior knowledge as to what documents are relevant to a given topic are therefore required --~\gls{acr:trec} QRELs are an example of this, as discussed in Section~\ref{sec:ir_background:paradigms:trec}.
@@ -510,7 +510,7 @@ precision = \frac{|~\text{\emph{relevant documents}}~\cap~\text{\emph{retrieved 
 
 \gls{acr:ir} research reports precision up to a particular rank, i.e. $P@k$. For example, $P@10$ will provide a fractional value for the number of relevant documents that appeared within the top $10$ results for a given query. Herein lies one of the most elementary and basic \emph{stopping models} that we find implicitly encoded within various~\gls{acr:ir} measures. Stopping at a depth of $10$, or $k$ (refer to\footnote{The value of $k=10$ is often chosen in~\gls{acr:ir} research as it has been shown that this is typically the depth to which searchers would look through web search results, perhaps due to the effects of pagination~\citep{jansen2006www}.}) denotes that documents past this rank are not examined.
 
-\subsubsection{Recall}
+\subsubsection{Recall}\label{sec:ir_background:evaluation:system:recall}
 While precision considers the fraction of documents retrieved that are relevant, \emph{recall} ($R$) considers the fraction of documents that were retrieved and relevant to a query against \emph{all known relevant documents for a query.} Recall can formally be defined as:
 
 \begin{equation*}
@@ -543,8 +543,10 @@ AP = \frac{\sum^{n}_{k=1}(P(k) \cdot rel(k))}{|~\text{\emph{relevant documents}}
 Above, $P(K)$ is the precision cutoff at rank $k$ (i.e. $P@k$), and $rel(k)$ is a function to denote the relevance of a particular document at rank $k$. This is assumed to be binary, with $1$ denoting a relevant document, and $0$ denoting a non-relevant document. AP is then computed for each sample query, $q$, over all of the topics defined in set $T$ to produce a final MAP score for the retrieval system:
 
 \begin{equation*}
-MAP = \frac{\sum^{T}_{q=1} AP(q)}{|~Q~|}.
+MAP = \frac{\sum^{T}_{q=1} AP(q)}{|~Q~|},
 \end{equation*}
+
+where $Q$ denotes the set of queries that are to be considered in the evaluation.
 
 %\subsubsection{Expected Search Length}
 
@@ -572,27 +574,92 @@ We employ measures from \emph{all four} of the above -- including the extraction
     \item{\blueboxbold{INST}, a more complex user-sided evaluation measure.}
 \end{itemize}
 
-We now take each of these measures in turn, discussing the rationale behind each, with a nod towards explaining how each considers the stopping behaviours of searchers.
+We now take each of these measures in turn, discussing the rationale behind each.
 
 \subsubsection{Interactive Precision and Recall}
-One of the aforementioned assumptions of the~\gls{acr:trec}-style searcher model is that all documents provided in the ranked list of results are considered relevant. As can be seen from more complex searcher models discussed in Section~\ref{sec:ir_background:user:models}, this is not true in reality. During the~\gls{acr:iir} process, searchers examine a number of different result summaries (and their associated documents), making individual judgements as to the relevance of each. Some may not be relevant, and are disregarded by the searcher.
+During the~\gls{acr:iir} process, searchers examine a number of different result summaries (and their associated documents), making individual judgements as to the relevance of each. Some may not be relevant, and are disregarded by the searcher. This differs from the~\gls{acr:trec}-style searcher model that assumes that all documents returned are considered relevant.
 
 Subjects of~\gls{acr:iir} studies are typically instructed to \emph{save} documents that they consider relevant to a provided information need. As such, the judgements created by subjects of~\gls{acr:iir} studies may not match with those made by the assessors of relevance judgements, provided as part of a test collection. Indeed, some~\gls{acr:trec} topics that are widely used contain hundreds of documents marked as relevant by assessors. It is unlikely that a subject would be able to find \emph{all} of these documents, or agree with an assessor's judgement.
-
-To counter these issues, \emph{interactive precision (iP), interactive recall} and \emph{interactive~\gls{acr:trec} precision} were defined by~\cite{veerasamy1996iir} and~\cite{veerasamy1996iir}. Instead of purely considering precision and recall as measures exclusively utilising the relevance assessments provided as part of a test collection, one would also consider the number of documents considered relevant by a subject of an~\gls{acr:iir} study that were also \blueboxbold{\gls{acr:trec} relevant}. This therefore means that a document judged relevant by an assessor may not be retrieved, viewed and subsequently judged by the subject of an~\gls{acr:iir} study. We demonstrate this in Figure~\ref{fig:interactive_precision}. Assessors provide judgements for documents, with these relevance judgements comprising the \emph{gold standard} to which searcher assessments are compared against. These can differ: in the example illustration, the retrieval system's $P@5$ score is $3/5=0.6$, while the searcher's $iP@5 = 2/5 = 0.4$. This is because although the searcher saved three documents as relevant, the document at rank two was not assessed as such; therefore, only two of the three saved documents count.
 
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-interactive-precision.pdf}}
-    \caption[Interactive precision example]{A visual example of \emph{interactive precision} alongside traditional, system-sided precision. In the example ranking, the retrieval system returned three relevant documents, yet the searcher only correctly identified two of them, hence an interactive precision \emph{(iP)} score of \emph{2/5=0.4.}}
+    \caption[Interactive precision example]{A visual example of \emph{interactive precision} alongside traditional, system-sided precision. In the example ranking, the retrieval system returned three relevant documents, yet the searcher only correctly identified two of them, hence an interactive precision \emph{(iP)} score of \emph{2/4=0.5.}}
     \label{fig:interactive_precision}
 \end{figure}
 
+\emph{Interactive precision (iP)} and \emph{interactive recall} were defined by~\cite{veerasamy1996iir} and~\cite{veerasamy1997graphical_display}. Instead of purely considering precision and recall as measures exclusively utilising the relevance assessments provided as part of a test collection, one would also consider the number of documents considered relevant by a subject of an~\gls{acr:iir} study that were also \blueboxbold{\gls{acr:trec} relevant}. This therefore means that a document judged relevant by an assessor may not be retrieved, viewed and subsequently judged by the subject of an~\gls{acr:iir} study. We demonstrate this with a visual example in Figure~\ref{fig:interactive_precision}. The \emph{Assessors} column denotes the judgement from the relevance assessors, while the \emph{Searcher} column denotes the judgement of the searcher. In the example illustration, the retrieval system's $P@4$ score is $3/4=0.75$, while the searcher's $iP@4 = 2/4 = 0.5$. This is because although the searcher saved three documents as relevant, the document at rank two was not assessed as such; therefore, only two of the three saved documents contribute to the score.
+
 \subsubsection{Cumulative Gain Measures}
+An important suite of measures that address the utility (or \emph{gain}) that a searcher accrues when interacting with a list derive from~\glsfirst{acr:cg}. Outlined by~\cite{jarvelin2000cg, jarvelin2002cg},~\gls{acr:cg} is measured as the cumulation of gain of all relevant documents up to some rank k (or $CG@k$).~\gls{acr:cg} can be measured on a system-sided basis, purely considering the ranking provided. Alternatively, it can also be measured from a user-sided stance, considering only the documents that a searcher has identified (or saved) as relevant to their information need.
+
+Determining a value for the level of gain that can be acquired from a document is not trivial; experimentation in~\gls{acr:iir} (such as the simulation of interaction study by~\cite{pakkonen2015behavioural_dimensions}) typically uses the~\gls{acr:trec} relevance judgement score for a given topic and document combination as the level of gain that is accrued from a document.
+
+\vspace{5mm}
+\begin{figure}[h!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-graded.pdf}}
+    \label{fig:graded}
+\end{figure}
+
+This is demonstrated by the illustration above, highlighting the concept of \emph{graded relevance judgements}. When not related to the information need, a score of $0$ is assigned, with a relevant document assigned a judgement of $2$. Documents partially fulfilling the relevance requirements are assigned an intermediary score of $1$. These values are then accumulated to yield the~\gls{acr:cg} measure for a searcher's interactions.
+
+Relevance judgements can also be indicative of a searcher's stopping behaviour. Assuming a perfect ranking, a searcher would be wise to stop his or her interactions with a ranked list once documents that yield no gain begin to appear as they traverse the ranked list. Continuing examination of the ranked list from that point on would be waste of their time. Given the illustration in Figure~\ref{fig:cg} however, it is unlikely a perfect ranking will occur in reality, and thus searchers need to determine whether they should continue examining a ranked list after encountering several documents yielding no gain in a row.
+
+Given the definition above,~\gls{acr:cg} can therefore be computed as:
+
+\begin{equation*}
+    CG_k = \sum_{i=1}^{k} rel_i,
+\end{equation*}
+
+where $k$ denotes the ranking at which~\gls{acr:cg} should be calculated, and $rel_i$ denotes the relevance assessment score for a document at rank $i$. Given this definition, a computed~\gls{acr:cg} value will be unaffected by changes in rankings. Two lists of rankings with one highly relevant document in rank $1$ in one list, and rank $5$ in the other, will yield identical~\gls{acr:cg} values.
+
+\begin{wrapfigure}[14]{r}{0.45\textwidth}
+    \begin{center}
+    \vspace*{-10mm}
+    \includegraphics[width=1\textwidth]{figures/ch2-cg.pdf}
+    \end{center}
+    \vspace*{-4mm}
+    \caption[Cumulative Gain]{An illustration of the~\glsfirst{acr:cg} as outlined by~\cite{jarvelin2000cg, jarvelin2002cg}. In the example, the first five documents from a list are shown – \emph{1,} \emph{3} and \emph{4} contain information, from which the user gains information from. Also pictured is the fitted \emph{gain curve}.}
+    \label{fig:cg}
+\end{wrapfigure}
+
+A further development of~\gls{acr:cg} is~\gls{acr:dcg}, which, as the name may imply, \emph{discounts} the level of gain accrued by searchers the further down the ranked list of results that they go, thus addressing the problem of~\gls{acr:cg} by increasing the accuracy of the reported values. Specifically, the gain obtained by a new document is discounted according to the rank of that document (i.e. \emph{weighted precision}). A new relevance score is therefore computed for each document by dividing the relevance assessment score by the $log$ of the its rank. Further developments have included measures such as \emph{Normalised Discounted Cumulative Gain (nDCG),} which addresses the issue of different result lists having different lengths. To address this, nDCG considers the \emph{ideal DCG (iDCG)} of all relevant documents in a corpus, where the relevance judgements of these documents are ordered by decreasing relevance (i.e. $2,2,2,1,0$). Dividing the DCG score for a ranked list up to rank $k$ by the iDCG score up to rank $k$ thus normalises the reported value across queries.
 
 \subsubsection{Rank-Biased Precision}
+\glsfirst{acr:rbp}~\citep{moffat2008rbp} is a more contemporary~\gls{acr:iir} measure that is derived from a simple searcher model. It considers the notion that searchers are not willing to examine every result presented to them in a ranked list, considered to be a more realistic assumption. The encoded searcher model, illustrated in Figure~\ref{fig:rbp}, assumes that a searcher will always examine the first result presented to him or her. Subsequent documents further down the ranking will then be examined with a decreasing likelihood. Given a ranked list of documents, $d$,~\gls{acr:rbp} is defined as:
+
+\begin{equation*}
+RBP = (1 - p) \cdot \sum_{k=0}^{d}rel_k \cdot p^{k-1},
+\end{equation*}
+
+with $rel_k$ once again denoting an assessor's relevance judgement for the document at rank $k$, and $p$ denoting the \emph{patience parameter.} It is this parameter that provides a decaying probability that a searcher will continue to examine a ranked list of results the further down the rankings they go. A searcher subscribing to the~\gls{acr:rbp} searcher model will stop examining results will end with probability $1-p$. Indeed, the patience parameter allows for a very flexible measure -- one can model both very persistent searchers (where $p$ tends towards $1.0$) and impatient searchers (where $p\approx0.5$)~\citep{moffat2008rbp}. When $p=0.0$, a searcher will exclusively examine the first presented result for relevance, and then stop.
+
+\gls{acr:rbp} has been shown to fit well with actual searcher data extracted from click logs. This was demonstrated by both~\cite{chapelle2009rbp} and~\cite{zhang2010click_rbp} as examples. Indeed,~\gls{acr:rbp} is used within this thesis as a means for attempting to decide when a simulated searcher is to stop examining a list of ranked results. By incorporating an additional probability in conjunction with the calculated~\gls{acr:rbp} score at some rank $k$, we can determine whether the searcher should stop or continue.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch2-rbp.pdf}}
+    \caption[Rank-Biased Precision]{An illustration of the simple user model encoded within the~\gls{acr:rbp} measure. A user following this model will \emph{always} examine the first result presented, and will examine subsequent results with decreasing probability (from \emph{p}, the \emph{patience} parameter). Stopping is determined with probability \emph{p-1}. Figure adapted with support from~\cite{moffat2008rbp}.}
+    \label{fig:rbp}
+\end{figure}
 
 \subsubsection{INST}
+The final measure that we consider is the more recently defined \emph{INST} measure, as described by~\cite{bailey2015inst} and~\cite{moffat2015inst}. INST considers the \emph{conditional probability} that a searcher, having examined a document at rank $k$, will examine the next document at rank $k+1$. This is primarily driven by considering the
+
+\begin{quote}
+    \emph{``number of useful pages that the searcher expects they will need''.}
+    \attrib{\cite{moffat2015inst}}
+\end{quote}
+
+In other words, a searcher would expect, when subscribing to INST, to find $T$ relevant documents in order to satisfy their underlying information need. This measure is again used as a means of determining a searcher's stopping behaviour in subsequent experimentation reported in this thesis.
 
 \section{Chapter Summary}
+In this chapter, we have introduced some of the key constructs and components of an~\gls{acr:ir} system -- from the document indexing process, to the retrieval models that are used to return a (ranked) list of results to the searcher. We also briefly touched on the history of the field, discussing some of the key manual and mechanised systems that were commonplace before the advent of computers and the~\gls{acr:www}, giving rise to contemporary~\gls{acr:ir} systems.
+
+The focus of this chapter has however mainly been on the disconnect between traditional~\gls{acr:ir} research, and the reality of what searchers actually do during the~\gls{acr:iir} process. In particular, we identified a number of limitations within the~\gls{acr:trec}-style searcher model that is commonly employed, and discussed a number of more advanced searcher models that reduce the assumptions (and therefore) limitations that the models provide, particularly in terms of a searcher's \emph{interactions.} This led onto the discussion of how~\gls{acr:ir} systems and the searchers that use them can be evaluated, along with a discussion of the different categories of user study in~\gls{acr:ir} and~\gls{acr:iir} -- from \emph{system-focused} to \emph{user-focused.}
+
+The next chapter continues the user-focused vain, considering previous work that has been undertaken to examine \emph{stopping in~\gls{acr:iir}.}
