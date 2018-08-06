@@ -2,7 +2,6 @@
 %!TEX root = ../maxwell2018thesis.tex
 
 % Ensure that \makeglossaries is called before anything else is done regarding glossaries/abbreviations.
-\glsSetCompositor{-}
 \makeglossaries
 
 % Abbreviations, separate from glossary entries.
@@ -179,4 +178,18 @@
     name={MTurk},
     first={\emph{Amazon Mechanical Turk (MTurk)}\glsadd{glos:mturk}},
     description={Amazon Mechanical Turk\glossarysee{\gls{glos:mturk}}},
+}
+
+\newglossaryentry{acr:set}{
+    type=\acronymtype,
+    name={SET},
+    first={\emph{Search Economic Theory (SET)}\glsadd{glos:set}},
+    description={Search Economic Theory\glossarysee{\gls{glos:set}}},
+}
+
+\newglossaryentry{acr:esl}{
+    type=\acronymtype,
+    name={ESL},
+    first={\emph{Expected Search Length (ESL)}\glsadd{glos:esl}},
+    description={Expected Search Length\glossarysee{\gls{glos:esl}}},
 }
