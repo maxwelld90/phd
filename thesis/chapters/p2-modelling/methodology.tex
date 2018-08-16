@@ -348,6 +348,14 @@ A \emph{simulation} within the \simiir~framework consists of the following main 
     \item{\blueboxbold{Output Controller} This component is responsible for generating the output files that can be fed into evaluation programs such as \texttt{trec\_eval}, as outlined in Section~\ref{sec:ir_background:paradigms:trec}.}
 \end{itemize}
 
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics[width=1\textwidth]{figures/ch6-simiir.pdf}}
+    \caption[SimIIR architecture]{Architecture of SimIIR}
+    \label{fig:simiir}
+\end{figure}
+
 Simulations also consist of one or more \blueboxbold{simulated searchers}, which attempt to complete a given search task, having been instantiated with differing constraints. A simulation is therefore in essence loosely associated with the concept of a real-world \emph{user study.} Each individual searcher -- that can be likened to an individual subject of a user study -- consists of additional components that \emph{describe their behaviours.}
 
 \begin{itemize}
