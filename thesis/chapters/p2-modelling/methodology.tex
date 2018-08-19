@@ -242,27 +242,27 @@ From these measures, we could then ascertain whether searcher behaviour varied w
 % -- we could then take an average for each subject. We could go even further, too -- averaging over each topic, interface or condition as required to observe any notable trends in behavioural changes.
 
 \subsection{Time-Based Measures}\label{sec:methodology:extracting:time}
-As discussed in Section~\ref{sec:methodology:user:capturing} -- and also illustrated in Figure~\ref{fig:log} on page~\pageref{fig:log}, each logged interaction was saved with a timestamp which allowed us to determine when each event occurred.\footnote{Timestamps were saved to the nearest thousandth of a second, as per the specification of the standard Python logging framework -- refer to \url{https://docs.python.org/2/howto/logging-cookbook.html} \urlaccessed{2018-05-29} for an example of the framework in action.} With these timestamps, we could then measure the time between two associated events, thus yielding the time taken to perform a given activity. We considered five key time-based measures across both user studies that we enumerate below.
+As discussed in Section~\ref{sec:methodology:user:capturing} -- and also illustrated in Figure~\ref{fig:log} on page~\pageref{fig:log}, each logged interaction was saved with a timestamp which allowed us to determine when each event occurred.\footnote{Timestamps were saved to the nearest thousandth of a second, as per the specification of the standard Python logging framework -- refer to \url{https://docs.python.org/2/howto/logging-cookbook.html} \urlaccessed{2018-05-29} for an example of the framework in action.} With these timestamps, we could then measure the time between two associated events, thus yielding the time taken to perform a given activity. We considered five key time-based measures across both user studies that we enumerate below, along with a description of the log events that we measure each time from.
 
 \begin{itemize}
-    \item{\blueboxbold{Queries} The time spent issuing queries to the retrieval system.}
-    \item{\blueboxbold{\gls{acr:serp} Content} The time spent examining content on~\glsplural{acr:serp}.}
-    \item{\blueboxbold{Result Summaries} The time spent examining individual result summaries.}
-    \item{\blueboxbold{Documents} The time spent examining individual documents.}
+    \item{\blueboxbold{Queries} This measure considered the time spent by a searcher issuing queries to the retrieval system. This is captured from the point at which the searcher focuses upon the query box (\texttt{QUERY\_FOCUS}) to the point at which the query is submitted (via the \texttt{QUERY\_ISSUED} event, either by pushing the \emph{Search} button or the subject pushing \Return on their keyboard).}
+    \item{\blueboxbold{\gls{acr:serp} Content} This measure considers the total amount of time that a searcher spends on a given~\gls{acr:serp}. This is captured as the point at which the subject is presented with the~\gls{acr:serp} itself (\texttt{VIEW\_SEARCH\_RESULTS\_PAGE}) to the point at which they leave -- either through the issuance of a further query, clicking on a document hyperlink, or navigating to one of the other views of the experimental interface.}
+    \item{\blueboxbold{Result Summaries} As discussed below, this is the mean time spent by a subject examining individual result summaries on a given~\gls{acr:serp}. As such, this is included within the~\gls{acr:serp} content time.}
+    \item{\blueboxbold{Documents} This measure considers the time a subject spends on the document view. This is captured as the point at which the document is presented on the subject's screen (\texttt{DOC\_MARKED\_VIEWED}) to the point at which they leave, which, like the~\gls{acr:serp} content time, could be determined from a number of different events.}
 \end{itemize}
 
-The summation of all of the above yielded the \blueboxbold{total session time}, a measure that we also considered. It should be noted that in this thesis \blueboxbold{we report all durations in seconds}.
+The fifth time-based measure that we considered in our reporting of results was an amalgamation of the four listed above.
 
-A number of different approximations were required when measuring each of the above. For example, we approximated the query time as the time between the \texttt{QUERY\_FOCUS} to \texttt{QUERY\_ISSUED} events. Subjects may have spent longer considering what terms to enter; our logging tools were not capable of capturing this additional time, only the time spent interacting with the search box.
+\begin{itemize}
+    \item{\blueboxbold{Total Session Time} The total session time is the addition of each of the time times measured above. This is essentially the same as the time from the very first \texttt{QUERY\_FOCUS} event to the \texttt{TASK\_COMPLETED} event, which is either triggered by an interface timeout (Chapter~\ref{chap:snippets}) or the subject ending the task herself or himself (Chapter~\ref{chap:diversity}).}
+    
+\end{itemize}
 
-Following a simple linear model, we could also approximate the total time spent on a~\gls{acr:serp} could be computed as:
+It should be noted that in this thesis \blueboxbold{we report all durations in seconds}. We considered a number of different approximations when measuring each of the above. For example, the querying time is measured only as the time the searcher spends interacting with the query box. Subjects may well have spent longer considering what terms to enter, perhaps as they were browsing existing content. However, this could be not captured; out logging tools were not capable of capturing this additional time.
 
-\begin{equation*}
-    t_{SERP} = t_{0} + (|summaries| * t_{summary}),
-\end{equation*}
+A further approximation used was the time per result summary. This was computed by dividing by the click depth reached on a given~\gls{acr:serp} by the duration between the first \emph{hover} event, where the subject hovered his or her cursor over a result summary, and the time at which they left the~\gls{acr:serp}. The first hover event was chosen as it was deemed to be a good indicator of the beginning of interaction with result summaries. The mouse cursor has been shown in prior studies to correlate strongly with the subject's gaze on the screen~\citep{chen2001mouse_cursor, smucker2014judging_relevance_movements}. However, issues with network latency meant that several of the hover events were logged in the incorrect order, making the approach of measuring each individual \texttt{HOVER\_IN} and \texttt{HOVER\_OUT} event unreliable. Using the click depth and total~\gls{acr:serp} time provided us with an approximation with which to work with. The approximation also makes an assumption that subjects examined each result summary on a~\gls{acr:serp} up to a particular depth, for an equal period of time. This was sufficient for the work in our study to ascertain whether or not a variation in the task goal or presentation of results affected the depths to which subjects examined results.
 
-\noindent
-where: $t_{0}$ denotes the initial time spent before summary interaction occurred; $|summaries|$ denotes the number of result summaries interacted with; and $t_{summary}$ denotes the time taken for each result summary to be examined. The time per result summary was approximated by dividing by the click depth reached on a given~\gls{acr:serp}. This was originally computed by summing up the time spent hovering over results with the subject's mouse cursor, as this was shown in prior studies to correlate strongly with the user's gaze on the screen~\citep{chen2001mouse_cursor, smucker2014judging_relevance_movements}. However, issues with network latency meant that several of the hover events were logged in the incorrect order, making such an approach unreliable. Using the click depth and total~\gls{acr:serp} time provided us with an approximation with which to work with. However, the approximation also makes an assumption that subjects examined each result summary on a~\gls{acr:serp} up to a particular depth, for an equal period of time. This was sufficient for the work in our study to ascertain whether or not a variation in the task goal or presentation of results affected search depths.
+These time calculations and approximations were also used as a means for providing \emph{grounding} to the simulations of interaction, as we discuss later in Section~\ref{sec:method:simulation:grounding:costs}. It should also be noted that the time per interaction could also be computed, such as the \emph{time per query.} This was simply considered as the summation of the querying time across the entire session, for example, divided by the total number of queries issued. The same principle could be applied for the \emph{per~\gls{acr:serp} time} and the \emph{per document time.}
 
 \subsection{Performance Measures}\label{sec:methodology:extracting:performance}
 In conjunction with behavioural and time-based measures, we were also able to extract a number of different performance measures from the interaction logs.\footnote{Some measures were computed with the \texttt{trec\_eval} evaluation tool, discussed in Section~\ref{sec:ir_background:basics:cranfield:trec}.} Key performance measures that we captured included:
@@ -372,11 +372,73 @@ Simulations also consist of one or more \blueboxbold{simulated searchers}, which
 All the above components are underpinned by a \blueboxbold{searcher model} component, providing a flow of interactions to the search process undertaken by simulated searchers. In all simulations reported in this thesis, this consists of the~\gls{acr:csm}. We do not discuss further details about how the \simiir~framework can be instantiated and used here; a high-level demonstration paper by~\cite{maxwell2016simiir} provides such a discussion.
 
 \subsection{Grounding and Instantiating Simulations}\label{sec:method:simulation:grounding}
+To ensure that the simulations of interaction are as realistic as possible, we \emph{grounded} said simulations using real-world observations extracted from interaction log data. Doing so ensures that the results of the simulations are credible~\citep{azzopardi2010workshop}. Given the~\gls{acr:csm}, we grounded the simulations of interaction from three main angles.
 
+\begin{itemize}
+    \item{\blueboxbold{Query Generation} We consider the generation of \emph{psuedo-realistic} queries to issue to the underlying retrieval system. As discussed in \todo{Section~\ref{}}, these queries are generated using \emph{querying strategies} that are created from observing real-world searcher querying behaviours.}
+    \item{\blueboxbold{Interaction Costs} We extract a series of different interaction costs from log data to ensure that the time `spent' by simulated searchers is an average representation of the time spent by real-world searchers under a particular search context.}
+    \item{\blueboxbold{Interaction Probabilities} As with interaction costs above, we also considered a series of grounded interaction probabilities that determine the likelihood of a simulated searcher determining whether to \emph{enter} a given~\gls{acr:serp}, the attractiveness of a result summary, or the relevance of a document.}
+\end{itemize}
 
-\subsubsection{Interaction Costs}
+These are considered in conjunction with the twelve stopping strategies (as discussed in Chapter~\ref{chap:strategies}), and the various constraints that we imposed upon each searcher. The remainder of this section is left to detailed discussion of the key components of our simulations of interaction. In particular, this section focuses upon how we instantiated each of the individual components to yield realistic, credible results.
 
-\subsubsection{Query Generation Strategies}
+\subsubsection{Interaction Costs}\label{sec:method:simulation:grounding:costs}
+Upon the examination of the~\gls{acr:csm}, illustrated in Figure~\ref{fig:csm} on page~\pageref{fig:csm}, a number of different \emph{interaction costs} can be derived. These are costs that must be expended by searchers subscribing to the model, in order for them to successfully complete the search process. In conjunction with the time-based measures discussed in Section~\ref{sec:methodology:extracting:time}, we identified five different interaction costs that searchers are faced with. These are listed below, with an illustration of the costs provided in Figure~\ref{fig:costs}.
+
+\begin{itemize}
+    \item{\blueboxbold{Querying} This considers the \emph{Issue Query} activity of the~\gls{acr:csm}, and considers the time required by a simulated searcher to enter a query into the retrieval system's interface.}
+    \item{\blueboxbold{\gls{acr:serp} Examination} This cost considers the \emph{View~\gls{acr:serp}} activity, and denotes the time spent by a searcher considering whether the presented~\gls{acr:serp} is attractive enough to \emph{enter} and examine in more detail.}
+    \item{\blueboxbold{Result Summary Examination} The \emph{Examine Snippet} activity is considered here, this being the time required to examine an individual result summary for attractiveness.}
+    \item{\blueboxbold{Document Examination} This costs denotes the amount of time required to assess a document for relevance to the given information need. This is the \emph{Assess Document} activity.}
+    \item{\blueboxbold{Saving} The \emph{Save Document} activity is considered for this final cost, where a searcher will actively save and identify the document as relevant.}
+\end{itemize}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch6-costs.pdf}}
+    \caption[Interaction costs]{Illustration of the five interaction costs paid by searchers subscribing to the~\gls{acr:csm}. Each cost is shown with the start and end events, by which the costs were measured from the user study interaction logs. Time spent on individual components is shown in white. Refer to Section~\ref{sec:method:simulation:grounding:costs} for a detailed explanation of each interaction cost considered.}
+    \label{fig:costs}
+\end{figure}
+
+The derived costs are averaged for each of the conditions and interfaces trialled in the studies reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. Refer to these chapters to tables of the actual costs used that were extracted from the corresponding interaction log data.
+
+\blueboxheader{Fixed Interaction Costs}
+All simulations of interaction discussed in this thesis rely upon the notion that all interaction costs are \emph{fixed} over each interface and condition trialled. That is, for example, no variation in the querying time between a simulated searcher exists who issues a query of one term versus a searcher who issues a query consisting of three terms. This decision was taken primarily to reduce the complexity of our simulations. By including dynamic interaction costs, this would have made the simulations themselves -- and the subsequent comparisons -- much more complex. Previous work such as time-biased gain~\citep{smucker2012tbg} has however shown that estimations of dynamic interaction costs can be made.
+
+\subsubsection{Query Generation Strategies}\label{sec:method:simulation:grounding:querying}
+The generation of queries is an important aspect of any simulation of interaction. Starting from the simplistic~\gls{acr:trec}-style searcher model where a single query is issued, numerous studies have focused upon the issue of query generation, and how one can generation a series of pseudo-realistic queries. We highlight some of these prior works in Section~\ref{sec:ir_background:user:simulation}.
+
+In this thesis, we consider a number of different \emph{querying strategies} as proposed by~\cite{keskustalo2009querying} and~\cite{baskaya2013behavioural_factors} in order to generate queries for our simulations of interaction. These strategies are considered to be \emph{idealised, prototypical} approaches to query generation, being grounded from a prior user study examining the query behaviour of subjects.\footnote{Refer to~\cite{keskustalo2009querying} for further information on the user study undertaken.} Of the five strategies identified by the authors, we consider two in this thesis that were shown in simulations by~\cite{keskustalo2009querying} to yield the \emph{worst} and \emph{best} performance, but also shown to reflect actual searcher queries. The two querying strategies, identified as \blueboxbold{QS1} and \blueboxbold{QS3}, are briefly explained below. We also provide an illustration of the two strategies in Figure~\ref{fig:querying}, where $Q_n$ denotes query $n$ within a search session, and $t_n$ denotes query term $n$ from a list of terms available to formulate queries.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch6-querying.pdf}}
+    \caption[Querying strategies example]{Extensive examples of the four querying strategies used in this thesis, \blueboxbold{QS1}, \blueboxbold{QS3}, and \blueboxbold{QS13}. Queries are denoted by \emph{Q\textsubscript{n}}, with individual terms denoted by \darkblueboxbold{t\textsubscript{n}}. In these examples, a total of six terms are used (from \darkblueboxbold{t\textsubscript{0}} to \darkblueboxbold{t\textsubscript{5}}). Queries are separated by arrows (~\includegraphics[height=\fontcharht\font`\d]{figures/src/arrow-blue-right.pdf}).}
+    \label{fig:querying}
+\end{figure}
+
+\begin{itemize}
+    \item{\blueboxbold{QS1 (Single Term)} This querying strategy generates a series of \emph{single term queries.}}
+    \item{\blueboxbold{QS3 (Three Term)} This second querying strategy generates queries with two \emph{pivot} terms, and one other term. The first two terms therefore remain constant, with the third term changing for each subsequent query.}
+\end{itemize}
+
+These queries are relatively short, and are considered realistic in the sense that queries issued in real-life web search sessions consist three terms on average~\citep{keskustalo2009querying}.
+
+With these two querying strategies in mind, we then combined them together to \emph{interleave} both of the querying strategies defined above. This therefore yields a further querying strategy, \blueboxbold{QS13}.
+
+\begin{itemize}
+    \item{\blueboxbold{QS13 (Interleaved)} With this querying strategy, queries from both \blueboxbold{QS1} and \blueboxbold{QS3} are generated, and subsequently interleaved between each other, starting with the first query from \blueboxbold{QS1}.}
+\end{itemize}
+
+Refer to Figure~\ref{fig:querying} for an example of how this querying strategy works. This querying strategy allowed us to test the \emph{robustness} of each result summary stopping strategy.~\cite{keskustalo2009querying} highlighted that \blueboxbold{QS1} yielded relatively poor performance compared to \blueboxbold{QS3}. It therefore follows that a searcher, when issuing a query generated by \blueboxbold{QS1}, will observe that the results presented are of poor quality, and thus stop at a shallow depth when compared to examining results of queries issued by \blueboxbold{QS3}. Examining many results from a poor query is by and large a waste of the searcher's time, so robustness of result summary stopping strategies can be checked to see if queries generated by \blueboxbold{QS1} are abandoned earlier than those generated by \blueboxbold{QS3}.
+
+\blueboxheader{Reported Querying Strategy}
+In this section, we introduced three different querying strategies -- two underlying querying strategies from the work by~\cite{keskustalo2009querying}, and one based upon this prior work. The latter allows us to test the robustness of various simulation configurations, and thus a majority of the work in this thesis reports on simulations that ran \blueboxbold{QS13} only. To examine the realism of different simulation configurations, we also \emph{replayed} queries issued by the real-world subjects of the two user studies reported in this thesis \todo{-- refer to Section~\ref{} for further information.}
+
+\blueboxheader{Term List Generation}
+
 
 \subsubsection{Summary and Document Decision Making}
 

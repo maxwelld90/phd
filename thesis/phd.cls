@@ -61,6 +61,7 @@
 \usepackage{metalogo}
 \usepackage{pxfonts}
 \usepackage{fontspec}
+\usepackage{keystroke}
 \usepackage[figuresright]{rotating}
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
