@@ -438,7 +438,11 @@ Refer to Figure~\ref{fig:querying} for an example of how this querying strategy 
 In this section, we introduced three different querying strategies -- two underlying querying strategies from the work by~\cite{keskustalo2009querying}, and one based upon this prior work. The latter allows us to test the robustness of various simulation configurations, and thus a majority of the work in this thesis reports on simulations that ran \blueboxbold{QS13} only. To examine the realism of different simulation configurations, we also \emph{replayed} queries issued by the real-world subjects of the two user studies reported in this thesis \todo{-- refer to Section~\ref{} for further information.}
 
 \blueboxheader{Term List Generation}
+Given the querying strategies, how did we then generate the ranked list of terms to be used, shown as \darkblueboxbold{t\textsubscript{0}} to \darkblueboxbold{t\textsubscript{5}} in Figure~\ref{fig:querying}? For all simulations in this thesis, all terms were derived from the given~\gls{acr:trec} topic title and description. For all queries, stopwords were removed as per the stopword list defined by~\cite{fox1992stopwords}.
 
+For \blueboxbold{QS1}, we combined the title and description terms together and creating a \emph{Maximum Likelihood Estimate (MLE)} language model, allowing us to create a probability distribution for the likelihood of a term to appear in a topic description, i.e. $p(term|topic)$. A list of single term queries were then ranked in descending order by this probability to yield the set of queries we would use for \darkblueboxbold{t\textsubscript{0}}, \darkblueboxbold{t\textsubscript{1}} and so on.
+
+A similar approach was used for \blueboxbold{QS3}. The same MLE approach was used to rank the title and description terms separately, creating two separate rankings of terms. For the \emph{pivot terms} -- the two terms that are consistently used as the first two terms of each \blueboxbold{QS3} query -- all possible two term title terms were used, with the highest joint probability being selected as the pivot pair. Single terms from the topic description were then used as per \blueboxbold{QS1}, with the descending probability ordering used to then determine the third query term.
 
 \subsubsection{Summary and Document Decision Making}
 
