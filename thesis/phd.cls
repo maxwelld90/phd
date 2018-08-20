@@ -103,6 +103,7 @@
 \definecolor{dmax_lightblue}{HTML}{0072C6}
 \definecolor{dmax_darkblue}{HTML}{00243D}
 \definecolor{dmax_red}{HTML}{89171F}
+\definecolor{dmax_lightred}{HTML}{DBB9BB}
 \definecolor{dmax_green}{HTML}{377A31}
 
 % "Search" Colours
@@ -130,6 +131,7 @@
 
 % A load of special table definitions
 \newcommand\CS{\hskip 16pt}
+\newcommand\CSDOUBLE{\hskip 24pt}
 \newcommand\RS{\addlinespace[4pt]}
 \newcommand\RSD{\addlinespace[12pt]}
 
@@ -145,6 +147,7 @@
 
 \newcommand\hulacell{\leavevmode\cellcolor{hula}\color{white}}
 \newcommand\cell{\leavevmode\cellcolor{dmax_cellcolour}\color{dmax_darkblue}}
+\newcommand\lredcell{\leavevmode\cellcolor{dmax_lightred}\color{dmax_darkblue}}
 \newcommand\cellemph{\leavevmode\cellcolor{dmax_red}\color{white}}
 
 % For multirow -- try something like
