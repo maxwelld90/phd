@@ -386,11 +386,11 @@ These are considered in conjunction with the twelve stopping strategies (as disc
 Upon the examination of the~\gls{acr:csm}, illustrated in Figure~\ref{fig:csm} on page~\pageref{fig:csm}, a number of different \emph{interaction costs} can be derived. These are costs that must be expended by searchers subscribing to the model, in order for them to successfully complete the search process. In conjunction with the time-based measures discussed in Section~\ref{sec:methodology:extracting:time}, we identified five different interaction costs that searchers are faced with. These are listed below, with an illustration of the costs provided in Figure~\ref{fig:costs}.
 
 \begin{itemize}
-    \item{\blueboxbold{Querying} This considers the \emph{Issue Query} activity of the~\gls{acr:csm}, and considers the time required by a simulated searcher to enter a query into the retrieval system's interface.}
-    \item{\blueboxbold{\gls{acr:serp} Examination} This cost considers the \emph{View~\gls{acr:serp}} activity, and denotes the time spent by a searcher considering whether the presented~\gls{acr:serp} is attractive enough to \emph{enter} and examine in more detail.}
-    \item{\blueboxbold{Result Summary Examination} The \emph{Examine Snippet} activity is considered here, this being the time required to examine an individual result summary for attractiveness.}
+    \item{\blueboxbold{Querying} This considers the \emph{Issue Query} activity of the~\gls{acr:csm}, and considers the time required by a simulated searcher to enter a query into the retrieval system's interface. Again, this is considered as from when the subject focused on the query box, to the point where they submitted the query.}
+    \item{\blueboxbold{\gls{acr:serp} Examination} This cost considers the \emph{View~\gls{acr:serp}} activity, and denotes the time spent by a searcher considering whether the presented~\gls{acr:serp} is attractive enough to \emph{enter} and examine in more detail. This is considered as the point at which the~\gls{acr:serp} is rendered on their screen, to the point where they begin interacting with it in any way.}
+    \item{\blueboxbold{Result Summary Examination} The \emph{Examine Snippet} activity is considered here, this being the time required to examine an individual result summary for attractiveness. Estimations for this interaction cost are described in Section~\ref{sec:methodology:extracting:time}.}
     \item{\blueboxbold{Document Examination} This costs denotes the amount of time required to assess a document for relevance to the given information need. This is the \emph{Assess Document} activity.}
-    \item{\blueboxbold{Saving} The \emph{Save Document} activity is considered for this final cost, where a searcher will actively save and identify the document as relevant.}
+    \item{\blueboxbold{Saving} The \emph{Save Document} activity is considered for this final cost, where a searcher will actively save and identify the document as relevant. This is considered as the time from the point at which a searcher clicked the \emph{Save} button to when they left the document and returned to the~\gls{acr:serp}.}
 \end{itemize}
 
 \begin{figure}[t!]
@@ -444,13 +444,91 @@ For \blueboxbold{QS1}, we combined the title and description terms together and 
 
 A similar approach was used for \blueboxbold{QS3}. The same MLE approach was used to rank the title and description terms separately, creating two separate rankings of terms. For the \emph{pivot terms} -- the two terms that are consistently used as the first two terms of each \blueboxbold{QS3} query -- all possible two term title terms were used, with the highest joint probability being selected as terms \darkblueboxbold{t\textsubscript{0}} and \darkblueboxbold{t\textsubscript{1}}. Single terms from the topic description were then used as per \blueboxbold{QS1}, with the descending probability ordering used to then determine the third query term.
 
-\subsubsection{Summary and Document Decision Making}
+\subsubsection{Summary and Document Decision Making}\label{sec:method:simulation:grounding:judgements}
+As discussed earlier in Section~\ref{sec:method:simulation}, our simulations were stochastic in nature with decisions pertaining to the attractiveness of a result summary \emph{(should I click this link and examine it further?)} and the relevancy of a document to the given information need \emph{(should I save this document?)} determined through a series of different \emph{interaction probabilities.} Chapters~\ref{chap:snippets} and~\ref{chap:diversity} present the interaction probabilities used within the simulations. In this section, we describe the approached used to derive them.
+
+Like in previous studies considering the simulation of interaction -- such as those by~\cite{yilmaz2010browsing_utility} and~\cite{baskaya2013behavioural_factors} for instance -- result summary and document decision making revolve around two key probabilities:
+
+\begin{itemize}
+    \item{the probability \blueboxbold{P(C)} of considering a given result summary on a~\gls{acr:serp} to be sufficiently attractive to \emph{`click'} and load the associated document; and}
+    \item{the probability \blueboxbold{P(S)} of determining the document to be relevant to the given information need after examination, and thus \emph{saving} it.}
+\end{itemize}
+
+These are considered separately as the action of requesting a document from clicking on the associated result summary does not necessarily mean that the document \emph{is} relevant; merely, it means it appears attractive enough to examine in more detail~\citep{turpin2009summaries}. The above probabilities are broken down further with regards to~\gls{acr:trec} relevance. This entails examination of the~\gls{acr:trec} relevance judgements to determine whether the result summary and/or document being clicked and/or saved was considered to be relevant to the given topic by the~\gls{acr:trec} assessors. As such, $P(C)$ and $P(S)$ can be split further, such that we can then determine:
+
+\begin{itemize}
+    \item{the probability that a result summary clicked is~\gls{acr:trec} relevant \blueboxbold{P(C|R)} or not \blueboxbold{P(C|N)}; and}
+    \item{the probability that a document saved is~\gls{acr:trec} relevant \blueboxbold{P(S|R)} or not \blueboxbold{P(S|N)}.}
+\end{itemize}
+
+Taking these explanations, we could then take the interaction logs from the two user studies, split the interactions by the interface or condition that probabilities were to be derived for, and summate different measures -- as shown by the equation for calculating $P(C)$:
+
+\begin{equation*}
+    P(C) = \frac{|clicked_{Rel}| + |clicked_{\neg Rel}|}{|depth_{Rel}| + |depth_{\neg Rel}|};
+\end{equation*}
+
+and $P(S)$:
+
+\begin{equation*}
+    P(S) = \frac{|saved_{Rel}| + | saved_{\neg Rel} |}{|depth_{Rel}| + |depth_{\neg Rel}|}.
+\end{equation*}
+
+In the above equations, $Rel$ denotes the count for~\gls{acr:trec} relevant items, with $\neg Rel$ representing items that were not~\gls{acr:trec} relevant. Finally, $|clicked|$ represents the number of result summaries that were clicked (deemed attractive enough to examine further), $|depth|$ denotes the greatest depth at which searchers clicked on a result summary, with $|saved|$ denoting the number of documents that were identified as relevant, and subsequently \emph{saved.}
+
+To compute probabilities concerning~\gls{acr:trec} relevance only, $P(C|R)$ and $P(S|R)$) were defined as $P(C|R) = \frac{|clicked_{Rel}|}{|depth_{Rel}|}$ and $P(S|R) = \frac{|saved_{Rel}|}{|depth_{Rel}|}$. These definitions are the same as the above, sans the non-relevant, or $\neg Rel$ values. Conversely, $P(C|N)$ and $P(C|R)$ were defined as $P(C|N) = \frac{|clicked_{\neg Rel}|}{|depth_{\neg Rel}|}$ and $P(S|N) = \frac{|saved_{\neg Rel}|}{|depth_{\neg Rel}|}$ -- this time, without the relevant judgements included.
+
+\blueboxheader{Monte-Carlo Simulations}
+The stochastic approach to modelling interactions provides a simple means of operationalising the components of the simulation that attempt to judge the attractiveness and relevancy of result summaries and documents, respectively.\footnote{A stochastic approach is not the only way the model such a process. For example,~\cite{maxwell2016agents} considered a \emph{deterministic} approach. A classifier was trained that then allowed a \emph{simulated agent} to deterministically decide the attractiveness of a result summary, for example.}
+
+However, such an approach is not without limitation. By their vary nature, a stochastic simulation based upon random probabilities will require a large number of different trials to be executed from which an \emph{average} can be computed. Each trial will potentially result in a different outcome, as illustrated below with an example of determining the relevancy of a~\gls{acr:trec} relevant document, with $P(C|R) = 0.5$.
+
+\begin{figure}[t!]
+    \centering
+    \vspace{4mm}
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch6-multiple_runs.pdf}}
+    \caption[The problem of stochastic judgements]{An example of the same~\gls{acr:trec} relevant document being judged differently across multiple trials. As discussed in Section~\ref{sec:method:simulation:grounding:judgements}, this can have a negative effect upon simulation runs, yielding dubious results.}
+    \label{fig:multiple_runs}
+\end{figure}
+
+Different outcomes can subsequently lead to a huge variance between different trials, which in turn leads to a requirement of running a larger number of trials, or \emph{Monte-Carlo style simulations}~\citep{benov2016manhattan}. In turn, this leads to a huge increase in the amount of time required to execute all simulations, as well as the computational power required.
+
+\begin{table}[t!]
+    \caption[Example of re-rolled judgements]{A visual example of how the use of pre-rolled judgements (right) performs when compared without (left). Across two sample simulated searcher configurations, judgements on the left table vary compared to those on the right table. As such, this can have an undue influence upon the behaviour of a simulated searcher, such as affecting their stopping behaviour. This is illustrated below, with the stopping depth for \dualbluebox{SS2}{@2} being affected (stopping depths highlighted in red).}
+    \label{tbl:precomputed_judgements}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{D{1.52cm}@{\CS}D{1.52cm}@{\CS}D{1.52cm}@{\CS}D{1.52cm}@{\CSDOUBLE}D{1.52cm}@{\CS}D{1.52cm}@{\CS}D{1.52cm}@{\CS}D{1.52cm}}
+    
+    \RS \multicolumn{4}{@{\hskip 6pt}c@{\CSDOUBLE}}{\textbf{Without pre-rolled judgements (Unfair)}} & \multicolumn{4}{@{\hskip 0pt}c}{\textbf{With pre-rolled judgements (Fair)}}\\
+    
+    \RS \multicolumn{2}{@{\hskip 6pt}c@{\CS}}{\lbluecell \textbf{SS1@5}} & \multicolumn{2}{@{\hskip 0pt}c@{\CSDOUBLE}}{\lbluecell \textbf{SS2@2}} & \multicolumn{2}{@{\hskip 0pt}c@{\CS}}{\lbluecell \textbf{SS1@5}} & \multicolumn{2}{@{\hskip 0pt}c@{\hskip 6pt}}{\lbluecell \textbf{SS2@2}}\\
+    
+    \RS \lbluecell\textbf{D\textsubscript{1}} & \cell R & \lbluecell\textbf{D\textsubscript{1}} & \cell N & \lbluecell\textbf{D\textsubscript{1}} & \cell R & \lbluecell\textbf{D\textsubscript{1}} & \cell R\\
+    \RS \lbluecell\textbf{D\textsubscript{2}} & \cell N & \lbluecell\textbf{D\textsubscript{2}} & \cell R & \lbluecell\textbf{D\textsubscript{2}} & \cell R & \lbluecell\textbf{D\textsubscript{2}} & \cell R\\
+    \RS \lbluecell\textbf{D\textsubscript{3}} & \cell N & \lbluecell\textbf{D\textsubscript{3}} & \lredcell N & \lbluecell\textbf{D\textsubscript{3}} & \cell N & \lbluecell\textbf{D\textsubscript{3}} & \cell N\\
+    \RS \lbluecell\textbf{D\textsubscript{4}} & \cell R & \lbluecell\textbf{D\textsubscript{4}} & \cell R & \lbluecell\textbf{D\textsubscript{4}} & \cell R & \lbluecell\textbf{D\textsubscript{4}} & \cell R\\
+    \RS \lbluecell\textbf{D\textsubscript{5}} & \lredcell R & \lbluecell\textbf{D\textsubscript{5}} & \cell R & \lbluecell\textbf{D\textsubscript{5}} & \lredcell N & \lbluecell\textbf{D\textsubscript{5}} & \lredcell N\\
+    
+\end{tabulary}
+\end{center}
+\end{table}
+
+\blueboxheader{Pre-Rolled Judgements}
+In Figure~\ref{fig:multiple_runs}, if the same document is judged differently between individual trials, then comparisons between different simulated configurations becomes fundamentally unfair. This is demonstrated in the left hand side of Table~\ref{tbl:precomputed_judgements}. With a given probability, a result summary can be judged to be attractive or not ($P(C)$). With proper controls, these judgements will vary across trials, meaning that in the table above, a comparison between configuration \dualbluebox{SS1}{@5} and \dualbluebox{SS2}{@2} is unfair (refer to Section~\ref{sec:method:simulation:grounding:stopping} for more information on these configurations), because the change. As the judgements change, this unfairly changes the behaviour of the simulated searcher across the configurations.
+
+In order to address this issue and permit for fair comparisons across simulated searcher configurations, and to allow for reproducible results, we used a series of \emph{pre-rolled} judgements that determined the attractiveness or relevancy of result summaries and documents respectively \emph{a priori.} For each document within the AQUAINT collection, we pre-computed outcomes for each individual document, storing them in \emph{action judgement files.} One related to the action of clicking on result summaries (i.e. $P(C)$), with the other related to saving documents (i.e. $P(S)$). These judgement files were then used by the summary and document decision maker component. All this component had to do was then perform a simple lookup for the corresponding document judgement for a given trial.
+
+By pre-computing these judgements in advance, the same document would therefore be considered to be relevant in the same trial under a different configuration. This is demonstrated again in Table~\ref{tbl:precomputed_judgements}, this time on the right hand side. Across this example trial, judgements by the simulated searcher have been pre-rolled in advance, and thus the judgements for documents $D_1$ to $D_5$ are the same. As they are the same, this permits a fairer comparison between the different configurations, with the table again showing how the simulated searcher's behaviour varies.
+
+It should also be noted that the generated pre-rolled judgements were seeded to allow for these files to be easily reproduced. This process was repeated ten times, meaning that for every simulated searcher configuration, we ran a total of ten trials in which result summaries could be considered attractive or not, and documents could be considered relevant or not. This subsequently means that for each comparison, all results reported later in this thesis are an average over the ten trials.
 
 \subsubsection{Computing Gain}
+Gains gains gains
 
 \subsubsection{\gls{acr:serp} Level Decision Making}
 
-\subsubsection{Result Summary Level Stopping Strategies}
+\subsubsection{Result Summary Level Stopping Strategies}\label{sec:method:simulation:grounding:stopping}
 
 \subsubsection{Simulated Searcher Constraints}
 
