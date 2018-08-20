@@ -2,7 +2,7 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[Operationalised Stopping Strategies]{Operationalised\\Stopping Strategies}\label{chap:strategies}
-In Section~\ref{sec:stopping_background:heuristics}, we discussed a number of different \emph{stopping heuristics} that have been previously defined in the literature. In this chapter, we take a number of these stopping heuristics forward to produce a series of different \emph{stopping strategies,} providing an answer that addresses \blueboxbold{HL-RQ2}.\footnote{Refer to Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs} for the definition of the research question.}
+In Section~\ref{sec:stopping_background:heuristics}, we discussed a number of different \emph{stopping heuristics} that have been previously defined in the literature. In this chapter, we take a number of these stopping heuristics forward to produce a series of different \emph{stopping strategies,} providing an answer that addresses \darkblueboxbold{HL-RQ2}.\footnote{Refer to Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs} for the definition of the research question.}
 
 \begin{figure}[h]
     \centering
@@ -25,7 +25,7 @@ These stopping strategies are operationalised versions of the corresponding heur
     \item{\blueboxbold{measure-based}, considering an established~\gls{acr:ir} measure as a stopping strategy.}
 \end{itemize}
 
-In the remainder of this chapter, we consider each of the seven categories enumerated above. For each category, we discuss the different operationalised stopping strategies that we consider for the empirical work reported later in this thesis. Before this, we begin with a brief discussion about the different stopping decision points that were outlined in Section~\cite{sec:csm:stopping}, and the notation used hereon in when describing the different stopping strategies.
+In the remainder of this chapter, we consider each of the seven categories enumerated above. For each category, we discuss the different operationalised stopping strategies that we consider for the empirical work reported later in this thesis. Before this, we begin with a brief discussion about the different stopping decision points that were outlined in Section~\ref{sec:csm:stopping}, and the notation used hereon in when describing the different stopping strategies.
 
 \blueboxheader{Considering Stopping Decision Points}
 An open question is which of the different stopping strategies that we discuss in this chapter are applicable for the different \emph{stopping decision points,} as outlined in Section~\ref{sec:csm:stopping}. Indeed, the stopping strategies that we outline do not seem particularly applicable to the context of~\gls{acr:serp} level stopping, but could be applied to the session level stopping decision point. For example, the satisfaction/satiation based stopping heuristic would be particularly suited to a session that is goal-based in nature.
@@ -147,7 +147,7 @@ For this thesis, we also consider the \emph{combination heuristic} proposed by~\
     \item{\stoppingstratboxsingular{SS11-COMB} When encountering a~\gls{acr:serp} expected to yield a high volume of relevant content early on (high scent), a searcher will employ the satisfaction/satiation stopping heuristic. If the~\gls{acr:serp} however yields relevant items over greater depths, or is judged to be of poor quality (low scent), the give-up heuristic is used instead.}
 \end{itemize}
 
-From our definitions above, \blueboxbold{SS4-SAT} is used for the satisfaction/satiation component, and \blueboxbold{SS10-RELTIME} is used for the give-up heuristic component. The combination stopping strategy attempts to ensure that a searcher does not waste time on a~\gls{acr:serp} that appear to offer a low yield, but conversely capitalise upon patches that present a high yield. Of course, determining the perceived yield is a question of implementation; \todo{refer to Section~\ref{chap:csm:method:simulation:grounding:stopping_strats} for more information on how we implemented this particular stopping strategy.}
+From our definitions above, \blueboxbold{SS4-SAT} is used for the satisfaction/satiation component, and \blueboxbold{SS10-RELTIME} is used for the give-up heuristic component. The combination stopping strategy attempts to ensure that a searcher does not waste time on a~\gls{acr:serp} that appear to offer a low yield, but conversely capitalise upon patches that present a high yield. Of course, determining the perceived yield is a question of implementation; refer to Section~\ref{sec:method:simulation:grounding:stopping} for more information on how we implemented this particular stopping strategy.
 
 \section{Measure-Based}
 The final proposed stopping strategy is based upon an established~\gls{acr:ir} measure.~\glsfirst{acr:rbp} -- as discussed in Section~\ref{sec:ir_background:evaluation:system:rbp} -- is utilised as the basis of our final stopping strategy. Under~\gls{acr:rbp}, the decision to continue to the next result in a ranked list is based upon a patience parameter, or the probability of continuing. Essentially,~\gls{acr:rbp} highlights that the probability of continuing decreases as a searcher progresses further down a ranked list.
@@ -161,4 +161,4 @@ The final proposed stopping strategy is based upon an established~\gls{acr:ir} m
 By including such a measure, we provide a platform for which contemporary~\gls{acr:ir} measures can be compared against the performance of other stopping heuristics defined in the literature.
 
 \section{Chapter Summary}
-This chapter has outlined 12 different stopping strategies, all of which are based upon prior stopping heuristics and an established~\gls{acr:ir} measure. As such, this answer provides a possible answer to \blueboxbold{HL-RQ2}. In subsequent chapters of this thesis, we take these stopping strategies forward, discuss the specifics of how they were \todo{implemented in Section~\ref{}, and how they} were employed in our empirical experimentation.
+This chapter has outlined 12 different stopping strategies, all of which are based upon prior stopping heuristics and an established~\gls{acr:ir} measure. As such, this answer provides a possible answer to \darkblueboxbold{HL-RQ2}. In subsequent chapters of this thesis, we take these stopping strategies forward, discuss the specifics of how they were implemented in Section~\ref{sec:method:simulation:grounding:stopping}, and how they were employed in our empirical experimentation.

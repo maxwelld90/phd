@@ -2,7 +2,7 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[The Complex Searcher Model]{The Complex Searcher Model}\label{chap:csm}
-In this chapter, we present the~\gls{acr:csm}, an updated, conceptual searcher model that is one of the major contributions of this thesis. The~\gls{acr:csm} is an amalgamation and further development of prior, established searcher models. These models capture the complex sequence of interactions that take place between a searcher and a retrieval system. As such, this chapter provides a partial answer to our first high-level research question, \blueboxbold{HL-RQ1}.
+In this chapter, we present the~\gls{acr:csm}, an updated, conceptual searcher model that is one of the major contributions of this thesis. The~\gls{acr:csm} is an amalgamation and further development of prior, established searcher models. These models capture the complex sequence of interactions that take place between a searcher and a retrieval system. As such, this chapter provides a partial answer to our first high-level research question, \darkblueboxbold{HL-RQ1}.
 
 \begin{figure}[h]
     \centering
@@ -24,7 +24,7 @@ Given the aforementioned searcher models listed outlined in Section~\ref{sec:ir_
     \item{an outline of the key \emph{assumptions} that we consider as part of the~\gls{acr:csm} (Section~\ref{sec:csm:assumptions}).}
 \end{itemize}
 
-We also briefly outline the specifics for evaluating the~\gls{acr:csm} as a viable searcher model (Section~\ref{sec:csm:evaluation}). Specific details of the implementation of the~\gls{acr:csm} are discussed in our general methodology chapter, Section~\ref{chap:csm:method:simulation}. We begin this chapter however with a discussion of the flow of the~\gls{acr:csm}, discussing the different steps and decisions that searchers will make.
+We also briefly outline the specifics for evaluating the~\gls{acr:csm} as a viable searcher model (Section~\ref{sec:csm:evaluation}). Specific details of the implementation of the~\gls{acr:csm} are discussed in our general methodology chapter, Section~\ref{sec:method:simulation}. We begin this chapter however with a discussion of the flow of the~\gls{acr:csm}, discussing the different steps and decisions that searchers will make.
 
 \section{Model Flow}\label{sec:csm:flow}
 The~\gls{acr:csm} is illustrated as a flowchart in Figure~\ref{fig:csm}. It comprises as a number of different activities denoted by boxes, and decisions, represented as blue diamonds. The flowchart is divided up into a number of different blocks, labelled \blueboxbold{A} to \blueboxbold{F}. Each of these blocks denotes a logical set of interactions -- block \blueboxbold{B} for example considers all of the actions and decisions a searcher would undertake in relation to \emph{querying.} In this section, we outline the flow of the~\gls{acr:csm}, discussing the key activities and decisions that searchers would undertake. This is done in relation to the six labelled blocks.
@@ -80,7 +80,7 @@ This new stopping strategy permits searchers subscribing to the~\gls{acr:csm} to
 \section{Model Advancements}\label{sec:csm:advancements}
 The~\gls{acr:csm} provides two novel advancements to modelling the interactions between a searcher and retrieval system. These are highlighted as blocks \blueboxbold{B} and \blueboxbold{C} in Figure~\ref{fig:csm}, and denote advancements to the \emph{querying} process, as well as the inclusion of the aforementioned third stopping decision point respectively. In this section, we discuss each in turn. While the querying advancements are novel, they are not the core focus of this work, and thus discussion of the new~\gls{acr:serp} level stopping decision point will be in more depth.
 
-\subsection{\gls{acr:serp} Level Stopping}\label{sec:csm:advancements:stopping}
+\subsection{SERP Level Stopping}\label{sec:csm:advancements:stopping}
 This new stopping decision point -- illustrated in block \blueboxbold{C} of the~\gls{acr:csm} (Figure~\ref{fig:csm}) -- is motivated by the idea of the \emph{information scent} present on a given~\gls{acr:serp}, with the notion of information scent discussed previously in Section~\ref{sec:stopping_background:theoretical:ift:patch}. This section also introduced the concept of \emph{proximal cues}~\citep{chi2001information_scent}, cues that provide insights into whether the presented~\gls{acr:serp} will yield information that will aid the searcher in satisfying their underlying information need. This has been previously demonstrated in prior studies~\citep{wu2014information_scent, ong2017scent_behaviour, maxwell2017snippets}.
 
 By operationalising information scent as the perceived performance of a given~\gls{acr:serp}, we argue that incorporating this additional examination and associated stopping decision point allows a searcher to obtain an \emph{impression} of the~\gls{acr:serp}, before deciding to \emph{enter} the~\gls{acr:serp} and examine content in detail, or \emph{abandon} the~\gls{acr:serp} and move to the next activity. The notion of forming an impression is similar to the summary impressions formed by searchers subscribing to the model defined by~\cite{thomas2014modelling_behaviour}, as detailed in Section~\ref{sec:ir_background:user:models}. In their model however, a searcher would not form an overview of the~\gls{acr:serp}, but rather an impression of each individual result summary. The impression can then be used as a means of gauging whether further examination would be necessary.
@@ -104,7 +104,7 @@ The~\gls{acr:csm} provides scope for the modelling of a variety of different \em
 
 we are interested in IIR. Interested in more than one simple task, not just lookup.
 
-considers \emph{interactive search tasks.} Such as ad-hoc, exploratory, diversity, etc. Different types and domains of interactive search task can occur, such as informational (discussed in~\ref{}) and patent search, respectively. As discussed in Section~\ref{sec:intro:rqs}, we use informational search in the domain of news. In this thesis, we consider both ad-hoc and diversity studies, and how behaviours vary under these different types of task. This is not to say that the~\gls{acr:csm} does not or cannot model other search tasks, such a simple lookup, for example. Such tasks provides a more interesting task type to examine.
+considers \emph{interactive search tasks.} Such as ad-hoc, exploratory, diversity, etc. Different types and domains of interactive search task can occur, such as informational and patent search, respectively. As discussed in Section~\ref{sec:intro:rqs}, we use informational search in the domain of news. In this thesis, we consider both ad-hoc and diversity studies, and how behaviours vary under these different types of task. This is not to say that the~\gls{acr:csm} does not or cannot model other search tasks, such a simple lookup, for example. Such tasks provides a more interesting task type to examine.
 
 These tasks are interesting to examine for two key reasons:
 
@@ -120,7 +120,7 @@ The searcher model proposed by~\cite{thomas2014modelling_behaviour} provides tho
 
 Of course, the inclusion of such a decision point would be interesting to examine within the wider~\gls{acr:iir} process. Different retrieval systems will have benefits and drawbacks for particular domain types (e.g. a patent retrieval system would perform better for patent searching tasks). It would be interesting to examine this kind of \emph{tool switching behaviour,} and could be considered as a further stopping decision point, or \emph{retrieval system stopping.}
 
-\subsection{Simple~\glsplural{acr:serp}}
+\subsection{Simple SERPs}
 When considering the~\gls{acr:serp} presented to the searcher as a whole, we make three simplifying assumptions within the~\gls{acr:csm}. These are listed and detailed below.
 
 \begin{itemize}
@@ -133,7 +133,7 @@ When considering the~\gls{acr:serp} presented to the searcher as a whole, we mak
     
 \end{itemize}
 
-\subsection{Good and Bad~\gls{acr:serp} Abandonment}
+\subsection{Good and Bad SERP Abandonment}
 The~\gls{acr:csm} provides a new~\gls{acr:serp} level stopping decision point. Associated literature considers the notion of bad~\gls{acr:serp} abandonment, where a searcher is dissatisfied with the presented results. More contemporary research has introduced the notion of good~\gls{acr:serp} abandonment~\citep{khabsa2016good_abandonment}, where a searcher satisfies his or her information need by examining the~\gls{acr:serp}, and thus requires no further interactions with it. This is more prevalent on small-screen devices, where an information card presented to the searcher on the~\gls{acr:serp} may provide all the information required to satisfy a simple lookup task, for example.
 
 The~\gls{acr:csm} does not explicitly consider the notion of good or bad~\gls{acr:serp} abandonment; the provision exists for both to be modelled effectively within the scope of the new stopping decision point. For the work in this thesis however, we assume a simple~\gls{acr:serp} consisting only of a ranked list of results. We also assume that searchers subscribing to the~\gls{acr:csm} will have complex information needs, as discussed in Section~\ref{sec:csm:assumptions:task} above. As such, we assume that the elements provided as part of the simplistic~\gls{acr:serp} are unlikely to fully satisfy their information need, and thus we consider~\gls{acr:serp} abandonment exclusively from the perspective of \emph{bad abandonment.} This is further discussed in Section~\ref{sec:csm:evaluation}.
@@ -148,7 +148,7 @@ Given the flowchart of the~\gls{acr:csm} in Figure~\ref{fig:csm}, it is clear th
 
 These examples allude to time pressures, but there are a virtually unlimited number of other external reasons that may influence a searcher's behaviour. Even simple everyday occurrences such as a phone call or an incoming e-mail can sufficiently distract the searcher that their searching behaviours are altered. Our assumption is that the individual searches in a more controlled environment, where they are explicitly tasked to search.
 
-\section{Evaluating the~\gls{acr:csm}}\label{sec:csm:evaluation}
+\section{Evaluating the CSM}\label{sec:csm:evaluation}
 The~\gls{acr:csm} is presented as a generalised, conceptual model of the search process. It captures the key activities and decisions that a searcher must undertake during the search process. Given the current searcher models presented in Section~\ref{sec:ir_background:user:models}, the~\gls{acr:csm} introduces further levels of complexity and realism into searcher models. Given our choice of search tasks and types and assumptions, three key assumptions are made for the evaluation of the model.
 
 \begin{itemize}
@@ -158,6 +158,6 @@ The~\gls{acr:csm} is presented as a generalised, conceptual model of the search 
 \end{itemize}
 
 \section{Chapter Summary}
-This chapter has proposed the~\glsfirst{acr:csm}, our solution to partially addressing \blueboxbold{HL-RQ1}. Building on prior searcher models, the~\gls{acr:csm} proposes different advancements to modelling a searcher's interactions, the main development being the inclusion of a new,~\gls{acr:serp} level stopping decision point. We have outlined a number of different assumptions that we make in the~\gls{acr:csm}, and also discussed some evaluation considerations related to the work in this thesis. Empirical work presented in Chapter~\ref{chap:csm} tests the~\gls{acr:csm}, providing evidence to support \blueboxbold{HL-RQ1} in that the~\gls{acr:csm} does provide improvements over the current searcher models.
+This chapter has proposed the~\glsfirst{acr:csm}, our solution to partially addressing \darkblueboxbold{HL-RQ1}. Building on prior searcher models, the~\gls{acr:csm} proposes different advancements to modelling a searcher's interactions, the main development being the inclusion of a new,~\gls{acr:serp} level stopping decision point. We have outlined a number of different assumptions that we make in the~\gls{acr:csm}, and also discussed some evaluation considerations related to the work in this thesis. Empirical work presented in Chapter~\ref{chap:csm} tests the~\gls{acr:csm}, providing evidence to support \darkblueboxbold{HL-RQ1} in that the~\gls{acr:csm} does provide improvements over the current searcher models.
 
 In the next chapter, we turn our attention to some of the different stopping strategies that we operationalise -- and subsequently implement -- as part of the stopping decision points encoded within the~\gls{acr:csm}.

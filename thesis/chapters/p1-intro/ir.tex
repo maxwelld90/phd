@@ -165,7 +165,7 @@ Returning an unranked set of documents would appear as an alien concept to searc
     \vspace{4mm}
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-boolean-reduce.pdf}}
-    \label{fig:searchbox}
+    \label{fig:boolean_reduce}
     \vspace{-5mm}
 \end{figure}
 
@@ -246,7 +246,7 @@ The experimental paradigm required the same set of documents, and same set of in
 
 Given these three components, the Cranfield experiments made a number of major simplifying assumptions, as outlined by~\cite{voorhees2001iir_philosophy}. The first considers the notion of \emph{topical similarity,} with which relevance is assumed to be approximated by. In short, all relevant documents are equally desirable, and the relevance of one given document is independent of the relevance of any other document. This also leads to the notion of a \emph{static information need} -- under Cranfield, there is assumed to be no change during the search process to what the searcher is looking for. Additionally, the single set of relevance judgements provided as part of the test collection are to be considered to be \emph{representative of an entire population.} This means that for a given topic, every searcher will seek to find the same set of relevant documents. Finally, the list of relevant documents for a given topic is assumed to be \emph{total and complete,} i.e. all relevant documents to a topic have been identified and are listed.
 
-\subsubsection{The~\glsfirst{acr:trec}}\label{sec:ir_background:paradigms:trec}
+\subsubsection{The Text REtrieval Conference}\label{sec:ir_background:paradigms:trec}
 A number of different \emph{evaluation forums} have been borne out of the Cranfield experimental paradigm, utilising many of the different assumptions. These forums promote the development of~\gls{acr:ir} as a field, fostering a drive to develop improvements in the various retrieval models and other retrieval system components. Examples of evaluation forums include \emph{NTCIR}~\citep{kando1999ntcir}, \emph{CLEF}~\citep{braschler2001clef} and \emph{INEX}~\citep{fuhr2006advances}. However, one of the most well-known evaluation forums is the U.S. Government funded,~\gls{acr:nist} sponsored~\glsfirst{acr:trec}~\citep{harman1993trec1}. Experimentation following the~\gls{acr:trec} approach is hereafter referred to as \blueboxbold{\gls{acr:trec}-style} in this thesis.
 
 \gls{acr:trec} provides a platform for annual collaboration between research groups interested in different aspects of~\gls{acr:ir} research. Each year, a series of~\gls{acr:trec} \emph{tracks} are defined, with each consisting of a test collection, in turn consisting of the three components defined above. Within each track is a set of tasks. Some of the tasks, such as those belonging to the \emph{\gls{acr:trec} Interactive Track}~\citep{over2001trec}, are known as \blueboxbold{ad-hoc}. This type of task can be considered as one of the most obvious for search, where a searcher develops an information need in an ad-hoc fashion, and then issues a query to a retrieval system.
@@ -255,7 +255,7 @@ These tasks are used in conjunction with the relevance judgements, provided by a
 
 Each team wishing to participate in a track receives the associated test collection, indexes the document collection, and runs their experimental retrieval system over the provided material. Experiments are typically run over $25$-$50$ different topics~\citep{voorhees2001iir_philosophy}, with a solitary query issued for each (the topic's \emph{title}). These are typically executed in a batch environment, with a large number of results (typically $1,000$) returned from the retrieval engine. Output from the experiments is then produced in a standardised format. Results can then be used in conjunction with the judgements (termed \emph{Query RELevance judgements}, or \blueboxbold{QRELs}), and fed into a standardised program called \texttt{trec\_eval}\footnote{\texttt{trec\_eval} is downloadable from \url{http://trec.nist.gov/trec_eval/} -- URL last accessed on March 8\textsuperscript{th}, 2018. Version 8.1 of the software was used for computing most of the evaluation measures reported in this thesis.} to perform evaluation of the runs that are undertaken. The application returns the values for a number of common system-sided evaluation measures, some of which are discussed in Section~\ref{sec:ir_background:evaluation:system}.
 
-\subsubsection{The~\gls{acr:trec} Searcher Model}\label{sec:ir_background:paradigms:trec:model}
+\subsubsection{The TREC Searcher Model}\label{sec:ir_background:paradigms:trec:model}
 Given the assumptions of the Cranfield paradigm -- and subsequently evaluation forums such as~\gls{acr:trec}, one may be forgiven into thinking that the searcher -- the target audience of any retrieval system -- has been completely ignored from the process. While it is true that the paradigm focuses primarily on system-sided evaluation of retrieval systems, a searcher \emph{is} considered -- just in a highly abstracted form. The assumption that a searcher's information does not vary as they search is just one example of an abstraction from reality -- a searcher's information need is \emph{dynamic,} and typically evolves as they search~\citep{borlund2003iir_model}.
 
 \begin{figure}[t!]
@@ -306,7 +306,7 @@ Searchers for example will begin to examine the content on the~\gls{acr:serp}, e
 
 While this example above may be highly abstract in nature, it clearly shows that the search process is extremely complex and \emph{inherently interactive.} Thus, work in the field of~\gls{acr:iir} provides a basis for developing more complex, \emph{realistic} models of the search process, improving the offering when compared to the~\gls{acr:trec}-style searcher model.
 
-\subsubsection{The~\glsfirst{acr:serp}}\label{sec:ir_background:user:iir:serp}
+\subsubsection{The Search Engine Results Page}\label{sec:ir_background:user:iir:serp}
 Core to the experience of a searcher when using a given retrieval system are the interactions that take place on its~\glsplural{acr:serp}. Figure~\ref{fig:serp_example} depicts an example~\gls{acr:serp} of fictional retrieval system, \searchlogo.\footnote{We utilise \searchlogo~throughout this thesis to illustrate various concepts.} The illustration highlights several key~\gls{acr:serp} components that are extensively referred to in latter parts of this thesis. At the top of the~\gls{acr:serp} is the \blueboxbold{query box}, allowing for a searcher to reformulate their query if he or she desires.
 
 The main body of the~\gls{acr:serp} is then divided up into the left rail and right rail. Contemporary~\glsplural{acr:serp} utilise the right rail to display additional components such as \emph{information cards} as illustrated in Figure~\ref{fig:serp_example}, and are thus become more and more complex in nature. We however in this thesis exclusively consider simplified~\glsplural{acr:serp} \emph{without} the right rail, or~\glsplural{acr:serp} comprised entirely of \emph{result summaries.}
@@ -329,7 +329,7 @@ These result summaries are typically displayed on a~\gls{acr:serp} as the \emph{
 
 Snippets are of particular interest to the work in this thesis; we explore the effect of their length on stopping behaviour in Chapter~\ref{chap:snippets}. Snippets are typically presented in contemporary retrieval systems as \emph{query-biased}~\citep{tombros1998query_biased}. This means that the snippet text relates to terms that were present in the searcher's query. Figure~\ref{fig:serp_example} demonstrates this with the use of \textbf{bolded} terms in example snippet text.
 
-\subsection{The~\gls{acr:ir}/\gls{acr:iir} Spectrum}\label{sec:ir_background:user:spectrum}
+\subsection{The IR/IIR Spectrum}\label{sec:ir_background:user:spectrum}
 In order to aptly describe where~\gls{acr:iir} fits into the system-sided and user-sided space,~\cite{kelly2009iir} provided an intuitive spectrum of work that bridges~\gls{acr:ir} and~\gls{acr:iir}. Figure~\ref{fig:spectrum} illustrates the spectrum, consisting of eight different categories of study. Moving from left to right in the illustration, categories shift from solely system-sided (\gls{acr:trec}-style) studies towards those that are more user focused, considering a searcher's behaviours when interacting with a retrieval system. Below, we detail three key category types as outlined by~\cite{kelly2009iir} that have particular relevance to the work detailed in this thesis.
 
 \begin{itemize}
@@ -548,7 +548,7 @@ Given more modern retrieval models, the notion of ranking would lead a searcher 
 %
 % where $Q$ denotes the set of queries that are to be considered in the evaluation.
 
-\subsubsection{\glsfirst{acr:esl}}\label{sec:ir_background:evaluation:system:esl}
+\subsubsection{Expected Search Length}\label{sec:ir_background:evaluation:system:esl}
 The~\gls{acr:esl}~\citep{cooper1968expected_search_length} of a searcher considers the number of non-relevant documents that a searcher will have to search through to obtain a \emph{desired number of relevant documents.} Therefore, systems demonstrating a shorter~\gls{acr:esl} are considered to be more effective than systems with a comparatively longer~\gls{acr:esl}. In other words, the~\gls{acr:esl} indicates how much wasted search effort one would expect using a given retrieval system, as opposed to randomly searching until the needed relevant documents are found.
 
 From~\cite{cooper1968expected_search_length}, the expected search length can be computed thus:
@@ -675,7 +675,7 @@ Subjects of~\gls{acr:iir} studies are typically instructed to \emph{save} docume
 \subsection{Evaluation Measures and Stopping}
 Throughout this section, we have outlined a number of different evaluation measures commonly employed in both~\gls{acr:ir} and~\gls{acr:iir} studies. Common with these measures are implicit models encoded within them that in turn provide a \emph{stopping point} in the ranked list.
 
-These models vary from the simplistic to more complex, with the more complex approaches providing a more realistic rationale of the stopping behaviour of real-world searchers. Regarding stopping behaviour, the most simplistic approach discussed in this chapter is $P@k$ -- or \emph{stop at rank $k$.}. This is agonistic of the relevance of the results presented, and is often described as a fixed-depth assumption, something that we discuss later in \todo{Section~\ref{}}. More complex measures such as~\gls{acr:rbp} and nDCG can be considered as more complex. These measures consider a decreasing likelihood of continuation the further down a ranked list of results a searcher examines content to.
+These models vary from the simplistic to more complex, with the more complex approaches providing a more realistic rationale of the stopping behaviour of real-world searchers. Regarding stopping behaviour, the most simplistic approach discussed in this chapter is $P@k$ -- or \emph{stop at rank $k$.}. This is agonistic of the relevance of the results presented, and is often described as a fixed-depth assumption, something that we discuss later in Section~\ref{sec:strategies:fixed}. More complex measures such as~\gls{acr:rbp} and nDCG can be considered as more complex. These measures consider a decreasing likelihood of continuation the further down a ranked list of results a searcher examines content to.
 
 Evaluation measures are however only a small part of the work undertaken in order to understand the different \emph{stopping behaviours} exhibited by searchers during the~\gls{acr:iir} process. Chapter~\ref{chap:stopping_background} provides an in-depth overview of prior work examining this area.
 
