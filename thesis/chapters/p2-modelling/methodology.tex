@@ -468,18 +468,18 @@ These are considered separately as the action of requesting a document from clic
 Taking these explanations, we could then take the interaction logs from the two user studies, split the interactions by the interface or condition that probabilities were to be derived for, and summate different measures -- as shown by the equation for calculating $P(C)$, where
 
 \begin{equation}
-    P(C) = \frac{|clicked_{Rel}| + |clicked_{\neg Rel}|}{depth}
+    P(C) = \frac{|clicked_{Rel}| + |clicked_{\neg Rel}|}{examined}
 \end{equation}
 
 and $P(S)$, where
 
 \begin{equation}
-    P(S) = \frac{|saved_{Rel}| + | saved_{\neg Rel} |}{depth}.
+    P(S) = \frac{|saved_{Rel}| + | saved_{\neg Rel} |}{examined}.
 \end{equation}
 
-In the above equations, $Rel$ denotes the count for~\gls{acr:trec} relevant items, with $\neg Rel$ representing items that were not~\gls{acr:trec} relevant. Finally, $|clicked|$ represents the number of result summaries that were clicked (deemed attractive enough to examine further), $|depth|$ denotes the greatest depth at which searchers clicked on a result summary, with $|saved|$ denoting the number of documents that were identified as relevant, and subsequently \emph{saved.}
+In the above equations, $Rel$ denotes the count for~\gls{acr:trec} relevant items, with $\neg Rel$ representing items that were not~\gls{acr:trec} relevant. Finally, $|clicked|$ represents the number of result summaries that were clicked (deemed attractive enough to examine further), $examined$ denotes the greatest depth at which searchers clicked on a result summary, with $|saved|$ denoting the number of documents that were identified as relevant, and subsequently \emph{saved.}
 
-To compute probabilities concerning~\gls{acr:trec} relevance only, $P(C|R)$ and $P(S|R)$) were defined as $P(C|R) = \frac{|clicked_{Rel}|}{|depth_{Rel}|}$ and $P(S|R) = \frac{|saved_{Rel}|}{|depth_{Rel}|}$. These definitions are the same as the above, sans the non-relevant, or $\neg Rel$ values. Conversely, $P(C|N)$ and $P(C|R)$ were defined as $P(C|N) = \frac{|clicked_{\neg Rel}|}{|depth_{\neg Rel}|}$ and $P(S|N) = \frac{|saved_{\neg Rel}|}{|depth_{\neg Rel}|}$ -- this time, without the relevant judgements included.
+To compute probabilities concerning~\gls{acr:trec} relevance only, $P(C|R)$ and $P(S|R)$) were defined as $P(C|R) = \frac{|clicked_{Rel}|}{|depth_{Rel}|}$ and $P(S|R) = \frac{|saved_{Rel}|}{|depth_{Rel}|}$. These definitions are the same as the above, sans the non-relevant, or $\neg Rel$ values. Conversely, $P(C|N)$ and $P(C|R)$ were defined as $P(C|N) = \frac{|clicked_{\neg Rel}|}{examined_{\neg Rel}}$ and $P(S|N) = \frac{|saved_{\neg Rel}|}{examined_{\neg Rel}}$ -- this time, without the relevant judgements included.
 
 \blueboxheader{Monte-Carlo Simulations}
 The stochastic approach to modelling interactions provides a simple means of operationalising the components of the simulation that attempt to judge the attractiveness and relevancy of result summaries and documents, respectively.\footnote{A stochastic approach is not the only way the model such a process. For example,~\cite{maxwell2016agents} considered a \emph{deterministic} approach. A classifier was trained that then allowed a \emph{simulated agent} to deterministically decide the attractiveness of a result summary, for example.}
