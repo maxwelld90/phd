@@ -146,7 +146,7 @@
 \newcommand\hulacellthree{\leavevmode\cellcolor{hula3}\color{hula4}}
 
 \newcommand\hulacell{\leavevmode\cellcolor{hula}\color{white}}
-\newcommand\cell{\leavevmode\cellcolor{dmax_cellcolour}\color{dmax_darkblue}}
+\newcommand\cell{\leavevmode\cellcolor{dmax_cellcolour}}
 \newcommand\lredcell{\leavevmode\cellcolor{dmax_lightred}\color{dmax_darkblue}}
 \newcommand\cellemph{\leavevmode\cellcolor{dmax_red}\color{white}}
 

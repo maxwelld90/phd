@@ -289,6 +289,7 @@ For the diversity re-ranking to work in this scenario, the algorithm must be awa
 Without such a ground truth based approach, ensuring that~\gls{acr:trec} relevant documents would bubble up would have been difficult to achieve. Given the effects of document pooling as part of how the~\gls{acr:trec} QRELs were created (refer to Section~\ref{sec:ir_background:paradigms:trec}), it is highly likely that many other documents exist within the corpus that could be considered to be useful to a given topic, but were not assessed.
 
 \blueboxheader{Avoiding Perfect Results}
+\todo{Does this section need to be dropped or rephrased?}
 As previously discussed, one major pitfall of this approach is that the diversification algorithm would have become \emph{too perfect.} With access to the ground truths, it would subsequently proceed to assign a higher rank to documents that were~\gls{acr:trec} assessed, leading to every document in the top $k$ containing new entities. To make this more of a challenge for subjects, we also incorporated within our aspectual data documents that were considered to be non-relevant by~\gls{acr:trec} assessors (i.e. a~\gls{acr:trec} assessment of $0$). This led to including an additional $2,663$ document that would be included within the diversity re-ranking, but were not relevant. For each of the five topics we consider in this thesis, the number of non-relevant documents from the~\gls{acr:trec} QRELs over each topic were:
 
 \begin{itemize}
@@ -607,16 +608,16 @@ Compared to out expectations in Figure~\ref{fig:ift_theory} on page~\pageref{fig
     \label{fig:ift_empirical}
 \end{figure}
 
-To do so, we first fit a logarithmic function to each of the gain curves given time, such that: $gain = a \cdot b log(time)$. Table~\ref{tbl:aspects_ift_fitting} presents the parameters and correlation co-efficients for fit ($r^2$) for each of the four experimental conditions. We could then calculate how many documents a subjects examined by drawing the tangent line to the estimated gain functions from the origin. This resulted in the predicted number of documents examined, which we see are in line with the actual number of documents examined. With respect to plot \emph{(b)}, we see that for diversified system \blueboxbold{D}, the theory, given their performance, suggests that subjects should examine more documents per query under the aspectual task \blueboxbold{AS} than when undertaking the ad-hoc task \blueboxbold{AD} (i.e. $4.98$ vs. $3.68$ for \blueboxbold{AS} and \blueboxbold{AD}, respectively). We observed that subjects examined $3.48$ and $3.02$ documents per query -- which follows a similar trend, but not to the same magnitude. Thus, this revises our expectations regarding how people would search differently between these tasks.
+To do so, we first fit a logarithmic function to each of the gain curves given time, such that: $gain = b \cdot log(time) - a$, as used by~\cite{athukorala2014ift}. Table~\ref{tbl:aspects_ift_fitting} presents the parameters and correlation co-efficients for fit ($r^2$) for each of the four experimental conditions. We could then calculate how many documents a subjects examined by drawing the tangent line to the estimated gain functions from the origin. This resulted in the predicted number of documents examined, which we see are in line with the actual number of documents examined. With respect to plot \emph{(b)}, we see that for diversified system \blueboxbold{D}, the theory, given their performance, suggests that subjects should examine more documents per query under the aspectual task \blueboxbold{AS} than when undertaking the ad-hoc task \blueboxbold{AD} (i.e. $4.98$ vs. $3.68$ for \blueboxbold{AS} and \blueboxbold{AD}, respectively). We observed that subjects examined $3.48$ and $3.02$ documents per query -- which follows a similar trend, but not to the same magnitude. Thus, this revises our expectations regarding how people would search differently between these tasks.
 
 \begin{table}[t!]
-    \caption[\gls{acr:ift} fitting parameters]{Fitting parameters for the gain curves illustrated in Figure~\ref{fig:ift_empirical}, over each of the four experimental conditions trialled. Also included are the estimations from the model of the predicted number of documents that subjects would examine, and the actual number from the empirical data.}
+    \caption[\gls{acr:ift} fitting parameters]{Fitting parameters for the gain curves illustrated in Figure~\ref{fig:ift_empirical}, over each of the four experimental conditions trialled. Also included are the estimations from the model of the predicted number of documents that subjects would examine, and the actual number from the empirical data.\vspace*{-3mm}}
     \label{tbl:aspects_ift_fitting}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
-    \begin{tabulary}{\textwidth}{L{3.2cm}@{\CS}D{2.08cm}@{\CS}D{2.08cm}@{\CS}D{2.08cm}@{\CS}D{2.08cm}@{\CS}D{2.08cm}@{\CS}}
+    \begin{tabulary}{\textwidth}{L{2.9cm}@{\CS}D{2.08cm}@{\CS}D{2.08cm}@{\CS}D{2.08cm}@{\CSDOUBLE}D{2.08cm}@{\CS}D{2.08cm}@{\CS}}
         
-        \RS & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\textbf{Model Fitting Parameters}} & \multicolumn{2}{@{\hskip 0pt}c@{\CS}}{\textbf{Predictions}} \\
+        & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\textbf{Model Fitting Parameters}} & \multicolumn{2}{@{\hskip 0pt}c@{\CS}}{\textbf{Predictions}} \\
         
         \RS & \lbluecell\textbf{a} & \lbluecell\textbf{b} & \lbluecell\textbf{r\textsuperscript{2}} & \lbluecell\textbf{Pred. D.} & \lbluecell\textbf{Actual D.} \\
         

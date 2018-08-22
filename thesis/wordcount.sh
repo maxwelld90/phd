@@ -1,1 +1,1 @@
-texcount chapters/*/*.tex
+texcount chapters/p1-intro/introduction.tex chapters/p1-intro/ir.tex chapters/p1-intro/stopping.tex chapters/p2-modelling/csm.tex chapters/p2-modelling/strategies.tex chapters/p2-modelling/methodology.tex chapters/p3-contexts/snippets.tex chapters/p3-contexts/diversity.tex chapters/p3-contexts/serp_level.tex chapters/p4-conclusions/conclusions.tex

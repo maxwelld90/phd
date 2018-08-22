@@ -5,15 +5,18 @@
 In Part~\ref{part:context}, we will be exploring how a stopping behaviours vary under different search contexts. In this chapter, we provide an overview of the \emph{general methodology} that we deploy in subsequent contributory chapters of this thesis. The methodology is divided into six main components that are listed below.
 
 \begin{itemize}
-    \item{\blueboxbold{Context, Data, Tasks and Retrieval System} This involves the search context, document corpus, topics, tasks and retrieval system used throughout all empirical work in this thesis.}
+    \item{\blueboxbold{Context, Data, Tasks and Retrieval System} This involves the search context, document corpus, topics, tasks and retrieval system used throughout this thesis.}
     \item{\blueboxbold{User Studies} We discuss the general methodology behind two user studies designed to examine how different factors affect stopping behaviours.}
     \item{\blueboxbold{Interaction and Performance Data} We discuss how we extracted key interaction data -- and from these, performance measures.}
-    \item{\blueboxbold{Simulations of Interaction} Using the aforementioned interaction data, we outline the methodology behind simulations of interaction that attempt to replicate the user studies.}
+    \item{\blueboxbold{Simulations of Interaction} Using the aforementioned interaction data, we outline the methodology of simulations of interaction designed to replicate the user studies.}
     \item{\blueboxbold{Examining Performance} We evaluate the performance of simulated searchers, allowing us to examine what stopping strategies work best under different search contexts.}
     \item{\blueboxbold{Comparing Searchers} Finally, we compare the performance of real-world searchers against simulated counterparts, determining what configurations offer the best approximations to real-world behaviours.}
 \end{itemize}
 
-We now discuss each of these different components in depth, highlighting the key decisions that we have made, and discuss supporting literature for our choices. We begin first with a discussion of the retrieval system, document corpus and topics used throughout our remaining contributory chapters.
+We now discuss each of these different components in depth.
+%We begin first with a discussion of the retrieval system, document corpus and topics used throughout our remaining contributory chapters.
+
+%We now discuss each of these different components in depth, highlighting the key decisions that we have made, and discuss supporting literature for our choices. We begin first with a discussion of the retrieval system, document corpus and topics used throughout our remaining contributory chapters.
 
 \section{Context, Data, Tasks and Retrieval System}\label{sec:methodology:collection}
 The context for all experiments reported in this thesis is \emph{news search.} As we discuss in this section, we employ an established corpus of news articles and associated topics, with queries issued against the retrieval system described in Section~\ref{sec:methodology:collection:system}.
@@ -37,16 +40,16 @@ The AQUAINT corpus was then indexed using the \emph{Whoosh~\gls{acr:ir} Toolkit.
 
 From this process, an index was produced weighing in at $3.8$GB. The index contained a total of $959,678$ indexed documents. The Whoosh~\gls{acr:ir} toolkit was once again used to issue queries against the index. All ranked results for queries were computed with BM25, where $\beta=0.75$ (refer to Section~\ref{sec:ir_background:basics:models:probabilistic}). Terms in all issued queries were implicitly \texttt{AND}ed together to restrict the set of retrieved documents to those that only contained all of the query terms.
 
-\subsection{Topics}\label{sec:methodology:collection:topics}
-Five topics were also selected from the 50 provided in the \emph{TREC 2005 Robust Track,} as outlined by~\cite{voorhees2006trec_robust}. These topics were selected based upon evidence from a previous user study (of similar nature) conducted by~\cite{kelly2009user_study}. Evidence showed that the topics offered similar levels of difficulty. The five topics, along with a short description of what constitutes a relevant document, are listed below. These summaries are derived from the TREC topic descriptions that are provided as part of the~\gls{acr:trec} 2005 Robust Track. Figure~\ref{fig:topics} illustrates three examples of topic descriptions.
-
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch4-topics.pdf}}
-    \caption[Examples of TREC Topics]{Three examples of \emph{TREC topic descriptions}. Topics are extracted from the \emph{TREC 2005 Robust Track,} as outlined by~\cite{voorhees2006trec_robust}. Descriptions provide an explanation as to what constitutes a relevant (and often non-relevant) document.}
+    \caption[TREC topic titles and descriptions]{The titles and descriptions of the five~\gls{acr:trec} topics used. Topics are extracted from the \emph{TREC 2005 Robust Track,} as outlined by~\cite{voorhees2006trec_robust}. Descriptions provide an explanation as to what constitutes a relevant (and often non-relevant) document.}
     \label{fig:topics}
 \end{figure}
+
+\subsection{Topics}\label{sec:methodology:collection:topics}
+Five topics were also selected from the 50 provided in the \emph{TREC 2005 Robust Track,} as outlined by~\cite{voorhees2006trec_robust}. These topics were selected based upon evidence from a previous user study (of similar nature) conducted by~\cite{kelly2009user_study}. Evidence showed that the topics offered similar levels of difficulty. The five topics, along with a short description of what constitutes a relevant document, are listed below. These summaries are derived from the TREC topic descriptions that are provided as part of the~\gls{acr:trec} 2005 Robust Track. Figure~\ref{fig:topics} illustrates the five topics (along with the descriptions) as used in the user studies we report. The remaining 45 topic descriptions are not provided here.
 
 \begin{itemize}
     
@@ -65,13 +68,14 @@ Five topics were also selected from the 50 provided in the \emph{TREC 2005 Robus
 For all user studies reported in this thesis, we selected topic \blueboxbold{367} as a \emph{practice topic,} permitting the participating subjects to familiarise themselves with the experimental system used. As such, we do not report any results from interactions that took place with this topic. In the next section, we outline the different search tasks that were undertaken by user study subjects while using these topics.
 
 \section{User Study Methodology}\label{sec:methodology:user}
-Using the aforementioned corpus, retrieval system and topics, we now move onto a discussion of the common methodology employed across two user studies. These are detailed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. While intricate details of each study's methodology do indeed vary, these are nevertheless common components that we discuss in this section. As a reminder, the two studies examine how a searcher's behaviours, performance perceived user experience varies when:
+Using the aforementioned corpus, retrieval system and topics, we now move onto a discussion of the common methodology employed across two user studies. These are detailed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. While intricate details of each study's methodology do indeed vary, these are nevertheless common components that we discuss in this section. As a reminder, the two studies examine:
 
 \begin{itemize}
     \item{the length (and thus quality) of snippets presented in result summaries are varied (Chapter~\ref{chap:snippets}, conducted between July and August, 2016); and}
-    
+
     \item{the overall search goal (time constraints vs. relevancy accruement) and task goal (ad-hoc vs. diversified results) are changed (Chapter~\ref{chap:diversity}, conducted in January, 2018).}
 \end{itemize}
+\vspace*{-4mm}
 
 Specifically, the methodology used for these studies allowed us to determine how the stopping behaviour of a searcher varies when these conditions are varied. We discuss the specific interfaces and conditions that we trialled in subsequent chapters of this thesis.
 
@@ -480,28 +484,28 @@ To compute probabilities concerning~\gls{acr:trec} relevance only, $P(C|R)$ and 
 \blueboxheader{Monte-Carlo Simulations}
 The stochastic approach to modelling interactions provides a simple means of operationalising the components of the simulation that attempt to judge the attractiveness and relevancy of result summaries and documents, respectively.\footnote{A stochastic approach is not the only way the model such a process. For example,~\cite{maxwell2016agents} considered a \emph{deterministic} approach. A classifier was trained that then allowed a \emph{simulated agent} to deterministically decide the attractiveness of a result summary, for example.}
 
-However, such an approach is not without limitation. By their vary nature, a stochastic simulation based upon random probabilities will require a large number of different trials to be executed from which an \emph{average} can be computed. Each trial will potentially result in a different outcome, as illustrated below with an example of determining the relevancy of a~\gls{acr:trec} relevant document, with $P(C|R) = 0.5$.
+However, such an approach is not without limitation. By their vary nature, a stochastic simulation based upon random probabilities will require a large number of different trials to be executed from which an \emph{average} can be computed. Each trial will potentially result in a different outcome, as illustrated in Figure~\ref{fig:multiple_runs}. With a probability of clicking document \texttt{APW20000511.0185} set to $0.6\overline{6}$, there is a $66.6\overline{6}\%$ chance that the document would be clicked in each run, resulting in different outcomes across trials.
 
 \begin{figure}[t!]
     \centering
     \vspace{4mm}
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch6-multiple_runs.pdf}}
-    \caption[The problem of stochastic judgements]{An example of the same~\gls{acr:trec} relevant document being judged differently across multiple trials. As discussed in Section~\ref{sec:method:simulation:grounding:judgements}, this can have a negative effect upon simulation runs, yielding dubious results.}
+    \caption[The problem of stochastic judgements]{An example of the same~\gls{acr:trec} relevant document being judged differently across multiple trials. This can have a negative effect upon simulation runs, yielding dubious results.}
     \label{fig:multiple_runs}
 \end{figure}
 
 Different outcomes can subsequently lead to a huge variance between different trials, which in turn leads to a requirement of running a larger number of trials, or \emph{Monte-Carlo style simulations}~\citep{benov2016manhattan}. In turn, this leads to a huge increase in the amount of time required to execute all simulations, as well as the computational power required.
 
 \begin{table}[t!]
-    \caption[Example of re-rolled judgements]{A visual example of how the use of pre-rolled judgements (right) performs when compared without (left). The top five rankings (from D\textsubscript{1} to D\textsubscript{5}) across four examples are shown. On the left are two simulated searcher configurations that do not use pre-rolled judgements. On the right, the same configurations are shown with pre-rolled judgements. Notice that for the examples with pre-rolled judgements, the same judgements are provided across configurations. On the left, this is not the case – indeed, this phenomenon can have an undue influence upon the behaviour of a simulated searcher, such as affecting their stopping behaviour. This is illustrated below, with the stopping depth for \dualbluebox{SS2}{@2} being affected (where stopping depths are highlighted in red).}
+    \caption[Example of re-rolled judgements]{A visual example of how the use of pre-rolled judgements (right) performs when compared without (left). The top five rankings (from \emph{D\textsubscript{1}} to \emph{D\textsubscript{5}}) across four examples are shown. On the left are two simulated searcher configurations that do not use pre-rolled judgements. On the right, the same configurations are shown with pre-rolled judgements. Notice that for the examples with pre-rolled judgements, the same judgements are provided across configurations. On the left, this is not the case – indeed, this phenomenon can have an undue influence upon the behaviour of a simulated searcher, such as affecting their stopping behaviour. This is illustrated below, with the stopping depth for \dualbluebox{SS2}{@2} being affected (where stopping depths are highlighted in red).}
     \label{tbl:precomputed_judgements}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
     \vspace*{-2mm}
     \begin{tabulary}{\textwidth}{D{1.52cm}@{\CS}D{1.52cm}@{\CS}D{1.52cm}@{\CS}D{1.52cm}@{\CSDOUBLE}D{1.52cm}@{\CS}D{1.52cm}@{\CS}D{1.52cm}@{\CS}D{1.52cm}}
     
-    \RS \multicolumn{4}{@{\hskip 6pt}c@{\CSDOUBLE}}{\textbf{Without pre-rolled judgements (Unfair)}} & \multicolumn{4}{@{\hskip 0pt}c}{\textbf{With pre-rolled judgements (Fair)}}\\
+    \RS \multicolumn{4}{@{\hskip 6pt}c@{\CSDOUBLE}}{\textbf{Without pre-rolled (Non-Comparable)}} & \multicolumn{4}{@{\hskip 0pt}c}{\textbf{With pre-rolled (Comparable)}}\\
     
     \RS \multicolumn{2}{@{\hskip 6pt}c@{\CS}}{\lbluecell \textbf{SS1@5}} & \multicolumn{2}{@{\hskip 0pt}c@{\CSDOUBLE}}{\lbluecell \textbf{SS2@2}} & \multicolumn{2}{@{\hskip 0pt}c@{\CS}}{\lbluecell \textbf{SS1@5}} & \multicolumn{2}{@{\hskip 0pt}c@{\hskip 6pt}}{\lbluecell \textbf{SS2@2}}\\
     
@@ -516,7 +520,7 @@ Different outcomes can subsequently lead to a huge variance between different tr
 \end{table}
 
 \blueboxheader{Pre-Rolled Judgements}
-In Figure~\ref{fig:multiple_runs}, if the same document is judged differently between individual trials, then comparisons between different simulated configurations becomes fundamentally unfair. This is demonstrated in the left hand side of Table~\ref{tbl:precomputed_judgements}. With a given probability, a result summary can be judged to be attractive or not ($P(C)$). With proper controls, these judgements will vary across trials, meaning that in the table above, a comparison between configuration \dualbluebox{SS1}{@5} and \dualbluebox{SS2}{@2} is unfair (refer to Section~\ref{sec:method:simulation:grounding:stopping} for more information on these configurations), because they differ. As the judgements change, this unfairly changes the behaviour of the simulated searcher across the configurations.
+In Figure~\ref{fig:multiple_runs}, if the same document is judged differently between individual trials, then results from two different simulated searcher configurations are non-comparable. This is demonstrated in the left hand side of Table~\ref{tbl:precomputed_judgements}. With a given probability, a result summary can be judged to be attractive or not ($P(C)$). Without proper controls, these judgements will vary across trials, meaning that in Table~\ref{tbl:precomputed_judgements}, \dualbluebox{SS1}{@5} and \dualbluebox{SS2}{@2} are non-comparable (refer to Section~\ref{sec:method:simulation:grounding:stopping} for more information on these configurations) because the judgements for the same ranked list of results differ. As these judgements change, this has influences the behaviour of the simulated searcher across the configurations.
 
 In order to address this issue and permit for fair comparisons across simulated searcher configurations, and to allow for reproducible results, we used a series of \emph{pre-rolled} judgements that determined the attractiveness or relevancy of result summaries and documents respectively \emph{a priori.} For each document within the AQUAINT collection, we pre-computed outcomes for each individual document, storing them in \emph{action judgement files.} One related to the action of clicking on result summaries (i.e. $P(C)$), with the other related to saving documents (i.e. $P(S)$). These judgement files were then used by the summary and document decision maker component. All this component had to do was then perform a simple lookup for the corresponding document judgement for a given trial.
 
@@ -548,7 +552,7 @@ Below, we begin our discussion of each of the different stopping strategies, out
     \item{\blueboxbold{SS2-NT} and \blueboxbold{SS3-NC} The same range of values were used for threshold values $x_2$ and $x_3$. These stopping strategies focused upon a searcher's tolerance to non-relevance, as discussed in Section~\ref{sec:strategies:frus_disg:frustration}.}
 \end{itemize}
 
-Next, we enumerate the stopping strategy considering the satisfaction, or \emph{satiation}~\citep{simon1955satiation} of a searcher.
+Next, we enumerate the stopping strategy considering the \emph{satiation}~\citep{simon1955satiation} of a searcher.
 
 \begin{itemize}
     \item{\blueboxbold{SS4-SAT} Concerning the number of documents that a searcher should save before being satisfied, we examined a range of values for $x_4$, from $1$ to $10$ in steps of $1$.}
@@ -588,7 +592,7 @@ Next, we consider the time-based stopping strategies as outlined in Section~\ref
 
 The parameter threshold values for $x_9$ and $x_{10}$ were grounded using interaction data derived from the user study discussed in Chapter~\ref{chap:snippets}. For $x_9$, the mean time spent interacting on a~\gls{acr:serp} and its documents was computed at approximately $90$ seconds -- a $60$ second decrease and increase were selected for the lower and upper bounds respectively. Likewise, a relevant document was on average identified approximately every $30$ seconds. As such, this provides motivation behind selecting the range of values chosen for $x_{10}$.
 
-The second combination rule, based upon the combination heuristic proposed by~\cite{mcnair1982gut_mvt}, considers that a searcher has some notion as to whether a given~\gls{acr:serp} is of a high or low scent. Depending upon the scent observed, a different stopping strategy will be employed.
+The second combination rule, based upon the combination heuristic proposed by~\cite{mcnair1982gut_mvt}, considers that a searcher decides whether a given~\gls{acr:serp} is of a high or low scent. Depending upon the scent observed, a different stopping strategy will be employed.
 
 \begin{itemize}
     \item{\blueboxbold{SS11-COMB} For a high scented~\gls{acr:serp}, a searcher will employ the satisfaction stopping heuristic, \blueboxbold{SS4-SAT}. The give-up time-based strategy \blueboxbold{SS10-RELTIME} is employed if the scent is low. Parameter threshold values are identical to those defined for $x_4$ and $x_{10}$ above.}
