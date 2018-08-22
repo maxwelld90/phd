@@ -461,17 +461,17 @@ These are considered separately as the action of requesting a document from clic
     \item{the probability that a document saved is~\gls{acr:trec} relevant \blueboxbold{P(S|R)} or not \blueboxbold{P(S|N)}.}
 \end{itemize}
 
-Taking these explanations, we could then take the interaction logs from the two user studies, split the interactions by the interface or condition that probabilities were to be derived for, and summate different measures -- as shown by the equation for calculating $P(C)$
+Taking these explanations, we could then take the interaction logs from the two user studies, split the interactions by the interface or condition that probabilities were to be derived for, and summate different measures -- as shown by the equation for calculating $P(C)$, where
 
-\begin{equation*}
-    P(C) = \frac{|clicked_{Rel}| + |clicked_{\neg Rel}|}{|depth_{Rel}| + |depth_{\neg Rel}|}
-\end{equation*}
+\begin{equation}
+    P(C) = \frac{|clicked_{Rel}| + |clicked_{\neg Rel}|}{depth}
+\end{equation}
 
-and $P(S)$
+and $P(S)$, where
 
-\begin{equation*}
-    P(S) = \frac{|saved_{Rel}| + | saved_{\neg Rel} |}{|depth_{Rel}| + |depth_{\neg Rel}|}.
-\end{equation*}
+\begin{equation}
+    P(S) = \frac{|saved_{Rel}| + | saved_{\neg Rel} |}{depth}.
+\end{equation}
 
 In the above equations, $Rel$ denotes the count for~\gls{acr:trec} relevant items, with $\neg Rel$ representing items that were not~\gls{acr:trec} relevant. Finally, $|clicked|$ represents the number of result summaries that were clicked (deemed attractive enough to examine further), $|depth|$ denotes the greatest depth at which searchers clicked on a result summary, with $|saved|$ denoting the number of documents that were identified as relevant, and subsequently \emph{saved.}
 

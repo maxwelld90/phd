@@ -475,6 +475,102 @@ Details for what constitutes each individual interaction cost can be found, as p
 
 \subsubsection{Performance}
 
+\begin{table}[t!]
+    \caption[Query performance]{Query performance}
+    \label{tbl:ch7_sim_queryperf}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{3.67cm}@{\CS}D{3.67cm}@{\CS}D{3.67cm}@{\CS}D{3.67cm}@{\CS}}
+        \RS & \lbluecell\textbf{QS1} & \lbluecell\textbf{QS13} & \lbluecell\textbf{QS3} \\
+        \RS\lbluecell\textbf{P@1} & \cell x.xx & \cell x.xx & \cell x.xx \\
+        \RS\lbluecell\textbf{P@5} & \cell x.xx & \cell x.xx & \cell x.xx \\
+        \RS\lbluecell\textbf{P@10} & \cell x.xx & \cell x.xx & \cell x.xx \\
+        \RS\lbluecell\textbf{P@20} & \cell x.xx & \cell x.xx & \cell x.xx \\
+    \end{tabulary}
+    \end{center}
+\end{table}
+
+
+\begin{table}[t!]
+    \caption[Maximum CG from performance runs]{Results from the simulated what-if performance runs, showing the highest levels of~\gls{acr:cg} attained for each result summary level stopping strategy trialled. \emph{T} denotes the parameter threshold(s), with \emph{DQ} denoting the depth per query at which this occurred. These results are presented across each experimental interface. For each interface, the stopping strategy which attained the highest level of~\gls{acr:cg} is highlighted.}
+    \label{tbl:ch7_sim_perf_t0}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{L{1.1cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CSDOUBLE}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CSDOUBLE}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CSDOUBLE}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CS}}
+            
+            \RS & \multicolumn{3}{@{\hskip 0pt}c@{\CSDOUBLE}}{\dbluecell\small\textbf{T0}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSDOUBLE}}{\dbluecell\small\textbf{T1}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSDOUBLE}}{\dbluecell\small\textbf{T2}} & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\dbluecell\small\textbf{T4}}\\
+            
+            \RS & \lbluecell\small\textbf{T} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{T} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{T} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{T} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} \\
+            
+            \RS\lbluecell\small\textbf{SS1} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+            \RS\lbluecell\small\textbf{SS2} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+            \RS\lbluecell\small\textbf{SS3} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+            \RS\lbluecell\small\textbf{SS4} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+            \RS\lbluecell\small\textbf{SS5} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+            \RS\lbluecell\small\textbf{SS6} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+            \RS\lbluecell\small\textbf{SS7} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+            \RS\lbluecell\small\textbf{SS8} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+            \RS\lbluecell\small\textbf{SS9} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+            \RS\lbluecell\small\textbf{SS10} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+            \RS\lbluecell\small\textbf{SS11} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+            \RS\lbluecell\small\textbf{SS12} & \cell \small \hspace*{-1mm}xx.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx & \cell \small x.xx \\
+        \end{tabulary}
+        \end{center}
+    \end{table}
+
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch7-perf_plots_t0.pdf}}
+    \caption[Blah]{Performance plots, T0}
+    \label{fig:ch7_sim_perf_plots_t0}
+\end{figure}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch7-perf_plots_t0.pdf}}
+    \caption[Blah]{Performance plots, T1}
+    \label{fig:ch7_sim_perf_plots_t1}
+\end{figure}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch7-perf_plots_t0.pdf}}
+    \caption[Blah]{Performance plots, T2}
+    \label{fig:ch7_sim_perf_plots_t2}
+\end{figure}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch7-perf_plots_t0.pdf}}
+    \caption[Blah]{Performance plots, T4}
+    \label{fig:ch7_sim_perf_plots_t4}
+\end{figure}
+
+\begin{itemize}
+    
+    \item{First of all, how does the querying strategy perform? Take queries from all three strategies (QS1, QS3, QS13), and show that there's a sufficient variance between them. Show that QS1 produces poor queries on average, and QS3 produces better queries on average. Report the mean P@10 over a bunch of queries issued.}
+    
+    \item{PERFORMANCE}
+    
+    \item{Produce a grid of plots, 2x5 or something, that has one stopping strategy per plot. This is because some stopping strategies have two parameters, so you need to show what's going on as you vary the parameters. This needs to be repeated for each of the four interfaces. So four pages of plots?}
+    
+    \item{Each plot should have the upper bound, perfect decision maker line inserted, too.}
+    
+    \item{Produce a table, illustrating the highest levels of CG attained for each strategy, at what D/Q, and at what threshold(s). This must be done over each interface. This table, and the plots above, should be enough for one to be able to show what stopping strategies do best under what interface. Add some narrative, explaining each plot.}
+    
+    \item{COMPARISONS}
+    
+    \item{MSE plots, similar to above across each of the different stopping strategies and interfaces.}
+    
+    \item{Table(s) illustrating the lowest MSE for each SS. Include also the levels of CG that were attained by the searchers. Perhaps bring in the actual RW values, too, as per ECIR 2018.}
+    
+\end{itemize}
+
 \subsubsection{Comparisons}
 
 \subsubsection{Discussion}
