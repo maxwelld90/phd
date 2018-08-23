@@ -617,7 +617,7 @@ To estimate the patience parameter, we assumed that the patience of a searcher c
     \vspace{-5mm}
 \end{figure}
 
-For each rank, we could then compute the ratio of clicks at each rank, across all queries, as demonstrated at step~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point2.pdf}}. This yielded a decreasing ratio as the depth increased -- demonstrating that searchers we less likely to click on results at greater depths. Finally, the equation $p^x + y$ was fit to the data, where $p$ is the patience parameter, yielding $p=0.9087$.
+For each rank, we could then compute the ratio of clicks at each rank, across all queries, as demonstrated at step~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point2.pdf}}. This yielded a decreasing ratio as the depth increased -- demonstrating that searchers we less likely to click on results at greater depths. Finally, $p(click@k) = p^k$ was fit to the data. This represents the probability of clicking on a result summary at rank $k$, with $p$ denoting the~\gls{acr:rbp} patience parameter. When fit, the yielded value was $p=0.9087$.
 
 Given the descriptions for each of the twelve stopping strategies, we conclude this section with a summary table. Table~\ref{tbl:stopping_thresholds} lists each of the stopping strategies, along with the different threshold parameter values that were trialled for each.
 
