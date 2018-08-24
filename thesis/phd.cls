@@ -63,6 +63,7 @@
 \usepackage{fontspec}
 \usepackage{keystroke}
 \usepackage[figuresright]{rotating}
+\usepackage{diagbox}
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
@@ -92,6 +93,8 @@
   \clearpage
   \ifodd\value{page}\hbox{}\thispagestyle{empty}\newpage\fi
 }
+
+\newcommand{\cellsplit}[2]{\parbox[t][][t]{1.0\linewidth}{\vspace*{-3.65mm}\diagbox[dir=SW,height=0.8em,outerrightsep=0pt,width=2.75em,linewidth=0pt,trim=l,innerleftsep=16pt,innerrightsep=16pt,linecolor=dmax_darkblue]{#1}{#2}}}
 
 % TOC depth settings -- as per submission guidelines.
 \setcounter{tocdepth}{3}
@@ -132,6 +135,7 @@
 % A load of special table definitions
 \newcommand\CS{\hskip 16pt}
 \newcommand\CSDOUBLE{\hskip 24pt}
+\newcommand\CSONEHALF{\hskip 20pt}
 \newcommand\RS{\addlinespace[4pt]}
 \newcommand\RSD{\addlinespace[12pt]}
 
