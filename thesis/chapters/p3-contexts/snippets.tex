@@ -558,12 +558,12 @@ what-if runs.
 
 \begin{table}[t!]
     \caption[Maximum CG from performance runs]{Results from the simulated what-if simulated performance runs, showing the highest levels of~\gls{acr:cg} attained for each result summary level stopping strategy trialled (grouped by their type). \emph{x\textsubscript{n}} denotes the parameter threshold(s), with \emph{DQ} denoting the depth per query at which the greatest~\gls{acr:cg} value was attained at. These results are presented across the four experimental interfaces. For each interface, the stopping strategy which attained the highest level of~\gls{acr:cg} is \darkbluebox{highlighted}. For the combination stopping strategies, two parameters are presented, with \emph{x\textsubscript{2}/x\textsubscript{4}} presented for \blueboxbold{SS5-COMB} and \emph{x\textsubscript{10}/x\textsubscript{4}} presented for \blueboxbold{SS11-COMB}.}
-    \label{tbl:ch7_sim_perf_t0}
+    \label{tbl:ch7_sim_perf}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
         \begin{tabulary}{\textwidth}{L{0.00cm}@{\CS}L{1cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CSONEHALF}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CSONEHALF}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CSONEHALF}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CS}}
             
-            \RS & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T0}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T1}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T2}} & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\dbluecell\small\textbf{T4}}\\
+            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T0}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T1}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T2}} & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\dbluecell\small\textbf{T4}}\\
             
             \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} \\
             
@@ -595,16 +595,20 @@ what-if runs.
         \end{center}
     \end{table}
 
-% \parbox[t][][t]{1.0\linewidth}{#1} \vspace{-2pt}
-
-% \diagbox[dir=SW,height=0.8em,outerrightsep=0pt,width=2.75em,linewidth=0pt,trim=l,innerleftsep=16pt,innerrightsep=16pt,linecolor=dmax_darkblue]{AA}{BB}
-
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch7-perf_plots.pdf}}
-    \caption[Performance plots across each stopping strategy and interface]{Plots showing the varying levels of performance, measured in~\gls{acr:cg}, over the mean depth per query. Each result summary stopping strategy is shown on an individual plot, with each of the four experimental interfaces shown within each plot.}
+    \caption[Performance plots across each stopping strategy and interface]{Plots showing the varying levels of performance, measured in~\gls{acr:cg}, over the mean depth per query. Each result summary stopping strategy is shown on an individual plot, with each of the four experimental interfaces shown within each plot. The depth per query reported on each \emph{x} axis is cut at 25 to allow for an easier comparison between different stopping strategies.}
     \label{fig:ch7_sim_perf_plots}
+\end{figure}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch7-perf_plots_combo.pdf}}
+    \caption[Performance over combination stopping strategies]{Plots illustrating performance over varying depths per query. Reported are performance values over combination strategies \blueboxbold{SS5-COMB} (left) and \blueboxbold{SS11-COMB} (right). With each line representing a value from \emph{x\textsubscript{4}} (refer to legend), each point on the lines represents performance and depth for a threshold value from \emph{x\textsubscript{2}} on the left, and \emph{x\textsubscript{10}} on the right. Little difference in performance is observed between variations of parameter combinations.}
+    \label{fig:ch7_sim_perf_plots_combo}
 \end{figure}
 
 \begin{itemize}
@@ -628,6 +632,72 @@ what-if runs.
 \end{itemize}
 
 \subsubsection{Comparisons}\label{sec:snippets:simulations:results:comparisons}
+
+\begin{table}[t!]
+    \caption[Lowest MSE values for comparisons runs]{Results from the simulated comparison runs, showing the \emph{lowest} MSE value reached over each result summary level stopping strategy trialled (grouped by their type). \emph{x\textsubscript{n}} denotes the parameter threshold(s) that the lowest MSE was reached with. Results are presented across the four experimental interfaces. For each interface, the stopping strategy that attained the lowest MSE is \darkbluebox{highlighted}. For the combination stopping strategies, two parameters are presented, with \emph{x\textsubscript{2}/x\textsubscript{4}} presented for \blueboxbold{SS5-COMB} and \emph{x\textsubscript{10}/x\textsubscript{4}} presented for \blueboxbold{SS11-COMB}.}
+    \label{tbl:ch7_sim_comp}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{L{0.00cm}@{\CS}L{2.9cm}@{\CS}D{1cm}@{\CS}D{1cm}@{\CSONEHALF}D{1cm}@{\CS}D{1cm}@{\CSONEHALF}D{1cm}@{\CS}D{1cm}@{\CSONEHALF}D{1cm}@{\CS}D{1cm}@{\CS}}
+            
+            & & \multicolumn{2}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T0}} & \multicolumn{2}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T1}} & \multicolumn{2}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T2}} & \multicolumn{2}{@{\hskip 0pt}c@{\CS}}{\dbluecell\small\textbf{T4}}\\
+            
+            \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{MSE} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{MSE} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{MSE} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{MSE} \\
+            
+            \RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-1mm}\small\textbf{FIX}}} & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} 21 & \cell \small \hspace*{-1.5mm} 208.13  & \cell \small \hspace*{-1mm} 18 & \cell \small \hspace*{-1.5mm} 228.04  & \dbluecell \small \hspace*{-1mm} 15 & \dbluecell \small \hspace*{-1.5mm} 185.92  & \cell \small \hspace*{-1mm} 18 & \cell \small \hspace*{-1.5mm} 208.51  \\
+            
+            \RS\RS\RS \multirow{2}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-3mm}\small\textbf{FRUS}}} & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} 18 & \cell \small \hspace*{-1.5mm} 207.51  & \cell \small \hspace*{-1mm} 15 & \cell \small \hspace*{-1.5mm} 230.04  & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1.5mm} 194.46  & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1.5mm} 216.17  \\
+            
+            \RS & \lbluecell\small\textbf{SS3-NC} & \cell \small \hspace*{-1mm} 8 & \cell \small \hspace*{-1.5mm} 228.57  & \cell \small \hspace*{-1mm} 6 & \cell \small \hspace*{-1.5mm} 251.75  & \cell \small \hspace*{-1mm} 5 & \cell \small \hspace*{-1.5mm} 218.82  & \cell \small \hspace*{-1mm} 5 & \cell \small \hspace*{-1.5mm} 232.69  \\
+            
+            \RS\RS\RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{SAT}}} & \lbluecell\small\textbf{SS4-SAT} & \cell \small \hspace*{-1mm} 3 & \cell \small \hspace*{-1.5mm} 210.60  & \cell \small \hspace*{-1mm} 4 & \cell \small \hspace*{-1.5mm} 225.31  & \cell \small \hspace*{-1mm} 4 & \cell \small \hspace*{-1.5mm} 188.15  & \cell \small \hspace*{-1mm} 3 & \cell \small \hspace*{-1.5mm} 209.24  \\
+            
+            \RS\RS\RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{COM}}} & \lbluecell\small\textbf{SS5-COMB} & \dbluecell \small \hspace*{-1mm} 21/4 & \dbluecell \small \hspace*{-1.5mm} 202.94  & \cell \small \hspace*{-1mm} 15/8 & \cell \small \hspace*{-1.5mm} 226.44  & \cell \small \hspace*{-1mm} 21/4 & \cell \small \hspace*{-1.5mm} 186.99  & \cell \small \hspace*{-1mm} 18/4 & \cell \small \hspace*{-1.5mm} 207.11  \\
+            
+            \RS\RS\RS \multirow{2}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{DIFF}}} & \lbluecell\small\textbf{SS6-DT} & \cell \small \hspace*{-1mm} 0.70 & \cell \small \hspace*{-1.5mm} 279.11  & \cell \small \hspace*{-1mm} 0.60 & \cell \small \hspace*{-1.5mm} 288.38  & \cell \small \hspace*{-1mm} 0.60 & \cell \small \hspace*{-1.5mm} 208.50  & \cell \small \hspace*{-1mm} 0.60 & \cell \small \hspace*{-1.5mm} 234.35  \\
+            
+            \RS & \lbluecell\small\textbf{SS7-DKL} & \cell \small \hspace*{-1mm} 5.00 & \cell \small \hspace*{-1.5mm} 309.90  & \cell \small \hspace*{-1mm} 5.50 & \cell \small \hspace*{-1.5mm} 323.86  & \cell \small \hspace*{-1mm} 4.50 & \cell \small \hspace*{-1.5mm} 212.65  & \cell \small \hspace*{-1mm} 4.00 & \cell \small \hspace*{-1.5mm} 250.90  \\
+            
+            \RS\RS\RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{IFT}}} & \lbluecell\small\textbf{SS8-IFT} & \cell \small \hspace*{-1.5mm} 0.004 & \cell \small \hspace*{-1.5mm} 269.69  & \cell \small \hspace*{-1.5mm} 0.004 & \cell \small \hspace*{-1.5mm} 257.60  & \cell \small \hspace*{-1.5mm} 0.006 & \cell \small \hspace*{-1.5mm} 219.03  & \cell \small \hspace*{-1.5mm} 0.006 & \cell \small \hspace*{-1.5mm} 251.29  \\
+            
+            \RS\RS\RS \multirow{2}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-2mm}\small\textbf{TIME}}} & \lbluecell\small\textbf{SS9-TIME} & \cell \small \hspace*{-1mm} 90 & \cell \small \hspace*{-1.5mm} 211.23  & \dbluecell \small \hspace*{-1mm} 120 & \dbluecell \small \hspace*{-1.5mm} 225.06  & \cell \small \hspace*{-1mm} 90 & \cell \small \hspace*{-1.5mm} 186.11  & \cell \small \hspace*{-1mm} 120 & \cell \small \hspace*{-1.5mm} 207.56  \\
+            
+            \RS & \lbluecell\small\textbf{SS10-RELTIME} & \cell \small \hspace*{-1mm} 30 & \cell \small \hspace*{-1.5mm} 215.72  & \cell \small \hspace*{-1mm} 30 & \cell \small \hspace*{-1.5mm} 254.91  & \cell \small \hspace*{-1mm} 30 & \cell \small \hspace*{-1.5mm} 194.53  & \dbluecell \small \hspace*{-1mm} 30 & \dbluecell \small \hspace*{-1.5mm} 202.44  \\
+            
+            \RS\RS\RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{COM}}} & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} 30/5 & \cell \small \hspace*{-1.5mm} 212.73  & \cell \small \hspace*{-1mm} 40/8 & \cell \small \hspace*{-1.5mm} 243.39  & \cell \small \hspace*{-1mm} 30/9 & \cell \small \hspace*{-1.5mm} 196.96  & \cell \small \hspace*{-1mm} 30/10 & \cell \small \hspace*{-1.5mm} 207.33  \\
+            
+            \RS\RS\RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{RBP}}} & \lbluecell\small\textbf{SS12-RBP} & \cell \small \hspace*{-1mm} 0.99 & \cell \small \hspace*{-1.5mm} 229.84  & \cell \small \hspace*{-1mm} 0.99 & \cell \small \hspace*{-1.5mm} 233.71  & \cell \small \hspace*{-1mm} 0.99 & \cell \small \hspace*{-1.5mm} 192.70  & \cell \small \hspace*{-1mm} 0.99 & \cell \small \hspace*{-1.5mm} 205.82  \\
+            
+        \end{tabulary}
+        \end{center}
+    \end{table}
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch7-comparison_plots.pdf}}
+    \caption[Comparison plots across each stopping strategy and interface]{MSE PLOTS}
+    \label{fig:ch7_sim_comparison_plots}
+\end{figure}
+
+\begin{table}[t!]
+    \caption[\gls{acr:cg} and depth per query values for comparison runs]{CG and d/q}
+    \label{tbl:ch7_sim_comp_cgdq}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{L{0.00cm}@{\CS}L{2.9cm}@{\CS}D{1cm}@{\CS}D{1cm}@{\CSONEHALF}D{1cm}@{\CS}D{1cm}@{\CSONEHALF}D{1cm}@{\CS}D{1cm}@{\CSONEHALF}D{1cm}@{\CS}D{1cm}@{\CS}}
+            
+            & & \multicolumn{2}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T0}} & \multicolumn{2}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T1}} & \multicolumn{2}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T2}} & \multicolumn{2}{@{\hskip 0pt}c@{\CS}}{\dbluecell\small\textbf{T4}}\\
+            
+            \RS & & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{DQ} \\
+            
+            \RS & \dbluecell\small\textbf{Real-World} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx \\
+            
+            \RS\RS\RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-1mm}\small\textbf{FIX}}} & \lbluecell\small\textbf{SS1} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx \\
+            
+        \end{tabulary}
+        \end{center}
+    \end{table}
 
 \subsubsection{Discussion}
 
