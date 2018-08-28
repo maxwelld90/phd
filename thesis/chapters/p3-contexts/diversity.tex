@@ -718,6 +718,66 @@ It should be noted that simulations of this kind -- attempting to simulate diffe
 
 \subsection{Results}\label{sec:diversity:simulated:results}
 
+
+\begin{table}[t!]
+    \caption[Performance of querying strategies \blueboxbold{QS1}, \blueboxbold{QS3} and \blueboxbold{QS13}]{Mean performance values ($\pm$ standard deviations) of all generated queries issued for performance runs. Included are \emph{P@k}, $\alpha$\emph{DCG@k} and \emph{AR@k} values, incorporating aspectual retrieval measures. Values are reported across both the non-diversified (\blueboxbold{ND}) and diversified (\blueboxbold{D}) systems. \todo{Note the increasing trend in performance across all measures as \blueboxbold{QS1} $\rightarrow$ \blueboxbold{QS3}.}}
+    \label{tbl:ch8_sim_queryperf}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{2.1cm}@{\CS}D{1.8cm}@{\CS}D{1.8cm}@{\CS}D{1.8cm}@{\CSONEHALF}D{1.8cm}@{\CS}D{1.8cm}@{\CS}D{1.8cm}@{\CS}}
+        
+        & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{ND}} & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\dbluecell\small\textbf{D}} \\
+        \RS & \lbluecell\textbf{QS1} & \lbluecell\textbf{QS13} & \lbluecell\textbf{QS3} & \lbluecell\textbf{QS1} & \lbluecell\textbf{QS13} & \lbluecell\textbf{QS3} \\
+        \RS\lbluecell\textbf{P@5} & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx \\
+        \RS\lbluecell\textbf{P@10} & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx \\
+        \RS\RS\RS\lbluecell\textbf{$\alpha$DCG@5} & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx \\
+        \RS\lbluecell\textbf{$\alpha$DCG@10} & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx \\
+        \RS\RS\RS\lbluecell\textbf{AR@5} & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx \\
+        \RS\lbluecell\textbf{AR@10} & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx & \cell\small x.xx $\pm$ x.xx \\
+    \end{tabulary}
+    \end{center}
+\end{table}
+
+
+\begin{table}[t!]
+    \caption[Maximum CG from performance runs]{Results from the simulated what-if simulated performance runs, showing the highest levels of~\gls{acr:cg} attained for each result summary level stopping strategy trialled (grouped by their type). \emph{x\textsubscript{n}} denotes the parameter threshold(s), with \emph{DQ} denoting the depth per query at which the greatest~\gls{acr:cg} value was attained at. These results are presented across the four experimental conditions. For each condition, the stopping strategy which attained the highest level of~\gls{acr:cg} is \darkbluebox{highlighted}. For the combination stopping strategies, two parameters are presented, with \emph{x\textsubscript{2}/x\textsubscript{4}} presented for \blueboxbold{SS5-COMB} and \emph{x\textsubscript{10}/x\textsubscript{4}} presented for \blueboxbold{SS11-COMB}.}
+    \label{tbl:ch8_sim_perf}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{L{0.00cm}@{\CS}L{1cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CSONEHALF}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CSONEHALF}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CSONEHALF}D{0.64cm}@{\CS}D{0.64cm}@{\CS}D{0.64cm}@{\CS}}
+            
+            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{D-AS}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{ND-AS}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{D-AD}} & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\dbluecell\small\textbf{ND-AD}}\\
+            
+            \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} \\
+            
+            \RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-1mm}\small\textbf{FIX}}} & \lbluecell\small\textbf{SS1} & \cell \small \hspace*{-1mm} 7.00 & \cell \small \hspace*{-1mm} 5.04 & \cell \hspace*{-1mm} \small 2.28 & \cell \small \hspace*{-1mm} 4.00 & \cell \small \hspace*{-1mm} 2.97 & \cell \hspace*{-1mm} \small 1.74 & \cell \small \hspace*{-1mm} 7.00 & \cell \small \hspace*{-1mm} 5.04 & \cell \hspace*{-1mm} \small 2.12 & \cell \small \hspace*{-1mm} 4.00 & \cell \small \hspace*{-1mm} 2.97 & \cell \hspace*{-1mm} \small 1.78 \\
+
+            \RS\RS\RS \multirow{2}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-3mm}\small\textbf{FRUS}}} & \lbluecell\small\textbf{SS2} & \cell \small \hspace*{-1mm} 5.00 & \cell \small \hspace*{-1mm} 4.28 & \cell \hspace*{-1mm} \small 2.34 & \cell \small \hspace*{-1mm} 7.00 & \cell \small \hspace*{-1mm} 5.81 & \cell \hspace*{-1mm} \small 1.78 & \cell \small \hspace*{-1mm} 5.00 & \cell \small \hspace*{-1mm} 4.26 & \cell \hspace*{-1mm} \small 2.16 & \cell \small \hspace*{-1mm} 18.00 & \cell \small \hspace*{-1mm} 12.01 & \cell \hspace*{-1mm} \small 1.76 \\
+
+            \RS & \lbluecell\small\textbf{SS3} & \cell \small \hspace*{-1mm} 8.00 & \cell \small \hspace*{-1mm} 10.08 & \cell \hspace*{-1mm} \small 2.08 & \cell \small \hspace*{-1mm} 4.00 & \cell \small \hspace*{-1mm} 5.12 & \cell \hspace*{-1mm} \small 2.00 & \cell \small \hspace*{-1mm} 9.00 & \cell \small \hspace*{-1mm} 10.73 & \cell \hspace*{-1mm} \small 2.08 & \cell \small \hspace*{-1mm} 4.00 & \cell \small \hspace*{-1mm} 5.07 & \cell \hspace*{-1mm} \small 1.96 \\
+
+            \RS\RS\RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{SAT}}} & \lbluecell\small\textbf{SS4} & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx \\
+            
+            \RS\RS\RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{COM}}} & \lbluecell\small\textbf{SS5} & \cell \small \hspace*{-1mm} 2.00 & \cell \small \hspace*{-1mm} 9.08 & \cell \hspace*{-1mm} \small 2.12 & \cell \small \hspace*{-1mm} 2.00 & \cell \small \hspace*{-1mm} 7.44 & \cell \hspace*{-1mm} \small 1.56 & \cell \small \hspace*{-1mm} 2.00 & \cell \small \hspace*{-1mm} 9.44 & \cell \hspace*{-1mm} \small 1.90 & \cell \small \hspace*{-1mm} 2.00 & \cell \small \hspace*{-1mm} 7.24 & \cell \hspace*{-1mm} \small 1.74 \\
+
+            \RS\RS\RS \multirow{2}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{DIFF}}} & \lbluecell\small\textbf{SS6} & \cell \small \hspace*{-1mm} 0.30 & \cell \small \hspace*{-1mm} 3.83 & \cell \hspace*{-1mm} \small 2.06 & \cell \small \hspace*{-1mm} 0.60 & \cell \small \hspace*{-1mm} 8.79 & \cell \hspace*{-1mm} \small 1.60 & \cell \small \hspace*{-1mm} 0.50 & \cell \small \hspace*{-1mm} 7.25 & \cell \hspace*{-1mm} \small 1.88 & \cell \small \hspace*{-1mm} 0.60 & \cell \small \hspace*{-1mm} 8.66 & \cell \hspace*{-1mm} \small 1.70 \\
+
+            \RS & \lbluecell\small\textbf{SS7} & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx \\
+
+            \RS\RS\RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{IFT}}} & \lbluecell\small\textbf{SS8} & \cell \small \hspace*{-1mm} 0.01 & \cell \small \hspace*{-1mm} 2.63 & \cell \hspace*{-1mm} \small 1.68 & \cell \small \hspace*{-1mm} 0.01 & \cell \small \hspace*{-1mm} 2.76 & \cell \hspace*{-1mm} \small 1.72 & \cell \small \hspace*{-1mm} 0.01 & \cell \small \hspace*{-1mm} 2.71 & \cell \hspace*{-1mm} \small 1.46 & \cell \small \hspace*{-1mm} 0.01 & \cell \small \hspace*{-1mm} 5.54 & \cell \hspace*{-1mm} \small 1.60 \\
+
+            \RS\RS\RS \multirow{2}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-2mm}\small\textbf{TIME}}} & \lbluecell\small\textbf{SS9} & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx \\
+
+            \RS & \lbluecell\small\textbf{SS10} & \cell \small \hspace*{-1mm} 20.00 & \cell \small \hspace*{-1mm} 8.61 & \cell \hspace*{-1mm} \small 2.18 & \cell \small \hspace*{-1mm} 30.00 & \cell \small \hspace*{-1mm} 11.37 & \cell \hspace*{-1mm} \small 1.44 & \cell \small \hspace*{-1mm} 20.00 & \cell \small \hspace*{-1mm} 8.39 & \cell \hspace*{-1mm} \small 2.04 & \cell \small \hspace*{-1mm} 30.00 & \cell \small \hspace*{-1mm} 11.06 & \cell \hspace*{-1mm} \small 1.68 \\
+            
+            \RS\RS\RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{COM}}} & \lbluecell\small\textbf{SS11} & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \small \hspace*{-1mm} x.xx & \cell \hspace*{-1mm} \small x.xx \\
+            
+            \RS\RS\RS \multirow{1}{*}{\hspace*{-2mm}\rotatebox{90}{\small\textbf{RBP}}} & \lbluecell\small\textbf{SS12} & \cell \small \hspace*{-1mm} 0.99 & \cell \small \hspace*{-1mm} 8.94 & \cell \hspace*{-1mm} \small 1.90 & \cell \small \hspace*{-1mm} 0.99 & \cell \small \hspace*{-1mm} 8.82 & \cell \hspace*{-1mm} \small 1.58 & \cell \small \hspace*{-1mm} 0.99 & \cell \small \hspace*{-1mm} 8.94 & \cell \hspace*{-1mm} \small 1.85 & \cell \small \hspace*{-1mm} 0.99 & \cell \small \hspace*{-1mm} 8.76 & \cell \hspace*{-1mm} \small 1.66 \\
+            
+        \end{tabulary}
+        \end{center}
+    \end{table}
+
 \subsection{Discussion}
 
 \section{Chapter Summary}
