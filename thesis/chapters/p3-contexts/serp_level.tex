@@ -2,7 +2,7 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[Modelling SERP Level Stopping Behaviours]{Modelling~\gls{acr:serp} Level\\Stopping Behaviours}\label{chap:serp}
-In Chapters~\ref{chap:snippets} and~\ref{chap:diversity}, we examined the effects of searcher behaviour and performance when experimental interfaces and conditions were varied. This was before proceeding to examine the grounded simulated behaviour and performance of searchers under different snippet level stopping strategies. With the aforementioned considered as the empirical strand of the work reported in this thesis, \darkblueboxbold{HL-RQ1}\footnote{\darkblueboxbold{HL-RQ1} is defined in Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs}.} poses the following overarching research question.
+In Chapters~\ref{chap:snippets} and~\ref{chap:diversity}, we examined the effects of searcher behaviour and performance when experimental interfaces and conditions were varied. This was before proceeding to examine the grounded simulated behaviour and performance of searchers under different result summary level stopping strategies. With the aforementioned considered as the empirical strand of the work reported in this thesis, \darkblueboxbold{HL-RQ1}\footnote{\darkblueboxbold{HL-RQ1} is defined in Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs}.} poses the following overarching research question.
 
 \begin{itemize}
     \item[]{\darkblueboxbold{HL-RQ1} How can we improve searcher models to incorporate different stopping decision points?}
@@ -42,7 +42,7 @@ In this section, we therefore outline:
 \begin{itemize}
     \item{the different~\gls{acr:serp} level stopping decision point strategies that were trialled, including the introduction of a new probability of examining a~\gls{acr:serp} (Section~\ref{sec:serp:method:serp_dp});}
     \item{a discussion of the different interaction probabilities and costs that were used for this study (Section~\ref{sec:serp:method:probscosts});}
-    \item{an enumeration of the different snippet level stopping strategies trialled for this study (Section~\ref{sec:serp:method:snippet}); and}
+    \item{an enumeration of the different result summary level stopping strategies trialled for this study (Section~\ref{sec:serp:method:snippet}); and}
     \item{a summary of the other components of the~\gls{acr:csm} that were instantiated in a different way as outlined in the general methodology (Section~\ref{sec:serp:method:other}).}
 \end{itemize}
 
@@ -91,7 +91,7 @@ For our simulations, we use different values of $v_{size}$ over the study interf
 We trialled three different implementations of the~\gls{acr:serp} level stopping decision point, providing us with the ability to determine the effect of incorporating it within the~\gls{acr:csm}. These are enumerated below, with an explanation of each. The first can be considered our simple baseline approach.
 
 \begin{itemize}
-    \item{\blueboxbold{Always Examine (Baseline)} With this approach, a searcher will \emph{always enter} the~\gls{acr:serp}, and examine at least one result summary -- the exact number would be determined by the snippet level stopping strategy. This is the current state-of-the-art, and we consider this as our baseline. Indeed, this strategy was used in the simulations reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.}
+    \item{\blueboxbold{Always Examine (Baseline)} With this approach, a searcher will \emph{always enter} the~\gls{acr:serp}, and examine at least one result summary -- the exact number would be determined by the result summary level stopping strategy. This is the current state-of-the-art, and we consider this as our baseline. Indeed, this strategy was used in the simulations reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.}
 \end{itemize}
 
 From here, the remaining two strategies begin to consider a simulated searcher's judgements regarding the perceived quality of a~\gls{acr:serp}, and thus begin to use the new stopping decision point to abandon a~\gls{acr:serp} before examining individual result summaries in detail.
@@ -110,7 +110,7 @@ From here, the remaining two strategies begin to consider a simulated searcher's
 By considering these different approaches to implementing the new~\gls{acr:serp} level stopping decision point, we can then clearly identify whether it can offer improved performance and approximations of actual searcher stopping behaviours. We also trialled each of the stochastic~\gls{acr:serp} level stopping decision components a total of 50 times, computing the average over the different trials. The reasons behind this are discussed in Section~\ref{sec:method:simulation:grounding:judgements} on page~\pageref{sec:method:simulation:grounding:judgements}.
 
 \subsection{Interfaces, Conditions, and Experimental Grounding}\label{sec:serp:method:probscosts}
-To determine whether the new~\gls{acr:serp} level stopping decision points offers improvements across a variety of different interfaces and conditions (and can therefore considered to be generalisable), we conducted a series of simulations across the eight interface and experimental conditions trialled in the two user studies, reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.
+To determine whether the new~\gls{acr:serp} level stopping decision points offers improvements across a variety of different interfaces and conditions (and can therefore considered to be generalisable), we conducted a series of simulations across the eight interfaces and experimental conditions trialled in the two user studies, reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.
 
 \begin{table}[t!]
     \caption[Experimental interfaces and conditions]{Experimental interfaces and conditions trialled in this chapter, based upon the work reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. In total, eight different experimental interfaces and conditioned were trialled, considering different result summary lengths, systems and tasks.}
@@ -174,36 +174,125 @@ From Chapter~\ref{chap:snippets}, the four different experimental interfaces -- 
     \end{center}
 \end{table}
 
-Table~\ref{tbl:serp_probs_costs} presents the probabilities of examining~\glsplural{acr:serp} yielding low ($P(E|LS)$) and high ($P(E|HS)$) scents. Values are computed as per the explanations provided in Section~\ref{sec:serp:method:serp_dp}. The table reports values across each of the eight different experimental interfaces and conditions trialled. In addition, values are reported for each interface and condition across the three different probability sets of \emph{average, savvy} and \emph{na\"{i}ve} searchers (as discussed in Section~\ref{sec:serp:method:serp_dp:implementations}). Also included within the table are the $v_{size}$ values used across each interface or condition, denoting the number of result summaries within a simulated viewport.
+Table~\ref{tbl:serp_probs_costs} presents the probabilities of examining~\glsplural{acr:serp} yielding low ($P(E|LS)$) and high ($P(E|HS)$) scents. Values are computed as per the explanations provided in Section~\ref{sec:serp:method:serp_dp}. The table reports values across each of the eight different experimental interfaces and conditions trialled. In addition, values are reported for each interface and condition across the three different probability sets of \emph{average, savvy} and \emph{na\"{i}ve} searchers (as discussed in Section~\ref{sec:serp:method:serp_dp:implementations}). Also included within the table are the $v_{size}$ values used across each interface or condition, denoting the number of result summaries visible within a simulated viewport.
 
 These values should be considered in tandem with the interaction costs and probabilities presented in Tables~\ref{tbl:snippets_simulation_probcosts} (presented on page~\ref{tbl:snippets_simulation_probcosts}) and~\ref{tbl:diversity_simulation_probcosts} (presented on page~\pageref{tbl:diversity_simulation_probcosts}) for other classical interaction probabilities (considering the probabilities of marking result summaries, $P(C|R)$ and $P(C|N)$ -- and saving documents, $P(S|R)$ and $P(S|N)$) and interaction costs (including the cost of: querying; examining a~\gls{acr:serp}; examining a result summary; examining a document; and saving a document) for the studies reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity} respectively. Table~\ref{tbl:serp_probs_costs} reports only the probabilities of examining a~\gls{acr:serp}.
 
-\subsection{Snippet Level Stopping Strategies}\label{sec:serp:method:snippet}
-Chapter~\ref{chap:strategies} presented thirteen different snippet level stopping strategies. To reduce the complexity of the experimentation reported in this chapter, we decided to reduce the number of snippet level stopping strategies that we considered. Doing so reduced the risk of potentially repeating the same results as shown before, while still demonstrating that when enabled, the~\gls{acr:serp} level stopping decision point yielded improved performance and closer approximations to actual searcher stopping behaviour over a range of configurations.
+\subsection{Result Summary Level Stopping Strategies}\label{sec:serp:method:snippet}
+Chapter~\ref{chap:strategies} presented twelve different result summary level stopping strategies. To reduce the complexity of the experimentation reported in this chapter, we decided to reduce the number strategies that we considered. Doing so reduced the risk of potentially repeating the same results as shown before, while still demonstrating that when enabled, the~\gls{acr:serp} level stopping decision point yielded improved performance and closer approximations to actual searcher stopping behaviour over a range of configurations.
 
-As such, we report over the following \todo{six} snippet level stopping strategies in this chapter. These were selected as they offered good performance and approximations of actual searcher stopping behaviours in results presented in previous chapters.
+As such, we report on the following result summary level stopping strategies in this chapter. These were selected as they offered good performance and approximations of actual searcher stopping behaviours in results presented in previous chapters. For our performance runs, we employed the use of:
+
+\begin{itemize}
+    \item{\blueboxbold{SS1};}
+    \item{\blueboxbold{SS2}; and}
+    \item{\blueboxbold{SS3}.}
+\end{itemize}
+
+For the comparison runs, where different stopping strategies offered good approximations of actual searcher behaviour, we employed the following different stopping strategies.
 
 \begin{itemize}
     \item{\blueboxbold{SS1}}
     \item{\blueboxbold{SS2}}
     \item{\blueboxbold{SS3}}
-    \item{\blueboxbold{SS4}}
-    \item{\blueboxbold{SS5}}
-    \item{\blueboxbold{SS6}}
 \end{itemize}
 
 Note that these strategies were instantiated with the same $x_n$ values as reported in the general methodology in Section~\ref{sec:method:simulation:grounding:stopping} on page~\pageref{sec:method:simulation:grounding:stopping}.
 
 \subsection{Remaining CSM Components}\label{sec:serp:method:other}
-We considered only the query generation strategy \blueboxbold{QS13}, as outlined in Section~\ref{sec:method:simulation:grounding:querying} (page~\pageref{sec:method:simulation:grounding:querying}) for use in the performance runs. This helped to simplify and reduce the number of experimental runs required. For comparison runs, queries issued by real-world subjects under each of the eight experimental interfaces and conditions were again \emph{replayed}, as discussed in Section~\ref{sec:method:simulation:runs:comparison} on page~\pageref{sec:method:simulation:runs:comparison}.
+Remaining~\gls{acr:csm} components were left as presented in Section~\ref{sec:method:simulation:runs:performance}. For comparison runs, queries issued by real-world subjects under each of the eight experimental interfaces and conditions were again \emph{replayed}, as discussed in Section~\ref{sec:method:simulation:runs:comparison} on page~\pageref{sec:method:simulation:runs:comparison}.
 
-For the four experimental interfaces trialled in the study reported in Chapter~\ref{chap:snippets}, the same experimental methodology was followed as described in Section~\ref{sec:snippets:simulations:method}. Similarly, the same experimental method was followed as reported in Section~\ref{sec:diversity:simulated:method} for the four experimental conditions belonging to the studies reported in Chapter~\ref{chap:diversity}.
+For the four experimental interfaces trialled in the study reported in Chapter~\ref{chap:snippets}, the same experimental methodology was followed as described in Section~\ref{sec:snippets:simulations:method}. Similarly, the same experimental method was followed as reported in Section~\ref{sec:diversity:simulated:method} for the four experimental conditions belonging to the studies reported in Chapter~\ref{chap:diversity}. This involved, for example, executing the diversification algorithm (presented in Section~\ref{sec:diversity:users:diversifying} on page~\pageref{sec:diversity:users:diversifying}) over the ranked results returned for the diversified system, \blueboxbold{D}.
 
 \section{Results}
 
 T1 Savvy searchers encountered no bad SERPs. For all SERPs displayed in the top 15, all queries returned at least one relevant result.
 
 \subsection{Performance Runs}
+
+\begin{table}[t!]
+    \caption[Snippets Performance]{Snippets}
+    \label{tbl:ch9_perf_ch7_t0}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{L{0.25cm}@{\CS}L{2.15cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}}
+            
+            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}}\\
+            
+            \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} \\
+            
+            \RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Interface \blueboxbold{\textbf{T0}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+
+        \end{tabulary}
+        \end{center}
+    \end{table}
+
+\begin{table}[t!]
+    \caption[Snippets Performance]{Snippets}
+    \label{tbl:ch9_perf_ch7_t1}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{L{0.25cm}@{\CS}L{2.15cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}}
+            
+            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}}\\
+            
+            \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} \\
+            
+            \RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Interface \blueboxbold{\textbf{T1}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+
+        \end{tabulary}
+        \end{center}
+    \end{table}
+
+\begin{table}[t!]
+    \caption[Snippets Performance]{Snippets}
+    \label{tbl:ch9_perf_ch7_t2}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{L{0.25cm}@{\CS}L{2.15cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}}
+            
+            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}}\\
+            
+            \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} \\
+            
+            \RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Interface \blueboxbold{\textbf{T2}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+
+        \end{tabulary}
+        \end{center}
+    \end{table}
+
+\begin{table}[t!]
+    \caption[Snippets Performance]{Snippets}
+    \label{tbl:ch9_perf_ch7_t4}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{L{0.25cm}@{\CS}L{2.15cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}}
+            
+            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SSx}}\\
+            
+            \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} \\
+            
+            \RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Interface \blueboxbold{\textbf{T4}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+
+        \end{tabulary}
+        \end{center}
+    \end{table}
 
 \subsection{User Comparison Runs}
 
