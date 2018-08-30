@@ -288,15 +288,7 @@ For the diversity re-ranking to work in this scenario, the algorithm must be awa
 
 Without such a ground truth based approach, ensuring that~\gls{acr:trec} relevant documents would bubble up would have been difficult to achieve. Given the effects of document pooling as part of how the~\gls{acr:trec} QRELs were created (refer to Section~\ref{sec:ir_background:paradigms:trec}), it is highly likely that many other documents exist within the corpus that could be considered to be useful to a given topic, but were not assessed.
 
-As previously discussed, one major pitfall of this approach is that the diversification algorithm employed would have provided results that were \emph{too good,} thus not presenting much of a challenge to subjects. To mitigate this issue, we also included documents that were considered non-relevant by~\gls{acr:trec} assessors (i.e. a~\gls{acr:trec} assessment of $0$) when performing re-ranking. This led to including an additional $2,663$ document that would be included within the diversity re-ranking, but were not relevant. For the five topics we considered, the number of non-relevant documents from the~\gls{acr:trec} QRELs over each topic were as follows.
-
-\begin{itemize}
-    \item{\blueboxbold{Airport Security} with 580 non-relevant documents}
-    \item{\blueboxbold{Wildlife Extinction} with 500 non-relevant documents}
-    \item{\blueboxbold{Piracy} with 526 non-relevant documents}
-    \item{\blueboxbold{Tropical Storms} with 502 non-relevant documents}
-    \item{\blueboxbold{Curbing Population Growth} with 555 non-relevant documents}
-\end{itemize}
+As previously discussed, one major pitfall of this approach is that the diversification algorithm employed would have provided results that were \emph{too good,} thus not presenting much of a challenge to subjects. To mitigate this issue, we also included documents that were considered non-relevant by~\gls{acr:trec} assessors (i.e. a~\gls{acr:trec} assessment of $0$) when performing re-ranking. This led to including an additional $2,663$ documents that would be included within the diversity re-ranking, but were not relevant. For the five topics we considered, the number of non-relevant documents from the~\gls{acr:trec} QRELs over each topic were reported in Table~\ref{tbl:ch6_topic_rels} on page~\pageref{tbl:ch6_topic_rels}.
 
 Rather than manually assess each non-relevant document, we took the list of entities that were discovered for~\gls{acr:trec} relevant documents, and performed an exact keyword search for each of the entities within each of the $2,663$ documents. Any matches would have the corresponding entity attached to the document.
 
