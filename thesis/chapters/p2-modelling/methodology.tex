@@ -49,7 +49,25 @@ From this process, an index was produced weighing in at $3.8$GB. The index conta
 \end{figure}
 
 \subsection{Topics}\label{sec:methodology:collection:topics}
-Five topics were also selected from the 50 provided in the \emph{TREC 2005 Robust Track,} as outlined by~\cite{voorhees2006trec_robust}. These topics are used throughout experimental work reported in this thesis, and were selected based upon evidence from a previous user study (of similar nature) conducted by~\cite{kelly2009user_study}. Evidence showed that the topics offered similar levels of difficulty. The five topics, along with a short description of what constitutes a relevant document, are listed below. These summaries are derived from the~\gls{acr:trec} topic descriptions that are provided as part of the~\gls{acr:trec} 2005 Robust Track. Figure~\ref{fig:topics} provides an illustration of the five topics, along with their descriptions. The remaining 45 topic descriptions are not used in this thesis.
+Five topics were also selected from the 50 provided in the \emph{TREC 2005 Robust Track,} as outlined by~\cite{voorhees2006trec_robust}. These topics are used throughout experimental work reported in this thesis, and were selected based upon evidence from a previous user study (of similar nature) conducted by~\cite{kelly2009user_study}. Evidence showed that the topics offered similar levels of difficulty. The five topics, along with a short description of what constitutes a relevant document, are listed below. These summaries are derived from the~\gls{acr:trec} topic descriptions that are provided as part of the~\gls{acr:trec} 2005 Robust Track. Figure~\ref{fig:topics} provides an illustration of the five topics, along with their descriptions. In addition, Table~\ref{tbl:ch6_topic_rels} provides basic summary statistics of the number of non-relevant and relevant\footnote{The~\gls{acr:trec} 2005 Robust Track uses graded judgements for relevant documents; these are identified as somewhat (\texttt{1}) and definitely (\texttt{2}) relevant.} documents that were identified by the~\gls{acr:trec} assessors. The remaining 45 topic descriptions are not used.
+
+\begin{table}[t!]
+    \caption[Assessor judgement counts for topics]{Basic statistics for the five~\gls{acr:trec} topics selected, including the number of documents judged to be relevant (with graded judgements) and explicitly non-relevant by the~\gls{acr:trec} assessors.}
+    \label{tbl:ch6_topic_rels}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{3.15cm}@{\CSONEHALF}D{2cm}@{\CSONEHALF}D{2cm}@{\CSONEHALF}D{2cm}@{\CS}D{2cm}@{\CS}D{2cm}@{\CS}}
+        & & \dbluecell\textbf{Non-Rel.} & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\dbluecell\textbf{\gls{acr:trec} Relevant}} \\
+        \RS & \dbluecell\textbf{Total} & \lbluecell\textbf{Total} & \lbluecell\textbf{Somewhat} & \lbluecell\textbf{Definitely} & \lbluecell\textbf{Total} \\
+        \RS\lbluecell\textbf{Topic 341} & \dbluecell 617 & \cell 580 & \cell 33 & \cell 4 & \cell 37 \\
+        \RS\lbluecell\textbf{Topic 347} & \dbluecell 665 & \cell 500 & \cell 22 & \cell 143 & \cell 165 \\
+        \RS\lbluecell\textbf{Topic 367} & \dbluecell 621 & \cell 526 & \cell 11 & \cell 84 & \cell 95 \\
+        \RS\lbluecell\textbf{Topic 408} & \dbluecell 685 & \cell 502 & \cell 57 & \cell 126 & \cell 183 \\
+        \RS\lbluecell\textbf{Topic 435} & \dbluecell 707 & \cell 555 & \cell 98 & \cell 54 & \cell 152 \\
+    \end{tabulary}
+    \end{center}
+\end{table}
+
 
 \begin{itemize}
     
@@ -61,10 +79,11 @@ Five topics were also selected from the 50 provided in the \emph{TREC 2005 Robus
     
     \item{\blueboxbold{Topic 408 – Tropical Storms} Documents discussing major tropical storms are to be considered relevant, where the storm is reported to have caused significant damage and a large number of casualties. This is a particularly timely topic for the document corpus considered, as the 1998 hurricane season in the Caribbean has been reported to be one of the most costly -- both in terms of damage caused and lives lost -- in history.\footnote{This is reported by the US \emph{National Oceanic and Atmospheric Administration (NOAA),} as seen at \url{http://www.outlook.noaa.gov/98hurricanes/}. \urlaccessed{2018-05-18}} Document \texttt{APW19980921.1265} for example discusses the effects on Puerto Rico of Hurricane Georges in September 1998, leaving -- at the time of reporting -- three dead, many houses damaged, and thousands homeless.}
     
-    \item{\blueboxbold{Topic 435 – Curbing Population Growth} The final topic considers efforts that have been made by countries around the world to control the ever increasing human population. Documents discussing this issue are only relevant to the topic if the results to a case have been made public, and a reduction in population has been actively pursued. The document must mention the country, the As such, events like famines are not relevant. A perhaps well known example of such a phenomenon is the one child policy that was pursued by China in the late 20\textsuperscript{th} century. Document \texttt{NYT19981031.0070} discusses the Chinese government's efforts to curb its expanding population at the time, with sexual education and heavy financial penalties for additional children. These efforts were shown to lead to a reduction in population, although whether this actually occurred is open to debate.}
+    \item{\blueboxbold{Topic 435 – Curbing Population Growth} The final topic considers efforts that have been made by countries around the world to control the ever increasing human population. Documents discussing this issue are only relevant to the topic if the results to a case have been made public, and a reduction in population has been actively pursued. The document must mention the country, the As such, events like famines are not relevant. A perhaps well known example of such a phenomenon is the one child policy that was pursued by China in the late 20\textsuperscript{th} century. Document \texttt{NYT19981031.0070} discusses the Chinese government's efforts to curb its expanding population at the time, with sexual education and heavy financial penalties for additional children. These efforts were shown to lead to a reduction in population.}
     
 \end{itemize}
 
+\vspace*{-3mm}
 For all user studies reported in this thesis, we selected topic \blueboxbold{367} as a \emph{practice topic,} permitting the participating subjects to familiarise themselves with the experimental system used. As such, we do not report any results from interactions that took place with this topic when reporting user studies. In the next section, we outline the different search tasks that were undertaken by user study subjects while using the aforementioned topics.
 
 \section{User Study Methodology}\label{sec:methodology:user}
@@ -119,7 +138,7 @@ The interface consists of three main views, the two most important being shown i
 
 In addition to the three views above, we also provided a \emph{topic view,} which, when requested, would open a further popup window that contained a description of the topic. This was purely to serve as a reminder, as subjects were provided the topic description in full before the search task began.
 
-Common to all views was the inclusion of the blue navigation bar at the top of the popup window. As we discuss further in Section~\ref{sec:methodology:user:crowdsourcing:technical}, this bar was included to provide a series of different navigational links, such as, when on the document view page, a link to return to the originating~\gls{acr:serp}. Where applicable, we also provided a link for the subject to end the search task, if he or she felt that they had satisfied the criteria for the task.
+Common to all views was the inclusion of the blue navigation bar at the top of the popup window. As we discuss further in Section~\ref{sec:methodology:user:crowdsourcing:technical}, this bar was included to provide a series of different navigational links, such as, when on the document view page, a link to return to the originating~\gls{acr:serp}. Where applicable, we also provided a link for the subject to end the search task if he or she felt that they were satisfied.
 
 \begin{figure}[t!]
     \centering
@@ -227,10 +246,11 @@ In all, the interactions -- including aspects such as clicks, and time-based mea
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch4-evaluation.pdf}}
-    \caption[Examples of evaluation measures]{An illustration of the different types of measures that are captured, and from what sources. Interaction, time-based and performance measures are derived from the user study experiment log (with~\gls{acr:trec} QRELs used in conjunction with the interaction log to compute a subject's performance). User experience metrics are collated from a number of different surveys. Refer to Section~\ref{sec:methodology:extracting} for more information.}
+    \caption[Examples of evaluation measures]{An illustration of the different types of measures that are captured, and from what sources. Interaction, time-based and performance measures are derived from the user study experiment log (with~\gls{acr:trec} QRELs used in conjunction with the interaction log to compute a subject's performance). User experience metrics are collated from a number of different surveys.}
     \label{fig:evaluation_methodology}
 \end{figure}
 
+\vspace*{-3mm}
 \subsection{Behavioural Measures}
 Recorded solely from interaction log data, the basic interactions covered a large proportion of the aspects we considered in our analyses. They key behavioural measures we examined are listed below.
 
@@ -255,14 +275,16 @@ As discussed in Section~\ref{sec:methodology:user:capturing} -- and also illustr
     \item{\blueboxbold{Documents} This measure considers the time a subject spends on the document view. This is captured as the point at which the document is presented on the subject's screen (\texttt{DOC\_MARKED\_VIEWED}) to the point at which they leave, which, like the~\gls{acr:serp} content time, could be determined from a number of different events.}
 \end{itemize}
 
+\vspace*{-3mm}
 The fifth time-based measure that we considered in our reporting of results was an amalgamation of the four listed above.
+\vspace*{-3mm}
 
 \begin{itemize}
     \item{\blueboxbold{Total Session Time} The total session time is the addition of each of the time times measured above. This is essentially the same as the time from the very first \texttt{QUERY\_FOCUS} event to the \texttt{TASK\_COMPLETED} event, which is either triggered by an interface timeout (Chapter~\ref{chap:snippets}) or the subject ending the task herself or himself (Chapter~\ref{chap:diversity}).}
     
 \end{itemize}
 
-It should be noted that in this thesis \blueboxbold{we report all durations in seconds}. We considered a number of different approximations when measuring each of the above. For example, the querying time is measured only as the time the searcher spends interacting with the query box. Subjects may well have spent longer considering what terms to enter, perhaps as they were browsing existing content. However, this could be not captured; out logging tools were not capable of capturing this additional time.
+It should be noted that in this thesis \blueboxbold{we report all durations in seconds}. We considered a number of different approximations when measuring each of the above. For example, querying time is measured only as the time the searcher spends interacting with the query box. Subjects may well have spent longer considering what terms to enter, perhaps as they were browsing existing content. However, this could be not captured; out logging tools were not capable of capturing this additional time.
 
 A further approximation used was the time per result summary. This was computed by dividing by the click depth reached on a given~\gls{acr:serp} by the duration between the first \emph{hover} event, where the subject hovered his or her cursor over a result summary, and the time at which they left the~\gls{acr:serp}. The first hover event was chosen as it was deemed to be a good indicator of the beginning of interaction with result summaries. The mouse cursor has been shown in prior studies to correlate strongly with the subject's gaze on the screen~\citep{chen2001mouse_cursor, smucker2014judging_relevance_movements}. However, issues with network latency meant that several of the hover events were logged in the incorrect order, making the approach of measuring each individual \texttt{HOVER\_IN} and \texttt{HOVER\_OUT} event unreliable. Using the click depth and total~\gls{acr:serp} time provided us with an approximation with which to work with. The approximation also makes an assumption that subjects examined each result summary on a~\gls{acr:serp} up to a particular depth, for an equal period of time. This was sufficient for the work in our study to ascertain whether or not a variation in the task goal or presentation of results affected the depths to which subjects examined results.
 
@@ -610,11 +632,11 @@ To estimate the patience parameter, we assumed that the patience of a searcher c
 
 \begin{figure}[h]
     \centering
-    \vspace{4mm}
+    \vspace{1mm}
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch6-rbp.pdf}}
     \label{fig:rbp_patience}
-    \vspace{-5mm}
+    \vspace{-7mm}
 \end{figure}
 
 For each rank, we could then compute the ratio of clicks at each rank, across all queries, as demonstrated at step~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point2.pdf}}. This yielded a decreasing ratio as the depth increased -- demonstrating that searchers we less likely to click on results at greater depths. Finally, $p(click@k) = p^k$ was fit to the data. This represents the probability of clicking on a result summary at rank $k$, with $p$ denoting the~\gls{acr:rbp} patience parameter. When fit, the yielded value was $p=0.9087$.
@@ -710,6 +732,7 @@ The other major measure used in our performance measures was the depth per query
 
 In the example, a simulated searcher examines to a depth of $2$ for $Q_0$, and a depth of $1$ for $Q_2$. The searcher does not even enter the associated~\gls{acr:serp} for $Q_1$, as the~\gls{acr:serp} level stopping decision point prevents the searcher from examining result summaries in detail. This resultant $D/Q$ for the search session is therefore $1$.
 
+\vspace*{-4mm}
 \subsubsection{Comparison Runs}\label{sec:method:simulation:runs:comparison}
 Rather than focus upon the overall performance attained by simulated searchers under different scenarios, the second set of simulations we ran focused on comparing simulated searcher behaviours against their real-world counterparts. As such, the simulations for this set were run with minor differences in order to improve the ability for comparing the two populations of searchers -- both simulated and real-world. The first difference considered the querying component of the simulations:
 
@@ -731,6 +754,7 @@ To perform our comparisons with the real-world searchers and simulated searchers
 
 In the above, \emph{Sim. x} represents the mean value of a particular simulated searcher configuration, with the mean taken over the 50 simulated trials. For each query, the real-world click depth is shown, along with the simulated click depth from each simulated searcher trialled. The cells highlighted show what is being compared on each row -- for instance, for query $Q_0$, the real-world click depth of $5$ is compared against the \emph{Sim. 1} click depth of $3$. Considering the MSE value between the two, using the following formula:
 
+\vspace*{-4mm}
 \begin{equation*}
 MSE = (\theta - \hat{\theta})^{2},
 \end{equation*}
