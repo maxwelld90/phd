@@ -144,10 +144,10 @@ Given these stopping strategy definitions, \blueboxbold{SS9-TIME} performs akin 
 For this thesis, we also consider the \emph{combination heuristic} proposed by~\cite{mcnair1982gut_mvt}. The stopping strategy that we propose based upon this heuristic assumes that a searcher has been able to acquire an idea of how potentially relevant summaries \emph{distributed} across the results presented within the~\gls{acr:serp}.
 
 \begin{itemize}
-    \item{\stoppingstratboxsingular{SS11-COMB} When encountering a~\gls{acr:serp} expected to yield a high volume of relevant content early on (high scent), a searcher will employ the satisfaction/satiation stopping heuristic. If the~\gls{acr:serp} however yields relevant items over greater depths, or is judged to be of poor quality (low scent), the give-up heuristic is used instead.}
+    \item{\stoppingstratboxsingular{SS11-COMB} When encountering a~\gls{acr:serp} expected to yield a high volume of relevant content early on (high scent), a searcher will employ the satisfaction/satiation stopping heuristic. If the~\gls{acr:serp} however yields relevant items over greater depths, or is judged to be of poor quality (low scent), the give-up time-based heuristic is used instead.}
 \end{itemize}
 
-From our definitions above, \blueboxbold{SS4-SAT} is used for the satisfaction/satiation component, and \blueboxbold{SS10-RELTIME} is used for the give-up heuristic component. The combination stopping strategy attempts to ensure that a searcher does not waste time on a~\gls{acr:serp} that appear to offer a low yield, but conversely capitalise upon patches that present a high yield. Of course, determining the perceived yield is a question of implementation; refer to Section~\ref{sec:method:simulation:grounding:stopping} for more information on how we implemented this particular stopping strategy.
+From our definitions above, \blueboxbold{SS4-SAT} is used for the satisfaction/satiation component, and \blueboxbold{SS10-RELTIME} is used for the give-up time heuristic component. The combination stopping strategy attempts to ensure that a searcher does not waste time on a~\gls{acr:serp} that appear to offer a low yield, but conversely capitalise upon patches that present a high yield. Of course, determining the perceived yield is a question of implementation; refer to Section~\ref{sec:method:simulation:grounding:stopping} for more information on how we implemented this particular stopping strategy. Essentially, this combination stopping strategy incorporates an additional decision point within the searcher model, where one must determine if the presented~\gls{acr:serp} is high yield early on or not. This is illustrated as an excerpt of a flowchart in Figure~\ref{fig:ss11_combo}.
 
 \section{Measure-Based}
 The final proposed stopping strategy is based upon an established~\gls{acr:ir} measure.~\glsfirst{acr:rbp} -- as discussed in Section~\ref{sec:ir_background:evaluation:system:rbp} -- is utilised as the basis of our final stopping strategy. Under~\gls{acr:rbp}, the decision to continue to the next result in a ranked list is based upon a patience parameter, or the probability of continuing. Essentially,~\gls{acr:rbp} highlights that the probability of continuing decreases as a searcher progresses further down a ranked list.
@@ -159,6 +159,14 @@ The final proposed stopping strategy is based upon an established~\gls{acr:ir} m
 \end{itemize}
 
 By including such a measure, we provide a platform for which contemporary~\gls{acr:ir} measures can be compared against the performance of other stopping heuristics defined in the literature.
+
+\begin{figure}[t!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics{figures/ch5-combo.pdf}}
+    \caption[Flowchart of the flow of stopping strategy \blueboxbold{SS11-COMB}]{An excerpt of the~\gls{acr:csm} with the additional decision point that \blueboxbold{SS11-COMB} incorporates within the searcher model. After deciding that individual result summaries within a~\gls{acr:serp} are worth examining in more detail, a searcher will then also have to decide whether the presented~\gls{acr:serp} will yield a high number of fruitful results \emph{early} in the rankings, or trickle relevant material over greater depths (or not at all). The additional decision point and selected stopping strategies are highlighted within a blue box.}
+    \label{fig:ss11_combo}
+\end{figure}
 
 \section{Chapter Summary}
 This chapter has outlined 12 different stopping strategies, all of which are based upon prior stopping heuristics and an established~\gls{acr:ir} measure. As such, this answer provides a possible answer to \darkblueboxbold{HL-RQ2}. In subsequent chapters of this thesis, we take these stopping strategies forward, discuss the specifics of how they were implemented in Section~\ref{sec:method:simulation:grounding:stopping}, and how they were employed in our empirical experimentation.
