@@ -439,7 +439,7 @@ By incorporating this component, this allowed us to run simulations that present
 We then took the interaction log data from the associated user study. For each of the four experimental interfaces trialled in the user study, we could then, following the methodology outlined in Sections~\ref{sec:method:simulation:grounding:judgements} and~\ref{sec:method:simulation:grounding:costs}, extract the different interaction probabilities and costs to ground our simulations.
 
 \begin{table}[t!]
-    \caption[Simulation interaction probabilities and costs]{Summary table of the different interaction costs (in seconds) and probabilities, with \emph{P(C)} denoting the probability of a click, and \emph{P(S)} denoting the probability of saving a document (considering it relevant). Refer to Sections~\ref{sec:method:simulation:grounding:costs} and~\ref{sec:method:simulation:grounding:judgements} respectively for further information on how the costs and probabilities were derived. All data in this table is attained from interaction data extracted from the user study reported in Section~\ref{chap:snippets:user}.}
+    \caption[Simulation interaction probabilities and costs (result summaries)]{Summary table of the different interaction costs (in seconds) and probabilities, with \emph{P(C)} denoting the probability of a click, and \emph{P(S)} denoting the probability of saving a document (considering it relevant). Refer to Sections~\ref{sec:method:simulation:grounding:costs} and~\ref{sec:method:simulation:grounding:judgements} respectively for further information on how the costs and probabilities were derived. All data in this table is attained from interaction data extracted from the user study reported in Section~\ref{chap:snippets:user}.}
     \label{tbl:snippets_simulation_probcosts}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -569,7 +569,7 @@ what-if runs.
 
 
 \begin{table}[t!]
-    \caption[Maximum CG from performance runs]{Results from the simulated what-if simulated performance runs, showing the highest levels of~\gls{acr:cg} attained for each result summary level stopping strategy trialled (grouped by their type). \emph{x\textsubscript{n}} denotes the parameter threshold(s), with \emph{DQ} denoting the depth per query at which the greatest~\gls{acr:cg} value was attained at. These results are presented across the four experimental interfaces. For each interface, the stopping strategy which attained the highest level of~\gls{acr:cg} is \darkbluebox{highlighted}. For the combination stopping strategies, two parameters are presented, with \emph{x\textsubscript{2},x\textsubscript{4}} presented for \blueboxbold{SS5-COMB} and \emph{x\textsubscript{10},x\textsubscript{4}} presented for \blueboxbold{SS11-COMB}.}
+    \caption[Maximum CG from result summary performance runs]{Results from the simulated what-if simulated performance runs, showing the highest levels of~\gls{acr:cg} attained for each result summary level stopping strategy trialled (grouped by their type). \emph{x\textsubscript{n}} denotes the parameter threshold(s), with \emph{DQ} denoting the depth per query at which the greatest~\gls{acr:cg} value was attained at. These results are presented across the four experimental interfaces. For each interface, the stopping strategy which attained the highest level of~\gls{acr:cg} is \darkbluebox{highlighted}. For the combination stopping strategies, two parameters are presented, with \emph{x\textsubscript{2},x\textsubscript{4}} presented for \blueboxbold{SS5-COMB} and \emph{x\textsubscript{10},x\textsubscript{4}} presented for \blueboxbold{SS11-COMB}.}
     \label{tbl:ch7_sim_perf}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -611,7 +611,7 @@ what-if runs.
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch7-perf_plots.pdf}}
-    \caption[Performance plots across each stopping strategy and interface]{Plots showing the varying levels of performance, measured in~\gls{acr:cg}, over the mean depth per query. Each result summary stopping strategy is shown on an individual plot, with each of the four experimental interfaces shown within each plot. The depth per query reported on each \emph{x} axis is cut at 25 to allow for an easier comparison between different stopping strategies.}
+    \caption[Performance plots (result summaries)]{Plots showing the varying levels of performance, measured in~\gls{acr:cg}, over the mean depth per query. Each result summary stopping strategy is shown on an individual plot, with each of the four experimental interfaces shown within each plot. The depth per query reported on each \emph{x} axis is cut at 25 to allow for an easier comparison between different stopping strategies.}
     \label{fig:ch7_sim_perf_plots}
 \end{figure}
 
@@ -643,7 +643,7 @@ what-if runs.
     
 \end{itemize}
 
-\subsubsection{Comparisons}\label{sec:snippets:simulations:results:comparisons}
+\subsubsection{Real-World Comparisons}\label{sec:snippets:simulations:results:comparisons}
 
 \begin{table}[t!]
     \caption[Lowest MSE values for comparisons runs]{Results from the simulated comparison runs, showing the \emph{lowest} MSE value reached over each result summary level stopping strategy trialled (grouped by their type). \emph{x\textsubscript{n}} denotes the parameter threshold(s) that the lowest MSE was reached with. Results are presented across the four experimental interfaces. For each interface, the stopping strategy that attained the lowest MSE is \darkbluebox{highlighted}. For the combination stopping strategies, two parameters are presented, with \emph{x\textsubscript{2}/x\textsubscript{4}} presented for \blueboxbold{SS5-COMB} and \emph{x\textsubscript{10}/x\textsubscript{4}} presented for \blueboxbold{SS11-COMB}.}
@@ -688,7 +688,7 @@ what-if runs.
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch7-comparison_plots.pdf}}
-    \caption[Comparison plots across each stopping strategy and interface]{Plots reporting the comparison runs, reporting the MSE vs. the mean depth per query. Runs over each of the four experimental interfaces are shown. Also included in the plots are a series of dashed lines denoting the mean depth per query reached by the real-world subjects of the user study. Depth per query (and mean~\gls{acr:cg} values are also reported in Table~\ref{tbl:ch7_sim_comp_cgdq}.}
+    \caption[Comparison plots (result summaries)]{Plots reporting the comparison runs, reporting the MSE vs. the mean depth per query. Runs over each of the four experimental interfaces are shown. Also included in the plots are a series of dashed lines denoting the mean depth per query reached by the real-world subjects of the user study. Depth per query (and mean~\gls{acr:cg} values are also reported in Table~\ref{tbl:ch7_sim_comp_cgdq}.}
     \label{fig:ch7_sim_comparison_plots}
 \end{figure}
 
