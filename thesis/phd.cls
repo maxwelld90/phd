@@ -64,6 +64,7 @@
 \usepackage{keystroke}
 \usepackage[figuresright]{rotating}
 \usepackage{diagbox}
+\usepackage{xfrac}
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
