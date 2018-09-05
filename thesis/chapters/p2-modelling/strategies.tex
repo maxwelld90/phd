@@ -111,10 +111,10 @@ From this stopping heuristic, we devised two separate stopping strategies where 
 
 Essentially, \stoppingstratboxsingular{SS6-DT} considers that the more terms that overlap, the greater the chance that the new result summary does not contain any new information. In the definition above, $s_{curr}$ denotes the terms of the currently examined result summary snippet, $s_{prev}$ denotes terms from all previously observed result summary snippets, and $x_6$ is the threshold at which the searcher will stop.
 
-The second difference based stopping strategy utilised~\gls{glos:kl}~\citep{kullback1951information} to determine how different a result summary is from those previously examined.
+The second difference based stopping strategy utilised~\gls{glos:kl}~\citep{kullback1951information} to determine how different a given result summary is from result summaries that have been previously examined.
 
 \begin{itemize}
-    \item{\stoppingstratboxsingular{SS7-DKL (Difference, KL-Divergence)} This stopping strategy considers~\gls{glos:kl} as a means for comparing a given result summary snippet against those previously observed. If the resulting value is less than threshold $x_7$, the present result summary is considered to be too similar, and the searcher stops. The searcher then abandons the present~\gls{acr:serp}.}
+    \item{\stoppingstratboxsingular{SS7-DKL (Difference, KL-Divergence)} Here,~\gls{glos:kl} is used as a means for comparing a given result summary snippet against those previously observed. If the resulting value is less than threshold $x_7$, the present result summary is considered to be too similar, and the searcher stops. The searcher then abandons the present~\gls{acr:serp}.}
 \end{itemize}
 
 Details related to the implementation of the difference heuristic stopping strategies can be found in Section~\ref{sec:method:simulation:grounding:stopping}.
