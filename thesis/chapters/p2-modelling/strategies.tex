@@ -106,7 +106,7 @@ The next set of stopping strategies are based upon the difference threshold heur
 From this stopping heuristic, we devised two separate stopping strategies where the difference between snippet texts were computed in different ways. The first approach considered the \emph{term overlap difference.}
 
 \begin{itemize}
-    \item{\stoppingstratboxsingular{SS6-DT (Difference, Terms)} This stopping strategy compares the occurrences of terms in a given result summary's snippet text against all terms in previously examined result summary snippets. If $\frac{|s_{curr} \cup s_{prev}|}{|s_{curr}|} > x_6$, the new snippet is then considered as too similar to previously examined result summaries. The searcher then abandons the present~\gls{acr:serp}.}
+    \item{\stoppingstratboxsingular{SS6-DT (Difference, Terms)} This stopping strategy compares occurrences of terms in a given result summary's snippet text against all terms in previously examined result summary snippets. If $\frac{|s_{curr} \cup s_{prev}|}{|s_{curr}|} > x_6$, the new snippet text is then considered as too similar to previously examined result summaries. The searcher then abandons the present~\gls{acr:serp}.}
 \end{itemize}
 
 Essentially, \stoppingstratboxsingular{SS6-DT} considers that the more terms that overlap, the greater the chance that the new result summary does not contain any new information. In the definition above, $s_{curr}$ denotes the terms of the currently examined result summary snippet, $s_{prev}$ denotes terms from all previously observed result summary snippets, and $x_6$ is the threshold at which the searcher will stop.
