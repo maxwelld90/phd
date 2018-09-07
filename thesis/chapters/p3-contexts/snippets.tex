@@ -485,7 +485,7 @@ Interaction costs denote the time required by simulated searchers to undertake d
 Details for what constitutes each individual interaction cost can be found, as previously stated, in Section~\ref{sec:method:simulation:grounding:costs} on page~\pageref{sec:method:simulation:grounding:costs}. Note that the~\gls{acr:serp} examination cost is included even though the~\gls{acr:serp} stopping decision point is disabled in these simulations; this ensures that a cost is still paid, meaning that the interaction times stay realistic. Regarding total session time, simulated searchers were permitted a total of $360$ seconds to perform each search session -- the same session time used in the user study analysis, as discussed in Section~\ref{sec:snippets:method:subjects}.
 
 \subsection{Results}\label{sec:snippets:simulations:results}
-We now report the results of our simulations of interaction. We discuss our findings over two main subsections, considering:
+We now report the results of our simulations of interaction. We discuss our findings over two subsections, considering:
 
 \begin{itemize}
     \item{the \emph{performance} runs (Section~\ref{sec:snippets:simulations:results:perf}), where we discuss the highest levels of performance attained by simulated searchers under different \emph{what-if} scenarios; and}
@@ -493,6 +493,9 @@ We now report the results of our simulations of interaction. We discuss our find
 \end{itemize}
 
 Both of these sections provide an answer for high-level research questions \darkblueboxbold{HL-RQ3a} and \darkblueboxbold{HL-RQ3b} respectively, under the context of varying result summary lengths.
+
+\blueboxheader{Significance Testing}
+It should be noted that in order to determine the difference in performance or approximations attained by different result summary level stopping strategies, we employ significance testing. All tests in this section utilise the two-tailed Student's t-test, where $\alpha=0.05$. We compare the best performing or approximating stopping strategies against others. Here, we are interested in \emph{statistical non-significance,} meaning that compared stopping strategies are \emph{similar} to the best performing or approximating.
 
 \subsubsection{Performance}\label{sec:snippets:simulations:results:perf}
 Before discussing our performance \emph{(what-if)} results, we must first determine whether the implemented querying strategy \blueboxbold{QS13} delivered queries of the expected performance. Recall \blueboxbold{QS13} is an \emph{interleaved querying strategy,} as detailed in Section~\ref{sec:method:simulation:grounding:querying} on page~\pageref{sec:method:simulation:grounding:querying}. What this means is that queries from two other querying strategies (\blueboxbold{QS1} and \blueboxbold{QS3}) were interleaved together. As these two different querying strategies were expected to yield queries of differing performance (poor queries for \blueboxbold{QS1}, good queries for \blueboxbold{QS3}), we needed to make sure that this had been delivered.
