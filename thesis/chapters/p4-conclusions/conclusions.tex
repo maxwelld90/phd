@@ -14,13 +14,15 @@ summarise what we did in one or two paragraphs. perhaps a bullet point list high
 \section{Discussion and Contributions}
 
 - a good fixed-depth strategy can still yield very good performance, comparable to that of approaches that should intuitively make more sense in terms of yielding higher CG. This confirms findings in publications (maxwell2015).
+- on a similar footing, why does the time-based strategy SS9 that is fixed outperform the adaptive strategy SS10? Maybe the gap between finding relevant documents is different. we should have done it over attractive result summaries instead.
 
 - why does the satiation based rule perform so well?
 
 - why does the IFT-based stopping heuristic do so badly? it's the rate of gain computation. our assumptions don't really work over a per-topic basis. think about it this way. consider a topic with a small number of rel documents, and a topic with a large number of rel docs. doesn't matter if it's a good query, it'll be harder to find relevant material for the more difficult topic! so the rate of gain we used doesn't work. so this will be interesting to explore in future work.
 
+- why are the different rules so bad? However, \blueboxbold{QS13} hides the bimodal distribution of performance that would have been experienced during searching. As we examine later, we posit that this may have been detrimental to difference-based stopping strategies \blueboxbold{SS6-DT} and \blueboxbold{SS6-DKL}. This is due to the face that for single term queries, the diversity of the results was likely to be much greater than for three term queries. Consequently, for single term queries that provide little gain, the simulated searcher was likely to have examined to much greater depths. 
 
-However, \blueboxbold{QS13} hides the bimodal distribution of performance that would have been experienced during searching. As we examine later, we posit that this may have been detrimental to difference-based stopping strategies \blueboxbold{SS6-DT} and \blueboxbold{SS6-DKL}. This is due to the face that for single term queries, the diversity of the results was likely to be much greater than for three term queries. Consequently, for single term queries that provide little gain, the simulated searcher was likely to have examined to much greater depths. 
+- why does RBP underestimate? as you increase the patience parameter, you go deeper down the results. however, as you go deeper, you obtain better performance, but at a diminishing rate. like the difference based strategies, rbp is statistically signficant from ss11. except for T2, where no differences exist.
 
 
 \subsection{Searcher Models}
