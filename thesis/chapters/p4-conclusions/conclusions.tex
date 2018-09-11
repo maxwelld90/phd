@@ -22,7 +22,11 @@ summarise what we did in one or two paragraphs. perhaps a bullet point list high
 
 - why are the different rules so bad? However, \blueboxbold{QS13} hides the bimodal distribution of performance that would have been experienced during searching. As we examine later, we posit that this may have been detrimental to difference-based stopping strategies \blueboxbold{SS6-DT} and \blueboxbold{SS6-DKL}. This is due to the face that for single term queries, the diversity of the results was likely to be much greater than for three term queries. Consequently, for single term queries that provide little gain, the simulated searcher was likely to have examined to much greater depths. 
 
-- why does RBP underestimate? as you increase the patience parameter, you go deeper down the results. however, as you go deeper, you obtain better performance, but at a diminishing rate. like the difference based strategies, rbp is statistically signficant from ss11. except for T2, where no differences exist.
+for frustration rules, as i am more tolerant to nonrel information, i go deeper, has n effect of increased CG.
+satisfaction, if i look for one, then stop, tends to be better than going deeper. but kind of surprising.
+ift is pretty smooth, following the rate of gain is not the best. maybe it is how we calculate the rate of gain.
+
+- why does RBP underestimate? as you increase the patience parameter, you go deeper down the results. however, as you go deeper, you obtain better performance, but at a diminishing rate. like the difference based strategies, rbp is statistically signficant from ss11. except for T2, where no differences exist. rolling a dice doesnt perform as well. says it has a good user model, but we are showing maybe it doesn't.
 
 
 \subsection{Searcher Models}
