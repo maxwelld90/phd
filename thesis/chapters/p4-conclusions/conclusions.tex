@@ -1,31 +1,91 @@
 %!TEX TS-program = xelatex
 %!TEX root = ../../maxwell2018thesis.tex
 
-\chapter[Discussion, Future Work and Conclusions]{Discussion, Future Work\\and Conclusions}\label{chap:conclusions}
+\chapter[Discussion, Conclusions and Future Work]{Discussion, Conclusions\\and Future Work}\label{chap:conclusions}
+With all experimental work now reported, this final chapter highlights the work that has been reported, and provides an in-depth discussion of the experimental results. This then leads onto a discussion of potential avenues for future work, before final, concluding remarks.
 
+Finish flag
 
 \section{Thesis Summary}
 
+summarise what we did in one or two paragraphs. perhaps a bullet point list highlighting the main contributions, which we elaborate on below.
 
 
 \section{Discussion and Contributions}
 
-\subsection{User Modelling}
+However, \blueboxbold{QS13} hides the bimodal distribution of performance that would have been experienced during searching. As we examine later, we posit that this may have been detrimental to difference-based stopping strategies \blueboxbold{SS6-DT} and \blueboxbold{SS6-DKL}. This is due to the face that for single term queries, the diversity of the results was likely to be much greater than for three term queries. Consequently, for single term queries that provide little gain, the simulated searcher was likely to have examined to much greater depths. 
+
+
+\subsection{Searcher Models}
+
+how did we address \darkblueboxbold{HL-RQ1}? by introducing the CSM.
+central to this work was the additional stopping decision point.
+did this work?
+empirically, we show that it did yield better approximations.
+what can i steal from the ecir 2018 discussion?
+
 \subsection{Examining Stopping Behaviours}
 
-\subsection{RQ1}
+of course, the main focus of this thesis was stopping behaviours.
+in particular, we took heuristics, operationalised them, and then tested them out.
 
-\subsection{RQ2}
+see what happens to stopping behaviours 
 
-\subsection{RQ3a}
+\subsubsection{Stopping Heuristics}
+we took a number of different heuristics and operationalised them!
+however, this was not exhaustive.
+and some heuristics that we did mention in the literature were not well suited to the search tasks we trialled.
+for example, the single criterion rule was not operationalised.
+different ways in which we could have implemented them, too! see future work.
+this addressed \darkblueboxbold{HL-RQ2}.
 
-\subsection{RQ3b}
+\subsubsection{User Studies}
+we examined two search contexts. Varying components. News search. Limitations! Does this generalise?
+
+\subsubsection{Simulations of Interaction}
+To address \darkblueboxbold{HL-RQ3a} and \darkblueboxbold{HL-RQ3b} we conducted simulations of interaction to determine the performance and approximations of each stopping strategy. 
+
+Table -- what strategy did best under what contexts?
+Was there a clear winner?
+
+
+
 
 \section{Conclusion}
 
 \section{Future Research Directions}
+leading on from the findings of this thesis there are many different avenues of future work which can be explored.
+we discuss a number of different directions 
+
+\blueboxheader{Additional Stopping Decision Points}
+Taking the CSM further. Tool switching. Other things to add to the searcher model to hitherto improve realism.
+
+\blueboxheader{Additional Search Contexts}
+Do the same findings apply to different search contexts? We considered only news search. And ad-hoc and aspectual retrieval. To see how things vary. But it is likely that they will vary elsewhere. Context, surroundings, device...
+
+\blueboxheader{Additional Stopping Heuristics}
+
+\blueboxheader{Heuristic Operationalisation}
+We could have operationalised the stopping heuristics in many different ways. We chose simplistic means to operationalise them. These means may or may not have influenced the performance/approximations that each strategy offered. Future work is required to determine if this is indeed the case or not.
+
+There are many, many different avenues for exploration here. Prime example: OFT strategy. Consistently performed poorly. List the different strategies that we could operationalise in a different way, explaining what may happen (educated guess).
+For example, OFT, rate of gain set over all topics trialled. But we know that some topics are more difficult to find relevant material for than others (reference the table with the number of rel documents, show that one has less than the other). This would influence stopping, because simply less likely a relevant item would appear in the ranks.
+
+\blueboxheader{Heuristic Selection}
+We didn't really consider under what circumstances one heuristic would be better than another. So, how would one be able to select the best threshold for a given circumstance? Kind of eluded to this with SS11-COMB, that selected a stopping strategy based upon the perceived yield of a SERP. However, are there different factors which could influence the selection of a particular heuristic, and what are they? What heuristics would work best?
+
+\blueboxheader{Individual Searcher Stopping}
+How can we use the knowledge reported in this thesis to develop models more in line with an individual's stopping behaviours?
+COMBO - recent work has shown that approaches like bejeweled are more in line with what people actually do. evidence from this thesis somewhat supports this argument -- combination approaches do well, and offer good performance. perhaps we need to look away from a single heuristic and consider two (or even more), see heuristic selection above.
+
+Additionally, future work can work on these models at an individual searcher level. This thesis has exclusively reported behaviours on average, across \~50 subjects over different interfaces and conditions. This provides us with a rough approximation as to what will work best. However, people behave differently -- there is no general rule of thumb. For example, could we classify people based upon their searcher behaviours? Like Smucker's fast and liberal, slow and strict classification. Perhaps getting a better understanding of their searcher behaviours could factor into the interface used, and then this could improve their searching ability.
+
+
 
 \section{Final Remarks}
+a sentence of two explaining the key findings.
+
+
 
 When considering possible future directions, Apple’s 1987 Knowledge Navigator vision of IR is still a strong exemplar of how search systems might develop. The short film showed a college professor pulling together a lecture presentation at the last minute. The professor used a form of tablet computer running an IR system presented as an agent capable of impeccable speech recognition, natural dialogue management, a high level of semantic understanding of the searcher’s information needs, as well as unbounded access to documents and federated databases.
 The Knowledge Navigator identified and connected the professor to a colleague who helped him with the lecture. The broader implications of finding people (rather than documents) to aid with information needs that we see facilitated in the vast growth of social media was not really addressed in the Apple vision. What it also did not encompass was the portability of computer devices opening the possibility of serving information needs pertinent to the particular local context of location, location type, route, the company one is in, or a combination of all these factors. \todo{from the history of IR paper}
