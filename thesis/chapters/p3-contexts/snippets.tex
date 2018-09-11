@@ -515,7 +515,7 @@ Before discussing the performance \emph{(what-if)} results, we must first determ
     \end{center}
 \end{table}
 
-Table~\ref{tbl:ch7_sim_queryperf} reports on a number of different $P@k$ measures for each of the three individual querying strategies. We consider $P@1$, $P@5$, $P@10$ and $P@20$. Values ($\pm$ standard deviations) for each of these measures were computed over each of the individual queries issued during the performance runs. A total of $101$ unique queries were identified across the five topics trialled to produce these results. As per the querying strategy descriptions outlined in Section~\ref{sec:method:simulation:grounding:querying}, we split queries into sets for either \blueboxbold{QS1} (for single term queries) or \blueboxbold{QS3} (for three-term queries), and both sets for \blueboxbold{QS13}. From the table, we can see from left (\blueboxbold{QS1}) to right (\blueboxbold{QS3}) an increasing trend in performance, demonstrating that the performance of the queries that were issued was in line with our expectations. Moving forward as we report the performance of individual stopping strategies, this provides confirmation that the querying strategies were working as intended. Performance of interleaved querying strategy may have of course however had an impact upon the overall performance of result summary level stopping strategies; we leave this to \todo{our discussion of the the results.}
+Table~\ref{tbl:ch7_sim_queryperf} reports on a number of different $P@k$ measures for each of the three individual querying strategies. We consider $P@1$, $P@5$, $P@10$ and $P@20$. Values ($\pm$ standard deviations) for each of these measures were computed over each of the individual queries issued during the performance runs. A total of $101$ unique queries were identified across the five topics trialled to produce these results. As per the querying strategy descriptions outlined in Section~\ref{sec:method:simulation:grounding:querying}, we split queries into sets for either \blueboxbold{QS1} (for single term queries) or \blueboxbold{QS3} (for three-term queries), and both sets for \blueboxbold{QS13}. From the table, we can see from left (\blueboxbold{QS1}) to right (\blueboxbold{QS3}) an increasing trend in performance, demonstrating that the performance of the queries that were issued was in line with our expectations. Moving forward as we report the performance of individual stopping strategies, this provides confirmation that the querying strategies were working as intended. The interleaved querying strategy may have of course however had an impact upon the overall performance of result summary level stopping strategies; we leave this to our discussion of the the results in Chapter~\ref{chap:conclusions}.
 
 \begin{figure}[t!]
     \centering
@@ -525,7 +525,11 @@ Table~\ref{tbl:ch7_sim_queryperf} reports on a number of different $P@k$ measure
     \label{fig:ch7_example_queries}
 \end{figure}
 
-\begin{figure}[h!]
+Satisfied with the mean performance of the generated queries, we now turn our attention to the main results of the performance simulations. We primarily consider \darkblueboxbold{HL-RQ3a} in our reporting, which requires an examination of the performance for each result summary level stopping strategy. Before this however, we consider the general trends that we observed from the results of the experiments, and consider the difference between the four experimental interfaces examined.
+
+Figure~\ref{fig:ch7_sim_perf_plots} provides twelve individual plots, one per result summary level stopping strategy. The plots represents the man levels of performance attained at varying depths per query, averaged over the five individual topic and 50 individual trials. The mean depth per query is represented along the \emph{x} axis, with the performance attained (represented as~\gls{acr:cg}) represented on the \emph{y} axis. Although some stopping strategies caused simulated searchers to browse to depths greater than $25$ on average, we cut all plots at this value for consistency, and to better illustrate how performance varies at shallower depths.
+
+\begin{figure}[p!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch7-perf_plots.pdf}}
@@ -533,82 +537,11 @@ Table~\ref{tbl:ch7_sim_queryperf} reports on a number of different $P@k$ measure
     \label{fig:ch7_sim_perf_plots}
 \end{figure}
 
-Satisfied with the mean performance of the generated queries, we now turn our attention to the main results of the performance simulations. We primarily consider \darkblueboxbold{HL-RQ3a} in our reporting, which requires an examination of the performance for each result summary level stopping strategy. Before this however, we consider the general trends that we observed from the results of the experiments, and consider the difference between the four experimental interfaces examined.
-
-Figure~\ref{fig:ch7_sim_perf_plots} provides twelve individual plots, one per result summary level stopping strategy. The plots represents the man levels of performance attained at varying depths per query, averaged over the five individual topic and 50 individual trials. The mean depth per query is represented along the \emph{x} axis, with the performance attained (represented as~\gls{acr:cg}) represented on the \emph{y} axis. Although some stopping strategies caused simulated searchers to browse to depths greater than $25$ on average, we cut all plots at this value for consistency, and to better illustrate how performance varies at shallower depths.
-
 General trends across all twelve strategies can be observed from the plots in Figure~\ref{fig:ch7_sim_perf_plots}. We first note that as we alter the various stopping threshold values that we trialled, we see that mean performance is attained from shallower to greater depths per query. In turn, this generally results in a gain in overall performance, with the mean~\gls{acr:cg} attained generally increasing as the depth per query increases. However, this is true only until a certain point, representing the maximum level of mean~\gls{acr:cg} attained. After this point, which is illustrated in a more profound way with some stopping strategies than others, a simulated searcher would begin to browse to greater depths on average. At greater depths, the searcher would encounter fewer and fewer potentially relevant documents, and thus would begin to waste time examining the same~\gls{acr:serp}. This is represented in the plots as the downward trend on mean~\gls{acr:cg} at greater depths per query, clearly visible after the highest level of~\gls{acr:cg} is attained. This general trend can be clearly observed from our baseline, fixed-depth stopping strategy, approximately at \dualbluebox{SS1-FIX}{@6}. An increase in mean~\gls{acr:cg} up until this depth (for most interfaces) can be observed; after this point, we observed a gradual drop-off in performance.
 
 Considering the four plots in Figure~\ref{fig:ch7_sim_perf_plots} from the perspective of the four experimental interfaces, little difference can be observed across all twelve stopping strategies, and across the varying depths per query. The same general trends can be observed across \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}. However, some interesting observations can be made. Even though the mean levels of~\gls{acr:cg} are all very similar, we do find that interfaces yielding snippet text of greater length (interfaces \blueboxbold{T2} and \blueboxbold{T4}) generally outperform the interfaces with minimal and no snippets (interfaces \blueboxbold{T1} and \blueboxbold{T0}, respectively). This is an unsurprising result -- performance of subjects in interface \blueboxbold{T0} was generally worse in the reported user study, and this poorer performance had a subsequent impact upon the simulations of interaction which were grounded by interaction data from said user study.\footnote{Refer to Table~\ref{tbl:snippets_simulation_probcosts} for the different interaction costs and probabilities used to ground the simulations.} However, as the mean depth per query increases, we find in all plots reported in Figure~\ref{fig:ch7_sim_perf_plots} that the mean level of~\gls{acr:cg} begins to close up over each of the four interfaces. This perhaps can be attributed to the fact that at greater depths, the likelihood of encountering relevant material diminishes -- thus the gain acquired at these depths -- over all four interfaces -- begins to converge. Generally though, results are consistent across the four experimental interfaces.
 
-With the twelve plots in Figure~\ref{fig:ch7_sim_perf_plots} presenting a broad overview of the variation in performance as the mean depth per query increases, we now turn our attention to the peaks in each plot for the four individual experimental interfaces -- or the \emph{highest levels of~\gls{acr:cg} that are attained.} Table~\ref{tbl:ch7_sim_perf} reports these values, across each of the twelve stopping strategies (rows), and over the four individual experimental interfaces (columns, grouped by \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} or \blueboxbold{T4}). For each of the twelve stopping strategies, we report: the highest level of~\gls{acr:cg} attained (\genericblack{CG}); the mean depth per query at which this value was reached (\genericblack{DQ}); and the stopping threshold value(s) used to reach this value (\genericblack{x\textsubscript{n}}). \darkbluebox{Highlighted} are the stopping strategies that yielded the greatest overall level of~\gls{acr:cg}. Across all four interfaces, combination stopping strategy \blueboxbold{SS11-COMB} attained this, with mean~\gls{acr:cg} values of $2.45$, $2.44$, $2.52$ and $2.67$ reported for interfaces \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4} respectively. These values were all reached at similar depths per query ($\~5-6.5$), and with a similar range of threshold values, with $x_4\approx8-10$, and $x_{10}=10$ seconds.\footnote{As a reminder, \blueboxbold{SS11-COMB} considers the type of patch presented by a given~\gls{acr:serp}, before employing either the satisfaction-based stopping strategy \blueboxbold{SS4-SAT} for high yields early on, or the give-up time-based stopping strategy \blueboxbold{SS10-RELTIME} if the~\gls{acr:serp} does not appear to yield promising results early on.} The relatively low levels of mean depths per query ($6.53$, $5.66$, $5.33$ and $4.91$ for interfaces \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4} respectively) at which the best~\gls{acr:cg} was attained also demonstrates that \blueboxbold{SS11-COMB} was particularly robust at detecting a~\gls{acr:serp} with good results, and vice versa. As such, the low depths per query indicate that the simulated searchers were confidently able to abandon poor quality~\glsplural{acr:serp} without affecting their overall performance.
-
-\begin{table}[h!]
-    \renewcommand{\arraystretch}{1.8}
-    \begin{center}
-        \begin{tabulary}{\textwidth}{L{3.2cm}@{\CSONEHALF}D{2.6cm}@{\CSONEHALF}D{2.6cm}@{\CSONEHALF}D{2.6cm}@{\CSONEHALF}D{2.6cm}@{\CS}}
-            & \dbluecell\small\textbf{T0} & \dbluecell\small\textbf{T1} & \dbluecell\small\textbf{T2} & \dbluecell\small\textbf{T4}\\
-            
-            \RS \lbluecell\small\textbf{SS5-COMB} & \cell\small 3.22 $\pm$ 1.22 & \cell\small 3.22 $\pm$ 1.22 & \cell\small 3.22 $\pm$ 1.22 & \cell\small 3.22 $\pm$ 1.22 \\
-            \RS \lbluecell\small\textbf{SS11-COMB} & \cell \small3.22 $\pm$ 1.22 & \cell\small 3.22 $\pm$ 1.22 & \cell\small 3.22 $\pm$ 1.22 & \cell\small 3.22 $\pm$ 1.22 \\
-        \end{tabulary}
-        \end{center}
-    \end{table}
-
-Upon closer examination of Table~\ref{tbl:ch7_sim_perf}, we also find that the other combination strategy \blueboxbold{SS5-COMB} (relating to a combination of both frustration and satisfaction stopping strategies) consistently placed second in performance rankings across the four experimental interfaces trialled, very close behind the mean~\gls{acr:cg} values attained by \blueboxbold{SS11-COMB} (with mean~\gls{acr:cg} values $\pm$ standard deviations for both combination strategies reported in the small table above). Again, this demonstrates that a combination strategy appears to be very effective at eliciting good levels of performance, and suggests that a degree of flexibility is advantageous to searchers. However, these levels of~\gls{acr:cg} were attained over much higher mean depths per query than the other combination strategy counterpart ($14.76$, $16.45$, $15.22$ and $14.58$ for interfaces \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4} respectively). Over interface \blueboxbold{T0} especially, a high number of non-relevant documents were required to be found ($24$) before stopping.
-
-
-\todo{======}
-
-- what is the best performing strategy overall?
-- table x.x presents the maximum levels of cg attained, the d/q at which this was attained, and the parameter threshold value that was used to attain it. the D/Q value and CG value correspond to the highest point for each interface in the plots in figure x.x.
-- the table highlights the best performing strategy yielding the highest level of overall cg over each interface.
-- consistently shows that the highest level of cg attained is by SS11, combination strategy.
-
-- what are the highest values for SS11? D/Q?
-- say that actually it's very close between a majority of them, and to discern between good performing and poor performing approaches, we ran statistical tests. where the tests did not yield a sig diff, then performance was similar. these are highlighted by the blue shaded cells in the table, and the white cells represent a sig diff -- meaning that the CG was significantly different from the best performing strategy, SS11.
-
-- interesting to note that the other combo strategy SS5 also performs very well.
-- so we plotted the performance of the two combination rules. because in the main plots, the line represents the best combination.
-- we can see there really is not much difference between varying the parameters -- they all seem to do quite well.
-
-- satisfaction.
-- frustration and disgust.
-- simple rules do well!
-- fixed depth assumption also holds well, although the depths at which the highest cg (SS11 vs. SS1 are much greater, especially for T0). so a searcher has to browse to greater depths on averge to get a similar level of CG. at lower depths per query, searchers will attain much lower d/q -- pull some numbers out to demonstrate the difference.
-- time based rules do well. interestingly, the fixed time rule performed better on average than the adaptive time based rule.
-
-- ift doesnt do as well.
-- rbp doesnt do as well.
-
-- difference rules are terrible.
-
-- overall, offer similar levels of cg. most perform reasonably well, and SS11 emerges as the stratgegy offering best eprformance, but it is not clear cut by any means. WRT our baseline, there is no significant difference between SS11 and SS1.
-
-- prefer a strategy that offers good cg at a lower mean d/q. more efficient. more robust.
-
-
-~~~~~~~
-
--overall trend
--with respect to the baseline
--best performing strategies
--consistency between interfaces
-
-- then a few lines per stopping strategy.
-- how did they perform to the best one?
-    - not that much of a difference!
-
-
-
-
-
-
-
-
-
-
-\begin{table}[t!]
+\begin{table}[p!]
     \caption[Maximum CG from result summary performance runs]{Results from the simulated what-if simulated performance runs, showing the highest levels of~\gls{acr:cg} attained for each result summary level stopping strategy trialled. \emph{x\textsubscript{n}} denotes the parameter threshold(s), with \emph{DQ} denoting the depth per query at which the greatest~\gls{acr:cg} value was attained at. For each interface, the stopping strategy which attained the highest level of~\gls{acr:cg} is \darkbluebox{highlighted}. \cellbluebox{Light blue} highlighting denotes \emph{no significant difference} from the best performing strategy, with no highlighting denoting a significant difference at $\alpha$\emph{=0.05.} For combination thresholds, \emph{x\textsubscript{2},x\textsubscript{4}} are presented for \blueboxbold{SS5-COMB}, with \emph{x\textsubscript{10},x\textsubscript{4}} for \blueboxbold{SS11-COMB}.}
     \label{tbl:ch7_sim_perf}
     \renewcommand{\arraystretch}{1.8}
@@ -647,6 +580,22 @@ Upon closer examination of Table~\ref{tbl:ch7_sim_perf}, we also find that the o
         \end{center}
     \end{table}
 
+With the twelve plots in Figure~\ref{fig:ch7_sim_perf_plots} presenting a broad overview of the variation in performance as the mean depth per query increases, we now turn our attention to the peaks in each plot for the four individual experimental interfaces -- or the \emph{highest levels of~\gls{acr:cg} that are attained.} Table~\ref{tbl:ch7_sim_perf} reports these values, across each of the twelve stopping strategies (rows), and over the four individual experimental interfaces (columns, grouped by \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} or \blueboxbold{T4}). For each of the twelve stopping strategies, we report: the highest level of~\gls{acr:cg} attained (\genericblack{CG}); the mean depth per query at which this value was reached (\genericblack{DQ}); and the stopping threshold value(s) used to reach this value (\genericblack{x\textsubscript{n}}). \darkbluebox{Highlighted} are the stopping strategies that yielded the greatest overall level of~\gls{acr:cg}. Across all four interfaces, combination stopping strategy \blueboxbold{SS11-COMB} attained this, with mean~\gls{acr:cg} values of $2.45$, $2.44$, $2.52$ and $2.67$ reported for interfaces \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4} respectively. These values were all reached at similar depths per query ($\~5-6.5$), and with a similar range of threshold values, with $x_4\approx8-10$, and $x_{10}=10$ seconds.\footnote{As a reminder, \blueboxbold{SS11-COMB} considers the type of patch presented by a given~\gls{acr:serp}, before employing either the satisfaction-based stopping strategy \blueboxbold{SS4-SAT} for high yields early on, or the give-up time-based stopping strategy \blueboxbold{SS10-RELTIME} if the~\gls{acr:serp} does not appear to yield promising results early on.} The relatively low levels of mean depths per query ($6.53$, $5.66$, $5.33$ and $4.91$ for interfaces \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4} respectively) at which the best~\gls{acr:cg} was attained also demonstrates that \blueboxbold{SS11-COMB} was particularly robust at detecting a~\gls{acr:serp} with good results, and vice versa. As such, the low depths per query indicate that the simulated searchers were confidently able to abandon poor quality~\glsplural{acr:serp} without affecting their overall performance.
+
+\begin{table}[h!]
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{L{3.2cm}@{\CSONEHALF}D{2.6cm}@{\CSONEHALF}D{2.6cm}@{\CSONEHALF}D{2.6cm}@{\CSONEHALF}D{2.6cm}@{\CS}}
+            & \lbluecell\small\textbf{T0} & \lbluecell\small\textbf{T1} & \lbluecell\small\textbf{T2} & \lbluecell\small\textbf{T4}\\
+            
+            \RS \lbluecell\small\textbf{SS5-COMB} & \cell\small 2.41 & \cell\small 2.30 & \cell\small 2.52 & \cell\small 2.56 \\
+            \RS \lbluecell\small\textbf{SS11-COMB} & \cell \small 2.45 & \cell\small 2.44 & \cell\small 2.52 & \cell\small 2.67 \\
+        \end{tabulary}
+        \end{center}
+    \end{table}
+
+Upon closer examination of Table~\ref{tbl:ch7_sim_perf}, we also find that the other combination strategy \blueboxbold{SS5-COMB} (relating to a combination of both frustration and satisfaction stopping strategies) consistently placed second in performance rankings across the four experimental interfaces trialled, very close behind the mean~\gls{acr:cg} values attained by \blueboxbold{SS11-COMB} (with mean~\gls{acr:cg} values $\pm$ standard deviations for both combination strategies reported in the small table above). Again, this demonstrates that a combination strategy appears to be very effective at eliciting good levels of performance, and suggests that a degree of flexibility in selecting their stopping criterion/criteria is advantageous to searchers. However, these levels of~\gls{acr:cg} were attained over much higher mean depths per query than the other combination strategy counterpart ($14.76$, $16.45$, $15.22$ and $14.58$ for interfaces \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4} respectively). Over interface \blueboxbold{T0} especially, a high number of non-relevant documents were required to be found ($24$) before stopping.
+
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
@@ -654,6 +603,60 @@ Upon closer examination of Table~\ref{tbl:ch7_sim_perf}, we also find that the o
     \caption[Performance over combination stopping strategies]{Plots illustrating performance over varying depths per query. Reported are performance values over combination strategies \blueboxbold{SS5-COMB} (left) and \blueboxbold{SS11-COMB} (right). With each line representing a value from \emph{x\textsubscript{4}} (refer to legend), each point on the lines represents performance and depth for a threshold value from \emph{x\textsubscript{2}} on the left, and \emph{x\textsubscript{10}} on the right. Little difference in performance is observed between variations of parameter combinations.}
     \label{fig:ch7_sim_perf_plots_combo}
 \end{figure}
+
+It should be noted that the two plots reported in Figure~\ref{fig:ch7_sim_perf_plots} for both \blueboxbold{SS5-COMB} and \blueboxbold{SS11-COMB} are shown over the best performing $x_4$ value for each stopping strategy, as reported in Table~\ref{tbl:ch7_sim_perf}. With two sets of parameters for these combination strategies, reporting in these plots would have been cumbersome -- Figure~\ref{fig:ch7_sim_perf_plots_combo} instead reports the varying levels of~\gls{acr:cg} across different mean depths per query, for each of the different $x_4$ values trialled. These are shown over interface \blueboxbold{T2} only; similar plots were observed for the other three experimental interfaces, yet are not reported. We can see from these plots that similar trends can be observed across the range of mean depths per query across both stopping strategies. The change in performance for \blueboxbold{SS11-COMB} is more profound -- as $x_4$ increases, so too does the mean level of~\gls{acr:cg} attained.
+
+With both \blueboxbold{SS5-COMB} and \blueboxbold{SS11-COMB} both performing very well in terms of the highest levels of~\gls{acr:cg} attained, a cursory examination of Table~\ref{tbl:ch7_sim_perf} will also confirm that several other strategies also perform to a high standard. With these generally high levels of performance being reported, we decided to perform statistical significance testing to determine if the performance of any stopping strategies were sufficiently different from that of \blueboxbold{SS11-COMB}. As discussed previously in this section, we performed two-tailed Student's t-tests over the~\gls{acr:cg} values, comparing \blueboxbold{SS11-COMB} against the other eleven stopping strategies. Results of the statistical testing showed that a majority of stopping strategies were indeed \emph{not significant} ($p>0.05$), denoting that the performance was similar to \blueboxbold{SS11-COMB}. In Table~\ref{tbl:ch7_sim_perf}, \cellbluebox{cells highlighted} denote that the represented stopping strategy was similar in terms of performance to the best performing. Stopping strategies without any cell highlighting offered statistically significant differences, meaning that~\gls{acr:cg} were sufficiently worse than those of \blueboxbold{SS11-COMB}. Of the eleven remaining stopping strategies, we generally observe -- across the four interfaces -- that the following showed similar levels of performance:
+
+\begin{itemize}
+    \item{\blueboxbold{SS1-FIX}, the fixed-depth stopping strategy;}
+    \item{\blueboxbold{SS2-NT} and \blueboxbold{SS3-NC}, the frustration-based strategies;}
+    \item{\blueboxbold{SS4-SAT}, the satiation-based stopping strategy;}
+    \item{\blueboxbold{SS5-COMB}, the frustration and satiation combination strategy;}
+    \item{\blueboxbold{SS8-IFT}, the~\gls{acr:ift}-based stopping strategy; and}
+    \item{\blueboxbold{SS9-TIME} and \blueboxbold{SS10-RELTIME}, the time-based stopping strategies.}
+\end{itemize}
+
+This accounts for a majority of the remaining eleven stopping strategies trialled. The remaining three:
+
+\begin{itemize}
+    \item{\blueboxbold{SS6-DT} and \blueboxbold{SS7-DKL}, the difference-based stopping strategies; and}
+    \item{\blueboxbold{SS12-RBP}, the~\gls{acr:rbp}-based stopping strategy}
+\end{itemize}
+
+\noindent
+generally offered significantly different levels of~\gls{acr:cg} (across the four experimental interfaces) from those of \blueboxbold{SS11-COMBO}. We now briefly examine the undiscussed stopping strategies, before moving to the reporting of the real-world simulated comparisons.
+
+We first consider \blueboxbold{SS1-FIX}, \blueboxbold{SS2-NT} and \blueboxbold{SS3-NC} together. Examining the figures for the first three stopping strategies in Figure~\ref{fig:ch7_sim_perf_plots}, we observe very similar plots following the aforementioned trends in mean performance over mean depths per query. Comparing the plots for \blueboxbold{SS1-FIX} and \blueboxbold{SS2-NT} in particular, striking similarities can be observed. \blueboxbold{SS3-NC} yields similar plots, but spread over greater mean depths per query.\footnote{This is due to the fact that the stopping criterion for \blueboxbold{SS3-NC} considers a series of contiguous, non-relevant items to be found. This can mean that a searcher subscribing to this stopping strategy will examine content to greater depths before meeting this criterion.} Examining Table~\ref{tbl:ch7_sim_perf}, similar levels of~\gls{acr:cg} can also be attained over three stopping strategies, all at similar mean depths per query ($2.50$ at a D/Q of $6.33$, $2.49$ at a D/Q of $6.16$ and $2.35$ at a D/Q of $6.19$ for \blueboxbold{SS1-FIX}, \blueboxbold{SS2-NT} and \blueboxbold{SS3-NC} respectively, over interface \blueboxbold{T2}). This result is interesting as intuitively, both \blueboxbold{SS2-NT} and \blueboxbold{SS3-NC} should offer greater performance over \blueboxbold{SS1-FIX}. This is because the frustration-based stopping strategies are \emph{adapative} in nature, curtailing the examination of result summaries early when results are mostly non-relevant. This is in contrast to the fixed-depth strategy (and baseline) of \blueboxbold{SS1-FIX}.
+
+Moving to the satiation-based stopping strategy \blueboxbold{SS4-SAT}, we find that the associated plot in Figure~\ref{fig:ch7_sim_perf_plots} looks somewhat invariant compared to other strategies. A relatively consistent level of~\gls{acr:cg} can be attained at a range of mean depths per query. It is somewhat surprising how this stopping strategy performs so well, given that it may have been better suited to a session-based stopping decision point (e.g. as applied in the study reported in Chapter~\ref{chap:diversity}) than being applied at the result summary level. Nevertheless, \blueboxbold{SS4-SAT} yields good levels of~\gls{acr:cg} ($2.10-2.30$). A low stopping threshold value ranging from $2$ to $5$ provides these levels of~\gls{acr:cg} across the four experimental interfaces.
+
+Turning our attention to the~\gls{acr:ift}-based stopping strategy \blueboxbold{SS8-IFT}, we notice the lower values of~\gls{acr:cg} that are attained in Table~\ref{tbl:ch7_sim_perf}. These values are generally attained at greater mean depths per query, and if we examine the plot for \blueboxbold{SS8-IFT} in Figure~\ref{fig:ch7_sim_perf_plots}, we notice a definite drop in mean accumulated~\gls{acr:cg} after this peak. However, the low levels of~\gls{acr:cg} in comparison to other stopping strategies (e.g. $2.13$ vs. $2.52$ for \blueboxbold{SS11-COMB} over interface \blueboxbold{T2}) suggests that this approach does not work particularly well. This perhaps can be attributed to how the \emph{rate of gain} was calculated -- a difficult value to estimate. We discuss the issue of calculating the rate of gain a searcher would expect to accrue in greater detail  in our discussion chapter, Chapter~\ref{chap:conclusions}.
+
+
+
+\todo{======}
+
+Figure~\ref{fig:ch7_sim_perf_plots}
+Table~\ref{tbl:ch7_sim_perf}
+
+
+
+Looking at the first three, ss1, ss2, ss3, we observe similar findings. the plots look similar, even though ss1 is a fixed-depth approach, with ss2 and ss3 adaptive. the highest levels of cg are also very similar between the three, and attained at similar depths per query. intrestingly ohowever ss3 proceeds to much greater depths -- this is because the threshold is contiguous non-relevance, less likely to occur, and more likely to spur searchers deeper on average.
+
+ss4 looks a bit invariant, and surprising that such an approach performs so well. would have thought it would work better at a session level stopping rule (i.e. what we do in chapter 8), and does not perform as well as ss2 and ss3. however when combined with ss2, it does well (as ss5), perhaps suggesting that the frustration-based strategy is more often used as the stopping criterion.
+
+ift -- rate of gain is the issue here. although we see a maximum CG, the CG is lower than the best (compare SS8 and SS11 maxCG). this is consistent across interfaces; this perhaps is due to how we considered the rate of gain, required for this stopping strategy to work. this is hard to estimate; we consider this in more detail in our discussion.
+
+time -- not as many points, because the range of values trialled was not as extensive as other strategies. looking at the plots however, we do observe a peak, suggesting the best performing value has been found. interestingly, ss10 provides very flat curves, bringing about considerable CG gains at varying depths per query. suggests that these strategies are good. slightly surprising that ss9 does better than ss10 overall. ss9 is fixed, ss10 is adaptive. similar finding to ss1, ss2 and ss3! maybe adaptive is not always your best best for high levels of gain.
+
+finally, difference based rules. although we see similar trends in the plots compared to other strategies, results are a bit invariant. and max cg values are quite low compared to other strategies, with these most likely to be statistically significantly different from the best performing. however, the deeper you go, the more that they tend to increase.
+
+lastly, rbp. from the plots and table, clear that the measure underestimates. as you increase the patience parameter, you go deeper down the results. however, as you go deeper, you obtain better performance, but at a diminishing rate. like the difference based strategies, rbp is statistically signficant from ss11. except for T2, where no differences exist.
+
+- overall, offer similar levels of cg. most perform reasonably well, and SS11 emerges as the stratgegy offering best eprformance, but it is not clear cut by any means. WRT our baseline, there is no significant difference between SS11 and SS1.
+
+- prefer a strategy that offers good cg at a lower mean d/q. more efficient. more robust.
 
 \subsubsection{Real-World Comparisons}\label{sec:snippets:simulations:results:comparisons}
 
