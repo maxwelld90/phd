@@ -2,13 +2,13 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[Modelling SERP Level Stopping Behaviours]{Modelling~\gls{acr:serp} Level\\Stopping Behaviours}\label{chap:serp}
-In Chapters~\ref{chap:snippets} and~\ref{chap:diversity}, we examined the effects of searcher behaviour and performance when experimental interfaces and conditions were varied. This was before proceeding to examine the grounded simulated behaviour and performance of searchers under different result summary level stopping strategies. With the aforementioned considered as the empirical strand of the work reported in this thesis, \darkblueboxbold{HL-RQ1}\footnote{\darkblueboxbold{HL-RQ1} is defined in Section~\ref{sec:intro:rqs} on page~\pageref{sec:intro:rqs}.} poses the following overarching research question.
+In Chapters~\ref{chap:snippets} and~\ref{chap:diversity}, we conducted two user studies that examined effects of searcher behaviour and performance under different contexts. Interaction data from these studies were then used to ground simulations of interaction that examined how each of the twelve different stopping strategies performed and approximated real-world searcher stopping behaviours. We now turn our attention towards providing a complete answer to our first high-level research question, \darkblueboxbold{HL-RQ1}.
 
 \begin{itemize}
     \item[]{\darkblueboxbold{HL-RQ1} How can we improve searcher models to incorporate different stopping decision points?}
 \end{itemize}
 
-In order to address this high level research question, we presented in Chapter~\ref{chap:csm} the~\glsfirst{acr:csm}, a conceptual, high level model of the search process. The~\gls{acr:csm} introduced the~\gls{acr:serp} level stopping decision point, motivated by informations scent (refer to Section~\ref{sec:stopping_background:theoretical:ift}), allowing simulated searchers subscribing to such a model to \emph{abandon} a~\gls{acr:serp} if a general \emph{overview} of the given~\gls{acr:serp} if the results, from a glance, did not appear to provide promising results. With the definition of the~\gls{acr:csm} partially satisfying \darkblueboxbold{HL-RQ1}, we in this chapter provide results of an empirical, simulated study of the new stopping decision point, providing evidence that the inclusion of this new stopping decision point does indeed improve simulated searcher performance, and offers closer approximations to how real-world searchers actually behaved.
+In order to address this research question, we presented in Chapter~\ref{chap:csm} the~\glsfirst{acr:csm}, a conceptual, high level model of the search process. The~\gls{acr:csm} introduced the~\gls{acr:serp} level stopping decision point, motivated by informations scent (refer to Section~\ref{sec:stopping_background:theoretical:ift}). This new stopping decision point allows a simulated searcher to \emph{abandon} a~\gls{acr:serp} if a general \emph{overview} of the given~\gls{acr:serp} if the results, from a glance, did not appear to provide promising results. With the definition of the~\gls{acr:csm} partially satisfying \darkblueboxbold{HL-RQ1}, we in this chapter provide results of an empirical, simulated study of the new stopping decision point. This study provides evidence that the inclusion of this new stopping decision point does indeed improve simulated searcher performance, and offers closer approximations to how real-world searchers actually behaved.
 
 \section{Motivation and Research Questions}\label{sec:serp:background}
 With the background work for this chapter largely outline in Sections~\ref{sec:stopping_background:theoretical:ift} and~\ref{sec:csm:stopping}, this section provides a refresher of the motivation behind the inclusion of the third, new~\gls{acr:serp} level stopping decision point. We begin with the concept of~\gls{acr:serp} abandonment, before considering how~\glsfirst{acr:ift} provides strong theoretical motivation.
@@ -47,15 +47,30 @@ In this section, we therefore outline:
 \end{itemize}
 
 \subsection{SERP Decision Making}\label{sec:serp:method:serp_dp}
-This discusses the various ways in which we implemented this new stopping decision point, allowing us to determine whether it leads to any improvements in overall search performance and better approximations to real-world searcher stopping behaviours.
+This section discusses the various ways in which we implemented this new stopping decision point, allowing us to determine whether it leads to any improvements in overall search performance and better approximations to real-world searcher stopping behaviours. As a searcher can only obtain an impression of the overall quality of a~\gls{acr:serp} from what he or she can see \emph{at a glance,} we begin this section with a discussion on the \emph{size of the browser's viewport.}
 
-\blueboxbold{Definition: Low vs. High Scent} First, we must define our interpretation of how the scent of a~\gls{acr:serp} was measured. We follow the work of~\cite{wu2014information_scent}, who stated that a page offering little or no relevant content could be considered to offer a low information scent. As such, our definition of a poor quality~\gls{acr:serp} is defined as $P@10=0.0$. We use this definition to delineate between \emph{good} and \emph{bad}~\glsplural{acr:serp} when considering interaction probabilities below.
+\blueboxbold{Considering Browser Viewport Size}
+As we discussed previously in Section~\ref{sec:serp:background}, real-world searchers are able to infer the quality (and perhaps relevance) of a given page or~\gls{acr:serp} through the examination of various proximal cues~\citep{chi2001information_scent}. Such cues are not considered in this work; instead, we rely upon more simplistic means to implement the stopping decision point. One aspect of presentation we do consider in this chapter is the \emph{size of the browser's viewport}. A~\gls{acr:serp} is typically larger than the viewport it is displayed within, which leads to the inclusion of scrollbars. Results can only be seen \emph{above-the-fold}, or what is visible within the viewport. We argue that a searcher can infer the quality of the~\gls{acr:serp} from the initial view they are presented with, and thus incorporate a \emph{viewport size} ($v_{size}$) variable in our simulations of interaction. A searcher can only judge what they can see. This variable can vary between the different interfaces we trialled -- for example, longer snippet text results in fewer result summaries being displayed in the initial view. By using a fixed-size popup window in the two user studies (as discussed in Section~\ref{sec:methodology:user:interface}), we were able to manually check the number of result summaries displayed within the popup window, and use these values to provide more extensive grounding to the new stopping decision point.
+
+\begin{wrapfigure}[13]{r}{0.45\textwidth}
+    \begin{center}
+    \vspace*{-9mm}
+    \includegraphics[width=1\textwidth]{figures/ch6-viewport.pdf}
+    \end{center}
+    \vspace*{-2mm}
+    \caption[Viewport cutoff example]{The~\gls{acr:serp} viewport threshold. In this example, three result summaries are visible, with two present but outwith the viewport. Therefore, \emph{v\textsubscript{size}=3}. Cheers!}
+    \label{fig:viewport_cutoff}
+\end{wrapfigure}
+
+For simulations of interaction reported in this chapter, we use different values of $v_{size}$ over the experimental interfaces reported in Chapter~\ref{chap:snippets} only. As we varied the length of result summaries across the four experimental interfaces (from \blueboxbold{T0} to \blueboxbold{T4}), this would impact upon the number of result summaries visible in the initial view (used for obtaining an impression of the overall~\gls{acr:serp}). Longer result summaries would mean that fewer would be presented within a viewport of the same size, compared to shorter result summaries. However, result summary lengths were not modified under the experimental conditions trialled in Chapter~\ref{chap:diversity}. This means that $v_{size}$ would remain constant.
+
+\blueboxbold{Definition: Low vs. High Scent} Given a~\gls{acr:serp}, would it constitute as \emph{low scent} or \emph{high scent?} For this chapter, we follow the work of~\cite{wu2014information_scent}. In their study, the authors state that a low scent~\gls{acr:serp} offers little or no relevant content. Definitions by~\cite{wu2014information_scent} and~\cite{hassan2013serp_abandonment} define a poor scented~\gls{acr:serp} as $P@10=0.0$. We take this definition to delineate between \emph{good} and \emph{bad}~\glsplural{acr:serp}, and extend upon it by also considering $v_{size}$. This leads to our definition of $P@v_{size}=0.0$ for a poor quality~\gls{acr:serp}, meaning that a simulated searcher would then gauge the quality of a ~\gls{acr:serp} by examining the average number of result summaries displayed within a fictional browser viewport for the given experimental interface or condition being trialled.
 
 \blueboxbold{Probability of Examination} For this new stopping decision point, we introduce the \emph{probability of examining a~\gls{acr:serp}}, or \blueboxbold{P(E)}. This determines how likely it is a searcher will \emph{enter} a~\gls{acr:serp} and begin to examine result summaries in detail. Taking this concept further, we can then consider two additional probabilities that incorporate the notion of a~\glsplural{acr:serp} information scent, yielding:
 
 \begin{itemize}
     \item{\blueboxbold{P(E|HS)}, the probability of examining a~\gls{acr:serp} perceived to give a high information scent (i.e. a good quality~\gls{acr:serp}); and}
-    \item{\blueboxbold{P(E|LS)}, the probability of examining a~\gls{acr:serp} offering what appears to be a low information scent (i.e. a poor quality~\gls{acr:serp}, or $P@10=0.0$).}
+    \item{\blueboxbold{P(E|LS)}, the probability of examining a~\gls{acr:serp} offering what appears to be a low information scent (i.e. a poor quality~\gls{acr:serp}, or $P@v_{size}=0.0$).}
 \end{itemize}
 
 \begin{figure}[t!]
@@ -68,24 +83,7 @@ This discusses the various ways in which we implemented this new stopping decisi
 
 These values were computed from interaction log data, derived from the two user studies discussed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. Values derived are not reported in this section; refer to Section~\ref{sec:serp:method:probscosts} for the probabilities extracted. Intuitively however, one would expect a searcher demonstrating competency at searching for information to know when a query is returning good results, and vice versa. As such, one would expect to see a higher probability for $P(E|HS)$ than when compared to $P(E|LS)$, and would thus provide evidence that searchers do indeed attempt to avoid low quality~\glsplural{acr:serp}.
 
-As illustrated in Figure~\ref{fig:serp_probabilities}, we took each query issued from the interaction log, and extracted for each the $P@10$ score (as per~\cite{wu2014information_scent}). If $P@10=0.0$, the associated~\gls{acr:serp} for the query would have offered a low information scent. Conversely, if $P@10 > 0.0$, the information scent would have been considered to be high. For the interactions recorded on each~\gls{acr:serp}, we could then count the number that recorded no clicks (or no result summaries deemed to be attractive enough to examine further). We considered this as a definition of an \emph{abandoned~\gls{acr:serp}}, as used in previous work by~\cite{hassan2013serp_abandonment}. From these counts, we could then compute the probabilities of examining a~\gls{acr:serp}, as illustrated in Figure~\ref{fig:serp_probabilities}.
-
-\blueboxbold{Considering Browser Viewport Size}
-We now turn our attention to how a simulated searcher is able to make a judgement of the presented~\gls{acr:serp}. As we discussed previously in Section~\ref{sec:serp:background}, real-world searchers are able to infer the quality (and perhaps relevance) of a given page or~\gls{acr:serp} through the examination of various proximal cues~\citep{chi2001information_scent}. Such cues are not considered in this work; instead, we rely upon more simplistic means to implement the stopping decision point.
-
-\begin{wrapfigure}[13]{r}{0.45\textwidth}
-    \begin{center}
-    \vspace*{-9mm}
-    \includegraphics[width=1\textwidth]{figures/ch6-viewport.pdf}
-    \end{center}
-    \vspace*{-2mm}
-    \caption[Viewport cutoff example]{The~\gls{acr:serp} viewport threshold. In this example, three result summaries are visible, with two present but outwith the viewport. Therefore, \emph{v\textsubscript{size}=3}. Cheers!}
-    \label{fig:viewport_cutoff}
-\end{wrapfigure}
-
-One aspect of presentation we do consider in this chapter is the \emph{size of the browser's viewport}. A~\gls{acr:serp} is typically larger than the viewport it is displayed within, which leads to the inclusion of scrollbars. Results can only be seen \emph{above-the-fold}, or what is visible within the viewport. We argue that a searcher can infer the quality of the~\gls{acr:serp} from the initial view they are presented with, and thus incorporate a \emph{viewport size} ($v_{size}$) variable in our implementations. A searcher can only judge what they can see. This variable can vary between the different interfaces we trialled -- for example, longer snippet text results in fewer result summaries being displayed in the initial view. By using a fixed-size popup window in the two user studies (as discussed in Section~\ref{sec:methodology:user:interface}), we were then able to manually check the number of result summaries displayed within the popup window, and use these values to ground the new stopping decision point further.
-
-For our simulations, we use different values of $v_{size}$ over the study interfaces reported in Chapter~\ref{chap:snippets} only. This is because introducing longer result summaries would mean fewer overall would be displayed within a viewport of the same size. Across the experimental conditions trialled in Chapter~\ref{chap:diversity}, $v_{size}$ remains constant as result summary lengths were not modified. Values used for $v_{size}$ are reported later in Section~\ref{sec:serp:method:probscosts}.
+As illustrated in Figure~\ref{fig:serp_probabilities}, we took each query issued from the interaction log, and extracted for each the $P@v_{size}$ score (as per~\cite{wu2014information_scent}), considering $P@v_{size}=0.0$ as our criterion for a~\gls{acr:serp} of poor scent. For the interactions recorded on each~\gls{acr:serp}, we could then count the number that recorded no clicks (or no result summaries deemed to be attractive enough to examine further). We considered this as a definition of an \emph{abandoned~\gls{acr:serp}}, as used in previous work by~\cite{hassan2013serp_abandonment}. From these counts, we could then compute the probabilities of examining a~\gls{acr:serp}, as illustrated in Figure~\ref{fig:serp_probabilities}.
 
 \subsubsection{Decision Point Implementations}\label{sec:serp:method:serp_dp:implementations}
 We trialled three different implementations of the~\gls{acr:serp} level stopping decision point, providing us with the ability to determine the effect of incorporating it within the~\gls{acr:csm}. These are enumerated below, with an explanation of each. The first can be considered our simple baseline approach.
@@ -137,7 +135,7 @@ To determine whether the new~\gls{acr:serp} level stopping decision points offer
 
 From Chapter~\ref{chap:snippets}, the four different experimental interfaces -- whereby result summary lengths were manipulated -- are considered. Namely, these are \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}. From Chapter~\ref{chap:diversity}, we also considered the four experimental conditions that manipulated the underlying system and searcher tasks: \dualbluebox{D}{AS}, \dualbluebox{ND}{AS}, \dualbluebox{D}{AD} and \dualbluebox{ND}{AD}. The eight interfaces and conditions trialled are presented in Table~\ref{tbl:serp_conditions}, complete with an explanation of the differences between each.
 
-\begin{table}[t!]
+\begin{table}[p!]
     \caption[Simulation interaction probabilities and v\textsubscript{size}]{Probabilities of examining high \emph{P(E|HS)} and low scent~\glsplural{acr:serp} \emph{P(E|LS)}, along with \emph{v\textsubscript{size}} values for each of the eight different experimental interfaces and conditions trialled, reported over three different set of probabilities. Refer to Tables~\ref{tbl:snippets_simulation_probcosts} (page~\pageref{tbl:snippets_simulation_probcosts}) and~\ref{tbl:diversity_simulation_probcosts} (page~\pageref{tbl:diversity_simulation_probcosts}) for other interaction probabilities and costs for studies reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity} respectively.}
     \label{tbl:serp_probs_costs}
     \renewcommand{\arraystretch}{1.8}
@@ -184,20 +182,12 @@ Chapter~\ref{chap:strategies} presented twelve different result summary level st
 As such, we report on the following result summary level stopping strategies in this chapter. These were selected as they offered good performance and approximations of actual searcher stopping behaviours in results presented in previous chapters. For our performance runs, we employed the use of:
 
 \begin{itemize}
-    \item{\blueboxbold{SS1};}
-    \item{\blueboxbold{SS2}; and}
-    \item{\blueboxbold{SS3}.}
+    \item{\blueboxbold{SS1-FIX}, our fixed-depth baseline result level stopping strategy;}
+    \item{\blueboxbold{SS5-COMB}, the frustration/satiation combination strategy; and}
+    \item{\blueboxbold{SS11-COMB}, the give-up and satiation combination strategy.}
 \end{itemize}
 
-For the comparison runs, where different stopping strategies offered good approximations of actual searcher behaviour, we employed the following different stopping strategies.
-
-\begin{itemize}
-    \item{\blueboxbold{SS1}}
-    \item{\blueboxbold{SS2}}
-    \item{\blueboxbold{SS3}}
-\end{itemize}
-
-Note that these strategies were instantiated with the same $x_n$ values as reported in the general methodology in Section~\ref{sec:method:simulation:grounding:stopping} on page~\pageref{sec:method:simulation:grounding:stopping}.
+Definitions for each of these stopping strategies can be found in Chapter~\ref{chap:strategies}. Note that these strategies were instantiated with the same $x_n$ \emph{(stopping threshold values)} values as reported in the general methodology in Section~\ref{sec:method:simulation:grounding:stopping} on page~\pageref{sec:method:simulation:grounding:stopping}.
 
 \subsection{Remaining CSM Components}\label{sec:serp:method:other}
 Remaining~\gls{acr:csm} components were left as presented in Section~\ref{sec:method:simulation:runs:performance}. For comparison runs, queries issued by real-world subjects under each of the eight experimental interfaces and conditions were again \emph{replayed}, as discussed in Section~\ref{sec:method:simulation:runs:comparison} on page~\pageref{sec:method:simulation:runs:comparison}.
