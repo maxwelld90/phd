@@ -162,10 +162,10 @@
 \newcommand{\searchlogo}{{\headerfont\color{search_blue}S\color{search_red}e\color{search_yellow}a\color{search_blue}r\color{search_green}c\color{search_red}h}}
 
 % The "Treconomics" Logotype
-\newcommand{\treconomics}{{\headerfont\color{dmax_darkblue}TREConomics}}
+\newcommand{\treconomics}{{\headerfont TREConomics}}
 
 % The "SimIIR" Logotype
-\newcommand{\simiir}{{\headerfont\color{dmax_darkblue}SimIIR}}
+\newcommand{\simiir}{{\headerfont SimIIR}}
 
 % The Hula Search Logotype
 \newcommand{\hula}{{\headerfont\color{hula}Hula Search}}
