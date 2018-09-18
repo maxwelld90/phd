@@ -33,6 +33,21 @@ ift is pretty smooth, following the rate of gain is not the best. maybe it is ho
 
 - why was the chapter 8 simulation comparisons so bad in terms of CG attained, and number of documents saved with new entities? was it the decision maker that we decided to go with? was it the lack of a terminating condition?
 
+- higher levels of gain were observed for tasks using system D when compared to system ND. This might be a consequence of the way in which we bubbled up TREC relevant documents only that were diverse.
+    - but either way, system D should be doing this -- it should be bringing new aspects to the fore. again, confirms that the algorithm was working as expected.
+    - and system D is able to get better gain at lower depths per query on average than system ND.
+
+- however, in terms of performance, the simulated searchers don't do much better on D-AS than D-AD. why?
+    - probably because our decision maker didn't help much. doesn't differentiate between relevant and new and relevant.
+    - future work. how we instantiate the simulations.
+    - maybe this also accounts for why the stopping strategies (or some of them) appeared to underestimate the mean stopping depth. perhaps a better decision maker would be better for this. 
+
+- for performance in chapter 8, mean depth per query is pretty consistent across stopping strategies. why is this the case?
+
+- what would happen if gain is acquired from the snippets, and not the documents?
+
+- little statistical difference in terms of chapter 8 performance. it doesn't really matter what strategy you use, you can still get good levels of CG.
+
 \subsection{Searcher Models}
 
 how did we address \darkblueboxbold{HL-RQ1}? by introducing the CSM.
