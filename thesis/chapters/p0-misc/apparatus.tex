@@ -5,17 +5,21 @@
 \phantomsection
 \addcontentsline{toc}{part}{Apparatus Used}
 
-The user studies reported in this thesis made use of the \treconomics~framework, run over the~\glsfirst{acr:mturk} platform.
+The user studies reported in this thesis made use of the \treconomics~framework. The two user studies were crowdsourced in nature, and as such were run over the~\glsfirst{acr:mturk} platform.
 
-For the extensive \emph{simulations of interaction} reported in this thesis, two computers hosted by the School of Computing Science at the University of Glasgow were used. Basic hardware and software specifications are listed below. FQDNs are obscured to avoid potential security issues.
+For the extensive \emph{simulations of interaction}, three computers hosted by the School of Computing Science at the University of Glasgow were used. Basic hardware and software specifications are listed below. FQDNs are obscured to avoid potential security issues.
 
 \begin{itemize}
     
-    \item{\texttt{t*****.***.gla.ac.uk}\\\emph{8x} \emph{AMD Opteron}\texttrademark~processors 6366 HE, 64 logical cores\\512GB RAM\\Fedora 18 \emph{(Spherical Cow)}, \texttt{3.11.10-100.fc18.x86\_64}}
+    \item{\texttt{a***.***.gla.ac.uk}\\\emph{2x} \emph{Intel}\textregistered~\emph{Xeon}\textregistered~CPU E5-2660, 32 logical cores\\128GB RAM\\Scientific Linux 6.10 \emph{(Carbon)}, \texttt{2.6.32-696.1.1.el6.x86\_64}}
     
     \item{\texttt{f*****.***.gla.ac.uk}\\\emph{2x} \emph{Intel}\textregistered~\emph{Xeon}\textregistered~CPU E5-2660, 32 logical cores\\128GB RAM\\Scientific Linux 6.10 \emph{(Carbon)}, \texttt{2.6.32-573.12.1.el6.x86\_64}}
     
+    \item{\texttt{t*****.***.gla.ac.uk}\\\emph{8x} \emph{AMD Opteron}\texttrademark~processors 6366 HE, 64 logical cores\\512GB RAM\\Fedora 18 \emph{(Spherical Cow)}, \texttt{3.11.10-100.fc18.x86\_64}}
+    
 \end{itemize}
 
-Both computers ran experiments with \emph{Python} 2.7.14, \emph{Whoosh} 2.7.4 and the \simiir~framework. Our thanks go to Douglas Macfarlane, Stewart MacNeill and the rest of the support team at the School for ensuring these computers were available for the experimentation work.
+All three computers ran experiments with \emph{Python} 2.7.14, \emph{Whoosh} 2.7.4 and the \simiir~framework. All stochastic simulation components were seeded, ensuring reproducible results. Seeded random number generation was checked across all three computers, with identical results produced.
+
+Our thanks go to Douglas Macfarlane, Stewart MacNeill and the rest of the support team at the School of Computing Science for ensuring these computers were available for the experimentation work.
 \end{preamble}
