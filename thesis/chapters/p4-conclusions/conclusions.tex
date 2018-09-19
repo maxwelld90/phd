@@ -42,9 +42,16 @@ ift is pretty smooth, following the rate of gain is not the best. maybe it is ho
     - future work. how we instantiate the simulations.
     - maybe this also accounts for why the stopping strategies (or some of them) appeared to underestimate the mean stopping depth. perhaps a better decision maker would be better for this. 
 
+- does this account for the poor levels of mean cg that are attained in Figure 8.9 compared to the CG attained in Chapter 7?
+    - the real-world searchers performed generally better than all of the simulated stopping strategies.
+        - what does this suggest? is there another strategy out there that better fits this kind of task?
+        - only task that a stopping strategy did offer better approximations for in terms of CG is ND-AS. Which is T2. SS3 does better there. but why?
+
 - for performance in chapter 8, mean depth per query is pretty consistent across stopping strategies. why is this the case?
 
 - what would happen if gain is acquired from the snippets, and not the documents?
+
+- why did SS5 do better in Chapter 8, but SS11 do better in Chapter 11 in terms of overall performance? Indeed, SS5 in chapter 8 offers consistently better approximations, too.
 
 - little statistical difference in terms of chapter 8 performance. it doesn't really matter what strategy you use, you can still get good levels of CG.
 

@@ -785,7 +785,19 @@ General trends across mean depths per query can be observed in each of the twelv
 
 While the plots in Figure~\ref{fig:ch8_sim_perf_plots} present the general trends in performance across mean depths per query, Table~\ref{tbl:ch8_sim_perf} reports on the \emph{highest level of~\gls{acr:cg}} attained by each result summary level stopping strategy, across the four experimental conditions trialled. The values in Table~\ref{tbl:ch8_sim_perf} therefore correspond to the peaks shown in each of the plots in Figure~\ref{fig:ch8_sim_perf_plots}. For each stopping strategy and condition, we report: the highest level of~\gls{acr:cg} attained \genericblack{(CG)}; the mean depth per qury at which this value was reached \genericblack{(DQ)}; and the stopping threshold value(s) that were used to attain this value \genericblack{(x\textsubscript{n})}. \darkbluebox{Highlighted} are the stopping strategies that yielded the highest mean level of~\gls{acr:cg}, with the highest value demonstrated for each condition. For conditions \dualbluebox{D}{AS}, \dualbluebox{ND}{AS} and \dualbluebox{D}{AD}, combination stopping strategy \blueboxbold{SS5-COMB} attains the highest mean level of~\gls{acr:cg}, with values $2.21$, $1.79$ and $2.13$ reached for the aforementioned condition, respectively. As these levels of~\gls{acr:cg} are reached under a combination strategy, values $x_2=5$ and $x_4=3$, $x_2=10$ and $x_4=6$, and $x_2=7$ and $x_4=3$ were used to attain these values for conditions \dualbluebox{D}{AS}, \dualbluebox{ND}{AS} and \dualbluebox{D}{AD}, respectively. This means that under condition \dualbluebox{D}{AS}, a searcher would examine a total of five non-relevant documents or save three relevant documents per query before stopping -- whatever occurred first. Interestingly, our fixed-depth, baseline stopping strategy \blueboxbold{SS1-FIX} reaches the highest level of~\gls{acr:cg} for condition \dualbluebox{ND}{AD}, at $1.81$. \blueboxbold{SS5-COMB} is however very close behind, with a mean~\gls{acr:cg} of $1.80$ reported. Like results in Section~\ref{sec:snippets:simulations:results:perf}, this again demonstrates that a fixed-depth strategy can be hard to beat in terms of attaining a high level of~\gls{acr:cg}.
 
-Indeed, it should be noted that several stopping strategies reported maximum levels of~\gls{acr:cg} close to the absolute maximum observed -- \blueboxbold{SS2-NT}, \blueboxbold{SS3-NC}, \blueboxbold{SS4-SAT}, \blueboxbold{SS9-TIME} and \blueboxbold{SS11-COMB} all report good performance. For \blueboxbold{SS5-COMB}, the relatively low mean depths per query at which the greatest level of~\gls{acr:cg} was reached also demonstrates that the combination strategy was particularly robust at detecting a query of poor performance, and subsequently stopping at shallower depths (thus saving the simulated searcher's time). Taking this further, an interesting trend that was initially observed in Figure~\ref{fig:ch8_sim_perf_plots} shows that peak~\gls{acr:cg} is attained at generally shallower mean depths per query under tasks using system \blueboxbold{D} than when compared to system \blueboxbold{ND}.
+Indeed, it should be noted that several stopping strategies reported maximum levels of~\gls{acr:cg} close to the absolute maximum observed:
+
+\begin{itemize}
+    
+    \item{\blueboxbold{SS2-NT} and \blueboxbold{SS3-NC}, the frustration stopping strategies (considering total and contiguous non-relevance);}
+    \item{\blueboxbold{SS4-SAT}, the satiation-based stopping strategy;}
+    \item{\blueboxbold{SS9-TIME}, the time-based strategy; and}
+    \item{\blueboxbold{SS11-COMB}, the patch-based combination strategy}
+    
+\end{itemize}
+
+\noindent
+all report good levels of performance across the four conditions. For \blueboxbold{SS5-COMB}, the relatively low mean depths per query at which the greatest level of~\gls{acr:cg} was reached also demonstrates that the combination strategy was particularly robust at detecting a query of poor performance, and subsequently stopping at shallower depths (thus saving the simulated searcher's time). Taking this further, an interesting trend that was initially observed in Figure~\ref{fig:ch8_sim_perf_plots} shows that peak~\gls{acr:cg} is attained at generally shallower mean depths per query under tasks using system \blueboxbold{D} than when compared to system \blueboxbold{ND}.
 
 \begin{table}[p!]
     \caption[Maximum CG from diversification performance runs]{Results from the simulated what-if simulated performance runs, showing the highest levels of~\gls{acr:cg} attained for each result summary level stopping strategy trialled (grouped by their type). \emph{x\textsubscript{n}} denotes the parameter threshold(s), with \emph{DQ} denoting the depth per query at which the greatest~\gls{acr:cg} value was attained at. For each condition, the stopping strategy which attained the highest level of~\gls{acr:cg} is \darkbluebox{highlighted}. \cellbluebox{Light blue} highlighting denotes \emph{no significant difference} from the best performing strategy, with no highlighting denoting a significant difference at $\alpha$\emph{=0.05.} For combination thresholds, \emph{x\textsubscript{2},x\textsubscript{4}} are presented for \blueboxbold{SS5-COMB}, with \emph{x\textsubscript{10},x\textsubscript{4}} for \blueboxbold{SS11-COMB}.}
@@ -830,8 +842,6 @@ With performance levels attained by several stopping strategies reported to be v
 
 Given that subjects were asked in aspectual (\darkblueboxbold{AS}) tasks to find relevant documents containing at least one new, unseen entity, we consider in tandem with~\gls{acr:cg} mean AR. Figure~\ref{fig:ch8_sim_ar_plots} again presents 12 different plots, each one representing the individual result summary level stopping strategy. Each line on the plot again represents one of the four experimental conditions that were trialled. While the mean depth per query is shown along the $y$ axes, we instead here plots these against the mean AR values along the $x$ axes, denoting the mean number of documents containing unseen aspects over the course of a session. Unsurprisingly, the plots follow similar trends to those shown in Figure~\ref{fig:ch8_sim_perf_plots}, with the same mean depth per query values shown.
 
-Indeed, a higher mean level of~\gls{acr:cg} correlates strongly with a higher mean level of AR -- an intuitive yet unsurprising result -- in order to attain gain, one must save documents, and by saving documents, a simulated searcher will also identify documents with unseen aspects. Trends illustrate that like Figure~\ref{fig:ch8_sim_perf_plots}, plots build up to a peak before slowly diminishing as the mean depth per query increases. We also observe that a much higher level of AR is attained by tasks using system \blueboxbold{D}. These results provide further proof that the diversification algorithm employed was successfully able to return a modified ranking with a more diverse set of results.
-
 \begin{figure}[p!]
     \centering
     \resizebox{1\hsize}{!}{
@@ -840,33 +850,43 @@ Indeed, a higher mean level of~\gls{acr:cg} correlates strongly with a higher me
     \label{fig:ch8_sim_ar_plots}
 \end{figure}
 
-So, what about the raw values? We are interested in max CG. So what do some numbers show?
-Considering peak~\gls{acr:cg}, Table~\ref{tbl:ch8_sim_perf} reports...
+Indeed, a higher mean level of~\gls{acr:cg} correlates strongly with a higher mean level of AR -- an intuitive yet unsurprising result. In order to attain gain, one must save documents, and by saving documents, a simulated searcher will also identify documents with unseen aspects. Trends illustrate that like Figure~\ref{fig:ch8_sim_perf_plots}, plots build up to a peak before slowly diminishing as the mean depth per query increases. We also observe that a much higher level of AR is attained by tasks using system \blueboxbold{D}. For example, \blueboxbold{SS5-COMB} attains a maximum AR of $1.04$ and a mean depth per query of $4.21$, and $0.69$ at a mean depth per query of $7.65$ under conditions \dualbluebox{D}{AS} and \dualbluebox{ND}{AS} respectively. These results provide further proof that the diversification algorithm employed was successfully able to return a modified ranking with a more diverse set of results.
 
-We should also mention aspectual recall.
-Figure 8.x considers the following plots. Shows mean AR.
+Turning our attention to the remaining stopping strategies, we first consider our fixed-depth baseline \blueboxbold{SS1-FIX}, in addition to frustration-based strategies \blueboxbold{SS2-NT}, \blueboxbold{SS3-NC}. All three perform remarkably well, with \blueboxbold{SS1-FIX} indeed offering best performance for condition \dualbluebox{ND}{AD}. Under condition \dualbluebox{D}{AS} for example, the three strategies offer a maximum~\gls{acr:cg} of $2.19$, $2.18$ and $2.20$ for the first three strategies in order, respectively. This is compared to the maximum reached by \blueboxbold{SS5-COMB} of $2.21$. In addition, the strategies all offer these levels of~\gls{acr:cg} at similar mean depths per query, suggesting that such approaches are just as robust as the combination strategy. This perhaps is an unsurprising finding, as \blueboxbold{SS5-COMB} utilises \blueboxbold{SS2-NT} as its frustration-based component.
 
-Taking each strategy in turn...
+Considering our time-based stopping strategies \blueboxbold{SS9-TIME} and \blueboxbold{SS10-RELTIME}, we find that \blueboxbold{SS9-TIME} consistently delivers the best performance across the four experimental conditions. This result is perhaps somewhat surprising, and mirrors findings from Section~\ref{sec:snippets:simulations:results:perf} -- an adaptive approach such as \blueboxbold{SS10-RELTIME} would intuitively make more sense, as the searcher would be able to adapt his or her stopping behaviour based upon the amount of relevant content found, rather than simply stopping after $30$ or $60$ seconds have elapsed from the point at which they begin their examination of results.
 
+Considering our measure-based strategy \blueboxbold{SS12-RBP}, performance offered across the four conditions is somewhat poorer than the other strategies. However, no significant differences in performance were observed with this stopping strategy. Once notable aspects regarding the results for this strategy is the relatively shallow mean depth per query that simulated searchers traversed to on average. For tasks employing system \blueboxbold{ND}, results are particularly invariant -- no obvious peak in performance is observed.
 
+The difference threshold stopping strategies \blueboxbold{SS6-DT} and \blueboxbold{SS7-DKL} yielded similar performance when compared to \blueboxbold{SS12-RBP}. However, simulated searchers subscribing to the difference strategies both traversed result lists to greater depths on average. Performance from these strategies perhaps was hindered by the querying strategy that we employed, and demonstrates that they are not particularly robust to detecting poor quality result lists.
 
-% - explain figure 7.6. cg vs d/q for performance runs.
-% - general trends:
-%     - mean cg steadily increases, then begins to tail off at greater mean depths
-%     - increase up to a certain point, this is the maximum level of CG.
-%     - we see a trend where tasks using system D generally outperform system ND. this is reflected by the lines for D-AS and D-AD being above ND-AS and ND-AD.
-%     - demonstrates that the diversification algorithm was working as expected.
-%     - see slightly better performance from D-AS than D-AD. however, very minimal.
-%
-%     - all four interfaces start at very similar across low depths per query, peak, and begin to spread out at the mean d/q increases.
-%
-% - table (maxCG) reports the values of these peaks.
-%     - demonstrate what the peaks are.
-%
-% - what about aspectual recall?
-%     -
+The~\gls{acr:ift}-based stopping strategy \blueboxbold{SS8-IFT} however consistently performed the worst over all four experimental conditions. As can be observed from Figure~\ref{fig:ch8_sim_perf_plots}, we can see that the aforementioned gap between the two systems was not present, with all four tasks bunched very closely together across the range of mean depths per query. Indeed, performance across tasks utilising system \blueboxbold{D} was significantly different from the best performing strategy, \blueboxbold{SS5-COMB}.~\gls{acr:cg} reached $1.68$ and $1.46$ for tasks \dualbluebox{D}{AS} and \dualbluebox{D}{AD} respectively at relatively low mean depths per query. This suggests that the strategy was stopping too early, which is indicative to an incorrectly set rate of gain. This, and other aspects from our findings, are discussed in Chapter~\ref{chap:conclusions}.
 
 \subsubsection{Real-World Comparisons}\label{sec:diversity:simulated:results:comparisons}
+
+- what are our general trends?
+- interesting to note that the clear difference between the two systems disappears.
+
+- wow. across diversified systems, SS1 does the best. SS10 does the best for the ND systems.
+- interesting!
+- what does that say? does the retrieval system (diversified) improve things so much that it pays to employ a fixed depth approach? although 24 seems quite high! and is the non-diversified system so poor in comparison that you give up after 30 seconds? interesting nevertheless.
+
+- again we see really clear trends in the plots.
+- however the systems are no longer closely grouped together.
+- D-AS is the best consistently. then ND AD. then D AD. then ND AS consistently offers the worst approximations.
+
+- did stat tests in Table 8.13, but no sig diffs.
+- also report the average. doesn't really show a clear winner, no sig diffs.
+
+- ss6, ss7 and ss12 all consistently underestimate the depth.
+
+- and what about total cg?
+- the real-world searchers performed generally better than all of the simulated stopping strategies.
+    - what does this suggest? is there another strategy out there that better fits this kind of task?
+    - SS3 over ND-AS is the only strategy that offers a higher level of CG.
+    - real-world searchers all outperform the stopping strategies.
+    
+
 
 \begin{table}[t!]
     \caption[Lowest MSE values for diversification comparisons runs]{Results from the simulated comparison runs, showing the \emph{lowest} MSE value reached over each result summary level stopping strategy trialled. \emph{x\textsubscript{n}} denotes the parameter threshold(s) that the lowest MSE was reached with. Results are presented across the four experimental conditions. For each condition, the stopping strategy that attained the lowest MSE is \darkbluebox{highlighted}. For the combination stopping strategies, two parameters are presented, with \emph{x\textsubscript{2},x\textsubscript{4}} presented for \blueboxbold{SS5-COMB} and \emph{x\textsubscript{10},x\textsubscript{4}} presented for \blueboxbold{SS11-COMB}. Significance testing yielded no significant differences between the stopping strategies at $\alpha$\emph{=0.05.}}
@@ -964,7 +984,5 @@ Taking each strategy in turn...
     \caption[Comparison~\gls{acr:cg} rankings (diversification)]{Bar charts, one per experimental condition, demonstrating the mean level of~\gls{acr:cg} attained by each result summary level stopping strategy. Ordered by~\gls{acr:cg}, these values are reached using the threshold configurations yielding the best approximations to actual searcher behaviour, as shown in Table~\ref{tbl:ch8_sim_comp}. Also included are the mean real-world searcher~\gls{acr:cg} values for each interface.}
     \label{fig:ch7_sim_comparison_rankings}
 \end{figure}
-
-\subsection{Discussion}
 
 \section{Chapter Summary}
