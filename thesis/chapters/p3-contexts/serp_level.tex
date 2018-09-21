@@ -96,103 +96,87 @@ From here, the remaining two strategies begin to consider a simulated searcher's
 
 \begin{itemize}
     \item{\blueboxbold{Perfect~\gls{acr:serp} Judgements} Here, a simulated searcher will only begin to examine a~\gls{acr:serp} in detail if $P@v_{size} > 0$ (considering the viewport size). If $P@v_{size} = 0$, the searcher will abandon the~\gls{acr:serp}, and proceed to the next action as dictated by the~\gls{acr:csm}. This is the upper bound in terms of performance for the stopping decision point, and is analogous to, as an example, the \emph{ideal user} of~\cite{hagen2016simulating_users}.}
-    \item{\blueboxbold{Stochastic~\gls{acr:serp} Judgements} This implementation used a stochastic element to determine whether the simulated searcher should enter the~\gls{acr:serp} or not. Like above, the viewport size ($P@v_{size}$) of the~\gls{acr:serp} is computed. If the~\gls{acr:serp} is of high scent, $P(E|HS)$ is used to determine whether the searcher should enter the~\gls{acr:serp}. Conversely, if the~\gls{acr:serp} is considered to be of low scent, $P(E|LS)$ is used instead to determine the likelihood of abandonment. We considered three different sets of probabilities for the stochastic implementation.}
+    \item{\blueboxbold{Stochastic~\gls{acr:serp} Judgements} This implementation used a stochastic element to determine whether the simulated searcher should enter the~\gls{acr:serp} or not. Like above, the viewport size ($P@v_{size}$) of the~\gls{acr:serp} is computed. If the~\gls{acr:serp} is of high scent, $P(E|HS)$ is used to determine whether the searcher should enter the~\gls{acr:serp}. Conversely, if the~\gls{acr:serp} is considered to be of low scent, $P(E|LS)$ is used instead to determine the likelihood of abandonment. For this component, we considered the probabilities of interaction across all interactions for a given interface or condition.}
     
-    \begin{itemize}
-        \item{\blueboxbold{Average} $P(E|HS)$ and $P(E|LS)$ are estimated over all subjects of a particular interface or condition.}
-        \item{\blueboxbold{Savvy} $P(E|HS)$ and $P(E|LS)$ are estimated based upon the top 15 subjects for a particular interface/condition with the \emph{lowest} $P(E|LS)$.}
-        \item{\blueboxbold{Na\"{i}ve} $P(E|HS)$ and $P(E|LS)$ are estimated based upon the top 15 subjects for a particular interface/condition with the \emph{highest} $P(E|LS)$.}
-    \end{itemize}
+%      We considered three different sets of probabilities for the stochastic implementation.}
+%
+%     \begin{itemize}
+%         \item{\blueboxbold{Average} $P(E|HS)$ and $P(E|LS)$ are estimated over all subjects of a particular interface or condition.}
+%         \item{\blueboxbold{Savvy} $P(E|HS)$ and $P(E|LS)$ are estimated based upon the top 15 subjects for a particular interface/condition with the \emph{lowest} $P(E|LS)$.}
+%         \item{\blueboxbold{Na\"{i}ve} $P(E|HS)$ and $P(E|LS)$ are estimated based upon the top 15 subjects for a particular interface/condition with the \emph{highest} $P(E|LS)$.}
+%     \end{itemize}
 \end{itemize}
 
-By considering these different approaches to implementing the new~\gls{acr:serp} level stopping decision point, we can then clearly identify whether it can offer improved performance and approximations of actual searcher stopping behaviours. We also trialled each of the stochastic~\gls{acr:serp} level stopping decision components a total of 50 times, computing the average over the different trials. The reasons behind this are discussed in Section~\ref{sec:method:simulation:grounding:judgements} on page~\pageref{sec:method:simulation:grounding:judgements}.
+By considering these different approaches to implementing the new~\gls{acr:serp} level stopping decision point, we can then clearly identify whether it can offer improved performance and approximations of actual searcher stopping behaviours. We also trialled each of the stochastic~\gls{acr:serp} level stopping decision components a total of 10 times, computing the average over the different trials. Given that the decision maker components of the \simiir~framework were run a total of 50 times each (responsible for determining the attractiveness of result summaries and relevancy of documents), this made the addition of a stochastic~\gls{acr:serp} level stopping decision point expensive in terms of additional runs required. A larger number of trials would have made the computational effort required to process them prohibitive given the apparatus available.
 
 \subsection{Interfaces, Conditions, and Experimental Grounding}\label{sec:serp:method:probscosts}
-To determine whether the new~\gls{acr:serp} level stopping decision points offers improvements across a variety of different interfaces and conditions (and can therefore considered to be generalisable), we conducted a series of simulations across the eight interfaces and experimental conditions trialled in the two user studies, reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.
+To determine whether the new~\gls{acr:serp} level stopping decision point implementations offer improvements, we conducted a series of simulations across interfaces and conditions trialled in the two user studies, reported earlier in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.
 
-\begin{table}[t!]
-    \caption[Experimental interfaces and conditions]{Experimental interfaces and conditions trialled in this chapter, based upon the work reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. In total, eight different experimental interfaces and conditioned were trialled, considering different result summary lengths, systems and tasks.}
-    \label{tbl:serp_conditions}
-    \renewcommand{\arraystretch}{1.8}
-    \begin{center}
-    \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.2cm}@{\CS}D{3.51cm}@{\CS}D{3.51cm}@{\CS}D{3.51cm}@{\CS}}
-
-        \RS & & \lbluecell \textbf{Summary Length} & \lbluecell \textbf{System} & \lbluecell \textbf{Task} \\
-
-        \RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:snippets}}}} & \lbluecell\textbf{T0} & \cell \small{Title only} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
-        \RS & \lbluecell\textbf{T1} & \cell \small{Title + 1 snippet} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
-        \RS & \lbluecell\textbf{T2} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
-        \RS & \lbluecell\textbf{T4} & \cell \small{Title + 4 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
-        
-        \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:diversity}}}} & \lbluecell\textbf{D-AS} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{D} (Div.)} & \cell \small{\darkblueboxbold{AS} (Aspectual)}\\
-        \RS & \lbluecell\textbf{ND-AS} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AS} (Aspectual)}\\
-        \RS & \lbluecell\textbf{D-AD} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{D} (Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
-        \RS & \lbluecell\textbf{ND-AD} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
-        
-    \end{tabulary}
-    \end{center}
-\end{table}
-
-From Chapter~\ref{chap:snippets}, the four different experimental interfaces -- whereby result summary lengths were manipulated -- are considered. Namely, these are \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}. From Chapter~\ref{chap:diversity}, we also considered the four experimental conditions that manipulated the underlying system and searcher tasks: \dualbluebox{D}{AS}, \dualbluebox{ND}{AS}, \dualbluebox{D}{AD} and \dualbluebox{ND}{AD}. The eight interfaces and conditions trialled are presented in Table~\ref{tbl:serp_conditions}, complete with an explanation of the differences between each.
+From Chapter~\ref{chap:snippets}, the four different experimental interfaces -- whereby result summary lengths were manipulated -- were considered. Namely, these are \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}. From Chapter~\ref{chap:diversity}, we also considered the four experimental conditions that manipulated the underlying system and searcher tasks: \dualbluebox{D}{AS}, \dualbluebox{ND}{AS}, \dualbluebox{D}{AD} and \dualbluebox{ND}{AD}.
 
 \begin{table}[t!]
     \caption[Simulation interaction probabilities and v\textsubscript{size}]{Probabilities of examining high \emph{P(E|HS)} and low scent~\glsplural{acr:serp} \emph{P(E|LS)}, along with \emph{v\textsubscript{size}} values for each of the eight different experimental interfaces and conditions trialled, reported over three different set of probabilities. Statistical tests between interfaces/conditions yielded no significant differences, at $\alpha$\emph{=0.05.} Probabilities that are used in the experiments reported in this chapter are \darkbluebox{highlighted.} Refer to Tables~\ref{tbl:snippets_simulation_probcosts} (page~\pageref{tbl:snippets_simulation_probcosts}) and~\ref{tbl:diversity_simulation_probcosts} (page~\pageref{tbl:diversity_simulation_probcosts}) for other interaction probabilities and costs for studies reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity} respectively.}
     \label{tbl:serp_probs_costs}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
-    \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.2cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}D{2.5cm}@{\CS}}
+    \begin{tabulary}{\textwidth}{L{3.75cm}@{\CS}D{2.6cm}@{\CS}D{2.6cm}@{\CS}D{2.6cm}@{\CS}D{2.6cm}@{\CS}}
 
-        \RS & \dbluecell \textbf{Chapter~\ref{chap:snippets}} & \lbluecell \textbf{T0} & \lbluecell \textbf{T1} & \lbluecell \textbf{T2} & \lbluecell \textbf{T4} \\
+        \RS \dbluecell \textbf{Chapter~\ref{chap:snippets}} & \lbluecell \textbf{T0} & \lbluecell \textbf{T1} & \lbluecell \textbf{T2} & \lbluecell \textbf{T4} \\
         
-        \RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{Average}}} & \lbluecell\textbf{P(E|HS)} & \cell \small{0.76} & \cell \small{0.79} & \dbluecell \small{0.78} & \cell \small{0.78}\\
-        \RS & \lbluecell\textbf{P(E|LS)} & \cell \small{0.27} & \cell \small{0.40} & \dbluecell \small{0.31} & \cell \small{0.40}\\
-        
-        % \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{Savvy}}} & \lbluecell\textbf{P(E|HS)} & \cell \small{0.69} & \cell \small{0.86} & \cell \small{0.83} & \cell \small{0.82}\\
-        % \RS & \lbluecell\textbf{P(E|LS)} & \cell \small{0.00} & \cell \small{0.00} & \cell \small{0.00} & \cell \small{0.00}\\
+        \RS \lbluecell\textbf{P(E|HS)} & \cell \small{0.76} & \cell \small{0.79} & \dbluecell \small{0.78} & \cell \small{0.78}\\
+        \RS \lbluecell\textbf{P(E|LS)} & \cell \small{0.27} & \cell \small{0.40} & \dbluecell \small{0.31} & \cell \small{0.40}\\
         %
-        % \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{Na\"{i}ve}}} & \lbluecell\textbf{P(E|HS)} & \cell \small{0.48} & \cell \small{0.53} & \cell \small{0.52} & \cell \small{0.53}\\
-        % \RS & \lbluecell\textbf{P(E|LS)} & \cell \small{0.16} & \cell \small{0.30} & \cell \small{0.23} & \cell \small{0.25}\\
-        
-        \RS\RS\RS & \lbluecell\textbf{v\textsubscript{size}} & \cell \small{10} & \cell \small{9} & \dbluecell \small{7} & \cell \small{6}\\
-        
-        \RS\RS\RS\RS\RS\RS & \dbluecell \textbf{Chapter~\ref{chap:diversity}} & \lbluecell \textbf{D-AS} & \lbluecell \textbf{ND-AS} & \lbluecell \textbf{D-AD} & \lbluecell \textbf{ND-AD} \\
-        
-        \RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{Average}}} & \lbluecell\textbf{P(E|HS)} & \cell \small{0.76} & \cell \small{0.76} & \cell \small{0.73} & \dbluecell \small{0.75}\\
-        \RS & \lbluecell\textbf{P(E|LS)} & \cell \small{0.29} & \cell \small{0.37} & \cell \small{0.26} & \dbluecell \small{0.34}\\
-        
-        % \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{Savvy}}} & \lbluecell\textbf{P(E|HS)} & \cell \small{0.77} & \cell \small{0.75} & \cell \small{0.89} & \cell \small{0.78}\\
-        % \RS & \lbluecell\textbf{P(E|LS)} & \cell \small{0.00} & \cell \small{0.37} & \cell \small{0.00} & \cell \small{0.30}\\
+        % % \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{Savvy}}} & \lbluecell\textbf{P(E|HS)} & \cell \small{0.69} & \cell \small{0.86} & \cell \small{0.83} & \cell \small{0.82}\\
+        % % \RS & \lbluecell\textbf{P(E|LS)} & \cell \small{0.00} & \cell \small{0.00} & \cell \small{0.00} & \cell \small{0.00}\\
+        % %
+        % % \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{Na\"{i}ve}}} & \lbluecell\textbf{P(E|HS)} & \cell \small{0.48} & \cell \small{0.53} & \cell \small{0.52} & \cell \small{0.53}\\
+        % % \RS & \lbluecell\textbf{P(E|LS)} & \cell \small{0.16} & \cell \small{0.30} & \cell \small{0.23} & \cell \small{0.25}\\
         %
-        % \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{Na\"{i}ve}}} & \lbluecell\textbf{P(E|HS)} & \cell \small{0.57} & \cell \small{0.52} & \cell \small{0.41} & \cell \small{0.54}\\
-        % \RS & \lbluecell\textbf{P(E|LS)} & \cell \small{0.31} & \cell \small{0.37} & \cell \small{0.24} & \cell \small{0.35}\\
-        
-        \RS\RS\RS & \lbluecell\textbf{v\textsubscript{size}} & \cell \small{7} & \cell \small{7} & \cell \small{7} & \dbluecell \small{7}\\
+        \RS\RS\RS \lbluecell\textbf{v\textsubscript{size}} & \cell \small{10} & \cell \small{9} & \dbluecell \small{7} & \cell \small{6}\\
+        %
+        \RS\RS\RS\RS\RS\RS \dbluecell \textbf{Chapter~\ref{chap:diversity}} & \lbluecell \textbf{D-AS} & \lbluecell \textbf{ND-AS} & \lbluecell \textbf{D-AD} & \lbluecell \textbf{ND-AD} \\
+        %
+        \RS \lbluecell\textbf{P(E|HS)} & \cell \small{0.76} & \cell \small{0.76} & \cell \small{0.73} & \dbluecell \small{0.75}\\
+        \RS \lbluecell\textbf{P(E|LS)} & \cell \small{0.29} & \cell \small{0.37} & \cell \small{0.26} & \dbluecell \small{0.34}\\
+        %
+        % % \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{Savvy}}} & \lbluecell\textbf{P(E|HS)} & \cell \small{0.77} & \cell \small{0.75} & \cell \small{0.89} & \cell \small{0.78}\\
+        % % \RS & \lbluecell\textbf{P(E|LS)} & \cell \small{0.00} & \cell \small{0.37} & \cell \small{0.00} & \cell \small{0.30}\\
+        % %
+        % % \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{Na\"{i}ve}}} & \lbluecell\textbf{P(E|HS)} & \cell \small{0.57} & \cell \small{0.52} & \cell \small{0.41} & \cell \small{0.54}\\
+        % % \RS & \lbluecell\textbf{P(E|LS)} & \cell \small{0.31} & \cell \small{0.37} & \cell \small{0.24} & \cell \small{0.35}\\
+        %
+        \RS\RS\RS \lbluecell\textbf{v\textsubscript{size}} & \cell \small{7} & \cell \small{7} & \cell \small{7} & \dbluecell \small{7}\\
         
     \end{tabulary}
     \end{center}
 \end{table}
 
-Table~\ref{tbl:serp_probs_costs} presents the probabilities of examining~\glsplural{acr:serp} yielding low ($P(E|LS)$) and high ($P(E|HS)$) scents. Values are computed as per the explanations provided in Section~\ref{sec:serp:method:serp_dp}. The table reports values across each of the eight different experimental interfaces and conditions trialled. In addition, values are reported for each interface and condition across the three different probability sets of \emph{average, savvy} and \emph{na\"{i}ve} searchers (as discussed in Section~\ref{sec:serp:method:serp_dp:implementations}). Also included within the table are the $v_{size}$ values used across each interface or condition, denoting the number of result summaries visible within a simulated viewport. Note the interaction probabilities that are conducive to \emph{savvy} or \emph{na\"{i}ve}~\gls{acr:serp} examination behaviour -- across interfaces \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}, searchers will never examine a~\gls{acr:serp} of low scent. In contrast, the likelihood of examining a~\gls{acr:serp} of poor scent increases from a zero chance to the region of $16\%$ to $30\%$ for na\"{i}ve searchers.
+From the interaction data of the two user study interaction logs, we could then compute the probabilities of subjects examining low scented ($P(E|LS)$) and high scented ($P(E|HS)$)~\glsplural{acr:serp}. Values were computed as per the explanations provided in Section~\ref{sec:serp:method:serp_dp}. The computed values are reported in Table~\ref{tbl:serp_probs_costs}, along with the corresponding $v_{size}$ value for each interface or condition, denoting the number of result summaries visible within a simulated viewport. From close examination of the table, we can see that the probabilities for both sets are very similar across all interfaces and conditions. Indeed, statistical testing yielded no significant differences across the four interfaces or conditions at $p=0.05$. Given the close proximity of the probabilities (and the subsequent lack of differences that we would likely observe), we took the decision to simplify our experimentation. We chose to run experiments for one interface and condition per study, selecting \blueboxbold{T2} and \dualbluebox{ND}{AD} for chapters~\ref{chap:snippets} and~\ref{chap:diversity} respectively. These were selected as they represent a standard search interface and task.
 
-These values should be considered in tandem with the interaction costs and probabilities presented in Tables~\ref{tbl:snippets_simulation_probcosts} (presented on page~\ref{tbl:snippets_simulation_probcosts}) and~\ref{tbl:diversity_simulation_probcosts} (presented on page~\pageref{tbl:diversity_simulation_probcosts}) for other classical interaction probabilities (considering the probabilities of marking result summaries, $P(C|R)$ and $P(C|N)$ -- and saving documents, $P(S|R)$ and $P(S|N)$) and interaction costs (including the cost of: querying; examining a~\gls{acr:serp}; examining a result summary; examining a document; and saving a document) for the studies reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity} respectively. Table~\ref{tbl:serp_probs_costs} reports only the probabilities of examining a~\gls{acr:serp}.
+Values reported in Table~\ref{tbl:serp_probs_costs} should be considered in tandem with the interaction costs and probabilities presented in Tables~\ref{tbl:snippets_simulation_probcosts} (presented on page~\ref{tbl:snippets_simulation_probcosts}) and~\ref{tbl:diversity_simulation_probcosts} (presented on page~\pageref{tbl:diversity_simulation_probcosts}) for other interaction probabilities (considering the probabilities of considering the attractiveness of result summaries, $P(C|R)$ and $P(C|N)$ -- and saving documents, $P(S|R)$ and $P(S|N)$) and interaction costs (including the cost of: querying; examining a~\gls{acr:serp}; examining a result summary; examining a document; and saving a document) for the studies reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity} respectively.
+
+% Table~\ref{tbl:serp_probs_costs} presents the probabilities of examining~\glsplural{acr:serp} yielding low ($P(E|LS)$) and high ($P(E|HS)$) scents. Values are computed as per the explanations provided in Section~\ref{sec:serp:method:serp_dp}. The table reports values across each of the eight different experimental interfaces and conditions trialled. In addition, values are reported for each interface and condition across the three different probability sets of \emph{average, savvy} and \emph{na\"{i}ve} searchers (as discussed in Section~\ref{sec:serp:method:serp_dp:implementations}). Also included within the table are the $v_{size}$ values used across each interface or condition, denoting the number of result summaries visible within a simulated viewport. Note the interaction probabilities that are conducive to \emph{savvy} or \emph{na\"{i}ve}~\gls{acr:serp} examination behaviour -- across interfaces \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}, searchers will never examine a~\gls{acr:serp} of low scent. In contrast, the likelihood of examining a~\gls{acr:serp} of poor scent increases from a zero chance to the region of $16\%$ to $30\%$ for na\"{i}ve searchers.
+
+% These values should be considered in tandem with the interaction costs and probabilities presented in Tables~\ref{tbl:snippets_simulation_probcosts} (presented on page~\ref{tbl:snippets_simulation_probcosts}) and~\ref{tbl:diversity_simulation_probcosts} (presented on page~\pageref{tbl:diversity_simulation_probcosts}) for other classical interaction probabilities (considering the probabilities of marking result summaries, $P(C|R)$ and $P(C|N)$ -- and saving documents, $P(S|R)$ and $P(S|N)$) and interaction costs (including the cost of: querying; examining a~\gls{acr:serp}; examining a result summary; examining a document; and saving a document) for the studies reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity} respectively. Table~\ref{tbl:serp_probs_costs} reports only the probabilities of examining a~\gls{acr:serp}.
 
 \subsection{Result Summary Level Stopping Strategies}\label{sec:serp:method:snippet}
-Chapter~\ref{chap:strategies} presented twelve different result summary level stopping strategies. To reduce the complexity of the experimentation reported in this chapter, we decided to reduce the number strategies that we considered. Doing so reduced the risk of potentially repeating the same results as shown before, while still demonstrating that when enabled, the~\gls{acr:serp} level stopping decision point yielded improved performance and closer approximations to actual searcher stopping behaviour over a range of configurations.
+Chapter~\ref{chap:strategies} presented twelve different result summary level stopping strategies. To reduce the complexity of the experimentation reported in this chapter further, we decided to reduce the number strategies that we considered. Doing so reduced the risk of potentially repeating the same results as shown before, while still demonstrating that when enabled, the~\gls{acr:serp} level stopping decision point yielded improved performance (and closer approximations) to actual searcher stopping behaviour -- while still reporting over a range of configurations.
 
 As such, we only report the results of three result summary level stopping strategies in this chapter. These were selected as they offered good performance and approximations of actual searcher stopping behaviours in results presented in previous chapters. We employed the use of:
 
 \begin{itemize}
     \item{\blueboxbold{SS1-FIX}, the fixed-depth baseline result level stopping strategy;}
-    \item{\blueboxbold{SS5-COMB}, the frustration/satiation combination strategy; and}
-    \item{\blueboxbold{SS11-COMB}, the give-up and satiation combination strategy.}
+    \item{\blueboxbold{SS2-NT}, the frustration stopping strategy, considering the total number of non-relevant summaries encountered; and}
+    \item{\blueboxbold{SS11-COMB}, the combination stopping strategy combining the give-up time and satiation strategies.}
 \end{itemize}
 
 Definitions for each of these stopping strategies can be found in Chapter~\ref{chap:strategies}. Note that these strategies were instantiated with the same $x_n$ values \emph{(stopping threshold values)} as reported in the general methodology in Section~\ref{sec:method:simulation:grounding:stopping} on page~\pageref{sec:method:simulation:grounding:stopping}.
 
 \subsection{Remaining CSM Components}\label{sec:serp:method:other}
-Remaining~\gls{acr:csm} components were left as presented in Section~\ref{sec:method:simulation:runs:performance}. For comparison runs, queries issued by real-world subjects under each of the eight experimental interfaces and conditions were again \emph{replayed}, as discussed in Section~\ref{sec:method:simulation:runs:comparison} on page~\pageref{sec:method:simulation:runs:comparison}.
+Remaining~\gls{acr:csm} components were configured as presented in Section~\ref{sec:method:simulation:runs:performance}. For comparison runs, queries issued by real-world subjects under \blueboxbold{T2} and \dualbluebox{ND}{AD} were again \emph{replayed} in the simulations, the process of which is outlined in Section~\ref{sec:method:simulation:runs:comparison} on page~\pageref{sec:method:simulation:runs:comparison}. Specific implementation details for interface \blueboxbold{T2} were the same as described in Section~\ref{sec:snippets:simulations:method}, with the methodology in Section~\ref{sec:diversity:simulated:method} followed for \dualbluebox{ND}{AD}.
 
-For the four experimental interfaces trialled in the study reported in Chapter~\ref{chap:snippets}, the same experimental methodology was followed as described in Section~\ref{sec:snippets:simulations:method}. Similarly, the same experimental method was followed as reported in Section~\ref{sec:diversity:simulated:method} for the four experimental conditions belonging to the studies reported in Chapter~\ref{chap:diversity}. This involved, for example, executing the diversification algorithm (presented in Section~\ref{sec:diversity:users:diversifying} on page~\pageref{sec:diversity:users:diversifying}) over the ranked results returned for the diversified system, \blueboxbold{D}.
+%
+% For the four experimental interfaces trialled in the study reported in Chapter~\ref{chap:snippets}, the same experimental methodology was followed as described in Section~\ref{sec:snippets:simulations:method}. Similarly, the same experimental method was followed as reported in Section~\ref{sec:diversity:simulated:method} for the four experimental conditions belonging to the studies reported in Chapter~\ref{chap:diversity}. This involved, for example, executing the diversification algorithm (presented in Section~\ref{sec:diversity:users:diversifying} on page~\pageref{sec:diversity:users:diversifying}) over the ranked results returned for the diversified system, \blueboxbold{D}.
 
 \section{Results}
 
