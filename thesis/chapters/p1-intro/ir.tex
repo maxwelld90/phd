@@ -15,7 +15,7 @@ Search today is ubiquitous, and is now commonplace due to the proliferation of t
     \vspace{-5mm}
 \end{figure}
 
-The field of~\glsfirst{acr:ir} has been long established, and has led to the development of the associated technologies that make the contemporary retrieval systems that we use possible. One of the key developments was the creation of a \emph{de facto} approach to studying~\gls{acr:ir}, along with the various \emph{retrieval models} and means with which to evaluate their effectiveness. This chapter provides an overview of the history of~\gls{acr:ir}, before we move on to discussing the basics of what constitutes an~\gls{acr:ir} system. From there, we discuss the basics of~\gls{acr:iir} before moving onto how evaluation has evolved in the field, moving over a spectrum from the \emph{system} to the \emph{searcher.} Included in our discussion of the searcher are some of the current searcher models with which we improve upon, before we conclude the chapter with a discussion of the various measures used for evaluation of both system and searcher.
+Central to the development of such retrieval systems is the study of~\glsfirst{acr:ir}. One of the key developments in the advancement of~\gls{acr:ir} as a field was the creation of a \emph{de facto} approach to studying~\gls{acr:ir}, along with the various \emph{retrieval models} and means with which to evaluate their effectiveness. This chapter provides an overview of the history of~\gls{acr:ir}, before we move on to discussing the basics of what constitutes an~\gls{acr:ir} system. From there, we move from a \emph{system-sided} to a more \emph{user-sided} discussion, focusing on~\glsfirst{acr:iir}. From there, we move onto how evaluation has evolved in the field, considering the spectrum from \emph{system} to \emph{searcher.} Included in our discussion of the searcher are some of the current \emph{searcher models}, before we conclude the chapter with a discussion of the various measures used for~\gls{acr:ir} and~\gls{acr:iir} evaluation.
 
 \section{A (Brief) History of Information Retrieval}\label{sec:ir_background:history}
 While many associate the study of~\gls{acr:ir} with computers, the need to seek information in a quick and effective manner has existed throughout human history. In this section, we provide a very brief overview of some of the key advancements in what can be considered to be the study of~\gls{acr:ir} -- from library cataloguing approaches to contemporary retrieval systems.
@@ -30,10 +30,10 @@ In order to speed up the process of finding useful material, mechanisation was a
 \subsection{The Rise of Computers}
 Computers now provide the underlying technologies with which we closely associate to a typical, contemporary~\gls{acr:ir} system.~\cite{sanderson2012history_of_ir} state that digital storage capacity (e.g. hard disks, and more recently, solid state storage) roughly doubles every two years. This claim is essentially analogous to the famous \emph{Moore's Law}~\citep{moore1965law}, which observes that the number of transistors in a processor (or other integrated circuit) doubles roughly every two years. Indeed, the speed at which modern day computers can search vast indexes and databases of content is vastly superior to traditional cataloguing approaches. These technological advances permit the near instantaneous returning of results, something that has become expected with today's retrieval systems.
 
-Leading on from computers was the development of \emph{computer networks,} permitting the transmission of information between computers over potentially vast distances. With the development of the internet, the scene was set for the introduction of a technology that is extensively used today -- the~\glsfirst{acr:www}.
+Leading on from computers was the development of \emph{computer networks,} permitting the transmission of information between computers over potentially vast distances. With the development of the Internet, the scene was set for the introduction of a technology that is extensively used today -- the~\glsfirst{acr:www}.
 
 \subsection{The World Wide Web}
-The distribution and ability to search for information over computer networks such as the internet was traditionally undertaken with legacy protocols such as \emph{Gopher.} Gopher would provide a series of options for a user to select (i.e. categorisation of content), akin to the traditional library cataloguing approaches described above.
+The distribution and ability to search for information over computer networks such as the Internet was traditionally undertaken with legacy protocols such as \emph{Gopher.} Gopher would provide a series of options for a user to select (i.e. categorisation of content), akin to the traditional library cataloguing approaches described above.
 
 \begin{figure}[t!]
     \centering
@@ -49,7 +49,7 @@ The advent of the~\gls{acr:www} in the early 1990's brought about a new type of~
 A contemporary~\gls{acr:ir} system is expected by the searchers that use it to return results that can be considered \emph{relevant} to addressing their information need. These results should be \emph{ranked} in a decreasing order of relevance. This was originally hypothesised by~\cite{luhn1957ranking_query}, and succinctly expressed by~\cite{robertson1977prp}.
 
 \begin{quote}
-    ``A [reference] retrieval system should rank references in the collection in order of their probability of relevance to the request, or of usefulness to the user, or of satisfying the user.''
+    \emph{``A [reference] retrieval system should rank references in the collection in order of their probability of relevance to the request, or of usefulness to the user, or of satisfying the user.''}
     \attrib{\cite{robertson1977prp}}
 \end{quote}
 

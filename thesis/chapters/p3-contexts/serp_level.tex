@@ -115,7 +115,7 @@ To determine whether the new~\gls{acr:serp} level stopping decision point implem
 From Chapter~\ref{chap:snippets}, the four different experimental interfaces -- whereby result summary lengths were manipulated -- were considered. Namely, these are \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}. From Chapter~\ref{chap:diversity}, we also considered the four experimental conditions that manipulated the underlying system and searcher tasks: \dualbluebox{D}{AS}, \dualbluebox{ND}{AS}, \dualbluebox{D}{AD} and \dualbluebox{ND}{AD}.
 
 \begin{table}[t!]
-    \caption[Simulation interaction probabilities and v\textsubscript{size}]{Probabilities of examining high \emph{P(E|HS)} and low scent~\glsplural{acr:serp} \emph{P(E|LS)}, along with \emph{v\textsubscript{size}} values for each of the eight different experimental interfaces and conditions trialled, reported over three different set of probabilities. Statistical tests between interfaces/conditions yielded no significant differences, at $\alpha$\emph{=0.05.} Probabilities that are used in the experiments reported in this chapter are \darkbluebox{highlighted.} Refer to Tables~\ref{tbl:snippets_simulation_probcosts} (page~\pageref{tbl:snippets_simulation_probcosts}) and~\ref{tbl:diversity_simulation_probcosts} (page~\pageref{tbl:diversity_simulation_probcosts}) for other interaction probabilities and costs for studies reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity} respectively.}
+    \caption[\emph{P(E|HS)} and \emph{P(E|LS)} probabilities, with v\textsubscript{size}]{Probabilities of examining high \emph{P(E|HS)} and low scent~\glsplural{acr:serp} \emph{P(E|LS)}, along with \emph{v\textsubscript{size}} values for each of the eight different experimental interfaces and conditions trialled. Statistical tests between interfaces/conditions yielded no significant differences, at $\alpha$\emph{=0.05.} Probabilities that are used in the experiments reported in this chapter are \darkbluebox{highlighted.} Refer to Tables~\ref{tbl:snippets_simulation_probcosts} (page~\pageref{tbl:snippets_simulation_probcosts}) and~\ref{tbl:diversity_simulation_probcosts} (page~\pageref{tbl:diversity_simulation_probcosts}) for other interaction probabilities and costs for studies reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity} respectively.}
     \label{tbl:serp_probs_costs}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -189,115 +189,44 @@ T1 Savvy searchers encountered no bad SERPs. For all SERPs displayed in the top 
 \begin{figure}[p!]
     \centering
     \resizebox{1\hsize}{!}{
-    \includegraphics{figures/ch9-ch7_perf_plots.pdf}}
-    \caption[Performance plots (result summaries)]{Performance plots}
-    \label{fig:ch9_perf_ch7_plots}
-\end{figure}
-
-\begin{figure}[p!]
-    \centering
-    \resizebox{1\hsize}{!}{
-    \includegraphics{figures/ch9-ch8_perf_plots.pdf}}
-    \caption[Performance plots (diversification)]{Performance plots}
-    \label{fig:ch9_perf_ch8_plots}
+    \includegraphics{figures/ch9-perf_plots.pdf}}
+    \caption[Performance plots]{Performance plots}
+    \label{fig:ch9_perf_plots}
 \end{figure}
 
 \begin{table}[p!]
     \caption[Snippets Performance]{Results from the simulated what-if simulated performance runs (Chapter~\ref{chap:snippets}), showing the highest levels of~\gls{acr:cg} attained for each~\gls{acr:serp} level stopping component.}\vspace*{-2mm}
     \label{tbl:ch9_perf_ch7_table}
-    \renewcommand{\arraystretch}{1.70}
+    \renewcommand{\arraystretch}{1.8}
     \begin{center}
         \begin{tabulary}{\textwidth}{L{0.25cm}@{\CS}L{2.15cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}}
             
-            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS1-FIX}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS5-COMB}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS11-COMB}}\\
+            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS1-FIX}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS2-NT}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS11-COMB}}\\
             
             \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} \\
             
-            \RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Interface \blueboxbold{\textbf{T0}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Int. \blueboxbold{\textbf{T2}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
             \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
             
-            \RS\RS\RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Interface \blueboxbold{\textbf{T1}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS\RS\RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Cdn. \textbf{\dualbluebox{ND}{AD}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
             \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            
-            \RS\RS\RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Interface \blueboxbold{\textbf{T2}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
             \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            
-            \RS\RS\RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Interface \blueboxbold{\textbf{T4}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
 
         \end{tabulary}
         \end{center}
     \end{table}
 
 
-
-\begin{table}[p!]
-    \caption[Diversification Performance]{Results from the simulated what-if simulated performance runs (Chapter~\ref{chap:diversity}), showing the highest levels of~\gls{acr:cg} attained for each~\gls{acr:serp} level stopping component.}\vspace*{-2mm}
-    \label{tbl:ch9_perf_ch8_table}
-    \renewcommand{\arraystretch}{1.70}
-    \begin{center}
-        \begin{tabulary}{\textwidth}{L{0.25cm}@{\CS}L{2.15cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}}
-            
-            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS1-FIX}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS5-COMB}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS11-COMB}}\\
-            
-            \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} \\
-            
-            \RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Condition \textbf{\dualbluebox{D}{AS}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            
-            \RS\RS\RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Condition \textbf{\dualbluebox{ND}{AS}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            
-            \RS\RS\RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Condition \textbf{\dualbluebox{D}{AD}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            
-            \RS\RS\RS \multirow{5}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\small Condition \textbf{\dualbluebox{ND}{AD}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Savvy} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Na\"{i}ve} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-
-        \end{tabulary}
-        \end{center}
-    \end{table}
 
 \subsection{Real-World Comparisons}
 
 \begin{figure}[p!]
     \centering
     \resizebox{1\hsize}{!}{
-    \includegraphics{figures/ch9-ch7_comparison_plots.pdf}}
-    \caption[Comparison plots (result summaries)]{Comparison plots}
-    \label{fig:ch9_comparison_ch7_plots}
-\end{figure}
-
-\begin{figure}[p!]
-    \centering
-    \resizebox{1\hsize}{!}{
-    \includegraphics{figures/ch9-ch8_comparison_plots.pdf}}
-    \caption[Comparison plots (diversification)]{Comparison plots}
-    \label{fig:ch9_comparison_ch8_plots}
+    \includegraphics{figures/ch9-comparison_plots.pdf}}
+    \caption[Comparison plots]{Comparison plots}
+    \label{fig:ch9_comparison_plots}
 \end{figure}
 
 \section{Chapter Summary}
