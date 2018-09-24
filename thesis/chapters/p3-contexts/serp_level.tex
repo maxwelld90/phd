@@ -62,7 +62,7 @@ As we discussed previously in Section~\ref{sec:serp:background}, real-world sear
     \label{fig:viewport_cutoff}
 \end{wrapfigure}
 
-For simulations of interaction reported in this chapter, we use different values of $v_{size}$ over the experimental interfaces reported in Chapter~\ref{chap:snippets} only. As we varied the length of result summaries across the four experimental interfaces (from \blueboxbold{T0} to \blueboxbold{T4}), this would impact upon the number of result summaries visible in the initial view (used for obtaining an impression of the overall~\gls{acr:serp}). Longer result summaries would mean that fewer would be presented within a viewport of the same size, compared to shorter result summaries. However, result summary lengths were not modified under the experimental conditions trialled in Chapter~\ref{chap:diversity}. This means that $v_{size}$ would remain constant.
+For simulations of interaction reported in Chapter~\ref{chap:snippets}, different values of $v_{size}$ could be used over the four experimental interfaces trialled. This was because for each interface, result summary lengths varied. As we tended from interface \blueboxbold{T0} (no snippet text) to \blueboxbold{T4} (four snippet fragments), longer result summaries would impact upon the number of result summaries visible in the initial view (used for obtaining an impression of the overall~\gls{acr:serp}). Longer result summaries would mean that fewer would be presented within a viewport of the same size, compared to shorter result summaries. However, result summary lengths were not modified under the experimental conditions trialled in Chapter~\ref{chap:diversity}. This means that $v_{size}$ would (on average) remain constant.
 
 \blueboxbold{Definition: Low vs. High Scent} Given a~\gls{acr:serp}, would it constitute as \emph{low scent} or \emph{high scent?} For this chapter, we follow the work of~\cite{wu2014information_scent}. In their study, the authors state that a low scent~\gls{acr:serp} offers little or no relevant content. Definitions by~\cite{wu2014information_scent} and~\cite{hassan2013serp_abandonment} define a poor scented~\gls{acr:serp} as $P@10=0.0$. We take this definition to delineate between \emph{good} and \emph{bad}~\glsplural{acr:serp}, and extend upon it by also considering $v_{size}$. This leads to our definition of $P@v_{size}=0.0$ for a poor quality~\gls{acr:serp}, meaning that a simulated searcher would then gauge the quality of a ~\gls{acr:serp} by examining the average number of result summaries displayed within a fictional browser viewport for the given experimental interface or condition being trialled.
 
@@ -196,23 +196,25 @@ T1 Savvy searchers encountered no bad SERPs. For all SERPs displayed in the top 
 \end{figure}
 
 \begin{table}[p!]
-    \caption[Snippets Performance]{Results from the simulated what-if simulated performance runs (Chapter~\ref{chap:snippets}), showing the highest levels of~\gls{acr:cg} attained for each~\gls{acr:serp} level stopping component. (expand this discussion)}\vspace*{-2mm}
-    \label{tbl:ch9_perf_ch7_table}
+    \caption[Maximum~\gls{acr:cg} from \emph{what-if} performance runs]{Results from the simulated \emph{what-if} simulated performance runs, showing the highest levels of~\gls{acr:cg} attained for result summary level stopping strategies \blueboxbold{SS1-FIX}, \blueboxbold{SS2-NT} and \blueboxbold{SS11-COMB}. These are reported over the \blueboxbold{Always} \emph{(baseline),} \blueboxbold{Average} and \blueboxbold{Perfect}~\gls{acr:serp} level stopping decision point implementations. \emph{x\textsubscript{n}} denotes the stopping parameter threshold(s), with \emph{DQ} denoting the depth per query at which the greatest~\gls{acr:cg} value was attained at. Note the increasing levels of~\gls{acr:cg} that are reached as we tend from \blueboxbold{Always} $\rightarrow$ \blueboxbold{Perfect}.}
+    \label{tbl:ch9_perf_table}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
-        \begin{tabulary}{\textwidth}{L{0.25cm}@{\CS}L{2.15cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}D{0.9cm}@{\CS}D{0.9cm}@{\CS}D{0.9cm}@{\CSONEHALF}}
+        \begin{tabulary}{\textwidth}{L{0.25cm}@{\CS}L{2.18cm}@{\CS}D{0.895cm}@{\CS}D{0.895cm}@{\CS}D{0.895cm}@{\CSONEHALF}D{0.895cm}@{\CS}D{0.895cm}@{\CS}D{0.895cm}@{\CSONEHALF}D{0.895cm}@{\CS}D{0.895cm}@{\CS}D{0.895cm}@{\CSONEHALF}}
             
-            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS1-FIX}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS2-NT}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{SS11-COMB}}\\
+            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{Always}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{Average}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{Perfect}}\\
             
             \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} \\
             
-            \RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Int. \blueboxbold{\textbf{T2}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 6.33 & \cell \hspace*{-1mm} \small 2.50 & \cell \small \hspace*{-1mm} 7 & \cell \small \hspace*{-1mm} 6.16 & \cell \hspace*{-1mm} \small 2.49 & \cell \small \hspace*{-1mm} 10,10 & \cell \small \hspace*{-1mm} 5.33 & \cell \hspace*{-1mm} \small 2.52 \\
-            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 4.17 & \cell \hspace*{-1mm} \small 2.45 & \cell \small \hspace*{-1mm} 21 & \cell \small \hspace*{-1mm} 10.77 & \cell \hspace*{-1mm} \small 2.58 & \cell \small \hspace*{-1mm} 50,0 & \cell \small \hspace*{-1mm} 13.73 & \cell \hspace*{-1mm} \small 2.44 \\
-            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 4.45 & \cell \hspace*{-1mm} \small 2.98 & \cell \small \hspace*{-1mm} 8 & \cell \small \hspace*{-1mm} 5.07 & \cell \hspace*{-1mm} \small 3.11 & \cell \small \hspace*{-1mm} 50,5 & \cell \small \hspace*{-1mm} 10.72 & \cell \hspace*{-1mm} \small 3.00 \\
+            % T2
+            \RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Int. \blueboxbold{\textbf{T2}}}} & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 6.33 & \cell \hspace*{-1mm} \small 2.50 & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 4.17 & \cell \hspace*{-1mm} \small 2.45 & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 4.45 & \cell \hspace*{-1mm} \small 2.98 \\
+            \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} 7 & \cell \small \hspace*{-1mm} 6.16 & \cell \hspace*{-1mm} \small 2.49 & \cell \small \hspace*{-1mm} 21 & \cell \small \hspace*{-1mm} 10.77 & \cell \hspace*{-1mm} \small 2.58 & \cell \small \hspace*{-1mm} 8 & \cell \small \hspace*{-1mm} 5.07 & \cell \hspace*{-1mm} \small 3.11 \\
+            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} 10,10 & \cell \small \hspace*{-1mm} 5.33 & \cell \hspace*{-1mm} \small 2.52 & \cell \small \hspace*{-1mm} 50,0 & \cell \small \hspace*{-1mm} 13.73 & \cell \hspace*{-1mm} \small 2.44 & \cell \small \hspace*{-1mm} 50,5 & \cell \small \hspace*{-1mm} 10.72 & \cell \hspace*{-1mm} \small 3.00 \\
             
-            \RS\RS\RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Cdn. \textbf{\dualbluebox{ND}{AD}}}} & \lbluecell\small\textbf{Always} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Average} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{Perfect} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            % ND-AD
+            \RS\RS\RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Cdn. \textbf{\dualbluebox{ND}{AD}}}} & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 6.47 & \cell \hspace*{-1mm} \small 1.81 & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 3.93 & \cell \hspace*{-1mm} \small 1.82 & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 4.69 & \cell \hspace*{-1mm} \small 2.30 \\
+            \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 7.55 & \cell \hspace*{-1mm} \small 1.80 & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 4.71 & \cell \hspace*{-1mm} \small 1.84 & \cell \small \hspace*{-1mm} 5 & \cell \small \hspace*{-1mm} 3.12 & \cell \hspace*{-1mm} \small 2.35 \\
+            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} 10,6 & \cell \small \hspace*{-1mm} 4.56 & \cell \hspace*{-1mm} \small 1.75 & \cell \small \hspace*{-1mm} 20,4 & \cell \small \hspace*{-1mm} 4.68 & \cell \hspace*{-1mm} \small 1.69 & \cell \small \hspace*{-1mm} 20,2 & \cell \small \hspace*{-1mm} 5.01 & \cell \hspace*{-1mm} \small 2.24 \\
 
         \end{tabulary}
         \end{center}
@@ -221,6 +223,60 @@ T1 Savvy searchers encountered no bad SERPs. For all SERPs displayed in the top 
 
 
 \subsection{Real-World Comparisons}
+
+\begin{table}[p!]
+    \caption[COMPARISONS]{Comparisons}
+    \label{tbl:ch9_comparisons_table}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{L{0.25cm}@{\CS}L{3.55cm}@{\CS}D{1.4cm}@{\CS}D{1.4cm}@{\CSONEHALF}D{1.4cm}@{\CS}D{1.4cm}@{\CSONEHALF}D{1.4cm}@{\CS}D{1.4cm}@{\CS}}
+            
+            & & \multicolumn{2}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{Always}} & \multicolumn{2}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{Average}} & \multicolumn{2}{@{\hskip 0pt}c@{\hskip 16pt}}{\dbluecell\small\textbf{Perfect}}\\
+            
+            \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{MSE} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{MSE} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{MSE} \\
+            
+            % T2
+            \RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Int. \blueboxbold{\textbf{T2}}}} & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            
+            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            
+            % ND-AD
+            \RS\RS\RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Cdn. \textbf{\dualbluebox{ND}{AD}}}} & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} 21 & \cell \small \hspace*{-1mm} 168.39 & \cell \hspace*{-1mm} \small 24 & \cell \small \hspace*{-1mm} 176.98 & \cell \small \hspace*{-1mm} 24 & \cell \hspace*{-1mm} \small 164.97 \\
+            \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} 18 & \cell \small \hspace*{-1mm} 175.39 & \cell \hspace*{-1mm} \small 24 & \cell \small \hspace*{-1mm} 169.52 & \cell \small \hspace*{-1mm} 21 & \cell \hspace*{-1mm} \small 169.85 \\
+            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} 30,0 & \cell \small \hspace*{-1mm} 162.19 & \cell \hspace*{-1mm} \small 30,0 & \cell \small \hspace*{-1mm} 172.74 & \cell \small \hspace*{-1mm} 30,0 & \cell \hspace*{-1mm} \small 155.41 \\
+
+        \end{tabulary}
+        \end{center}
+    \end{table}
+
+\begin{table}[p!]
+    \caption[COMPARISONS ADDITIONAL]{Additional Comparisons}
+    \label{tbl:ch8_additional_comparisons_table}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{L{0.25cm}@{\CS}L{2.18cm}@{\CS}D{0.895cm}@{\CS}D{0.895cm}@{\CS}D{0.895cm}@{\CSONEHALF}D{0.895cm}@{\CS}D{0.895cm}@{\CS}D{0.895cm}@{\CSONEHALF}D{0.895cm}@{\CS}D{0.895cm}@{\CS}D{0.895cm}@{\CSONEHALF}}
+            
+            & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{Always}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{Average}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{Perfect}}\\
+            
+            \RS & & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{\#S} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{\#S} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{\#S} \\
+            
+            % T2
+            
+            \RS \multirow{4}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-5mm}\footnotesize Interface \blueboxbold{\textbf{T2}}}} & \dbluecell\small\textbf{RW} & \cell \small \hspace*{-1mm} 14.39 & \cell \small \hspace*{-1mm} 2.36 & \cell \hspace*{-1mm} \small 2.47 & \cell \small \hspace*{-1mm} 14.39 & \cell \small \hspace*{-1mm} 2.36 & \cell \hspace*{-1mm} \small 2.47 & \cell \small \hspace*{-1mm} 14.39 & \cell \small \hspace*{-1mm} 2.36 & \cell \hspace*{-1mm} \small 2.47 \\
+            \RS & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            
+            % ND-AD
+            \RS\RS\RS \multirow{4}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Condition \textbf{\dualbluebox{ND}{AD}}}} & \dbluecell\small\textbf{RW} & \cell \small \hspace*{-1mm} 13.94 & \cell \small \hspace*{-1mm} 3.49 & \cell \hspace*{-1mm} \small 2.22 & \cell \small \hspace*{-1mm} 13.94 & \cell \small \hspace*{-1mm} 3.49 & \cell \hspace*{-1mm} \small 2.22 & \cell \small \hspace*{-1mm} 13.94 & \cell \small \hspace*{-1mm} 3.49 & \cell \hspace*{-1mm} \small 2.22 \\
+            \RS & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} 12.89 & \cell \small \hspace*{-1mm} 2.55 & \cell \hspace*{-1mm} \small 1.66 & \cell \small \hspace*{-1mm} 9.61 & \cell \small \hspace*{-1mm} 1.84 & \cell \hspace*{-1mm} \small 1.20 & \cell \small \hspace*{-1mm} 13.06 & \cell \small \hspace*{-1mm} 2.59 & \cell \hspace*{-1mm} \small 1.69 \\
+            \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} 13.34 & \cell \small \hspace*{-1mm} 2.73 & \cell \hspace*{-1mm} \small 1.77 & \cell \small \hspace*{-1mm} 11.33 & \cell \small \hspace*{-1mm} 2.12 & \cell \hspace*{-1mm} \small 1.38 & \cell \small \hspace*{-1mm} 13.35 & \cell \small \hspace*{-1mm} 2.78 & \cell \hspace*{-1mm} \small 1.84 \\
+            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} 15.05 & \cell \small \hspace*{-1mm} 2.35 & \cell \hspace*{-1mm} \small 1.50 & \cell \small \hspace*{-1mm} 9.55 & \cell \small \hspace*{-1mm} 1.61 & \cell \hspace*{-1mm} \small 1.04 & \cell \small \hspace*{-1mm} 12.74 & \cell \small \hspace*{-1mm} 2.28 & \cell \hspace*{-1mm} \small 1.46 \\
+
+        \end{tabulary}
+        \end{center}
+    \end{table}
 
 \begin{figure}[p!]
     \centering
