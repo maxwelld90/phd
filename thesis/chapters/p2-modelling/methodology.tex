@@ -513,14 +513,14 @@ However, such an approach is not without limitation. By their vary nature, a sto
     \vspace{4mm}
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch6-multiple_runs.pdf}}
-    \caption[The problem of stochastic judgements]{An example of the same~\gls{acr:trec} relevant document being judged differently across multiple trials. This can have a negative effect upon simulation runs, yielding dubious results.}
+    \caption[Stochastic judging across multiple trials]{An example of the same~\gls{acr:trec} relevant document being judged differently across multiple trials. This can have a negative effect upon simulation runs, yielding dubious results.}
     \label{fig:multiple_runs}
 \end{figure}
 
 Different outcomes can subsequently lead to a huge variance between different trials, which in turn leads to a requirement of running a larger number of trials, or \emph{Monte-Carlo style simulations}~\citep{benov2016manhattan}. In turn, this leads to a huge increase in the amount of time required to execute all simulations, as well as the computational power required.
 
 \begin{table}[t!]
-    \caption[Example of re-rolled judgements]{A visual example of how the use of pre-rolled judgements (right) performs when compared without (left). The top five rankings (from \emph{D\textsubscript{1}} to \emph{D\textsubscript{5}}) across four examples are shown. On the left are two simulated searcher configurations that do not use pre-rolled judgements. On the right, the same configurations are shown with pre-rolled judgements. Notice that for the examples with pre-rolled judgements, the same judgements are provided across configurations. On the left, this is not the case – indeed, this phenomenon can have an undue influence upon the behaviour of a simulated searcher, such as affecting their stopping behaviour. This is illustrated below, with the stopping depth for \dualbluebox{SS2}{@2} being affected (where stopping depths are highlighted in red).}
+    \caption[Example of pre-rolled judgements]{A visual example of how the use of pre-rolled judgements (right) performs when compared without (left). The top five rankings (from \emph{D\textsubscript{1}} to \emph{D\textsubscript{5}}) across four examples are shown. On the left are two simulated searcher configurations that do not use pre-rolled judgements. On the right, the same configurations are shown with pre-rolled judgements. Notice that for the examples with pre-rolled judgements, the same judgements are provided across configurations. On the left, this is not the case – indeed, this phenomenon can have an undue influence upon the behaviour of a simulated searcher, such as affecting their stopping behaviour. This is illustrated below, with the stopping depth for \dualbluebox{SS2}{@2} being affected (where stopping depths are highlighted in red).}
     \label{tbl:precomputed_judgements}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -711,7 +711,7 @@ The example presented in Figure~\ref{fig:example_sim_configuration} illustrates 
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch6-performance.pdf}}
-    \caption[Illustration of how average measures are computed]{An example set of simulation results (each represented on a different row), with each row representing the same configuration, over the 50 different trials. Performance values can then be extracted from each trial, with a mean computed. In this example illustration, the mean~\gls{acr:cg} and depth per query are shown.}
+    \caption[Computation of average measures]{An example set of simulation results (each represented on a different row), with each row representing the same configuration, over the 50 different trials. Performance values can then be extracted from each trial, with a mean computed. In this example illustration, the mean~\gls{acr:cg} and depth per query are shown.}
     \label{fig:example_sim_configuration}
 \end{figure*}
 
