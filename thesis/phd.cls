@@ -625,17 +625,19 @@
 % Note the longtable width should equal 160mm across (roughly). Adjust as required.
 \newglossarystyle{thesisglossary}{%
     \renewenvironment{theglossary}%
-         {\renewcommand{\arraystretch}{1.4}\begin{longtable}{p{40mm}p{120mm}}}%
+         {\renewcommand{\arraystretch}{1.8}\begin{longtable}{p{160mm}p{0mm}}}%
          {\end{longtable}}%
          
     \renewcommand*{\glossaryheader}{}%
     
-    \renewcommand*{\glsgroupheading}[1]{\vspace{2.5mm}\darkblueboxbold{\Large{##1}}\\}%
+    %\renewcommand*{\glsgroupheading}[1]{\darkblueboxbold{\Large{##1}}\\}%
+    \renewcommand*{\glsgroupheading}[1]{}%
     
     \renewcommand*{\glossaryentryfield}[5]{%
-        \glstarget{##1}{\blueboxbold{\large##2}} & \onehalfspacing\large\normalfont##3\glspostdescription\space ##5\\}%
+        \glstarget{##1}{\onehalfspacing\blueboxbold{\large##2}} \large\normalfont##3\glspostdescription\space ##5\\}%
         
-    \renewcommand*{\glsgroupskip}{ & \\}%
+    %\renewcommand*{\glsgroupskip}{ & \\}%
+    \renewcommand*{\glsgroupskip}{\vspace*{2mm}}%
 }
 
 % Colour box for listing publications.
