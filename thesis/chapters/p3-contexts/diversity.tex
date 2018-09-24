@@ -64,17 +64,17 @@ To motivate our hypotheses for this chapter, we can draw upon~\gls{acr:ift}~\cit
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch8-ift_theory_plots.pdf}}
-    \caption[\gls{acr:ift} and diversification: hypothesis plots]{Plots of the hypotheses motivated by~\gls{acr:ift}, with each plot showing how stopping behaviour is likely to be affected when using a system that \emph{(a)} diversifies results and \emph{(b)} doesn't, and over \emph{(c)} aspectual and \emph{(d)} ad-hoc tasks. Section~\ref{sec:diversity:users:method} enumerates the four different experimental conditions shown here, such as \dualbluebox{ND}{AD} for instance.}
+    \caption[\gls{acr:ift} and diversification: hypothesis plots]{Plots of the hypotheses motivated by~\gls{acr:ift}, with each plot showing how stopping behaviour is likely to be affected when using a system that \genericblack{(a)} diversifies results and \genericblack{(b)} doesn't, and over \genericblack{(c)} aspectual and \genericblack{(d)} ad-hoc tasks. Section~\ref{sec:diversity:users:method} enumerates the four different experimental conditions shown here, such as \dualbluebox{ND}{AD} for instance.}
     \label{fig:ift_theory}
 \end{figure}
 
-These predictions are graphically illustrated in the four plots shown in Figure~\ref{fig:ift_theory} -- over a diversified \blueboxbold{D} and non-diversified \blueboxbold{ND} system, with ad-hoc \darkblueboxbold{AD} and aspectual \darkblueboxbold{AS} retrieval tasks.\footnote{The system and task are combined together to produce a complete condition, such as \dualbluebox{ND}{AD} representing a non-diversified system, with an ad-hoc retrieval task.} Gain curves for each of the four conditions are shown. In top left plot~\ref{fig:ift_theory} \emph{(a)}, where a non-diversified system is being used, the gain curve for the ad-hoc retrieval task is higher. This is because any relevant document would contribute to the searcher's gain. Conversely, the gain curve is lower for the aspectual retrieval task. This is because similar relevant documents would not contribute to the overall level of gain experienced by the searcher.
+These predictions are graphically illustrated in the four plots shown in Figure~\ref{fig:ift_theory} -- over a diversified \blueboxbold{D} and non-diversified \blueboxbold{ND} system, with ad-hoc \darkblueboxbold{AD} and aspectual \darkblueboxbold{AS} retrieval tasks.\footnote{The system and task are combined together to produce a complete condition, such as \dualbluebox{ND}{AD} representing a non-diversified system, with an ad-hoc retrieval task.} Gain curves for each of the four conditions are shown. In top left plot~\ref{fig:ift_theory} \genericblack{(a)}, where a non-diversified system is being used, the gain curve for the ad-hoc retrieval task is higher. This is because any relevant document would contribute to the searcher's gain. Conversely, the gain curve is lower for the aspectual retrieval task. This is because similar relevant documents would not contribute to the overall level of gain experienced by the searcher.
 
 From~\gls{acr:ift}, the optimal stopping point would be different between the two tasks. As we discussed in~\ref{sec:stopping_background:theoretical:ift}, we can graphically find this point by drawing a line from the origin to the tangent of the gain curve. Red and blue dots indicate the optimal stopping points for ad-hoc and aspectual retrieval, respectively.~\gls{acr:ift} therefore suggests that with a non-diversified system, searchers will examine more documents per query for aspectual retrieval tasks when compared to ad-hoc tasks.
 
-Plot~\ref{fig:ift_theory} \emph{(b)} illustrates gain curves where a diversified system would be used, with gain curves for ad-hoc and aspectual retrieval being similar in nature. This is because the diversified should bring relevant but different documents closer to the top of the rankings earlier. In the case of ad-hoc retrieval, these relevant (even if different) documents would still contribute to the overall level of gain. For aspectual retrieval, relevant and different documents will also contribute to the overall level of gain experienced by the searchers -- up to the point where the documents become similar to previously examined material. Therefore,~\gls{acr:ift} appears to suggest that similar stopping behaviours would be observed when searchers use a diversified search system.
+Plot~\ref{fig:ift_theory} \genericblack{(b)} illustrates gain curves where a diversified system would be used, with gain curves for ad-hoc and aspectual retrieval being similar in nature. This is because the diversified should bring relevant but different documents closer to the top of the rankings earlier. In the case of ad-hoc retrieval, these relevant (even if different) documents would still contribute to the overall level of gain. For aspectual retrieval, relevant and different documents will also contribute to the overall level of gain experienced by the searchers -- up to the point where the documents become similar to previously examined material. Therefore,~\gls{acr:ift} appears to suggest that similar stopping behaviours would be observed when searchers use a diversified search system.
 
-Plot~\ref{fig:ift_theory} \emph{(c)} shows the predicted stopping behaviour for the aspectual retrieval task, where we have plotted the aspectual gain curves from the system plots \emph{(a)} and \emph{(b).} Interestingly,~\gls{acr:ift} suggests that searchers will stop sooner when using the diversified system. As such, if searching for the same length of time, searchers would thus issue more queries. Finally, plot~\ref{fig:ift_theory} \emph{(d)} shows the predicted stopping behaviour for the ad-hoc retrieval task, where again we plot the curves from the respective systems in plots \emph{(a)} and \emph{(b).} Note that here, the gain curve for the diversified system may be a little lower as some irrelevant but different material may bubble up the rankings. However, as can be seen, we expect little difference overall between the two systems, and so we hypothesise that the two levels of gain (and searcher behaviours) will be approximately be the same. Consequently,~\gls{acr:ift} suggests that there will be little difference in terms of stopping behaviours between the two systems with ad-hoc retrieval tasks.
+Plot~\ref{fig:ift_theory} \genericblack{(c)} shows the predicted stopping behaviour for the aspectual retrieval task, where we have plotted the aspectual gain curves from the system plots \genericblack{(a)} and \genericblack{(b).} Interestingly,~\gls{acr:ift} suggests that searchers will stop sooner when using the diversified system. As such, if searching for the same length of time, searchers would thus issue more queries. Finally, plot~\ref{fig:ift_theory} \genericblack{(d)} shows the predicted stopping behaviour for the ad-hoc retrieval task, where again we plot the curves from the respective systems in plots \genericblack{(a)} and \genericblack{(b).} Note that here, the gain curve for the diversified system may be a little lower as some irrelevant but different material may bubble up the rankings. However, as can be seen, we expect little difference overall between the two systems, and so we hypothesise that the two levels of gain (and searcher behaviours) will be approximately be the same. Consequently,~\gls{acr:ift} suggests that there will be little difference in terms of stopping behaviours between the two systems with ad-hoc retrieval tasks.
 
 However, we found~\gls{acr:ift} to counter our intuitions as to how searchers would \emph{behave.} When using a standard, non-diversified retrieval system, our intuition suggests that since the aspectual retrieval task is rather exploratory, searchers are then more likely to issue more queries as they learn about the topic, and try to explore efforts made by different countries to protect different specifies, for example.~\cite{kelly2015search_tasks} for example showed that more complex search tasks required a greater number of queries. If a searcher submits a query that retrieves relevant material such as \texttt{'protecting Pandas in China'}, then one would expect them to only select one or two examples, rather than many more. In the case of ad-hoc topic retrieval, we would \emph{intuitively} expected that searchers would issue fewer queries and examine more documents. This is because they don't need to find multiple aspects. However, when using a diversified system, which attempts to promote different aspects of a given topic, we would \emph{intuitively} expect that the behaviour of searchers would change, such that when undertaking aspectual retrieval, they would issue fewer queries and examine a greater number of documents per query.
 
@@ -169,7 +169,7 @@ In all, a total of $64$ subjects performed the the experiments that complied wit
     \item{spent less than two minutes per task, and failed to retrieve any relevant documents (six subjects).}
 \end{itemize}
 
-Of the $51$ subjects who successfully completed the experiment, $26$ females and $25$ males participated. The average age of the subjects was $38.66$ years ($min=20$; $max=71$; $stdev=11.43$). In addition to these basic demographics, a total of $22$ subjects reported possessing a bachelor's degree or higher, with the remaining $29$ possessing an associate's degree or lower. All subjects bar one expressed a preference to \emph{Google} as their everyday search engine of choice. All subjects indicated that they conducted many searches for information via a search engine per week. Nearly three quarters of the subjects ($38$) reported using a mouse of the experiment, with the remaining $13$ using a form of trackpad.
+Of the $51$ subjects who successfully completed the experiment, $26$ females and $25$ males participated. The average age of the subjects was $38.66$ years ($min=20$; $max=71$; $stdev=11.43$). In addition to these basic demographics, a total of $22$ subjects reported possessing a bachelor's degree or higher, with the remaining $29$ possessing an associate's degree or lower. All subjects bar one expressed a preference to Google as their everyday search engine of choice. All subjects indicated that they conducted many searches for information via a search engine per week. Nearly three quarters of the subjects ($38$) reported using a mouse of the experiment, with the remaining $13$ using a form of trackpad.
 
 \subsubsection{Extracting Aspects}\label{sec:diversity:users:method:aspects}
 For each topic, we used corresponding~\gls{acr:trec} QRELs from the 2005 Robust Track~\citep{voorhees2006trec_robust}. However, to assess how many aspects were retrieved by subjects, we needed to commission additional labels as existing labels were not available for all the selected topics. First, for each topic, we examined the topic descriptions to identify what dimensions could be considered aspects of the topic. We noted that for each topic, there was at least two ways this could be achieved: \emph{entity-} or \emph{narrative-based}. For example, a useful document the topic \emph{Curbing Population Growth} could either state the country taking measures (entity-based), or a description of the actual measure used to reduce population growth (narrative-based).
@@ -218,7 +218,7 @@ Each of the unique aspects were assigned an identifying number, and stored in th
 \subsubsection{Additional Performance Measures}\label{sec:diversity:users:measures}
 In conjunction with the standard performance measures that we discussed back in Section~\ref{sec:methodology:extracting:performance} on page~\pageref{sec:methodology:extracting:performance}, we also include for this chapter two additional measures that consider aspectual search tasks. While traditional measures consider what documents are relevant, these additional measures allow us to determine \emph{why} said documents are relevant (i.e. what aspects each document covers).
 
-The first measure we consider is \emph{aspectual recall (AR).} As part of the TREC-6 campaign,~\cite{over1998trec} defined aspectual recall as:
+The first measure we consider is \blueboxbold{aspectual recall (AR)}. As part of the TREC-6 campaign,~\cite{over1998trec} defined aspectual recall as:
 
 \begin{quote}
     \emph{``...the fraction of the submitted documents which contain one or more aspects.''}
@@ -237,7 +237,7 @@ Given a ranking, aspectual recall can be therefore computed by summing the numbe
 
 In addition to aspectual recall, \emph{aspectual precision} was also defined by~\cite{over2001trec} as \emph{``the fraction of total aspects...for the topic that are covered by the submitted documents.''} Given this definition, it was argued by~\cite{sanderson2010test} that aspectual precision appears to be the same as aspectual recall, and thus we do not report aspectual precision in this chapter.
 
-The second measure that considers the diversity of the results returned is $\alpha DCG$. A~\glsfirst{acr:cg}-based approach, we discuss~\gls{acr:cg} basics in Section~\ref{sec:ir_background:evaluation:system:cg}. An extension of~\glsfirst{acr:dcg}~\citep{jarvelin2002cg}, $\alpha DCG$ employs a position-based user model~\citep{clarke2008adcg}. The measure takes into account the position at which a document is ranked along with the aspects contained in the documents. $\alpha DCG$ ranks by rewarding newly-found aspects, and penalising redundant aspects geometrically, discounting all rewards with a discounting rank function. As the name of the measure might imply, $\alpha$ is a tuneable parameter, controlling the severity of redundancy penalisation. As used in prior~\gls{acr:trec} experimentation, we used $\alpha=0.5$ for all reporting of $\alpha DCG$ in this chapter.
+The second measure that considers the diversity of the results returned is \blueboxbold{$\alpha$DCG}. A~\glsfirst{acr:cg}-based approach, we discuss~\gls{acr:cg} basics in Section~\ref{sec:ir_background:evaluation:system:cg}. An extension of~\glsfirst{acr:dcg}~\citep{jarvelin2002cg}, $\alpha DCG$ employs a position-based user model~\citep{clarke2008adcg}. The measure takes into account the position at which a document is ranked along with the aspects contained in the documents. $\alpha DCG$ ranks by rewarding newly-found aspects, and penalising redundant aspects geometrically, discounting all rewards with a discounting rank function. As the name of the measure might imply, $\alpha$ is a tuneable parameter, controlling the severity of redundancy penalisation. As used in prior~\gls{acr:trec} experimentation, we used $\alpha=0.5$ for all reporting of $\alpha DCG$ in this chapter.
 % Based on "Analysis of Various Evaluation Measures for Diversity" by Chandar
 
 \subsubsection{Diversifying Search Results}\label{sec:diversity:users:diversifying}
@@ -256,13 +256,13 @@ As discussed earlier, our system factor considered both a baseline BM25 retrieva
 In order to select a reasonable approximation for the algorithm's $w$ weighting, we performed a pilot study, running the diversification algorithm over the set of $715$ queries that were issued by subjects of the user study reported in Chapter~\ref{chap:snippets}. Results of the pilot study are presented in Table~\ref{tbl:aspects_previous_queries}. As can be seen from the table, we explored a range of cutoff ($k$) and weighting ($w$) values, with $10-50$ trialled for $k$ and $0.1-1.0$ trialled for $w$. We selected $k=30, w=0.7$ as this combination provided the best results ($AR@10=6.61$, $\alpha DCG=0.075$, $P@10=0.36$) in terms of performance and efficiency. A higher $k$ for example only slightly increased performance, but took longer to compute. Indeed, $k=30$ was deemed to be a sensible choice as subjects from the prior user study didn't go lower than a depth of $24$ on average over interface \blueboxbold{T0}.
 
 \begin{table}[t!]
-    \caption[Aspectual recall pilot study results]{Table illustrating the effects of varying the diversification weighting parameter, \emph{w}, and diversification cutoff \emph{k} when using the diversification algorithm as discussed in Section~\ref{sec:diversity:users:diversifying}. Values in the table represent the aspectual recall in the top 10 documents \emph{(AR@10)} after re-ranking, on average, over the 715 queries issued by subjects of the user study reported in Chapter~\ref{chap:snippets}. At \emph{w=0.0}, diversification is not applied – this configuration therefore enjoys the same performance as our baseline, non-diversified system \blueboxbold{ND}, utilising BM25 \emph{(b=0.75).}\vspace*{-3mm}}
+    \caption[Aspectual recall pilot study results]{Table illustrating the effects of varying the diversification weighting parameter, \emph{w}, and diversification cutoff \emph{k} when using the diversification algorithm as discussed in Section~\ref{sec:diversity:users:diversifying}. Values in the table represent the aspectual recall in the top 10 documents \emph{(AR@10)} after re-ranking, on average, over the 715 queries issued by subjects of the user study reported in Chapter~\ref{chap:snippets}. At \emph{w=0.0}, diversification is not applied – this configuration therefore enjoys the same performance as our baseline, non-diversified system \blueboxbold{ND}, utilising BM25 \emph{(b=0.75).} Cells \darkbluebox{highlighted} denote the selected configurations for systems \blueboxbold{ND} and \blueboxbold{D}.\vspace*{-3mm}}
     \label{tbl:aspects_previous_queries}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
     \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}D{2cm}@{\CS}D{2.12cm}@{\CS}D{2.12cm}@{\CS}D{2.12cm}@{\CS}D{2.12cm}@{\CS}D{2.12cm}@{\CS}}
     
-    & & \multicolumn{5}{c}{\hspace*{-5mm}\textbf{Cutoff Range (k)}}\\
+    \RS & & \multicolumn{5}{c}{\hspace*{-5mm}\textbf{Cutoff Range (k)}}\\
     
     \RS & & \lbluecell\textbf{10} & \lbluecell\textbf{20} & \lbluecell\textbf{30} & \lbluecell\textbf{40} & \lbluecell\textbf{50}\\
     
@@ -365,7 +365,7 @@ While responses from subjects did definitely provide a preferred retrieval syste
 We now move onto an analysis of the user study results, addressing the overarching study research question and chapter hypotheses posed in Section~\ref{sec:diversity:background:tasks:hypotheses}. In this analysis, we examine both the behaviour and performance of each subject across the four different experimental conditions, \dualbluebox{D}{AS}, \dualbluebox{ND}{AS}, \dualbluebox{D}{AD} and \dualbluebox{ND}{AD}. Both task (considering \blueboxbold{AD} vs. \blueboxbold{AS}) and system (considering \blueboxbold{ND} and \blueboxbold{D}) effects were also examined. To evaluate these data, ANOVAs were conducted using the experimental conditions, tasks and systems each as factors; main effects were examined with $\alpha=0.05$. Bonferroni tests were then used for post-hoc analysis where required. To reiterate, as discussed in Section~\ref{sec:diversity:users:measures}, $\alpha DCG$ is computed at $\alpha=0.5$.
 
 \begin{table}[t!]
-    \caption[Query performance over retrieval systems \blueboxbold{ND} and \blueboxbold{D}]{Query statistics and performance measures across both of the experimental systems trialled, \blueboxbold{ND} (baseline, non-diversified) and \blueboxbold{D} (diversified). Note the significant differences between the diversity-centric measures, $\alpha$DCG (where $\alpha$=0.5) and aspectual recall (AR), highlighting that the diversification algorithm did indeed provide subjects with a more diverse set of results with which to examine.\vspace*{-3mm}}
+    \caption[Query performance over retrieval systems \blueboxbold{ND} and \blueboxbold{D}]{Query statistics and performance measures across both of the experimental systems trialled, \blueboxbold{ND} (baseline, non-diversified) and \blueboxbold{D} (diversified). Note the significant differences between the diversity-centric measures, $\alpha$DCG (where $\alpha$=0.5) and aspectual recall (AR), demonstrating that the diversification algorithm did indeed provide subjects with a more diverse set of results with which to examine. \darkbluebox{Highlighted} cells denote a significant difference between systems.}
     \label{tbl:aspects_system_comparison}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -377,17 +377,18 @@ We now move onto an analysis of the user study results, addressing the overarchi
     \RS & \lbluecell\textbf{Terms per Query} & \cell 3.59 & \cell 3.80 \\
     \RS & \lbluecell\textbf{Unique Terms} & \cell 345 & \cell 292 \\
     
-    \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-3mm}\textbf{Precision}}} & \lbluecell\textbf{P@5} & \cell 0.25$\pm$0.01* & \cell 0.29$\pm$0.01* \\
+    \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-3mm}\textbf{Precision}}} & \lbluecell\textbf{P@5} & \dbluecell 0.25$\pm$0.01 & \dbluecell 0.29$\pm$0.01 \\
     \RS & \lbluecell\textbf{P@10} & \cell 0.22$\pm$0.01 & \cell 0.24$\pm$0.01 \\
     
-    \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-3mm}\textbf{$\alpha$DCG}}} & \lbluecell\textbf{$\alpha$DCG@5} & \cell 0.02$\pm$0.00* & \cell 0.04$\pm$0.00* \\
-    \RS & \lbluecell\textbf{$\alpha$DCG@10} & \cell 0.03$\pm$0.00* & \cell 0.04$\pm$0.00* \\
+    \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-3mm}\textbf{$\alpha$DCG}}} & \lbluecell\textbf{$\alpha$DCG@5} & \dbluecell 0.02$\pm$0.00 & \dbluecell 0.04$\pm$0.00 \\
+    \RS & \lbluecell\textbf{$\alpha$DCG@10} & \dbluecell 0.03$\pm$0.00 & \dbluecell 0.04$\pm$0.00 \\
     
-    \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{AR}}} & \lbluecell\textbf{AR@5} & \cell 1.40$\pm$0.11* & \cell 3.39$\pm$0.21* \\
-    \RS & \lbluecell\textbf{AR@10} & \cell 2.11$\pm$0.14* & \cell 4.07$\pm$0.24* \\
+    \RS\RS\RS \multirow{2}{*}{\rotatebox{90}{\hspace*{-2mm}\textbf{AR}}} & \lbluecell\textbf{AR@5} & \dbluecell 1.40$\pm$0.11 & \dbluecell 3.39$\pm$0.21 \\
+    \RS & \lbluecell\textbf{AR@10} & \dbluecell 2.11$\pm$0.14 & \dbluecell 4.07$\pm$0.24 \\
     
 \end{tabulary}
 \end{center}
+\vspace*{-3mm}
 \end{table}
 
 To begin our analysis, we first examined whether the performance experienced by subjects over the two retrieval systems was in fact different, as indicated it would be by our pilot study (refer to Section~\ref{sec:diversity:users:diversifying}). We took the queries subjects issued to each of the two systems, and measured the performance according to $\alpha DCG$, AR and precision. Results are presented in Table~\ref{tbl:aspects_system_comparison}. Statistical testing confirms that the two systems were significantly different in terms of diversity (i.e. $\alpha DCG@10$: $F(1, 1272=28.74, p<0.001)$ and $AR@10$: $F(1,1272 = 55.43, p<0.001)$. However, $P@10$ was not significantly different between the two retrieval systems. This suggests that the re-ranking promoted relevant and diverse documents, but only from the top ten results (on average).
@@ -398,10 +399,10 @@ Aside from showing query performance, Table~\ref{tbl:aspects_system_comparison} 
 Firstly, we examine the different interactions between searchers and the retrieval systems. Tables~\ref{tbl:aspectual_combo_beperftime} and~\ref{tbl:aspectual_system_tasks_beperftime} both present the mean (and standard deviations) of:
 
 \begin{itemize}
-    \item{the number of queries issued \emph{(Queries Issued);}}
-    \item{the number of~\glsplural{acr:serp} that were examined by subjects per query \emph{(\#\glsplural{acr:serp}/Q);}}
-    \item{the number of documents examined (clicked) per query \emph{(\#Docs/Q.);} and}
-    \item{the click depth (or stopping depth) per query \emph{(Depth/Q.).}}
+    \item{the number of queries issued \genericblack{(\#Queries);}}
+    \item{the number of~\glsplural{acr:serp} that were examined by subjects per query \genericblack{(\#\glsplural{acr:serp}/Query);}}
+    \item{the number of documents examined (clicked) per query \genericblack{(\#Docs./Query);} and}
+    \item{the click depth (or stopping depth) per query \genericblack{(Depth/Query).}}
 \end{itemize}
 
 These are reported in the \genericblack{Interactions} category in both tables. Table~\ref{tbl:aspectual_combo_beperftime} reports over the four different system and task combinations trialled, while Table~\ref{tbl:aspectual_system_tasks_beperftime} reports over each individual system and task. Statistical tests reveal no effects across conditions, systems or tasks. However, there are several trends that are worth discussing. Firstly, we notice that when subjects used the diversified system \blueboxbold{D} to complete the aspectual retrieval task, they examined fewer documents per query than when completing the same task on the non-diversified system \blueboxbold{ND} ($12.85$ vs. $15.73$) -- which is in line with \darkblueboxbold{H1}. We also observed that subjects issued slightly more queries on \blueboxbold{D} compared to \blueboxbold{ND} under the aspectual retrieval task ($5.92$ vs. $5.25$). This is in line with \darkblueboxbold{H2a} -- these results however were not statistically significant.
@@ -409,7 +410,7 @@ These are reported in the \genericblack{Interactions} category in both tables. T
 Now we turn our attention to the ad-hoc retrieval tasks. Our hypotheses suggested that there would be no differences in terms of the number of documents examined \darkblueboxbold{H3}, or in the number of queries issued \darkblueboxbold{H4} -- which was the case. However, we note that subjects using \blueboxbold{D} inspected more results than when using \blueboxbold{ND} ($16.19$ vs. $13.94$), and they issued slightly fewer queries ($4.96$ vs. $5.20$). We can see the trade-offs between queries and the number of results inspected per query, where more queries tends to lead to fewer results being examined, and vice versa. This trend suggests that subjects, when searching using diversified system \blueboxbold{D}, under an ad-hoc task, may have had to dig deeper to find more relevant material, due to the system's performance. Alternatively, this trend could be explained by suggesting that the system encouraged subjects to go deeper, something that we intuitively expected when subjects were searching for aspectual, diversified information. Either way, no conclusive evidence to support our hypotheses exists -- merely trends.
 
 \begin{table}[t!]
-    \caption[Behaviour and performance over experimental conditions]{Behavioural (including interaction and time-based) and performance measures, across each of the experimental conditions \dualbluebox{D}{AS}, \dualbluebox{ND}{AS}, \dualbluebox{D}{AD} and \dualbluebox{ND}{AD}.}
+    \caption[Behaviour and performance over experimental conditions]{Behavioural (including interaction and time-based) and performance measures, across each of the experimental conditions \dualbluebox{D}{AS}, \dualbluebox{ND}{AS}, \dualbluebox{D}{AD} and \dualbluebox{ND}{AD}. Cells that are \darkbluebox{highlighted} denote statistically significant differences between conditions.}
     \label{tbl:aspectual_combo_beperftime}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -425,8 +426,8 @@ Now we turn our attention to the ad-hoc retrieval tasks. Our hypotheses suggeste
         \RS\RS\RS \multirow{5}{*}{\rotatebox{90}{\hspace*{-6mm}\textbf{Performance}}} & \lbluecell\textbf{\#Saved} & \cell \small{5.80$\pm$0.26} & \cell \small{5.96$\pm$0.25} & \cell \small{5.92$\pm$0.25} & \cell \small{5.78$\pm$0.20}\\
         \RS & \lbluecell\textbf{\#\gls{acr:trec} Saved} & \cell \small{2.63$\pm$0.22} & \cell \small{2.18$\pm$0.23} & \cell \small{2.51$\pm$0.23} & \cell \small{2.22$\pm$0.22}\\
         \RS & \lbluecell\textbf{\#\gls{acr:trec} Non.} & \cell \small{1.75$\pm$0.22} & \cell \small{1.96$\pm$0.23} & \cell \small{1.37$\pm$0.22} & \cell \small{1.82$\pm$0.23 }\\
-        \RS & \lbluecell\textbf{\#Ent. Found} & \cell \small{7.22$\pm$0.94*} & \cell \small{4.31$\pm$0.60*} & \cell \small{5.82$\pm$0.77} & \cell \small{4.37$\pm$0.59*}\\
-        \RS & \lbluecell\textbf{\#Docs. New Ent.} & \cell \small{3.20$\pm$0.21*} & \cell \small{2.35$\pm$0.20*} & \cell \small{2.63$\pm$0.23} & \cell \small{2.02$\pm$0.18*}\\
+        \RS & \lbluecell\textbf{\#Ent. Found} & \dbluecell \small{7.22$\pm$0.94} & \dbluecell \small{4.31$\pm$0.60} & \cell \small{5.82$\pm$0.77} & \dbluecell \small{4.37$\pm$0.59}\\
+        \RS & \lbluecell\textbf{\#Docs. New Ent.} & \dbluecell \small{3.20$\pm$0.21} & \dbluecell \small{2.35$\pm$0.20} & \cell \small{2.63$\pm$0.23} & \dbluecell \small{2.02$\pm$0.18}\\
         
         \RS\RS\RS \multirow{5}{*}{\rotatebox{90}{\hspace*{3mm}\textbf{Times}}} & \lbluecell\textbf{Total Session} & \cell \small{443.65$\pm$45.05} & \cell \small{430.50$\pm$38.39} & \cell \small{432.18$\pm$49.87} & \cell \small{447.55$\pm$47.82}\\
         \RS & \lbluecell\textbf{Per Query} & \cell \small{8.80$\pm$0.89} & \cell \small{9.99$\pm$1.21} & \cell \small{9.69$\pm$0.79} & \cell \small{8.69$\pm$0.57}\\
@@ -438,7 +439,7 @@ Now we turn our attention to the ad-hoc retrieval tasks. Our hypotheses suggeste
 \end{table}
 
 \begin{table}[t!]
-    \caption[Behaviour and performance over systems and tasks]{Behavioural (including interaction and time-based) and performance measures, across the two experimental systems \blueboxbold{ND} and \blueboxbold{D}, as well as the two tasks, \blueboxbold{AD} and \blueboxbold{AS}.}
+    \caption[Behaviour and performance over systems and tasks]{Behavioural (including interaction and time-based) and performance measures, across the two experimental systems \blueboxbold{ND} and \blueboxbold{D}, as well as the two tasks, \blueboxbold{AD} and \blueboxbold{AS}. Cells that are \darkbluebox{highlighted} denote statistically significant differences between conditions.}
     \label{tbl:aspectual_system_tasks_beperftime}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -454,8 +455,8 @@ Now we turn our attention to the ad-hoc retrieval tasks. Our hypotheses suggeste
         \RS\RS\RS \multirow{5}{*}{\rotatebox{90}{\hspace*{-6mm}\textbf{Performance}}} & \lbluecell\textbf{\#Saved} & \cell \small{5.87$\pm$0.16} & \cell \small{5.86$\pm$0.18} & \cell \small{5.85$\pm$0.16} & \cell \small{5.88$\pm$0.18}\\
         \RS & \lbluecell\textbf{\#\gls{acr:trec} Saved} & \cell \small{2.20$\pm$0.16} & \cell \small{2.57$\pm$0.16} & \cell \small{2.36$\pm$0.16} & \cell \small{2.40$\pm$0.16}\\
         \RS & \lbluecell\textbf{\#\gls{acr:trec} Non.} & \cell \small{1.89$\pm$0.16} & \cell \small{1.56$\pm$0.16} & \cell \small{1.60$\pm$0.16} & \cell \small{1.85$\pm$0.16}\\
-        \RS & \lbluecell\textbf{\#Ent. Found} & \cell \small{4.34$\pm$0.42*} & \cell \small{6.52$\pm$0.61*} & \cell \small{5.10$\pm$0.49} & \cell \small{5.76$\pm$0.57}\\
-        \RS & \lbluecell\textbf{\#Docs. New Ent.} & \cell \small{2.19$\pm$0.13*} & \cell \small{2.91$\pm$0.16*} & \cell \small{2.32$\pm$0.15*} & \cell \small{2.77$\pm$0.15*}\\
+        \RS & \lbluecell\textbf{\#Ent. Found} & \dbluecell \small{4.34$\pm$0.42} & \dbluecell \small{6.52$\pm$0.61} & \cell \small{5.10$\pm$0.49} & \cell \small{5.76$\pm$0.57}\\
+        \RS & \lbluecell\textbf{\#Docs. New Ent.} & \dbluecell \small{2.19$\pm$0.13} & \dbluecell \small{2.91$\pm$0.16} & \dbluecell \small{2.32$\pm$0.15} & \dbluecell \small{2.77$\pm$0.15}\\
         
         \RS\RS\RS \multirow{5}{*}{\rotatebox{90}{\hspace*{3mm}\textbf{Times}}} & \lbluecell\textbf{Total Session} & \cell \small{439.02$\pm$30.52} & \cell \small{437.91$\pm$33.44} & \cell \small{439.86$\pm$34.38} & \cell \small{437.08$\pm$29.45}\\
         \RS & \lbluecell\textbf{Per Query} & \cell \small{9.34$\pm$0.67} & \cell \small{9.25$\pm$0.59} & \cell \small{9.19$\pm$0.49} & \cell \small{9.39$\pm$0.75}\\
@@ -471,21 +472,21 @@ Tables~\ref{tbl:aspectual_combo_beperftime} and~\ref{tbl:aspectual_system_tasks_
 
 \vspace*{-5mm}
 \begin{itemize}
-    \item{the number of saved documents \emph{(\#Saved);} also broken down into:}
+    \item{the number of saved documents \genericblack{(\#Saved);} also broken down into:}
     
     \begin{itemize}
-        \item{the number that were~\gls{acr:trec} relevant \emph{(\#\gls{acr:trec} Saved);} and}
-        \item{the number that were~\gls{acr:trec} non-relevant \emph{(\#\gls{acr:trec} Non);}}
+        \item{the number that were~\gls{acr:trec} relevant \genericblack{(\#\gls{acr:trec} Saved);} and}
+        \item{the number that were~\gls{acr:trec} non-relevant \genericblack{(\#\gls{acr:trec} Non.);}}
     \end{itemize}
     
-    \item{the number of new entities that were found (within saved documents, with new entities being in the context of a search session) \emph{(\#Ent. Found);} and}
-    \item{the number of documents containing at least one new entity \emph{(\#Docs. New Ent.).}}
+    \item{the number of new entities that were found (within saved documents, with new entities being in the context of a search session) \genericblack{(\#Ent. Found);} and}
+    \item{the number of documents containing at least one new entity \genericblack{(\#Docs. New Ent.).}}
 \end{itemize}
 
 In terms of the number of documents saved, there were no significant differences between conditions, systems or tasks. On average, subjects saved around six documents on average, with was two more than the minimum goal of four. This suggests that subjects wanted to make sure that they found a few extra, potentially useful documents, just in case some of their other selections turned out to be not useful.
 
 \begin{table}[t!]
-    \caption[Interaction probabilities]{Interaction probabilities, as observed over the four experimental conditions. Refer to Section~\ref{sec:method:simulation:grounding:judgements} on page~\pageref{sec:method:simulation:grounding:judgements} for  an explanation of the different probabilities listed here.}
+    \caption[Interaction probabilities]{Interaction probabilities, as observed over the four experimental conditions.  Cells that are \darkbluebox{highlighted} denote statistically significant differences between conditions. Refer to Section~\ref{sec:method:simulation:grounding:judgements} on page~\pageref{sec:method:simulation:grounding:judgements} for an explanation of the different probabilities listed here.}
     \label{tbl:diversity_probabilities}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -493,9 +494,9 @@ In terms of the number of documents saved, there were no significant differences
 
         & & \lbluecell \textbf{D-AS} & \lbluecell \textbf{ND-AS} & \lbluecell \textbf{D-AD} & \lbluecell \textbf{ND-AD} \\
 
-        \RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Click}}} & \lbluecell\textbf{P(C)} & \cell \small{0.16$\pm$0.01*} & \cell \small{0.21$\pm$0.02*} & \cell \small{0.16$\pm$0.01*} & \cell \small{0.20$\pm$0.01*}\\
+        \RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Click}}} & \lbluecell\textbf{P(C)} & \dbluecell \small{0.16$\pm$0.01} & \dbluecell \small{0.21$\pm$0.02} & \dbluecell \small{0.16$\pm$0.01} & \dbluecell \small{0.20$\pm$0.01}\\
         \RS & \lbluecell\textbf{P(C|R)} & \cell \small{0.27$\pm$0.03} & \cell \small{0.30$\pm$0.04} & \cell \small{0.25$\pm$0.03} & \cell \small{0.31$\pm$0.04}\\
-        \RS & \lbluecell\textbf{P(C|N)} & \cell \small{0.13$\pm$0.02*} & \cell \small{0.18$\pm$0.02*} & \cell \small{0.13$\pm$0.01*} & \cell \small{0.17$\pm$0.02*}\\
+        \RS & \lbluecell\textbf{P(C|N)} & \dbluecell \small{0.13$\pm$0.02} & \dbluecell \small{0.18$\pm$0.02} & \dbluecell \small{0.13$\pm$0.01} & \dbluecell \small{0.17$\pm$0.02}\\
         
         \RS\RS\RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Save}}} & \lbluecell\textbf{P(S)} & \cell \small{0.67$\pm$0.03} & \cell \small{0.66$\pm$0.03} & \cell \small{0.70$\pm$0.03} & \cell \small{0.71$\pm$0.04}\\
         \RS & \lbluecell\textbf{P(S|R)} & \cell \small{0.78$\pm$0.04} & \cell \small{0.63$\pm$0.05} & \cell \small{0.74$\pm$0.04} & \cell \small{0.67$\pm$0.05}\\
@@ -513,10 +514,10 @@ Table~\ref{tbl:diversity_probabilities} reports interaction probabilities associ
 Tables~\ref{tbl:aspectual_combo_beperftime} and~\ref{tbl:aspectual_system_tasks_beperftime} also report a third grouping of results, showing a series of times recorded for various interactions. These are all reported in the \genericblack{Times} grouping. Across both tables (conditions, systems and tasks), we report:
 
 \begin{itemize}
-    \item{the mean total session time (denoted as from the first query focus to ending the task, \emph{Total Session);}}
-    \item{the mean time spent entering queries \emph{(Per Query);}}
-    \item{the mean per document examination time \emph{(Per Document);} and}
-    \item{the mean time spent examining an individual result summary \emph{(Per Summary).}}
+    \item{the mean total session time (denoted as from the first query focus to ending the task, \genericblack{Total Session});}
+    \item{the mean time spent entering queries \genericblack{(Per Query)};}
+    \item{the mean per document examination time \genericblack{(Per Document)}; and}
+    \item{the mean time spent examining an individual result summary \genericblack{(Per Summary)}.}
 \end{itemize}
 
 All values in the two tables for time-based measures are reported in seconds. Surprisingly, no significant differences were found between any of the comparisons over the total session times, the per query times, the per document times, and the individual result summary examination times. Results however do show a relatively constant mean session time over each of the four experimental conditions, as shown in Table~\ref{tbl:aspectual_combo_beperftime}. At $\approx 438.5$ seconds, this is around seven minutes on average -- in line with the time taken to find four documents in the previous user study reported in Chapter~\ref{chap:snippets}.
@@ -560,7 +561,7 @@ There were no notable significant differences between conditions, tasks, or syst
     \begin{center}
     \begin{tabulary}{\textwidth}{L{3.2cm}@{\CS}D{1.635cm}@{\CS}D{1.635cm}@{\CS}D{1.635cm}@{\CS}D{1.635cm}@{\CS}D{1.635cm}@{\CS}D{1.635cm}@{\CS}}
         
-        & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\yoyocell \textbf{Definitely YoYo Search}} & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\hulacell \textbf{Definitely Hula Search}} \\
+        & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\yoyocell \textbf{Preference to YoYo Search}} & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\hulacell \textbf{Preference to Hula Search}} \\
         
         \RS & \yoyocellone\textbf{1} & \yoyocelltwo\textbf{2} & \yoyocellthree\textbf{3} & \hulacellthree\textbf{4} & \hulacelltwo\textbf{5} & \hulacellone\textbf{6} \\
         
@@ -576,9 +577,9 @@ There were no notable significant differences between conditions, tasks, or syst
     \vspace*{-3mm}
 \end{table}
 
-\blueboxheader{Post-Task Surveys} Table~\ref{tbl:aspects_post_behavioural} provide the results of the post-task surveys, split between behavioural and system-sided questions. Questions were outlined previously in Section~\ref{sec:diversity:users:posttask}. To recap, a seven-point Likert scale was used for all responses, ranging from $1$ (strongly disagree) to $7$ (strongly agree). Turning our attention first to the behavioural survey results, we observed no significant differences across conditions, systems or tasks. However, across all conditions, systems and tasks, subjects broadly agreed with the statements that they were presented with, suggesting that they felt successful in completing the search tasks, and were able to complete them quickly. All were in agreement that they carefully checked their documents for usefulness (i.e. relevance and/or new entities, depending upon the task) before saving, but were in broad disagreement that they had examined a \emph{few} documents per query, indicating that across all conditions, subjects felt as though they had examined more than they felt they needed to.
+\blueboxheader{Post-Task Surveys} Table~\ref{tbl:aspects_post_behavioural} provide the results of the post-task surveys, split between behavioural and system-sided questions. Questions were outlined previously in Section~\ref{sec:diversity:users:posttask}. To recap, a seven-point Likert scale was used for all responses, ranging from $1$ (strongly disagree) to $7$ (strongly agree). Turning our attention first to the \genericblack{behavioural} survey results, we observed no significant differences across conditions, systems or tasks. However, across all conditions, systems and tasks, subjects broadly agreed with the statements that they were presented with, suggesting that they felt successful in completing the search tasks, and were able to complete them quickly. All were in agreement that they carefully checked their documents for usefulness (i.e. relevance and/or new entities, depending upon the task) before saving, but were in broad disagreement that they had examined a \emph{few} documents per query, indicating that across all conditions, subjects felt as though they had examined more than they felt they needed to.
 
-Regarding the system-sided survey questions presented in Table~\ref{tbl:aspects_post_behavioural}, subjects considered that both systems offered a reasonably quick and straightforward approach to finding results, with a generally positive outcome, too. The systems generally did not appear to be considered cumbersome to use, and subjects did not find the system made it overly difficult to complete the tasks -- a significant difference existed between the two tasks for this question, where $F(1, 201=5.51, p<0.05)$. Overall, subjects felt happy with how the system performed, and thus appeared to show some confidence in their decisions.
+Regarding the \genericblack{system}-sided survey questions presented in Table~\ref{tbl:aspects_post_behavioural}, subjects considered that both systems offered a reasonably quick and straightforward approach to finding results, with a generally positive outcome, too. The systems generally did not appear to be considered cumbersome to use, and subjects did not find the system made it overly difficult to complete the tasks -- a significant difference existed between the two tasks for this question, where $F(1, 201=5.51, p<0.05)$. Overall, subjects felt happy with how the system performed, and thus appeared to show some confidence in their decisions.
 
 \blueboxheader{Post-Experiment Survey}
 Upon finishing the experiment, subjects completed the post-experiment survey as detailed in Section~\ref{sec:diversity:users:postexp}. Here, we asked subjects what one of the two systems they preferred (from either the non-diversified or diversified systems) over a number of different questions. Results from the survey, as shown in Table~\ref{tbl:aspects_post_experiment}, provide a mixed picture -- no one system stood out as being more favourable to subjects, with all questions recording a near 50-50 split between the two. This is an interesting finding, as results -- especially from Table~\ref{tbl:aspects_system_comparison} on page~\pageref{tbl:aspects_system_comparison} -- showed that there was a significant difference between the two systems. Subjects simply had a difficult time attempting to determine what system appeared to be more favourable to them.
@@ -598,13 +599,13 @@ These definitions are what constituted as a useful document for both of the task
 Just like the expectation plots shown in Figure~\ref{fig:ift_theory} on page~\pageref{fig:ift_theory}, Figure~\ref{fig:ift_empirical} plots the corresponding \emph{empirical gain curves} for:
 
 \begin{itemize}
-    \item[\emph{(a)}]{the non-diversified system, \blueboxbold{ND}, over both search tasks;}
-    \item[\emph{(b)}]{the diversified system, \blueboxbold{D}, over both search tasks;}
-    \item[\emph{(c)}]{the aspectual search task for both retrieval systems; and}
-    \item[\emph{(d)}]{the ad-hoc task for both retrieval systems.}
+    \item[\genericblack{(a)}]{the non-diversified system, \blueboxbold{ND}, over both search tasks;}
+    \item[\genericblack{(b)}]{the diversified system, \blueboxbold{D}, over both search tasks;}
+    \item[\genericblack{(c)}]{the aspectual search task for both retrieval systems; and}
+    \item[\genericblack{(d)}]{the ad-hoc task for both retrieval systems.}
 \end{itemize}
 
-Compared to out expectations in Figure~\ref{fig:ift_theory} on page~\pageref{fig:ift_theory}, on visual inspection, we see that our predictions were roughly in line with the levels of~\gls{acr:cg} experienced by the subjects (on average). With Figure~\ref{fig:ift_empirical} \emph{(a)} for example, we hypothesised that on retrieval system \blueboxbold{ND}, subjects would have experienced greater levels of gain. The empirical gain curves demonstrate that this actually occurred. A critical difference however though is for plot \emph{(b)}. Here, it is clear that subjects went through a very different experience when searching, motivating a revision of our expectations.
+Compared to out expectations in Figure~\ref{fig:ift_theory} on page~\pageref{fig:ift_theory}, on visual inspection, we see that our predictions were roughly in line with the levels of~\gls{acr:cg} experienced by the subjects (on average). With Figure~\ref{fig:ift_empirical} \genericblack{(a)} for example, we hypothesised that on retrieval system \blueboxbold{ND}, subjects would have experienced greater levels of gain. The empirical gain curves demonstrate that this actually occurred. A critical difference however though is for plot \genericblack{(b)}. Here, it is clear that subjects went through a very different experience when searching, motivating a revision of our expectations.
 
 \begin{figure}[t!]
     \centering
@@ -614,7 +615,7 @@ Compared to out expectations in Figure~\ref{fig:ift_theory} on page~\pageref{fig
     \label{fig:ift_empirical}
 \end{figure}
 
-To do so, we first fit a logarithmic function to each of the gain curves given time, such that: $gain = b \cdot log(time) - a$, as used by~\cite{athukorala2014ift}. Table~\ref{tbl:aspects_ift_fitting} presents the parameters and correlation co-efficients for fit ($r^2$) for each of the four experimental conditions. We could then calculate how many documents a subjects examined by drawing the tangent line to the estimated gain functions from the origin. This resulted in the predicted number of documents examined, which we see are in line with the actual number of documents examined. With respect to plot \emph{(b)}, we see that for diversified system \blueboxbold{D}, the theory, given their performance, suggests that subjects should examine more documents per query under the aspectual task \blueboxbold{AS} than when undertaking the ad-hoc task \blueboxbold{AD} (i.e. $4.98$ vs. $3.68$ for \blueboxbold{AS} and \blueboxbold{AD}, respectively). We observed that subjects examined $3.48$ and $3.02$ documents per query -- which follows a similar trend, but not to the same magnitude. Thus, this revises our expectations regarding how people would search differently between these tasks.
+To do so, we first fit a logarithmic function to each of the gain curves given time, such that: $gain = b \cdot log(time) - a$, as used by~\cite{athukorala2014ift}. Table~\ref{tbl:aspects_ift_fitting} presents the parameters and correlation co-efficients for fit ($r^2$) for each of the four experimental conditions. We could then calculate how many documents a subjects examined by drawing the tangent line to the estimated gain functions from the origin. This resulted in the predicted number of documents examined, which we see are in line with the actual number of documents examined. With respect to plot \genericblack{(b)}, we see that for diversified system \blueboxbold{D}, the theory, given their performance, suggests that subjects should examine more documents per query under the aspectual task \blueboxbold{AS} than when undertaking the ad-hoc task \blueboxbold{AD} (i.e. $4.98$ vs. $3.68$ for \blueboxbold{AS} and \blueboxbold{AD}, respectively). We observed that subjects examined $3.48$ and $3.02$ documents per query -- which follows a similar trend, but not to the same magnitude. Thus, this revises our expectations regarding how people would search differently between these tasks.
 
 \begin{table}[t!]
     \caption[\gls{acr:ift} fitting parameters]{Fitting parameters for the gain curves illustrated in Figure~\ref{fig:ift_empirical}, over each of the four experimental conditions trialled. Also included are the estimations from the model of the predicted number of documents that subjects would examine, and the actual number from the empirical data.\vspace*{-3mm}}
@@ -749,7 +750,7 @@ Table~\ref{tbl:ch8_sim_queryperf} reports various precision, $\alpha DCG$ and $A
     \begin{center}
     \begin{tabulary}{\textwidth}{L{2.1cm}@{\CS}D{1.8cm}@{\CS}D{1.8cm}@{\CS}D{1.8cm}@{\CSONEHALF}D{1.8cm}@{\CS}D{1.8cm}@{\CS}D{1.8cm}@{\CS}}
         
-        & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{ND}} & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\dbluecell\small\textbf{D}} \\
+        & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{ND} (Non-Diversified)} & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\dbluecell\small\textbf{D} (Diversified)} \\
         \RS & \lbluecell\textbf{QS1} & \lbluecell\textbf{QS13} & \lbluecell\textbf{QS3} & \lbluecell\textbf{QS1} & \lbluecell\textbf{QS13} & \lbluecell\textbf{QS3} \\
         
         \RS\lbluecell\textbf{P@1} & \cell\footnotesize 0.04 $\pm$ 0.20 & \cell\footnotesize 0.18 $\pm$ 0.39 & \cell\footnotesize 0.23 $\pm$ 0.42 & \cell\footnotesize 0.04 $\pm$ 0.20 & \cell\footnotesize 0.19 $\pm$ 0.39 & \cell\footnotesize 0.23 $\pm$ 0.43 \\
@@ -925,7 +926,7 @@ Moving back to our per-condition examination, Table~\ref{tbl:ch8_sim_comp_cgdq} 
 Results observed from Table~\ref{tbl:ch8_sim_comp_cgdq} are largely as expected: stopping strategies that yielded close approximations to actual mean searcher behaviours offered mean depths per query that were similar to that of the real-world mean for the given condition. In contrast, we find that stopping strategies offering approximations with higher MSE values such as \blueboxbold{SS6-DT}, \blueboxbold{SS7-DKL} and \blueboxbold{SS8-IFT} do so at much lower or higher mean depths per query, although these differences are not significant. Results from Table~\ref{tbl:ch8_sim_comp_cgdq} also show that the simulated searchers on average saved fewer~\gls{acr:trec} relevant documents across all four experimental conditions, and, as a consequence, identified fewer~\gls{acr:trec} relevant documents with at least one new entity. For example, across conditions \dualbluebox{D}{AS}, \dualbluebox{ND}{AS}, \dualbluebox{D}{AD} and \dualbluebox{ND}{AD}, real-world subjects saved $2.63$, $2.18$, $2.51$ and $2.22$~\gls{acr:trec} relevant documents on average. Across our fixed-depth baseline \blueboxbold{SS1-FIX}, simulated searchers saved $1.94$, $1.96$, $1.67$ and $1.66$~\gls{acr:trec} relevant documents on average. These comparatively low values may be an artefact of how we instantiated the simulations of interaction. We leave this discussion to Chapter~\ref{chap:conclusions}.
 
 \begin{table}[p!]
-    \caption[\gls{acr:trec} saved and AR across stopping strategies]{Additional results from the searcher comparisons runs, with this table reporting the mean depth per query. Also included are the mean number of saved,~\gls{acr:trec} relevant documents \emph{\#S (saved)} – and from that, the mean number of saved documents that contain one or more new entites \emph{AR.} These are used for determining task completion for \darkblueboxbold{AD} and \darkblueboxbold{AS} tasks respectively. All these values are reported at the configuration yielding the lowest MSE (refer to Table~\ref{tbl:ch8_sim_comp}), indicating the best approximation to real-world stopping behaviours. We also include are the mean real-world \emph{(RW)} values over each condition for a direct comparison.}
+    \caption[Mean number of \gls{acr:trec} saved and AR across stopping strategies]{Additional results from the searcher comparisons runs, with this table reporting the mean depth per query. Also included are the mean number of saved,~\gls{acr:trec} relevant documents \emph{\#S (saved)} – and from that, the mean number of saved documents that contain one or more new entites \emph{AR.} These are used for determining task completion for \darkblueboxbold{AD} and \darkblueboxbold{AS} tasks respectively. All these values are reported at the configuration yielding the lowest MSE (refer to Table~\ref{tbl:ch8_sim_comp}), indicating the best approximation to real-world stopping behaviours. We also include are the mean real-world \emph{(RW)} values over each condition for a direct comparison.}
     \label{tbl:ch8_sim_comp_cgdq}
     \renewcommand{\arraystretch}{1.8}
     

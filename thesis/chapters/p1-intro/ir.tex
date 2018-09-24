@@ -105,7 +105,7 @@ Experimental corpora are available for use with batch experimentation, typically
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-inverted.pdf}}
-    \caption[Illustration of an \emph{inverted index}]{A demonstration of an \emph{inverted index}, with three source documents for comparison. Depending upon the requirements of the~\gls{acr:ir} system, the indexing process may vary; all classical~\gls{acr:ir} systems however rely upon some form of inverted index.}
+    \caption[Illustration of an inverted index]{A demonstration of an \emph{inverted index}, with three source documents for comparison. Depending upon the requirements of the~\gls{acr:ir} system, the indexing process may vary; all classical~\gls{acr:ir} systems however rely upon some form of inverted index.}
     \label{fig:inverted}
 \end{figure}
 
@@ -196,7 +196,7 @@ The vector space model proposed by~\cite{salton1975vsm} incorporates the princip
     \includegraphics[width=1\textwidth]{figures/ch2-vector.pdf}
     \end{center}
     \vspace*{-4mm}
-    \caption[Vector space model (cosine similarity)]{An illustration of the vector space model in Euclidean space, with each term representing a dimension. Here, the cosine similarity between query \emph{q} and document \emph{d} is shown.}
+    \caption[The vector space model (cosine similarity)]{An illustration of the vector space model in Euclidean space, with each term representing a dimension. Here, the cosine similarity between query \emph{q} and document \emph{d} is shown.}
     \label{fig:vector_space}
 \end{wrapfigure}
 
@@ -262,7 +262,7 @@ Given the assumptions of the Cranfield paradigm -- and subsequently evaluation f
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-basic_model.pdf}}
-    \caption[\gls{acr:trec} searcher model]{The~\gls{acr:trec} searcher model. Considering a highly abstracted searcher, a query is issued, with each individual result examined in a linear order, up to some depth \emph{k} (typically 1,000), before the searcher stops. No notion to relevance is considered; all documents up to rank \emph{k} are assumed by the searcher to be relevant to the topic provided.}
+    \caption[Flowchart of the abstracted~\gls{acr:trec} searcher model]{The~\gls{acr:trec} searcher model. Considering a highly abstracted searcher, a query is issued, with each individual result examined in a linear order, up to some depth \emph{k} (typically 1,000), before the searcher stops. No notion to relevance is considered; all documents up to rank \emph{k} are assumed by the searcher to be relevant to the topic provided.}
     \label{fig:trec_model}
 \end{figure}
 
@@ -294,7 +294,7 @@ To address the question of whether \emph{people can use a retrieval system}, we 
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-iir.pdf}}
-    \caption[Basics of the~\gls{acr:iir} process]{Basics of the~\gls{acr:iir} process, complete with a number of different searcher interactions that can take place (although this illustration may not be exhaustive). Forming an information need, searchers then begin the interaction process by issuing a query, before examining content presented on the~\gls{acr:serp}. Searchers at given points may decide to \emph{stop} their interactions.}
+    \caption[Basic components and interactions of the~\gls{acr:iir} process]{Basics of the~\gls{acr:iir} process, complete with a number of different searcher interactions that can take place (although this illustration may not be exhaustive). Forming an information need, searchers then begin the interaction process by issuing a query, before examining content presented on the~\gls{acr:serp}. Searchers at given points may decide to \emph{stop} their interactions.}
     \label{fig:iir}
 \end{figure}
 
@@ -323,7 +323,7 @@ These result summaries are typically displayed on a~\gls{acr:serp} as the \emph{
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-example.pdf}}
-    \caption[Example of a~\gls{acr:serp}]{An example of a~\glsfirst{acr:serp} for the query \texttt{canberra australia}. \blueboxbold{Labels} illustrate the names of the key components of a~\gls{acr:serp} – of relevance for the work in this thesis are the \emph{result summaries.}}
+    \caption[Example illustration of a~\gls{acr:serp} and its constituent components]{An example of a~\glsfirst{acr:serp} for the query \texttt{canberra australia}. \blueboxbold{Labels} illustrate the names of the key components of a~\gls{acr:serp} – of relevance to the work in this thesis are the \emph{result summaries,} shown on the left hand side.}
     \label{fig:serp_example}
 \end{figure}
 
@@ -343,7 +343,7 @@ In order to aptly describe where~\gls{acr:iir} fits into the system-sided and us
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-spectrum.pdf}}
-    \caption[Spectrum IIR research~\citep{kelly2009iir}]{The spectrum of conceptualising~\gls{acr:iir} research. Methods on the left consider a more system-focused approach, with those on the right considering a more user-focused approach. The fifth step within the spectrum considering~\gls{acr:trec} interactive studies is considered to be an \emph{"archetypical~\gls{acr:iir} study"}. Figure adapted, with support from~\cite{kelly2009iir}.}
+    \caption[The spectrum of~\gls{acr:ir} and~\gls{acr:iir} research, as per~\citep{kelly2009iir}]{The spectrum of conceptualising~\gls{acr:iir} research. Methods on the left consider a more system-focused approach, with those on the right considering a more user-focused approach. The fifth step within the spectrum considering~\gls{acr:trec} interactive studies is considered to be an \emph{"archetypical~\gls{acr:iir} study"}. Figure adapted, with support from~\cite{kelly2009iir}.}
     \label{fig:spectrum}
 \end{figure}
 
@@ -489,7 +489,7 @@ Considering system-orientated measures of evaluation, one can consider a system'
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-pr.pdf}}
-    \caption[Precision and recall]{An illustration of precision and recall. On the left is an illustrated example of an index, containing many documents. The large circle represents the set of documents retrieved for a query. Documents that are relevant to the query are represented as~\includegraphics[height=\fontcharht\font`\d]{figures/ch2-pr-r.pdf}, with non-relevant documents represented as~\includegraphics[height=\fontcharht\font`\d]{figures/ch2-pr-nr.pdf}. Note that not all relevant documents are retrieved; doing so would mean that the retrieval engine used would have produced perfect results. From the illustration on the left, definitions of \emph{precision} and \emph{recall} are also provided.}
+    \caption[Example illustration of precision and recall]{An illustration of precision and recall. On the left is an illustrated example of an index, containing many documents. The large circle represents the set of documents retrieved for a query. Documents that are relevant to the query are represented as~\includegraphics[height=\fontcharht\font`\d]{figures/ch2-pr-r.pdf}, with non-relevant documents represented as~\includegraphics[height=\fontcharht\font`\d]{figures/ch2-pr-nr.pdf}. Note that not all relevant documents are retrieved; doing so would mean that the retrieval engine used would have produced perfect results. From the illustration on the left, definitions of \emph{precision} and \emph{recall} are also provided.}
     \label{fig:pr}
 \end{figure}
 
@@ -583,7 +583,7 @@ This is demonstrated by the illustration above, highlighting the concept of \emp
     \includegraphics[width=1\textwidth]{figures/ch2-cg.pdf}
     \end{center}
     \vspace*{-4mm}
-    \caption[Cumulative Gain]{An illustration of the~\glsfirst{acr:cg} as outlined by~\cite{jarvelin2000cg, jarvelin2002cg}. In the example, the first five documents from a list are shown – \emph{1,} \emph{3} and \emph{4} contain information, from which the user gains information from.}
+    \caption[Example plot of~\gls{acr:cg} accumulation]{An illustration of the~\glsfirst{acr:cg} as outlined by~\cite{jarvelin2000cg, jarvelin2002cg}. In the example, the first five documents from a list are shown – \emph{1,} \emph{3} and \emph{4} contain information, from which the user gains information from.}
     \label{fig:cg}
 \end{wrapfigure}
 
@@ -614,7 +614,7 @@ with $rel_k$ once again denoting an assessor's relevance judgement for the docum
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-rbp.pdf}}
-    \caption[Rank-Biased Precision]{An illustration of the simple searcher model encoded within~\glsfirst{acr:rbp}. A user following this model will \emph{always} examine the first result presented, and will examine subsequent results with decreasing probability (from \emph{p}, the \emph{patience} parameter). Stopping is determined with probability \emph{p-1}. Figure adapted with support from~\cite{moffat2008rbp}.}
+    \caption[Flowchart depicting the searcher model encoded within~\gls{acr:rbp}]{An illustration of the simple searcher model encoded within~\glsfirst{acr:rbp}. A user following this model will \emph{always} examine the first result presented, and will examine subsequent results with decreasing probability (from \emph{p}, the \emph{patience} parameter). Stopping is determined with probability \emph{p-1}. Figure adapted with support from~\cite{moffat2008rbp}.}
     \label{fig:rbp}
 \end{figure}
 
@@ -655,7 +655,7 @@ Subjects of~\gls{acr:iir} studies are typically instructed to \emph{save} docume
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-interactive-precision.pdf}}
-    \caption[Interactive precision example]{A visual example of \emph{interactive precision} alongside traditional, system-sided precision. In the example ranking, the retrieval system returned three relevant documents, yet the searcher only correctly identified two of them, hence an interactive precision \emph{(iP)} score of \emph{2/4=0.5.}}
+    \caption[Comparison of precision and interactive precision]{A graphical example of \emph{interactive precision} alongside traditional, system-sided precision. In the example ranking, the retrieval system returned three relevant documents, yet the searcher only correctly identified two of them, hence an interactive precision \emph{(iP)} score of \emph{2/4=0.5.}}
     \label{fig:interactive_precision}
 \end{figure}
 
