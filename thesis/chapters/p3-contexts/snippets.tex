@@ -258,7 +258,7 @@ These findings provide some justification for our choices of the number of snipp
         
         \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Performance}}} & \lbluecell\textbf{P@10} & \cell \small{0.25$\pm$0.02} & \cell \small{0.23$\pm$0.02} & \cell \small{0.27$\pm$0.02} & \cell \small{0.25$\pm$0.03}\\
         \RS & \lbluecell\textbf{\#Saved} & \cell \small{6.68$\pm$0.66} & \cell \small{7.00$\pm$0.63} & \cell \small{6.49$\pm$0.58} & \cell \small{7.60$\pm$0.79}\\
-        \RS & \lbluecell\textbf{\#\gls{acr:trec} Saved} & \cell \small{2.58$\pm$0.34} & \cell \small{2.28$\pm$0.25} & \cell \small{2.47$\pm$0.28} & \cell \small{2.66$\pm$0.32}\\
+        \RS & \lbluecell\textbf{\#\gls{acr:trec} Saved (iP)} & \cell \small{2.58$\pm$0.34} & \cell \small{2.28$\pm$0.25} & \cell \small{2.47$\pm$0.28} & \cell \small{2.66$\pm$0.32}\\
         \RS & \lbluecell\textbf{\#\gls{acr:trec} Non.} & \cell \small{1.85$\pm$0.32} & \cell \small{2.08$\pm$0.29} & \cell \small{1.98$\pm$0.24} & \cell \small{1.68$\pm$0.32}\\
         
         \RS\RS\RS \multirow{3}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Times}}} & \lbluecell\textbf{Per Query} & \cell \small{8.29$\pm$0.57} & \cell \small{7.99$\pm$0.57} & \cell \small{9.42$\pm$0.79} & \cell \small{8.12$\pm$0.48}\\
@@ -329,9 +329,12 @@ Also included within Table~\ref{tbl:snippets_intperftime} are our reported perfo
 
 \begin{itemize}
     \item{the issued queries, with the \genericblack{P@10} score;}
-    \item{the number of documents that were saved by subjects \genericblack{(\#Saved);}}
-    \item{the interactive precision, or the number of saved documents that were~\gls{acr:trec} relevant \genericblack{(\#\gls{acr:trec} Saved);} and also}
-    \item{the number of saved documents that were not~\gls{acr:trec} relevant \genericblack{(\#\gls{acr:trec} Non.).}}
+    \item{the number of documents that were saved by subjects \genericblack{(\#Saved)}; broken up into}
+    
+    \begin{itemize}
+        \item{the interactive precision, or the number of saved documents that were~\gls{acr:trec} relevant \genericblack{(\#\gls{acr:trec} Saved (iP));} and}
+        \item{the number of saved documents that were not~\gls{acr:trec} relevant \genericblack{(\#\gls{acr:trec} Non.).}}
+    \end{itemize}
 \end{itemize}
 
 Like the interaction measures examined previously, no significant differences were observed over the four experimental interfaces examined. The performance of queries issued by subjects was very similar across all interfaces ($P@10 \approx 0.25$), along with the number of documents identified by subjects as relevant ($6.49\pm0.58$) for \blueboxbold{T2} to $7.6\pm0.79$ for \blueboxbold{T4}, and the interactive precision ($2.28\pm0.25$ for \blueboxbold{T1} to $2.66\pm0.32$ for \blueboxbold{T4}). Considering the number of saved,~\gls{acr:trec} non-relevant documents, where subjects on averaged saved two such documents. However, there again no significant differences between the four interfaces.
@@ -696,7 +699,7 @@ Figure~\ref{fig:ch7_sim_comparison_plots} again presents twelve plots, one per r
 From the plots in Figure~\ref{fig:ch7_sim_comparison_plots}, we can observe a number of notable trends. Stopping strategies that offered good levels of performance (as reported in Section~\ref{sec:snippets:simulations:results:perf}) offer smoother MSE curves, indicative of providing good approximations of actual searcher behaviours. Plots for \blueboxbold{SS6-DT} for example are more unpredictable; this stopping strategy was also reported as one of the worst performing on average. We also notice a consistent difference in how predictions differ across the four experimental interfaces, with this trend observed over all twelve stopping strategy plots. Interface \blueboxbold{T2} consistently served better approximations than its counterpart interfaces, with \blueboxbold{T1} always offering the worst. Interfaces \blueboxbold{T0} and \blueboxbold{T4} appear between the two extremes, often interleaving with one another as the mean depth per query increases.
 
 \begin{table}[p!]
-    \caption[\gls{acr:cg} and depth per query values for comparison runs]{Additional results from the searcher comparisons runs, with this table reporting mean depth per query and~\gls{acr:cg} values, along with the mean number of~\gls{acr:trec} relevant documents correctly saved \emph{(\#S).} All these values are reported at the configuration yielding the lowest MSE (refer to Table~\ref{tbl:ch7_sim_comp}), indicating the best approximation to real-world stopping behaviours. Also included are the mean real-world \emph{(RW)} values over each interface for a direct comparison.}
+    \caption[\gls{acr:cg} and depth per query values for comparison runs]{Additional results from the searcher comparisons runs, with this table reporting mean depth per query and~\gls{acr:cg} values, along with the mean interactive precision value (\genericblack{iP}). All these values are reported at the configuration yielding the lowest MSE (refer to Table~\ref{tbl:ch7_sim_comp}), indicating the best approximation to real-world stopping behaviours. Also included are the mean real-world \emph{(RW)} values over each interface for a direct comparison.}
     \label{tbl:ch7_sim_comp_cgdq}
     \renewcommand{\arraystretch}{1.8}
     
@@ -705,7 +708,7 @@ From the plots in Figure~\ref{fig:ch7_sim_comparison_plots}, we can observe a nu
 
             & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T0}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T1}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{T2}} & \multicolumn{3}{@{\hskip 0pt}c@{\CS}}{\dbluecell\small\textbf{T4}}\\
 
-            \RS & & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{\#S} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{\#S} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{\#S} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{\#S} \\
+            \RS & & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{iP} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{iP} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{iP} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{iP} \\
 
             \RS & \dbluecell\small\textbf{RW} & \cell \small \hspace*{-2.5mm} 15.42 & \cell \small \hspace*{-1mm} 1.87 & \cell \hspace*{-1mm} \small 2.58 & \cell \small \hspace*{-2.5mm} 17.04 & \cell \small \hspace*{-1mm} 1.83 & \cell \hspace*{-1mm} \small 2.28 & \cell \small \hspace*{-2.5mm} 14.39 & \cell \small \hspace*{-1mm} 2.36 & \cell \hspace*{-1mm} \small 2.47 & \cell \small \hspace*{-2.5mm} 13.74 & \cell \small \hspace*{-1mm} 1.87 & \cell \hspace*{-1mm} \small 2.66 \\
 
@@ -744,7 +747,7 @@ With these interesting results in mind, we also ran a series of statistical sign
 
 With this in mind, we also decided to examine if a particular stopping strategy emerged as providing good approximations of stopping behaviour when considering all four interfaces together. Results of this analysis are shown in the \genericblack{Average} grouping in Table~\ref{tbl:ch7_sim_comp}. Statistical tests comparing the best approximating strategy (again \dualbluebox{SS1-FIX}{@24}) against the remaining eleven stopping strategies once again yielded no significant differences, highlighting that all stopping strategies once again offered similar approximations. As such, we did not explore this avenue of averaging over interfaces any further.
 
-Moving back to our per-interface examination, Table~\ref{tbl:ch7_sim_comp_cgdq} reports additional information relating to the best approximations offered by each stopping strategy. We report for each stopping strategy (across each experimental condition) the: mean depth per query (\genericblack{DQ}); \genericblack{\gls{acr:cg}}; and the mean number of saved~\gls{acr:trec} relevant documents (\genericblack{\#S}). These values are attained at the stopping threshold parameter(s) that yielded the lowest MSE, as reported in Table~\ref{tbl:ch7_sim_comp}. Also included in Table~\ref{tbl:ch7_sim_comp_cgdq} are the mean values that were attained by real-world subjects of the user study (the \genericblack{RW} column) for easy comparison. We also once again \darkbluebox{highlight} the stopping strategy for each interface that yielded the lowest MSE.
+Moving back to our per-interface examination, Table~\ref{tbl:ch7_sim_comp_cgdq} reports additional information relating to the best approximations offered by each stopping strategy. We report for each stopping strategy (across each experimental condition) the: mean depth per query (\genericblack{DQ}); \genericblack{\gls{acr:cg}}; and the mean number of saved~\gls{acr:trec} relevant documents, or interactive precision (\genericblack{iP}). These values are attained at the stopping threshold parameter(s) that yielded the lowest MSE, as reported in Table~\ref{tbl:ch7_sim_comp}. Also included in Table~\ref{tbl:ch7_sim_comp_cgdq} are the mean values that were attained by real-world subjects of the user study (the \genericblack{RW} column) for easy comparison. We also once again \darkbluebox{highlight} the stopping strategy for each interface that yielded the lowest MSE.
 
 Trends from this table are largely as expected: stopping strategies that yielded the closest approximations to actual mean stopping behaviour closely approximate the mean depth per query to the real-world (\genericblack{RW}) mean. In contrast, we find that for stopping strategies such as \blueboxbold{SS6-DT}, \blueboxbold{SS7-DKL} and \blueboxbold{SS12-RBP}, the mean depth per query is lower than the mean values across each four interfaces. As such, these strategies largely \emph{underestimate} the stopping depth of the real-world searchers. We also find that for interface \blueboxbold{T2}, mean depths per query all appeared to offer closer representations to the real-world mean. This may be due to the fact of the probabilities used for the grounding of the simulations.
 
