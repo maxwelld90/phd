@@ -191,12 +191,12 @@ T1 Savvy searchers encountered no bad SERPs. For all SERPs displayed in the top 
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch9-perf_plots.pdf}}
-    \caption[Performance plots]{Performance plots}
+    \caption[Stopping strategies and~\gls{acr:serp} decision point \emph{what-if} performance]{Plots demonstrating the varying levels of performance, measured in~\gls{acr:cg}, over the mean depth per query. Each result summary level stopping strategy is plotted separately, with the three different~\gls{acr:serp} level decision point implementations shown. Plots on the top relate to interface \blueboxbold{T2}; plots on the bottom relate to condition \dualbluebox{ND}{AD}.}
     \label{fig:ch9_perf_plots}
 \end{figure}
 
 \begin{table}[p!]
-    \caption[Maximum~\gls{acr:cg} from \emph{what-if} performance runs]{Results from the simulated \emph{what-if} simulated performance runs, showing the highest levels of~\gls{acr:cg} attained for result summary level stopping strategies \blueboxbold{SS1-FIX}, \blueboxbold{SS2-NT} and \blueboxbold{SS11-COMB}. These are reported over the \blueboxbold{Always} \emph{(baseline),} \blueboxbold{Average} and \blueboxbold{Perfect}~\gls{acr:serp} level stopping decision point implementations. \emph{x\textsubscript{n}} denotes the stopping parameter threshold(s), with \emph{DQ} denoting the depth per query at which the greatest~\gls{acr:cg} value was attained at. Note the increasing levels of~\gls{acr:cg} that are reached as we tend from \blueboxbold{Always} $\rightarrow$ \blueboxbold{Perfect}.}
+    \caption[Maximum~\gls{acr:cg} from \emph{what-if} performance runs]{Results from the simulated \emph{what-if} simulated performance runs, showing the highest levels of~\gls{acr:cg} attained for result summary level stopping strategies \blueboxbold{SS1-FIX}, \blueboxbold{SS2-NT} and \blueboxbold{SS11-COMB}. These are reported over the \blueboxbold{Always} \emph{(baseline),} \blueboxbold{Average} and \blueboxbold{Perfect}~\gls{acr:serp} level stopping decision point implementations. \genericblack{x\textsubscript{n}} denotes the stopping parameter threshold(s), with \genericblack{DQ} denoting the depth per query at which the greatest \genericblack{\gls{acr:cg}} value was attained at. Note the increasing levels of~\gls{acr:cg} that are reached as we tend from \blueboxbold{Always} $\rightarrow$ \blueboxbold{Perfect}. Note that for combination strategy \blueboxbold{SS5-COMB}, \emph{x\textsubscript{2},x\textsubscript{4}} are shown as \genericblack{x\textsubscript{n}} column.}
     \label{tbl:ch9_perf_table}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -209,12 +209,12 @@ T1 Savvy searchers encountered no bad SERPs. For all SERPs displayed in the top 
             % T2
             \RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Int. \blueboxbold{\textbf{T2}}}} & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 6.33 & \cell \hspace*{-1mm} \small 2.50 & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 4.17 & \cell \hspace*{-1mm} \small 2.45 & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 4.45 & \cell \hspace*{-1mm} \small 2.98 \\
             \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} 7 & \cell \small \hspace*{-1mm} 6.16 & \cell \hspace*{-1mm} \small 2.49 & \cell \small \hspace*{-1mm} 21 & \cell \small \hspace*{-1mm} 10.77 & \cell \hspace*{-1mm} \small 2.58 & \cell \small \hspace*{-1mm} 8 & \cell \small \hspace*{-1mm} 5.07 & \cell \hspace*{-1mm} \small 3.11 \\
-            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} 10,10 & \cell \small \hspace*{-1mm} 5.33 & \cell \hspace*{-1mm} \small 2.52 & \cell \small \hspace*{-1mm} 50,0 & \cell \small \hspace*{-1mm} 13.73 & \cell \hspace*{-1mm} \small 2.44 & \cell \small \hspace*{-1mm} 50,5 & \cell \small \hspace*{-1mm} 10.72 & \cell \hspace*{-1mm} \small 3.00 \\
+            \RS  & \lbluecell\small\textbf{SS5-COMB} & \cell \small \hspace*{-1mm} 8,4 & \cell \small \hspace*{-1mm} 6.17 & \cell \hspace*{-1mm} \small 2.52 & \cell \small \hspace*{-1mm} 21,9 & \cell \small \hspace*{-1mm} 10.54 & \cell \hspace*{-1mm} \small 2.59 & \cell \small \hspace*{-1mm} 8,7 & \cell \small \hspace*{-1mm} 5.04 & \cell \hspace*{-1mm} \small 3.14 \\
             
             % ND-AD
             \RS\RS\RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Cdn. \textbf{\dualbluebox{ND}{AD}}}} & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 6.47 & \cell \hspace*{-1mm} \small 1.81 & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 3.93 & \cell \hspace*{-1mm} \small 1.82 & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 4.69 & \cell \hspace*{-1mm} \small 2.30 \\
             \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 7.55 & \cell \hspace*{-1mm} \small 1.80 & \cell \small \hspace*{-1mm} 10 & \cell \small \hspace*{-1mm} 4.71 & \cell \hspace*{-1mm} \small 1.84 & \cell \small \hspace*{-1mm} 5 & \cell \small \hspace*{-1mm} 3.12 & \cell \hspace*{-1mm} \small 2.35 \\
-            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} 10,6 & \cell \small \hspace*{-1mm} 4.56 & \cell \hspace*{-1mm} \small 1.75 & \cell \small \hspace*{-1mm} 20,4 & \cell \small \hspace*{-1mm} 4.68 & \cell \hspace*{-1mm} \small 1.69 & \cell \small \hspace*{-1mm} 20,2 & \cell \small \hspace*{-1mm} 5.01 & \cell \hspace*{-1mm} \small 2.24 \\
+            \RS  & \lbluecell\small\textbf{SS5-COMB} & \cell \small \hspace*{-1mm} 10,6 & \cell \small \hspace*{-1mm} 7.55 & \cell \hspace*{-1mm} \small 1.80 & \cell \small \hspace*{-1mm} 10,4 & \cell \small \hspace*{-1mm} 4.43 & \cell \hspace*{-1mm} \small 1.85 & \cell \small \hspace*{-1mm} 10,3 & \cell \small \hspace*{-1mm} 4.87 & \cell \hspace*{-1mm} \small 2.37 \\
 
         \end{tabulary}
         \end{center}
@@ -225,7 +225,7 @@ T1 Savvy searchers encountered no bad SERPs. For all SERPs displayed in the top 
 \subsection{Real-World Comparisons}
 
 \begin{table}[p!]
-    \caption[COMPARISONS]{Comparisons}
+    \caption[Lowest MSE values for~\gls{acr:serp} decision point implementations]{Results from the simulated comparison runs, showing the \emph{lowest} \genericblack{MSE} value reached over each of the three result summary level stopping strategies trialled. These are reported over the \blueboxbold{Always} \emph{(baseline),} \blueboxbold{Average} and \blueboxbold{Perfect}~\gls{acr:serp} level stopping decision point implementations. The stopping strategy yielding the lowest MSE for both \blueboxbold{T2} and \dualbluebox{ND}{AD} are \darkbluebox{highlighted}. Note that for combination strategy \blueboxbold{SS5-COMB}, \emph{x\textsubscript{2},x\textsubscript{4}} are shown as \genericblack{x\textsubscript{n}} column.}
     \label{tbl:ch9_comparisons_table}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -236,22 +236,22 @@ T1 Savvy searchers encountered no bad SERPs. For all SERPs displayed in the top 
             \RS & & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{MSE} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{MSE} & \lbluecell\small\textbf{x\textsubscript{n}} & \lbluecell\small\textbf{MSE} \\
             
             % T2
-            \RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Int. \blueboxbold{\textbf{T2}}}} & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Int. \blueboxbold{\textbf{T2}}}} & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} 21 & \cell \small \hspace*{-1mm} 74.04 & \cell \hspace*{-1mm} \small 24 & \cell \small \hspace*{-1mm} 70.68 & \cell \small \hspace*{-1mm} 24 & \cell \hspace*{-1mm} \small 76.94 \\
+            \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} 15 & \cell \small \hspace*{-1mm} 77.76 & \cell \hspace*{-1mm} \small 21 & \cell \small \hspace*{-1mm} 72.12 & \cell \small \hspace*{-1mm} 18 & \cell \hspace*{-1mm} \small 82.06 \\
             
-            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS  & \lbluecell\small\textbf{SS5-COMB} & \cell \small \hspace*{-1mm} 21,6 & \cell \small \hspace*{-1mm} 72.81 & \cell \hspace*{-1mm} \small 21,10 & \cell \small \hspace*{-1mm} 70.23 & \cell \small \hspace*{-1mm} 21,7 & \cell \hspace*{-1mm} \small 77.89 \\
             
             % ND-AD
             \RS\RS\RS \multirow{3}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Cdn. \textbf{\dualbluebox{ND}{AD}}}} & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} 21 & \cell \small \hspace*{-1mm} 168.39 & \cell \hspace*{-1mm} \small 24 & \cell \small \hspace*{-1mm} 176.98 & \cell \small \hspace*{-1mm} 24 & \cell \hspace*{-1mm} \small 164.97 \\
             \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} 18 & \cell \small \hspace*{-1mm} 175.39 & \cell \hspace*{-1mm} \small 24 & \cell \small \hspace*{-1mm} 169.52 & \cell \small \hspace*{-1mm} 21 & \cell \hspace*{-1mm} \small 169.85 \\
-            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} 30,0 & \cell \small \hspace*{-1mm} 162.19 & \cell \hspace*{-1mm} \small 30,0 & \cell \small \hspace*{-1mm} 172.74 & \cell \small \hspace*{-1mm} 30,0 & \cell \hspace*{-1mm} \small 155.41 \\
+            \RS  & \lbluecell\small\textbf{SS5-COMB} & \cell \small \hspace*{-1mm} 21,5 & \cell \small \hspace*{-1mm} 162.81 & \cell \hspace*{-1mm} \small 24,8 & \cell \small \hspace*{-1mm} 168.26 & \cell \small \hspace*{-1mm} 21,5 & \cell \hspace*{-1mm} \small 160.69 \\
 
         \end{tabulary}
         \end{center}
     \end{table}
 
 \begin{table}[p!]
-    \caption[COMPARISONS ADDITIONAL]{Additional Comparisons}
+    \caption[Additional results for comparison runs]{Additional results from the searcher comparison runs, with this table reporting the mean depth per query (\genericblack{DQ}). Also included is the mean level of \genericblack{CG} attained by the searchers, and the mean interactive precision (\genericblack{iP}) reached. These values were attained using the configurations yielding the lowest MSE (refer to Table~\ref{tbl:ch9_comparisons_table}), indicating the best approximation to real-world stopping behaviours. We also include the mean real-world searcher values (\genericblack{RW}) over \blueboxbold{T2} and \dualbluebox{ND}{AD} for a direct comparison.}
     \label{tbl:ch8_additional_comparisons_table}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -259,20 +259,20 @@ T1 Savvy searchers encountered no bad SERPs. For all SERPs displayed in the top 
             
             & & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{Always}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{Average}} & \multicolumn{3}{@{\hskip 0pt}c@{\CSONEHALF}}{\dbluecell\small\textbf{Perfect}}\\
             
-            \RS & & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{\#S} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{\#S} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{\#S} \\
+            \RS & & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{iP} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{iP} & \lbluecell\small\textbf{DQ} & \lbluecell\small\textbf{CG} & \lbluecell\small\textbf{iP} \\
             
             % T2
             
             \RS \multirow{4}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-5mm}\footnotesize Interface \blueboxbold{\textbf{T2}}}} & \dbluecell\small\textbf{RW} & \cell \small \hspace*{-1mm} 14.39 & \cell \small \hspace*{-1mm} 2.36 & \cell \hspace*{-1mm} \small 2.47 & \cell \small \hspace*{-1mm} 14.39 & \cell \small \hspace*{-1mm} 2.36 & \cell \hspace*{-1mm} \small 2.47 & \cell \small \hspace*{-1mm} 14.39 & \cell \small \hspace*{-1mm} 2.36 & \cell \hspace*{-1mm} \small 2.47 \\
-            \RS & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
-            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx & \cell \small \hspace*{-1mm} xx & \cell \small \hspace*{-1mm} xx & \cell \hspace*{-1mm} \small xx \\
+            \RS & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} 14.67 & \cell \small \hspace*{-1mm} 2.14 & \cell \hspace*{-1mm} \small 1.41 & \cell \small \hspace*{-1mm} 12.35 & \cell \small \hspace*{-1mm} 1.82 & \cell \hspace*{-1mm} \small 1.17 & \cell \small \hspace*{-1mm} 13.68 & \cell \small \hspace*{-1mm} 2.16 & \cell \hspace*{-1mm} \small 1.41 \\
+            \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} 13.81 & \cell \small \hspace*{-1mm} 2.15 & \cell \hspace*{-1mm} \small 1.42 & \cell \small \hspace*{-1mm} 13.70 & \cell \small \hspace*{-1mm} 1.98 & \cell \hspace*{-1mm} \small 1.27 & \cell \small \hspace*{-1mm} 13.06 & \cell \small \hspace*{-1mm} 2.22 & \cell \hspace*{-1mm} \small 1.45 \\
+            \RS  & \lbluecell\small\textbf{SS5-COMB} & \cell \small \hspace*{-1mm} 15.22 & \cell \small \hspace*{-1mm} 2.08 & \cell \hspace*{-1mm} \small 1.34 & \cell \small \hspace*{-1mm} 13.35 & \cell \small \hspace*{-1mm} 1.93 & \cell \hspace*{-1mm} \small 1.25 & \cell \small \hspace*{-1mm} 13.11 & \cell \small \hspace*{-1mm} 1.99 & \cell \hspace*{-1mm} \small 1.30 \\
             
             % ND-AD
             \RS\RS\RS \multirow{4}{*}{\hspace*{-2mm}\rotatebox{90}{\hspace*{-7mm}\footnotesize Condition \textbf{\dualbluebox{ND}{AD}}}} & \dbluecell\small\textbf{RW} & \cell \small \hspace*{-1mm} 13.94 & \cell \small \hspace*{-1mm} 3.49 & \cell \hspace*{-1mm} \small 2.22 & \cell \small \hspace*{-1mm} 13.94 & \cell \small \hspace*{-1mm} 3.49 & \cell \hspace*{-1mm} \small 2.22 & \cell \small \hspace*{-1mm} 13.94 & \cell \small \hspace*{-1mm} 3.49 & \cell \hspace*{-1mm} \small 2.22 \\
             \RS & \lbluecell\small\textbf{SS1-FIX} & \cell \small \hspace*{-1mm} 12.89 & \cell \small \hspace*{-1mm} 2.55 & \cell \hspace*{-1mm} \small 1.66 & \cell \small \hspace*{-1mm} 9.61 & \cell \small \hspace*{-1mm} 1.84 & \cell \hspace*{-1mm} \small 1.20 & \cell \small \hspace*{-1mm} 13.06 & \cell \small \hspace*{-1mm} 2.59 & \cell \hspace*{-1mm} \small 1.69 \\
             \RS  & \lbluecell\small\textbf{SS2-NT} & \cell \small \hspace*{-1mm} 13.34 & \cell \small \hspace*{-1mm} 2.73 & \cell \hspace*{-1mm} \small 1.77 & \cell \small \hspace*{-1mm} 11.33 & \cell \small \hspace*{-1mm} 2.12 & \cell \hspace*{-1mm} \small 1.38 & \cell \small \hspace*{-1mm} 13.35 & \cell \small \hspace*{-1mm} 2.78 & \cell \hspace*{-1mm} \small 1.84 \\
-            \RS  & \lbluecell\small\textbf{SS11-COMB} & \cell \small \hspace*{-1mm} 15.05 & \cell \small \hspace*{-1mm} 2.35 & \cell \hspace*{-1mm} \small 1.50 & \cell \small \hspace*{-1mm} 9.55 & \cell \small \hspace*{-1mm} 1.61 & \cell \hspace*{-1mm} \small 1.04 & \cell \small \hspace*{-1mm} 12.74 & \cell \small \hspace*{-1mm} 2.28 & \cell \hspace*{-1mm} \small 1.46 \\
+            \RS  & \lbluecell\small\textbf{SS5-COMB} & \cell \small \hspace*{-1mm} 14.16 & \cell \small \hspace*{-1mm} 2.69 & \cell \hspace*{-1mm} \small 1.75 & \cell \small \hspace*{-1mm} 11.14 & \cell \small \hspace*{-1mm} 2.05 & \cell \hspace*{-1mm} \small 1.34 & \cell \small \hspace*{-1mm} 11.94 & \cell \small \hspace*{-1mm} 2.53 & \cell \hspace*{-1mm} \small 1.66 \\
 
         \end{tabulary}
         \end{center}
@@ -282,7 +282,7 @@ T1 Savvy searchers encountered no bad SERPs. For all SERPs displayed in the top 
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch9-comparison_plots.pdf}}
-    \caption[Comparison plots]{Comparison plots}
+    \caption[Real-world comparisons over the~\gls{acr:serp} decision point]{Plots reporting the comparison runs, reporting the MSE vs. the mean depth per query. Runs over interface \blueboxbold{T2} (top) and condition \dualbluebox{ND}{AD} (bottom) are shown, for the three trialled result summary level stopping strategies.~\gls{acr:serp} level decision point implementations are also shown. Also included are dashed lines denoting the mean depth per query reached by the real-world subjects of the corresponding user study.}
     \label{fig:ch9_comparison_plots}
 \end{figure}
 
