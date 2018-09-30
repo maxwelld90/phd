@@ -240,8 +240,16 @@ Closer inspection of the values reported for the \blueboxbold{Always}~\gls{acr:s
 
 Considering the stopping threshold(s) and mean depths per query across result summary level stopping strategies, we see that \dualbluebox{SS1-FIX}{@10} consistently offers the best~\gls{acr:cg}, with a slight drop in the mean depth per query at which the highest~\gls{acr:cg} score was attained. Indeed, this trend can broadly be observed across the other two stopping strategies, and over both interface \blueboxbold{T2} and condition \dualbluebox{ND}{AD}. An exception to this trend is observed over \blueboxbold{SS2-NT} and \blueboxbold{SS5-COMB} under the \blueboxbold{Average}~\gls{acr:serp} level stopping decision point implementation. Higher stopping thresholds are observed for $x_2$, with a resultant deeper mean depth per query ($\approx10.6$ over interface \blueboxbold{T2}, compared to $\approx6.16$ over \blueboxbold{Always}). Despite this, we see that a fixed depth approach holds up remarkably well, showing that when issuing a performant query, a fixed approach will offer good returns. However, overall, we find that adaptive strategies \blueboxbold{SS2-NT} and \blueboxbold{SS5-COMB} outperform \blueboxbold{SS1-FIX} overall.
 
-Overall, this table provides further evidence to support \darkblueboxbold{RQ1} -- the new~\gls{acr:serp} level stopping decision point implementation does indeed yield improvements in performance.
-- but are they statistically significant results?
+Overall, evidence has thus far led to trends supporting \darkblueboxbold{RQ1} -- the new~\gls{acr:serp} level stopping decision point implementation does indeed appear to yield improvements in performance. However, are the improvements offered by \blueboxbold{Average} and \blueboxbold{Perfect} significant improvements over our baseline implementation, \blueboxbold{Always}? As outlined at the start of Section~\ref{sec:serp:results}, we ran a series of two-tailed Student's t-tests to determine whether this was the case. Tests were run comparing the best performing implementation, \blueboxbold{Perfect}, against both \blueboxbold{Average} and \blueboxbold{Always}, over each of the result summary level stopping strategies, as well as over interface \blueboxbold{T2} and \dualbluebox{ND}{AD}.
+
+Significant differences when considering the levels of~\gls{acr:cg} attained were indeed observed between \blueboxbold{Perfect} and \blueboxbold{Always}, as well as between \blueboxbold{Perfect} and \blueboxbold{Average}. This was true across all result summary level stopping strategies, over both \blueboxbold{T2} and \dualbluebox{ND}{AD}. Considering \blueboxbold{SS1-FIX} over interface \blueboxbold{T2}, we observed the following:
+
+\begin{itemize}
+    \item{\blueboxbold{Perfect} $\rightarrow$ \blueboxbold{Average}: $SD=2.43, t(2748)=3.25, p=0.001$; and}
+    \item{\blueboxbold{Perfect} $\rightarrow$ \blueboxbold{Always}: $SD=2.46, t(498)=2.19, p=0.03$.}
+\end{itemize}
+
+We also ran comparisons between \blueboxbold{Average} and \blueboxbold{Always}, to determine if a significant difference existed there. Unsurprisingly, no significant difference was observed, with $p=0.78$ reported over \blueboxbold{SS1-FIX} and interface \blueboxbold{T2}. However, results clearly demonstrate that the upper bound \blueboxbold{Perfect} demonstrates significant performance improvements over the existing baseline approach across all stopping strategies and interfaces/conditions, solidifying our supporting evidence for \darkblueboxbold{RQ1}.
 
 \subsection{Real-World Comparisons}\label{sec:serp:results:comparisons}
 
