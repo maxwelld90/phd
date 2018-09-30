@@ -244,7 +244,7 @@ The second measure that considers the diversity of the results returned is \blue
 As discussed earlier, our system factor considered both a baseline BM25 retrieval system, and a diversified approach, again using BM25 as an initial ranking baseline. The algorithm that we employed, based upon the \emph{XQuAD} framework by~\cite{santos2010query_reformulations_diversification}, re-scores and subsequently re-ranks documents based upon the number of unseen entities that appear within the document. The algorithm is presented as pseudo-code in Algorithm~\ref{alg:diversifying} below. Essentially, documents are re-ranked according to the number of new entities that are contained within them, with $w$ determining the weighting of the aspectual scoring component.
 
 \renewcommand{\figurename}{Figure/Algorithm}
-\begin{figure}[t!]
+\begin{figure}[p!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch8-pseudocode.pdf}}
