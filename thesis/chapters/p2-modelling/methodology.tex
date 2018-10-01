@@ -2,18 +2,18 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[General Methodology]{General Methodology}\label{chap:method}
-In Part~\ref{part:context}, we will be exploring how a stopping behaviours vary under different search contexts. In this chapter, we provide an overview of the \emph{general methodology} that we deploy in subsequent contributory chapters of this thesis. The methodology is divided into six main components that are listed below.
+In Part~\ref{part:context}, we will be exploring how a stopping behaviours vary under different search contexts, In addition to this, we will also examine the new~\gls{acr:serp} level stopping decision point. This chapter provides an overview of the \emph{general methodology} that we utilise in the aforementioned contributory chapters of this thesis. The methodology is divided into six main components that are enumerated below.
 
 \begin{itemize}
     \item{\blueboxbold{Context, Data, Tasks and Retrieval System} This involves the search context, document corpus, topics, tasks and retrieval system used throughout this thesis.}
     \item{\blueboxbold{User Studies} We discuss the general methodology behind two user studies designed to examine how different factors affect stopping behaviours.}
-    \item{\blueboxbold{Interaction and Performance Data} We discuss how we extracted key interaction data -- and from these, performance measures.}
-    \item{\blueboxbold{Simulations of Interaction} Using the aforementioned interaction data, we outline the methodology of simulations of interaction designed to replicate the user studies.}
+    \item{\blueboxbold{Interaction and Performance Data} We discuss how we extracted key information from the interaction data of the two user studies.}
+    \item{\blueboxbold{Simulations of Interaction} Making use of the aforementioned interaction data, we outline the methodology of an extensive series of \emph{simulations of interaction} designed to replicate the user studies.}
     \item{\blueboxbold{Examining Performance} We evaluate the performance of simulated searchers, allowing us to examine what stopping strategies work best under different search contexts.}
     \item{\blueboxbold{Comparing Searchers} Finally, we compare the performance of real-world searchers against simulated counterparts, determining what configurations offer the best approximations to real-world behaviours.}
 \end{itemize}
 
-We now discuss each of these different components in depth.
+The remainder of this chapter is devoted to a discussion of each of these components. We first begin with a discussion of the basics of our experiments, considering the retrieval system and document collection used. We also consider the basic instructions that we issued to subjects of our user studies, namely the simulated search task that we employed.
 %We begin first with a discussion of the retrieval system, document corpus and topics used throughout our remaining contributory chapters.
 
 %We now discuss each of these different components in depth, highlighting the key decisions that we have made, and discuss supporting literature for our choices. We begin first with a discussion of the retrieval system, document corpus and topics used throughout our remaining contributory chapters.
@@ -21,7 +21,7 @@ We now discuss each of these different components in depth.
 \section{Context, Data, Tasks and Retrieval System}\label{sec:methodology:collection}
 The context for all experiments reported in this thesis is \emph{news search.} As we discuss in this section, we employ an established corpus of news articles and associated topics, with queries issued against the retrieval system described in Section~\ref{sec:methodology:collection:system}.
 
-Given the context of news search, we employ a \emph{simulated work context} with which subjects -- both real-world and simulated -- conform to. As outlined by~\cite{borlund2000simulated_work_tasks} and~\cite{li2013simulated_work_tasks}, simulated work contexts are designed as close as possible to the situations facing real searchers, and thus provide the context that elicit a searcher's interactions with a retrieval system. All search tasks were grounded with a simulated search context. Subjects who participated in user studies were instructed to imagine that they were newspaper reports, and were required to gather articles to write stories about given topics (refer to Section~\ref{sec:methodology:collection:topics}). These subjects were then asked to identify a number of different articles that they thought were relevant to the given topic.
+Given the context of news search, we employ a \emph{simulated work context} with which subjects -- both real-world and simulated -- conform to. As outlined by~\cite{borlund2000simulated_work_tasks} and~\cite{li2013simulated_work_tasks}, simulated work contexts are designed as close as possible to the situations facing real searchers, and thus provide the context that elicit a searcher's interactions with a retrieval system. Subjects who participated in user studies were instructed to imagine that they were newspaper reports, and were required to identify articles to write stories about given topics (refer to Section~\ref{sec:methodology:collection:topics}). Depending upon the search task given to the subjects, subjects then would save articles that they believed were relevant to a given topic -- or were relevant, and discussed a new aspect of said topic.\footnote{Refer to Section~\ref{sec:methodology:user} for further details on the different goals that we imposed upon searchers.}
 
 \subsection{Document Corpus}\label{sec:methodology:collection:corpus}
 Under the context of news search, we employed a corpus of newspaper articles. The \emph{\gls{acr:trec} AQUAINT} corpus was selected for all experimentation work in this thesis. The corpus consists of a total of $1,033,461$ news articles (hereon in referred to as \emph{documents)} from the period ranging 1996-2000. All of the documents were collected from three \emph{newswires,} namely: the \emph{Associated Press (AP);} the \emph{New York Times (NYT);} and \emph{Xinhua (XIE).} The AQUAINT corpus was used as it has been extensively used in prior research. Studies include for example:~\cite{collinsthompson2004retrieval_quality, ofoghi2006passage_retrieval, baillie2006query_sampling, azzopardi2008retrievability, kelly2009user_study, azzopardi2013query_cost, maxwell2014temporal_delays, harvey2017searching, yang2017can}; and~\cite{wilkie2017bias}. Basic corpus statistics can be found in the illustration below.
@@ -36,7 +36,7 @@ Under the context of news search, we employed a corpus of newspaper articles. Th
 \end{figure}
 
 \subsection{Retrieval System}\label{sec:methodology:collection:system}
-The AQUAINT corpus was then indexed using the \emph{Whoosh~\gls{acr:ir} Toolkit.}\footnote{\emph{Whoosh} can be freely acquired using the \texttt{pip} \emph{Python} package manager -- documentation for Whoosh is available online at \url{http://whoosh.readthedocs.io/en/latest/intro.html}. \urlaccessed{2018-05-18} The corpus was indexed with Whoosh \texttt{2.7.4}.} We applied Porter stemming and removed stopwords as per the 421 term classical stopword list by~\cite{fox1992stopwords}.\footnote{More information on the indexing process can be found in Section~\ref{sec:ir_background:basics:indexing}.} During the indexing process, we also removed documents with duplicate titles. With documents originating from newswires, we found many occurrences of documents with the same title. Documents discussing ongoing events were continually revised as new information about said event arose. As such, for documents with duplicate titles, we retained the document with the latest timestamp.
+The AQUAINT corpus was then indexed using the \emph{Whoosh~\gls{acr:ir} Toolkit.}\footnote{\emph{Whoosh} can be freely acquired using the \texttt{pip} \emph{Python} package manager -- documentation for Whoosh is available online at \url{http://whoosh.readthedocs.io/en/latest/intro.html}. \urlaccessed{2018-05-18} The corpus was indexed with Whoosh \texttt{2.7.4}.} We applied Porter stemming and removed stopwords as per the 421 term classical stopword list by~\cite{fox1992stopwords}.\footnote{More information on the indexing process can be found in Section~\ref{sec:ir_background:basics:indexing}.} During the indexing process, we also removed documents with duplicate titles. With documents originating from newswires, we found many occurrences of documents with the same title. Documents discussing ongoing events were continually revised as new information about said event arose. As such, for documents with duplicate titles, we retained the document with the latest timestamp. This document represented the final version of the published article, with the most up-to-date information.
 
 From this process, an index was produced weighing in at $3.8$GB. The index contained a total of $959,678$ indexed documents. The Whoosh~\gls{acr:ir} toolkit was employed to issue queries against the index. All ranked results for queries were computed with BM25, where $\beta=0.75$ (refer to Section~\ref{sec:ir_background:basics:models:probabilistic}). Terms in all issued queries were implicitly \texttt{AND}ed together to restrict the set of retrieved documents to those that only contained all of the query terms.
 
@@ -71,20 +71,20 @@ Five topics were also selected from the 50 provided in the \emph{TREC 2005 Robus
 
 \begin{itemize}
     
-    \item{\dualbluebox{Topic 341}{Airport Security} This topic considers relevant documents as those that discuss additional security measures that were taken by international airports around the world. Relevance is only denoted when a document discusses measures that go beyond the basic passenger and carry-on luggage screening. For example, AQUAINT document \texttt{NYT19980616.0123} discusses \emph{San Francisco International Airport's} attempts at introducing a \emph{robot sniffer,} attempting to look for nitroglycerine in luggage.}
+    \item{\dualbluebox{Topic 341}{Airport Security} This topic considers relevant documents as those that discuss additional security measures that were taken by international airports around the world. Relevance is only denoted when a document discusses measures that go beyond basic passenger and carry-on luggage screening. For example, AQUAINT document \texttt{NYT19980616.0123} discusses \emph{San Francisco International Airport's} attempts at introducing a \emph{robot sniffer,} attempting to look for nitroglycerine in luggage.}
     
-    \item{\dualbluebox{Topic 347}{Wildlife Extinction} As the title of the topic suggests, this topic concerns wildlife extinction, and what efforts have been taken by countries \emph{other than} the U.S. to counter the decline in endangered wildlife. Relevant documents explicitly mention the country, the species of animal, and the efforts the state or other governmental agency took to prevent decline in numbers. For example, document \texttt{XIE20000531.0205} discusses the breeding programme undertaken by China to bolster the number of Siberian Tigers in its jurisdiction.}
+    \item{\dualbluebox{Topic 347}{Wildlife Extinction} This topic concerns wildlife extinction, and what efforts have been taken by countries \emph{other than the U.S.} to counter the decline in endangered wildlife. Relevant documents would explicitly mention the country, the species of animal concerned, and the efforts the state or other governmental agency took to prevent a decline in numbers. For example, document \texttt{XIE20000531.0205} discusses the breeding programme undertaken by China to bolster the number of Siberian Tigers within its jurisdiction.}
     
     \item{\dualbluebox{Topic 367}{Piracy} Instances of modern piracy are considered relevant to this topic -- not in the sense of software piracy, but the act of a water going vessel being boarded by individuals wishing to hijack it. Document \texttt{APW19980601.1065} provides an example of this -- the \emph{Petro Ranger}, a large fuel tanker, was boarded by pirates in 1998 in the South China Sea. To be relevant to the topic, the name of the vessel and the body of water it was hijacked on must be mentioned -- those discussing instances of when states intercepted vessels are not relevant.}
     
     \item{\dualbluebox{Topic 408}{Tropical Storms} Documents discussing major tropical storms are to be considered relevant, where the storm is reported to have caused significant damage and a large number of casualties. This is a particularly timely topic for the document corpus considered, as the 1998 hurricane season in the Caribbean has been reported to be one of the most costly -- both in terms of damage caused and lives lost -- in history.\footnote{This is reported by the US \emph{National Oceanic and Atmospheric Administration (NOAA),} as seen at \url{http://www.outlook.noaa.gov/98hurricanes/}. \urlaccessed{2018-05-18}} Document \texttt{APW19980921.1265} for example discusses the effects on Puerto Rico of Hurricane Georges in September 1998, leaving -- at the time of reporting -- three dead, many houses damaged, and thousands homeless.}
     
-    \item{\dualbluebox{Topic 435}{Curbing Population Growth} The final topic considers efforts that have been made by countries around the world to control the ever increasing human population. Documents discussing this issue are only relevant to the topic if the results to a case have been made public, and a reduction in population has been actively pursued. The document must mention the country, the As such, events like famines are not relevant. A perhaps well known example of such a phenomenon is the one child policy that was pursued by China in the late 20\textsuperscript{th} century. Document \texttt{NYT19981031.0070} discusses the Chinese government's efforts to curb its expanding population at the time, with sexual education and heavy financial penalties for additional children. These efforts were shown to lead to a reduction in population.}
+    \item{\dualbluebox{Topic 435}{Curbing Population Growth} The final topic considers efforts that have been made by countries around the world to control the ever increasing human population. Documents discussing this issue are only relevant to the topic if the results to a case have been made public, and a reduction in population has been actively pursued. The document must mention the country, and the measures that the state or governmental agency pursued to bring about a fall in population. As such, events like famines that resulted in a fall in population are not relevant. A perhaps well known example of a country pursuing a reduction in its population is the Chinese one child policy, enacted in the late 20\textsuperscript{th} century. Document \texttt{NYT19981031.0070} discusses the Chinese government's efforts to curb its expanding population at the time, with sexual education and heavy financial penalties for additional children.}
     
 \end{itemize}
 
 \vspace*{-3mm}
-For all user studies reported in this thesis, we selected topic \blueboxbold{367} as a \emph{practice topic,} permitting the participating subjects to familiarise themselves with the experimental system used. As such, we do not report any results from interactions that took place with this topic when reporting user studies. In the next section, we outline the different search tasks that were undertaken by user study subjects while using the aforementioned topics.
+For all user studies reported in this thesis, we selected topic \blueboxbold{367} as a \emph{practice topic,} permitting participating subjects to familiarise themselves with the experimental system used. As such, we do not report any results from interactions that took place with this topic when reporting user studies. In the next section, we outline the different search tasks that were undertaken by subjects of the user studies.
 
 \section{User Study Methodology}\label{sec:methodology:user}
 Using the aforementioned corpus, retrieval system and topics, we now move onto a discussion of the common methodology employed across two user studies. These are detailed in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. While intricate details of each study's methodology do indeed vary, these are nevertheless common components that we discuss in this section. As a reminder, the two studies examine:
@@ -92,18 +92,18 @@ Using the aforementioned corpus, retrieval system and topics, we now move onto a
 \begin{itemize}
     \item{the length (and thus quality) of snippets presented in result summaries are varied (Chapter~\ref{chap:snippets}, conducted between July and August, 2016); and}
 
-    \item{the overall search goal (time constraints vs. relevancy accruement) and task goal (ad-hoc vs. diversified results) are changed (Chapter~\ref{chap:diversity}, conducted in January, 2018).}
+    \item{the overall search goal (time constraints vs. relevancy accruement) and task goal (ad-hoc vs. aspectual) are changed (Chapter~\ref{chap:diversity}, conducted in January, 2018).}
 \end{itemize}
 \vspace*{-4mm}
 
-Specifically, the methodology used for these studies allowed us to determine how the stopping behaviour of a searcher varies when these conditions are varied. We discuss the specific interfaces and conditions that we trialled in subsequent chapters of this thesis.
+Specifically, the methodology used for these studies allowed us to determine how the stopping behaviour of a searcher varies when these conditions were varied. We discuss the specific interfaces and conditions that we trialled in subsequent chapters of this thesis.
 
-Both user studies were undertaken using a custom built experimental framework called \blueboxbold{TREConomics}.\footnote{\treconomics~can be found online at \url{https://github.com/leifos/treconomics}. \urlaccessed{2018-05-15}} The pure-\emph{Python} framework has been developed over a number of years. It permits for straightforward deployment of~\gls{acr:iir}-based studies that have examined a variety of different aspects. It has been successfully deployed in a number of prior works, including those by:~\cite{azzopardi2013query_cost, maxwell2014temporal_delays, kelly2015serp_size, edwards2015query_interface}; and~\cite{crescenzi2016time_constraints}.
+Both user studies were undertaken using a custom built experimental framework called \genericblack{TREConomics}.\footnote{\treconomics~can be found online at \url{https://github.com/leifos/treconomics}. \urlaccessed{2018-05-15}} The pure-\emph{Python} framework has been developed over a number of years. It permits for straightforward deployment of~\gls{acr:iir}-based studies that have examined a variety of different aspects. It has been successfully used in a number of prior works, including those by:~\cite{azzopardi2013query_cost, maxwell2014temporal_delays, kelly2015serp_size, edwards2015query_interface}; and~\cite{crescenzi2016time_constraints}.
 
 % Diversity study -- ethics number 622, Computer and Information Sciences Ethics Committee, University of Strathclyde.
 
 \subsection{Experimental Details and Flow}\label{sec:methodology:user:flow}
-Each user study was designed to last for approximately 45-50 minutes, including the completion of requested search tasks and surveys. Both experiments followed a similar structure, where subjects would complete a number of surveys before beginning a search task, and completing a further survey upon completion of the task. These surveys, as discussed in Section~\ref{sec:methodology:extracting:user}, permitted us to gather a series of usability measures (refer to Section~\ref{sec:ir_background:evaluation:user}) about the perceived experiences of subjects of the various interfaces and conditions.
+Each user study was designed to last for approximately 45-50 minutes, including the completion of requested search tasks and surveys. Both experiments followed a similar structure, where subjects would complete a number of surveys before beginning a search task, and completing a further survey upon completion of the task. These surveys, as discussed in Section~\ref{sec:methodology:extracting:user}, permitted us to gather a series of usability measures (refer to Section~\ref{sec:ir_background:evaluation:user}) about the perceived experiences that subjects had when interacting with the various interfaces and conditions that were trialled.
 
 The basic structure of both user studies was as follows.
 
@@ -120,38 +120,38 @@ The basic structure of both user studies was as follows.
     \end{itemize}
     
     \item[~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point5.pdf}}]{Upon completion of each search task, subjects would then complete a post-experiment survey, asking general questions about their experience across all the different tasks.}
-    \item[~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point6.pdf}}]{Finally, upon completion, subjects would be presented with a results screen, providing a summary of their performance. Performance for each subject was presented on a per-task basis. After this information had been processed, the experiment concluded.}
+    \item[~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point6.pdf}}]{Finally, upon completion, subjects would be presented with a results screen, providing a summary of their performance. Performance for each subject was presented on a per-task basis. After this information had been processed by the subject, he or she would then conclude the experiment.}
 \end{itemize}
 
-Subjects undertook a total of four search tasks in which interactions and experiences were captured. Including the practice task at the beginning of each experiment, this took the total number of search tasks per subject up to five. Following a \blueboxbold{within-subjects study design}, the four search tasks -- each using a different topic as described in Section~\ref{sec:methodology:collection:topics} -- permitted us to trial each experimental condition/interface. The topics and tasks were assigned to subjects using a Latin-square rotation to minimise ordering effects. A within-subjects design increases the statistical power -- the number of `subjects' is higher than a between-subjects design. Limitations can consider issues such as fatigue. By being considerate of the time spent by subjects searching, fatigue for example could be limited.
+Subjects undertook a total of four search tasks in which interactions and experiences were captured. Including the practice task at the beginning of each experiment, this took the total number of search tasks per subject up to five. Following a \blueboxbold{within-subjects study design}, the four search tasks -- each using a different topic as described in Section~\ref{sec:methodology:collection:topics} -- permitted us to trial each experimental condition/interface. The topics and tasks were assigned to subjects using a Latin-square rotation to minimise ordering effects. A within-subjects design increases the statistical power -- the number of `subjects' is higher than a between-subjects design. Limitations of such a design include issues such as fatigue. By being considerate of the time spent by subjects searching, fatigue for example could be limited.
 
 \subsection{Experimental Search Interface}\label{sec:methodology:user:interface}
-In this section, we discuss the experimental search interface that was used by subjects of the user studies.\footnote{Slight modifications to the search interface were made to the goal-based study, as we discuss in Section~\ref{sec:diversity:users:method}.} The interface would be familiar to anyone who had used a web-based retrieval system, and thus the learning curve for using the interface would most likely be low. Upon commencement of the experiment, the interface would launch in a fixed-size popup window (refer to Section~\ref{sec:methodology:user:crowdsourcing:technical}) of the web browser being used.
+In this section, we discuss the experimental search interface that was used by subjects of the user studies.\footnote{Slight modifications to the search interface were made to the goal-based study, as we discuss in Section~\ref{sec:diversity:users:method} on~\pageref{sec:diversity:users:method}.} The interface would be familiar to anyone who had used a web-based retrieval system, and thus the learning curve for using the interface would most likely be low. Upon commencement of the experiment, the interface would launch in a fixed-size popup window (refer to Section~\ref{sec:methodology:user:crowdsourcing:technical}) of the web browser being used.
 
 The interface consists of three main views, the two most important being shown in Figure~\ref{fig:interfaces}. The views were:
 
 \begin{itemize}
     \item{the~\glsfirst{acr:serp}, presenting the query box and results for an issued query;}
-    \item{the \emph{document view,} providing the source text of a documents; and}
-    \item{the \emph{saved documents list,} providing a list of the documents that subjects had identified as relevant.}
+    \item{the \emph{document view,} providing the full text of a document; and}
+    \item{the \emph{saved documents list,} providing a list of the documents that subjects had saved during the search session.}
 \end{itemize}
 
-In addition to the three views above, we also provided a \emph{topic view,} which, when requested, would open a further popup window that contained a description of the topic. This was purely to serve as a reminder, as subjects were provided the topic description in full before the search task began.
+In addition to the three views above, we also provided a \emph{topic view,} which, when requested, would open a further popup window that contained a description of the topic. This was purely to serve as a reminder. Subjects were provided the topic description in full before the search task began.
 
-Common to all views was the inclusion of the blue navigation bar at the top of the popup window. As we discuss further in Section~\ref{sec:methodology:user:crowdsourcing:technical}, this bar was included to provide a series of different navigational links, such as, when on the document view page, a link to return to the originating~\gls{acr:serp}. Where applicable, we also provided a link for the subject to end the search task if he or she felt that they were satisfied.
+Common to all views was the inclusion of the blue navigation bar at the top of the popup window. As we discuss further in Section~\ref{sec:methodology:user:crowdsourcing:technical}, this bar was included to provide a series of different navigational links. Such an example would be on the document view page, which contained a link to return to the originating~\gls{acr:serp}. Where applicable, we also provided a link for the subject to end the search task if he or she felt that they were satisfied.
 
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics[width=1\textwidth]{figures/ch6-interfaces.png}}
-    \caption[Example screenshots of the \treconomics~interface]{Example screenshots of the basic search interface used as part of \treconomics. On the left is a screenshot of typical experimental~\gls{acr:serp} for the query \texttt{wildlife extinction}. The right shows the document view, showing the option for subjects to \texttt{Save} a document that they consider relevant to the given topic.}
+    \caption[Example screenshots of the \treconomics~interface]{Example screenshots of the basic search interface used as part of \treconomics. On the left is a screenshot of typical experimental~\gls{acr:serp} for the query \texttt{wildlife extinction}. The right shows the document view, showing the option for subjects to \genericblack{Save} a document that they consider relevant to the given topic.}
     \label{fig:interfaces}
 \end{figure}
 
 \subsubsection{The SERP}\label{sec:methodology:user:interface:serp}
-As can be observed from the left screenshot in Figure~\ref{fig:interfaces}, the~\gls{acr:serp} does not look all that different from a~\gls{acr:serp} on a contemporary web search engine -- sans right rail components, as we discussed previously in Section~\ref{sec:ir_background:user:iir:serp}. The experimental~\gls{acr:serp} provides at the top the \emph{query box,} allowing subjects to enter their query term(s), and a button to submit their query. The \texttt{ENTER} key could also be used to submit a query.
+As can be observed from the left screenshot in Figure~\ref{fig:interfaces}, the~\gls{acr:serp} does not look all that different from a~\gls{acr:serp} on a contemporary web retrieval system -- sans right rail components, the lack of which we discussed previously in Section~\ref{sec:ir_background:user:iir:serp}. The experimental~\gls{acr:serp} provides at the top the \emph{query box,} allowing subjects to enter their query term(s), and a button to submit their query. The \Return key could also be used to submit a query.
 
-Once submitted, results are displayed underneath the query box. The issued query is provided, along with an approximation of how many pages of results are provided to the searcher for the given query. This hints that pagination is utilised -- with 10 results per page shown. At the bottom of each~\gls{acr:serp} are links that allow the searcher to move to the previous and next page of results.
+Once submitted, results were displayed underneath the query box. The issued query was provided, along with an approximation of how many pages of results were provided to the searcher for the given query. This hints that pagination is utilised -- with 10 results per page shown. At the bottom of each~\gls{acr:serp} were links that allow the searcher to move to the previous and next page of results.
 
 \begin{figure}[h]
     \centering
@@ -203,13 +203,13 @@ As highlighted by~\cite{zuccon2013crowdsourcing_comparisons}, crowdsourcing prov
 
 Despite these issues, it has been shown that there is little difference in the quality between crowdsourced and lab-based studies~\citep{kely2011user_study, zuccon2013crowdsourcing_comparisons}. Nevertheless, quality control is a major component of a well-executed crowdsourced experiment, with examples in a similar research area including work by~\cite{kazai2011crowdsourced} and ~\cite{crescenzi2013crowdsourced}.
 
-Using crowdsourcing for the two user studies, we detail in the remainder of this section the precautions that were taken during, discussing both the requirements for the subjects and their technical setup -- as well as a discussion of the crowdsourcing platform used.
+Using crowdsourcing for the two user studies, we detail in the remainder of this section the precautions that were taken, discussing both the requirements for the subjects and their technical setup. We also provide a discussion of the crowdsourcing platform used.
 
 \subsubsection{Platform Details}\label{sec:methodology:user:crowdsourcing:platform}
-Both studies were run over the~\glsfirst{acr:mturk} platform. Workers\footnote{In this section, a \emph{worker} refers to an individual undertaking the experiment on the MTurk platform. This term is considered interchangeable with a \emph{subject.}} from the platform each performed a single task (or, to use MTurk language, a \emph{Human Intelligence Task (HIT)}), with a single HIT corresponding to the entire experiment. This is in contrast to many other crowdsourced studies, where workers would typically undertake small -- typically decision-based -- HIT transactions.
+Both studies were run over the~\glsfirst{acr:mturk} platform. Workers\footnote{In this section, a \emph{worker} refers to an individual undertaking the experiment on the MTurk platform. This term is considered interchangeable with a \emph{subject.}} from the platform each performed a single task (or, to use MTurk terminology, a \emph{Human Intelligence Task (HIT)}), with a single HIT corresponding to the entire experiment. This is in contrast to many other crowdsourced studies, where workers would typically undertake small (typically decision-based) HIT transactions.
 
 \subsubsection{Subject Requirements}\label{sec:methodology:user:crowdsourcing:subjects}
-Due to the expected length that workers would take to complete the two studies\footnote{Note that two different sets of workers were used -- the studies were run at different times.}, workers who completed the study in full were reimbursed for their time with US\$9 -- greater than the hourly minimum wage set by the US federal government. Workers interested in undertaking each of the two studies were required to meet a certain minimum set of criteria to be eligible to participate. We required that workers were:
+Due to the expected length that workers would take to complete the two studies\footnote{Note that two different sets of workers were used -- the studies were run at different times.}, workers who completed either study in full were reimbursed for their time with US\$9 -- greater than the hourly minimum wage set by the U.S. federal government. Workers interested in undertaking either of the two studies were required to meet a certain minimum set of criteria to be eligible to participate. We required that workers were:
 
 \begin{itemize}
     \item{from the U.S.;}
@@ -221,26 +221,12 @@ Due to the expected length that workers would take to complete the two studies\f
 Requiring a high HIT acceptance rate reduced the likelihood of recruiting workers who would not complete the study in a satisfactory manner. Recruits were forewarned about the length of the HIT, providing them with a chance to abandon the experiment if they felt the expected time was too long.
 
 \subsubsection{Technical Requirements}\label{sec:methodology:user:crowdsourcing:technical}
-Given worker limitations, we also enforced a number of technical constraints. Workers attempting each experiment were required to have a sufficiently large computer screen to display the experimental interface without having to resort to excessive scrolling, and ensured a consistent number of result summaries would be present on different worker's screens. As such, we imposed a minimum display resolution of $1024x768$ for both studies. 
+Given worker limitations, we also enforced a number of technical constraints. Workers attempting each experiment were required to be either using a desktop or laptop computer with a sufficiently large screen to display the experimental interface without having to resort to excessive scrolling. This also ensured a consistent number of result summaries would be present on different worker's screens. As such, we imposed a minimum display resolution of $1024x768$ for both studies. 
 
 Conducted through a web browser, we wanted to ensure that only the controls provided by the experimental apparatus were used, meaning that the popup window that we highlighted in Section~\ref{sec:methodology:user:interface} had all other browser controls disabled to the best of our ability (i.e. browser history navigation, etc.). The experimental system was tested on several major web browsers (including \emph{Google Chrome, Mozilla Firefox,} \emph{Apple Safari} and \emph{Microsoft Edge)}, across different operating systems (including \emph{Microsoft Windows,} \emph{Apple macOS} and several \emph{Linux} distributions, focusing on \emph{Ubuntu)}. This gave us confidence that a similar experience would be had across different system configurations.
 
 \section{Extracting User Study Data}\label{sec:methodology:extracting}
-As discussed in Section~\ref{sec:methodology:user:capturing}, the \treconomics~framework provided the necessary infrastructure for us to log the various interactions and capture survey responses from each individual subject across the two user studies trialled. In this section, we provide details on the different aspects that we subsequently used to evaluate searcher behaviours, performance and user experience. Figure~\ref{fig:evaluation_methodology} provides a graphical illustration of how we split the various aspects we consider into four distinct categories.
-
-The first three categories can be extracted directly from the interaction log that recorded different interactions by each subject as they progressed through the experiment. The categories we considered are listed below.
-
-\begin{itemize}
-    
-    \item{\blueboxbold{Behavioural Measures} capture the broad interactions that take place, such as the number of documents that a searcher examined in detail.}
-    \item{\blueboxbold{Performance} measures could then be extrapolated, with aid of~\gls{acr:trec} QREL relevance judgements, to ascertain the performance of subjects.}
-    \item{\blueboxbold{Time-Based} measures can also be derived from directly examining the interaction log, measuring the time spent between different logged interactions.}
-    
-\end{itemize}
-
-In addition to these categories, we also considered a number of \blueboxbold{user experience} measures that were derived from a series of surveys. As highlighted in Section~\ref{sec:methodology:user:flow}, surveys were presented to subjects at a number of different stages throughout the experiment. In conjunction with the three log-based categories defined above, the user experience measures could be used to complement the empirical evidence to see whether the interactions of subjects actually correlated with their perceived experiences.
-
-In all, the interactions -- including aspects such as clicks, and time-based measures, were used as a \emph{grounding} for our subsequent user simulations of interaction. How we grounded these simulations is discussed in Section~\ref{sec:method:simulation:grounding}.
+As discussed in Section~\ref{sec:methodology:user:capturing}, the \treconomics~framework provided the necessary infrastructure for us to log the various interactions and capture survey responses from each individual subject across the two user studies trialled. In this section, we provide details on the different aspects that we subsequently used to evaluate searcher behaviours, performances and user experiences. Figure~\ref{fig:evaluation_methodology} provides a graphical illustration of how we split the various aspects we consider into four distinct categories.
 
 \begin{figure}[t!]
     \centering
@@ -249,6 +235,20 @@ In all, the interactions -- including aspects such as clicks, and time-based mea
     \caption[Examples of evaluation measures]{An illustration of the different types of measures that are captured, and from what sources. Interaction, time-based and performance measures are derived from the user study experiment log (with~\gls{acr:trec} QRELs used in conjunction with the interaction log to compute a subject's performance). User experience metrics are collated from a number of different surveys.}
     \label{fig:evaluation_methodology}
 \end{figure}
+
+The first three categories can be extracted directly from the interaction log that recorded different interactions by each subject as they progressed through the experiment. The categories we considered are listed below.
+
+\begin{itemize}
+    
+    \item{\blueboxbold{Behavioural Measures} capture the broad interactions that take place, such as the number of documents that a searcher examined in detail.}
+    \item{\blueboxbold{Performance} measures could then be extrapolated, with aid of~\gls{acr:trec} QREL relevance judgements to ascertain the performance of subjects.}
+    \item{\blueboxbold{Time-Based} measures can also be derived from directly examining the interaction log, measuring the time spent between different logged interactions.}
+    
+\end{itemize}
+
+In addition to these categories, we also considered a number of \blueboxbold{user experience} measures that were derived from a series of surveys. As highlighted in Section~\ref{sec:methodology:user:flow}, surveys were presented to subjects at a number of different stages throughout the experiment. In conjunction with the three log-based categories defined above, the user experience measures could be used to complement the empirical evidence to see whether the interactions of subjects actually correlated with their perceived experiences.
+
+In all, the interactions -- including aspects such as clicks and time-based measures, were used as a \emph{grounding} for our subsequent user simulations of interaction. How we grounded these simulations is discussed in Section~\ref{sec:method:simulation:grounding}. The grounding was in conjunction with an analysis of the interactions recorded, examining how stopping behaviours varied under different interfaces and conditions. 
 
 \vspace*{-3mm}
 \subsection{Behavioural Measures}
@@ -261,18 +261,22 @@ Recorded solely from interaction log data, the basic interactions covered a larg
     \item{\blueboxbold{Examination Depth} The depth to which subjects clicked on (and hovered over) result summaries on the associated~\glsplural{acr:serp}.}
 \end{itemize}
 
-From these measures, we could then ascertain whether searcher behaviour varied when a certain condition or interface was changed -- allowing us to address questions such as \emph{whether snippet length affects the depth to which searchers examine content?} To compute depths, click and hover depths were used -- we however only report click depths in subsequent contributory chapters. The reasoning for this is discussed in Section~\ref{sec:methodology:extracting:time} below. These measures were computed over each query issued by the different subjects.
+From these measures, we could then ascertain whether searcher behaviours varied when a certain condition or interface was changed -- allowing us to address questions such as: \emph{whether snippet length affects the depth to which subjects examine content?} To compute depths, click and hover depths were used -- we however only report click depths in subsequent contributory chapters. The reasoning for this is discussed in Section~\ref{sec:methodology:extracting:time} below. All of the aforementioned measures were computed on a per-session basis. Means and totals for each measure were computed for each session (where appropriate).
 
 % -- we could then take an average for each subject. We could go even further, too -- averaging over each topic, interface or condition as required to observe any notable trends in behavioural changes.
 
 \subsection{Time-Based Measures}\label{sec:methodology:extracting:time}
-As discussed in Section~\ref{sec:methodology:user:capturing} -- and also illustrated in Figure~\ref{fig:log} on page~\pageref{fig:log}, each logged interaction was saved with a timestamp which allowed us to determine when each event occurred.\footnote{Timestamps were saved to the nearest thousandth of a second, as per the specification of the standard Python logging framework -- refer to \url{https://docs.python.org/2/howto/logging-cookbook.html} \urlaccessed{2018-05-29} for an example of the framework in action.} With these timestamps, we could then measure the time between two associated events, thus yielding the time taken to perform a given activity. We considered five key time-based measures across both user studies that we enumerate below, along with a description of the log events that we measure each time from.
+As discussed in Section~\ref{sec:methodology:user:capturing} -- and also illustrated in Figure~\ref{fig:log} on page~\pageref{fig:log}, each logged interaction was saved with a timestamp which allowed us to determine when each event occurred.\footnote{Timestamps were saved to the nearest thousandth of a second, as per the specification of the standard Python logging framework -- refer to \url{https://docs.python.org/2/howto/logging-cookbook.html} \urlaccessed{2018-05-29} for an example of the framework in action.} With these timestamps, we could then measure the time between two associated events, thus yielding the time taken to perform a given activity. We considered five key time-based measures across both user studies. These are enumerated below, along with a description of the log events that we measure each time from.
 
 \begin{itemize}
-    \item{\blueboxbold{Queries} This measure considered the time spent by a searcher issuing queries to the retrieval system. This is captured from the point at which the searcher focuses upon the query box (\texttt{QUERY\_FOCUS}) to the point at which the query is submitted (via the \texttt{QUERY\_ISSUED} event, either by pushing the \emph{Search} button or the subject pushing \Return on their keyboard).}
-    \item{\blueboxbold{\gls{acr:serp} Content} This measure considers the total amount of time that a searcher spends on a given~\gls{acr:serp}. This is captured as the point at which the subject is presented with the~\gls{acr:serp} itself (\texttt{VIEW\_SEARCH\_RESULTS\_PAGE}) to the point at which they leave -- either through the issuance of a further query, clicking on a document hyperlink, or navigating to one of the other views of the experimental interface.}
-    \item{\blueboxbold{Result Summaries} As discussed below, this is the mean time spent by a subject examining individual result summaries on a given~\gls{acr:serp}. As such, this is included within the~\gls{acr:serp} content time.}
-    \item{\blueboxbold{Documents} This measure considers the time a subject spends on the document view. This is captured as the point at which the document is presented on the subject's screen (\texttt{DOC\_MARKED\_VIEWED}) to the point at which they leave, which, like the~\gls{acr:serp} content time, could be determined from a number of different events.}
+    \item{\blueboxbold{Queries} This measure considered the time spent by a searcher issuing queries to the retrieval system. This was captured from the point at which the searcher focuses upon the query box (\texttt{QUERY\_FOCUS}) to the point at which the query was submitted (via the \texttt{QUERY\_ISSUED} event, either by pushing the \emph{Search} button, or the subject pushing \Return on their keyboard).}
+    \item{\blueboxbold{\gls{acr:serp} Content} This measure considered the total amount of time that a searcher spent on a given~\gls{acr:serp}. This was captured as the point at which the subject was presented with the~\gls{acr:serp} itself (\texttt{VIEW\_SEARCH\_RESULTS\_PAGE}) to the point at which they left -- either through the issuance of a further query, clicking on a document hyperlink, or navigating to one of the other views of the experimental interface.}
+    
+    \begin{itemize}
+        \item{\blueboxbold{Result Summaries} As discussed below, this was the mean time spent by a subject examining individual result summaries on a given~\gls{acr:serp}. As such, this was included within the~\gls{acr:serp} content time.}
+    \end{itemize}
+    
+    \item{\blueboxbold{Documents} This measure considered the time a subject spent on the document view. This was captured as the point at which the document was presented on the subject's screen (\texttt{DOC\_MARKED\_VIEWED}) to the point at which they left, which, like the~\gls{acr:serp} content time, could be determined from a number of different events.}
 \end{itemize}
 
 \vspace*{-3mm}
@@ -280,11 +284,11 @@ The fifth time-based measure that we considered in our reporting of results was 
 \vspace*{-3mm}
 
 \begin{itemize}
-    \item{\blueboxbold{Total Session Time} The total session time is the addition of each of the time times measured above. This is essentially the same as the time from the very first \texttt{QUERY\_FOCUS} event to the \texttt{TASK\_COMPLETED} event, which is either triggered by an interface timeout (Chapter~\ref{chap:snippets}) or the subject ending the task herself or himself (Chapter~\ref{chap:diversity}).}
+    \item{\blueboxbold{Total Session Time} The total session time was the addition of each of the times measured above. This was essentially the same as the time from the very first \texttt{QUERY\_FOCUS} event to the \texttt{TASK\_COMPLETED} event, which is either triggered by an interface timeout (Chapter~\ref{chap:snippets}), or the subject ending the task herself or himself (Chapter~\ref{chap:diversity}).}
     
 \end{itemize}
 
-It should be noted that in this thesis \blueboxbold{we report all durations in seconds}. We considered a number of different approximations when measuring each of the above. For example, querying time is measured only as the time the searcher spends interacting with the query box. Subjects may well have spent longer considering what terms to enter, perhaps as they were browsing existing content. However, this could be not captured; out logging tools were not capable of capturing this additional time.
+It should be noted that in this thesis \blueboxbold{we report all durations in seconds}. We considered a number of different approximations when measuring each of the above. For example, querying time is measured only as the time the searcher spends interacting with the query box. Subjects may well have spent longer considering what terms to enter, perhaps as they were browsing existing content. However, this could be not captured; our logging tools were not capable of capturing this additional time.
 
 A further approximation used was the time per result summary. This was computed by dividing by the click depth reached on a given~\gls{acr:serp} by the duration between the first \emph{hover} event, where the subject hovered his or her cursor over a result summary, and the time at which they left the~\gls{acr:serp}. The first hover event was chosen as it was deemed to be a good indicator of the beginning of interaction with result summaries. The mouse cursor has been shown in prior studies to correlate strongly with the subject's gaze on the screen~\citep{chen2001mouse_cursor, smucker2014judging_relevance_movements}. However, issues with network latency meant that several of the hover events were logged in the incorrect order, making the approach of measuring each individual \texttt{HOVER\_IN} and \texttt{HOVER\_OUT} event unreliable. Using the click depth and total~\gls{acr:serp} time provided us with an approximation with which to work with. The approximation also makes an assumption that subjects examined each result summary on a~\gls{acr:serp} up to a particular depth, for an equal period of time. This was sufficient for the work in our study to ascertain whether or not a variation in the task goal or presentation of results affected the depths to which subjects examined results.
 
@@ -303,7 +307,7 @@ In conjunction with behavioural and time-based measures, we were also able to ex
     \end{itemize}
 \end{itemize}
 
-\blueboxheader{Grounding Subsequent Experiments} With behavioural measures and time-based measures in particular, these could be then used to \emph{ground} subsequent simulations of interaction. Refer to Section~\ref{sec:method:simulation:grounding} for further information on how this was achieved. The above measures were however sufficient for analysing how searcher behaviour changed.
+%\blueboxheader{Grounding Subsequent Experiments} With behavioural measures and time-based measures in particular, these could be then used to \emph{ground} subsequent simulations of interaction. Refer to Section~\ref{sec:method:simulation:grounding} for further information on how this was achieved. The above measures were however sufficient for analysing how searcher behaviour changed.
 
 \subsection{Demographics and User Experience Surveys}\label{sec:methodology:extracting:user}
 A number of surveys were also filled out by subjects. These captured different information about each searcher's individual search experiences. While there are similarities between what is asked (refer to Sections~\ref{sec:snippets:method} and~\ref{sec:diversity:users:diversifying} for further details), we in this section provide a high-level overview of the different surveys, before examining questions that were common between the two. We break these overviews into three sections, in the order of the experimental flow detailed in Section~\ref{sec:methodology:user:flow} -- demographics, pre- and post-task surveys, and post-experiment surveys.
@@ -323,26 +327,26 @@ In addition to these basic questions, we also asked several questions pertaining
     \item{how often they searched for information;}
     \item{how often they search for news articles (being a news-based experiment);}
     \item{what pointing device they were using (i.e. mouse, trackpad); and}
-    \item{their preferred general purpose web search engine.}
+    \item{their preferred general purpose web retrieval system.}
 \end{itemize}
 
-Considering that both experiments considered the news searching domain, we asked each subject how often they searched for news articles online.
+Factoring in that both experiments considered the domain of news search, we also asked each subject how often they searched for news articles online.
 
 \subsubsection{Pre-Task}
-Between both user studies, we asked the same questions within the pre-task survey. Subjects were provided with a short description of their search task and a topic description, providing their information need for said task. After examining the topic description, subjects were then queried on the following:
+Between both user studies, we asked the same questions within the pre-task survey. Subjects were provided with a short description of their search task and a topic description, which in turn provided their information need for said task. After examining the topic description, subjects were then queried on the following:
 
 \begin{itemize}
     \item{how well they knew about the topic prior to this study;}
     \item{how relevant the topic was to their life;}
     \item{how interested they were to learn more about the topic;}
     \item{whether they had searched for information related to the topic before; and}
-    \item{how difficult they felt it would be to search for information on the topic before commencing.}
+    \item{how difficult they felt it would be to search for information on the topic before commencing with the search task.}
 \end{itemize}
 
 Responses were provided on a seven-point scale, providing the option for neutrality between the two extremes -- extremes being \emph{nothing/not at all/very difficult} to \emph{lots/very much/very easy.} Responses to these questions helped us gauge the perceived difficulty of the task, and ascertain how much background knowledge could potentially affect results.
 
 \subsubsection{Post-Task and Post-Experiment}
-Post-task and post-experiment surveys were unique to each of the two user studies. Sections~\ref{sec:snippets:method} and~\ref{sec:diversity:users:diversifying} provide further information on what questions were asked. However, the post-task surveys focused on how well the subjects thought they (and the retrieval system, under the given condition and/or interface) performed during the search task. Post-task surveys considered the experiment as a whole, asking questions about what condition and/or interface the subjects preferred, or performed more to their liking, for example.
+Post-task and post-experiment surveys were unique to each of the two user studies. Sections~\ref{sec:snippets:method} and~\ref{sec:diversity:users:diversifying} provide further information on what questions were asked. However, the post-task surveys focused on how well the subjects thought they (and the retrieval system, under the given condition and/or interface) performed during the search task. Post-task surveys considered the experiment as a whole, asking questions about what condition and/or interface the subjects preferred, or performed better, for example.
 
 \section{Simulating Searcher Behaviours}\label{sec:method:simulation}
 With the general layout and components of the two user studies explained, we now consider how we \emph{simulated searcher behaviours.} The simulation of interaction provides a low-cost means for exploring a variety of different searcher strategies and configurations~\citep{azzopardi2010workshop}. In this section, we provide an overview of the general aspects of the \blueboxbold{stochastically-based} searcher simulations that we discuss the results of in subsequent chapters of this thesis. Specifically, we discuss in this section:
