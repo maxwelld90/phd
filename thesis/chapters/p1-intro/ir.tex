@@ -210,9 +210,9 @@ Term frequency is one of many different term weighting schemes that have been tr
 
 TF and IDF are typically combined together as a measure of both term appearance and importance, under an approach called \emph{TF-IDF}. For a given term $k$, one can calculate a TF-IDF score with the following equation:
 
-\begin{equation*}
+\begin{equation}
 tf_{i,k} \cdot idf_{k} = \frac{f_{i,k}}{\sum_{j=1}^{t} f_{i,j}} \cdot log \frac{N}{n_k}.
-\end{equation*}
+\end{equation}
 
 Above, $f_{i,k}$ is the frequency of term $k$, $N$ is the number of documents in the collection used, and $n_k$ is the number of documents in which term $k$ appears at least once.
 
@@ -506,18 +506,18 @@ Figure~\ref{fig:pr} provides a visual illustration of what precision entails (as
 
 Precision can be defined as:
 
-\begin{equation*}
+\begin{equation}
 P = \frac{|~\text{\emph{relevant documents}}~\cap~\text{\emph{retrieved documents}}~|}{|~\text{\emph{retrieved documents}}~|}.
-\end{equation*}
+\end{equation}
 
 \gls{acr:ir} research reports precision up to a particular rank, i.e. $P@k$. For example, $P@10$ will provide a fractional value for the number of relevant documents that appeared within the top $10$ results for a given query. Herein lies one of the most elementary and basic \emph{stopping models} that we find implicitly encoded within various~\gls{acr:ir} measures. Stopping at a depth of $10$, or $k$ (refer to\footnote{The value of $k=10$ is often chosen in~\gls{acr:ir} research as it has been shown that this is typically the depth to which searchers would look through web search results, perhaps due to the effects of pagination~\citep{jansen2006www}.}) denotes that documents past this rank are not examined.
 
 \subsubsection{Recall}\label{sec:ir_background:evaluation:system:recall}
 While precision considers the fraction of documents retrieved that are relevant, \emph{recall} ($R$) considers the fraction of documents that were retrieved and relevant to a query against \emph{all known relevant documents for a query.} Recall can formally be defined as:
 
-\begin{equation*}
+\begin{equation}
 R = \frac{|~\text{\emph{relevant documents retrieved}}~|}{|~\text{\emph{relevant documents}}~|}.
-\end{equation*}
+\end{equation}
 
 Considering the patent searching example defined above, high recall would be more desirable in a patent searching task. This means that more patents matching the searcher's query will be returned, thus reducing the possibility of missing important prior, relevant filings.
 
@@ -555,9 +555,9 @@ The~\gls{acr:esl}~\citep{cooper1968expected_search_length} of a searcher conside
 
 From~\cite{cooper1968expected_search_length}, the expected search length can be computed thus:
 
-\begin{equation*}
+\begin{equation}
 ESL(q) = j + \frac{i \cdot s}{r + 1}
-\end{equation*}
+\end{equation}
 
 \noindent
 where $q$ represents some query, and $j$ represents the number of non-relevant documents when considered to query $q$. This is the minimum number of documents that must be found in order to satisfy the searcher's information need -- this is the minimum number before $s$ of the $r$ total relevant documents are found by the searcher.
@@ -593,9 +593,9 @@ Relevance judgements can also be indicative of a searcher's stopping behaviour. 
 
 Given the definition above,~\gls{acr:cg} can therefore be computed as:
 
-\begin{equation*}
+\begin{equation}
     CG_k = \sum_{i=1}^{k} rel_i,
-\end{equation*}
+\end{equation}
 
 where $k$ denotes the ranking at which~\gls{acr:cg} should be calculated, and $rel_i$ denotes the relevance assessment score for a document at rank $i$. Given this definition, a computed~\gls{acr:cg} value will be unaffected by changes in rankings. Two lists of rankings with one highly relevant document in rank $1$ in one list, and rank $5$ in the other, will yield identical~\gls{acr:cg} values. As such~\gls{acr:cg} can be essentially considered as $R@k$.
 
@@ -604,9 +604,9 @@ A further development of~\gls{acr:cg} is~\gls{acr:dcg}, which, as the name may i
 \subsubsection{Rank-Biased Precision}\label{sec:ir_background:evaluation:system:rbp}
 \glsfirst{acr:rbp}~\citep{moffat2008rbp} is a more contemporary~\gls{acr:iir} measure that is derived from a simple searcher model. It considers the notion that searchers are not willing to examine every result presented to them in a ranked list, considered to be a more realistic assumption. The encoded searcher model, illustrated in Figure~\ref{fig:rbp}, assumes that a searcher will always examine the first result presented to him or her. The process can be likened to the  previously discussed idea of using a Markov model to represent the search process~\citep{tran2017markov_models}, modelling the likelihood of a searcher reaching a given depth. Subsequent documents further down the ranking will then be examined with a decreasing likelihood. Given a ranked list of documents, $d$,~\gls{acr:rbp} is defined as:
 
-\begin{equation*}
+\begin{equation}
 RBP = (1 - p) \cdot \sum_{k=0}^{d}rel_k \cdot p^{k-1},
-\end{equation*}
+\end{equation}
 
 with $rel_k$ once again denoting an assessor's relevance judgement for the document at rank $k$, and $p$ denoting the \emph{patience parameter.} It is this parameter that provides a decaying probability that a searcher will continue to examine a ranked list of results the further down the rankings they go. A searcher subscribing to the~\gls{acr:rbp} searcher model will stop examining results with with probability $1-p$. Indeed, the patience parameter allows for a very flexible measure -- one can model both very persistent searchers (where $p$ tends towards $1.0$) and impatient searchers (where $p\approx0.5$)~\citep{moffat2008rbp}. When $p=0.0$, a searcher will examine only the first presented result for relevance, and then stop.
 
