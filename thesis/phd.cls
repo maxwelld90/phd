@@ -353,18 +353,19 @@
 % Update "Table of Contents" to reflect custom styling.
 \renewcommand{\contentsname}{
     \protect\toctitle{Table of Contents}
+    \vspace*{10mm}
 }
 
 % Update "List of Figures" to reflect custom styling.
 \renewcommand{\listfigurename}{
     \protect\toctitle{List of Figures}
-    \vspace*{4mm}
+    \vspace*{10mm}
 }
 
 % Update "List of Tables" to reflect custom styling.
 \renewcommand{\listtablename}{
     \protect\toctitle{List of Tables}
-    \vspace*{4mm}
+    \vspace*{10mm}
 }
 
 % Update "List of Abbreviations" to reflect custom styling.
@@ -382,7 +383,7 @@
     \cleardoublepage
     \protect\toctitle{#1}
     
-    \vspace*{52mm}
+    \vspace*{62mm}
     
     \ifthenelse{\equal{#1}{\acronymname}}{\normalfont\selectfont\large For abbreviations complete with a \emph{see} reference, refer to the corresponding Glossary entry.\vspace*{7mm}}{\vspace*{8mm}}
 }
@@ -392,6 +393,7 @@
     \protect\toctitle{Bibliography}
     \markboth{}{}
     \pagestyle{plain}
+    \vspace*{10mm}
 }
 
 %%%%%%%%%%
@@ -467,7 +469,7 @@
     \fi
     
     \large
-    \vspace{10em}
+    \vspace{60mm}
     }
     {
     \cleardoublepage
