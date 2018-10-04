@@ -7,8 +7,81 @@ With all experimental work now reported, this final chapter provides a conclusio
 \section{Thesis Summary}
 in a very short space, what did we examine?
 
-- a table of results?
-- a table of the conditions/interfaces?
+- in this thesis, we examined...
+    - how stopping behaviour varies under different search contexts.
+    - under the domain of news search, we undertook two different user studies varying things.
+    - conditions and interfaces are reported in the table.
+    - we then used these to ground a series of simulated interactions.
+    - using the complex searcher model.
+    - examined a number of different stopping strategies, based upon heuristics from the literature
+        - in an attempt to quantify when "enough" information is enough
+    - and to see how the interfaces affect searcher stopping behaviours.
+    - we also considered a new stopping decision point.
+    
+\begin{table}[t!]
+    \caption[Experimental interfaces and conditions]{Experimental interfaces and conditions trialled in this chapter, based upon the work reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. In total, eight different experimental interfaces and conditioned were trialled, considering different result summary lengths, systems and tasks.}
+    \label{tbl:conclusion_summary}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.2cm}@{\CS}D{3.51cm}@{\CS}D{3.51cm}@{\CS}D{3.51cm}@{\CS}}
+
+        & & \lbluecell \textbf{Summary Length} & \lbluecell \textbf{System} & \lbluecell \textbf{Task} \\
+
+        \RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:snippets}}}} & \lbluecell\textbf{T0} & \cell \small{Title only} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        \RS & \lbluecell\textbf{T1} & \cell \small{Title + 1 snippet} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        \RS & \lbluecell\textbf{T2} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        \RS & \lbluecell\textbf{T4} & \cell \small{Title + 4 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        
+        \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:diversity}}}} & \lbluecell\textbf{D-AS} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{D} (Div.)} & \cell \small{\darkblueboxbold{AS} (Aspectual)}\\
+        \RS & \lbluecell\textbf{ND-AS} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AS} (Aspectual)}\\
+        \RS & \lbluecell\textbf{D-AD} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{D} (Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        \RS & \lbluecell\textbf{ND-AD} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        
+    \end{tabulary}
+    \end{center}
+\end{table}
+    
+    \begin{table}[t!]
+        \caption[GAIN]{GAIN}
+        \label{tbl:conclusion_gain}
+        \renewcommand{\arraystretch}{1.8}
+        \begin{center}
+        \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{2.8cm}@{\CS}D{2.6cm}@{\CS}D{2.6cm}@{\CS}D{2.6cm}@{\CS}D{2.6cm}@{\CS}}
+
+            & & \lbluecell \textbf{Time/RS} & \lbluecell \textbf{Time/Doc.} & \lbluecell \textbf{CG} & \lbluecell \textbf{CG/Second} \\
+
+            \RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:snippets}}}} & \lbluecell\textbf{T0} & \cell xx & \cell xx & \cell xx & \cell xx \\
+            \RS & \lbluecell\textbf{T1} & \cell xx & \cell xx & \cell xx & \cell xx \\
+            \RS & \lbluecell\textbf{T2} & \cell xx & \cell xx & \cell xx & \cell xx \\
+            \RS & \lbluecell\textbf{T4} & \cell xx & \cell xx & \cell xx & \cell xx \\
+        
+            \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:diversity}}}} & \lbluecell\textbf{D-AS} & \cell xx & \cell xx & \cell xx & \cell xx \\
+            \RS & \lbluecell\textbf{ND-AS} & \cell xx & \cell xx & \cell xx & \cell xx \\
+            \RS & \lbluecell\textbf{D-AD} & \cell xx & \cell xx & \cell xx & \cell xx \\
+            \RS & \lbluecell\textbf{ND-AD} & \cell xx & \cell xx & \cell xx & \cell xx \\
+        
+        \end{tabulary}
+        \end{center}
+    \end{table}
+    
+    - brief sentence or two for user studies.
+    - for the snippets study, people went to greater depths.
+    - for the diversity study, more confusing picture.
+    
+    - for our simulated analysis...
+    
+    - result showed that... there was little difference between the interfaces and conditions.
+    - although for diversified system d, performance was markedly better than when using interface nd.
+    
+    - fixed depth performed well. counter-intuitive.
+    - frustration did really well.
+    - combination strategy did well.
+    - very similar, very few significant differences.
+    - the more complex the strategy, the worse the performance got. we consider this shortly.
+    
+    - the new stopping decision point was a marked improvement.
+    
+    - overall, no clear winner in terms of strategies.
 
 \section{Discussion}
 so there is the summary.
@@ -18,6 +91,19 @@ in this section, we discuss a number of our findings, exploring why the results 
 
 \subsection{Improving Realism}
 
+- discuss the new decision point.
+
+- chapter 8 simulations...
+- however, in terms of performance, the simulated searchers don't do much better on D-AS than D-AD. why?
+    - probably because our decision maker didn't help much. doesn't differentiate between relevant and new and relevant.
+    - future work. how we instantiate the simulations.
+    - maybe this also accounts for why the stopping strategies (or some of them) appeared to underestimate the mean stopping depth. perhaps a better decision maker would be better for this.
+    
+- does this account for the poor levels of mean cg that are attained in Figure 8.9 compared to the CG attained in Chapter 7?
+    - the real-world searchers performed generally better than all of the simulated stopping strategies.
+        - what does this suggest? is there another strategy out there that better fits this kind of task?
+        - only task that a stopping strategy did offer better approximations for in terms of CG is ND-AS. Which is T2. SS3 does better there. but why?
+
 \subsection{Stopping Strategies and Behaviours}
 
 - simple strategies always perform best.
@@ -26,11 +112,21 @@ in this section, we discuss a number of our findings, exploring why the results 
     - IFT/difference.
         - you would expect perhaps with difference, the only strategies that look at the terms, that improvements would be observable as snippet lengths increase. however, this is not the case.
 
+- why does the IFT-based stopping heuristic do so badly? it's the rate of gain computation. our assumptions don't really work over a per-topic basis. think about it this way. consider a topic with a small number of rel documents, and a topic with a large number of rel docs. doesn't matter if it's a good query, it'll be harder to find relevant material for the more difficult topic! so the rate of gain we used doesn't work. so this will be interesting to explore in future work.
+
+- why are the different rules so bad? However, \blueboxbold{QS13} hides the bimodal distribution of performance that would have been experienced during searching. As we examine later, we posit that this may have been detrimental to difference-based stopping strategies \blueboxbold{SS6-DT} and \blueboxbold{SS6-DKL}. This is due to the face that for single term queries, the diversity of the results was likely to be much greater than for three term queries. Consequently, for single term queries that provide little gain, the simulated searcher was likely to have examined to much greater depths.
+
+for frustration rules, as i am more tolerant to nonrel information, i go deeper, has n effect of increased CG.
+satisfaction, if i look for one, then stop, tends to be better than going deeper. but kind of surprising.
+ift is pretty smooth, following the rate of gain is not the best. maybe it is how we calculate the rate of gain.
+
+- why does RBP underestimate? as you increase the patience parameter, you go deeper down the results. however, as you go deeper, you obtain better performance, but at a diminishing rate. like the difference based strategies, rbp is statistically signficant from ss11. except for T2, where no differences exist. rolling a dice doesnt perform as well. says it has a good user model, but we are showing maybe it doesn't.
+
 - combination strategies do well!
     - people consider how annoyed/satisfied they are. not a single criterion for judging when to stop.
     -
 
-\subsection{Running Simulations of Interaction}
+\subsection{Simulations of Interaction}
 
 - then move onto a discussion of our simulation findings.
 - talk about the different issues that we raised.
@@ -50,6 +146,12 @@ in this section, we discuss a number of our findings, exploring why the results 
         - so we could be missing trends. we could be missing things that we simply cannot see.
         - limitation placed upon me by the hardware available to run the experiments. future work.
 
+would have been better to do it over 50 topics, rather than five.
+previous papers show smoother curves.
+we tried to compensate for this by doing 50 runs.
+but probably not a good drop in solution.
+why did we do this though? not enough data. needed to do things in a consistent way.
+
 
 \section{Conclusion}
 
@@ -66,8 +168,10 @@ in this section, we discuss a number of our findings, exploring why the results 
 \section{Future Research Directions}
 
 Additional Stopping Decision point -- improving realism further
+Taking the CSM further. Tool switching. Other things to add to the searcher model to hitherto improve realism.
 
 Additional search contexts
+Do the same findings apply to different search contexts? We considered only news search. And ad-hoc and aspectual retrieval. To see how things vary. But it is likely that they will vary elsewhere. Context, surroundings, device...
 
 additional stopping heuristics
 
@@ -75,10 +179,37 @@ encoding additional stopping models and measures
     - turning SS5/SS11 into a stopping model. e.g. bejewled, following on that train of thought.
 
 existing stopping strategy operationalisation
+We could have operationalised the stopping heuristics in many different ways. We chose simplistic means to operationalise them. These means may or may not have influenced the performance/approximations that each strategy offered. Future work is required to determine if this is indeed the case or not.
+
+There are many, many different avenues for exploration here. Prime example: OFT strategy. Consistently performed poorly. List the different strategies that we could operationalise in a different way, explaining what may happen (educated guess).
+For example, OFT, rate of gain set over all topics trialled. But we know that some topics are more difficult to find relevant material for than others (reference the table with the number of rel documents, show that one has less than the other). This would influence stopping, because simply less likely a relevant item would appear in the ranks.
 
 heuristic selection
+We didn't really consider under what circumstances one heuristic would be better than another. So, how would one be able to select the best threshold for a given circumstance? Kind of eluded to this with SS11-COMB, that selected a stopping strategy based upon the perceived yield of a SERP. However, are there different factors which could influence the selection of a particular heuristic, and what are they? What heuristics would work best?
 
 individual searcher stopping
+How can we use the knowledge reported in this thesis to develop models more in line with an individual's stopping behaviours?
+COMBO - recent work has shown that approaches like bejeweled are more in line with what people actually do. evidence from this thesis somewhat supports this argument -- combination approaches do well, and offer good performance. perhaps we need to look away from a single heuristic and consider two (or even more), see heuristic selection above.
+
+Additionally, future work can work on these models at an individual searcher level. This thesis has exclusively reported behaviours on average, across \~ 50 subjects over different interfaces and conditions. This provides us with a rough approximation as to what will work best. However, people behave differently -- there is no general rule of thumb. For example, could we classify people based upon their searcher behaviours? Like Smucker's fast and liberal, slow and strict classification. Perhaps getting a better understanding of their searcher behaviours could factor into the interface used, and then this could improve their searching ability.
+
+realism
+We made assumptions for the diversity study. The decision maker was based on ad-hoc retrieval.
+The task for two was aspectual. This was not considered, yet we still got good gain and approximations. Would this improve if we undertook work to develop new decision making components, for the different retrieval tasks?
+
+pagination of results. how did pagination affect everything?
+
+We should acknowledge that by not considering each stopping strategy in chapter 9, we might be missing something out. There could be some things at play that we do not consider -- because everything is linked together. 
+
+how does the scent judgement affect how the searcher performs? is p@vize optimal? do different people have different thresholds here?
+
+why did average drop off sometimes in Ch9, falling below Always?
+
+for SS2 and SS5 in Average, why was the mean depth per query higher?
+
+for comparisons in ch9... why did ss1 and ss5 at perfect give the best approximations? that is interesting and slightly odd.
+
+if a searcher performs badly/worse than always, they could be stopping queries early on that are bad, and entering those that are good, saving documents. likelihood that relevant documents already saved will reappear in subsequent queries later on, they have more time to issue more if they skip queries! and the judgement is such that if it's relevant, you go in. no consideration for things observed previously. did not consider this; so you enter a SERP, but there's nothing new to save even though it looked good! mismatch here -- something to address in future work.
 
 scaling experiments up further.
     power idea in discussion.
