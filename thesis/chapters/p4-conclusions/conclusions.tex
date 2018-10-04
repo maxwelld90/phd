@@ -2,14 +2,90 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[Discussion, Conclusions and Future Work]{Discussion, Conclusions\\and Future Work}\label{chap:conclusions}
+With all experimental work now reported, this final chapter provides a conclusion for this thesis. In particular, we provide a high-level summary of the thesis and the reported results, as well a discussion of the results from our simulated analyses. In particular, we emphasise the impact of these findings on~\gls{acr:ir} and~\gls{acr:iir} research. We then outline several potential future research directions, before concluding with some final remarks.
 
+\section{Thesis Summary}
+in a very short space, what did we examine?
 
-\section{Discussion and Thesis Contributions}
+- a table of results?
+- a table of the conditions/interfaces?
+
+\section{Discussion}
+so there is the summary.
+however, there's a lot of questions about why we got the results that we did.
+why is that so?
+in this section, we discuss a number of our findings, exploring why the results are what they are.
+
+\subsection{Improving Realism}
+
+\subsection{Stopping Strategies and Behaviours}
+
+- simple strategies always perform best.
+- the more complex, the worse the performance and approximations get.
+    - this could be because of the way we instantiate.
+    - IFT/difference.
+        - you would expect perhaps with difference, the only strategies that look at the terms, that improvements would be observable as snippet lengths increase. however, this is not the case.
+
+- combination strategies do well!
+    - people consider how annoyed/satisfied they are. not a single criterion for judging when to stop.
+    -
+
+\subsection{Running Simulations of Interaction}
+
+- then move onto a discussion of our simulation findings.
+- talk about the different issues that we raised.
+
+- moving to combination approaches, like bejewled~\cite{zhang2017bejewled}, etc.
+
+- talk about the simulations
+    - running the simulations. expensive. complicated.
+    - as we introduced the SERP level stopping decision point, the complexity increased massively -- and so did the time required to run them.
+    - talk about the pre-rolled judgements, too. methodological contribution. ensures repeatable, reproducible research.
+
+- did we do enough runs?
+    - we could justify why 50 DM runs was chosen.
+    - but was this enough? may not be.
+    - maybe we dont have enough trials.
+    - and when we dont have enough trials to average over, the power of our experiments could be insufficient.
+        - so we could be missing trends. we could be missing things that we simply cannot see.
+        - limitation placed upon me by the hardware available to run the experiments. future work.
 
 
 \section{Conclusion}
 
+- what is the conclusion?
+    - there is no overall winning combination. simple strategies seem to do better in terms of offering outright performance, and approximations. in terms of approximations, tuning a given stopping strategy will yield good approximations, regardless of the strategy you follow. evident with SS1-FIX for example, with comparatively deep depths (i.e. x1=24).
+
+- we also see improvements in modelling.
+- at the expense of increased complexity (in terms of running them), the simulations have been shown to be more realistic in terms of approximating click depths.
+    - it does appear that taking scent into account is important. leads to slightly lower error rates, although we could not demonstrate this difference to be significant.
+
+- limitations of the work could influence work, hide trends.
+- nevertheless, it is an important contribution that demonstrates how task and interface affect stopping behaviour.
 
 \section{Future Research Directions}
 
+Additional Stopping Decision point -- improving realism further
+
+Additional search contexts
+
+additional stopping heuristics
+
+encoding additional stopping models and measures
+    - turning SS5/SS11 into a stopping model. e.g. bejewled, following on that train of thought.
+
+existing stopping strategy operationalisation
+
+heuristic selection
+
+individual searcher stopping
+
+scaling experiments up further.
+    power idea in discussion.
+
+
 \section{Final Remarks}
+
+This is complex. Contributions
+
+Now that this is all done, \emph{I} am off to the pub.
