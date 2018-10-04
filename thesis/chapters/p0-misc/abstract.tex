@@ -4,112 +4,13 @@
 \begin{preamble}[Thesis Abstract]
 \phantomsection
 \addcontentsline{toc}{part}{Thesis Abstract}
-Knowing when to stop is a fundamental aspect of human decision making. A student, tired but satisfied that he has completed a draft of his thesis, will make any final outstanding edits, and stop. A consumer, examining details for purchasing a new car, will determine that she has accrued enough details about a particular model to make a final decision, and stops browsing. Regardless of the task, an individual will stop when one or more \emph{stopping criteria} have been met. These can be factors external to the individual, such as time constraints. Often however, a series of \emph{internal factors,} such as intuition, are the primary contributor to determining when an individual stops.
 
-Indeed, studies examining stopping behaviour during the \emph{information seeking} process have concluded that searchers do indeed utilise a series of internal, cognitive stopping rules to determine when they should stop examining the information presented to them. However, when questioned, individuals generally find this internal decision making process difficult to articulate. Responses are often that searchers stop when they feel that what they have found is \emph{``good enough''} to satisfy their underlying information need.
+Searching is a complex and inherently interactive process. During a search session, searchers may issue multiple queries and examine a varying number of result summaries and documents per query. Searchers must also decide when to stop assessing content for relevance, or decide when to stop their search session altogether. Despite being such a fundamental activity, only a limited number of studies have explored stopping behaviours in detail, with a majority reporting that searchers stop because they feel that what they have found feels \emph{``good enough''.} Notwithstanding the limited exploration of stopping during search, the phenomenon is central to the study of \emph{Information Retrieval,} playing a role in the models and measures that we employ. However, the current \emph{de facto} assumption considers that searchers will examine $k$ documents -- examining up to a \emph{fixed depth.}
 
-Capturing and understanding this phenomenon of \emph{``enough''} is therefore very difficult to do, and is demonstrated by  a comparative lack of research on the concept of examining and understanding stopping during search. On top of this, the~\glsfirst{acr:iir} process is complex: searchers much make decisions as to the relevancy of a document, and can issue a varying number of queries. An established sequence of events was established in IIR research, leading to \emph{searcher models.} Within these models, two natural stopping decision points were established: session and result summary level. Established evaluation measures within the~\gls{acr:ir} community also implicitly encode within them some form of stopping model, with \emph{precision at $k$} being a simplistic example.\footnote{Using this an example, the $P@k$ measure would stop after considering a total of $k$ results.}
+In this thesis, we examine people's stopping behaviours under a number of different search contexts. We report on two user studies, examining how result summary lengths and a variation of search tasks and goals affect stopping behaviours. Interaction data from these studies is then used to ground extensive \emph{simulations of interaction,}  exploring a number of different \emph{stopping heuristics} (operationalised as twelve \emph{stopping strategies}). We consider how well the proposed strategies perform and match up with real-world stopping behaviours. As part of our contribution, we also propose a high-level conceptual searcher model, the \emph{Complex Searcher Model,} that encodes stopping behaviours at different points throughout the search process. As part of the Complex Searcher Model, we propose a new results page stopping decision point. This allows searchers to obtain an impression of the page before deciding to \emph{enter} or \emph{abandon} it, based upon its \emph{information scent.}
 
-Despite these models and measures, we are still not provided with an understanding as to what constitutes the intuition of \emph{``enough''} information. In an attempt to quantify this, a number of \emph{stopping heuristics} have also been defined in the literature. A simplistic example would be the \emph{frustration heuristic,} where a searcher would become frustrated with a certain volume of non-relevant material before deciding to stop. However, little work has examined whether such heuristics are actually conformed to in reality.
+Results presented and discussed in this thesis show that searchers employ a variation of different stopping strategies, with their behaviours clearly not fixed. Stopping behaviours are clearly variable in nature, which makes modelling such a phenomenon difficult to achieve. We find that simplistic stopping strategies offer good performance and real-world searcher approximations, such as the \emph{frustration}-based stopping strategy that considers a searcher's tolerance to (perceived) non-relevance. We also find that \emph{combination} strategies -- such as those combining a searcher's satisfaction with finding relevant material, and their frustration towards observing non-relevant material -- also offer good approximations and performance. In addition, we also demonstrate that the inclusion of the additional stopping decision point within the Complex Searcher Model provides significant improvements to performance over our baseline implementation, and offers better approximations to real-world searcher stopping behaviours.
 
-In this thesis, we explore how a searcher's stopping behaviours vary under different contexts. Using the domain of news search, we report on two user studies, examining how stopping behaviours vary across eight interfaces and conditions when: the presentation of results is altered; and the task goal and type are altered. After discussing the insights we obtain from these user studies, we then take the interaction data logged from them to provide grounding for an extensive series of \emph{simulations of interaction,} employing the~\glsfirst{acr:csm}, an updated, conceptual and high-level model of the search process that provides a series of activities and decision points that searchers conform to.
+This work motivates a revision of how we currently model the search process, and demonstrates that different stopping heuristics need to be considered within the models and measures that we consider in Information Retrieval. Measures should be reformed according to the stopping behaviours of searchers. This work also opens up a number of potential avenues for future exploration, such as modelling the stopping behaviours of searchers individually (rather than as a population), and to explore and consider a wider variety of different stopping heuristics under different search contexts. Despite the inherently difficult task that understanding and modelling the stopping behaviours of searchers represents, potential benefits of further exploration in this area will undoubtedly bring benefits to the searchers of future retrieval systems, with improved interfaces and experiences.
 
-The complex simulations of interaction consider a total of twelve \emph{result summary level stopping strategies,} operationalised from eight stopping heuristics, and a commonly-used IR evaluation measure. We examine how each of the twelve stopping strategies perform -- not only in terms of overall gain attained, but also to how well each of the strategies approximates the mean stopping behaviours across the population of subjects from the user studies, considered over each interface and condition.
-
-We then consider a development of the CSM, demonstrating the inclusion of a third,~\glsfirst{acr:serp} \emph{level stopping decision point,} motivated by \emph{information scent.} Here, a further extensive set of simulations of interaction are reported, permitted searchers to obtain an \emph{impression} of the SERP before making the decision to either enter the SERP and begin examining result summaries in detail, or to abandon it completely -- potentially saving time and effort.
-
-Results from our contributions demonstrate that no clear stopping strategy emerges as a winner, and that the differences between our experimental interfaces and conditions may not be sufficiently large to warrant a large change in the stopping strategy that is employed. However, a series of interesting and notable trends can be observed which we discuss in detail. We also find that the inclusion of the third stopping decision point within the searcher model does yield improvements in performance and the approximations to actual searcher stopping behaviours.
-
-
-
-
-% The different factors at play during the~\glsfirst{acr:iir} process are complex and non-trivial. Searchers will undertake a series of complex interactions with the retrieval system that he or she is using. For example, they may arrive in an \emph{Anomalous State of Knowledge,} and issue multiple queries, with a number of documents returned from each query being examined for relevance to his or her \emph{information need.} Of course, the searcher must also factor in when \emph{he or she should stop searching.}
-%
-% Several studies have attempted to e
-%
-%
-% Knowing when to stop is a fundamental aspect of human behaviour and decision making. A student, tired but satisfied that he has completed his thesis, will make any final outstanding edits, and stop. A consumer, examining details for purchasing a new car, will determine that she has enough details to make a final decision, and stop browsing. Regardless of the task, an individual will stop when one or more \emph{stopping criterion} have been met. These can be factors external to the individual; a series of internal factors are however more often than not the drivers for determining when to stop.
-%
-% This is also true for the activity of \emph{information seeking}. During the~\glsfirst{acr:iir} process, a searcher will perform a number of complex interactions with the retrieval system that he or she is using. Multiple queries may be issued, for example, with a number of documents returned from each query being examined for relevance to his or her information need. Of course, the searcher must also determine when \emph{he or she should stop.} Stopping during the information seeking process has not been extensively examined in the literature, perhaps because of the difficulty of modelling such a phenomenon.
-%
-% Indeed, many studies that have examined such behaviours have concluded that searchers find it difficult to articulate their internal, cognitive decision making process, concluding that they stop when what they have found is simply \emph{``good enough''.} Despite these findings however, several researchers have over a number of decades attempted to quantify this feeling of \emph{good enough,} defining a number of different \emph{stopping heuristics} that attempt to encode this intuition. \todo{Formally, stopping in search has been defined at two levels... also, in IR research, measures implicitly encode some form of stopping model. For example, precision-at-k.}
-%
-% \begin{itemize}
-%
-%     \item{In this thesis, we consider stopping during the IIR process from different perspectives.}
-%     \item{Under the context of news search, we examine how searcher stopping behaviours change when we vary different aspects of the search process: including presentation, task and goal through two user studies. \todo{note the interfaces.}}
-%     \item{Data from these user studies are then used to provide grounding for an extensive series of simulations of interaction, using the~\glsfirst{acr:csm}, an updated, conceptual high-level model of the search process, providing a series of different activities and decision points that searchers must traverse through during the IIR process.}
-%     \item{These simulations trial twelve stopping strategies, operationalised from \todo{six} stopping heuristics \todo{list some}, and provides one of the first extensive studies examining how a range of different stopping strategies perform -- not only in terms of overall performance, but also in terms of how well they approximate the actual mean stopping behaviour of the real-world searchers that the simulations are grounded upon.}
-%     \item{Findings show that no clear strategy emerges as a winner, although a series of interesting and discernible trends can be observed between interfaces and conditions.}
-%
-%     \item{We then take three of these stopping strategies forward to consider improvements to the established searcher models. From the two stopping decision points, we introduce a third, SERP level stopping decision point, motivated by information scent and information foraging. Here, a further extensive set of simulations of interaction are trialled, permitting searchers to obtain an \emph{impression} of the SERP before making the decision to enter it an begin examining result summaries and documents, or to abandon it completely -- potentially saving time. Results from this contribution demonstrate improvements in performance, that, although not statistically significant, does improve predictions of actual stopping behaviours, and demonstrates that modelling SERP level stopping is required to create more realistic models of the search process.}
-%
-% \end{itemize}
-
-
-% \todo{======}
-% Knowing when to stop is a fundamental aspect of human behaviour and decision making. A student, tired but satisfied that he has completed his thesis, will make any outstanding edits, and stop. A driver, upon approaching a red traffic light at a busy intersection, will apply the brakes of her car to bring it to a controlled stop. Stopping is a phenomenon that can be considered to be part of any activity -- with the activity we consider in this thesis that of \emph{information seeking.}
-%
-% During the~\glsfirst{acr:iir} process, a searcher will conduct a number of complex interactions with the retrieval system being used. Multiple queries may be issued; a varying number of result summaries and documents will then be examined for relevance per query. At the end of this process however, the searcher will ultimately stop. Despite importance of understanding why searchers stop searching for information, stopping in search is a phenomenon that has been largely ignored in the literature. This may be due to a number of reasons, the chief of which being that knowing when to stop is determined by a series of internally defined stopping criteria, making such a phenomenon difficult to model effectively. Indeed, studies examining stopping behaviours often reach a similar conclusion: subjects find it hard to articulate their internal decision making process, and state that they stop because what they have found is \emph{``good enough''.} Despite this however, a number of researchers have defined a series of \emph{stopping heuristics} that attempt to provide a rationale as to when searchers should stop.
-%
-% In this thesis, we explore how these stopping heuristics can be \emph{operationalised}
-%
-%
-%
-% - stopping is important
-% - example in the wild
-% - stopping one of the behaviours exhibited in the complex IIR process.
-% - issue queries, examine documents. stop examining at some point!
-%     - session level or result summary level.
-% - despite importance, stopping is a phenonemon that has not been studied extensively.
-%     - perhaps due to the fact it is a difficult thing to model.
-%     - most studies considering stopping say that it happens when a searcher feels satisfied, or has found enough?
-%
-% - but what is this feeling? how do we quantify it?
-% - in this thesis, we consider this angle.
-% - stopping heuristics. operationalise them. test them. see what one performs best. what one approximates best.
-% - done so under the context of news search.
-%     - varying result summary length.
-%     - varying task types and goals.
-% - how does stopping behaviour vary?
-%
-% - we also consider stopping from a modelling perspective.
-%     - given established stopping points in the literature, can we make improvements to the searcher model by
-%       adding in an additional stopping decision point?
-%
-% - results show that...
-%
-%
-% Stopping is a fundamental aspect of animal -- and by definition, human -- behaviour and decision making.
-% Example or two of stopping examples.
-% Similarly, when seeking information, a searcher must make a decision as to when he or she should top examining.
-% Given the complexities of the IIR process, stopping during search can occur at a number of different points.
-% Ranked list of results.
-% Session.
-% Stopping has been until recently an ill-examined phenonomemon, perhaps because it is an inherently difficult task to model.
-%
-% In this thesis, we consider stopping from a modelling perspective.
-% Given stopping heuristics defined in the literature, we turn them into a number of different operationalisable stopping strategies.
-
-
-
-
-
-
-
-
-
-
-
-
-
-% \emph{Interactive Information Retrieval (IIR)} is a complex, non-trivial process~\citep{ingwersen2005theturn}. During the course of a search session, a searcher may issue multiple queries, and for each query, examine a varying number of result summaries (textual snippets) and documents. That is to say, the interactions and behaviours exhibited by a searcher are \emph{complex}, and he or she will inherently adapt their behaviour based upon a number of factors -- perhaps most notably due to the perceived relevance of the list of results presented to them~\citep{moffat2013users_versus_models}. A searcher, for example, would be wise to abandon a list of results if they are perceived to be of low quality.
-%
-% Despite the findings of a large number of studies in the field of IIR, many of the models and measures still in use today within the \emph{Information Retrieval (IR)} community do not consider these complex factors regarding user behaviours. Central to these models and measures is the so-called \emph{Cranfield Paradigm}, the \emph{de facto} model used for IR evaluation, developed in the early 1960's. While this approach has been adapted over the years to suit ever more complex evaluation tasks~\citep{harman2010cranfield}, the model is still largely systems-focused, rather than user-focused. Such an evaluation approach considers a single query, and the consideration of a large number of documents returned from that query to be relevant -- a wholly unrealistic approach.
-%
-% As such, many researchers have proposed different models and frameworks for the purposes of IIR modelling and evaluation. In this thesis, we propose the \emph{Complex Searcher Model (CSM)}, a high-level model that attempts to capture the various complex interactions and decisions that take place during \emph{ad-hoc topic retrieval}. Central to the CSM is the inclusion of several key \emph{decision points}, which provide a means for modelling the \emph{stopping behaviour} of a searcher. Stopping behaviour is a fundamental aspect of human behaviour~\citep{nickles1995judgment}, and during search, this is no different. Research into the stopping behaviours has however until recently been sparse, with work suggesting that searchers stop when they feel that what they have found is simply ``good enough'' to stop~\citep{wu2014information_scent}.
-%
-% Considering the CSM, this thesis attempts to ascertain a more precise definition of what is ``good enough''. We operationalise a variety of different stopping \emph{heuristics} defined within the literature over a number of years, considering heuristics from both IR research and those based upon ecology, where researchers examined the stopping behaviour behaviour of animals when foraging for food. These operationalised heuristics are examined in varying search contexts. We compare the behaviour of real-world subjects who partook in a series of user studies against simulated behaviours utilising the CSM.
-%
-% From the work undertaken as part of this thesis, we are able to show that developing searcher models incorporating some form of stopping behaviour is able to offer more realistic, and credible simulations of the complex interactions that take place during a search session.
 \end{preamble}
