@@ -58,7 +58,7 @@ For example, Figure~\ref{fig:ss1} demonstrates two~\glsplural{acr:serp} side by 
 We referred to \blueboxbold{SS1-FIX} as a \emph{fixed} stopping strategy, as it is not \emph{adaptive.} The remaining stopping strategies presented in this chapter are considered to be adaptive as they permit a searcher to adapt their stopping depth depending upon the result summaries that they observe in a ranked list. In this section, we propose three adaptive stopping strategies that are based upon a searcher's \emph{tolerance to non-relevance} and a simple \emph{goal-based} approach.
 
 \subsection{Searcher Frustration}\label{sec:strategies:frus_disg:frustration}
-We first discuss the operationalisation of the frustration stopping heuristics, as outlined in Section~\ref{sec:stopping_background:heuristics:frustration}. Given a set of result summaries presented on a~\gls{acr:serp}, how many unattractive summaries would a searcher be prepared to examine before becoming frustrated with the~\gls{acr:serp}, and abandoning it? This stopping heuristic attempts to address this question. Indeed, as detailed in Section~\ref{sec:stopping_background:heuristics}, a number of researchers have proposed stopping heuristics that consider unattractiveness.
+We first discuss how the frustration stopping heuristics are operationalised, as outlined in Section~\ref{sec:stopping_background:heuristics:frustration}. Given a set of result summaries presented on a~\gls{acr:serp}, how many unattractive summaries would a searcher be prepared to examine before becoming frustrated with the~\gls{acr:serp}, and abandoning it? This stopping heuristic attempts to address this question. Indeed, as detailed in Section~\ref{sec:stopping_background:heuristics}, a number of researchers have proposed stopping heuristics that consider unattractiveness.
 
 The frustration heuristic intuitively makes sense for exhaustive searchers~\citep{kraft1979stopping_rules}. As an example, when tasked to find as many documents as possible related to different species of animals that are endangered, becoming disgusted with the presented results when a lack of animal species are shown would be a suitable point at which to break and reformulate a new query, or abandon the search session altogether.
 
@@ -67,7 +67,7 @@ From the heuristics defined by~\cite{cooper1973retrieval_effectiveness_ii} and~\
 \begin{itemize}
     \item{\dualbluebox{SS2-NT}{Non-relevant, Total} Under this stopping strategy, the searcher will stop once they have observed $x_2$ unattractive result summaries.}
     
-    \item{\dualbluebox{SS3-NC}{Non-relevant, Contiguous} Similar to the stopping strategy defined above above, a searcher employing this stopping strategy will stop once they have observed $x_3$ unattractive result summaries \emph{in a row (contiguously)}.}
+    \item{\dualbluebox{SS3-NC}{Non-relevant, Contiguous} Similar to the stopping strategy defined above, a searcher employing this stopping strategy will stop once they have observed $x_3$ unattractive result summaries \emph{in a row (contiguously)}.}
 \end{itemize}
 
 \begin{figure}[t!]
