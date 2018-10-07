@@ -35,49 +35,9 @@ Interaction data from these user studies were then used to ground an extensive s
 
 Results show that when enabled, the new~\gls{acr:serp} stopping decision point leads to significant improvements over the baseline implementation, with consistent improvements in overall performance (measured in~\gls{acr:cg}) reported across a range of experimental conditions, interfaces and stopping strategies. In consideration of approximating real-world searcher stopping behaviours, improvements are also present -- these however were not significantly different. Overall however, these results provide compelling evidence for \darkblueboxbold{HL-RQ1}, and also demonstrate a promising direction for future research in developing our understanding of the search process.
 
+With respect to our simulated analyses of individual stopping strategies, we found several stopping strategies offered the highest overall levels of~\gls{acr:cg} and good approximations with actual searcher stopping behaviours. For example, as result summary lengths increased, we found that \blueboxbold{SS11-COMB} consistently offered the best performance, with both \blueboxbold{SS1-FIX} and \blueboxbold{SS4-SAT} offering the best real-world searcher approximations. \blueboxbold{SS5-COMB} also offered the best overall levels of~\gls{acr:cg} across the second user study, with \blueboxbold{SS1-FIX} again offering the best levels of performance across condition \dualbluebox{ND}{AD}. In terms of approximations, \blueboxbold{SS1-FIX} and \blueboxbold{SS10-RELTIME} yielded the lowest MSE values. However, despite these strategies performing well, no one strategy clearly emerged as offering significantly improved levels of performance or approximations. However, several more complex stopping strategies such as \blueboxbold{SS6-DT} and \blueboxbold{SS7-DKL} consistently offered poorer performance and approximations. This is a common theme in our results: simplistic and combination-based stopping strategies generally performed better. This includes the fixed-depth stopping strategy, \blueboxbold{SS1-FIX}, which, counter to our intuition, consistently performed well. These results show that modelling stopping behaviours \emph{is} indeed difficult.
 
-
-- talk about the serp decision point, show that sig diffs were found.
-- in terms of stopping strategies, similar trends were observed across the different conditions and interfaces.
-- from the abstract, take the main points.
-
-- a sentence perhaps explaining why it's important work.
-- then lead onto the 
-
-
-in a very short space, what did we examine?
-
-- in this thesis, we examined...
-    - how stopping behaviour varies under different search contexts.
-    - under the domain of news search, we undertook two different user studies varying things.
-    - conditions and interfaces are reported in the table.
-    - we then used these to ground a series of simulated interactions.
-    - using the complex searcher model.
-    - examined a number of different stopping strategies, based upon heuristics from the literature
-        - in an attempt to quantify when "enough" information is enough
-    - and to see how the interfaces affect searcher stopping behaviours.
-    - we also considered a new stopping decision point.
-    
-    - brief sentence or two for user studies.
-    - for the snippets study, people went to greater depths.
-    - for the diversity study, more confusing picture.
-    
-    - for our simulated analysis...
-    
-    - result showed that... there was little difference between the interfaces and conditions.
-    - although for diversified system d, performance was markedly better than when using interface nd.
-    
-    - fixed depth performed well. counter-intuitive.
-    - frustration did really well.
-    - combination strategy did well.
-    - very similar, very few significant differences.
-    - the more complex the strategy, the worse the performance got. we consider this shortly.
-    
-    - the new stopping decision point was a marked improvement.
-    
-    - overall, no clear winner in terms of strategies.
-
-\section{Discussion}\label{sec:conclusions:discussion}
+\section{\todo{Discussion}}\label{sec:conclusions:discussion}
 so there is the summary.
 however, there's a lot of questions about why we got the results that we did.
 why is that so?
@@ -115,6 +75,8 @@ satisfaction, if i look for one, then stop, tends to be better than going deeper
 ift is pretty smooth, following the rate of gain is not the best. maybe it is how we calculate the rate of gain.
 
 - why does RBP underestimate? as you increase the patience parameter, you go deeper down the results. however, as you go deeper, you obtain better performance, but at a diminishing rate. like the difference based strategies, rbp is statistically signficant from ss11. except for T2, where no differences exist. rolling a dice doesnt perform as well. says it has a good user model, but we are showing maybe it doesn't.
+
+- pagination.
 
 - combination strategies do well!
     - people consider how annoyed/satisfied they are. not a single criterion for judging when to stop.
@@ -184,24 +146,50 @@ why did we do this though? not enough data. needed to do things in a consistent 
 - nevertheless, it is an important contribution that demonstrates how task and interface affect stopping behaviour.
 
 \section{Future Research Directions}\label{sec:conclusions:future}
-From the discussion and overall conclusions of our results, a number of potential avenues for future work can be considered. In this penultimate section, we consider the possibilities for future work. We present them across four main categories, being: the consideration of stopping strategies and heuristics; the realism of simulations of interaction; how the simulations of interaction are run; and considering future work from the perspective of real-world searchers and search contexts.
+From the summary and discussion of our results, a number of potential avenues for future work can now be considered. In this penultimate section, we consider these possibilities, presenting them across four main categories. These are: the consideration of stopping strategies and heuristics; the realism of simulations of interaction; how the simulations of interaction are run; and considering future work from the perspective of real-world searchers and search contexts.
 
-\subsection{Stopping Heuristics and Strategies}
+\subsection{Improving Simulation Realism}\label{sec:conclusions:future:improving}
+In this thesis, we presented the~\gls{acr:csm}, a high-level conceptual searcher model. It encapsulated many of the different activities and decision points that searchers would typically contend with across informational search tasks, bringing together the established sequence of events from prior works (e.g.~\cite{baskaya2013behavioural_factors} and~\cite{thomas2014modelling_behaviour}). Central to addressing \darkblueboxbold{HL-RQ1} was the inclusion of a new~\gls{acr:serp} level stopping decision point. This was demonstrated to offer improvements to the stopping behaviours of simulated searchers subscribing to the~\gls{acr:csm}, and thus yielded more realistic simulations of interaction. However, \emph{what changes could we subsequently make to the~\gls{acr:csm} in future work that would aid in advancing the realism of these simulations further?} As illustrated below, we consider this open question from three main research strands.
 
-\blueboxbold{Stopping Strategy Operationalisation}
+\begin{figure}[h!]
+    \centering
+    \resizebox{1\hsize}{!}{
+    \includegraphics[width=1\textwidth]{figures/ch10-future_simulations.pdf}}
+\end{figure}
 
-\blueboxbold{Additional Stopping Heuristics}
-single criterion rule for example.
-mental list.
-requires more complex implementations. better representations of their cognitive state.
+\blueboxheader{Cognitive and Contextual}
 
-\blueboxbold{Stopping Heuristic Selection}
+Additional search contexts
+Do the same findings apply to different search contexts? We considered only news search. And ad-hoc and aspectual retrieval. To see how things vary. But it is likely that they will vary elsewhere. Context, surroundings, device...
 
 
-\subsection{Improving Realism}
+\blueboxheader{Conceptual Modelling}
+We next consider a number of different enhancements to the~\gls{acr:csm} that could improve the realism of simulated searchers subscribing to such a model even further. Examples in the illustration above consider four potential areas for future improvement, including the notion of \genericblack{tool switching}, as demonstrated in the searcher model proposed by~\cite{thomas2014modelling_behaviour}. This decision point would be considered at the beginning of the search process, enabling a searcher to determine what tool, or retrieval system, would be best suited to help them satisfy their information need. This is opposed to the~\gls{acr:csm} as presented in this thesis, that assumes a retrieval system has been selected \emph{a priori.} \genericblack{Results pagination} is also outlined above, where a simulated searcher will be presented with~\glsplural{acr:serp} that are split into a number of different pages, rather than examining a continuous ranked list of results. This would involve the notion of extracting additional grounding data, perhaps such as the probability of continuing to the next~\gls{acr:serp} page, given, for example, a particular searcher, or some other condition. While we discuss \genericblack{stopping strategy selection} below, would additional \genericblack{stopping decision points} be possible to implement? Given the stopping strategy selection example, a searcher, following one strategy, may decide that the current approach is not beneficial to them, stop, and subsequently employ a different approach. If tool switching were implemented, what stopping criteria or criterion would be employed to stop using one tool, and switch to another?
+
+\blueboxheader{Stochastic to Deterministic} Underlying assumption in the simulations reported in this thesis is roll of a dice. This is inherently unrealistic. Simplifying assumption. 
+
+- choice (decision points)
+    - strategy selection (see below)
+    - decision points
+        - tool choice
+        - pagination
+
+- modelling searcher and context
+    - cognitive
+    - contextual factors -- down the line.
+
+- from stochastic to deterministic
+    - learning.
+    - rather than a simple roll of the dice.
 
 
-\blueboxheader{Improvements to~\gls{acr:csm} Realism}
+
+we made a step forward in terms of the realism our simulations brought about.
+however, can we make improvements?
+
+stochastic to deterministic.
+examine the text, rather than pre-rolling the dice.
+
 Addition of extra stopping decision points
 MODELS
 what about the search context, forgetful brain, for instance?
@@ -209,80 +197,101 @@ talk about agents here.
 tool choice.
 pagination.
 
-\blueboxbold{Improving Measures of Search}
-MEASURES
+\subsection{Stopping Heuristics and Strategies}
+In this thesis, we considered a total of twelve different stopping strategies, operationalised from a total of eight different stopping heuristics (and the~\gls{acr:rbp}~\gls{acr:ir} evaluation measure). We showed how each of the different strategies perform over a number of different experimental interfaces and conditions. During the methodological design stage, it became apparent that the approaches taken for the operationalisation of the selected stopping strategies was just one of many. \emph{What if we implemented our stopping strategies in different ways? Why did we select these strategies?} Here, we consider these questions with insight into what might happen if they were to be explored further.
 
-\subsection{Simulations of Interaction}
+what if we employed them at different levels, like session level?
+arguably did this for goal-based satisfaction. but do other ones work better? would a combination strategy perform well here?
 
-\blueboxbold{Scaling Simulations of Interaction}
-pre-rolled judgements were a good call.
-is the power enough? what if we ran more experiments?
+\blueboxbold{Stopping Strategy Operationalisation}
 
-\subsection{Contexts and Searchers}
+There are many, many different avenues for exploration here. Prime example: OFT strategy. Consistently performed poorly. List the different strategies that we could operationalise in a different way, explaining what may happen (educated guess).
+For example, OFT, rate of gain set over all topics trialled. But we know that some topics are more difficult to find relevant material for than others (reference the table with the number of rel documents, show that one has less than the other). This would influence stopping, because simply less likely a relevant item would appear in the ranks.
 
-\blueboxbold{Additional Search Contexts}
-
-\blueboxbold{Individual Searcher Stopping}
-
+existing stopping strategy operationalisation
+We could have operationalised the stopping heuristics in many different ways. We chose simplistic means to operationalise them. These means may or may not have influenced the performance/approximations that each strategy offered. Future work is required to determine if this is indeed the case or not.
 
 
+\blueboxbold{Additional Stopping Heuristics}
+single criterion rule for example.
+mental list.
+requires more complex implementations. better representations of their cognitive state.
+
+more strategies, considering things like INST, or things like BEJEWLED.
 
 
+\blueboxbold{Stopping Heuristic Selection}
+which strategy should we employ? as discussed above in Section~\ref{sec:conclusions:future:improving}.
 
-
-
-
-
-
-
-
-Additional Stopping Decision point -- improving realism further
-Taking the CSM further. Tool switching. Other things to add to the searcher model to hitherto improve realism.
-
-Additional search contexts
-Do the same findings apply to different search contexts? We considered only news search. And ad-hoc and aspectual retrieval. To see how things vary. But it is likely that they will vary elsewhere. Context, surroundings, device...
+heuristic selection
+We didn't really consider under what circumstances one heuristic would be better than another. So, how would one be able to select the best threshold for a given circumstance? Kind of eluded to this with SS11-COMB, that selected a stopping strategy based upon the perceived yield of a SERP. However, are there different factors which could influence the selection of a particular heuristic, and what are they? What heuristics would work best?
 
 additional stopping heuristics
 
 encoding additional stopping models and measures
     - turning SS5/SS11 into a stopping model. e.g. bejewled, following on that train of thought.
 
-existing stopping strategy operationalisation
-We could have operationalised the stopping heuristics in many different ways. We chose simplistic means to operationalise them. These means may or may not have influenced the performance/approximations that each strategy offered. Future work is required to determine if this is indeed the case or not.
 
-There are many, many different avenues for exploration here. Prime example: OFT strategy. Consistently performed poorly. List the different strategies that we could operationalise in a different way, explaining what may happen (educated guess).
-For example, OFT, rate of gain set over all topics trialled. But we know that some topics are more difficult to find relevant material for than others (reference the table with the number of rel documents, show that one has less than the other). This would influence stopping, because simply less likely a relevant item would appear in the ranks.
 
-heuristic selection
-We didn't really consider under what circumstances one heuristic would be better than another. So, how would one be able to select the best threshold for a given circumstance? Kind of eluded to this with SS11-COMB, that selected a stopping strategy based upon the perceived yield of a SERP. However, are there different factors which could influence the selection of a particular heuristic, and what are they? What heuristics would work best?
+\blueboxbold{Improving Measures of Search}
+MEASURES
 
-individual searcher stopping
-How can we use the knowledge reported in this thesis to develop models more in line with an individual's stopping behaviours?
-COMBO - recent work has shown that approaches like bejeweled are more in line with what people actually do. evidence from this thesis somewhat supports this argument -- combination approaches do well, and offer good performance. perhaps we need to look away from a single heuristic and consider two (or even more), see heuristic selection above.
+\subsection{Execution of Simulations}
 
-Additionally, future work can work on these models at an individual searcher level. This thesis has exclusively reported behaviours on average, across \~ 50 subjects over different interfaces and conditions. This provides us with a rough approximation as to what will work best. However, people behave differently -- there is no general rule of thumb. For example, could we classify people based upon their searcher behaviours? Like Smucker's fast and liberal, slow and strict classification. Perhaps getting a better understanding of their searcher behaviours could factor into the interface used, and then this could improve their searching ability.
-
-realism
-We made assumptions for the diversity study. The decision maker was based on ad-hoc retrieval.
-The task for two was aspectual. This was not considered, yet we still got good gain and approximations. Would this improve if we undertook work to develop new decision making components, for the different retrieval tasks?
-
-pagination of results. how did pagination affect everything?
-
-We should acknowledge that by not considering each stopping strategy in chapter 9, we might be missing something out. There could be some things at play that we do not consider -- because everything is linked together. 
-
-how does the scent judgement affect how the searcher performs? is p@vize optimal? do different people have different thresholds here?
-
-why did average drop off sometimes in Ch9, falling below Always?
-
-for SS2 and SS5 in Average, why was the mean depth per query higher?
-
-for comparisons in ch9... why did ss1 and ss5 at perfect give the best approximations? that is interesting and slightly odd.
-
-if a searcher performs badly/worse than always, they could be stopping queries early on that are bad, and entering those that are good, saving documents. likelihood that relevant documents already saved will reappear in subsequent queries later on, they have more time to issue more if they skip queries! and the judgement is such that if it's relevant, you go in. no consideration for things observed previously. did not consider this; so you enter a SERP, but there's nothing new to save even though it looked good! mismatch here -- something to address in future work.
+\blueboxbold{Scaling Simulations of Interaction}
+pre-rolled judgements were a good call.
+is the power enough? what if we ran more experiments?
 
 scaling experiments up further.
     power idea in discussion.
 
+\subsection{Individual Searchers}
+
+individual searcher stopping
+How can we use the knowledge reported in this thesis to develop models more in line with an individual's stopping behaviours?
+
+COMBO - recent work has shown that approaches like bejeweled are more in line with what people actually do. evidence from this thesis somewhat supports this argument -- combination approaches do well, and offer good performance. perhaps we need to look away from a single heuristic and consider two (or even more), see heuristic selection above.
+
+\blueboxbold{Individual Searcher Stopping}
+Additionally, future work can work on these models at an individual searcher level. This thesis has exclusively reported behaviours on average, across \~ 50 subjects over different interfaces and conditions. This provides us with a rough approximation as to what will work best. However, people behave differently -- there is no general rule of thumb. For example, could we classify people based upon their searcher behaviours? Like Smucker's fast and liberal, slow and strict classification. Perhaps getting a better understanding of their searcher behaviours could factor into the interface used, and then this could improve their searching ability.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% realism
+% We made assumptions for the diversity study. The decision maker was based on ad-hoc retrieval.
+% The task for two was aspectual. This was not considered, yet we still got good gain and approximations. Would this improve if we undertook work to develop new decision making components, for the different retrieval tasks?
+%
+% pagination of results. how did pagination affect everything?
+%
+% We should acknowledge that by not considering each stopping strategy in chapter 9, we might be missing something out. There could be some things at play that we do not consider -- because everything is linked together.
+%
+% how does the scent judgement affect how the searcher performs? is p@vize optimal? do different people have different thresholds here?
+%
+% why did average drop off sometimes in Ch9, falling below Always?
+%
+% for SS2 and SS5 in Average, why was the mean depth per query higher?
+%
+% for comparisons in ch9... why did ss1 and ss5 at perfect give the best approximations? that is interesting and slightly odd.
+%
+% if a searcher performs badly/worse than always, they could be stopping queries early on that are bad, and entering those that are good, saving documents. likelihood that relevant documents already saved will reappear in subsequent queries later on, they have more time to issue more if they skip queries! and the judgement is such that if it's relevant, you go in. no consideration for things observed previously. did not consider this; so you enter a SERP, but there's nothing new to save even though it looked good! mismatch here -- something to address in future work.
+%
+%
+%
 
 \section{Final Remarks}\label{sec:conclusions:remarks}
-The search process is complex, with searchers able to undertake a wide range of potential actions and decisions. With these actions and decisions, differing behaviours can be observed. We have shown in this thesis that \emph{stopping behaviours} can also be considered as difficult to examine and measure. Nevertheless, this work motivates the fact that we need to consider stopping behaviours in the development of future evaluation measures and search interfaces. Despite the inherently difficult task that understanding and modelling the stopping behaviours of searchers represents, we believe that the potential benefits of further exploration in this area will undoubtedly aid the searchers and researchers of future retrieval systems. Now that this is all done, \emph{I} am off to the pub -- and having reached the end of this thesis, you should go, too!
+The search process is complex, with searchers able to undertake a wide range of potential actions and decisions. With these actions and decisions, differing behaviours can be observed. We have shown in this thesis that \emph{stopping behaviours} can also be considered as difficult to examine and measure. Nevertheless, this work motivates the fact that we need to consider stopping behaviours in the development of future evaluation measures and search interfaces. 
+
+Despite the inherently difficult task that understanding and modelling the stopping behaviours of searchers represents, we believe that the potential benefits of further exploration in this area will undoubtedly aid the searchers and researchers of future retrieval systems. Now that this is all done, \emph{I} am off to the pub -- and having reached the end of this thesis, you should go, too!
