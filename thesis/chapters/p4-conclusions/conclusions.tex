@@ -87,28 +87,55 @@ Next, we consider the~\gls{acr:ift}-based strategy \blueboxbold{SS8-IFT}. Eviden
     \label{fig:per_topic_differences}
 \end{figure}
 
-We also observed that the~\gls{acr:rbp}-based measure, \blueboxbold{SS12-RBP}, also generally failed to perform and approximate well. Even with a high patience parameter $p$, we observed that the stopping strategy continually underestimated the stopping depths of real-world searchers. (Refer to plot \blueboxbold{SS12-RBP} in Figure~\ref{fig:ch7_sim_comparison_plots} on page~\pageref{fig:ch7_sim_comparison_plots} for an example.) As the $p$ parameter increases, the simulated searcher examines contents to steadily increasing depths. The greater a searcher would go, the better their performance would be -- but performance would improve at a diminishing rate. These poorer results demonstrate that rolling a dice (as is the case for \blueboxbold{SS12-RBP}) doesn't necessarily perform well or offer good approximations. This is at odds with prior research demonstrating that~\gls{acr:rbp} offers a good searcher model -- evidence in this thesis suggests to the contrary.
+We also observed that the~\gls{acr:rbp}-based measure, \blueboxbold{SS12-RBP}, also generally failed to perform and approximate well. Even with a high patience parameter $p$, we observed that the stopping strategy continually underestimated the stopping depths of real-world searchers. (Refer to plot \blueboxbold{SS12-RBP} in Figure~\ref{fig:ch7_sim_comparison_plots} on page~\pageref{fig:ch7_sim_comparison_plots} for an example.) As the $p$ parameter increases, the simulated searcher examines contents to steadily increasing depths. The greater a searcher would go, the better their performance would be -- but performance would improve at a diminishing rate. These poorer results demonstrate that rolling a dice (as is the case for \blueboxbold{SS12-RBP}) doesn't necessarily perform well or offer good approximations. This is at odds with prior research demonstrating that~\gls{acr:rbp} offers a good searcher model -- evidence reported in this thesis suggests to the contrary.
 
+Both stopping strategies considering a combination-based approach -- \blueboxbold{SS5-COMB} and \blueboxbold{SS11-COMB} -- performed and approximated well. Results from \blueboxbold{SS5-COMB} in particular seem to suggest that, at least in terms of approximating stopping behaviours, searchers do not consider a single criterion when determining the point at which they should stop examining results. This is an interesting conclusion, with other evidence available to support this. A recent study by~\cite{zhang2017bejewled} used the \emph{Bejeweled Player Model (BPM)} to model a searcher's stopping behaviours, where they would stop when \emph{``he/she either has found sufficient useful information, or no more patience to continue.''} This description is analogous to a combination of stopping strategies \blueboxbold{SS4-SAT} (satiation) and one of either \blueboxbold{SS2-NT} or \blueboxbold{SS3-NC}, with findings from this study showing improvements in correlations between searcher satisfaction and existing measures. In a similar fashion, work by~\cite{azzopardi2018cwl} has also demonstrated that better evaluation measures can be developed by considering not only the gain accumulated, but the cost expended in attaining said gain. The BPM was also demonstrated in this subsequent study to offer superior performance when compared against other established evaluation measures. This mounting evidence suggests that when considering stopping behaviours, evaluation measures should consider stopping from more than one single criterion.
 
-\todo{=====}
+While also regarded as a combination-based strategy, \blueboxbold{SS11-COMB} was operationally different from \blueboxbold{SS5-COMB}. Rather than considering multiple stopping criteria at once, \blueboxbold{SS11-COMB} considered a single stopping strategy, based upon an initial impression of the presented~\gls{acr:serp}. This stopping strategy also performed and approximated well, and provides evidence that rigidly following a single stopping strategy across a range of queries with differing performance may not be the best approach. This approach is intuitive -- picking a satiation-based approach makes sense for a query with a large number of relevant documents. The likelihood of being satisfied would be greater than a query with a comparatively low number of relevant documents. In this case, the give-up time-based approach also intuitively makes sense. However, the good performance offered by this stopping strategy could be partially down to the means by which we determined whether a~\gls{acr:serp} was high yielding early on or not. Employing the use of~\gls{acr:trec} QRELs to determine the $P@1$ judgement meant that the simulated searcher possessed an unfair advantage. If we were for example to introduce a stochastic element to this stopping strategy, we may see lower performance -- but conversely, better approximations. We did not consider this due to limitations of computer hardware, as we discuss in Section~\ref{sec:conclusions:future:running}.
 
-- combination approaches. both worked very well.
-    - ss5-comb seems to demonstrate that at least in terms of approximations, individuals don't consider a single critertion determining when to stop. that is interesting.
-        - bejewled, leif's work.
-    
-    - ss11-comb, is not technically combination in the sense that two strategies are not used at the same time. ratehr, one is selected and used depending upon some criteria.
-        - also performed well.
-        - intutively makes sense, because if good, keep going (satisfaction!). if unsure, then time yourself out.
-    
-    - would hypothesise that other approaches of combination strategies exist.
-        - ss11 is also grounded on QRELs. it always knew what was good, what was bad.
-            - how could we extract data from search logs allowing us to work out what was good or bad?
-
-- fixed depth did so well. P@k for a long time. Surprising how well these map to RW behaviours on average. Interesting, counter-intuitive that adaptive strategies should perform better.
-
- A lot of these stopping strategies, when tuned appropriately are all close to RW searchers. 
+Overall, a majority of stopping strategies performed well and produced approximations that were very close to one another, with few significant differences. One particularly surprising result was that of \blueboxbold{SS1-FIX}. The fixed-depth, non-adaptive approach consistently offered good performance and approximations. This is surprising and counter-intuitive, as it would make sense for more adaptive strategies to reflect closer to real-world searcher stopping behaviours. This may be a result of averaging over a population -- individual stopping behaviours would likely demonstrate that adaptive strategies would outperform \blueboxbold{SS1-FIX}. Nevertheless, many of the stopping strategies trialled, when tuned appropriately (i.e. \dualbluebox{SS1-FIX}{@24}, which one could argue as being wholly unrealistic), offer good approximations and performance.
 
 \subsection{Performance, Interfaces and Conditions}
+Considering the eight experimental interfaces and conditions, we found the best approximations were attained over interface \blueboxbold{T2}. Approximations over this particular interface consistently offered the lowest MSE values, demonstrating that the extracted interaction probabilities appeared to do a very good job at estimating real-world examination strategies. Considering the study in Chapter~\ref{chap:diversity}, condition \dualbluebox{D}{AS} consistently offered better approximations than the other three.
+
+More interesting however is the difference in the levels of~\gls{acr:cg} that were attained by simulated searchers if they rigidly followed each of the twelve stopping strategies trialled. This was achieved when the stopping strategies were tuned to the configuration yielding the best approximation to actual searcher stopping behaviours. We demonstrated this difference with the bar charts presented in Figure~\ref{fig:ch7_sim_comparison_rankings} on page~\pageref{fig:ch7_sim_comparison_rankings}, and Figure~\ref{fig:ch8_sim_comparison_rankings} on page~\pageref{fig:ch8_sim_comparison_rankings}. Recall from the plots that several of the simplistic stopping strategies (i.e. \blueboxbold{SS1-FIX}, \blueboxbold{SS2-NT}, \blueboxbold{SS3-NC} and \blueboxbold{SS4-SAT}) typically outperformed the mean real-world searcher~\gls{acr:cg} value attained over each of the four experimental interfaces reported in Chapter~\ref{chap:snippets}. In contrast, when the stopping strategies were run over the experimental conditions in Chapter~\ref{chap:diversity}, results showed the real-world~\gls{acr:cg} values were much better (often as much as one entire unit of gain higher) than the best stopping strategy approximation offered.\footnote{The exception to this trend was \blueboxbold{SS3-NC} over condition \dualbluebox{ND}{AS}, which offered a higher level of~\gls{acr:cg} than the real-world mean.}
+
+\begin{table}[t!]
+    \caption[Observed cost per unit of gain]{Summarising statistics across the eight interfaces and conditions trialled. Included in this table is the reported average session time (\genericblack{Avg. S.T.}), mean \genericblack{\gls{acr:cg}} attained, and the cost per unit of~\gls{acr:cg}, or \genericblack{Cost/Unit~\gls{acr:cg}}. All $\pm$ values denote the standard deviations. Values reported are over the real-world subjects of the two user studies conducted, as reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. Values for \genericblack{Chapter~\ref{chap:snippets} (Uncut)} relate to the full ten minutes, rather than the first six minutes used elsewhere. Refer to Section~\ref{sec:snippets:method:subjects} on page~\pageref{sec:snippets:method:subjects} for further information.}
+    \label{tbl:conclusion_gain}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.85cm}@{\CS}D{3.3cm}@{\CS}D{3.3cm}@{\CS}D{3.3cm}@{\CS}}
+
+        & & \lbluecell \textbf{Avg. S.T.} & \lbluecell \textbf{\gls{acr:cg}} & \lbluecell \textbf{Cost/\gls{acr:cg} Unit} \\
+
+        \RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:snippets}}}} & \lbluecell\textbf{T0} & \cell 353.18$\pm$44.22 & \cell 1.87$\pm$2.39 & \cell 188.87 \\
+        \RS & \lbluecell\textbf{T1} & \cell 356.18$\pm$41.79 & \cell 1.83$\pm$2.17 & \cell 194.63 \\
+        \RS & \lbluecell\textbf{T2} & \cell 366.49$\pm$39.82 & \cell 2.36$\pm$2.28 & \cell 155.29 \\
+        \RS & \lbluecell\textbf{T4} & \cell 361.01$\pm$49.33 & \cell 1.87$\pm$1.21 & \cell 193.05 \\
+        
+        \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Chapter~\ref{chap:snippets} (Uncut)}}} & \lbluecell\textbf{T0} & \cell xx & \cell xx & \cell xx \\
+        \RS & \lbluecell\textbf{T1} & \cell xx & \cell xx & \cell xx \\
+        \RS & \lbluecell\textbf{T2} & \cell xx & \cell xx & \cell xx \\
+        \RS & \lbluecell\textbf{T4} & \cell xx & \cell xx & \cell xx \\
+
+        \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:diversity}}}} & \lbluecell\textbf{D-AS} & \cell 443.65$\pm$45.05 & \cell 4.09$\pm$2.64 & \cell 108.47 \\
+        \RS & \lbluecell\textbf{ND-AS} & \cell 430.50$\pm$38.39 & \cell 3.35$\pm$2.92 & \cell 128.51 \\
+        \RS & \lbluecell\textbf{D-AD} & \cell 432.18$\pm$49.87 & \cell 4.12$\pm$2.89 & \cell 104.89 \\
+        \RS & \lbluecell\textbf{ND-AD} & \cell 447.55$\pm$47.82 & \cell 3.49$\pm$2.76 & \cell 128.24 \\
+
+    \end{tabulary}
+    \end{center}
+\end{table}
+
+To examine this in more detail, we undertook further analysis of the~\gls{acr:cg} attained by real-world searchers over the eight experimental interfaces and conditions. Table~\ref{tbl:conclusion_gain} reports the mean session time (\genericblack{Avg S.T.}) and \genericblack{\gls{acr:cg}} values that were attained by the real-world searchers, on average. We then performed a simple calculation for each interface and condition, dividing the average session time by the~\gls{acr:cg} values attained. This yielded the mean cost per unit of~\gls{acr:cg} (\genericblack{Cost/CG Unit}), a measure that demonstrates the \emph{efficiency} of searchers on average. The lowest the cost per unit of gain, the more efficient the searcher. From the table, we can clearly that the subjects employed for the study in Chapter~\ref{chap:diversity} searched in a more efficient way. The cost per unit of~\gls{acr:cg} was lower than that reported in Chapter~\ref{chap:snippets} (e.g. $155.29$ seconds over interface \blueboxbold{T2}, compared to $128.24$ seconds over condition \dualbluebox{ND}{AD}). Note the lower session times for the study reported in Chapter~\ref{chap:snippets} -- partially attributable to the $360$ second cutoff we imposed in that study.
+
+- do the results for chapter 7, without the cutoff period imposed. Does the CG value rate higher? What is the rate per unit of gain without the cutoff? Does it get closer to the chapter 8 value?
+
+- if so, shows that the strategies are bad overall at predicting performance.
+
+While confirming the reasoning behind the 
+
 
 best approximations for interface T2.
 lowest MSE. why is that? probability estimates seemed to do a very good job for that particular interface.
@@ -118,29 +145,6 @@ why did the stopping strategies offer better approximations for ch7 than ch8? in
 
 ch8 searchers more efficient than ch7 searchers, hypothesise that the goals varies and influences your decisions/ability to search.
 
-    \begin{table}[t!]
-        \caption[GAIN]{Summarising details across the eight interfaces and conditions trialled. Included in this table is the reported average session time (\genericblack{Avg. S.T.}), mean \genericblack{\gls{acr:cg}} attained, and the cost per unit of~\gls{acr:cg}, or \genericblack{Cost/Unit~\gls{acr:cg}}. All $\pm$ values denote the standard deviations. Values reported are over the real-world subjects of the two user studies conducted, as reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}.}
-        \label{tbl:conclusion_gain}
-        \renewcommand{\arraystretch}{1.8}
-        \begin{center}
-        \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.85cm}@{\CS}D{3.3cm}@{\CS}D{3.3cm}@{\CS}D{3.3cm}@{\CS}}
-
-            & & \lbluecell \textbf{Avg. S.T.} & \lbluecell \textbf{\gls{acr:cg}} & \lbluecell \textbf{Cost/Unit~\gls{acr:cg}} \\
-
-            \RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:snippets}}}} & \lbluecell\textbf{T0} & \cell 353.18$\pm$44.22 & \cell 1.87$\pm$2.39 & \cell 188.87 \\
-            \RS & \lbluecell\textbf{T1} & \cell 356.18$\pm$41.79 & \cell 1.83$\pm$2.17 & \cell 194.63 \\
-            \RS & \lbluecell\textbf{T2} & \cell 366.49$\pm$39.82 & \cell 2.36$\pm$2.28 & \cell 155.29 \\
-            \RS & \lbluecell\textbf{T4} & \cell 361.01$\pm$49.33 & \cell 1.87$\pm$1.21 & \cell 193.05 \\
-
-            \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:diversity}}}} & \lbluecell\textbf{D-AS} & \cell 443.65$\pm$45.05 & \cell 4.09$\pm$2.64 & \cell 108.47 \\
-            \RS & \lbluecell\textbf{ND-AS} & \cell 430.50$\pm$38.39 & \cell 3.35$\pm$2.92 & \cell 128.51 \\
-            \RS & \lbluecell\textbf{D-AD} & \cell 432.18$\pm$49.87 & \cell 4.12$\pm$2.89 & \cell 104.89 \\
-            \RS & \lbluecell\textbf{ND-AD} & \cell 447.55$\pm$47.82 & \cell 3.49$\pm$2.76 & \cell 128.24 \\
-
-        \end{tabulary}
-        \end{center}
-    \end{table}
-
 - mini table — cost per unit of gain.
 		- could be a fact of the goal. When we look at the stopping strategies, in figure 8.9, searchers seem to be so much better than the stopping strategies!
 		- unless the mean is dominated by one or two searchers who got one or good scores?
@@ -148,6 +152,8 @@ ch8 searchers more efficient than ch7 searchers, hypothesise that the goals vari
 \subsection{Simulations of Interaction}
 
 - why was the cg so poor for the simulations in chapter 8 compared to chapter 7?
+
+- talk about the power of the experiments. were trends that we should of seen not visible?
 
 
 % \subsection{Stopping Strategies and Behaviours}
@@ -313,9 +319,9 @@ An open question arising from the work in this thesis considers: \emph{how do yo
 Of course, the eight stopping heuristics that we considered in this thesis do not constitute the entirety of the heuristics defined in the literature. We selected these heuristics as they offered interesting differences between one another, were \emph{relatively} straightforward to implement, and would likely be discernible across complex informational search tasks. Unused heuristics such as the mental list stopping heuristic (considering different criteria that must be met, as outlined by~\cite{nickles1995judgment} and detailed in Section~\ref{sec:stopping_background:heuristics:mental} on page~\pageref{sec:stopping_background:heuristics:mental}) would have been much more challenging to operationalise and implement -- and even so, would such a heuristic be suitable for the task at hand? The ability for a searcher to create a series of bullet points about a topic would imply he or she has some sound idea of what they are looking for. The searcher's knowledge of a topic may be so limited that such a heuristic would be unsuitable. Linking back to contextual factors above, considering additional search contexts (perhaps with searchers of astute and limited knowledge of a topic) would be interesting to examine.
 
 \blueboxbold{Towards Future~\gls{acr:ir} Measures}
-Given the above, findings from this research provides motivation for further work considering the inclusion of stopping heuristics within the measures that are used within~\gls{acr:ir} research. For example, stopping strategy \blueboxbold{SS5-COMB} demonstrated good overall and performance considering a searcher's satisfaction and tolerance to non-relevant material. This too has been shown in the \emph{Bejeweled} framework~\citep{zhang2017bejewled}, leading to the development of an updated evaluation measure considering the costs and gains of searching~\citep{azzopardi2018cwl}.
+Given the above, findings from this research provides motivation for further work considering the inclusion of stopping heuristics within the measures that are used within~\gls{acr:ir} research. For example, stopping strategy \blueboxbold{SS5-COMB} demonstrated good overall and performance considering a searcher's satisfaction and tolerance to non-relevant material. This too has been shown in the BPM~\citep{zhang2017bejewled}, leading to the development of an updated evaluation measure considering the costs and gains of searching~\citep{azzopardi2018cwl}.
 
-\subsection{Simulation Trials and Topics}
+\subsection{Simulation Trials and Topics}\label{sec:conclusions:future:running}
 We also consider future work in terms of \emph{how} the simulations of interaction could be run. While 50 trials were selected because of the fact that approximately 50 subjects partook in each user study, there may be trends and significant differences that we simply did not observe because of a lack of power. This limitation was also imposed with an insufficient amount of processing power to complete the experiments in a reasonable timeframe. With more powerful computer hardware, scaling up the experiments with more trials would have become a more realistic prospect.
 
 We also consider using five topics for our performance \emph{(what-if)} experiments to be a limiting factor. While the decision to use five topics was justified due to a lack of data (considering entities across the remaining 45 topics in Chapter~\ref{chap:diversity}) -- and to ensure that comparisons between interfaces and conditions were fair -- 50 topics would have been preferred (refer to Figure~\ref{fig:per_topic_differences}). If data were available for the remaining 45 topics, we could then trial additional performance runs, which may also lead to the observation of other trends and potential significant differences.
