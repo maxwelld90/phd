@@ -258,30 +258,14 @@ why did we do this though? not enough data. needed to do things in a consistent 
 % why did we do this though? not enough data. needed to do things in a consistent way.
 
 
-\section{\todo{Conclusion}}\label{sec:conclusions:conclusion}
+\section{Conclusion}\label{sec:conclusions:conclusion}
+Stopping behaviours are an inherently difficult phenomenon to understand and model effectively. This can be mainly attributed to the fact that stopping is determined by a series of heuristics, internal to a decision maker's thinking process. Mapping these heuristics, or intuitions, is difficult -- as has been shown by successive studies demonstrating that searchers stop when they feel that what they have found is \emph{``good enough''}~\citep{zach2005enough_is_enough}.
 
+This thesis presented one of the first large-scale examinations of twelve stopping strategies, based upon a number of stopping heuristics defined by various researchers as a means for quantifying the feeling of \emph{`enough'.} These strategies were catalogued and operationalised, providing an answer to \darkblueboxbold{HL-RQ2}. Extensive simulations of interaction were conducted, designed to examine the overall performance and approximations of real-world stopping behaviours each of the strategies yielded. This was achieved with the use of~\gls{acr:csm} -- which demonstrated significant improvements in performance (at the expense of increased complexity) with the new~\gls{acr:serp} level stopping decision point (addressing \darkblueboxbold{HL-RQ1}). This result shows that it does appear that taking the information scent of a~\gls{acr:serp} into account is important.
 
+In terms of \darkblueboxbold{HL-RQ3a} and \darkblueboxbold{HL-RQ3b}, we found that a majority of the twelve stopping strategies offered similar levels of performance and approximations of real-world searcher stopping behaviours. This was observed over the eight experimental interfaces and conditions. Although the best performing and approximating strategies did vary between interfaces and conditions, they did not offer signifiant improvements over a majority of the other stopping strategies. We found that stopping strategies that were simpler to operationalise generally performed better. While intuitive, several issues were raised concerning the implementation of the more complex approaches -- future work can address these potential problems. In terms of searcher approximations, it appears that any stopping strategy, when tuned, will offer reasonable approximations -- albeit with potentially unrealistic settings (i.e. \dualbluebox{SS1-FIX}{@24}).
 
-
-\darkblueboxbold{HL-RQ1}
-
-
-\darkblueboxbold{HL-RQ2}
-
-\darkblueboxbold{HL-RQ3a}
-
-\darkblueboxbold{HL-RQ3b}
-
-
-- what is the conclusion?
-    - there is no overall winning combination. simple strategies seem to do better in terms of offering outright performance, and approximations. in terms of approximations, tuning a given stopping strategy will yield good approximations, regardless of the strategy you follow. evident with SS1-FIX for example, with comparatively deep depths (i.e. x1=24).
-
-- we also see improvements in modelling.
-- at the expense of increased complexity (in terms of running them), the simulations have been shown to be more realistic in terms of approximating click depths.
-    - it does appear that taking scent into account is important. leads to slightly lower error rates, although we could not demonstrate this difference to be significant.
-
-- limitations of the work could influence work, hide trends.
-- nevertheless, it is an important contribution that demonstrates how task and interface affect stopping behaviour.
+If examined over individual searcher levels, we may find different results. This work nevertheless serves as an important contribution that demonstrates the importance of considering stopping behaviours within the models and measures that we use in~\gls{acr:ir}.
 
 \section{Future Research Directions}\label{sec:conclusions:future}
 From the summary and discussion of our empirical results, a number of potential avenues for future work can be considered. In this penultimate section, we consider these possibilities, presenting them across four main categories. These are: how to improve the realism of simulations of interaction further; the consideration of stopping heuristics and strategies; considering simulation trials and topics; and considering the modelling of stopping from the level of individual searchers.
@@ -303,7 +287,7 @@ Other factors such as the location, device and other external pressures will als
 Much work remains on how we can understand and subsequently model the cognitive processes and factors that influence how individuals behave when searching. Individuals are unique; behaviours will undoubtedly differ from person to person. Within the modelling process, novel techniques can be applied that could possibly improve the realism of simulations. For example, within the \simiir~framework, the search context component tracks a list of queries issued, documents examined (and saved), along with other measures. Could this component be manipulated in such a way as to better mimic the behaviours of a human? Rather than maintaining a perfect list of everything that has been examined, a simulated searcher could be programmed to become `forgetful' in remembering what they have examined, with certain cues within a document reminding them that this is something that they may have previously examined.
 
 \blueboxheader{Conceptual Modelling}
-We next consider a number of further enhancements to the~\gls{acr:csm} that could improve the realism of simulations further. Examples in the illustration above consider four potential areas for future improvement. \genericblack{Tool switching}, as demonstrated by~\cite{thomas2014modelling_behaviour}, would be considered at the beginning of the search process. It would enable a searcher to determine what tool, or retrieval system, would be suited to help them satisfy their information need. This is opposed to the current~\gls{acr:csm} as presented in the thesis, that assumes a retrieval system has been selected \emph{a priori.} A study by~\cite{white2009tool_switching} has shown that predicting tool switching may be feasible. They reported that sufficiently consistent behaviours exhibited by searchers in relation to this phenomenon led to accurate predictions of tool switching events.
+We next consider a number of further enhancements to the~\gls{acr:csm} that could improve the realism of simulations further. Examples in the illustration above consider four potential areas for future improvement. \genericblack{Tool switching}, as demonstrated by~\cite{thomas2014modelling_behaviour}, would be considered at the beginning of the search process. It would enable a searcher to determine what tool, or retrieval system, would be suited to help them satisfy their information need. This is opposed to the current~\gls{acr:csm} as presented in the thesis, that assumes a retrieval system has been selected \emph{a priori.} A study by~\cite{white2009tool_switching} has shown that predicting tool switching is feasible. They reported that sufficiently consistent behaviours exhibited by searchers in relation to this phenomenon led to accurate predictions of tool switching events.
 
 \genericblack{Results pagination} is also listed in the illustration above. Here, a simulated searcher will be presented with~\glsplural{acr:serp} that are split across a number of different pages, rather than examining a continuous ranked list of results. This would involve the notion of extracting additional grounding data from interaction logs, perhaps such as the likelihood of a searcher continuing to the next~\gls{acr:serp} page, given their interaction history. This would likely impact upon the realism of simulations, as a study by~\cite{jansen2005analysis} showed a sharp decrease in content examined after the first page of results.
 
