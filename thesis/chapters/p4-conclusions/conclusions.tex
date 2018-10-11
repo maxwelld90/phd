@@ -50,7 +50,7 @@ From the analysis of our simulations of interaction, a number of interesting are
 
 These questions relate specifically to the stopping strategies and simulations of interaction that were trialled. For a more general discussion on the results of the two user studies, and how behaviours varied, refer to Sections~\ref{chap:snippets:user:discussion} on page~\pageref{chap:snippets:user:discussion} and~\ref{sec:diversity:users:discussion} on page~\pageref{sec:diversity:users:discussion}.
 
-\subsection{Searcher Models and Realism}
+\subsection{\todo{Searcher Models and Realism}}
 
 - inclusion of new stopping decision point helps.
 - improves the realism of the experiments.
@@ -77,7 +77,7 @@ In contrast, findings demonstrated that the more complex stopping strategies ten
 
 Given these general findings, \emph{why} did the more complex stopping strategies perform and approximate worse on average? We hypothesise several reasons as to why this may have been the case, with future examination required in order to confirm these hypotheses. Taking the difference-based stopping strategies into account first, we hypothesise that the bimodal distribution of performance over querying strategy \blueboxbold{QS13} may have been the reason why the strategies offered poorer performance. Recall that querying strategy \blueboxbold{QS13} issued a single term query, then a three term query. For single term queries, the diversity of the results returned was likely to be much greater than for three term queries. Consequently, for single term queries that provided little potential gain, simulated searchers would likely have examined to much greater depths. This is true also for real-world queries used for the comparison runs (addressing \darkblueboxbold{HL-RQ3b}) -- many poor quality real-world queries were issued, with $P@10=0.0$. This would have likely had a negative influence on how the different stopping strategies performed. To demonstrate this, Figure~\ref{fig:query_performance_ch7} highlights the distribution of performance across the queries issued by subjects from the user study reported in Chapter~\ref{chap:snippets}.
 
-Next, we consider the~\gls{acr:ift}-based strategy \blueboxbold{SS8-IFT}. Evidence has shown that~\gls{acr:ift} has proven good at predicting searcher behaviours, with recent approaches demonstrated by~\cite{ong2017scent_behaviour} and~\cite{azzopardi2018cwl}, for example. Indeed, in Section~\ref{sec:diversity:users:results:ift} on page~\pageref{sec:diversity:users:results:ift}, we observed that our~\gls{acr:ift}-based hypotheses matched up closely with empirical evidence. Why did \blueboxbold{SS8-IFT} then proceed to consistently offer poorer performance and approximations than more simplistic approaches? We hypothesise that this comparative lack of performance can be attributed to how the \emph{rate of gain} is computed, which is the stopping criterion employed in \blueboxbold{SS8-IFT}. The assumptions that we made may not work particularly well over a per-topic basis, with the same rate of gain used across all five topics examined. Table~\ref{tbl:ch6_topic_rels} on page~\pageref{tbl:ch6_topic_rels} demonstrated that the number of~\gls{acr:trec} relevant documents for each topic varies considerably. As such, one would expect that the computed rate of gain should vary, at least on a per-topic basis. This way, expectations of gain can be kept in check -- a rate of gain computation computed over a topic with many~\gls{acr:trec} relevant documents would perform much worse than using the same value over a topic with a comparatively smaller set of relevant documents. This per-topic difference is graphically illustrated in Figure~\ref{fig:per_topic_differences}, using interface \blueboxbold{T2} (left) and condition \dualbluebox{ND}{AD} (right) over \blueboxbold{SS3-NC}. Note the wide variation in performance across individual topics -- and the general trend of higher topic performance if a greater number of~\gls{acr:trec} relevant documents are present.
+Next, we consider the~\gls{acr:ift}-based strategy \blueboxbold{SS8-IFT}. Evidence has shown that~\gls{acr:ift} has proven good at predicting searcher behaviours, with recent approaches demonstrated by~\cite{ong2017scent_behaviour} and~\cite{azzopardi2018cwl}, for example. Indeed, in Section~\ref{sec:diversity:users:results:ift} on page~\pageref{sec:diversity:users:results:ift}, we observed that our~\gls{acr:ift}-based hypotheses matched up closely with empirical evidence. Why did \blueboxbold{SS8-IFT} then proceed to consistently offer poorer performance and approximations than more simplistic approaches? We hypothesise that this comparative lack of performance can be attributed to how the \emph{rate of gain} is computed, which is the stopping criterion employed in \blueboxbold{SS8-IFT}. The assumptions that we made may not work particularly well over a per-topic basis, with the same rate of gain used across all five topics examined. Table~\ref{tbl:ch6_topic_rels} on page~\pageref{tbl:ch6_topic_rels} demonstrated that the number of~\gls{acr:trec} relevant documents for each topic varies considerably. As such, one would expect that the computed rate of gain should vary, at least on a per-topic basis. This way, expectations of gain can be kept in check -- a rate of gain computation computed over a topic with many~\gls{acr:trec} relevant documents would perform much worse than using the same value over a topic with a comparatively smaller set of relevant documents. This per-topic difference is graphically illustrated in Figure~\ref{fig:per_topic_differences}, using interface \blueboxbold{T2} (left) and condition \dualbluebox{ND}{AD} (right) over \blueboxbold{SS3-NC}. Note the wide variation in performance across individual topics -- and the general trend of higher topic performance if a greater number of~\gls{acr:trec} relevant documents are present. Of course, other factors -- such as the retrieval model used -- can impact upon the ranked list returned, and, ultimately, the performance and stopping behaviours of searchers.
 
 \begin{figure}[t!]
     \centering
@@ -101,7 +101,7 @@ Considering the eight experimental interfaces and conditions, we found the best 
 More interesting however is the difference in the levels of~\gls{acr:cg} that were attained by simulated searchers if they rigidly followed each of the twelve stopping strategies trialled. This was achieved when the stopping strategies were tuned to the configuration yielding the best approximation to actual searcher stopping behaviours. We demonstrated this difference with the bar charts presented in Figure~\ref{fig:ch7_sim_comparison_rankings} on page~\pageref{fig:ch7_sim_comparison_rankings}, and Figure~\ref{fig:ch8_sim_comparison_rankings} on page~\pageref{fig:ch8_sim_comparison_rankings}. Recall from the plots that several of the simplistic stopping strategies (i.e. \blueboxbold{SS1-FIX}, \blueboxbold{SS2-NT}, \blueboxbold{SS3-NC} and \blueboxbold{SS4-SAT}) typically outperformed the mean real-world searcher~\gls{acr:cg} value attained over each of the four experimental interfaces reported in Chapter~\ref{chap:snippets}. In contrast, when the stopping strategies were run over the experimental conditions in Chapter~\ref{chap:diversity}, results showed the real-world~\gls{acr:cg} values were much better (often as much as one entire unit of gain higher) than the best stopping strategy approximation offered.\footnote{The exception to this trend was \blueboxbold{SS3-NC} over condition \dualbluebox{ND}{AS}, which offered a higher level of~\gls{acr:cg} than the real-world mean.}
 
 \begin{table}[t!]
-    \caption[Observed cost per unit of gain]{Summarising statistics across the eight interfaces and conditions trialled. Included in this table is the reported average session time (\genericblack{Avg. S.T.}), mean \genericblack{\gls{acr:cg}} attained, and the cost per unit of~\gls{acr:cg}, or \genericblack{Cost/Unit~\gls{acr:cg}}. All $\pm$ values denote the standard deviations. Values reported are over the real-world subjects of the two user studies conducted, as reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. Values for \genericblack{Chapter~\ref{chap:snippets} (Uncut)} relate to the full ten minutes, rather than the first six minutes used elsewhere. Refer to Section~\ref{sec:snippets:method:subjects} on page~\pageref{sec:snippets:method:subjects} for further information.}
+    \caption[Observed cost per unit of gain]{Summarising statistics across the eight interfaces and conditions trialled. Included in this table is the reported average session time (\genericblack{Avg. S.T.}), mean \genericblack{\gls{acr:cg}} attained, and the cost per unit of~\gls{acr:cg}, or \genericblack{Cost/\gls{acr:cg} Unit}. All $\pm$ values denote the standard deviations. Values reported are over the real-world subjects of the two user studies conducted, as reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. Values for \genericblack{Chapter~\ref{chap:snippets} (10mins)} relate to the full ten minutes, rather than the first six minutes of search sessions as reported elsewhere. Refer to Section~\ref{sec:snippets:method:subjects} on page~\pageref{sec:snippets:method:subjects} for further information.}
     \label{tbl:conclusion_gain}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -109,15 +109,15 @@ More interesting however is the difference in the levels of~\gls{acr:cg} that we
 
         & & \lbluecell \textbf{Avg. S.T.} & \lbluecell \textbf{\gls{acr:cg}} & \lbluecell \textbf{Cost/\gls{acr:cg} Unit} \\
 
-        \RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:snippets}}}} & \lbluecell\textbf{T0} & \cell 353.18$\pm$44.22 & \cell 1.87$\pm$2.39 & \cell 188.87 \\
-        \RS & \lbluecell\textbf{T1} & \cell 356.18$\pm$41.79 & \cell 1.83$\pm$2.17 & \cell 194.63 \\
-        \RS & \lbluecell\textbf{T2} & \cell 366.49$\pm$39.82 & \cell 2.36$\pm$2.28 & \cell 155.29 \\
-        \RS & \lbluecell\textbf{T4} & \cell 361.01$\pm$49.33 & \cell 1.87$\pm$1.21 & \cell 193.05 \\
+        \RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:snippets}}}} & \lbluecell\textbf{T0} & \cell 353.18$\pm$44.22 & \cell 1.87$\pm$2.67 & \cell 188.87 \\
+        \RS & \lbluecell\textbf{T1} & \cell 356.18$\pm$41.79 & \cell 1.83$\pm$2.32 & \cell 194.63 \\
+        \RS & \lbluecell\textbf{T2} & \cell 366.49$\pm$39.82 & \cell 2.36$\pm$3.09 & \cell 155.29 \\
+        \RS & \lbluecell\textbf{T4} & \cell 361.01$\pm$49.33 & \cell 1.87$\pm$1.87 & \cell 193.05 \\
         
-        \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Chapter~\ref{chap:snippets} (Uncut)}}} & \lbluecell\textbf{T0} & \cell xx & \cell xx & \cell xx \\
-        \RS & \lbluecell\textbf{T1} & \cell xx & \cell xx & \cell xx \\
-        \RS & \lbluecell\textbf{T2} & \cell xx & \cell xx & \cell xx \\
-        \RS & \lbluecell\textbf{T4} & \cell xx & \cell xx & \cell xx \\
+        \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-5mm}\textbf{Chapter~\ref{chap:snippets} (10mins)}}} & \lbluecell\textbf{T0-10MINS} & \cell 538.18$\pm$54.99 & \cell 2.47$\pm$3.46 & \cell 217.89 \\
+        \RS & \lbluecell\textbf{T1-10MINS} & \cell 549.45$\pm$32.73 & \cell 2.25$\pm$3.48 & \cell 244.20 \\
+        \RS & \lbluecell\textbf{T2-10MINS} & \cell 548.46$\pm$40.78 & \cell 3.05$\pm$4.33 & \cell 179.82 \\
+        \RS & \lbluecell\textbf{T4-10MINS} & \cell 547.16$\pm$30.04 & \cell 2.77$\pm$3.17 & \cell 197.53 \\
 
         \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:diversity}}}} & \lbluecell\textbf{D-AS} & \cell 443.65$\pm$45.05 & \cell 4.09$\pm$2.64 & \cell 108.47 \\
         \RS & \lbluecell\textbf{ND-AS} & \cell 430.50$\pm$38.39 & \cell 3.35$\pm$2.92 & \cell 128.51 \\
@@ -128,32 +128,40 @@ More interesting however is the difference in the levels of~\gls{acr:cg} that we
     \end{center}
 \end{table}
 
-To examine this in more detail, we undertook further analysis of the~\gls{acr:cg} attained by real-world searchers over the eight experimental interfaces and conditions. Table~\ref{tbl:conclusion_gain} reports the mean session time (\genericblack{Avg S.T.}) and \genericblack{\gls{acr:cg}} values that were attained by the real-world searchers, on average. We then performed a simple calculation for each interface and condition, dividing the average session time by the~\gls{acr:cg} values attained. This yielded the mean cost per unit of~\gls{acr:cg} (\genericblack{Cost/CG Unit}), a measure that demonstrates the \emph{efficiency} of searchers on average. The lowest the cost per unit of gain, the more efficient the searcher. From the table, we can clearly that the subjects employed for the study in Chapter~\ref{chap:diversity} searched in a more efficient way. The cost per unit of~\gls{acr:cg} was lower than that reported in Chapter~\ref{chap:snippets} (e.g. $155.29$ seconds over interface \blueboxbold{T2}, compared to $128.24$ seconds over condition \dualbluebox{ND}{AD}). Note the lower session times for the study reported in Chapter~\ref{chap:snippets} -- partially attributable to the $360$ second cutoff we imposed in that study.
+To examine this in more detail, we undertook further analysis of the~\gls{acr:cg} attained by real-world searchers over the eight experimental interfaces and conditions. Table~\ref{tbl:conclusion_gain} reports the mean session time (\genericblack{Avg S.T.}) and \genericblack{\gls{acr:cg}} values that were attained by the real-world searchers, on average. We then performed a simple calculation for each interface and condition, dividing the average session time by the~\gls{acr:cg} values attained. This yielded the mean cost per unit of~\gls{acr:cg} (\genericblack{Cost/CG Unit}), a measure that demonstrates the \emph{efficiency} of searchers on average. The lower the cost per unit of gain, the more efficient the searcher. From the table, we can clearly that the subjects employed for the study in Chapter~\ref{chap:diversity} searched in a more efficient way. The cost per unit of~\gls{acr:cg} was lower than that reported in Chapter~\ref{chap:snippets} (e.g. $155.29$ seconds over interface \blueboxbold{T2}, compared to $128.24$ seconds over condition \dualbluebox{ND}{AD}). Note the lower session times for the study reported in Chapter~\ref{chap:snippets} -- partially attributable to the $360$ second cutoff we imposed in that study. To confirm our analysis, we also report in Table~\ref{tbl:conclusion_gain} values for the interfaces trialled in Chapter~\ref{chap:snippets} over the full ten minutes that subjects were required to search (denoted by the \genericblack{Chapter~\ref{chap:snippets} (10mins)} grouping, and by interface \blueboxbold{-10MINS} suffixes). Intuitively, session time increases -- as too does the levels of~\gls{acr:cg} that were attained. The increase in~\gls{acr:cg} however does not correspond to a decrease in the cost per~\gls{acr:cg} unit, confirming our analysis -- rather, due to the increased session times, the cost per unit \emph{increases} (e.g. $155.29$ for \blueboxbold{T2} vs. $179.82$ for \blueboxbold{T2-10MINS}). This demonstrates that the subjects for the user study reported in Chapter~\ref{chap:snippets} were less efficient than the cohort used for the study in Chapter~\ref{chap:diversity}.
 
-- do the results for chapter 7, without the cutoff period imposed. Does the CG value rate higher? What is the rate per unit of gain without the cutoff? Does it get closer to the chapter 8 value?
+This result goes somewhat against our intuition. Under time pressure, it would have made sense for subjects to perform in a more efficient manner than their non-time limited counterparts. From these results, we hypothesise that the search task and goals (i.e. time-limited vs. no time limit) clearly impact upon a searcher's decisions and their general ability to find relevant material. As such, this can have a knock-on effect of influencing their stopping behaviours (considering the frustration heuristic, for example). Of course, this may not be the case -- it is entirely feasible that the subjects recruited for the study in Chapter~\ref{chap:diversity} were more savvy than those recruited for the study in Chapter~\ref{chap:snippets}. In order to confirm this hypothesis, further studies will need to be undertaken to observe if similar trends are observed, perhaps over a larger number of subjects.
 
-- if so, shows that the strategies are bad overall at predicting performance.
+% interesting though is differences between Ch7 and Ch8.
+% why did the stopping strategies offer better approximations for ch7 than ch8? indeed, there were some interfaces where the stopping strategies ourperformed the real-world searchers.
+%
+% ch8 searchers more efficient than ch7 searchers, hypothesise that the goals varies and influences your decisions/ability to search.
 
-While confirming the reasoning behind the 
+\subsection{\todo{Simulations of Interaction}}
 
+- talk about the simulations
+    - running the simulations. expensive. complicated.
+    - as we introduced the SERP level stopping decision point, the complexity increased massively -- and so did the time required to run them.
+    - talk about the pre-rolled judgements, too. methodological contribution. ensures repeatable, reproducible research.
 
-best approximations for interface T2.
-lowest MSE. why is that? probability estimates seemed to do a very good job for that particular interface.
+- did we do enough runs?
+    - we could justify why 50 DM runs was chosen.
+    - but was this enough? may not be.
+    - maybe we dont have enough trials.
+    - and when we dont have enough trials to average over, the power of our experiments could be insufficient.
+        - so we could be missing trends. we could be missing things that we simply cannot see.
+        - limitation placed upon me by the hardware available to run the experiments. future work.
+        - WE MENTION POWER IN SECTION~\ref{sec:methodology:user:flow} -- WITHIN-SUBJECTS INCREASES POWER. BUT WAS IT INCREASED ENOUGH?
 
-interesting though is differences between Ch7 and Ch8.
-why did the stopping strategies offer better approximations for ch7 than ch8? indeed, there were some interfaces where the stopping strategies ourperformed the real-world searchers.
-
-ch8 searchers more efficient than ch7 searchers, hypothesise that the goals varies and influences your decisions/ability to search.
-
-- mini table — cost per unit of gain.
-		- could be a fact of the goal. When we look at the stopping strategies, in figure 8.9, searchers seem to be so much better than the stopping strategies!
-		- unless the mean is dominated by one or two searchers who got one or good scores?
-
-\subsection{Simulations of Interaction}
-
-- why was the cg so poor for the simulations in chapter 8 compared to chapter 7?
+would have been better to do it over 50 topics, rather than five.
+previous papers show smoother curves.
+we tried to compensate for this by doing 50 runs.
+but probably not a good drop in solution.
+why did we do this though? not enough data. needed to do things in a consistent way.
 
 - talk about the power of the experiments. were trends that we should of seen not visible?
+
+
 
 
 % \subsection{Stopping Strategies and Behaviours}
@@ -250,7 +258,7 @@ ch8 searchers more efficient than ch7 searchers, hypothesise that the goals vari
 % why did we do this though? not enough data. needed to do things in a consistent way.
 
 
-\section{Conclusion}\label{sec:conclusions:conclusion}
+\section{\todo{Conclusion}}\label{sec:conclusions:conclusion}
 
 
 
