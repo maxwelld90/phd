@@ -2,8 +2,42 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter[Discussion and Future Work]{Discussion and Future Work}\label{chap:conclusions}
+The final chapter of this thesis summarises and discusses the results reported in this thesis. In particular, we emphasise the impact of our findings on~\gls{acr:ir} and~\gls{acr:iir} research, as well as outlining several potential future research directions. We then conclude the thesis with some final remarks.
 
 \section{Thesis Summary}\label{sec:conclusions:summary}
+In this thesis, we examined how stopping behaviours vary under different search contexts. In particular, we conducted and reported on two user studies under the domain of news search, examining how~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point1.pdf}} result summary lengths and~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point2.pdf}} a variation of search tasks, goals and retrieval systems affected search behaviours. A total of eight different interfaces and conditions were used to examine how behaviours vary. Table~\ref{tbl:conclusion_cond_interface_summary} presents a summary of the aforementioned interfaces and conditions, concerning the length of result summaries, the systems and tasks used.
+
+\begin{table}[t!]
+    \caption[Summary of experimental interfaces and conditions]{A summary table of the different experimental interfaces and conditions that were trialled. These are based upon the work reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}. In total, eight different experimental interfaces and conditioned were employed, considering different result summary lengths, systems and tasks.}
+    \label{tbl:conclusion_cond_interface_summary}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{center}
+    \begin{tabulary}{\textwidth}{L{0.4cm}@{\CS}L{3.2cm}@{\CS}D{3.51cm}@{\CS}D{3.51cm}@{\CS}D{3.51cm}@{\CS}}
+        & & \lbluecell \textbf{Summary Length} & \lbluecell \textbf{System} & \lbluecell \textbf{Task} \\
+        
+        \RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:snippets}}}} & \lbluecell\textbf{T0} & \cell \small{Title only} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        \RS & \lbluecell\textbf{T1} & \cell \small{Title + 1 snippet} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        \RS & \lbluecell\textbf{T2} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        \RS & \lbluecell\textbf{T4} & \cell \small{Title + 4 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        
+        \RS\RS\RS \multirow{4}{*}{\rotatebox{90}{\hspace*{-4mm}\textbf{Chapter~\ref{chap:diversity}}}} & \lbluecell\textbf{D-AS} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{D} (Div.)} & \cell \small{\darkblueboxbold{AS} (Aspectual)}\\
+        \RS & \lbluecell\textbf{ND-AS} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AS} (Aspectual)}\\
+        \RS & \lbluecell\textbf{D-AD} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{D} (Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        \RS & \lbluecell\textbf{ND-AD} & \cell \small{Title + 2 snippets} & \cell \small{\blueboxbold{ND} (Non Div.)} & \cell \small{\darkblueboxbold{AD} (Ad-hoc)}\\
+        
+    \end{tabulary}
+    \end{center}
+\end{table}
+
+From the first user study reported in Chapter~\ref{chap:snippets}, results showed that as result summary lengths increased (from \blueboxbold{T0}$\rightarrow$\blueboxbold{T4}), searchers became more confident in the decisions they took pertaining to the relevance of documents encountered. However, this was not reflected empirically; their accuracy in identifying relevant content did not improve with longer result summaries. In terms of stopping behaviours, a downward trend was observed. As the length of result summaries increased, subjects examined to shallower depths per query -- an intuitive result, given the increased examination times required for longer summaries.
+
+Considering variations of tasks, goals and systems as reported in Chapter~\ref{chap:diversity}, we found that when using diversified system \blueboxbold{D} (i.e. BM25 and XQuAD~\citep{santos2010query_reformulations_diversification}), subjects issued more queries and stopped at comparatively shallow depths per query. This was in comparison to non-diversified system (i.e. BM25 baseline) \blueboxbold{ND}, where subjects reported feeling less confident with their decisions. Despite the significant differences we observed between how the two systems performed, few significant differences were reported in empirical evidence concerning changes in searcher behaviours between the two. Most subjects also reported difficulties in discerning notable differences between the two systems.
+
+Interaction data from these user studies were then used to ground an extensive set of simulations of interaction. These simulations were designed to test a total of twelve individual stopping strategies, derived from a variety of stopping heuristics\footnote{Stopping heuristics for example considered a searcher's tolerance to non-relevance, or their \emph{frustration} with observing non-relevant content~\citep{kraft1979stopping_rules}.} and~\gls{acr:ir} measures as defined in the literature. Their cataloguing and subsequent operationalisation into stopping strategies provided an answer to \darkblueboxbold{HL-RQ2}. Testing overall performance and how closely the simulations matched up to real-world searcher behaviours across the eight experimental interfaces and conditions, we could then provide answers to both \darkblueboxbold{HL-RQ3a} and \darkblueboxbold{HL-RQ3b}. The simulations were based upon the~\glsfirst{acr:csm}, an updated, high-level conceptual model of the search process. By incorporating a new~\gls{acr:serp} level stopping decision point into the~\gls{acr:csm}, complete with subsequent empirical evaluation (as presented in Chapter~\ref{chap:serp}), we could then provide an answer to \darkblueboxbold{HL-RQ1}.
+
+Results show that when enabled, the new~\gls{acr:serp} stopping decision point led to significant improvements over the baseline implementation, with consistent improvements in overall performance (measured in~\gls{acr:cg}) reported across a range of experimental conditions, interfaces and stopping strategies. In consideration of approximating real-world searcher stopping behaviours, improvements are also present -- these however were not significantly different. Overall, these results provide compelling evidence for \darkblueboxbold{HL-RQ1}, and also demonstrate a promising direction for future research in developing our understanding of the search process.
+
+With respect to our simulated analyses of individual stopping strategies, we found several stopping strategies offered the highest overall levels of~\gls{acr:cg} and good approximations with actual searcher stopping behaviours. For example, as result summary lengths increased, we found that \blueboxbold{SS11-COMB} consistently offered the best performance, with both \blueboxbold{SS1-FIX} and \blueboxbold{SS4-SAT} offering the best real-world searcher approximations. \blueboxbold{SS5-COMB} also offered the best overall levels of~\gls{acr:cg} across the second user study, with \blueboxbold{SS1-FIX} again offering the best levels of performance across condition \dualbluebox{ND}{AD}. In terms of approximations, \blueboxbold{SS1-FIX} and \blueboxbold{SS10-RELTIME} yielded the lowest MSE values. However, despite these strategies performing well, no one strategy clearly emerged as offering significantly improved levels of performance or approximations. However, several more complex stopping strategies such as \blueboxbold{SS6-DT} and \blueboxbold{SS7-DKL} consistently offered poorer performance and approximations. This is a common theme in our results: simple and combination-based stopping strategies generally performed the best. This includes the fixed-depth stopping strategy, \blueboxbold{SS1-FIX}, which, counter to our intuition, consistently performed well.
 
 \section{Discussion}\label{sec:conclusions:discussion}
 
