@@ -20,6 +20,61 @@
     description={As a field of academic study, \emph{Information Retrieval} could be defined as the study of \emph{``finding material (usually documents) of an unstructured nature (usually text) that satisfies an information need from within large collections (usually stored on computers)''}~\citep{manning2008ir}.},
 }
 
+\newglossaryentry{glos:qrel}{
+    name={QREL},
+    description={A \emph{Query RElevance Judgement} are a series of judgements that are assigned to documents within a corpus. Typically, these are considered over a per-topic basis, with binary judgements assigned -- one for being relevant, and the other not relevant. These are considered as the ground truth, or gold standard judgements of relevance.},
+}
+
+\newglossaryentry{glos:info_need}{
+    name={information need},
+    description={A searcher can develop an \emph{information need} when observing some phenomenon in the real world. It is a desire to locate and obtain information to satisfy a conscious or unconscious need. This is typically considered to be one of the first steps of the~\gls{acr:iir} process.},
+}
+
+\newglossaryentry{glos:ip}{
+    name={IP},
+    description={Similar to~\gls{glos:precision}, \emph{interactive precision} considers the fraction of relevant documents relevant to the issued query, as identified \emph{by the searcher.}},
+}
+
+\newglossaryentry{glos:ar}{
+    name={AR},
+    description={\emph{Aspectual Recall} considers the number of documents returned by a retrieval system that make reference to at least one new \emph{aspect} of a particular topic. An interactive-based approach can also be considered, where documents by searchers are exclusively considered.},
+}
+
+\newglossaryentry{glos:mse}{
+    name={MSE},
+    description={The \emph{Mean Squared Error} measures the average squared difference between estimated values, and what is being estimated. It considers the notion of bias and standard error, with the lower the MSE, the better the estimation to the real-world observation.},
+}
+
+\newglossaryentry{glos:query}{
+    name={query},
+    description={A \emph{query} is a precise request issued to a retrieval system. Here, a searcher's \emph{information need} is formulated as one or more \emph{query terms.}},
+}
+
+\newglossaryentry{glos:summary}{
+    name={result summary},
+    description={On a~\gls{acr:serp}, a \emph{result summary} provides a title, summary and source for a document that was matched to the searcher's query. Result summaries are the \emph{ten blue links} one is accustomed to when interacting with a retrieval system.},
+}
+
+\newglossaryentry{glos:recall}{
+    name={recall},
+    description={\emph{Recall} denotes the number of relevant documents that were matched against a searcher's query by a given retrieval system.},
+}
+
+\newglossaryentry{glos:summary_stopping}{
+    name={result summary level stopping},
+    description={In this thesis, \emph{result summary level stopping} denotes the~\gls{glos:stopping_decision_point} when a searcher is interacting with a~\gls{acr:serp}. It considers the \emph{depth} to which a searcher will examine~\gls{glos:summary}. This is typically referred to as \emph{snippet level} or \emph{query level stopping} in the literature.},
+}
+
+\newglossaryentry{glos:serp_stopping}{
+    name={serp level stopping},
+    description={\emph{\gls{acr:serp} level stopping} denotes the~\gls{glos:stopping_decision_point} where a searcher can choose to either \emph{enter} a~\gls{acr:serp} and begin examining content in detail, or \emph{abandon} the~\gls{acr:serp} and move on to the next action.},
+}
+
+\newglossaryentry{glos:session_stopping}{
+    name={session level stopping},
+    description={\emph{Session level stopping} considers stopping in terms of the overall search session. Typically, this would be evaluated in consideration of time limits or search session goals (i.e. find $x$ relevant documents).},
+}
+
 \newglossaryentry{glos:iir}{
     name={IIR},
     description={A simplistic description of \emph{Interactive Information Retrieval} would be the study of how humans interact with retrieval systems, considering aspects such as their behaviours and experiences. This is in contrast to the study of~\gls{acr:ir}, considering purely \emph{system-sided} aspects.},
@@ -39,7 +94,7 @@
 \newglossaryentry{glos:precision}{
     name={Precision},
     first={precision},
-    description={What is precision?},
+    description={The fraction of documents retrieved that are relevant to the searcher's query. This is typically presented as $P@k$, or the fraction of relevant documents up to some rank $k$.},
 }
 
 \newglossaryentry{glos:serp}{
