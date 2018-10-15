@@ -2,6 +2,20 @@
 %!TEX root = ../../maxwell2018thesis.tex
 
 \chapter{Introduction}\label{chap:intro}
+
+%\gls{acr:patk}
+%\gls{acr:ip}
+%\gls{acr:ar}
+%\gls{acr:mse}
+%\gls{glos:query}
+%\gls{glos:summary}
+%\gls{glos:recall}
+%\gls{glos:summary_stopping}
+%\gls{glos:serp_stopping}
+%\gls{glos:session_stopping}
+%\gls{glos:info_need}
+\gls{acr:qrel}
+
 Today, we live in the \emph{Information Age,} an era of human history characterised by the rapid development of technology -- allowing for the creation, transmission and retrieval of large volumes of information. Two key developments that have permitted such an increase in information generation are the electronic computer and the associated technologies that allow for near-instantaneous communication with devices all around the planet, including the \emph{Internet} and~\gls{acr:www}~\citep{berners1994www}.
 
 \begin{figure}[h]
@@ -34,7 +48,7 @@ Contemporary commercial retrieval systems such as \emph{Google} and \emph{Bing} 
     \label{fig:ch1-surfing}
 \end{figure}
 
-The field of~\gls{acr:ir} aims to make it easier for searchers to satisfy their underlying \emph{information need.} A searcher will develop an information need from a perceived problem -- either from a knowledge gap, an internal inconsistency, or a conflict of evidence. This state has been referred to as the \emph{Anomalous State of Knowledge (ASK)}~\citep{belkin1980ask}. A searcher, once they have realised this information need, will formulate a \emph{query} -- an expression of what they are looking to seek~\citep{borlund2003iir_model}, typically consisting of a number of different terms. This query is then submitted to the retrieval system, before a potentially relevant set of documents -- as judged by the retrieval system -- are returned to the searcher. From this set of documents, the searcher can then begin the process of examining them for relevance.
+The field of~\gls{acr:ir} aims to make it easier for searchers to satisfy their underlying \emph{\gls{glos:info_need}.} A searcher will develop an information need from a perceived problem -- either from a knowledge gap, an internal inconsistency, or a conflict of evidence. This state has been referred to as the \emph{Anomalous State of Knowledge (ASK)}~\citep{belkin1980ask}. A searcher, once they have realised this information need, will formulate a \emph{\gls{glos:query}} -- an expression of what they are looking to seek~\citep{borlund2003iir_model}, typically consisting of a number of different terms. This query is then submitted to the retrieval system, before a potentially relevant set of documents -- as judged by the retrieval system -- are returned to the searcher. From this set of documents, the searcher can then begin the process of examining them for relevance.
 
 A number of complex interactions take place between an individual seeking information and the retrieval system being utilised~\citep{ingwersen2005theturn}. This interactive process, where the searcher engages in dialogue with the retrieval system, is considered the study of~\gls{acr:iir}~\citep{borlund2003iir_model}. One of the fundamental aspects of~\gls{acr:iir} is that of \blueboxbold{stopping} -- where, for example, a searcher must decide when to stop examining the list of results returned to him or her.
 
@@ -109,7 +123,7 @@ With a more realistic searcher model from \darkblueboxbold{HL-RQ1} and a series 
     \item{\darkblueboxbold{HL-RQ3b} How closely do the operationalised stopping strategies compare to the actual stopping behaviours of real-world searchers?}
 \end{itemize}
 
-These questions are of course of a very broad nature, and it is simply not possible to evaluate them in every conceivable search context. As such, we will examine several contexts that are likely to impact upon searcher stopping behaviours. Specifically, we will examine topical \emph{interactive search} in the domain of news, where we will consider various conditions: search goals and task types; search durations; and result summary length. In the following section, we expand upon these conditions to provide a concrete set of thesis contributions.
+These questions are of course of a very broad nature, and it is simply not possible to evaluate them in every conceivable search context. As such, we will examine several contexts that are likely to impact upon searcher stopping behaviours. Specifically, we will examine topical \emph{interactive search} in the domain of news, where we will consider various conditions: search goals and task types; search durations; and~\gls{glos:summary} length. In the following section, we expand upon these conditions to provide a concrete set of thesis contributions.
 
 \section{Thesis Contributions}\label{sec:intro:contribs}
 This thesis presents four major contributions. Listed below, we consider primary contributions from conceptual, theoretical, methodological and empirical standpoints.

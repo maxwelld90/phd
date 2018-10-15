@@ -241,7 +241,7 @@ The first three categories can be extracted directly from the interaction log th
 \begin{itemize}
     
     \item{\blueboxbold{Behavioural Measures} capture the broad interactions that take place, such as the number of documents that a searcher examined in detail.}
-    \item{\blueboxbold{Performance} measures could then be extrapolated, with aid of~\gls{acr:trec} QREL relevance judgements to ascertain the performance of subjects.}
+    \item{\blueboxbold{Performance} measures could then be extrapolated, with aid of~\gls{acr:trec}~\gls{acr:qrel} relevance judgements to ascertain the performance of subjects.}
     \item{\blueboxbold{Time-Based} measures can also be derived from directly examining the interaction log, measuring the time spent between different logged interactions.}
     
 \end{itemize}
@@ -746,7 +746,7 @@ Rather than focus upon the overall performance attained by simulated searchers u
 
 Real-world queries were extracted and grouped by the experimental interface or condition in which it was executed. In order to compute per-session measures (e.g.~\gls{acr:cg}), we could then take the queries belonging to a particular subject and topic combination, and group them together, summing or averaging measures where appropriate. With only four topics trialled during the user studies, we considered only the \blueboxbold{four~\gls{acr:trec} topics}, omitting the practice topic (\textnumero~367). This was due to the fact that we only had real-world query data for the four topics trialled in the user studies. We once again ran a simulated searcher for each different configuration, over every query issued. A total of 50 trials were once again used, as explained in Section~\ref{sec:method:simulation:grounding:judgements}.
 
-To perform our comparisons between the real-world and simulated searchers, we used the \blueboxbold{Mean Squared Error (MSE)} to compute the difference between the two. For this, our calculations were performed between the click depth of the real-world searchers over each query, and taking the simulated click depths. Simulated click depths are defined as the depth of the last document that was considered attractive enough to examine on a given simulated~\gls{acr:serp}. Considering each configuration of simulated searcher (i.e. considering the different ways in which \simiir~components were instantiated), we could then produce a table of click depths, as provided in the example below.
+To perform our comparisons between the real-world and simulated searchers, we used the \blueboxbold{\glsfirst{acr:mse}} to compute the difference between the two. For this, our calculations were performed between the click depth of the real-world searchers over each query, and taking the simulated click depths. Simulated click depths are defined as the depth of the last document that was considered attractive enough to examine on a given simulated~\gls{acr:serp}. Considering each configuration of simulated searcher (i.e. considering the different ways in which \simiir~components were instantiated), we could then produce a table of click depths, as provided in the example below.
 
 \begin{figure*}[h]
     \centering

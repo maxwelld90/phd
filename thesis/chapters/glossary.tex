@@ -22,16 +22,17 @@
 
 \newglossaryentry{glos:qrel}{
     name={QREL},
-    description={A \emph{Query RElevance Judgement} are a series of judgements that are assigned to documents within a corpus. Typically, these are considered over a per-topic basis, with binary judgements assigned -- one for being relevant, and the other not relevant. These are considered as the ground truth, or gold standard judgements of relevance.},
+    description={\emph{Query RElevance Judgements} are a series of judgements that are assigned to documents within a corpus. Typically, these are considered over a per-topic basis, with \emph{binary} or \emph{graded} judgements assigned. As an example, binary judgements would denote \emph{relevant} and \emph{not relevant.} These are considered as the ground truth, or gold standard judgements of relevance.},
 }
 
 \newglossaryentry{glos:info_need}{
-    name={information need},
+    name={Information Need},
+    text={information need},
     description={A searcher can develop an \emph{information need} when observing some phenomenon in the real world. It is a desire to locate and obtain information to satisfy a conscious or unconscious need. This is typically considered to be one of the first steps of the~\gls{acr:iir} process.},
 }
 
 \newglossaryentry{glos:ip}{
-    name={IP},
+    name={iP},
     description={Similar to~\gls{glos:precision}, \emph{interactive precision} considers the fraction of relevant documents relevant to the issued query, as identified \emph{by the searcher.}},
 }
 
@@ -46,32 +47,38 @@
 }
 
 \newglossaryentry{glos:query}{
-    name={query},
+    name={Query},
+    text={query},
     description={A \emph{query} is a precise request issued to a retrieval system. Here, a searcher's \emph{information need} is formulated as one or more \emph{query terms.}},
 }
 
 \newglossaryentry{glos:summary}{
-    name={result summary},
+    name={Result Summary},
+    text={result summary},
     description={On a~\gls{acr:serp}, a \emph{result summary} provides a title, summary and source for a document that was matched to the searcher's query. Result summaries are the \emph{ten blue links} one is accustomed to when interacting with a retrieval system.},
 }
 
 \newglossaryentry{glos:recall}{
-    name={recall},
+    name={Recall},
+    text={recall},
     description={\emph{Recall} denotes the number of relevant documents that were matched against a searcher's query by a given retrieval system.},
 }
 
 \newglossaryentry{glos:summary_stopping}{
-    name={result summary level stopping},
+    name={Result Summary Level Stopping},
+    text={result summary level stopping},
     description={In this thesis, \emph{result summary level stopping} denotes the~\gls{glos:stopping_decision_point} when a searcher is interacting with a~\gls{acr:serp}. It considers the \emph{depth} to which a searcher will examine~\gls{glos:summary}. This is typically referred to as \emph{snippet level} or \emph{query level stopping} in the literature.},
 }
 
 \newglossaryentry{glos:serp_stopping}{
-    name={serp level stopping},
+    name={SERP Level Stopping},
+    text={SERP level stopping},
     description={\emph{\gls{acr:serp} level stopping} denotes the~\gls{glos:stopping_decision_point} where a searcher can choose to either \emph{enter} a~\gls{acr:serp} and begin examining content in detail, or \emph{abandon} the~\gls{acr:serp} and move on to the next action.},
 }
 
 \newglossaryentry{glos:session_stopping}{
-    name={session level stopping},
+    name={Session Level Stopping},
+    text={session level stopping},
     description={\emph{Session level stopping} considers stopping in terms of the overall search session. Typically, this would be evaluated in consideration of time limits or search session goals (i.e. find $x$ relevant documents).},
 }
 
@@ -87,13 +94,14 @@
 
 \newglossaryentry{glos:kl}{
     name={KL-Divergence},
+    text={KL-divergence},
     first={\emph{Kullback–Leibler Divergence}},
     description={\emph{Kullback-Leibler} divergence, or \emph{relative entropy}, is a measure of how one probability distribution is different from a second. }
 }
 
 \newglossaryentry{glos:precision}{
     name={Precision},
-    first={precision},
+    text={precision},
     description={The fraction of documents retrieved that are relevant to the searcher's query. This is typically presented as $P@k$, or the fraction of relevant documents up to some rank $k$.},
 }
 
@@ -247,7 +255,7 @@
 
 \newglossaryentry{glos:stopping_heuristic}{
     name={Stopping Heuristic},
-    first={stopping heuristic},
+    text={stopping heuristic},
     plural={stopping heuristics},
     firstplural={stopping heuristics},
     description={A \emph{stopping heuristic} is defined in this thesis as a heuristic that describes the stopping behaviour of a searcher. A heuristic may consider one or more \emph{stopping criteria} when determining a stopping point.}
@@ -255,7 +263,7 @@
 
 \newglossaryentry{glos:stopping_strategy}{
     name={Stopping Strategy},
-    first={stopping strategy},
+    text={stopping strategy},
     plural={stopping strategies},
     firstplural={stopping strategies},
     description={A \emph{stopping strategy} is an operationalised~\gls{glos:stopping_heuristic}. The heuristic is converted to a series of rules that can be subsequently operationalised -- and later implemented as part of a wider searcher model.}
@@ -263,7 +271,7 @@
 
 \newglossaryentry{glos:stopping_decision_point}{
     name={Stopping Decision Point},
-    first={stopping decision point},
+    text={stopping decision point},
     plural={stopping decision points},
     description={We refer to \emph{stopping decision points} as the decisions within the~\gls{acr:csm} that permit a searcher to stop their current activity (i.e. examining result summaries, or the search session).}
 }

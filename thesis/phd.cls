@@ -385,7 +385,7 @@
     
     \vspace*{62mm}
     
-    \ifthenelse{\equal{#1}{\acronymname}}{\normalfont\selectfont\large For abbreviations complete with a \emph{see} reference, refer to the corresponding Glossary entry.\vspace*{7mm}}{\vspace*{8mm}}
+    \ifthenelse{\equal{#1}{\acronymname}}{\normalfont\selectfont\large For an explanation of a particular abbreviation/phrase, \emph{see} the corresponding Glossary entry.\vspace*{7mm}}{\vspace*{8mm}}
 }
 
 % Update the bibliography title.

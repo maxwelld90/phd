@@ -26,7 +26,7 @@ Based upon prior research into stopping behaviour, it is clear that such a decis
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch3-two_points.pdf}}
-    \caption[Two established \emph{stopping decision points}]{Excerpts from various searcher models, highlighting two established \emph{stopping decision points.} These are modelled as points at which searchers can stop performing a given action. These are illustrated as blue diamonds. The two points consider \blueboxbold{1} \emph{result summary level stopping} (often called \emph{snippet level} or \emph{query level stopping}), and \blueboxbold{2} \emph{session level stopping}.}
+    \caption[Two established \emph{stopping decision points}]{Excerpts from various searcher models, highlighting two established \emph{stopping decision points.} These are modelled as points at which searchers can stop performing a given action. These are illustrated as blue diamonds. The two points consider \blueboxbold{1} \emph{\gls{glos:summary_stopping}} (often called \emph{snippet level} or \emph{query level stopping}), and \blueboxbold{2} \emph{\gls{glos:session_stopping}}.}
     \label{fig:model_two_points}
 \end{figure}
 
@@ -37,12 +37,12 @@ These stopping decision points are illustrated in an excerpt of a typical search
 
 \vspace*{-4mm}
 \begin{itemize}
-    \item[\blueboxbold{1}]{\darkblueboxbold{Result Summary Level Stopping} Traditionally called \emph{snippet level stopping} or \emph{query level stopping} in the literature\footnote{The phrase \emph{result summary level stopping} is used in this thesis to avoid confusion with a new~\gls{acr:serp} level stopping decision point, discussed in more depth in Section~\ref{sec:csm:advancements:stopping}.}, this stopping decision point concerns the depth at which a searcher will stop examining a list of ranked results. After stopping at this point, the searcher can continue the search session by issuing a further query.}
+    \item[\blueboxbold{1}]{\darkblueboxbold{Result Summary Level Stopping} Traditionally called \emph{snippet level stopping} or \emph{query level stopping} in the literature\footnote{The phrase \emph{\gls{glos:summary_stopping}} is used in this thesis to avoid confusion with a new~\gls{glos:serp_stopping} decision point, discussed in more depth in Section~\ref{sec:csm:advancements:stopping}.}, this stopping decision point concerns the depth at which a searcher will stop examining a list of ranked results. After stopping at this point, the searcher can continue the search session by issuing a further query.}
     \item[\blueboxbold{2}]{\darkblueboxbold{Session Level Stopping} This second stopping decision point considers the point at which a searcher will stop their search session in its entirety. As such, this stopping decision point is regarded as \emph{terminal} to the search session.}
 \end{itemize}
 \vspace*{-4mm}
 
-In particular, session level stopping is considered when a searcher must decide, for example, if they have met their overall search goal, have run out of time or queries, or simply have become so frustrated with a lack of relevant content that they would rather abandon the search. These stopping decision points can be operationalised in a variety of different ways, as we explore in the remainder of this chapter. Chapter~\ref{chap:csm} also proposes an additional, third stopping decision point that we will consider in a later contributory chapter of this thesis.
+In particular,~\gls{glos:session_stopping} is considered when a searcher must decide, for example, if they have met their overall search goal, have run out of time or queries, or simply have become so frustrated with a lack of relevant content that they would rather abandon the search. These stopping decision points can be operationalised in a variety of different ways, as we explore in the remainder of this chapter. Chapter~\ref{chap:csm} also proposes an additional, third stopping decision point that we will consider in a later contributory chapter of this thesis.
 
 \section{Stopping Heuristics}\label{sec:stopping_background:heuristics}
 Considering the above, researchers have over a number of decades devised a number of different high level \emph{stopping rules} -- hereafter referred to as \blueboxbold{stopping heuristics} -- as a means of encoding a searcher's aforementioned sense of what is \emph{``good enough''}~\citep{zach2005enough_is_enough} -- or, in addition, what can be considered to be \emph{not good enough,}.
