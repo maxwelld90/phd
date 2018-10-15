@@ -639,7 +639,7 @@
         \glstarget{##1}{\onehalfspacing\blueboxbold{\large##2}} \large\normalfont##3\glspostdescription\space ##5\\}%
         
     %\renewcommand*{\glsgroupskip}{ & \\}%
-    \renewcommand*{\glsgroupskip}{\vspace*{2mm}}%
+    \renewcommand*{\glsgroupskip}{}%
 }
 
 % Colour box for listing publications.
