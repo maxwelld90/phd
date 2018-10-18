@@ -93,17 +93,17 @@ More recent work has begun to examine what snippet sizes are appropriate for mob
 \section{Varying Snippet Lengths}\label{chap:snippets:user}
 As can be seen from the background to this chapter, the presentation of result summaries has been demonstrated to strongly influence the ability of a searcher to judge relevance~\citep{he2012bridging}. Relevant documents may be overlooked due to uninformative or unattractive summaries -- but conversely, non-relevant documents may be examined due to a misleading summary. Longer summaries also however increase the cost of examination, so there is likely a tradeoff between informativeness/accuracy and length/cost. The current, widely accepted standard for result summaries are \emph{two query-biased snippets/lines}~\citep{hearst2009_search}. However, does this concept hold under an ad-hoc context? In this context, do searchers -- when presented with longer result summaries -- gain an improved discrimination between relevant and non-relevant result summaries?
 
-To address these questions, we discuss in this section a user study that served as an investigation into the effects of search behaviour (particularly stopping behaviours) and search performance when we varied result summary snippet lengths -- and by doing so, the information content presented within the summaries. Following the general methodology of our two user studies outlined in Section~\ref{sec:methodology:user}, the user study reported is crowdsourced ($n=53$) and within-subjects. Under ad-hoc topic retrieval, participants used four different search interfaces, each with a different size of result summary. Findings from this study allowed us to address two main research questions, which we enumerate below.
+To address these questions, we now discuss a user study that investigated the effects of search behaviour (in particular, stopping behaviours) and search performance when we varied the lengths of result summaries, and thus the information content therein. The user study reported is crowdsourced ($n=53$) and follows a within-subjects design. Under ad-hoc topic retrieval, participants used four different search interfaces, each with a different size of result summary. Findings from this study allowed us to address two main research questions, which we enumerate below.
 
 \begin{itemize}
-    \item{\darkblueboxbold{SNIPPET-RQ1} How does the length of a result summary, affect searcher behaviour, performance and user experience?}
-    \item{\darkblueboxbold{SNIPPET-RQ2} Does the length of each result summary affect the decision making ability and ability to identify relevant documents of searchers?}
+    \item{\darkblueboxbold{SNIPPET-RQ1} How does the length of a result summary affect searcher behaviour, performance and user experience?}
+    \item{\darkblueboxbold{SNIPPET-RQ2} Does the length of each result summary affect a searcher's decision making ability, and their likelihood of identifying relevant documents?}
 \end{itemize}
 
-With longer result summaries comes a greater volume of information gain, as we demonstrate in Section~\ref{sec:snippets:method:system}. We hypothesised that longer and more informative result summaries would enable participants to make better quality decisions, being more informed with a greater volume of text. In the remainder of this section, we:
+With longer result summaries comes a greater volume of information gain, as we demonstrate in Section~\ref{sec:snippets:method:system}. We hypothesised that longer and more informative result summaries would enable participants to make better quality decisions, due to a higher information content within a greater volume of text. In the remainder of this section, we:
 
 \begin{itemize}
-    \item{discuss the methodology of the study, discussing the study-specific aspects of the experimental design to complement the general methodology outlined in Section~\ref{sec:methodology:user};}
+    \item{discuss the methodology of the study, analysing the study specific aspects of the experimental design to complement the general methodology outlined in Section~\ref{sec:methodology:user};}
     \item{provide results and analysis from the study, providing insight into the two study-specific research questions outlined above; and}
     \item{discuss the implications of the study.}
 \end{itemize}
@@ -111,7 +111,7 @@ With longer result summaries comes a greater volume of information gain, as we d
 We then take the interaction data from this study forward to Section~\ref{sec:snippets:simulations}, using it as a means of grounding an extensive set of simulations of interaction. These are used to examine in greater depth how snippet length affects searcher stopping behaviours.
 
 \subsection{Methodology}\label{sec:snippets:method}
-In this section, we outline the methodology employed for this user study. This section provides study-specific, supplementary details to the general user study methodology that was provided in Section~\ref{sec:methodology:user}. The general user study methodology is employed here, and in the subsequent user study discussed in Chapter~\ref{chap:diversity}. For each subsection discussed below, we refer back to the relevant section in the general methodology to assist in understanding how each of the different components fit together.
+In this section, we outline the methodology employed for this user study. This section provides study-specific, supplementary details to the general user study methodology that was provided in Section~\ref{sec:methodology:user}. The general user study methodology is employed here, and in the subsequent user study discussed in Chapter~\ref{chap:diversity}. For each subsection discussed below, we refer back to the relevant section in the general methodology to assist in understanding how each of the different components interact.
 
 Below, we discuss the different search interfaces that we trialled, along with how we generated result summary snippets of varying length. We then provide a brief discussion of the $53$ subjects who took part in the user study, explain the search task, and discuss the post-task surveys that subjects completed.
 
@@ -144,7 +144,7 @@ To decide the length and informativeness of the result summaries, we performed a
     \item{\blueboxbold{T4}, where a title and \emph{four} query-biased snippet fragments were presented.}
 \end{itemize}
 
-For these interfaces, our independent variable was snippet informativeness, controlled by the length of the result summary snippets. Figure~\ref{fig:interface_snippets} provides a complete, rendered example of the different result summaries in each condition, using the same document.
+For these interfaces, our independent variable was snippet informativeness, controlled by the length of the result summaries. Figure~\ref{fig:interface_snippets} provides a complete, rendered example of the different result summaries in each condition, using the same document.
 
 From here, we carefully selected the order in which subjects were presented with each interface. For each of the four main topics discussed in Section~\ref{sec:methodology:collection:topics}, one of the four interfaces from \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4} were assigned to a topic using a Latin-square rotation. For the practice topic, we used \blueboxbold{T2} -- a title and two snippet fragments -- the interface that represented the \emph{de facto} standard for presenting result summaries~\citep{hearst2009_search}.
 
@@ -152,12 +152,12 @@ From here, we carefully selected the order in which subjects were presented with
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch7-interface_snippets.pdf}}
-    \caption[Examples of result summaries across experimental interfaces]{Examples of the result summaries generated by each of the four interfaces, \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4} used in this study. The same document is used. Demonstrated by \searchlogo, each of the result summaries consists of: a \genericblack{title} (in blue, underlined); none, one, or more \genericblack{snippet fragments} (in black, with fragments separated by ellipses); and a \genericblack{newswire source} (in green).}
+    \caption[Examples of result summaries across experimental interfaces]{Examples of the result summaries generated by each of the interfaces, \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}. The same document is used. Demonstrated by \searchlogo, each of the result summaries consists of: a \genericblack{title} (in blue, underlined); none, one, or more \genericblack{snippet fragments} (in black, with fragments separated by ellipsis); and a \genericblack{newswire source} (under the title, in green).}
     \label{fig:interface_snippets}
 \end{figure}
 
 \subsubsection{Snippet Generation}\label{sec:snippets:method:snippets}
-For interfaces \blueboxbold{T2} to \blueboxbold{T4}, each result summary presented to the subjects required one or more snippet fragments from the corresponding document. As illustrated in the complete, rendered example in Figure~\ref{fig:interface_snippets}, each of the fragments generated were query-biased in nature~\citep{tombros1998query_biased}. Fragments were generated by splitting a given document into sentences (delimited by a full stop), and scoring each of the sentences according to BM25 (where $\beta=0.75$). Fragments were then extracted from the ordered series of sentences by identifying query terms within said sentences. Fragments were created by creating a window of $40$ characters from either side of the identified query term, as illustrated in the example figure below.
+For interfaces \blueboxbold{T2} to \blueboxbold{T4}, each result summary required one or more snippet fragments from the corresponding document. As illustrated in the complete, rendered example in Figure~\ref{fig:interface_snippets}, each of the fragments generated were query-biased in nature~\citep{tombros1998query_biased}. Fragments were generated by splitting a given document into sentences (delimited by a full stop), and scoring each of the sentences according to BM25 (where $\beta=0.75$). Fragments were then extracted from the ordered series of sentences by identifying query terms within said sentences. Fragments were created by creating a window of $40$ characters from either side of the identified query term, as illustrated in the example figure below.
 
 \begin{figure}[h]
     \centering
@@ -171,10 +171,10 @@ For interfaces \blueboxbold{T2} to \blueboxbold{T4}, each result summary present
 The ordered set of fragments were then joined together (one only for \blueboxbold{T1}, two for \blueboxbold{T2}, and four for \blueboxbold{T4}), separated by ellipses. These were combined together with the document's title and source newswire to form the complete result summary.
 
 \subsubsection{Search Task}
-As discussed previously in Section~\ref{sec:methodology:user:flow}, subjects were grounded by instructing them to imagine that they were newspaper reporters. As such, they were required to gather documents to write stories about each of the four topics they searched for. For this study, subjects were assigned ten minutes to each of the four search tasks, and were specifically instructed to find as many relevant documents as they could during this allotted time. As shown in Section~\ref{sec:methodology:user:interface}, subjects interacted with the standard search interface. Documents were \emph{saved} by subjects when they were considered to be relevant to the given~\gls{acr:trec} topic.
+As discussed previously in Section~\ref{sec:methodology:user:flow}, subjects were grounded by instructing them to imagine that they were newspaper reporters. As such, they were required to gather (save) documents to write stories about each of the four topics for which they were asked to search. For this study, subjects were assigned ten minutes to each of the four search tasks, and were specifically instructed to find as many relevant documents as they could during this allotted time. As shown in Section~\ref{sec:methodology:user:interface}, subjects interacted with the standard search interface. Documents were \emph{saved} by subjects when they were considered to be relevant to the given~\gls{acr:trec} topic.
 
 \subsubsection{Crowdsourced Subjects}\label{sec:snippets:method:subjects}
-A total of $60$ subjects took part on the~\gls{acr:mturk} platform. However, seven subjects were omitted due to quality control constraints imposed on the study, as outlined in Section~\ref{sec:methodology:user:crowdsourcing} on page~\pageref{sec:methodology:user:crowdsourcing}. This left $53$ subjects who satisfied the conditions of the experiment. In all, of the $53$ subjects who satisfied the criteria, $28$ were male, with the remaining $25$ female. The average age of the subjects was $33.8$ years ($min=22$; $max=48$; $stdev=7.0$). A total of $19$ subjects reported possessing a bachelor's degree or higher, and all expressing a high degree of search literacy, and conducted at least five searches for information online per week.
+A total of $60$ subjects took part on the~\gls{acr:mturk} platform. However, seven subjects were omitted due to quality control constraints imposed on the study, as outlined in Section~\ref{sec:methodology:user:crowdsourcing} on page~\pageref{sec:methodology:user:crowdsourcing}. This left $53$ subjects who satisfied the conditions of the experiment. In all, of the $53$ subjects who satisfied the criteria, $28$ were male, with the remaining $25$ female. The average age of the subjects was $33.8$ years ($min=22$; $max=48$; $stdev=7.0$). A total of $19$ subjects reported possessing a bachelor's degree or higher, with all expressing a high degree of search literacy, and reportedly conducted at least five searches for information online per week.
 
 With a total of $53$ subjects considered in the results of this study, each searching over four topics, this meant a total of $212$ search sessions being logged and available for analysis. Finally, we report results over a reduced time period of six minutes ($360$ seconds). This decision was taken as not all of the $53$ subjects spent the full ten minutes searching, with these subjects skewing results. By reducing the time period that we considered, we ensured that we could extract meaningful data from the interaction logs, and guaranteed that subjects were interacting with the experimental system up until the cutoff point.
 
@@ -192,10 +192,10 @@ A seven-point Likert scale was used for post-task surveys, similar to the pre-ta
     \item{\blueboxbold{Size} The result summaries presented were of an appropriate size and length.}
 \end{itemize}
 
-These questions allowed us to obtain quantitative data alluding to how each subject perceived the search interface that they interacted with, and ascertain what they thought of the different result summary lengths.
+These questions allowed us to obtain quantitative data alluding to how each subject perceived the search interface with which they interacted, and allowed us to ascertain the subjects' evaluations of the differing result summary lengths.
 
 \subsubsection{Post-Experiment Survey}\label{sec:snippets:method:postexperiment}
-At the end of the experiment, subjects also completed a post-experiment survey. Five questions were posed, this time asking subjects to select which one of the four different interfaces best matched up with their opinion of the question asked.
+At the end of the experiment, subjects also undertook a post-experiment survey. Five questions were posed, this time asking subjects to select which one of the four different interfaces best reflected their opinion of the question asked.
 
 \begin{itemize}
     \item{\blueboxbold{Most Informative?} Of the four interfaces, what one yielded the most informative result summaries?}
@@ -205,7 +205,7 @@ At the end of the experiment, subjects also completed a post-experiment survey. 
     \item{\blueboxbold{Most Preferred?} Of the four interfaces, what interface did you prefer using the most?}
 \end{itemize}
 
-These questions allowed us to determine which interface delivered the best impression overall across the five different questions asked.
+These questions allowed us to determine which interface delivered the optimal outcome for searching when considering different criteria.
 
 \subsection{Results and Analysis}\label{chap:snippets:user:results}
 From the four aspects we highlighted in Section~\ref{sec:methodology:extracting}, we report results from the study across four main sections, including analysis of:
@@ -217,7 +217,7 @@ From the four aspects we highlighted in Section~\ref{sec:methodology:extracting}
     \item{user experience (surveys).}
 \end{itemize}
 
-Each measure was analysed over the four different search interfaces. To perform our analysis, \emph{Analysis of Variance (ANOVA) tests} were used using the interfaces as factors; main effects were examined with $\alpha = 0.05$. Bonferroni tests were used for post-hoc analysis.
+Each measure was analysed over the four different search interfaces. To perform our analysis, \emph{Analysis of Variance (ANOVA) tests} were used using the interfaces as factors; main effects were examined with $\alpha = 0.05$. The Bonferroni correction was used for post-hoc analysis to determine what interfaces offered significant differences.
 
 \begin{table}[t!]
     \caption[Information gain across interfaces]{Characters, words and \emph{Information Gain (IG)} across each of the four interfaces trialled. An ANOVA test revealed \darkbluebox{significant differences}, with follow-up tests showing that each interface is significantly different to others. An IG value closer to zero denotes a higher level of IG. In the table below, \emph{IG/W.} denotes \emph{IG per word}.\vspace{-3mm}}
