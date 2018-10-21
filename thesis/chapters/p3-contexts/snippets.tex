@@ -277,10 +277,10 @@ To check whether the interfaces were sufficiently different with respect to snip
 Across the four experimental interfaces trialled, Table~\ref{tbl:snippets_intperftime} presents the mean ($\pm$ standard deviations) of:
 
 \begin{itemize}
-    \item{the number of queries issued \genericblack{(\#Queries)};}
-    \item{the number of~\gls{acr:serp} viewed per query \genericblack{(\#\glsplural{acr:serp}/Query)};}
-    \item{the number of documents viewed per query \genericblack{(\#Docs./Query)}; and}
-    \item{the mean click depth -- or stopping depth \genericblack{(Depth/Query)}.}
+    \item{the number of queries issued (\genericblack{\#Queries});}
+    \item{the number of~\glsplural{acr:serp} viewed per query (\genericblack{\#\glsplural{acr:serp}/Query});}
+    \item{the number of documents viewed per query (\genericblack{\#Docs./Query}); and}
+    \item{the mean click depth -- or stopping depth (\genericblack{Depth/Query}).}
 \end{itemize}
 
 These are all presented within the \genericblack{Interactions}~grouping. Across the four experimental interfaces of \blueboxbold{T0}, \blueboxbold{T1}, \blueboxbold{T2} and \blueboxbold{T4}, there were no significant differences reported between any of these measures. The number of queries issued follows a slight downward trend as the length of the result summaries (dictated by the interface conditions) increased ($3.72 \pm 0.34$ for \blueboxbold{T0}, to $3.28\pm0.31$ for \blueboxbold{T4}). This was also true for the number of~\glsplural{acr:serp} examined, and the number of documents examined per query. The depth to which subjects went to per query however follows a downward trend. As the length of each result summary increased, subjects were likely to go to shallower depths per query when examining result summaries ($24.47\pm2.96$ for \blueboxbold{T0}, to $19.4\pm20.04$ for \blueboxbold{T4}). Although not significantly different, we observe that result summary length does appear to influence searcher stopping behaviours. When using interface \blueboxbold{T4} for example, subjects viewed fewer~\glsplural{acr:serp} per query, and correspondingly examined to shallower depths. Taken together, these two measures demonstrate that a relationship may exist.
@@ -313,9 +313,9 @@ Interaction probabilities all showed an increasing trend as result summary lengt
 Table~\ref{tbl:snippets_intperftime} also presents three time-based measures (within the \genericblack{Times}~grouping) that were observed across the four experimental interfaces. We show:
 
 \begin{itemize}
-    \item{the mean time spent by subjects issuing queries \genericblack{(Per Query)};}
-    \item{the mean time spent by subjects examining individual documents \genericblack{(Per Document)}; and}
-    \item{the mean time spent examining individual result summaries \genericblack{(Per Summary)}.}
+    \item{the mean time spent by subjects issuing queries (\genericblack{Per Query});}
+    \item{the mean time spent by subjects examining individual documents (\genericblack{Per Document}); and}
+    \item{the mean time spent examining individual result summaries (\genericblack{Per Summary}).}
 \end{itemize}
 
 \begin{figure}[t!]
@@ -333,11 +333,11 @@ Also included within Table~\ref{tbl:snippets_intperftime} are our reported perfo
 
 \begin{itemize}
     \item{the issued queries, with the \genericblack{P@10} score;}
-    \item{the number of documents that were saved by subjects \genericblack{(\#Saved)}; broken up into}
+    \item{the number of documents that were saved by subjects (\genericblack{\#Saved}); broken up into}
     
     \begin{itemize}
-        \item{the interactive precision, or the number of saved documents that were~\gls{acr:trec} relevant \genericblack{(\#\gls{acr:trec} Saved (iP));} and}
-        \item{the number of saved documents that were not~\gls{acr:trec} relevant \genericblack{(\#\gls{acr:trec} Non.).}}
+        \item{the interactive precision, or the number of saved documents that were~\gls{acr:trec} relevant (\genericblack{\#\gls{acr:trec} Saved (iP)}); and}
+        \item{the number of saved documents that were not~\gls{acr:trec} relevant (\genericblack{\#\gls{acr:trec} Non.}).}
     \end{itemize}
 \end{itemize}
 
@@ -701,7 +701,7 @@ Figure~\ref{fig:ch7_sim_comparison_plots} again presents twelve plots, one for e
 From the plots in Figure~\ref{fig:ch7_sim_comparison_plots}, we can observe a number of notable trends. Stopping strategies that offered good levels of performance (as reported in Section~\ref{sec:snippets:simulations:results:perf}) offer smoother MSE curves, indicative of providing good approximations of actual searcher behaviours. Plots for \blueboxbold{SS6-DT} for example are more variable in nature; this stopping strategy was also reported in Section~\ref{sec:snippets:simulations:results:perf} as one of the worst performing on average. We also notice a variation in how predictions differ across the four experimental interfaces, with this trend observed over all twelve stopping strategy plots. Interface \blueboxbold{T2} consistently served better approximations than its counterpart interfaces, with \blueboxbold{T1} always offering the worst. Interfaces \blueboxbold{T0} and \blueboxbold{T4} appear between the two extremes, often interleaving with one another as the mean depth per query increases.
 
 \begin{table}[p!]
-    \caption[\gls{acr:cg} and depth per query values for comparison runs]{Additional results from the searcher comparisons runs, with this table reporting mean depth per query (\genericblack{DQ}) and \genericblack{\gls{acr:cg}} values, along with the mean interactive precision value (\genericblack{iP}). All these values are reported at the configuration yielding the lowest MSE (refer to Table~\ref{tbl:ch7_sim_comp}), indicating the best approximation to real-world stopping behaviours. Also included are the mean real-world (\genericblack{RW}) values over each interface for a direct comparison. Note that result summary level stopping strategies offering the lowest~\gls{acr:cg} are \darkbluebox{highlighted} – cell colouring here does not denote the outcome of any significance testing.}
+    \caption[\gls{acr:cg} and depth per query values for comparison runs]{Additional results from the searcher comparisons runs, with this table reporting mean depth per query (\genericblack{DQ}) and \genericblack{\gls{acr:cg}} values, along with the mean interactive precision value (\genericblack{iP}). All these values are reported at the configuration yielding the lowest MSE (refer to Table~\ref{tbl:ch7_sim_comp}), indicating the best approximation to real-world stopping behaviours. Also included are the mean real-world (\genericblack{RW}) values over each interface for a direct comparison. Note that result summary level stopping strategies offering the lowest MSE are \darkbluebox{highlighted} – cell colouring here does not denote the outcome of any significance testing.}
     \label{tbl:ch7_sim_comp_cgdq}
     \renewcommand{\arraystretch}{1.8}
     
