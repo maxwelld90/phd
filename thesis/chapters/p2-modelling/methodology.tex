@@ -384,7 +384,7 @@ A \emph{simulation} within the \simiir~framework consists of the following main 
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics[width=1\textwidth]{figures/ch6-simiir.pdf}}
-    \caption[Architecture of the \simiir~framework]{The architecture of the \simiir~framework, with the components split across both \emph{simulation} and \emph{user} categories. Simulation components define the simulation – a representation of some real-world user study, with user components defining the behaviours of simulated searchers.}
+    \caption[Architecture of the \simiir~framework]{The architecture of the \simiir~framework, with the components split across both \emph{simulation} and \emph{user} categories. Simulation components define the simulation \textemdash~a representation of some real-world user study, with user components defining the behaviours of simulated searchers.}
     \label{fig:simiir}
 \end{figure}
 
@@ -524,7 +524,7 @@ However, such an approach is not without limitation. By their very nature, a sto
 Different outcomes can lead to a wide variance between different trials, which in turn leads to a requirement of running a more powerful experiment over a larger number of trials, or \emph{Monte-Carlo style simulations}~\citep{benov2016manhattan}. In turn, this leads to an increase in the amount of time required to execute all simulations.
 
 \begin{table}[t!]
-    \caption[Example of pre-rolled judgements]{A visual example of how the use of pre-rolled judgements (right) performs when compared without (left). The top five rankings (from \genericblack{D\textsubscript{1}} to \genericblack{D\textsubscript{5}}) across four examples are shown. On the left are two simulated searcher configurations that do not use pre-rolled judgements. On the right, the same configurations are shown with pre-rolled judgements. Notice that for the examples with pre-rolled judgements, the same judgements are provided across configurations. On the left, this is not the case – indeed, this phenomenon can have an undue influence upon the behaviour of a simulated searcher, such as affecting their stopping behaviour. This is illustrated below, with the stopping depth for \dualbluebox{SS2}{@2} being affected (where stopping depths are highlighted in red).}
+    \caption[Example of pre-rolled judgements]{A visual example of how the use of pre-rolled judgements (right) performs when compared without (left). The top five rankings (from \genericblack{D\textsubscript{1}} to \genericblack{D\textsubscript{5}}) across four examples are shown. On the left are two simulated searcher configurations that do not use pre-rolled judgements. On the right, the same configurations are shown with pre-rolled judgements. Notice that for the examples with pre-rolled judgements, the same judgements are provided across configurations. On the left, this is not the case \textemdash~indeed, this phenomenon can have an undue influence upon the behaviour of a simulated searcher, such as affecting their stopping behaviour. This is illustrated below, with the stopping depth for \dualbluebox{SS2}{@2} being affected (where stopping depths are highlighted in red).}
     \label{tbl:precomputed_judgements}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}

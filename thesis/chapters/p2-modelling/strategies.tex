@@ -95,7 +95,7 @@ While we consider this stopping strategy in the context of result summary level 
 The next stopping strategy proposed considered a combination of both the frustration/disgust and satisfaction/satiation stopping heuristics. This was named the \emph{combination heuristic} by~\cite{kraft1979stopping_rules}. Employing this stopping strategy, a searcher would stop either when they became frustrated or were satisfied with the number of attractive summaries that they had observed -- whichever of the two criteria were met first. As such, we can convert this into a fifth stopping strategy, defined below.
 
 \begin{itemize}
-    \item{\dualbluebox{SS5-COMB}{Combination – Frustration/Satiation} A searcher utilising this stopping strategy will employ both frustration (disgust) and satisfaction (satiation) stopping heuristics to determine when to stop, ceasing their search on the~\gls{acr:serp} for the first stopping heuristic whose criterion is met.}
+    \item{\dualbluebox{SS5-COMB}{Combination \textemdash~Frustration/Satiation} A searcher utilising this stopping strategy will employ both frustration (disgust) and satisfaction (satiation) stopping heuristics to determine when to stop, ceasing their search on the~\gls{acr:serp} for the first stopping heuristic whose criterion is met.}
 \end{itemize}
 
 While \blueboxbold{SS4} can be selected as the operationalised satisfaction/satiation component, one of either \blueboxbold{SS2} or \blueboxbold{SS3} can be selected for the frustration/disgust component of this fifth stopping strategy. We discuss this in our general methodology in Section~\ref{sec:method:simulation:grounding:stopping}.
@@ -152,7 +152,7 @@ For this thesis, we also consider the \emph{combination heuristic} proposed by~\
 \end{figure}
 
 \begin{itemize}
-    \item{\dualbluebox{SS11-COMB}{Combination – Time and satiation} Encountering a~\gls{acr:serp} expected to yield a high volume of relevant content early on (high scent), a searcher will employ the satisfaction/satiation stopping heuristic. However, if the~\gls{acr:serp} is judged to yield relevant items over greater depths or is judged to be of poor quality (low scent), the give-up time-based heuristic is used instead.}
+    \item{\dualbluebox{SS11-COMB}{Combination \textemdash~Time and satiation} Encountering a~\gls{acr:serp} expected to yield a high volume of relevant content early on (high scent), a searcher will employ the satisfaction/satiation stopping heuristic. However, if the~\gls{acr:serp} is judged to yield relevant items over greater depths or is judged to be of poor quality (low scent), the give-up time-based heuristic is used instead.}
 \end{itemize}
 
 From our definitions above, \blueboxbold{SS4-SAT} is used for the satisfaction/satiation component, and \blueboxbold{SS10-RELTIME} is used for the give-up time heuristic component. The combination stopping strategy attempts to ensure that a searcher does not waste time on a~\gls{acr:serp} that appears to offer a low yield, but conversely capitalises upon patches that present a high yield. Of course, determining the perceived yield is a question of implementation; refer to Section~\ref{sec:method:simulation:grounding:stopping} for more information on how we implemented this particular stopping strategy. Essentially, this combination stopping strategy incorporates an additional decision point within the searcher model, where one must determine if the presented~\gls{acr:serp} is high yield early on or not. This is illustrated as an excerpt of a flowchart in Figure~\ref{fig:ss11_combo}.
