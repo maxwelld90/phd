@@ -43,6 +43,7 @@
 \usepackage{pdfpages}
 \usepackage{caption}
 \usepackage{mathpazo}
+\usepackage{tgpagella}
 \usepackage{titlesec}
 \usepackage{titletoc}
 \usepackage{attrib}
@@ -66,6 +67,7 @@
 \usepackage{diagbox}
 \usepackage{xfrac}
 \usepackage{xeCJK} % For Chinese, Japanese and Korean script
+\usepackage[T1,T5]{fontenc}
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
@@ -193,7 +195,8 @@
 
 % Set fonts -- main narrative font to Palatino (fancy serif) and FoundrySterling for the meta stuff.
 % Palatino is set as the math font by including package pxfonts.
-\setmainfont{Palatino}
+%\setmainfont{Palatino}
+\setmainfont[Path=./fonts/, ItalicFont=*-italic, BoldFont=*-bold, BoldItalicFont=*-bolditalic]{palatino.ttf}
 \newfontfamily\headerfont[Path=./fonts/]{fs-demi.ttf}
 \newfontfamily\metafont[Path=./fonts/, ItalicFont=*italic, BoldFont=*bold]{fs-book.ttf}
 \setmonofont{inconsolata}[Scale=MatchLowercase]
@@ -210,6 +213,8 @@
 
 % Set Farsi (Persian) font
 \newfontfamily\farsifont[Path=./fonts/]{freefarsi.ttf}
+
+\newfontfamily\armenianfont[Path=./fonts/]{sylfaen.ttf}
 
 % % Set header/footer content -- create a phdpagestyle style
 \fancypagestyle{phdpagestyle}{
