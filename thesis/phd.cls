@@ -65,6 +65,7 @@
 \usepackage[figuresright]{rotating}
 \usepackage{diagbox}
 \usepackage{xfrac}
+\usepackage{xeCJK} % For Chinese, Japanese and Korean script
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
@@ -196,6 +197,19 @@
 \newfontfamily\headerfont[Path=./fonts/]{fs-demi.ttf}
 \newfontfamily\metafont[Path=./fonts/, ItalicFont=*italic, BoldFont=*bold]{fs-book.ttf}
 \setmonofont{inconsolata}[Scale=MatchLowercase]
+
+% Set Chinese, Japanese and Korean font -- to "Hei" (should be included in the CJK TeX package)
+\setCJKmainfont{Hei}
+
+% Set Thai font
+\newfontfamily\thaifont[Path=./fonts/]{thsarabun.ttf}
+
+% Set Arabic font
+%\newfontfamily\arabicfont{Al Bayan}
+\newfontfamily\arabicfont{Al Bayan}
+
+% Set Farsi (Persian) font
+\newfontfamily\farsifont[Path=./fonts/]{freefarsi.ttf}
 
 % % Set header/footer content -- create a phdpagestyle style
 \fancypagestyle{phdpagestyle}{
