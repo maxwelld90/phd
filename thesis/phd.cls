@@ -206,7 +206,7 @@
 % Set Thai font
 \newfontfamily\thaifont[Path=./fonts/]{thsarabun.ttf}
 
-\newfontfamily\asianfont[Path=./fonts/]{NotoSansCJK-Regular.ttc}
+\newfontfamily\asianfont[Path=./fonts/]{notosans-cjk-regular.ttc}
 
 % Set Arabic font
 %\newfontfamily\arabicfont{Al Bayan}
