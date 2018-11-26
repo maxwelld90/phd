@@ -66,8 +66,7 @@
 \usepackage[figuresright]{rotating}
 \usepackage{diagbox}
 \usepackage{xfrac}
-\usepackage{xeCJK} % For Chinese, Japanese and Korean script
-\usepackage[T1,T5]{fontenc}
+%\usepackage{xeCJK} % For Chinese, Japanese and Korean script
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
@@ -196,16 +195,18 @@
 % Set fonts -- main narrative font to Palatino (fancy serif) and FoundrySterling for the meta stuff.
 % Palatino is set as the math font by including package pxfonts.
 %\setmainfont{Palatino}
-\setmainfont[Path=./fonts/, ItalicFont=*-italic, BoldFont=*-bold, BoldItalicFont=*-bolditalic]{palatino.ttf}
+\setmainfont[Path=./fonts/, ItalicFont=*-italic, BoldFont=*-bold, BoldItalicFont=*-bolditalic]{palatino.ttf}  % Use Palatino Linotype (the TTF files) to allow for Vietnamese script (for Vu!)
 \newfontfamily\headerfont[Path=./fonts/]{fs-demi.ttf}
 \newfontfamily\metafont[Path=./fonts/, ItalicFont=*italic, BoldFont=*bold]{fs-book.ttf}
 \setmonofont{inconsolata}[Scale=MatchLowercase]
 
 % Set Chinese, Japanese and Korean font -- to "Hei" (should be included in the CJK TeX package)
-\setCJKmainfont{Hei}
+% \setCJKmainfont{Hei}
 
 % Set Thai font
 \newfontfamily\thaifont[Path=./fonts/]{thsarabun.ttf}
+
+\newfontfamily\asianfont[Path=./fonts/]{NotoSansCJK-Regular.ttc}
 
 % Set Arabic font
 %\newfontfamily\arabicfont{Al Bayan}
