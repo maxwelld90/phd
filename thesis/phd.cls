@@ -225,6 +225,8 @@
 }
 \setlength{\headheight}{15pt}
 
+\newcommand{\acksep}{\noindent\makebox[\linewidth]{\resizebox{0.5\linewidth}{2.5pt}{$\bullet$}}\bigskip}
+
 % Apply the phdpagestyle style to all pages
 \pagestyle{phdpagestyle}
 \patchcmd{\chapter}{plain}{phdpagestyle}{}{}  % Override the first page of a chapter style (may be replaced)
