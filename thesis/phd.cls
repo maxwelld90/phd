@@ -66,6 +66,7 @@
 \usepackage[figuresright]{rotating}
 \usepackage{diagbox}
 \usepackage{xfrac}
+\usepackage{xifthen}
 
 \setlength{\parindent}{0pt}  % Removes the indent at the start of a paragraph (I think it's hella ugly, mate)
 \renewcommand{\baselinestretch}{1.5}  % Compulsory 1 1/2 line spacing
@@ -567,10 +568,21 @@
 
 % Update the chapter header to use the custom styling.
 \renewcommand{\@makechapterhead}[1]{
+
+    \ifthenelse{\isnamedefined{chapterheaderimage}}%
+        {
+            \begin{tikzpicture}[remember picture, overlay]
+                  \node[anchor=north west] at (-2.88,3.49){%
+                    \scalebox{0.66}{\pgfimage{\chapterheaderimage}}};
+            \end{tikzpicture}
+            \let\chapterheaderimage\undefined
+        }
+        {} % No image defined.
+
     \vspace*{50mm}
     %{\singlespacing\headerfont\fontsize{6mm}{6mm}\selectfont\@chapapp~\thechapter\par}
     {
-
+        
 \begin{tikzpicture}[remember picture, overlay, anchor=west]
     
     %\draw[fill=dmax_lightblue,draw=none] (-2.7,-22.8) rectangle ++(0.2,100.3);  % Blue line
