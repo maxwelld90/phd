@@ -549,7 +549,19 @@
     \fi
     \markboth{}{}%
     
-    {\begin{tikzpicture}[remember picture, overlay, anchor=east]%
+    {
+    
+    % \ifthenelse{\isnamedefined{chapterheaderimage}}%
+    %     {
+            \begin{tikzpicture}[remember picture, overlay]
+                  \node[anchor=north west] at (-2.88,3.49){%
+                    \scalebox{0.66}{\pgfimage{figures/p1-header.pdf}}};
+            \end{tikzpicture}
+        %     \let\chapterheaderimage\undefined
+        % }
+        % {} % No image defined.
+    
+    \begin{tikzpicture}[remember picture, overlay, anchor=east]%
         
         %\draw[fill=dmax_darkblue,draw=none] (-2.7,-26.4) rectangle ++(0.2,100.3);  % Blue line
         
