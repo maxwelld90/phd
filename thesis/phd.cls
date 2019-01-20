@@ -549,8 +549,6 @@
     \fi
     \markboth{}{}%
     
-    {
-    
     \ifthenelse{\isnamedefined{partheaderimage}}%
         {
             \begin{tikzpicture}[remember picture, overlay]
@@ -560,6 +558,8 @@
             \let\partheaderimage\undefined
         }
         {} % No image defined.
+    
+    {
     
     \begin{tikzpicture}[remember picture, overlay, anchor=east]%
         
