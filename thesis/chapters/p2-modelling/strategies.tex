@@ -48,7 +48,7 @@ The fixed depth stopping strategy is based upon an assumption held across many o
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch4-ss1.pdf}}
-    \caption[Examples of the fixed depth stopping strategy, \blueboxbold{SS1}]{An example of the fixed depth stopping strategy, stylised in this thesis as \blueboxbold{SS1-FIX}. Here, a searcher has an information need for the conference \emph{CIKM 2015} in Melbourne, VIC, Australia. The left example shows the top five results for poor performing query, with few unattractive results (denoted by {\includegraphics[height=\fontcharht\font`\d]{figures/ch0-cross.pdf}}); conversely, the right shows results for a query performing well, with many attractive results (denoted by {\includegraphics[height=\fontcharht\font`\d]{figures/ch0-tick.pdf}}). With \dualbluebox{SS1-FIX}{@4}, the searcher will stop at a depth of \emph{4,} regardless of the perceived relevance of the content provided.}
+    \caption[Examples of the fixed depth stopping strategy, \blueboxboldtoc{SS1}]{An example of the fixed depth stopping strategy, stylised in this thesis as \blueboxbold{SS1-FIX}. Here, a searcher has an information need for the conference \emph{CIKM 2015} in Melbourne, VIC, Australia. The left example shows the top five results for poor performing query, with few unattractive results (denoted by {\includegraphics[height=\fontcharht\font`\d]{figures/ch0-cross.pdf}}); conversely, the right shows results for a query performing well, with many attractive results (denoted by {\includegraphics[height=\fontcharht\font`\d]{figures/ch0-tick.pdf}}). With \dualbluebox{SS1-FIX}{@4}, the searcher will stop at a depth of \emph{4,} regardless of the perceived relevance of the content provided.}
     \label{fig:ss1}
 \end{figure}
 
@@ -74,7 +74,7 @@ From the heuristics defined by~\cite{cooper1973retrieval_effectiveness_ii} and~\
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch4-ss23.pdf}}
-    \caption[Examples of frustration rules \stoppingstratboxsingular{SS2-NT} and \stoppingstratboxsingular{SS3-NC}]{An example of the two frustration rules, \stoppingstratboxsingular{SS2-NT} (left) and \stoppingstratboxsingular{SS3-NC} (right), both using a parameter of 3 unhelpful result summaries, under the same query and results. Given that \stoppingstratboxsingular{SS2-NT} considers the total number of result summaries judged to be unhelpful, a searcher employing this stopping strategy would stop at rank \emph{5} in the example above. Considering a set of contiguous unhelpful summaries, a searcher using \stoppingstratboxsingular{SS3-NC} would stop at rank \emph{7.}}
+    \caption[Examples of frustration rules \blueboxboldtoc{SS2-NT} and \blueboxboldtoc{SS3-NC}]{An example of the two frustration rules, \stoppingstratboxsingular{SS2-NT} (left) and \stoppingstratboxsingular{SS3-NC} (right), both using a parameter of 3 unhelpful result summaries, under the same query and results. Given that \stoppingstratboxsingular{SS2-NT} considers the total number of result summaries judged to be unhelpful, a searcher employing this stopping strategy would stop at rank \emph{5} in the example above. Considering a set of contiguous unhelpful summaries, a searcher using \stoppingstratboxsingular{SS3-NC} would stop at rank \emph{7.}}
     \label{fig:ss23}
 \end{figure}
 
@@ -147,7 +147,7 @@ For this thesis, we also consider the \emph{combination heuristic} proposed by~\
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch5-combo.pdf}}
-    \caption[Flowchart of the flow of stopping strategy \blueboxbold{SS11-COMB}]{An excerpt of the~\gls{acr:csm} with the additional decision point that \blueboxbold{SS11-COMB} incorporates within the searcher model. After deciding that individual result summaries within a~\gls{acr:serp} are worth examining in more detail, a searcher will then also have to decide whether the presented~\gls{acr:serp} will yield a high number of fruitful results \emph{early} in the rankings, or trickle relevant material over greater depths (or not at all). The additional decision point and selected stopping strategies are highlighted within a blue box.}
+    \caption[Flowchart of the flow of stopping strategy \blueboxboldtoc{SS11-COMB}]{An excerpt of the~\gls{acr:csm} with the additional decision point that \blueboxbold{SS11-COMB} incorporates within the searcher model. After deciding that individual result summaries within a~\gls{acr:serp} are worth examining in more detail, a searcher will then also have to decide whether the presented~\gls{acr:serp} will yield a high number of fruitful results \emph{early} in the rankings, or trickle relevant material over greater depths (or not at all). The additional decision point and selected stopping strategies are highlighted within a blue box.}
     \label{fig:ss11_combo}
 \end{figure}
 

@@ -187,12 +187,13 @@
 \newcommand{\cellbluebox}[1]{\colorbox{dmax_cellcolour}{\metafont\phantomchars#1}}
 \newcommand{\cellblueboxbold}[1]{\colorbox{dmax_cellcolour}{\headerfont\phantomchars#1}}
 \newcommand{\blueboxbold}[1]{\colorbox{dmax_lightblue}{\color{white}\headerfont\phantomchars#1}}
+\newcommand{\blueboxboldtoc}[1]{\colorbox{dmax_lightblue}{\color{white}\headerfont#1}}
 \newcommand{\darkblueboxbold}[1]{\colorbox{dmax_darkblue}{\color{white}\headerfont\phantomchars#1}}
 \newcommand{\blueboxheader}[1]{\noindent\blueboxbold{\phantomchars#1}}
 
 % Old stopping strategy commands. Remove these?
 \newcommand{\stoppingstratboxsingular}[1]{\blueboxbold{\phantomchars#1}}
-\newcommand{\stoppingstratbox}[2]{\blueboxbold{\phantomchars#1}\darkblueboxbold{\phantomchars@#2}}
+\newcommand{\stoppingstratbox}[2]{\blueboxbold{\phantomchars#1}\darkblueboxbold{@#2\phantomchars}}
 
 \newcommand{\dualbluebox}[2]{\blueboxbold{\phantomchars#1}\darkblueboxbold{\phantomchars#2}}
 
