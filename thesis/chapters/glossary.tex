@@ -149,7 +149,7 @@
 \newglossaryentry{glos:cg}{
     name={CG},
     first={CG},
-    description={\emph{Cumulative Gain} is a measure of ranking quality, used to measure the effectiveness of a retrieval system (or the searchers that use it). The usefulness or \emph{gain} possessed by a document is considered and accumulated to produce a final measure.},
+    description={\emph{Cumulative Gain} is used to measure the effectiveness of a retrieval system (or the searchers that use it). The usefulness or \emph{gain} possessed by each ranked document is considered and accumulated together to produce a final measure. This can be at the \emph{query level} (i.e. considering individual queries), or at the \emph{session level} (considering the total gain acquired over a number of queries).},
 }
 
 \newglossaryentry{glos:dcg}{
@@ -306,4 +306,11 @@
     name={HIT},
     text={HIT},
     description={A \emph{Human Intelligence Task} is the name given to jobs posted on the~\gls{acr:mturk} platform.}
+}
+
+\newglossaryentry{glos:document}{
+    name={Document},
+    text={document},
+    plural={documents},
+    description={In an~\gls{acr:ir} system, a \emph{document} contains information that can be examined. Typically, this would consist of unstructured text (i.e. natural language). However, depending upon the context, a document may contain other forms of information, such as images, audio, or video.}
 }

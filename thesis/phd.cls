@@ -178,25 +178,23 @@
 % Generic black text
 \newcommand{\genericblack}[1]{{\headerfont#1}}
 
-% New emphasis commands -- use these!
-\newcommand{\inlineemph}[1]{{\headerfont#1}}
-\newcommand{\inlinedualemph}[2]{\cellblueboxbold{#1}{\headerfont#2}}
-
 % Blue boxes!
+\newcommand{\phantomchars}{\vphantom{g}\vphantom{\^}}  % Ensures that boxes are the correct height, and match up!
+
 \setlength\fboxsep{2mm} % Applies padding to the blue boxes.
-\newcommand{\bluebox}[1]{\colorbox{dmax_lightblue}{\color{white}\metafont#1}}
-\newcommand{\darkbluebox}[1]{\colorbox{dmax_darkblue}{\color{white}\metafont#1}}
-\newcommand{\cellbluebox}[1]{\colorbox{dmax_cellcolour}{\metafont#1}}
-\newcommand{\cellblueboxbold}[1]{\colorbox{dmax_cellcolour}{\headerfont#1}}
-\newcommand{\blueboxbold}[1]{\colorbox{dmax_lightblue}{\color{white}\headerfont#1}}
-\newcommand{\darkblueboxbold}[1]{\colorbox{dmax_darkblue}{\color{white}\headerfont#1}}
-\newcommand{\blueboxheader}[1]{\noindent\blueboxbold{#1}}
+\newcommand{\bluebox}[1]{\colorbox{dmax_lightblue}{\color{white}\metafont\phantomchars#1}}
+\newcommand{\darkbluebox}[1]{\colorbox{dmax_darkblue}{\color{white}\metafont\phantomchars#1}}
+\newcommand{\cellbluebox}[1]{\colorbox{dmax_cellcolour}{\metafont\phantomchars#1}}
+\newcommand{\cellblueboxbold}[1]{\colorbox{dmax_cellcolour}{\headerfont\phantomchars#1}}
+\newcommand{\blueboxbold}[1]{\colorbox{dmax_lightblue}{\color{white}\headerfont\phantomchars#1}}
+\newcommand{\darkblueboxbold}[1]{\colorbox{dmax_darkblue}{\color{white}\headerfont\phantomchars#1}}
+\newcommand{\blueboxheader}[1]{\noindent\blueboxbold{\phantomchars#1}}
 
 % Old stopping strategy commands. Remove these?
-\newcommand{\stoppingstratboxsingular}[1]{\blueboxbold{#1}}
-\newcommand{\stoppingstratbox}[2]{\blueboxbold{#1}\darkblueboxbold{@#2}}
+\newcommand{\stoppingstratboxsingular}[1]{\blueboxbold{\phantomchars#1}}
+\newcommand{\stoppingstratbox}[2]{\blueboxbold{\phantomchars#1}\darkblueboxbold{\phantomchars@#2}}
 
-\newcommand{\dualbluebox}[2]{\blueboxbold{#1}\darkblueboxbold{#2}}
+\newcommand{\dualbluebox}[2]{\blueboxbold{\phantomchars#1}\darkblueboxbold{\phantomchars#2}}
 
 % Set fonts -- main narrative font to Palatino (fancy serif) and FoundrySterling for the meta stuff.
 % Palatino is set as the math font by including package pxfonts.
