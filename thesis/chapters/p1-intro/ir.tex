@@ -232,7 +232,7 @@ With the BIM originally designed for documents of a fairly consistent length, co
 For a given query $Q$ containing keywords $q1, \cdots, q_n$, the BM25 score of a document $D$ is defined as:
 
 \begin{equation}
-score(D|Q) = \sum_{i=1}^{n} IDF(q_i) \cdot \frac{f(q_i,D)\cdot(k_1 + 1)}{f(q_i,D) + k_1 \cdot (1 - \beta + \beta \cdot \frac{|D|}{avgdl})},
+score(D,Q) = \sum_{i=1}^{n} IDF(q_i) \cdot \frac{f(q_i,D)\cdot(k_1 + 1)}{f(q_i,D) + k_1 \cdot (1 - \beta + \beta \cdot \frac{|D|}{avgdl})},
 \end{equation}
 
 \noindent
