@@ -678,7 +678,7 @@ In this thesis, we employ measures from all four of the above -- including the e
 % We now take each of these measures in turn, discussing the rationale behind each.
 
 \subsubsection{Interactive Precision and Recall}\label{sec:ir_background:evaluation:user:ipr}
-During the~\gls{acr:iir} process, searchers examine a number of different result summaries (and their associated documents), making individual judgements as to the relevance of each. Some may not be relevant and are disregarded by the searcher. This differs from the abstracted~\gls{acr:trec}-style searcher model that assumes that all documents returned are fully assessed.
+During the~\gls{acr:iir} process, searchers examine a number of different result summaries (and their associated documents), making individual judgements as to the relevance of each. Some may not be relevant and are disregarded by the searcher. This differs from the abstracted~\gls{acr:trec}-style searcher model that assumes that all documents returned are assessed in their entirety by the searcher.
 
 Subjects of~\gls{acr:iir} studies are typically instructed to \emph{save} documents that they consider relevant to a provided information need. As such, the judgements created by subjects of~\gls{acr:iir} studies may not match with those made by the assessors of relevance judgements provided as part of a test collection. Indeed, some~\gls{acr:trec} topics that are widely used contain hundreds of documents marked as relevant by assessors. It is unlikely that a subject would be able to find \emph{all} of these documents or agree with an assessor's judgement.
 
@@ -687,7 +687,7 @@ Subjects of~\gls{acr:iir} studies are typically instructed to \emph{save} docume
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-interactive-precision.pdf}}
     \caption[Comparison of precision and interactive precision]{A graphical example of \emph{interactive precision} alongside traditional, system-sided precision. In the example ranking, the retrieval system returned three relevant documents, yet the searcher only 'correctly' identified two of them, hence an interactive precision \emph{(iP)} score of \emph{2/4=0.5.} This is in contrast to the system's precision score of \emph{3/4=0.75.}}
-    \vspace*{-2mm}
+    \vspace*{-6mm}
     \label{fig:interactive_precision}
 \end{figure}
 
