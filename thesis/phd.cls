@@ -263,6 +263,9 @@
 % Command for URLs (last accessed)
 \newcommand{\urlaccessed}[1]{~\colorbox{dmax_lightlightblue}{\color{dmax_darkblue}\metafont{\textbf{LA}~\emph{#1}}}}
 
+% Equation number styling
+\renewcommand\tagform@[1]{\maketag@@@{\ignorespaces\blueboxbold{Equation #1}\unskip\@@italiccorr}}
+
 %%%%%%%%%%
 %%% Table of Contents Styling
 %%%%%%%%%%
