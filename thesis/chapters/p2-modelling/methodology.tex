@@ -579,6 +579,9 @@ Below, we begin our discussion of each of the different stopping strategies, out
     \item{\blueboxbold{SS2-NT} and \blueboxbold{SS3-NC} The same range of values were used for threshold values $x_2$ and $x_3$. These stopping strategies focused upon a searcher's tolerance to non-relevance, as discussed in Section~\ref{sec:strategies:frus_disg:frustration}.}
 \end{itemize}
 
+% Following paragraph taken from Chapter 5 -- this feels more like an implementation issue.
+Note that for both \blueboxbold{SS2-NT} and \blueboxbold{SS3-NC}, any document that has been previously examined during the same search session (returned in the ranked results of a prior query) will be included in the count of non-relevant items. This is opposed to ignoring previously observed items, which has been shown in prior work to offer poorer performance~\citep{maxwell2015stopping_strategies}.
+
 Next, we enumerate the stopping strategy considering the \emph{satiation}~\citep{simon1955satiation} of a searcher.
 
 \begin{itemize}
@@ -598,6 +601,8 @@ Next, we consider the two stopping strategies that focus on the difference thres
     
     \item{\blueboxbold{SS7-DKL} Using~\gls{glos:kl}, a range of values for $x_7$ were trialled, from $3.0$ to $8.0$ in steps of $0.5$. A small-scale pilot study examining this stopping strategy over the AQUAINT index showed that a majority of values fell within this range.}
 \end{itemize}
+
+% Future note (2019-02-24): you might want to include the KL-Divergence formula here. A few more details on how this was implemented will not go amiss.
 
 For both \stoppingstratboxsingular{SS6-DT} and \stoppingstratboxsingular{SS7-DKL}, we considered both the \emph{per-query difference} and the \emph{per-session difference.} For the per-query variant, previously observed result summaries consisted of the first result summary, thus meaning that the simulated searcher would always consider at least two result summaries before deciding to stop. For the per-session variant, all previously observed result summaries over the entire search session (i.e. including those from previous queries) were used. In a pilot study, as reported by~\cite{maxwell2015initial_stopping}, we consider in this thesis the per-query variants only. These offered better performance than their per-session variants.
 
