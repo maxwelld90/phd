@@ -496,7 +496,7 @@
         \end{tikzpicture}
     \fi
     
-    \large
+    %\large
     \vspace{60mm}
     }
     {
@@ -687,7 +687,7 @@
     \renewcommand*{\glsgroupheading}[1]{}%
     
     \renewcommand*{\glossaryentryfield}[5]{%
-        \glstarget{##1}{\onehalfspacing\blueboxbold{\large##2}} \large\normalfont##3\glspostdescription\space ##5\\}%
+        \glstarget{##1}{\onehalfspacing\blueboxbold{##2}} \normalfont##3\glspostdescription\space ##5\\}%
         
     %\renewcommand*{\glsgroupskip}{ & \\}%
     \renewcommand*{\glsgroupskip}{}%
