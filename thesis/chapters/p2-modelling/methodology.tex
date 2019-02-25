@@ -38,13 +38,13 @@ Under the context of news search, we employed a corpus of newspaper articles. Th
 \subsection{Retrieval System}\label{sec:methodology:collection:system}
 The AQUAINT corpus was then indexed using the \emph{Whoosh~\gls{acr:ir} Toolkit.}\footnote{\emph{Whoosh} can be freely acquired using the \texttt{pip} \emph{Python} package manager (via \href{https://pypi.org/}{\emph{PyPi}}) -- documentation for Whoosh can be accessed at \url{http://whoosh.readthedocs.io/en/latest/intro.html}. \urlaccessed{2018-05-18} The corpus was indexed with Whoosh \texttt{2.7.4}.} We applied Porter stemming and removed stopwords as per the 421-term classical stopword list by~\cite{fox1992stopwords}.\footnote{More information on the indexing process can be found in Section~\ref{sec:ir_background:basics:indexing}.} During the indexing process, we also removed documents with duplicate titles. With documents originating from newswires, we found many occurrences of documents with the same title. Documents discussing ongoing events were continually revised as new information about the event arose. For documents with duplicate titles, we retained the document with the latest timestamp. This document represented the final version of the published article, containing the most recent or up-to-date information.
 
-From the indexing process, a $3.8$GB index was produced. The index contained a total of $959,678$ indexed documents. The Whoosh~\gls{acr:ir} toolkit was employed to issue queries against the index. All ranked results for queries were computed with BM25, where $\beta=0.75$ and $k_1=1.2$ (refer to Section~\ref{sec:ir_background:basics:models:probabilistic} on page~\pageref{sec:ir_background:basics:models:probabilistic}). Terms in all issued queries were implicitly \texttt{AND}ed together to restrict the set of retrieved documents to those that only contained all of the query terms. This decision was also taken as many retrieval systems implicitly \texttt{AND} terms together.
+From the indexing process, a $3.8$GB index was produced. The index contained a total of $959,678$ indexed documents. The Whoosh~\gls{acr:ir} toolkit was employed to issue queries against the index. All ranked results for queries were computed with BM25, where $\beta=0.75$ and $k_1=1.2$ (refer to Section~\ref{sec:ir_background:basics:models:probabilistic} on page~\pageref{sec:ir_background:basics:models:probabilistic}). Terms in all issued queries were \texttt{AND}ed together to restrict the set of retrieved documents to those that contained all of the query terms. This decision was also taken as many retrieval systems implicitly \texttt{AND} terms together.
 
 \begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch4-topics.pdf}}
-    \caption[TREC topic titles and descriptions]{The titles and descriptions of the five~\gls{acr:trec} topics used in experimental work. Topics are extracted from the \emph{\gls{acr:trec} 2005 Robust Track,} as outlined by~\cite{voorhees2006trec_robust}. Descriptions provide an explanation as to what constitutes a relevant (and often non-relevant) document.}
+    \caption[TREC topic titles and descriptions]{The titles and descriptions of the five~\gls{acr:trec} topics used in experimental work. Topics are extracted from the \emph{\gls{acr:trec} 2005 Robust Track,} as outlined by~\cite{voorhees2006trec_robust}. Descriptions provide an explanation as to what constitutes a relevant (and often non-relevant) document.}\vspace*{-2mm}
     \label{fig:topics}
 \end{figure}
 
@@ -73,11 +73,11 @@ Five topics were also selected from the 50 provided in the \emph{\gls{acr:trec} 
     
     \item{\dualbluebox{Topic 341}{Airport Security} For this topic, relevant documents discuss additional security measures that were taken by international airports around the world. Relevance is only denoted when a document discusses measures that go beyond basic passenger and carry-on luggage screening. For example, AQUAINT document \texttt{NYT19980616.0123} discusses \emph{San Francisco International Airport's} attempts at introducing a \emph{robot sniffer,} attempting to look for nitroglycerine in luggage.}
     
-    \item{\dualbluebox{Topic 347}{Wildlife Extinction} This topic concerns wildlife extinction, and what efforts have been taken by countries \emph{other than the U.S.} to counter the decline in endangered wildlife. Relevant documents would explicitly mention the country, the species concerned, and the efforts the state or other governmental agency took to prevent a decline in numbers. For example, document \texttt{XIE20000531.0205} discusses the breeding programme undertaken by China to bolster the number of Siberian Tigers within its jurisdiction.}
+    \item{\dualbluebox{Topic 347}{Wildlife Extinction} This topic concerns wildlife extinction, and what efforts have been taken by countries \emph{other than the U.S.} to counter the decline in endangered wildlife. Relevant documents would explicitly mention the country, the species concerned, and the efforts the state or other governmental agency took to prevent a decline in numbers. For example, document \texttt{XIE20000531.0205} discusses the breeding programme undertaken by China to bolster the number of Siberian Tigers.}
     
     \item{\dualbluebox{Topic 367}{Piracy} Instances of modern piracy are considered relevant to this topic -- not in the sense of software piracy, but the act of a water going vessel being boarded by individuals wishing to hijack it. Document \texttt{APW19980601.1065} provides an example of this -- the \emph{Petro Ranger}, a large fuel tanker, was boarded by pirates in 1998 in the South China Sea. To be relevant to the topic, the name of the vessel and the body of water it was hijacked on must be mentioned -- those discussing instances of when states intercepted vessels are not relevant.}
     
-    \item{\dualbluebox{Topic 408}{Tropical Storms} Documents discussing major tropical storms are to be considered relevant, where the storm is reported to have caused significant damage and a large number of casualties. This is a particularly timely topic for the document corpus considered, as the 1998 hurricane season in the Caribbean has been reported to be one of the most costly -- both in terms of damage caused and lives lost -- in history.\footnote{This is reported by the US \emph{National Oceanic and Atmospheric Administration (NOAA),} as seen at \url{http://www.outlook.noaa.gov/98hurricanes/}. \urlaccessed{2018-05-18}} For example, document \texttt{APW19980921.1265} discusses the effects on Puerto Rico of Hurricane Georges in September 1998, leaving -- at the time of reporting -- three dead, many houses damaged, and thousands homeless.}
+    \item{\dualbluebox{Topic 408}{Tropical Storms} Documents discussing major tropical storms are relevant, where the storm is reported to have caused significant damage and a large number of casualties. This is a particularly timely topic for the document corpus considered, as the 1998 hurricane season in the Caribbean has been reported to be one of the most costly in history.\footnote{This is reported by the US \emph{National Oceanic and Atmospheric Administration (NOAA),} as seen at \url{http://www.outlook.noaa.gov/98hurricanes/}. \urlaccessed{2018-05-18}} For example, document \texttt{APW19980921.1265} discusses the effects on Puerto Rico of Hurricane Georges in September 1998, leaving three dead, many houses damaged, and thousands homeless.}
     
     \item{\dualbluebox{Topic 435}{Curbing Population Growth} The final topic considers efforts that have been made by countries around the world to stem the ever-increasing human population. Documents discussing this issue are only relevant to the topic if the results to a case have been made public, and a reduction in a country's population has been actively pursued. The document must mention the country and the measures that the state or governmental agency pursuant to bring about a fall in population. As such, events like famines that resulted in a fall in the population are not relevant. A perhaps well-known example of a country pursuing a reduction in its population is the Chinese one-child policy, enacted in the late 20\textsuperscript{th} century. Document \texttt{NYT19981031.0070} discusses the Chinese government's efforts to curb its expanding population at the time, with sexual education and heavy financial penalties for additional children.}
     
@@ -108,7 +108,7 @@ Each user study was designed to last for 45 to 50 minutes, which included the co
 The basic structure of both user studies was as follows.
 
 \begin{itemize}
-    \item[~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point1.pdf}}]{Subjects began by reading the experiment briefing sheet, before agreeing to continue.}
+    \item[~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point1.pdf}}]{Subjects began by reading the experiment briefing sheet. If they approved of the experimental outline, they then agreeing to continue.}
     \item[~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point2.pdf}}]{A demographics survey was then completed.}
     \item[~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point3.pdf}}]{Subjects then attempted the \emph{practice task,} using the practice topic. This allowed subjects to familiarise themselves with the system and its interface.}
     \item[~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point4.pdf}}]{Subjects would then complete the various search tasks set out for them. Each task consisted of three steps:}
@@ -123,7 +123,8 @@ The basic structure of both user studies was as follows.
     \item[~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point6.pdf}}]{Finally, upon completion, subjects would be presented with a results screen, providing a summary of their performance. Performance for each subject was presented on a per-task basis. When the subject proceeded to the next step, they were presented with a message informing them the experiment has concluded.}
 \end{itemize}
 
-Subjects undertook a total of four search tasks. For each of these tasks, different interactions and experiences were captured by the \treconomics~framework. Including the practice task at the beginning of each experiment, this took the total number of search tasks per subject up to five. Following a \blueboxbold{within-subjects study design}, the four search tasks -- each using a different topic as described in Section~\ref{sec:methodology:collection:topics} -- permitted us to trial one of the four experimental conditions/interfaces in each study. The topics and interfaces/conditions were assigned to subjects using a Latin-square rotation to minimise ordering effects. A within-subjects design increases the statistical power -- the number of `subjects' is higher than a between-subjects design. Limitations of such a design include issues such as fatigue. For example, by being mindful of the time required to complete the experiment, fatigue could be curbed.
+\vspace*{-2mm}
+Subjects undertook a total of four search tasks. For each of these tasks, different interactions and experiences were captured by the \treconomics~framework. Including the practice task at the beginning of each experiment, this took the total number of search tasks per subject up to five. Following a \blueboxbold{within-subjects study design}, the four search tasks -- each using a different topic as described in Section~\ref{sec:methodology:collection:topics} -- permitted us to trial one of the four experimental conditions/interfaces in each study. The topics and interfaces/conditions were assigned to subjects using a Latin-square rotation to minimise ordering effects. A within-subjects design increases the statistical power -- the number of `subjects' is higher than a between-subjects design. Limitations of such a design include issues such as fatigue. Attempts were made to limit this by being mindful of the time required.
 
 \subsection{Experimental Search Interface}\label{sec:methodology:user:interface}
 In this section, we discuss the experimental search interface that was used by subjects of the user studies.\footnote{Slight modifications to the search interface were made to the goal-based study, as we discuss in Section~\ref{sec:diversity:users:method} on page~\pageref{sec:diversity:users:method}.} The interface would be familiar to anyone who had used a web-based retrieval system, meaning that the learning curve for using the interface would most likely be low. Upon commencement of the experiment, the interface would launch in a fixed-size popup window (refer to Section~\ref{sec:methodology:user:crowdsourcing:technical}) of the web browser being used.
@@ -162,21 +163,21 @@ Once submitted, results were displayed underneath the query box. The issued quer
     \vspace{-5mm}
 \end{figure}
 
-Result summaries were shown as discussed in Section~\ref{sec:ir_background:user:iir:serp}. The title, the source, and any snippet text were all provided. Given that the experiments were based on news search, the source is the name of the newswire from which the document originates. The title was also hyperlinked.
+Result summaries were shown as discussed in Section~\ref{sec:ir_background:user:iir:serp}. The title, the source, and any snippet text were all provided. Given that the experiments were based on news search, the source is the name of the newswire from which the document originates.
 
 \begin{figure}[h]
     \centering
-    \vspace{2mm}
+    %\vspace{2mm}
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch6-links.pdf}}
     \label{fig:serp_links}
     \vspace{-10mm}
 \end{figure}
 
-When a subject clicked on the link, he or she would then be taken to the document view (discussed below), displaying the associated document in its entirety. Standard hyperlink colours were employed -- blue for unvisited, and purple for visited. Examples of these link colours are shown above.
+When a subject clicked on the link, he or she would then be taken to the document view (discussed below), displaying the associated document in its entirety. Standard hyperlink colours were employed -- blue for unvisited, and purple for visited.
 
 \subsubsection{The Document View}\label{sec:methodology:user:interface:document}
-The right screenshot in Figure~\ref{fig:interfaces} illustrates the document view. The view provides the title, the document source (newswire), the date at which the document was created, and the full text of the document. On the right rail of the page, subjects were provided with two buttons -- one to return them to the originating~\gls{acr:serp}, or another to \blueboxbold{save} the document. The act of saving a document is a crucial component to both studies we discuss in this thesis. It provided us with a mechanism to determine what documents that subjects thought were relevant to the associated topics -- and from there, the ability to calculate a subject's performance.
+The right screenshot in Figure~\ref{fig:interfaces} illustrates the document view. The view provides the title, the document source (newswire), the date at which the document was created, and the full text of the document. On the right rail of the page, subjects were provided with two buttons -- one to return them to the originating~\gls{acr:serp}, or another to \blueboxbold{save} the document. The act of saving a document is a crucial component to both studies we discuss in this thesis. It provided us with a mechanism to determine what documents that subjects thought were relevant to the associated topics. From there, we could also use this series of saved documents to calculate a subject's performance.
 
 \subsubsection{The Saved Documents View}\label{sec:methodology:user:interface:saved}
 The third key view allowed subjects to view a list of documents that they had previously saved as relevant to the given topic. This list of documents also provided buttons allowing subjects to change their decisions as to what constituted a relevant document.
@@ -184,7 +185,7 @@ The third key view allowed subjects to view a list of documents that they had pr
 % We provided this functionality as~\gls{acr:iir} is inherently an interactive process -- a searcher \emph{learns} and develops their mental model of the given information need as more information is presented to them~\citep{ingwersen2005theturn}.
 
 \subsection{Capturing Interactions and Survey Responses}\label{sec:methodology:user:capturing}
-In addition to the interface, the \treconomics~framework provided extensive logging capabilities to capture a variety of different events triggered by subjects as they performed search tasks. This resulted in the generation of an experiment \emph{log file,} capturing the date, time, searcher and topic for each event that was logged. Figure~\ref{fig:log} provides an anonymised excerpt from the interaction log of the user study presented in Chapter~\ref{chap:snippets}.
+In addition to the interface, the \treconomics~framework provided extensive logging capabilities to capture a variety of different events triggered by subjects as they performed search tasks (with survey responses saved separately to a~\gls{acr:rdbms}). This resulted in the generation of an experiment \emph{log file,} capturing the date, time, searcher and topic for each event that was logged. Figure~\ref{fig:log} provides an anonymised excerpt from the interaction log of the user study presented in Chapter~\ref{chap:snippets}.
 
 The figure illustrates the different actions that were logged from when a searcher begins interactions with the query box (\texttt{QUERY\_FOCUS}), to issuing a query (\texttt{QUERY\_ISSUED}, complete with the terms of the query), to clicking a document (\texttt{DOC\_CLICKED}), and, finally, to saving the document (or considering it relevant to the given topic, \texttt{DOC\_MARKED\_RELEVANT}). A detailed discussion of the different behavioural measures that we examined from the interaction log is detailed in Section~\ref{sec:methodology:extracting}.
 
@@ -192,11 +193,11 @@ The figure illustrates the different actions that were logged from when a search
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch6-log.pdf}}
-    \caption[Experiment log file excerpt]{An excerpt from the interaction log of the user study detailed in Chapter~\ref{chap:snippets}. A sequence of interactions are shown that were logged by the \treconomics~framework.}
+    \caption[Experiment log file excerpt]{An excerpt from the interaction log of the user study presented in Chapter~\ref{chap:snippets}. A sequence of interactions are shown that were logged by the \treconomics~framework.}
     \label{fig:log}
 \end{figure}
 
-The \treconomics~framework also saved the responses from surveys as completed by the subjects within each study. These were saved to a separate~\gls{acr:rdbms}. A number of scripts were executed on the database post-experiment to extract and analyse the saved responses.
+%The \treconomics~framework also saved the responses from surveys as completed by the subjects within each study. These were saved to a separate~\gls{acr:rdbms}. A number of scripts were executed on the database post-experiment to extract and analyse the saved responses.
 
 \subsection{Crowdsourcing Considerations}\label{sec:methodology:user:crowdsourcing}
 An important factor in planning any user study is the economics of collecting input from subjects. \emph{Where do the subjects come from? How do we recruit them?} A traditional, lab-based study as discussed in Section~\ref{sec:ir_background:user} typically involves a significant investment in time and monetary cost from the researchers conducting the experiment~\citep{spool2001testing}. For both user studies previously detailed, we employed a \blueboxbold{crowdsourced} approach to our experimentation. Crowdsourcing is the practice of obtaining input into a task by enlisting the services of a number of people, recruited over the Internet.
@@ -208,7 +209,7 @@ Despite these issues, it has been shown that there is little difference in the q
 Using crowdsourcing for the two user studies, we detail in the remainder of this section the precautions that were taken, discussing both the requirements for the subjects themselves, and their device's setup. We also provide a discussion of the crowdsourcing platform used.
 
 \subsubsection{Platform Details}\label{sec:methodology:user:crowdsourcing:platform}
-Both studies were run over the~\glsfirst{acr:mturk} platform. Workers\footnote{In this section, a \emph{worker} refers to an individual undertaking the experiment on the MTurk platform. This term is considered interchangeable with a \emph{subject.}} from the platform each performed a single task (or, to use MTurk terminology, a~\gls{acr:hit}, with a single~\gls{acr:hit} corresponding to the entire experiment. This is in contrast to many other crowdsourced studies, where workers would typically undertake small (typically decision-based)~\gls{acr:hit} transactions. This decision was taken so that the experiment would closely resemble a laboratory-based experiment, but over a more heterogeneous pool of subjects.
+Both studies were run over the~\glsfirst{acr:mturk} platform. Workers\footnote{In this section, a \emph{worker} refers to an individual undertaking the experiment on the MTurk platform. This term is considered interchangeable with a \emph{subject.}} from the platform each performed a single task (or, to use MTurk terminology, a~\gls{acr:hit}, with a single~\gls{acr:hit} corresponding to the entire experiment. This is in contrast to many other crowdsourced studies, where workers would typically undertake small (typically decision-based)~\gls{acr:hit} transactions. This decision was taken so that the experiment would closely resemble a laboratory-based experiment.
 
 \subsubsection{Subject Requirements}\label{sec:methodology:user:crowdsourcing:subjects}
 Due to the expected length that workers would take to complete the two studies\footnote{Note that two different sets of workers were used -- the studies were run at different times.}, workers who completed either study in full were reimbursed for their time with US\$9 -- greater than the hourly US\$7.25 minimum wage set by the U.S. federal government.\footnote{This was correct at the time of writing; value acquired from the \emph{U.S. Department of Labor} at \url{https://www.dol.gov/whd/minwage/america.htm} \urlaccessed{2019-02-25}.} Workers interested in undertaking either of the two studies were required to meet a minimum set of criteria to be eligible to participate. We required that workers were:
@@ -313,13 +314,14 @@ In conjunction with behavioural and time-based measures, we were also able to ex
 A number of surveys were also filled out by subjects. These captured different information about each searcher's individual search experiences. While there are similarities between what is asked (refer to Sections~\ref{sec:snippets:method} and~\ref{sec:diversity:users:diversifying} for further details), we provide in this section a high-level overview of the different surveys, before examining questions that were common between the two studies. Below, we outline the demographics, pre- and post-task surveys, and post-experiment surveys -- provided in the order of the experimental flow detailed in Section~\ref{sec:methodology:user:flow}.
 
 \subsubsection{Demographics}
-Details in keeping with general demographics were attained about the different subjects from this survey. These included the following basic demographic questions:
+Details in keeping with general demographics were attained about the different subjects from this survey. These included: the subject's age; gender; their present occupation; and their highest level of professional qualification (from either high school, Associate's degree, Honours degree, MSc of PhD).
 
-\begin{itemize}
-    \item{the subject's age and gender;}
-    \item{their present occupation; and}
-    \item{their highest level of professional qualification (e.g. high school, Honours, MSc or PhD).}
-\end{itemize}
+% \begin{itemize}
+%     \item{the subject's age;}
+%     \item{the subject's gender;}
+%     \item{their present occupation; and}
+%     \item{their highest level of professional qualification (from either high school, Associate's degree, Honours, MSc or PhD).}
+% \end{itemize}
 
 In addition to these basic questions, we also asked several questions pertaining to their perceived search proficiency. Questions included:
 
@@ -329,7 +331,7 @@ In addition to these basic questions, we also asked several questions pertaining
     \item{their preferred general purpose web retrieval system.}
 \end{itemize}
 
-Factoring in that both experiments considered the domain of news search, we also asked each subject how often they searched for news articles online.
+Considering that both of the user studies instructed subjects to imagine they were newspaper reports (and search a collection of news articles), we also asked them how often that they explicitly searched for news articles online.
 
 \subsubsection{Pre-Task}
 Between both user studies, we asked the same questions within the pre-task survey. Subjects were provided with a short description of their search task and a topic description, which in turn provided their information need for the said task. After examining the topic description, subjects were then queried on the following:
@@ -404,10 +406,10 @@ Simulations also consist of one or more \blueboxbold{simulated searchers}. These
     \item{\blueboxbold{Search Context} This component can be considered as a basic representation of a searcher's memory, keeping track of the different prior interactions. Examples include the result summaries and documents that have been examined, prior queries that have been issued, and what documents that have been saved (considered relevant).}
 \end{itemize}
 
-All the above components are underpinned by a \blueboxbold{searcher model} component, providing a flow of interactions to the search process undertaken by simulated searchers. In all simulations reported in this thesis, the~\gls{acr:csm} represents this component. We do not discuss further technical details about how the \simiir~framework can be instantiated here; refer to~\cite{maxwell2016simiir} for more information.
+All the above components are underpinned by a \blueboxbold{searcher model} component, providing a flow of interactions to the search process undertaken by simulated searchers. In all simulations reported in this thesis, the~\gls{acr:csm} represents this component, and outlines the different sequence of interactions that can occur between the different components. We do not discuss further technical details about how the \simiir~framework can be instantiated here; refer to~\cite{maxwell2016simiir} for more information.
 
 \subsection{Grounding and Instantiating Simulations}\label{sec:method:simulation:grounding}
-To ensure that the simulations of interaction are as realistic as possible, we \emph{grounded} the simulations using real-world observations extracted from interaction log data. Doing so ensures that the results generated from the simulations are credible abstractions of reality~\citep{azzopardi2010workshop}. Given the~\gls{acr:csm}, we grounded the simulations from three main angles.
+To ensure that the simulations of interaction that we report in this thesis are as realistic as possible, we \emph{grounded} the simulations using real-world observations extracted from interaction log data. Doing so ensured that the results generated from the simulations were credible abstractions of reality~\citep{azzopardi2010workshop}. Given the~\gls{acr:csm} (and the means by which we can evaluate it, as reported in Section~\ref{sec:csm:evaluation} on page~\pageref{sec:csm:evaluation}), we considered grounding our simulations from three perspectives.
 
 \begin{itemize}
     \item{\blueboxbold{Query Generation} We consider the generation of \emph{psuedo-realistic} queries to issue to the underlying retrieval system. As discussed in Section~\ref{sec:method:simulation:grounding:querying}, these queries are generated using \emph{querying strategies} that are created from observing real-world searcher querying behaviours. We also \emph{replay} the queries issued by real-world subjects of the user studies for one set of simulation runs.}
@@ -442,7 +444,7 @@ The derived costs are averaged for each of the conditions and interfaces trialle
 All simulations of interaction discussed in this thesis rely upon the notion that all interaction costs are \emph{fixed} over each interface and condition trialled. For example, this means that no variation in querying time exists between a searcher who issues single term queries, and another searcher entering terms that consist of three terms. All queries require the same cost to be entered and submitted. This decision was taken to reduce the complexity of our simulations. By including dynamic interaction costs, this would have made the simulations themselves -- and the subsequent comparisons -- much more complex. Previous work such as time-biased gain~\citep{smucker2012tbg} has however shown that estimations of dynamic interaction costs can be made.
 
 \subsubsection{Query Generation Strategies}\label{sec:method:simulation:grounding:querying}
-The generation of queries is an important aspect of any simulation of interaction. Starting from the simplistic~\gls{acr:trec}-style searcher model where a single query is issued, numerous studies have focused upon the issue of query generation, and how one can generate a series of pseudo-realistic queries. We highlighted some of these prior works in Section~\ref{sec:ir_background:user:simulation} (page~\pageref{sec:ir_background:user:simulation}).
+The generation of queries is an important aspect of any simulation of interaction. Starting from the simplistic~\gls{acr:trec}-style searcher model where a single query is issued, numerous studies have focused upon the issue of query generation, and how one can generate a series of pseudo-realistic queries based upon prior interaction data. We highlighted some of these prior works in Section~\ref{sec:ir_background:user:simulation} (page~\pageref{sec:ir_background:user:simulation}).
 
 In this thesis, we consider a number of different \emph{querying strategies} as proposed by~\cite{keskustalo2009querying} and~\cite{baskaya2013behavioural_factors} in order to generate queries for our simulations of interaction. These strategies are considered to be \emph{idealised, prototypical} approaches to query generation, themselves being grounded from a prior user study examining the query behaviour of subjects.\footnote{Refer to~\cite{keskustalo2009querying} for further information on the user study undertaken.} Of the five strategies identified by the authors, we consider two in this thesis that were shown in simulations by~\cite{keskustalo2009querying} to yield the \emph{worst} and \emph{best} performance -- but also shown to reflect actual searcher queries. The two querying strategies, identified as \blueboxbold{QS1} and \blueboxbold{QS3}, are briefly explained below. We also provide an illustration of the two strategies in Figure~\ref{fig:querying}, where $Q_n$ denotes query $n$ within a search session, and $t_n$ denotes query term $n$ from a list of terms available to formulate queries.
 
@@ -454,6 +456,7 @@ In this thesis, we consider a number of different \emph{querying strategies} as 
     \label{fig:querying}
 \end{figure}
 
+\vspace*{-4mm}
 \begin{itemize}
     \item{\dualbluebox{QS1}{Single Term} This querying strategy generates a series of \emph{single term queries.}}
     \item{\dualbluebox{QS3}{Three Term} This second querying strategy generates queries with two \emph{pivot} terms, and one additional term. Therefore, the first two terms remain constant, with the third term changing for each subsequent query.}
@@ -492,17 +495,18 @@ In parallel with earlier studies considering the simulation of interaction -- su
 These are considered separately. The action of requesting a document from clicking on the associated result summary does not necessarily mean that the document \emph{is} relevant; merely, it means it appears attractive enough to examine in more detail~\citep{turpin2009summaries}. The above probabilities are broken down further with regards to~\gls{acr:trec} relevance. This warrants an examination of the~\gls{acr:trec} relevance judgements to determine whether the result summary and/or document being clicked and/or saved would be considered to be relevant to the given topic by the~\gls{acr:trec} assessors. As such, $P(C)$ and $P(S)$ can be split further, such that we can then determine:
 
 \begin{itemize}
-    \item{the probability that a result summary clicked is~\gls{acr:trec} relevant \blueboxbold{P(C|R)} or not \blueboxbold{P(C|N)}; and}
+    \item{the probability that a result summary that has been clicked is~\gls{acr:trec} relevant \blueboxbold{P(C|R)} or not \blueboxbold{P(C|N)}; and}
     \item{the probability that a document saved is~\gls{acr:trec} relevant \blueboxbold{P(S|R)} or not \blueboxbold{P(S|N)}.}
 \end{itemize}
 
-From these definitions, we may take the interaction logs from the two user studies, split the interactions by the interface or condition for which probabilities were derived, and summate the different measures -- as shown by the equation for calculating $P(C)$, where
+From these definitions, we may take the interaction logs from the two user studies, split the interactions by the interface or condition for which probabilities were derived, and summate the different measures -- as shown by the equation for calculating $P(C)$, where:
 
 \begin{equation}
+    \hspace*{31mm}
     P(C) = \frac{|clicked_{Rel}| + |clicked_{\neg Rel}|}{|examined|}
 \end{equation}
 
-and $P(S)$, where
+and $P(S)$, where:
 
 \begin{equation}
     P(S) = \frac{|saved_{Rel}| + | saved_{\neg Rel} |}{|examined|}.
@@ -530,7 +534,7 @@ However, such an approach is not without limitation. By their very nature, a sto
 Different outcomes can lead to a wide variance between different trials, which in turn leads to a requirement of running a more powerful experiment over a larger number of trials, or \emph{Monte-Carlo style simulations}~\citep{benov2016manhattan}. In turn, this leads to an increase in the amount of time (and computational power!) required to execute all simulations.
 
 \begin{table}[t!]
-    \caption[Example of pre-rolled judgements]{A visual example of how the use of pre-rolled judgements (right) performs when compared without (left). The top five rankings (from \genericblack{D\textsubscript{1}} to \genericblack{D\textsubscript{5}}) across four examples are shown. On the left are two simulated searcher configurations that do not use pre-rolled judgements. On the right, the same configurations are shown with pre-rolled judgements. Notice that for the examples with pre-rolled judgements, the same judgements are provided across configurations. On the left, this is not the case \textemdash~indeed, this phenomenon can have an undue influence upon the behaviour of a simulated searcher, such as affecting their stopping behaviour. This is illustrated below, with the stopping depth for \dualbluebox{SS2-NT}{@2} being affected (where stopping depths are highlighted in red).}
+    \caption[Example of pre-rolled judgements]{A visual example of how the use of pre-rolled judgements (right) performs when compared without (left). The top five rankings (from \genericblack{D\textsubscript{1}} to \genericblack{D\textsubscript{5}}) across four examples are shown. On the left are two simulated searcher configurations that do not use pre-rolled judgements. On the right, the same configurations are shown with pre-rolled judgements. Notice that for the examples with pre-rolled judgements, the same judgements are provided across configurations. On the left, this is not the case \textemdash~indeed, this phenomenon can have an undue influence upon the behaviour of a simulated searcher, such as affecting their stopping behaviour. This is illustrated below, with the stopping depth for \dualbluebox{SS2-NT}{@2} being affected (stopping depths are highlighted in {\color{dmax_red}red}).}
     \label{tbl:precomputed_judgements}
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
@@ -552,9 +556,9 @@ Different outcomes can lead to a wide variance between different trials, which i
 \end{table}
 
 \blueboxheader{Pre-Rolled Judgements}
-In Figure~\ref{fig:multiple_runs}, if the same document is judged differently between individual trials, the results from two different simulated searcher configurations are incomparable. This is demonstrated in the left hand side of Table~\ref{tbl:precomputed_judgements}. With a given probability, a result summary can be judged to be attractive or not ($P(C)$). Without proper controls, these judgements will vary across trials, meaning that in Table~\ref{tbl:precomputed_judgements}, \dualbluebox{SS1-FIX}{@5} and \dualbluebox{SS2-NT}{@2} are incomparable (refer to Section~\ref{sec:method:simulation:grounding:stopping} for more information on these configurations) because the judgements for the same ranked list of results differs. As these judgements change, this influences the behaviour of the simulated searcher across configurations.
+In Figure~\ref{fig:multiple_runs}, if the same document is judged differently between individual trials, the results from two different simulated searcher configurations are incomparable. This is demonstrated in the left hand side of Table~\ref{tbl:precomputed_judgements}. With a given probability, a result summary can be judged to be attractive or not ($P(C)$). Without proper controls, these judgements will vary across trials, meaning that in Table~\ref{tbl:precomputed_judgements}, \dualbluebox{SS1-FIX}{@5} and \dualbluebox{SS2-NT}{@2} are incomparable (refer to Section~\ref{sec:method:simulation:grounding:stopping} for more information on these configurations) because the judgements for the same ranked list of results differs. As these judgements change, this has an undue influence on the behaviour of the simulated searcher across different experimental configurations.
 
-In order to address this issue and permit for fair comparisons across simulated searcher configurations (and to allow for reproducible results), we used \blueboxbold{pre-rolled judgements} that determined the attractiveness or relevancy of result summaries and documents respectively \emph{a priori.} For each document within the AQUAINT collection, we pre-computed outcomes for each individual document using the relevant grounded interaction probability, storing them in \emph{action judgement files.} One related to the action of clicking on result summaries (i.e. $P(C)$), with the other relating to saving documents (i.e. $P(S)$). These judgement files were then used by the summary and document decision maker component. All this component had to do was then perform a simple lookup for the corresponding document judgement for a given trial.
+In order to address this issue and permit for fair comparisons across simulated searcher configurations (and to allow for reproducible results), we used \blueboxbold{pre-rolled judgements} that determined the attractiveness or relevancy of result summaries and documents respectively \emph{a priori.} For each document within the AQUAINT collection, we pre-computed outcomes for each individual document using the relevant grounded interaction probability, storing them in \emph{action judgement files.} One related to the action of clicking on result summaries (i.e. $P(C)$), with the other relating to saving documents (i.e. $P(S)$). These judgement files were then used by the decision maker components. All this component had to do was then perform a simple lookup for the corresponding document judgement for a given trial.
 
 By pre-computing these judgements in advance, the same document would therefore be considered relevant in the same trial under a different configuration. This is demonstrated in Table~\ref{tbl:precomputed_judgements}, this time on the right-hand side. Across this trial, judgements by the simulated searcher have been pre-rolled in advance, and thus the judgements for documents $D_1$ to $D_5$ are the same. As they are the same, this permits fairer comparisons between different configurations, with the table showing how the simulated searcher's behaviour varies.
 
@@ -568,14 +572,14 @@ As searchers examine information, they \emph{gain knowledge} that helps shape th
 \subsubsection{SERP Level Decision Making}\label{sec:method:simulation:grounding:serp}
 Previously outlined in Section~\ref{sec:csm:stopping}, the~\gls{acr:csm} includes an additional~\gls{acr:serp} level stopping decision point. Motivated by the \emph{information scent}\footnote{To recap, we discuss the notion of information scent in Section~\ref{sec:stopping_background:theoretical:ift:patch} on page~\pageref{sec:stopping_background:theoretical:ift:patch}.} offered by a~\gls{acr:serp} (or \emph{patch}), this stopping decision point joins other established decision points, including result summary and session level stopping. The new decision point permits a searcher subscribing to the~\gls{acr:csm} to either \emph{enter} the~\gls{acr:serp} and begin examining result summaries in detail if the~\gls{acr:serp} appears to offer a good scent, or abandon the~\gls{acr:serp} if it appears to be poor (and saving time).
 
-For our simulated analyses of the user studies reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}, the~\gls{acr:serp} level stopping decision point is not considered. In other words, a simulated searcher will \emph{always} examine a given~\gls{acr:serp} for content in detail -- labelled \dualbluebox{SERP}{Always} in this thesis. This acts as our baseline for the~\gls{acr:serp} level stopping decision point. This decision was taken to simplify our results and to provide greater emphasis upon how the different snippet level stopping strategies (as discussed below in Section~\ref{sec:method:simulation:grounding:stopping}) affect searcher behaviour and performance.
+For our simulated analyses of the user studies reported in Chapters~\ref{chap:snippets} and~\ref{chap:diversity}, the~\gls{acr:serp} level stopping decision point is not considered. In other words, a simulated searcher will \emph{always} examine a given~\gls{acr:serp} for content in detail -- labelled \dualbluebox{SERP}{Always} in this thesis. This acts as our baseline for the~\gls{acr:serp} level stopping decision point. This decision was taken to simplify our results and to provide greater emphasis upon how the different snippet level stopping strategies (as discussed below) affect searcher behaviour and performance.
 
-Chapter~\ref{chap:serp} provides empirical results when varying the ways in which the new~\gls{acr:serp} level stopping decision point is considered. This chapter also provides a detailed explanation as to how we operationalised this new stopping decision point, outlined in Section~\ref{sec:serp:method:serp_dp} on page~\pageref{sec:serp:method:serp_dp}.
+Chapter~\ref{chap:serp} provides empirical results for different result summary level stopping strategies when the new~\gls{acr:serp} level stopping decision point was utilised. This chapter also provides a detailed explanation as to how we operationalised the new stopping decision point, as presented in Section~\ref{sec:serp:method:serp_dp} on page~\pageref{sec:serp:method:serp_dp}.
 
 \subsubsection{Result Summary Level Stopping Strategies}\label{sec:method:simulation:grounding:stopping}
 In Chapter~\ref{chap:strategies}, we outlined twelve stopping strategies that had been operationalised from various stopping heuristics and the~\gls{acr:rbp} evaluation measure. In this section, we once again enumerate each of the different stopping strategies, discussing what \emph{stopping threshold values} that we trialled for each. Any specific implementation details to a given stopping strategy are also noted in this section.
 
-For several of the stopping strategies, threshold values need to be approximated from real-world interaction data to provide some grounding. An example of such a threshold is the~\gls{acr:rbp} patience parameter, as we discussed in Section~\ref{sec:ir_background:evaluation:system:rbp}. As such, some of the threshold value ranges were approximated from the user study interaction data in Chapter~\ref{chap:snippets}, and used in all simulation experimentation for consistency. The values that we ascertained were of most interest as they offer close approximations to how real-world searchers actually behaved.
+For several of the stopping strategies, threshold values need to be approximated from real-world interaction data to provide some grounding. An example of such a threshold is the~\gls{acr:rbp} patience parameter, as we discussed in Section~\ref{sec:ir_background:evaluation:system:rbp} (page~\pageref{sec:ir_background:evaluation:system:rbp}). As such, some of the threshold value ranges were approximated from the user study interaction data in Chapter~\ref{chap:snippets}, and used in all simulation experimentation for consistency. The values that we ascertained were of most interest as they offer close approximations to how real-world searchers actually behaved in consideration of the respective stopping strategies.
 
 Below, we begin our discussion of each of the different stopping strategies, outlining the parameter thresholds used.
 
@@ -636,7 +640,7 @@ The second combination rule, based upon the combination heuristic proposed by~\c
     \item{\blueboxbold{SS11-COMB} For a~\gls{acr:serp} yielding a high scent at shallow ranks, a searcher will employ the satisfaction stopping heuristic, \blueboxbold{SS4-SAT}. The give-up time-based strategy \blueboxbold{SS10-RELTIME} is employed if the scent is low. Parameter threshold values are identical to those defined for $x_4$ and $x_{10}$ above.}
 \end{itemize}
 
-Every possible combination of the values selected for $x_4$ and $x_{10}$ were trialled. To determine the scent of a given set of ranked results (and thus the stopping strategy used), we considered the first ranked result, or $P@1$. If the first ranked document was~\gls{acr:trec} relevant, the~\gls{acr:serp} was assumed to provide a high yield early on. Conversely, if $P@1=0$, the~\gls{acr:serp} was judged to be low yield at shallow ranks. This matches with definitions of poor scented~\glsplural{acr:serp} by~\cite{wu2014information_scent} and~\cite{hassan2013serp_abandonment}\footnote{This is discussed in further detail later in Section~\ref{sec:serp:method:serp_dp} on page~\pageref{sec:serp:method:serp_dp}.}. We also make the further assumption that the document presented at the first rank is the first that will be used to judge the~\gls{acr:serp} yield.
+All combinations of values for $x_4$ and $x_{10}$ were trialled. To determine the scent of a given set of ranked results (and thus the stopping strategy used), we considered the first ranked result, or $P@1$. If the first ranked document was~\gls{acr:trec} relevant, the~\gls{acr:serp} was assumed to provide a high yield early on. Conversely, if $P@1=0$, the~\gls{acr:serp} was judged to be low yield at shallow ranks. This matches with definitions of poor scented~\glsplural{acr:serp} by~\cite{wu2014information_scent} and~\cite{hassan2013serp_abandonment}\footnote{This is discussed in further detail later in Section~\ref{sec:serp:method:serp_dp} on page~\pageref{sec:serp:method:serp_dp}.}. We also make the further assumption that the document presented at the first rank will be used to judge the~\gls{acr:serp} yield.
 
 The final result summary level stopping strategy was based upon~\gls{acr:rbp}. Once again, the patience parameter was again grounded from the user study outlined in Chapter~\ref{chap:snippets} only.
 
@@ -654,10 +658,6 @@ To estimate the patience parameter, we assumed that the patience of a searcher c
     \label{fig:rbp_patience}
     \vspace{-7mm}
 \end{figure}
-
-For each rank, we could then compute the ratio of clicks at each rank, across all queries, as demonstrated at step~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point2.pdf}}. This yielded a decreasing ratio as the depth increased -- demonstrating that searchers were less likely to click on results at greater depths. Finally, $p(click@k) = \phi^k$ was fit to the data. This represents the probability of clicking on a result summary at rank $k$, with $\phi$ denoting the~\gls{acr:rbp} patience parameter. When fit, the yielded value was $\phi=0.9087$.
-
-Given the descriptions for each of the twelve stopping strategies, we conclude this section with a summary table. Table~\ref{tbl:stopping_thresholds} on page~\pageref{tbl:stopping_thresholds} lists each of the stopping strategies, along with the different threshold parameter values that were trialled for each.
 
 \begin{table}[t!]
     \caption[Stopping strategies thresholds summary table]{Summary table of the twelve stopping strategies, along with each of the threshold parameter values trialled. Note that for \blueboxbold{SS5-COMB} and \blueboxbold{SS11-COMB}, thresholds from different stopping strategies are used for the respective components of each combination strategy.}
@@ -690,6 +690,10 @@ Given the descriptions for each of the twelve stopping strategies, we conclude t
 \end{center}
 \end{table}
 
+For each rank, we could then compute the ratio of clicks at each rank, across all queries, as demonstrated at step~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point2.pdf}}. This yielded a decreasing ratio as the depth increased -- demonstrating that searchers were less likely to click on results at greater depths. Finally, $p(click@k) = \phi^k$ was fit to the data. This represents the probability of clicking on a result summary at rank $k$, with $\phi$ denoting the~\gls{acr:rbp} patience parameter. When fit, the yielded value was $\phi=0.9087$.
+
+Given the descriptions for each of the twelve stopping strategies, we conclude this section with a summary table. Table~\ref{tbl:stopping_thresholds} on page~\pageref{tbl:stopping_thresholds} lists each of the stopping strategies, along with the different threshold parameter values that were trialled for each.
+
 \subsubsection{Simulated Searcher Constraints and Goals}\label{sec:method:simulation:grounding:constraints}
 Like in the corresponding user studies, we imposed different constraints upon the simulated searchers to keep comparisons as fair as possible. These constraints and goals are discussed in depth in the relevant chapter. Refer to Section~\ref{sec:snippets:simulations:method:costs} on page~\pageref{sec:snippets:simulations:method:costs} and Section~\ref{sec:diversity:simulated:method:probscosts} on page~\pageref{sec:diversity:simulated:method:probscosts} for further information for the two studies.
 
@@ -717,6 +721,7 @@ These simulations of interaction fit within the wider experimental framework dis
     \label{fig:sim_evaluation}
 \end{figure}
 
+\vspace*{-4mm}
 \subsubsection{Performance Runs}\label{sec:method:simulation:runs:performance}
 Named as a series of \emph{what-if} simulations above, the performance runs instantiate the different components of the~\gls{acr:csm} and \simiir~framework as previously discussed throughout Section~\ref{sec:method:simulation:grounding}. Using the grounded interaction probabilities and costs, these simulations were trialled over the five selected topics of the~\gls{acr:trec} 2005 Robust Track~\citep{voorhees2006trec_robust} (as discussed in Section~\ref{sec:methodology:collection:topics}), with queries generated via the querying strategy outlined in Section~\ref{sec:method:simulation:grounding:querying}. Altogether, this provided us with a wealth of simulated interaction data from which we could calculate a series of averages over the different trials run. As illustrated in Figure~\ref{fig:example_sim_configuration}, we then computed the various performance measures over each simulated searcher configuration, taking an average over each of the five topics.
 
@@ -736,15 +741,13 @@ Given the name performance runs, we examined the performance of each simulated s
 
 \gls{acr:cg} was discussed in passing in Section~\ref{sec:method:simulation:grounding:gain}. For our simulations, we consider the~\gls{acr:cg} as the amount of gain accrued over the \emph{course of a search session} -- which, by definition, can entail more than a single query. A more robust series of stopping strategies that are better at stopping a simulated searcher examining poor quality~\glsplural{acr:serp} to great depths will provide higher levels of~\gls{acr:cg}, but only if the queries issued offer good performance. Similarly, an effective~\gls{acr:serp} level stopping decision point implementation will stop the searcher from examining a poor~\gls{acr:serp} in the first instance, leaving more time to examine~\glsplural{acr:serp} that could potentially offer higher quality results.
 
-The other major measure used in our performance measures was the depth per query. With this measure, performance is not measured, but rather the stopping behaviour of the simulated searchers. As shown in Figure~\ref{fig:depth_per_query}, a fictional search session consists of three queries, \genericblack{Q\textsubscript{0}}, \genericblack{Q\textsubscript{1}} and \genericblack{Q\textsubscript{2}}.
+The other major measure used in our performance measures was the depth per query. With this measure, performance is not measured, but rather the stopping behaviour of the simulated searchers. As shown in Figure~\ref{fig:depth_per_query}, a fictional search session consists of three queries.
 
 In the example illustration, a simulated searcher examines to a depth of $2$ for \genericblack{Q\textsubscript{0}}, and a depth of $1$ for \genericblack{Q\textsubscript{2}}. The searcher does not even enter the associated~\gls{acr:serp} for \genericblack{Q\textsubscript{1}}, as the~\gls{acr:serp} level stopping decision point prevents the searcher from examining result summaries in detail. The resultant $D/Q$ for the search session is therefore $1$.
 
 \vspace*{-4mm}
 \subsubsection{Comparison Runs}\label{sec:method:simulation:runs:comparison}
 Rather than focus upon the overall performance attained by simulated searchers under different scenarios, the second set of simulations we ran focused on comparing simulated searcher behaviours against their real-world counterparts.
-
-The simulations for this set were configured much like the performance set -- save for the difference between the querying component. Rather than considering queries generated by a querying strategy, we instead took the queries from the associated user study and issued each one in turn. In effect, we \blueboxbold{replayed} all real-world queries issued (as discussed in Section~\ref{sec:method:simulation:grounding:querying}).
 
 \begin{figure}[t!]
     \centering
@@ -753,6 +756,8 @@ The simulations for this set were configured much like the performance set -- sa
     \caption[Example depth per query computation]{An example illustrating how the \emph{mean depth per query} is computed across a search session. In this example, three individual queries are issued, with no results examined for \genericblack{Q\textsubscript{1}}.}
     \label{fig:depth_per_query}
 \end{figure}
+
+The simulations for this set were configured much like the performance set -- save for the difference between the querying component. Rather than considering queries generated by a querying strategy, we instead took the queries from the associated user study and issued each one in turn. In effect, we \blueboxbold{replayed} all real-world queries issued (as discussed in Section~\ref{sec:method:simulation:grounding:querying}).
 
 Real-world queries were extracted and grouped by the experimental interface or condition in which it was executed. In order to compute per-session measures (e.g.~\gls{acr:cg}), we could then take the queries belonging to a particular subject and topic combination and group them together, summing or averaging measures where appropriate. With only four topics trialled during the user studies, we considered only the \blueboxbold{four~\gls{acr:trec} topics}, omitting the practice topic (\textnumero~367). This was due to the fact that we only had real-world query data for the four topics trialled in the user studies. We once again ran a simulated searcher for each different configuration, over every query issued. A total of 50 trials were once again used.
 
