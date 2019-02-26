@@ -275,37 +275,37 @@
 \renewcommand{\@pnumwidth}{3em}
 
 %\contentsmargin[-2cm]{0cm}
-\titlecontents{part}[0em]{\Large\normalfont\headerfont\vspace*{-1mm}}
+\titlecontents{part}[0em]{\Large\normalfont\headerfont\vspace*{-1.3mm}}
 {\thecontentslabel\enspace}
 {\hspace{0pt}}
 {\hfill\contentspage}[\vskip 0pt]
 
-\titlecontents{chapter}[0em]{\vskip 0pt\large\normalfont\headerfont\vspace*{-1mm}}
+\titlecontents{chapter}[0em]{\vskip 0pt\large\normalfont\headerfont\vspace*{-1.3mm}}
 {\thecontentslabel\enspace\color{white}\colorbox{dmax_lightblue}}
 {\hspace{0pt}}
 {\hfill\contentspage}[\vskip 0pt]
 
-\titlecontents{section}[1.35em]{\large\metafont\vspace*{-1mm}}
+\titlecontents{section}[1.35em]{\large\metafont\vspace*{-1.3mm}}
 {\thecontentslabel\enspace}
 {}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
 
-\titlecontents{subsection}[2.7em]{\large\metafont\vspace*{-1mm}}
+\titlecontents{subsection}[2.7em]{\large\metafont\vspace*{-1.3mm}}
 {\thecontentslabel\enspace}
 {}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
 
-\titlecontents{subsubsection}[4.05em]{\large\metafont\vspace*{-1mm}}
+\titlecontents{subsubsection}[4.05em]{\large\metafont\vspace*{-1.3mm}}
 {\thecontentslabel\enspace}
 {}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
 
-\titlecontents{figure}[0em]{\vskip 0pt\large\metafont\vspace*{-1mm}}
+\titlecontents{figure}[0em]{\vskip 0pt\large\metafont\vspace*{-1.3mm}}
 {\blueboxbold{\thecontentslabel}\enspace}
 {\hspace{1.05em}}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
 
-\titlecontents{table}[0em]{\vskip 0pt\large\metafont\vspace*{-1mm}}
+\titlecontents{table}[0em]{\vskip 0pt\large\metafont\vspace*{-1.3mm}}
 {\blueboxbold{\thecontentslabel}\enspace}
 {\hspace{1.05em}}
 {\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
