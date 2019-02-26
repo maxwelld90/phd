@@ -413,7 +413,7 @@
     
     \vspace*{62mm}
     
-    \ifthenelse{\equal{#1}{\acronymname}}{\normalfont\selectfont\large For an explanation of a particular abbreviation/phrase, \emph{see} the corresponding Glossary entry.\vspace*{7mm}}{\vspace*{8mm}}
+    \ifthenelse{\equal{#1}{\acronymname}}{\normalfont\selectfont For an explanation of a particular abbreviation, \emph{see} the corresponding glossary entry.\vspace*{7mm}}{\vspace*{8mm}}
 }
 
 % Update the bibliography title.
@@ -687,7 +687,7 @@
     \renewcommand*{\glsgroupheading}[1]{}%
     
     \renewcommand*{\glossaryentryfield}[5]{%
-        \glstarget{##1}{\onehalfspacing\blueboxbold{##2}} \normalfont##3\glspostdescription\space ##5\\}%
+        \glstarget{##1}{\doublespacing\blueboxbold{##2}} \normalfont##3\glspostdescription\space ##5\\}%
         
     %\renewcommand*{\glsgroupskip}{ & \\}%
     \renewcommand*{\glsgroupskip}{}%

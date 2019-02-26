@@ -61,13 +61,15 @@
     \thispagestyle{empty}
     \mbox{}
     
+    \renewcommand*{\glossarypreamble}{\onehalfspacing}
+    
     \phantomsection
     \addcontentsline{toc}{part}{Abbreviations Used}
     \onehalfspacing
     \printglossary[nonumberlist,type=\acronymtype,style=thesisglossary]
     
     \phantomsection
-    \doublespacing
+    \onehalfspacing
     \printglossary[nonumberlist,type=main,style=thesisglossary]
     \addcontentsline{toc}{part}{Glossary of Terms}
     
@@ -80,21 +82,21 @@
 
     \input{chapters/p1-intro/p1}
     \input{chapters/p1-intro/introduction}
-    \input{chapters/p1-intro/ir}
-    \input{chapters/p1-intro/stopping}
-    
-    \input{chapters/p2-modelling/p2}
-    \input{chapters/p2-modelling/csm}
-    \input{chapters/p2-modelling/strategies}
-    \input{chapters/p2-modelling/methodology}
-    
-    \input{chapters/p3-contexts/p3}
-    \input{chapters/p3-contexts/snippets}
-    \input{chapters/p3-contexts/diversity}
-    \input{chapters/p3-contexts/serp_level}
-    
-    \input{chapters/p4-conclusions/p4}
-    \input{chapters/p4-conclusions/conclusions}
+    % \input{chapters/p1-intro/ir}
+    % \input{chapters/p1-intro/stopping}
+    %
+    % \input{chapters/p2-modelling/p2}
+    % \input{chapters/p2-modelling/csm}
+    % \input{chapters/p2-modelling/strategies}
+    % \input{chapters/p2-modelling/methodology}
+    %
+    % \input{chapters/p3-contexts/p3}
+    % \input{chapters/p3-contexts/snippets}
+    % \input{chapters/p3-contexts/diversity}
+    % \input{chapters/p3-contexts/serp_level}
+    %
+    % \input{chapters/p4-conclusions/p4}
+    % \input{chapters/p4-conclusions/conclusions}
 
     \clearpage
     \phantomsection
