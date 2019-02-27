@@ -737,13 +737,13 @@ Figure~\ref{fig:example_sim_configuration} illustrates a simple example configur
     \label{fig:example_sim_configuration}
 \end{figure}
 
-Given the name performance runs, we examined the performance of each simulated searcher trialled. While examining the performance of queries (via the measures outlined previously in Section~\ref{sec:methodology:extracting:performance}), we also examined measures illustrated in Figure~\ref{fig:depth_per_query}: mean levels of~\gls{acr:cg}, and the mean \blueboxbold{depth per query (D/Q)}.
+Given the name performance runs, we examined the performance of each simulated searcher trialled. While examining the performance of queries (via the measures outlined previously in Section~\ref{sec:methodology:extracting:performance}), we also examined measures illustrated in Figure~\ref{fig:depth_per_query}: mean levels of~\gls{acr:cg}, and the mean \blueboxbold{depth per query (DQ)}.
 
 \gls{acr:cg} was discussed in passing in Section~\ref{sec:method:simulation:grounding:gain}. For our simulations, we consider the~\gls{acr:cg} as the amount of gain accrued over the \emph{course of a search session} -- which, by definition, can entail more than a single query. A more robust series of stopping strategies that are better at stopping a simulated searcher examining poor quality~\glsplural{acr:serp} to great depths will provide higher levels of~\gls{acr:cg}, but only if the queries issued offer good performance. Similarly, an effective~\gls{acr:serp} level stopping decision point implementation will stop the searcher from examining a poor~\gls{acr:serp} in the first instance, leaving more time to examine~\glsplural{acr:serp} that could potentially offer higher quality results.
 
 The other major measure used in our performance measures was the depth per query. With this measure, performance is not measured, but rather the stopping behaviour of the simulated searchers. As shown in Figure~\ref{fig:depth_per_query}, a fictional search session consists of three queries.
 
-In the example illustration, a simulated searcher examines to a depth of $2$ for \genericblack{Q\textsubscript{0}}, and a depth of $1$ for \genericblack{Q\textsubscript{2}}. The searcher does not even enter the associated~\gls{acr:serp} for \genericblack{Q\textsubscript{1}}, as the~\gls{acr:serp} level stopping decision point prevents the searcher from examining result summaries in detail. The resultant $D/Q$ for the search session is therefore $1$.
+In the example illustration, a simulated searcher examines to a depth of $2$ for \genericblack{Q\textsubscript{0}}, and a depth of $1$ for \genericblack{Q\textsubscript{2}}. The searcher does not even enter the associated~\gls{acr:serp} for \genericblack{Q\textsubscript{1}}, as the~\gls{acr:serp} level stopping decision point prevents the searcher from examining result summaries in detail. The resultant $DQ$ for the search session is therefore $1$.
 
 \vspace*{-4mm}
 \subsubsection{Comparison Runs}\label{sec:method:simulation:runs:comparison}
