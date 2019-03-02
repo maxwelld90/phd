@@ -142,7 +142,7 @@ In addition to the optimal stopping point approach discussed above, Section~\ref
 \begin{itemize}
     \item{\dualbluebox{SS9-TIME}{Time-based} Based upon the \emph{time heuristic}~\citep{charles1972behaviour, krebs1973time_rule}, a simulated searcher using this stopping strategy will abandon a~\gls{acr:serp} after $x_9$ seconds have elapsed since they entered it.}
     
-    \item{\dualbluebox{SS10-RELTIME}{Time Since} Using the \emph{give-up heuristic}~\citep{krebs1974leave_after_rule}, a searcher will abandon a presented~\gls{acr:serp} $x_{10}$ seconds after the last document was considered relevant/useful (saved) to the given information need.}
+    \item{\dualbluebox{SS10-RELTIME}{Time, Give-Up} Using the \emph{give-up heuristic}~\citep{krebs1974leave_after_rule}, a searcher will abandon a presented~\gls{acr:serp} $x_{10}$ seconds after the last document was considered relevant/useful (saved) to the given information need.}
 \end{itemize}
 
 Given these stopping strategy definitions, \blueboxbold{SS9-TIME} performs akin to \blueboxbold{SS1-FIX}, in the sense it offers a fixed interaction time on each~\gls{acr:serp}, and is agnostic of the quality of the presented ranked list. Conversely, \blueboxbold{SS10-RELTIME} offers a more adaptive solution similar to \blueboxbold{SS2-NT} and \blueboxbold{SS3-NC}, basing the time at which the searcher stops $x_{10}$ seconds after a relevant document was last saved.
