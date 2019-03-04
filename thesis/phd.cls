@@ -211,6 +211,9 @@
 % Set Chinese, Japanese and Korean font
 \newfontfamily\asianfont[Path=./fonts/]{notosans-cjk-regular.ttc}
 
+% Burmese font
+\newfontfamily\burmesefont[Path=./fonts/]{padauk.ttf}
+
 % Set Arabic font
 \newfontfamily\arabicfont[Path=./fonts/]{albayan.ttc}
 
