@@ -728,3 +728,10 @@
     \par
   \endgroup
 }
+
+\newcommand\fundingfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
