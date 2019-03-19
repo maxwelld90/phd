@@ -484,7 +484,7 @@ Effectively modelling stopping behaviour is also important to provide a more rea
 
 As an example, a searcher may issue a query that returns very few relevant documents. Once a few snippets and/or documents have been examined, he or she will then conclude that the issued query was unsuccessful and that they would be wasting their time examining more content on the presented~\gls{acr:serp}. In this case, issuing a reformulated query would be a better course of action. This intuition has been confirmed by empirical analysis, where~\cite{azzopardi2011economics} for example demonstrated that simulated searchers examined significantly fewer documents when the underlying retrieval system failed to retrieve any relevant material in the top ten results, in contrast to when they did. This shows that searchers are inherently adaptive with their behaviours conditioned upon the quality of the ranked lists. This justifies the inclusion of these additional stopping decision points.
 
-A further explicitly defined searcher model was proposed by~\cite{thomas2014modelling_behaviour}. This model, illustrated as a flowchart in Figure~\ref{fig:thomas_model}, encapsulates the same principles as the previously described searcher models: given an information need, a searcher will issue one or more queries and examine a varying number of result summaries and documents for attractiveness and relevance in turn. This searcher model also includes a form of utility accumulation model that considers the utility obtained from a result summary $s_i$ and the relevance judgement of a document, $r_i$. An addition to this searcher model is the inclusion of an additional step at the beginning of the search session, where a searcher must decide \emph{what retrieval system to use} -- or \blueboxbold{tool selection.}
+A further explicitly defined searcher model was proposed by~\cite{thomas2014modelling_behaviour}. Illustrated as a flowchart in Figure~\ref{fig:thomas_model}, this model encapsulates the same principles as the previously described searcher models: given an information need, a searcher will issue one or more queries and examine a varying number of result summaries and documents for attractiveness and relevance in turn. This searcher model also includes a form of utility accumulation model that considers the utility obtained from a result summary $s_i$ and the relevance judgement of a document, $r_i$. An addition to this searcher model is the inclusion of an additional step at the beginning of the search session, where a searcher must decide \emph{what retrieval system to use} -- or \blueboxbold{tool selection.}
 
 %This may be dependent upon the task at hand: a patent retrieval system would be a better bet for finding associated patents as opposed to a general web retrieval system, for example.
 
@@ -601,7 +601,7 @@ Determining a value for the level of gain that can be acquired from a document i
 This is demonstrated by the illustration below, highlighting the concept of \emph{graded relevance judgements}. When not related to the information need, a score of $0$ is assigned, with a relevant document assigned a judgement of $2$. Documents partially fulfilling the relevance requirements are assigned an intermediary score of $1$. These values are then accumulated over the rankings to yield the~\gls{acr:cg} measure for a searcher's interactions.
 
 \vspace{5mm}
-\begin{figure}[h!]
+\begin{figure}[t!]
     \centering
     \resizebox{1\hsize}{!}{
     \includegraphics{figures/ch2-graded.pdf}}

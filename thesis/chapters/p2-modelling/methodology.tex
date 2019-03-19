@@ -285,7 +285,7 @@ As discussed in Section~\ref{sec:methodology:user:capturing} -- and also illustr
 The fifth time-based measure that we considered in our reporting of results was an amalgamation of the four listed above.
 
 \begin{itemize}
-    \item{\blueboxbold{Total Session Time} The total session time was the addition of each of the times measured above. This was essentially the same as the time from the very first \texttt{QUERY\_FOCUS} event to the \texttt{TASK\_COMPLETED} event, which is either triggered by an interface timeout (Chapter~\ref{chap:snippets}), or the subject ending the task herself or himself (Chapter~\ref{chap:diversity}).}
+    \item{\blueboxbold{Total Session Time} The total session time was the addition of each of the times measured above. This was essentially the same as from the very first \texttt{QUERY\_FOCUS} event to the \texttt{TASK\_COMPLETED} event, which is either triggered by an interface timeout (Chapter~\ref{chap:snippets}), or the subject ending the task herself or himself (Chapter~\ref{chap:diversity}).}
     
 \end{itemize}
 
@@ -592,7 +592,7 @@ Below, we begin our discussion of each of the different stopping strategies, out
 % Following paragraph taken from Chapter 5 -- this feels more like an implementation issue.
 Note that for both \blueboxbold{SS2-NT} and \blueboxbold{SS3-NC}, any document that has been previously examined during the same search session (returned in the ranked results of a prior query) will be included in the count of non-relevant items. This is opposed to ignoring previously observed items, which has been shown in prior work to offer poorer performance~\citep{maxwell2015stopping_strategies}.
 
-Next, we enumerate the stopping strategy considering the \emph{satiation}~\citep{simon1955satiation} of a searcher.
+Next, we enumerate the stopping strategy considering the \emph{satiation} of a searcher.
 
 \begin{itemize}
     \item{\blueboxbold{SS4-SAT} Concerning the number of documents that a searcher should save before being satisfied, we examined a range of values for $x_4$, from $1$ to $10$ in steps of $1$.}
@@ -690,9 +690,11 @@ To estimate the patience parameter, we assumed that the patience of a searcher c
 \end{center}
 \end{table}
 
-For each rank, we could then compute the ratio of clicks at each rank, across all queries, as demonstrated at step~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point2.pdf}}. This yielded a decreasing ratio as the depth increased -- demonstrating that searchers were less likely to click on results at greater depths. Finally, $p(click@k) = \phi^k$ was fit to the data. This represents the probability of clicking on a result summary at rank $k$, with $\phi$ denoting the~\gls{acr:rbp} patience parameter. When fit, the yielded value was $\phi=0.9087$.
+For each rank, we could then compute the ratio of clicks over each query, as demonstrated at step~\raisebox{-.2\height}{\includegraphics[height=5mm]{figures/ch2-point2.pdf}}. This yielded a decreasing ratio with increasing depths, demonstrating that searchers were less likely to click on results further down the rankings. Finally, $p(click@k) = \phi^k$ was fit to the data. This represents the probability of clicking on a result summary at rank $k$, with $\phi$ denoting the~\gls{acr:rbp} patience parameter. When fit, $\phi=0.9087$.
 
-Given the descriptions for each of the twelve stopping strategies, we conclude this section with a summary table. Table~\ref{tbl:stopping_thresholds} on page~\pageref{tbl:stopping_thresholds} lists each of the stopping strategies, along with the different threshold parameter values that were trialled for each.
+%Given the descriptions for each of the twelve stopping strategies, we conclude this section with a summary table.
+
+Table~\ref{tbl:stopping_thresholds} on page~\pageref{tbl:stopping_thresholds} lists each of the stopping strategies, along with the different threshold parameter values that were trialled for each.
 
 \subsubsection{Simulated Searcher Constraints and Goals}\label{sec:method:simulation:grounding:constraints}
 Like in the corresponding user studies, we imposed different constraints upon the simulated searchers to keep comparisons as fair as possible. These constraints and goals are discussed in depth in the relevant chapter. Refer to Section~\ref{sec:snippets:simulations:method:costs} on page~\pageref{sec:snippets:simulations:method:costs} and Section~\ref{sec:diversity:simulated:method:probscosts} on page~\pageref{sec:diversity:simulated:method:probscosts} for further information for the two studies.
