@@ -433,7 +433,7 @@ Seminal work undertaken by~\cite{baskaya2013behavioural_factors} presented an ex
 
 \begin{itemize}
     \item{the ability to \blueboxbold{separately judge result summaries} presented on a~\gls{acr:serp} from the documents associated with each;}
-    \item{permitting a searcher the ability to \blueboxbold{stop at a variable depth on the~\gls{acr:serp}}, avoiding fixed depth stopping behaviours as typically employed in searcher models; and}
+    \item{giving a searcher the ability to \blueboxbold{stop at a variable depth on the~\gls{acr:serp}}, avoiding fixed depth stopping behaviours as typically employed in searcher models; and}
     \item{permitting a searcher to \blueboxbold{issue multiple queries} during a search session, lifting one of the major constraints of the~\gls{acr:trec} searcher model.}
 \end{itemize}
 
@@ -456,7 +456,7 @@ These improvements are demonstrated as a Markov model, illustrated in Figure~\re
     \label{fig:baskaya_model}
 \end{figure}
 
-These steps broadly match up the~\gls{acr:iir} process as outlined in Figure~\ref{fig:iir} on page~\pageref{fig:iir}, and described in an abstract form in Section~\ref{sec:ir_background:user:iir}.~\cite{azzopardi2011economics},~\cite{yilmaz2010browsing_utility},~\cite{carterette2011models}, and more recently~\cite{zhang2017simulation_model} have all introduced and utilised searcher models that are similar in terms of the broad set of actions as outlined by~\cite{baskaya2013behavioural_factors}. Being a Markov model, this searcher model considers each of the different actions as a \emph{state} within the model, with a series of \emph{transition probabilities} linking each of the actions together (i.e. \emph{what is the probability of a searcher moving from scanning a result summary to stopping the search session?)}.\footnote{This searcher model can also be represented as a flowchart, as illustrated in Figure~\ref{fig:baskaya_model_flow}.} Indeed, the typical browsing model components (e.g. inspecting a document for relevance) as per~\cite{carterette2011effectiveness_evaluation} are also integrated with query generation and utility accumulation, permitting a searcher to issue multiple queries and gain utility.
+These steps broadly match up the~\gls{acr:iir} process as outlined in Figure~\ref{fig:iir} on page~\pageref{fig:iir}, and described in an abstract form in Section~\ref{sec:ir_background:user:iir}.~\cite{azzopardi2011economics},~\cite{yilmaz2010browsing_utility},~\cite{carterette2011models}, and more recently~\cite{zhang2017simulation_model} have all introduced and utilised searcher models that are similar in terms of the broad set of actions as outlined by~\cite{baskaya2013behavioural_factors}. Being a Markov model, this searcher model considers each of the different actions as a \emph{state}, with a series of \emph{transition probabilities} linking each of the actions together (i.e. \emph{what is the probability of a searcher moving from scanning a result summary to stopping the search session?)}.\footnote{This searcher model can also be represented as a flowchart, as illustrated in Figure~\ref{fig:baskaya_model_flow}.} Indeed, the typical browsing model components (e.g. inspecting a document for relevance) as per~\cite{carterette2011effectiveness_evaluation} are also integrated with query generation and utility accumulation, permitting a searcher to issue multiple queries and gain utility.
 
 \begin{figure}[t!]
     \centering
