@@ -9,7 +9,11 @@ I made it clear in the front matter of this thesis that not all of the illustrat
 ## Images Used
 Each of the files in this directory that employ an artwork from freepik (or another website) are listed below.
 
-* `ch0-acks_header.pdf` (Country flags from Wikipedia, Creative Commons)
-* 
+* `ch0-acks_header.pdf` (All country flags from Wikipedia, Creative Commons)
+* `ch0-europa.pdf` (European Union flag from Wikipedia, Creative Commons)
+* `ch0-glasgow_logo.pdf` (University of Glasgow logo, property of the Court of the University of Glasgow)
+* `ch1-bee.pdf` (Flower design and bee from Freepik)
+* `ch1-earth.pdf` (Earth, satellites and pinpoints from Freepik)
+* `ch1-empirical.pdf` (Dartboard from Freepik, image not ultimately used in thesis)
 
 All bitmap images were taken by me (e.g. `ch0-australia.jpg`). The people in `ch0-brel.jpg` were consulted before I included that particular image.
