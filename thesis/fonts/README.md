@@ -1,4 +1,4 @@
-# PhD Thesis Fonts
+# Fonts Used
 Here's the thing. I use some custom fonts in my thesis; fonts that I have paid a licence for. As such, I cannot share these fonts publicly. I'd be pretty annoyed if my work was distributed for free online on some random repository (I know that feeling)... And yes, I have removed all instances of the fonts from prior commits, too.
 
 Some fonts **are** free if you search for them online. Some fonts costed me money for a licence to use them. Given the fact the fonts came with different licences, I just removed them all from the repository to play it safe.
