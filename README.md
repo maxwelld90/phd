@@ -13,7 +13,7 @@ This work motivates a revision of how we currently model the search process and 
 ## About this Repository
 This repository contains the PhD thesis written by **David Martin Maxwell**. This work was undertaken at the [**University of Glasgow, Scotland**](https://www.gla.ac.uk/schools/computing/), from October 2013-June 2019. David was supervised by [**Dr. Leif Azzopardi**](http://leifos.me) and [**Professor Roderick Murray-Smith**](http://www.dcs.gla.ac.uk/~rod/).
 
-Source data (aggregated files), code for analysis (including generation of plots and tables), as well as the source *XeTeX* source code for the thesis itself are all contained within this repository. Find the thesis source in `thesis`, and code/results files in `supplementary`.
+Source *XeTeX* code for the thesis itself is contained within this repository. Find the thesis source in `thesis`. Unfortunately, source data files are way too large to host on GitHub; if you want any raw data, [please contact me](mailto:maxwelld90@acm.org). I have it backed up in several locations.
 
 I created my own thesis template which complies with University of Glasgow College of Science and Engineering rules. It looks very different from other theses. I am very proud of the [blood, sweat and tears that went into this](http://www.dmax.org.uk/things/phd/writing-up/). I thought that in the interests of transparency, it would be good to make sure everything is released into the open for people to see. Note that I use special fonts and make use of stock images throughout the thesis; please refer to [this README](https://github.com/maxwelld90/phd/blob/master/thesis/fonts/README.md) and [this other README](https://github.com/maxwelld90/phd/blob/master/thesis/figures/README.md) for more information.
 
