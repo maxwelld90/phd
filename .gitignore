@@ -30,3 +30,5 @@ thesis/maxwell2019thesis.pdf
 __pycache__/
 nocommit/
 summaries/
+*.ttc
+*.ttf
