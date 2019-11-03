@@ -28,3 +28,5 @@ thesis/maxwell2019thesis.pdf
 *.glsdefs
 *.pyc
 __pycache__/
+nocommit/
+summaries/
