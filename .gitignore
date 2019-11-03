@@ -26,3 +26,5 @@ thesis/maxwell2019thesis.pdf
 *.glo
 *.gls
 *.glsdefs
+*.pyc
+__pycache__/
