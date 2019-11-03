@@ -1,0 +1,2 @@
+# High Scent/Low Scent Probabilities of Interaction
+This directory contains all of the file used in computing the probability of examining a SERP, given a high scent (P@10>0.0) and low scent (P@10=0.0). This is done over the four interfaces from chapter 7 and the four conditions from chapter 8. In addition, probabilities are computed for average, savvy and naïve searchers as per the methodology.

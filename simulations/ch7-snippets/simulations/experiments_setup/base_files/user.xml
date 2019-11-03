@@ -1,0 +1,34 @@
+<userConfiguration id="u-{userID}">
+    
+    <queryGenerator class="{queryGeneratorClass}">
+        {queryGeneratorAttributes}
+    </queryGenerator>
+    
+    <textClassifiers>
+        <snippetClassifier class="{snippetClassifierClass}">
+            {snippetClassifierAttributes}
+        </snippetClassifier>
+        
+        <documentClassifier class="{documentClassifierClass}">
+            {documentClassifierAttributes}
+        </documentClassifier>
+    
+    </textClassifiers>
+    
+    <stoppingDecisionMaker class="{stoppingDecisionMakerClass}">
+        {stoppingDecisionMakerAttributes}
+    </stoppingDecisionMaker>
+    
+    <logger class="{loggerClass}">
+        {loggerAttributes}
+    </logger>
+    
+    <searchContext class="SearchContext">
+        <attribute name="relevance_revision" type="integer" value="{{{{relevanceRevision}}}}" is_argument="false" />
+    </searchContext>
+    
+    <serpImpression class="{serpImpressionClass}">
+        {serpImpressionAttributes}
+    </serpImpression>
+    
+</userConfiguration>
