@@ -68,8 +68,7 @@ Each of the files in this directory that employ an artwork from freepik (or anot
 * `ch3-gut.pdf`
   * Bird silhouettes (https://www.freepik.com/free-vector/birds-silhouettes-collection_907524.htm)
   * Ramen noodles, croissant and steak (Inspired from design at https://www.freepik.com/premium-vector/fast-food-cartoon-color-illustration_6076768.htm)
-  * Croissant
-  * Steak
+  * Croissant and steak (Inspired from design at https://www.freepik.com/premium-vector/fast-food-cartoon-color-illustration_6076768.htm)
 * `ch3-mental_list.pdf`
   *  Cars (From Freepik, URL no longer active)
 * `ch3-patch.pdf`
