@@ -1,6 +1,8 @@
 # Modelling Search and Stopping in IIR
 *Or, to use the full name, **Modelling Search and Stopping in Interactive Information Retrieval**.*
 
+(A `bcs` branch of this repository exists for the version hosted by the British Computer Society.)
+
 ## Abstract
 Searching for information when using a computerised retrieval system is a complex and inherently interactive process. Individuals during a search session may issue multiple queries, and examine a varying number of result summaries and documents per query. Searchers must also decide when to stop assessing content for relevance - or decide when to stop their search session altogether. Despite being such a fundamental activity, only a limited number of studies have explored stopping behaviours in detail, with a majority reporting that searchers stop because they decide that what they have found feels "good enough". Notwithstanding the limited exploration of stopping during search, the phenomenon is central to the study of Information Retrieval, playing a role in the models and measures that we employ. However, the current de facto assumption considers that searchers will examine k documents - examining up to a fixed depth.
 
