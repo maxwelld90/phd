@@ -39,13 +39,13 @@
     
     \tableofcontents
     \cleardoublepage
-    \newpage
-    \thispagestyle{empty}
-    \mbox{}
-    \newpage
-    \thispagestyle{empty}
-    \mbox{}
-    \newpage
+    % \newpage
+    % \thispagestyle{empty}
+    % \mbox{}
+    % \newpage
+    % \thispagestyle{empty}
+    % \mbox{}
+    % \newpage
 
     \phantomsection
     \addcontentsline{toc}{part}{List of Figures}
@@ -59,9 +59,9 @@
     \listoftables
     \cleardoublepage
     
-    \newpage
-    \thispagestyle{empty}
-    \mbox{}
+    % \newpage
+    % \thispagestyle{empty}
+    % \mbox{}
     
     \renewcommand*{\glossarypreamble}{\onehalfspacing}
     
@@ -69,11 +69,15 @@
     \addcontentsline{toc}{part}{Abbreviations Used}
     \onehalfspacing
     \printglossary[nonumberlist,type=\acronymtype,style=thesisglossary]
+
+    \newpage
+    \thispagestyle{empty}
+    \mbox{}
     
-    \phantomsection
     \onehalfspacing
-    \printglossary[nonumberlist,type=main,style=thesisglossary]
+    \cleardoublepage
     \addcontentsline{toc}{part}{Glossary of Terms}
+    \printglossary[nonumberlist,type=main,style=thesisglossary]
     
     \cleardoublepage
     \input{chapters/p0-misc/quote}
