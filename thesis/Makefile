@@ -4,33 +4,33 @@ BIB = bibtex
 
 .PHONY : all view
 
-all : maxwell2019thesis.pdf clean view
+all : maxwell2019thesis-bcs.pdf clean view
 
-maxwell2019thesis.pdf : maxwell2019thesis.tex chapters/* chapters/*/* figures/* phd.cls
-	$(EXEC) maxwell2019thesis.tex
-	$(BIB) maxwell2019thesis
-	$(GLOSS) maxwell2019thesis
-	$(EXEC) maxwell2019thesis
-	$(EXEC) maxwell2019thesis
-	$(EXEC) maxwell2019thesis
+maxwell2019thesis-bcs.pdf : maxwell2019thesis-bcs.tex chapters/* chapters/*/* figures/* phd.cls
+	$(EXEC) maxwell2019thesis-bcs.tex
+	$(BIB) maxwell2019thesis-bcs
+	$(GLOSS) maxwell2019thesis-bcs
+	$(EXEC) maxwell2019thesis-bcs
+	$(EXEC) maxwell2019thesis-bcs
+	$(EXEC) maxwell2019thesis-bcs
 
 view :
-	open maxwell2019thesis.pdf
+	open maxwell2019thesis-bcs.pdf
 
 clean :
-	rm -f maxwell2019thesis.acn
-	rm -f maxwell2019thesis.acr
-	rm -f maxwell2019thesis.alg
-	rm -f maxwell2019thesis.aux
-	rm -f maxwell2019thesis.blg
-	rm -f maxwell2019thesis.brf
-	rm -f maxwell2019thesis.glg
-	rm -f maxwell2019thesis.glo
-	rm -f maxwell2019thesis.gls
-	rm -f maxwell2019thesis.ist
-	rm -f maxwell2019thesis.lof
-	rm -f maxwell2019thesis.log
-	rm -f maxwell2019thesis.lot
-	rm -f maxwell2019thesis.out
-	rm -f maxwell2019thesis.synctex.gz
-	rm -f maxwell2019thesis.toc
+	rm -f maxwell2019thesis-bcs.acn
+	rm -f maxwell2019thesis-bcs.acr
+	rm -f maxwell2019thesis-bcs.alg
+	rm -f maxwell2019thesis-bcs.aux
+	rm -f maxwell2019thesis-bcs.blg
+	rm -f maxwell2019thesis-bcs.brf
+	rm -f maxwell2019thesis-bcs.glg
+	rm -f maxwell2019thesis-bcs.glo
+	rm -f maxwell2019thesis-bcs.gls
+	rm -f maxwell2019thesis-bcs.ist
+	rm -f maxwell2019thesis-bcs.lof
+	rm -f maxwell2019thesis-bcs.log
+	rm -f maxwell2019thesis-bcs.lot
+	rm -f maxwell2019thesis-bcs.out
+	rm -f maxwell2019thesis-bcs.synctex.gz
+	rm -f maxwell2019thesis-bcs.toc
